@@ -1,0 +1,30 @@
+machine:
+  environment:
+    SOURCE_BRANCH: staging
+    DEPLOY_BRANCH: master
+    USER_EMAIL: markville.compsci@gmail.com
+    USER_NAME: MSS CSEC
+  ruby:
+    version: 2.4.0
+
+general:
+  branches:
+    ignore:
+      - master
+
+dependencies:
+  pre:
+    - chmod +x ./scripts/*
+    - ./scripts/setup
+
+test:
+  pre:
+    - ls -R
+  post:
+    - echo "Done testing" # TODO: remove
+
+deployment:
+  production:
+    branch: staging
+    commands:
+      - ./scripts/deploy
