@@ -30,4 +30,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ###
 
 # Use Rouge as a highlighter
-gem "rouge", "~> 2.1"
+gem "rouge", "~> 1.7"
