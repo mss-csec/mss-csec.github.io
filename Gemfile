@@ -31,3 +31,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use Rouge as a highlighter
 gem "rouge", "~> 1.7"
+
+# Add jekyll SEO
+gem "jekyll-seo-tag"
