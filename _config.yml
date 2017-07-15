@@ -49,6 +49,9 @@ exclude:
   - Gemfile.lock
   - node_modules/
   - README.md
+  - scripts/
+  - Vagrantfile
+  - vagrant-ssh.config
   - 404.html # Excluded as Github pages won't build it anyways
 
 # Custom collections
