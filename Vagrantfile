@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "scripts/vagrant/install-ruby.sh", args: "2.4.0 jekyll bundler", privileged: false
 
   # Bootstrap
-  config.vm.provision :shell, path: "scripts/vagrant/bootstrap.sh", privileged: false
+  config.vm.provision :shell, path: "scripts/vagrant/bootstrap.sh", privileged: false, run: "always"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
