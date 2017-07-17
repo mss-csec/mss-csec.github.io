@@ -15,7 +15,7 @@ general:
 dependencies:
   pre:
     - chmod +x ./scripts/**/*.sh
-    - ./scripts/ci/setup
+    - ./scripts/ci/setup.sh
 
 test:
   pre:
@@ -27,4 +27,4 @@ deployment:
   production:
     branch: staging
     commands:
-      - ./scripts/ci/eploy
+      - ./scripts/ci/deploy.sh
