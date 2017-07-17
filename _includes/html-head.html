@@ -1,5 +1,30 @@
 <head>
   <meta charset="utf-8">
 
-  {% seo %}
+  <!-- BEGIN CSS -->
+  <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i" rel="stylesheet">
+
+  <!--
+  {% if page.addons.styles %}
+    {% for style in page.addons.styles %}
+  <link href="{{ style }}" rel="stylesheet">
+    {% endfor %}
+  {% endif %}
+  -->
+  <!-- END CSS -->
+
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }} • {{ site.description }}</title>
+
+  {% seo title=false %}
+
+  <!-- BEGIN JS -->
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--
+  {% if page.addons.scripts %}
+    {% for script in page.scripts %}
+  <script defer src="{{ script }}"></script>
+    {% endfor %}
+  {% endif %}
+  -->
+  <!-- END JS -->
 </head>
