@@ -53,7 +53,8 @@ git checkout $SOURCE_BRANCH
 # Create the build branch as an orphan
 git checkout --orphan $BUILD_BRANCH
 
-# Build things here
+# Build Jekyll
+chmod +x ./scripts/ci/build.sh
 ./scripts/ci/build.sh
 
 # Configure details
