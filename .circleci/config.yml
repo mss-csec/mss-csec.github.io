@@ -1,0 +1,59 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4 # ruby-2.4.0
+      - image: circleci/node:6.10.3 # Start up a node image; may need for dev
+
+    environment:
+      SOURCE_BRANCH: staging
+      DEPLOY_BRANCH: master
+
+    working_directory: ~/mss-csec.github.io
+
+    branches:
+      ignore:
+        - develop # for now
+        - master
+
+    steps:
+      # Checkout repository
+      - checkout
+
+      # Chmod CI scripts
+      - run: chmod +x ./scripts/**/*.sh
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - mss-csec-{{ checksum "Gemfile.lock" }}
+            - mss-csec-
+
+      # Setup environment
+      - run: |
+          ./scripts/ci/setup.sh
+
+      # Save bundle cache
+      - save_cache:
+          key: mss-csec-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.mss-cache
+
+      # Test Jekyll plugins
+      - run:
+          name: Test Jekyll plugins
+          # So far, we do nothing.
+          command: |
+            ls -R
+            echo "Done testing"
+
+      # Deploy
+      - deploy:
+          environment:
+            USER_EMAIL: markville.compsci@gmail.com
+            USER_NAME: MSS CSEC
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              ./scripts/ci/deploy.sh
+            fi
