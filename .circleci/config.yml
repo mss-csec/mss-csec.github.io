@@ -30,7 +30,8 @@ jobs:
             - mss-csec-
 
       # Setup environment
-      - run: ./scripts/ci/setup.sh
+      - run: |
+          ./scripts/ci/setup.sh
 
       # Save bundle cache
       - save_cache:

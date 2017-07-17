@@ -5,9 +5,6 @@ set -e
 
 echo "Starting setup"
 
-# Checkout the correct branch
-git checkout $SOURCE_BRANCH
-
 # Update submodules, if required
 git submodule update --init
 
