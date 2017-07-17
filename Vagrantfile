@@ -16,11 +16,15 @@ Vagrant.configure("2") do |config|
 
   # Install necessary utilities
   # curl
-  config.vm.provision :shell, inline: "sudo apt-get -qq -y install curl"
+  config.vm.provision :shell, inline: "sudo apt-get -qq -y install build-essential curl libssl-dev"
   # rvm
   config.vm.provision :shell, path: "scripts/vagrant/install-rvm.sh", args: "stable", privileged: false
   # ruby-2.4.0
   config.vm.provision :shell, path: "scripts/vagrant/install-ruby.sh", args: "2.4.0 jekyll bundler", privileged: false
+  # nvm
+  config.vm.provision :shell, path: "scripts/vagrant/install-nvm.sh", privileged: false
+  # # node 6.10.3
+  config.vm.provision :shell, path: "scripts/vagrant/install-nodejs.sh", args: "6.10.3", privileged: false
 
   # Bootstrap
   config.vm.provision :shell, path: "scripts/vagrant/bootstrap.sh", privileged: false, run: "always"
