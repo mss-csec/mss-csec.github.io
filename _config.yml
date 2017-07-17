@@ -30,6 +30,10 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:categories/:year/:month/:title/
 
+sass:
+  sass_dir: assets/css
+  style: expanded # prod: compressed
+
 kramdown:
   input: GFM
   hard_wrap: false
