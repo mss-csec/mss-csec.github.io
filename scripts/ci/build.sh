@@ -13,10 +13,10 @@ echo "Starting build"
 #   output: true # prod: false
 # becomes
 #   output: false
-sed -Ee 's/(.+:\s*)(.+)#\s*prod\s*:\s*(.+)/\1\3/' _config.yml > _config.yml
+sed -Ee 's/(.+:\s*)(.+)#\s*prod\s*:\s*(.+)/\1\3/' _config.yml > _config-prod.yml
 
 # Build site
-bundle exec jekyll build
+bundle exec jekyll build --config _config-prod.yml
 
 # Delete and move files
 find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name '_site' \
