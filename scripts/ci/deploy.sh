@@ -18,7 +18,7 @@ fi
 git checkout --orphan $DEPLOY_BRANCH
 
 # Build things here
-./scripts/ci/build
+./scripts/ci/build.sh
 
 # Configure details
 git config user.email "$USER_EMAIL"
