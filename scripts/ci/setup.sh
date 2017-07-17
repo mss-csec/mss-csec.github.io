@@ -5,6 +5,9 @@ set -e
 
 echo "Starting setup"
 
+# Ignore file mode changes
+git config core.fileMode false
+
 # Update submodules, if required
 git submodule update --init
 
