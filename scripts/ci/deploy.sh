@@ -27,10 +27,14 @@ echo "Starting deploy"
 # Create a build branch
 BUILD_BRANCH="build-$DEPLOY_BRANCH"
 
-# Delete previous build branch, if it exists
+# Delete previous build & deploy branches, if they exist
 # Necessary given caching
 if [ `git branch | grep $BUILD_BRANCH` ]; then
   git branch -D $BUILD_BRANCH
+fi
+
+if [ `git branch | grep $DEPLOY_BRANCH` ]; then
+  git branch -D $DEPLOY_BRANCH
 fi
 
 # Save the previous commit hash for future reference
