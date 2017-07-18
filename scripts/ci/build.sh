@@ -8,15 +8,29 @@ echo "Starting build"
 # Normalize file structure
 # /_subclubs/:subclub/lessons/:lesson/:permatitle.md
 #   --> /_lessons/:subclub/:lesson-:permatitle.md
-for orig_path in `ls _subclubs/**/lessons/**/*.md`; do
-  subclub=`echo $orig_path | cut -d'/' -f2`
-  week=`   echo $orig_path | cut -d'/' -f4`
-  title=`  echo $orig_path | cut -d'/' -f5`
+for orig_dir in `ls -d _subclubs/**/lessons/`; do
+  for orig_path in `find $orig_dir -f -name '*.md' -o -name '*.adoc'`; do
+    subclub=`echo $orig_path | cut -d'/' -f2`
+    week=`   echo $orig_path | cut -d'/' -f4`
+    title=`  echo $orig_path | cut -d'/' -f5`
 
-  if [ ! -d "_lessons" ]; then mkdir "_lessons"; fi
-  if [ ! -d "_lessons/${subclub}" ]; then mkdir "_lessons/$subclub"; fi
+    # Perform some sanity checks
+    if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
+        [ "$week" = "lessons" ] || [ `echo $week | grep ".md\|.adoc"` ]; then
+      echo "ERROR: Pattern matching picked up the wrong patterns!"
+      echo "Full path: $orig_path"
+      echo "Patterns:"
+      echo "  subclub => $subclub"
+      echo "  week    => $week"
+      echo "  title   => $title"
+      exit 1;
+    fi
 
-  cp $orig_path "_lessons/$subclub/$week-$title"
+    if [ ! -d "_lessons" ]; then mkdir "_lessons"; fi
+    if [ ! -d "_lessons/${subclub}" ]; then mkdir "_lessons/$subclub"; fi
+
+    cp $orig_path "_lessons/$subclub/$week-$title"
+  done
 done
 # /_subclubs/:subclub/resources
 #   --> /_resources/:subclub/
