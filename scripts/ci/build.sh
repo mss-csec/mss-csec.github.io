@@ -37,14 +37,18 @@ done
 # LOW PRIORITY
 
 # Build site
-bundle exec jekyll build --config _config.yml,_config-prod.yml
+if [ "$1" != "production" ]; then
+  bundle exec jekyll build
+else
+  bundle exec jekyll build --config _config.yml,_config-prod.yml
 
-# Delete and move files
-find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name '_site' \
-    ! -name '.circleci' ! -name '.vagrant' -exec rm -rf {} \;
+  # Delete and move files
+  find . -maxdepth 1 ! -name '.git' ! -name '.gitignore' ! -name '_site' \
+      ! -name '.circleci' ! -name '.vagrant' -exec rm -rf {} \;
 
-mv _site/* .
-rm -R _site/
+  mv _site/* .
+  rm -R _site/
+fi
 
 echo "Build successful"
 

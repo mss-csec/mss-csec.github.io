@@ -82,6 +82,7 @@ git push $CIRCLE_REPOSITORY_URL $DEPLOY_BRANCH
 
 # Cleanup
 git checkout $SOURCE_BRANCH
+git checkout -- ./scripts/ci/deploy.sh # This script tends to get deleted
 git branch -D $BUILD_BRANCH $DEPLOY_BRANCH
 
 echo "Deploy successful"
