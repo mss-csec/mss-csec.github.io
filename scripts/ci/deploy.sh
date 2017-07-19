@@ -55,7 +55,7 @@ git checkout --orphan $BUILD_BRANCH
 
 # Build Jekyll
 chmod +x ./scripts/ci/build.sh
-./scripts/ci/build.sh
+./scripts/ci/build.sh production
 
 # Configure details
 git config user.email "$USER_EMAIL"
