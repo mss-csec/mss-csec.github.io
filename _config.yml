@@ -73,7 +73,7 @@ collections:
   # Contains all CSEC lessons
   lessons:
     output: true
-    permalink: /:collection/:path.html
+    permalink: /:collection/:path
   # Contains all CSEC resources and guides. Includes lesson resources
   resources:
     output: true
@@ -82,3 +82,10 @@ collections:
   subclubs:
     output: true
     permalink: /:path/
+
+
+displayed_subclubs:
+  - title: Beginners
+    path: /beginner/
+  - title: Advanced
+    path: /advanced/

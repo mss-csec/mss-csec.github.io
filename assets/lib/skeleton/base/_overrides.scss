@@ -23,9 +23,9 @@ $font-color: $fg-primary;
 $font-family: $df-font-family;
 
 //Grid Variables
-$container-width: 1440px;
-$container-width-larger-than-mobile: 85%;
-$container-width-larger-than-phablet: 80%;
+$container-width: $df-container-width;
+$container-width-larger-than-mobile: $ph-container-width;
+$container-width-larger-than-phablet: $tb-container-width;
 
 // Misc
 $global-radius: $df-radius;

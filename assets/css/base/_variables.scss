@@ -1,12 +1,4 @@
-// Overrides for variables
-//––––––––––––––––––––––––––––––––––––––––––––––––––
-
-// Breakpoints
-$bp-larger-than-mobile    : "min-width: 400px" !default;
-$bp-larger-than-phablet   : "min-width: 550px" !default;
-$bp-larger-than-tablet    : "min-width: 750px" !default;
-$bp-larger-than-desktop   : "min-width: 1200px" !default;
-$bp-larger-than-desktophd : "min-width: 1440px" !default;
+// CSEC Variables
 
 // Colors
 // Brand colours
@@ -22,33 +14,35 @@ $bg-accent: $brand-colour;
 
 $t: transparent;
 
-// Overrides
-$light-grey: $bg-secondary;
-$dark-grey: $fg-secondary;
-$primary-color: $brand-colour;
-$secondary-color: $fg-secondary;
-$border-color: $bg-secondary;
-$link-color: lighten($brand-colour, 5%);
-$font-color: $fg-primary;
-
 // Typography
-$df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
 $df-font-size: 16px;
 $df-font: #{$df-font-size}/1.5 $df-font-family;
 $acc-font-family: $df-font-family;
 
-// Overrides
-$font-family: $df-font-family;
+// Layout
+$df-container-width: 1440px;
+$tb-container-width: 80%;
+$ph-container-width: 85%;
 
-//Grid Variables
-$container-width: 1440px;
-$container-width-larger-than-mobile: 85%;
-$container-width-larger-than-phablet: 80%;
+$ex: 20px;
+$ex2: 40px;
+$ex3: 60px;
+$ex4: 80px;
+$ex05: 10px;
+$ex075: 15px;
+
+// z-index
+$z-2: -10;
+$z-1: -1;
+$z0: 0;
+$z1: 1;
+$z2: 10;
+$z3: 100;
+$z4: 1000;
 
 // Misc
-$df-padding: .3em;
+$df-padding: $ex05;
 $df-radius: .2em;
 $df-anim-length: .23s;
-
-// Overrides
-$global-radius: $df-radius;
