@@ -1,4 +1,0 @@
----
-title: Advanced
-layout: landing
----

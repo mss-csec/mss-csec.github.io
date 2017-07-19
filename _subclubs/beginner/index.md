@@ -1,4 +1,0 @@
----
-title: Beginners
-layout: landing
----
