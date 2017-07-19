@@ -1,0 +1,48 @@
+// CSEC Variables
+
+// Colors
+// Brand colours
+$brand-colour: #f52f2f;
+
+$fg-primary: #232323;
+$fg-secondary: #666;
+$fg-accent: #fff;
+
+$bg-primary: #fff;
+$bg-secondary: #ededed;
+$bg-accent: $brand-colour;
+
+$t: transparent;
+
+// Typography
+$df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+$df-font-size: 16px;
+$df-font: #{$df-font-size}/1.5 $df-font-family;
+$acc-font-family: $df-font-family;
+
+// Layout
+$df-container-width: 1440px;
+$tb-container-width: 80%;
+$ph-container-width: 85%;
+
+$ex: 20px;
+$ex2: 40px;
+$ex3: 60px;
+$ex4: 80px;
+$ex05: 10px;
+$ex075: 15px;
+
+// z-index
+$z-2: -10;
+$z-1: -1;
+$z0: 0;
+$z1: 1;
+$z2: 10;
+$z3: 100;
+$z4: 1000;
+
+// Misc
+$df-padding: $ex05;
+$df-radius: .2em;
+$df-anim-length: .23s;

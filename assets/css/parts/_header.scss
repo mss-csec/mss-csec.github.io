@@ -1,0 +1,62 @@
+.main-header {
+  border-bottom: 2px solid $brand-colour;
+  height: $ex2;
+  padding: $ex075 0;
+}
+
+.main-header .container,
+.main-header .responsive-menu-items {
+  display: flex;
+  flex-direction: row;
+  max-height: 100%;
+  flex: 1;
+}
+
+.main-logo {
+  margin-right: $ex;
+}
+
+.menu {
+  position: relative;
+  margin: 0 $ex;
+}
+
+.menu-header {
+  color: $fg-primary;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: $ex2;
+}
+
+.menu:hover .menu-header {
+  color: $brand-colour;
+}
+
+.menu .menu-items {
+  position: absolute;
+  left: -$ex05;
+  right: -$ex4;
+  display: none;
+  background-color: $bg-secondary;
+  padding: $df-padding;
+  margin-top: 17px;
+  z-index: $z2;
+}
+
+.menu .menu-items::before {
+  content: "";
+  position: absolute;
+  top: -17px;
+  left: 0;
+  right: 0;
+  height: 17px;
+}
+
+.menu:hover .menu-items {
+  display: block;
+}
+
+.search-box {
+  margin-left: auto;
+}
