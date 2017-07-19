@@ -58,6 +58,11 @@ done
 if [ "$1" != "production" ]; then
   bundle exec jekyll build
 else
+  echo "build_url: /commit/$CIRCLE_SHA1" \
+    >> _config-prod.yml
+  echo "build_version: $(date +%Y%m%d)-$(echo $CIRCLE_SHA1 | cut -c-7)" \
+    >> _config-prod.yml
+
   bundle exec jekyll build --config _config.yml,_config-prod.yml
 
   # Delete and move files

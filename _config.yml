@@ -89,3 +89,7 @@ displayed_subclubs:
     path: /beginner/
   - title: Advanced
     path: /advanced/
+
+project_url: https://github.com/mss-csec/mss-csec.github.io
+
+build_version: development
