@@ -1,2 +1,14 @@
+exclude:
+  - assets/lib/*.txt
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - README.md
+  - scripts/
+  - _subclubs/test/
+  - Vagrantfile
+  - vagrant-ssh.config
+  - 404.html # Excluded as Github pages won't build it anyways
+
 sass:
   style: compressed
