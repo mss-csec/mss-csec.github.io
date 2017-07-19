@@ -4,9 +4,9 @@
   <!-- BEGIN CSS -->
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i" rel="stylesheet">
 
-  <link href="/assets/lib/skeleton.css" rel="stylesheet">
+  <link href="{{ '/assets/lib/skeleton.css' | relative_url }}" rel="stylesheet">
 
-  <link href="/assets/lib/pygments-manni.css" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="/assets/lib/pygments-native.css">
+  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="{{ '/assets/lib/pygments-native.css' | relative_url }}">
 
   <!--
   {% if page.addons.styles %}
@@ -22,12 +22,12 @@
   {% seo title=false %}
 
   <!-- BEGIN JS -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script defer src="/assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
   <!--
   {% if page.addons.scripts %}
     {% for script in page.scripts %}
-  <script defer src="{{ script }}"></script>
+  <script src="{{ script }}" defer></script>
     {% endfor %}
   {% endif %}
   -->
