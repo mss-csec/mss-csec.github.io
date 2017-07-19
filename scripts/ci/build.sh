@@ -7,16 +7,18 @@ echo "Starting build"
 
 # Normalize file structure
 # /_subclubs/:subclub/lessons/:lesson/:permatitle.md
-#   --> /_lessons/:subclub/:lesson-:permatitle.md
+# /_subclubs/:subclub/lessons/:lesson/hero.jpg
+#   --> /_lessons/:subclub/:lesson-:permatitle/index.md
+#   --> /_lessons/:subclub/:lesson-:permatitle/hero.jpg
 for orig_dir in `ls -d _subclubs/**/lessons/`; do
-  for orig_path in `find $orig_dir -f -name '*.md' -o -name '*.adoc'`; do
+  for orig_path in `find $orig_dir -name '*.md' -o -name '*.adoc'`; do
     subclub=`echo $orig_path | cut -d'/' -f2`
     week=`   echo $orig_path | cut -d'/' -f4`
-    title=`  echo $orig_path | cut -d'/' -f5`
+    title=`  echo $orig_path | cut -d'/' -f5 | sed -r "s/(.+)\..+/\1/"`
 
     # Perform some sanity checks
     if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
-        [ "$week" = "lessons" ] || [ `echo $week | grep ".md\|.adoc"` ]; then
+        [ "$week" = "lessons" ]; then
       echo "ERROR: Pattern matching picked up the wrong patterns!"
       echo "Full path: $orig_path"
       echo "Patterns:"
@@ -26,10 +28,26 @@ for orig_dir in `ls -d _subclubs/**/lessons/`; do
       exit 1;
     fi
 
+    # Make directories if nonexistent
     if [ ! -d "_lessons" ]; then mkdir "_lessons"; fi
     if [ ! -d "_lessons/${subclub}" ]; then mkdir "_lessons/$subclub"; fi
 
-    cp $orig_path "_lessons/$subclub/$week-$title"
+    # Remove lesson directory if existent
+    if [ -d "_lessons/${subclub}/${week}-${title}" ]; then
+      rm -r "_lessons/$subclub/$week-$title"
+    fi
+
+    mkdir "_lessons/$subclub/$week-$title"
+
+    # Copy over original lesson file
+    cp $orig_path "_lessons/$subclub/$week-$title/index.md"
+
+    # Move over other files
+    cp -r "$(echo $orig_path | cut -d'/' -f-4)/"* \
+      "_lessons/$subclub/$week-$title/"
+
+    # Remove duplicated lesson file
+    rm "_lessons/$subclub/$week-$title/$title.md"
   done
 done
 # /_subclubs/:subclub/resources

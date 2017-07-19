@@ -73,7 +73,7 @@ collections:
   # Contains all CSEC lessons
   lessons:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:collection/:path.html
   # Contains all CSEC resources and guides. Includes lesson resources
   resources:
     output: true
