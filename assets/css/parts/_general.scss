@@ -4,6 +4,16 @@ h1, h2, h3, h4, h5, h6 {
   @include heading;
 }
 
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"] {
+  border-color: darken($bg-secondary, 10%);
+}
+
 body {
   display: flex;
   min-height: 100vh;

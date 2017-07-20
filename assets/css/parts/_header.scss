@@ -60,3 +60,10 @@
 .search-box {
   margin-left: auto;
 }
+
+.search-box input,
+.search-box input:focus {
+  background-color: $bg-secondary;
+  border: 0;
+  border-radius: 0;
+}
