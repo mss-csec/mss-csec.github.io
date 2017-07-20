@@ -10,7 +10,7 @@
   display: none;
 }
 
-@media (max-width: 750px) {
+@media (max-width: $bp-tablet) {
   .responsive-menu-toggler + label {
     display: block;
   }

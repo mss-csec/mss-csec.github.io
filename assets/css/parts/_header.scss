@@ -16,7 +16,7 @@
   margin-right: $ex;
 }
 
-@media (max-width: 750px) {
+@media (max-width: $bp-tablet) {
   .main-header {
     @include position(0, 0, 0);
 

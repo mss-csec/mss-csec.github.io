@@ -44,6 +44,13 @@ $z2: 10;
 $z3: 100;
 $z4: 1000;
 
+// Media breakpoints
+$bp-mobile    : 400px;
+$bp-phablet   : 550px;
+$bp-tablet    : 750px;
+$bp-desktop   : 1200px;
+$bp-desktophd : $df-container-width;
+
 // Misc
 $df-padding: $ex05;
 $df-radius: .2em;

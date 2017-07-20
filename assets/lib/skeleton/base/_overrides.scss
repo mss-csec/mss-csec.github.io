@@ -4,11 +4,11 @@
 @import "base/variables";
 
 // Breakpoints
-$bp-larger-than-mobile    : "min-width: 400px" !default;
-$bp-larger-than-phablet   : "min-width: 550px" !default;
-$bp-larger-than-tablet    : "min-width: 750px" !default;
-$bp-larger-than-desktop   : "min-width: 1200px" !default;
-$bp-larger-than-desktophd : "min-width: 1440px" !default;
+$bp-larger-than-mobile    : "min-width: #{$bp-mobile}" !default;
+$bp-larger-than-phablet   : "min-width: #{$bp-phablet}" !default;
+$bp-larger-than-tablet    : "min-width: #{$bp-tablet}" !default;
+$bp-larger-than-desktop   : "min-width: #{$bp-desktop}" !default;
+$bp-larger-than-desktophd : "min-width: #{$bp-desktophd}" !default;
 
 // Colors
 $light-grey: $bg-secondary;
