@@ -3,6 +3,10 @@
 
 // Import base
 @import "base/variables";
+@import "base/mixins";
 
 // Import parts
+@import "parts/general";
 @import "parts/header";
+@import "parts/hero";
+@import "parts/footer";

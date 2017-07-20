@@ -1,0 +1,94 @@
+// Mixins
+
+// Reset properties
+//
+// $props - A list of properties to reset
+
+@mixin reset($props) {
+  @each $prop in $props {
+    @if index((background, background-image, border, box-shadow), $prop) {
+      #{$prop}: none;
+    } @else if $prop == background-color {
+      background-color: $t;
+    } @else if index((width, height), $prop) {
+      #{$prop}: 100%;
+    } @else {
+      #{$prop}: 0;
+    }
+  }
+}
+
+// Position element
+//
+// $top    - The value for `top`
+// $left   - The value for `left`
+// $right  - The value for `right`
+// $bottom - The value for `bottom`
+
+@mixin position($top: null, $left: null, $right: null, $bottom: null) {
+  @if $left == null and $right == null and $bottom == null {
+    $left: $top;
+    $right: $top;
+    $bottom: $top;
+  }
+  @if $top != null {
+    top: $top;
+  }
+  @if $left != null {
+    left: $left;
+  }
+  @if $right != null {
+    right: $right;
+  }
+  @if $bottom != null {
+    bottom: $bottom;
+  }
+}
+
+// Fix dimensions of element
+//
+// $width  - The width of the element
+// $height - The height of the element. Defaults to its width if not specified.
+
+@mixin dimensions($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Style mixins
+
+// Reset background, padding, border & margin
+@mixin reset-all {
+  @include reset(background padding border margin);
+}
+
+// Set box-sizing to border-box
+@mixin border-box {
+  box-sizing: border-box;
+}
+
+// Set box-sizing to content-box
+@mixin content-box {
+  box-sizing: content-box;
+}
+
+// No user select
+@mixin no-user-select {
+  user-select: none;
+}
+
+// Pseudo-element shared styles
+@mixin pseudo {
+  content: '';
+  position: absolute;
+}
+
+// Headings
+@mixin heading {
+  font-weight: bold;
+}
+
+// Transitions
+@mixin transition {
+  transition: $df-anim-length ease;
+}

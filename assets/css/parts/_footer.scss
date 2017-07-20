@@ -1,0 +1,24 @@
+// Footer
+
+footer {
+  background-color: $bg-secondary;
+  color: lighten($fg-secondary, 15%);
+  padding: $ex 0;
+  border-bottom: 2px solid $brand-colour;
+}
+
+footer a {
+  color: $fg-secondary;
+  text-decoration: dotted underline;
+}
+
+footer a:hover {
+  color: $fg-secondary;
+  text-decoration: underline;
+}
+
+footer .version {
+  text-align: right;
+  opacity: 0.5;
+  margin: 0;
+}
