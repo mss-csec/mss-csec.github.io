@@ -5,6 +5,7 @@ footer {
   color: lighten($fg-secondary, 15%);
   padding: $ex 0;
   border-bottom: 2px solid $brand-colour;
+  margin-top: $ex;
 }
 
 footer a {

@@ -74,6 +74,9 @@
 
 // No user select
 @mixin no-user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 

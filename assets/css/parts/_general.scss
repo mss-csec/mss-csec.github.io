@@ -25,3 +25,21 @@ main {
   flex: 1;
   font-size: $df-font-size;
 }
+
+code {
+  overflow-x: auto;
+}
+
+:root * {
+  -webkit-tap-highlight-color: $t;
+}
+
+:root input,
+:root a {
+  -webkit-tap-highlight-color: transparentize($aria-highlight, 0.4);
+}
+
+:root *:focus,
+:root input:focus {
+  outline: 2px solid $aria-highlight;
+}

@@ -16,6 +16,24 @@
   margin-right: $ex;
 }
 
+@media (max-width: 750px) {
+  .main-header {
+    @include position(0, 0, 0);
+
+    position: fixed;
+    background-color: $bg-primary;
+    z-index: $z1;
+  }
+
+  .main-logo {
+    z-index: $z4;
+  }
+
+  main {
+    margin-top: $ex3;
+  }
+}
+
 .menu {
   position: relative;
   margin: 0 $ex;

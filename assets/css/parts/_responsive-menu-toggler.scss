@@ -1,19 +1,71 @@
 // Responsive menu toggler
 
 .responsive-menu-toggler {
-  display: none !important;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  -webkit-tap-highlight-color: $t;
+}
+
+.responsive-menu-toggler + label {
+  display: none;
 }
 
 @media (max-width: 750px) {
-  .responsive-menu-toggler + label::before,
-  .responsive-menu-toggler + label::after {
-    content: '';
+  .responsive-menu-toggler + label {
+    display: block;
+  }
+
+  .responsive-menu-toggler + label a {
+    @include no-user-select;
+
+    position: absolute;
+    top: -$ex05;
+    right: 0;
+    line-height: $ex3;
+    color: $fg-primary;
+    padding-left: $ex + 6px;
+    padding-right: $ex + 6px;
+    cursor: pointer;
+    z-index: $z4;
+  }
+
+  .responsive-menu-toggler + label a::before,
+  .responsive-menu-toggler + label a::after {
+    @include pseudo;
+    @include dimensions(2px, 1em);
+    @include transition;
+
+    top: $ex + 1px;
+    background-color: $brand-colour;
+    transform: rotate(20deg);
+  }
+
+  .responsive-menu-toggler + label a::before {
+    margin-left: -5px;
+  }
+
+  .responsive-menu-toggler + label a::after {
+    margin-left: 4px;
+  }
+
+  .responsive-menu-toggler:checked + label a {
+    color: $t;
+    padding-left: 0;
+  }
+
+  .responsive-menu-toggler:checked + label a::before {
+    transform: translateX($ex2) scale(1.2) rotate(-45deg);
+  }
+
+  .responsive-menu-toggler:checked + label a::after {
+    transform: translateX(-6px) scale(1.2) rotate(45deg);
   }
 
   .responsive-menu-toggler + label::before {
     @include position(0);
     @include transition;
 
+    content: '';
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
     z-index: $z3;
@@ -24,14 +76,6 @@
   .responsive-menu-toggler:checked + label::before {
     opacity: 1;
     pointer-events: all;
-  }
-
-  .responsive-menu-toggler + label::after {
-    content: "toggle";
-    position: absolute;
-    cursor: pointer;
-    right: 0;
-    z-index: $z4;
   }
 
   .responsive-menu-toggler ~ .responsive-menu-items {
@@ -47,6 +91,11 @@
 
   .responsive-menu-toggler:checked ~ .responsive-menu-items {
     transform: translateX(0);
+  }
+
+  .responsive-menu-toggler:focus + label a,
+  .responsive-menu-toggler + label a:active {
+    background-color: transparentize($aria-highlight, 0.4);
   }
 
   .menu-header,
@@ -71,28 +120,9 @@
     margin-bottom: -$ex05;
   }
 
-  .search-box input {
+  .search-box input,
+  .search-box input:focus {
     width: calc(100vw - 40px);
     background-color: $bg-primary;
-  }
-
-  .main-header {
-    @include position(0, 0, 0);
-
-    position: fixed;
-    background-color: $bg-primary;
-  }
-
-  .main-logo {
-    z-index: $z4;
-  }
-
-  main {
-    margin-top: $ex3;
-    z-index: $z-1;
-  }
-
-  footer {
-    z-index: $z-1;
   }
 }
