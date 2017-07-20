@@ -1,0 +1,98 @@
+// Responsive menu toggler
+
+.responsive-menu-toggler {
+  display: none !important;
+}
+
+@media (max-width: 750px) {
+  .responsive-menu-toggler + label::before,
+  .responsive-menu-toggler + label::after {
+    content: '';
+  }
+
+  .responsive-menu-toggler + label::before {
+    @include position(0);
+    @include transition;
+
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: $z3;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .responsive-menu-toggler:checked + label::before {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .responsive-menu-toggler + label::after {
+    content: "toggle";
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    z-index: $z4;
+  }
+
+  .responsive-menu-toggler ~ .responsive-menu-items {
+    @include position(0);
+    @include transition;
+
+    position: fixed;
+    flex-direction: column;
+    background-color: $bg-secondary;
+    z-index: $z3;
+    transform: translateX(100vw);
+  }
+
+  .responsive-menu-toggler:checked ~ .responsive-menu-items {
+    transform: translateX(0);
+  }
+
+  .menu-header,
+  .menu:hover .menu-header {
+    color: $fg-primary;
+    pointer-events: none;
+  }
+
+  .menu .menu-items {
+    position: static;
+    display: block;
+    margin: -$ex05 0 5px;
+  }
+
+  .search-box {
+    order: -1;
+    padding-top: $ex05;
+    padding-left: $ex;
+    border-top: 2px solid $brand-colour;
+    margin-top: $ex3;
+    margin-left: 0;
+    margin-bottom: -$ex05;
+  }
+
+  .search-box input {
+    width: calc(100vw - 40px);
+    background-color: $bg-primary;
+  }
+
+  .main-header {
+    @include position(0, 0, 0);
+
+    position: fixed;
+    background-color: $bg-primary;
+  }
+
+  .main-logo {
+    z-index: $z4;
+  }
+
+  main {
+    margin-top: $ex3;
+    z-index: $z-1;
+  }
+
+  footer {
+    z-index: $z-1;
+  }
+}
