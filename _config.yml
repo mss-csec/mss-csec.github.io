@@ -81,7 +81,7 @@ collections:
   # Contains all subclubs, and their landing pages.
   subclubs:
     output: true
-    permalink: /:path/
+    permalink: /:path
 
 
 displayed_subclubs:
