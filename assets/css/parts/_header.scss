@@ -1,7 +1,7 @@
 .main-header {
   border-bottom: 2px solid $brand-colour;
   height: $ex2;
-  padding: $ex075 0;
+  padding: $df-padding 0;
 }
 
 .main-header .container,
@@ -40,17 +40,17 @@
   display: none;
   background-color: $bg-secondary;
   padding: $df-padding;
-  margin-top: 17px;
+  margin-top: 12px;
   z-index: $z2;
 }
 
 .menu .menu-items::before {
-  content: "";
-  position: absolute;
-  top: -17px;
+  @include pseudo;
+
+  top: -12px;
   left: 0;
   right: 0;
-  height: 17px;
+  height: 12px;
 }
 
 .menu:hover .menu-items {

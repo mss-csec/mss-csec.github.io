@@ -1,0 +1,18 @@
+// Hero styles
+
+.hero {
+  display: flex;
+  background-image: linear-gradient(100deg, #db9840, #d43b5c);
+  min-height: 320px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: $ex2;
+}
+
+.hero .title {
+  background-color: $bg-accent;
+  color: $fg-accent;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
