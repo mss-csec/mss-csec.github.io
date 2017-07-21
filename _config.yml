@@ -25,6 +25,12 @@ url: "https://mss-csec.github.io" # the base hostname & protocol for your site, 
 #twitter_username: jekyllrb
 #github_username:  jekyll
 
+gems:
+  - jekyll-asciidoc
+  - jekyll-coffeescript
+  - jekyll-feed
+  - jekyll-seo-tag
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
@@ -38,12 +44,12 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-#theme: minima
+asciidoc:
+  ext: adoc
 
-gems:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-coffeescript
+asciidoctor: {}
+
+#theme: minima
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    asciidoctor (1.5.6)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -22,6 +23,9 @@ GEM
       pathutil (~> 0.9)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-asciidoc (2.1.0)
+      asciidoctor (>= 1.5.0)
+      jekyll (>= 2.3.0)
     jekyll-coffeescript (1.0.2)
       coffee-script (~> 2.2)
       coffee-script-source (~> 1.11.1)
@@ -65,6 +69,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (= 3.4.3)
+  jekyll-asciidoc (~> 2.1.0)
   jekyll-coffeescript
   jekyll-feed (~> 0.6)
   jekyll-seo-tag
@@ -73,4 +78,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.15.1
+   1.15.2
