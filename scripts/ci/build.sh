@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Exit if any subcommand fails
 set -e
@@ -6,49 +6,62 @@ set -e
 echo "Starting build"
 
 # Normalize file structure
-# /_subclubs/:subclub/lessons/:lesson/:permatitle.md
-# /_subclubs/:subclub/lessons/:lesson/hero.jpg
-#   --> /_lessons/:subclub/:lesson-:permatitle/index.md
-#   --> /_lessons/:subclub/:lesson-:permatitle/hero.jpg
-for orig_dir in `ls -d _subclubs/**/lessons/`; do
-  for orig_path in `find $orig_dir -name '*.md' -o -name '*.adoc'`; do
-    subclub=`echo $orig_path | cut -d'/' -f2`
-    week=`   echo $orig_path | cut -d'/' -f4`
-    title=`  echo $orig_path | cut -d'/' -f5 | sed -r "s/(.+)\..+/\1/"`
+# /_subclubs/:subclub/lessons/:permatitle/index.md
+# /_subclubs/:subclub/lessons/:permatitle/hero.jpg
+#   --> /_lessons/:subclub/:permatitle/index.md
+#   --> /_lessons/:subclub/:permatitle/hero.jpg
+for orig_path in `ls -d _subclubs/**/lessons/*`; do
+  subclub=`echo $orig_path | cut -d'/' -f2`
+  title=`  echo $orig_path | cut -d'/' -f4`
 
-    # Perform some sanity checks
-    if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
-        [ "$week" = "lessons" ]; then
-      echo "ERROR: Pattern matching picked up the wrong patterns!"
-      echo "Full path: $orig_path"
-      echo "Patterns:"
-      echo "  subclub => $subclub"
-      echo "  week    => $week"
-      echo "  title   => $title"
-      exit 1;
-    fi
+  # Perform some sanity checks
+  if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
+      [ "$title" = "lessons" ]; then
+    echo "ERROR: Pattern matching picked up the wrong patterns!"
+    echo "Full path: $orig_path/"
+    echo "Patterns:"
+    echo "  subclub => $subclub"
+    echo "  title   => $title"
+    exit 1;
+  fi
 
-    # Make directories if nonexistent
-    if [ ! -d "_lessons" ]; then mkdir "_lessons"; fi
-    if [ ! -d "_lessons/${subclub}" ]; then mkdir "_lessons/$subclub"; fi
+  echo "Found lesson $subclub/$title"
 
-    # Remove lesson directory if existent
-    if [ -d "_lessons/${subclub}/${week}-${title}" ]; then
-      rm -r "_lessons/$subclub/$week-$title"
-    fi
+  # Make directories if nonexistent
+  if [ ! -d "_lessons" ]; then
+    echo "Making \`_lessons/' directory"
+    mkdir "_lessons";
+  fi
 
-    mkdir "_lessons/$subclub/$week-$title"
+  if [ ! -d "_lessons/${subclub}" ]; then
+    echo "Making \`_lessons/$subclub/' directory"
+    mkdir "_lessons/$subclub";
+  fi
 
-    # Copy over original lesson file
-    cp $orig_path "_lessons/$subclub/$week-$title/index.md"
+  # Remove lesson directory if existent
+  if [ -d "_lessons/${subclub}/${title}" ]; then
+    echo "Removing old \`_lessons/$subclub/$title/' directory"
+    rm -r "_lessons/$subclub/$title"
+  fi
 
-    # Move over other files
-    cp -r "$(echo $orig_path | cut -d'/' -f-4)/"* \
-      "_lessons/$subclub/$week-$title/"
+  echo "Making \`_lessons/$subclub/$title/' directory"
+  mkdir "_lessons/$subclub/$title"
 
-    # Remove duplicated lesson file
-    rm "_lessons/$subclub/$week-$title/$title.md"
-  done
+  # Copy over files
+  echo "Copying files from"
+  echo "    $orig_path/"
+  echo "to"
+  echo "    _lessons/$subclub/$title/"
+  cp -r "$orig_path/"* \
+    "_lessons/$subclub/$title/"
+
+  # Only delete original files in a production environment
+  if [ "$1" = "production" ]; then
+    echo "Removing \`$orig_path/' directory"
+    rm -r "$orig_path"
+  fi
+
+  echo
 done
 # /_subclubs/:subclub/resources
 #   --> /_resources/:subclub/
