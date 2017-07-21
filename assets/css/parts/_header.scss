@@ -1,11 +1,11 @@
-.main-header {
+.site-header {
   border-bottom: 2px solid $brand-colour;
   height: $ex2;
   padding: $df-padding 0;
 }
 
-.main-header .container,
-.main-header .responsive-menu-items {
+.site-header .container,
+.site-header .responsive-menu-items {
   display: flex;
   flex-direction: row;
   max-height: 100%;
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: $bp-tablet) {
-  .main-header {
+  .site-header {
     @include position(0, 0, 0);
 
     position: fixed;

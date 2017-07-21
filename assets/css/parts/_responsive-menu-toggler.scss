@@ -3,7 +3,7 @@
 .responsive-menu-toggler {
   position: absolute;
   clip: rect(0, 0, 0, 0);
-  -webkit-tap-highlight-color: $t;
+  // -webkit-tap-highlight-color: $t;
 }
 
 .responsive-menu-toggler + label {
@@ -11,6 +11,20 @@
 }
 
 @media (max-width: $bp-tablet) {
+  .responsive-menu-toggler {
+    @include reset-all;
+    @include dimensions(90px, $ex3);
+
+    clip: initial;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    top: -$ex05;
+    right: 0;
+    z-index: $z4;
+  }
+
   .responsive-menu-toggler + label {
     display: block;
   }
@@ -26,7 +40,7 @@
     padding-left: $ex + 6px;
     padding-right: $ex + 6px;
     cursor: pointer;
-    z-index: $z4;
+    z-index: $z3;
   }
 
   .responsive-menu-toggler + label a::before,
@@ -68,7 +82,7 @@
     content: '';
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
-    z-index: $z3;
+    z-index: $z2;
     opacity: 0;
     pointer-events: none;
   }
@@ -85,7 +99,7 @@
     position: fixed;
     flex-direction: column;
     background-color: $bg-secondary;
-    z-index: $z3;
+    z-index: $z2;
     transform: translateX(100vw);
   }
 
@@ -93,10 +107,10 @@
     transform: translateX(0);
   }
 
-  .responsive-menu-toggler:focus + label a,
-  .responsive-menu-toggler + label a:active {
-    background-color: transparentize($aria-highlight, 0.4);
-  }
+  // .responsive-menu-toggler:focus + label a,
+  // .responsive-menu-toggler + label a:active {
+  //   background-color: transparentize($aria-highlight, 0.4);
+  // }
 
   .menu-header,
   .menu:hover .menu-header {

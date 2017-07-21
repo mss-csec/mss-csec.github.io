@@ -14,15 +14,28 @@ input[type="password"] {
   border-color: darken($bg-secondary, 10%);
 }
 
+// Sticky footer
+
 body {
   display: flex;
   min-height: 100vh;
+  height: 100vh;
   flex-direction: column;
   overflow-x: hidden;
 }
 
+// also known as "lol get rekt IE"
+@supports (color: red) {
+  body { height: auto; }
+}
+
+.site-header,
+.site-footer {
+  flex: none;
+}
+
 main {
-  flex: 1;
+  flex: 1 0 auto;
   font-size: $df-font-size;
 }
 
@@ -34,12 +47,22 @@ code {
   -webkit-tap-highlight-color: $t;
 }
 
+:root a,
 :root input,
-:root a {
+:root textarea,
+:root select {
   -webkit-tap-highlight-color: transparentize($aria-highlight, 0.4);
 }
 
-:root *:focus,
-:root input:focus {
+:root a:focus,
+:root input:focus,
+:root textarea:focus,
+:root select:focus {
   outline: 2px solid $aria-highlight;
+}
+
+// Have GFM code fence highlighter blocks echo the {% highlight %} block style
+div.highlighter-rouge {
+  margin: 1em 40px;
+  margin-bottom: 2.5em;
 }
