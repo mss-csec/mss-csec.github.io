@@ -1,6 +1,18 @@
 ---
-title: Test Subclub
+title: Testing
 layout: landing
 ---
 
-test
+# {{ page.title }}
+
+I wonder if Markdown works?
+
+![hmm](/assets/images/logo.png)
+
+```cpp
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\n");
+}
+```

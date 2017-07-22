@@ -1,0 +1,21 @@
+---
+liquid: true
+layout: landing
+---
+= Testing
+
+== {{ page.title }}
+
+I wonder if Asciidoc works?
+
+image::/assets/images/logo.png[hmm]
+
+++++
+{% highlight cpp %}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\n");
+}
+{% endhighlight %}
+++++
