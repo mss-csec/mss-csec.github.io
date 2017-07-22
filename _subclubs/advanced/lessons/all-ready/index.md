@@ -1,3 +1,4 @@
 ---
 layout: lesson
+category: advanced
 ---

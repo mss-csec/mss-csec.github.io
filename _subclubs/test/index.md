@@ -1,6 +1,7 @@
 ---
 title: Testing
 layout: landing
+category: test
 ---
 
 # {{ page.title }}

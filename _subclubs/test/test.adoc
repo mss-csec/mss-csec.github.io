@@ -1,6 +1,7 @@
 ---
 liquid: true
 layout: landing
+category: test
 ---
 = Testing
 
