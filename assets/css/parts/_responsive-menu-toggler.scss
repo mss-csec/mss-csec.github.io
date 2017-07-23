@@ -17,7 +17,8 @@
 
     clip: initial;
     -webkit-appearance: none;
-    -moz-appearance: none;
+    // -moz-appearance: none doesn't work in Firefox
+    -moz-appearance: checkbox-container;
     -ms-appearance: none;
     appearance: none;
     top: -$ex05;
