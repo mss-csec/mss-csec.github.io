@@ -9,6 +9,8 @@ category: test
 
 I wonder if Asciidoc works?
 
+{{ page.category | inspect }}
+
 image::/assets/images/logo.png[hmm]
 
 ++++

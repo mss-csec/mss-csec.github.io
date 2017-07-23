@@ -8,6 +8,8 @@ category: test
 
 I wonder if Markdown works?
 
+{{ page.category | inspect }}
+
 ![hmm](/assets/images/logo.png)
 
 ```cpp
