@@ -32,8 +32,11 @@
         <a class="menu-header" href="{{ '/subclubs' | relative_url }}">Subclubs</a>
 
         <dl class="menu-items">
+          {% assign subclubs = site.subclubs | group_by: "category" %}
           {% for subclub in site.displayed_subclubs %}
-          <dt><a href="{{ subclub.path | relative_url }}">{{ subclub.title }}</a></dt>
+            {% assign subclub_obj = subclubs | where: "name",subclub | first %}
+            {% assign subclub_title = subclub_obj.items[0].title %}
+          <dt><a href="{{ site.baseurl }}/{{ subclub }}/">{{ subclub_title }}</a></dt>
           {% endfor %}
           {% if site.subclubs.size > site.displayed_subclubs.size %}
           <dt class="menu-items-more"><a href="{{ '/subclubs' | relative_url }}">All subclubs</a></dt>

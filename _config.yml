@@ -91,10 +91,8 @@ collections:
 
 
 displayed_subclubs:
-  - title: Beginners
-    path: /beginner/
-  - title: Advanced
-    path: /advanced/
+  - beginners
+  - advanced
 
 project_url: https://github.com/mss-csec/mss-csec.github.io
 
