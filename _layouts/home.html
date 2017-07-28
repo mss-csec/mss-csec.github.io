@@ -2,8 +2,71 @@
 layout: default
 ---
 
-<div class="hero" style="height:320px">
+<div class="hero">
   <h1 class="title">MSS CSEC is Slowly Engineering a Club website</h1>
+</div>
+
+<!-- Display schedule -->
+
+<div class="schedule">
+  <div class="container">
+    {% comment %}
+    Change the below variable to change the number of lessons displayed in one row
+    {% endcomment %}
+    {% assign row_size = 3 %}
+    
+    {% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
+    {% assign subclubs = site.subclubs | group_by: "category" %}
+    {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
+    {% for row in (0..number_rows) %}
+    <div class="row">
+      {% assign row_offset = row | times: row_size %}
+      {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
+        {% assign subclub_obj = subclubs | where: "name", subclub | first %}
+        {% assign subclub_index = subclub_obj.items[0] %}
+        {% assign subclub_schedule = subclub_index.schedule %}
+        {% assign subclub_title = subclub_index.title %}
+      <div class="{{ row_matrix[row_size] }} columns" id="schedule_{{ subclub | xml_escape }}">
+        <h2>{{ subclub_title | xml_escape }}</h2>
+        <div class="row">
+          <div class="one-half column">
+            <h3>Last lesson</h3>
+            <h4 class="lesson-link lesson-last"></h4>
+          </div>
+          <div class="one-half column">
+            <h3>Next up</h3>
+            <h4 class="lesson-link lesson-next"></h4>
+          </div>
+        </div>
+        <script>window.addEventListener("DOMContentLoaded", function (){
+        APP.renderSubclubSchedule($('[id="schedule_{{ subclub | xml_escape }}"]'),{
+          {% for entry in subclub_schedule %}
+            {% assign lesson_title = subclub_title | xml_escape %}
+            {% for item in subclub_obj.items %}
+              {% assign split_path = item.path | split: '/' %}
+              {% if split_path contains entry[0] %}
+                {% assign lesson_title = item.title | xml_escape %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          "{{ entry[0] | xml_escape }}": {
+            date: "{{ entry[1] | xml_escape }}",
+            url: "{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/",
+            title: "{{ lesson_title }}"
+          },
+          {% endfor %}
+        });
+        });</script>
+      </div>
+      {% endfor %}
+      {% if site.displayed_subclubs.size < row_size %} {% comment %}>{% endcomment %}
+      <div class="{{ row_matrix[row_size] }} columns subclubs_more">
+        <h2><a href="{{ '/subclubs' | relative_url }}">More subclubs&hellip;</a></h2>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 <div class="container">
@@ -14,62 +77,6 @@ layout: default
 
 <div class="container">
   <pre><code>It is currently <span id="time">time to enable JavaScript, you dimwit</span>. <span id="message"></span></code></pre>
-</div>
-
-<!-- Display schedule -->
-
-<div class="container">
-  {% assign row_size = 3 %}
-  {% assign subclubs = site.subclubs | group_by: "category" %}
-  {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
-  {% for row in (0..number_rows) %}
-  <div class="row">
-    {% assign row_offset = row | times: row_size %}
-    {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
-      {% assign subclub_obj = subclubs | where: "name", subclub | first %}
-      {% assign subclub_index = subclub_obj.items[0] %}
-      {% assign subclub_schedule = subclub_index.schedule %}
-      {% assign subclub_title = subclub_index.title %}
-    <div class="three columns" id="schedule_{{ subclub }}">
-      <h2>{{ subclub_title | xml_escape }}</h2>
-      <div class="row">
-        <div class="one-half column">
-          <h3>Last lesson</h3>
-          <p class="lesson-last"></p>
-        </div>
-        <div class="one-half column">
-          <h3>Next up</h3>
-          <p class="lesson-next"></p>
-        </div>
-      </div>
-      <script>window.addEventListener("DOMContentLoaded", function(){
-      APP.renderSubclubSchedule($('#schedule_{{ subclub }}'),{
-        {% for entry in subclub_schedule %}
-          {% assign lesson_title = subclub_title | xml_escape %}
-          {% for item in subclub_obj.items %}
-            {% assign split_path = item.path | split: '/' %}
-            {% if split_path contains entry[0] %}
-              {% assign lesson_title = item.title | xml_escape %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-        "{{ entry[0] | xml_escape }}": {
-          date: "{{ entry[1] | xml_escape }}",
-          url: "{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/",
-          title: "{{ lesson_title }}"
-        },
-        {% endfor %}
-      });
-      });</script>
-    </div>
-    {% endfor %}
-    {% if site.displayed_subclubs.size < row_size %} {% comment %}>{% endcomment %}
-    <div class="three columns subclubs_more">
-      <h2><a href="{{ '/subclubs' | relative_url }}">More subclubs&hellip;</a></h2>
-    </div>
-    {% endif %}
-  </div>
-  {% endfor %}
 </div>
 
 <script>

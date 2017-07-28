@@ -1,0 +1,21 @@
+---
+---
+
+@import "base/variables";
+@import "base/mixins";
+
+.hero {
+  height: 16 * $ex;
+  margin-bottom: 0;
+}
+
+.schedule {
+  background-image: linear-gradient(100deg, #40db98, #4098db);
+  text-align: center;
+  padding: $ex2 0;
+  margin-bottom: $ex2;
+}
+
+.schedule .lesson-link {
+  margin: 0;
+}

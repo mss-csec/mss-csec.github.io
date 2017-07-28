@@ -6,5 +6,5 @@ layout: home
 
 addons:
   styles:
-    - /assets/css/home.scss
+    - /assets/css/home.css
 ---
