@@ -36,7 +36,7 @@
           {% for subclub in site.displayed_subclubs %}
             {% assign subclub_obj = subclubs | where: "name",subclub | first %}
             {% assign subclub_title = subclub_obj.items[0].title %}
-          <dt><a href="{{ site.baseurl }}/{{ subclub }}/">{{ subclub_title }}</a></dt>
+          <dt><a href="{{ site.baseurl }}/{{ subclub | uri_escape }}/">{{ subclub_title | xml_escape }}</a></dt>
           {% endfor %}
           {% if site.subclubs.size > site.displayed_subclubs.size %}
           <dt class="menu-items-more"><a href="{{ '/subclubs' | relative_url }}">All subclubs</a></dt>

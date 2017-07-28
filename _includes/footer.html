@@ -9,7 +9,7 @@
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="{{ site.project_url }}{{ site.build_url }}">{{ site.build_version }}</a></p>
+        <p class="version">Build <a href="{{ site.project_url | uri_escape }}{{ site.build_url | uri_escape }}">{{ site.build_version | xml_escape }}</a></p>
       </div>
     </div>
   </div>
