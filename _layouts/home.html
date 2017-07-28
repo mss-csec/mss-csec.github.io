@@ -40,6 +40,10 @@ layout: default
         </div>
         <script>window.addEventListener("DOMContentLoaded", function (){
         APP.renderSubclubSchedule($('[id="schedule_{{ subclub | xml_escape }}"]'),{
+          {% if site.production == true %}
+            {% assign lessons = site.lessons | group_by: "category" %}
+            {% assign subclub_obj = lessons | where: "name", subclub | first %}
+          {% endif %}
           {% for entry in subclub_schedule %}
             {% assign lesson_title = subclub_title | xml_escape %}
             {% for item in subclub_obj.items %}
