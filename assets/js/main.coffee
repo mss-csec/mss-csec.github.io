@@ -8,6 +8,9 @@ Main coffeescript file
 APP = {}
 UTILS = {}
 
+UTILS.intSort = (a, b) -> a - b
+UTILS.reverseIntSort = (a, b) -> b - a
+
 APP.loadSubclubSchedule = (data) ->
   cloned_data = $.extend true, {}, data
   today = (new Date()).getTime()
@@ -16,13 +19,17 @@ APP.loadSubclubSchedule = (data) ->
     v = (new Date v.date ? v).getTime()
     cloned_data[k] = v
 
-    mostRecent = k
-    nextUp = k
-
-    if v > cloned_data[mostRecent] and v < today
+    # Should only be true on initialization
+    if not mostRecent? and not nextUp?
       mostRecent = k
+      nextUp = k
 
-    if v < cloned_data[nextUp] and v > today
+    if v < today and
+    (v > cloned_data[mostRecent] or cloned_data[mostRecent] > today)
+       mostRecent = k
+
+    if v > today and
+    (v < cloned_data[nextUp] or cloned_data[nextUp] < today)
       nextUp = k
 
   dateMostRecent = new Date cloned_data[mostRecent]
