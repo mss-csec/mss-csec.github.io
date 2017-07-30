@@ -4,11 +4,12 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4 # ruby-2.4.0
-      - image: circleci/node:6.10.3 # Start up a node image; may need for dev
 
     environment:
       SOURCE_BRANCH: staging
       DEPLOY_BRANCH: master
+      USER_EMAIL: markville.compsci@gmail.com
+      USER_NAME: MSS CSEC
 
     working_directory: ~/mss-csec.github.io
 
@@ -22,7 +23,9 @@ jobs:
       - checkout
 
       # Chmod CI scripts
-      - run: chmod +x ./scripts/**/*.sh
+      - run:
+          name: Chmod scripts
+          command: chmod +x ./scripts/**/*.sh
 
       # Restore bundle cache
       - restore_cache:
@@ -31,8 +34,10 @@ jobs:
             - mss-csec-
 
       # Setup environment
-      - run: |
-          ./scripts/ci/setup.sh
+      - run:
+          name: Setup environment
+          command: |
+            ./scripts/ci/setup.sh
 
       # Save bundle cache
       - save_cache:
@@ -48,11 +53,15 @@ jobs:
             ls -R
             echo "Done testing"
 
+      # Configure git details
+      - run:
+          name: Configure git details
+          command: |
+            git config user.email "$USER_EMAIL"
+            git config user.name "$USER_NAME"
+
       # Deploy
       - deploy:
-          environment:
-            USER_EMAIL: markville.compsci@gmail.com
-            USER_NAME: MSS CSEC
           command: |
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               ./scripts/ci/deploy.sh

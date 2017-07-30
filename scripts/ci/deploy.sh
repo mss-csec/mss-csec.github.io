@@ -64,10 +64,6 @@ git stash pop
 chmod +x ./scripts/ci/build.sh
 ./scripts/ci/build.sh production
 
-# Configure details
-git config user.email "$USER_EMAIL"
-git config user.name "$USER_NAME"
-
 # Add, commit and push built files
 git add -fA
 git commit --allow-empty -m "Deploy $commit"
