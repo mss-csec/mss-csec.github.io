@@ -14,9 +14,11 @@
 
   <link href="/assets/lib/pygments-manni.css" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="/assets/lib/pygments-native.css">
 
-  <!--
   
-  -->
+    
+  <link href="/assets/css/home.css" rel="stylesheet">
+    
+  
   <!-- END CSS -->
 
   <title>MSS CSEC • Markville's Computer Science and Engineering Club
@@ -38,9 +40,8 @@
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
   <script src="/assets/js/main.js" defer></script>
-  <!--
+
   
-  -->
   <!-- END JS -->
 </head>
 
@@ -81,8 +82,13 @@
 
         <dl class="menu-items">
           
-          <dt><a href="/beginner/">Beginners</a></dt>
           
+            
+            
+          <dt><a href="/beginners/">Beginners</a></dt>
+          
+            
+            
           <dt><a href="/advanced/">Advanced</a></dt>
           
           
@@ -111,11 +117,106 @@
   <h1 class="title">MSS CSEC is Slowly Engineering a Club website</h1>
 </div>
 
+<!-- Display schedule -->
+
+<div class="schedule">
+  <div class="container">
+    
+    
+    
+    
+    
+    
+    
+    <div class="row">
+      
+      
+        
+        
+        
+        
+      <div class="four columns" id="schedule_beginners">
+        <h2>Beginners</h2>
+        <div class="row">
+          <div class="one-half column">
+            <h3>Last lesson</h3>
+            <h4 class="lesson-link lesson-last"></h4>
+          </div>
+          <div class="one-half column">
+            <h3>Next up</h3>
+            <h4 class="lesson-link lesson-next"></h4>
+          </div>
+        </div>
+        <script>window.addEventListener("DOMContentLoaded", function (){
+        APP.renderSubclubSchedule($('[id="schedule_beginners"]'),{
+          
+          
+            
+            
+              
+              
+                
+                
+          "getting-started": {
+            date: "Jul 8 2017",
+            url: "/lessons/beginners/getting-started/",
+            title: "Getting started"
+          },
+          
+        });
+        });</script>
+      </div>
+      
+        
+        
+        
+        
+      <div class="four columns" id="schedule_advanced">
+        <h2>Advanced</h2>
+        <div class="row">
+          <div class="one-half column">
+            <h3>Last lesson</h3>
+            <h4 class="lesson-link lesson-last"></h4>
+          </div>
+          <div class="one-half column">
+            <h3>Next up</h3>
+            <h4 class="lesson-link lesson-next"></h4>
+          </div>
+        </div>
+        <script>window.addEventListener("DOMContentLoaded", function (){
+        APP.renderSubclubSchedule($('[id="schedule_advanced"]'),{
+          
+          
+            
+            
+              
+              
+                
+                
+          "all-ready": {
+            date: "Jul 17 2017",
+            url: "/lessons/advanced/all-ready/",
+            title: "All ready"
+          },
+          
+        });
+        });</script>
+      </div>
+      
+       
+      <div class="four columns subclubs_more">
+        <h2><a href="/subclubs">More subclubs&hellip;</a></h2>
+      </div>
+      
+    </div>
+    
+  </div>
+</div>
+
 <div class="container">
   <p>Hello, person! We see you discovered our top-secret website-in-construction.</p>
 
   <p>Unfortunately, we have no content to offer but the fact that we'll probably be back in September with a swanking new website to suit all of your MSS CSEC needs. Until then, have a great summer!</p>
-
 </div>
 
 <div class="container">
@@ -148,7 +249,7 @@ document.getElementById('message').textContent = msg
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/28f0dfc4eaccb82b75bf0ceb533d688d044ad7c6">20170722-28f0dfc</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/bc55ea65b6361f8997e97dd788bba0dc19ebc744">20170730-bc55ea6</a></p>
       </div>
     </div>
   </div>
