@@ -4,3 +4,4 @@ _site
 .vagrant
 
 vagrant-ssh.config
+Gemfile.lock
