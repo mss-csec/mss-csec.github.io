@@ -40,6 +40,10 @@ fi
 # Save the previous commit hash for future reference
 commit="$(git log -1 --pretty=%h)"
 
+# Sometimes, Gemfile.lock gets modified in setup. So we stash it to make sure
+# it doesn't interfere with git
+git stash save
+
 # Track the deploy branch, or assign it as the build branch if it doesn't exist
 git fetch
 if [ `git ls-remote --heads $CIRCLE_REPOSITORY_URL $DEPLOY_BRANCH | wc -l` ]; then
@@ -52,6 +56,9 @@ git checkout $SOURCE_BRANCH
 
 # Create the build branch as an orphan
 git checkout --orphan $BUILD_BRANCH
+
+# Restore stash
+git stash pop
 
 # Build Jekyll
 chmod +x ./scripts/ci/build.sh
