@@ -20,9 +20,9 @@ bundle check --path $BUNDLE_INSTALL_DIR || \
 # There's an issue where defining the category property on a page means that
 # that page loses its category property
 # See https://github.com/asciidoctor/jekyll-asciidoc/pull/160 for patch
-jekyll_asciidoc_path=`bundle show "jekyll-asciidoc"`
+jekyll_asciidoc_path=`bundle show "jekyll-asciidoc" | head -1`
 if [ `echo $jekyll_asciidoc_path | grep '[0-2]\(\.[0-9]\+\)\+$'` ]; then
-  jekyll_asciidoc_path=jekyll_asciidoc_path/lib/jekyll-asciidoc/integrator.rb
+  jekyll_asciidoc_path=$jekyll_asciidoc_path/lib/jekyll-asciidoc/integrator.rb
   sed -i.bak "s/data\.delete sole_key/data[sole_key]/" $jekyll_asciidoc_path
 fi
 
