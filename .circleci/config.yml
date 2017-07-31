@@ -6,6 +6,7 @@ jobs:
       - image: circleci/ruby:2.4 # ruby-2.4.0
 
     environment:
+      BUNDLE_INSTALL_DIR: ~/.bundle
       SOURCE_BRANCH: staging
       DEPLOY_BRANCH: master
       USER_EMAIL: markville.compsci@gmail.com
@@ -43,7 +44,7 @@ jobs:
       - save_cache:
           key: mss-csec-{{ checksum "Gemfile.lock" }}
           paths:
-            - ~/.mss-cache
+            - ~/.bundle
 
       # Test Jekyll plugins
       - run:

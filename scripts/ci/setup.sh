@@ -13,8 +13,8 @@ git submodule update --init
 
 # Set up Ruby dependencies
 gem install bundler --conservative
-bundle check || bundle install
-bundle update
+bundle check --path $BUNDLE_INSTALL_DIR || \
+  bundle install --path $BUNDLE_INSTALL_DIR
 
 # Patch Jekyll Asciidoc
 # There's an issue where defining the category property on a page means that
