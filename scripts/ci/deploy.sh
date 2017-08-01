@@ -42,6 +42,7 @@ commit="$(git log -1 --pretty=%h)"
 
 # Sometimes, Gemfile.lock gets modified in setup. So we stash it to make sure
 # it doesn't interfere with git
+echo "Stashing modified files..."
 git stash save
 
 # Track the deploy branch, or assign it as the build branch if it doesn't exist
@@ -58,19 +59,22 @@ git checkout $SOURCE_BRANCH
 git checkout --orphan $BUILD_BRANCH
 
 # Restore stash
-git stash pop
+echo "Restoring stash..."
+git stash pop || true
 
 # Build Jekyll
 chmod +x ./scripts/ci/build.sh
 ./scripts/ci/build.sh production
 
-# Add, commit and push built files
+# Add and commit built files
+echo "Adding and committing files..."
 git add -fA
 git commit --allow-empty -m "Deploy $commit"
 
 if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   # Try --- *TRY* --- to rebase the build branch onto the deploy branch.
   # See documentation of __auto_resolve for details on how conflicts are resolved
+  echo "Attempting to rebase $BUILD_BRANCH onto $DEPLOY_BRANCH..."
   git rebase $DEPLOY_BRANCH || __auto_resolve
 
   # Merge the build commit into the deploy branch
@@ -81,9 +85,11 @@ if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
 fi
 
 # Deploy to GitHub
+echo "Deploying to $CIRCLE_REPOSITORY_URL@$DEPLOY_BRANCH..."
 git push $CIRCLE_REPOSITORY_URL $DEPLOY_BRANCH
 
 # Cleanup
+echo "Cleaning up..."
 git checkout $SOURCE_BRANCH
 git checkout -- ./scripts/ci/deploy.sh # This script tends to get deleted
 git branch -D $BUILD_BRANCH $DEPLOY_BRANCH
