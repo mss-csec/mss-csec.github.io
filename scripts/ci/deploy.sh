@@ -62,6 +62,9 @@ git checkout --orphan $BUILD_BRANCH
 echo "Restoring stash..."
 git stash pop || true
 
+# Update submodules to their remotes
+git submodule update --recursive --remote
+
 # Build Jekyll
 chmod +x ./scripts/ci/build.sh
 ./scripts/ci/build.sh production
@@ -72,6 +75,14 @@ git add -fA
 git commit --allow-empty -m "Deploy $commit"
 
 if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
+  # Checkout the deploy branch and remove all pre-existing files
+  git checkout $DEPLOY_BRANCH
+  find . -maxdepth 1 ! -name '.git' -exec rm -rf {} \;
+  git add -fA
+  git commit -m "remove files"
+
+  git checkout $BUILD_BRANCH
+  
   # Try --- *TRY* --- to rebase the build branch onto the deploy branch.
   # See documentation of __auto_resolve for details on how conflicts are resolved
   echo "Attempting to rebase $BUILD_BRANCH onto $DEPLOY_BRANCH..."
@@ -82,6 +93,10 @@ if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   # should successfully fast-forward the merged-in commit
   git checkout $DEPLOY_BRANCH
   git merge $BUILD_BRANCH
+
+  # Now, squash the last two commits (removing files, and deploying) into one
+  git reset --soft HEAD~2
+  git commit --allow-empty -m "Deploy $commit"
 fi
 
 # Deploy to GitHub

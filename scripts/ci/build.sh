@@ -27,6 +27,12 @@ for orig_path in `ls -d _subclubs/**/lessons/*`; do
 
   echo "Found lesson $subclub/$title"
 
+  # Skip if hidden
+  if [[ "$title" =~ ^_.* ]]; then
+    echo "Skipping lesson"
+    continue
+  fi
+
   # Make directories if nonexistent
   if [ ! -d "_lessons" ]; then
     echo "Making \`_lessons/' directory"

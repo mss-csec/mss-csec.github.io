@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Exit if any subcommand fails
 set -e
@@ -21,7 +21,7 @@ bundle check --path $BUNDLE_INSTALL_DIR || \
 # that page loses its category property
 # See https://github.com/asciidoctor/jekyll-asciidoc/pull/160 for patch
 jekyll_asciidoc_path=`bundle show "jekyll-asciidoc" | head -1`
-if [ `echo $jekyll_asciidoc_path | grep '[0-2]\(\.[0-9]\+\)\+$'` ]; then
+if [[ "$jekyll_asciidoc_path" =~ [0-2](.[0-9]+)+$ ]]; then
   jekyll_asciidoc_path=$jekyll_asciidoc_path/lib/jekyll-asciidoc/integrator.rb
   sed -i.bak "s/data\.delete sole_key/data[sole_key]/" $jekyll_asciidoc_path
 fi
@@ -29,4 +29,3 @@ fi
 echo "Setup successful"
 
 exit 0
-
