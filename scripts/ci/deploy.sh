@@ -72,7 +72,7 @@ chmod +x ./scripts/ci/build.sh
 # Add and commit built files
 echo "Adding and committing files..."
 git add -fA
-git commit --allow-empty -m "Deploy $commit"
+git commit --allow-empty -m "built $commit"
 
 if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   # Checkout the deploy branch and remove all pre-existing files
@@ -95,6 +95,7 @@ if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   git merge $BUILD_BRANCH
 
   # Now, squash the last two commits (removing files, and deploying) into one
+  echo "Squashing commits..."
   git reset --soft HEAD~2
   git commit --allow-empty -m "Deploy $commit"
 fi

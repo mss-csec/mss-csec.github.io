@@ -22,6 +22,7 @@ bundle check --path $BUNDLE_INSTALL_DIR || \
 # See https://github.com/asciidoctor/jekyll-asciidoc/pull/160 for patch
 jekyll_asciidoc_path=`bundle show "jekyll-asciidoc" | head -1`
 if [[ "$jekyll_asciidoc_path" =~ [0-2](.[0-9]+)+$ ]]; then
+  echo "Found unpatched Jekyll Asciidoc version at \`$jekyll_asciidoc_path'"
   jekyll_asciidoc_path=$jekyll_asciidoc_path/lib/jekyll-asciidoc/integrator.rb
   sed -i.bak "s/data\.delete sole_key/data[sole_key]/" $jekyll_asciidoc_path
 fi
