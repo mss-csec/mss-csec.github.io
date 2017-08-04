@@ -27,12 +27,6 @@ for orig_path in `ls -d _subclubs/**/lessons/*`; do
 
   echo "Found lesson $subclub/$title"
 
-  # Skip if hidden
-  if [[ "$title" =~ ^_.* ]]; then
-    echo "Skipping lesson"
-    continue
-  fi
-
   # Make directories if nonexistent
   if [ ! -d "_lessons" ]; then
     echo "Making \`_lessons/' directory"
@@ -50,16 +44,20 @@ for orig_path in `ls -d _subclubs/**/lessons/*`; do
     rm -r "_lessons/$subclub/$title"
   fi
 
-  echo "Making \`_lessons/$subclub/$title/' directory"
-  mkdir "_lessons/$subclub/$title"
+  if [[ ! "$title" =~ ^_.* ]]; then
+    echo "Making \`_lessons/$subclub/$title/' directory"
+    mkdir "_lessons/$subclub/$title"
 
-  # Copy over files
-  echo "Copying files from"
-  echo "    $orig_path/"
-  echo "to"
-  echo "    _lessons/$subclub/$title/"
-  cp -r "$orig_path/"* \
-    "_lessons/$subclub/$title/"
+    # Copy over files
+    echo "Copying files from"
+    echo "    $orig_path/"
+    echo "to"
+    echo "    _lessons/$subclub/$title/"
+    cp -r "$orig_path/"* \
+      "_lessons/$subclub/$title/"
+  else
+    echo "Skipping lesson \`$title'"
+  fi
 
   # Only delete original files in a production environment
   if [ "$1" = "production" ]; then
