@@ -10,15 +10,15 @@ echo "Starting build"
 # /_subclubs/:subclub/lessons/:permatitle/hero.jpg
 #   --> /_lessons/:subclub/:permatitle/index.md
 #   --> /_lessons/:subclub/:permatitle/hero.jpg
-for orig_path in `ls -d _subclubs/**/lessons/*`; do
-  subclub=`echo $orig_path | cut -d'/' -f2`
-  title=`  echo $orig_path | cut -d'/' -f4`
+for lesson_path in `ls -d _subclubs/**/lessons/*`; do
+  subclub=`echo $lesson_path | cut -d'/' -f2`
+  title=`  echo $lesson_path | cut -d'/' -f4`
 
   # Perform some sanity checks
   if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
       [ "$title" = "lessons" ]; then
     echo "ERROR: Pattern matching picked up the wrong patterns!"
-    echo "Full path: $orig_path/"
+    echo "Full path: $lesson_path/"
     echo "Patterns:"
     echo "  subclub => $subclub"
     echo "  title   => $title"
@@ -50,26 +50,51 @@ for orig_path in `ls -d _subclubs/**/lessons/*`; do
 
     # Copy over files
     echo "Copying files from"
-    echo "    $orig_path/"
+    echo "    $lesson_path/"
     echo "to"
     echo "    _lessons/$subclub/$title/"
-    cp -r "$orig_path/"* \
+    cp -r "$lesson_path/"* \
       "_lessons/$subclub/$title/"
   else
-    echo "Skipping lesson \`$title'"
+    echo "Skipping lesson $subclub/$title"
   fi
 
   # Only delete original files in a production environment
   if [ "$1" = "production" ]; then
-    echo "Removing \`$orig_path/' directory"
-    rm -r "$orig_path"
+    echo "Removing \`$lesson_path/' directory"
+    rm -r "$lesson_path"
   fi
 
   echo
 done
+
 # /_subclubs/:subclub/resources
 #   --> /_resources/:subclub/
 # LOW PRIORITY
+for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources'`; do
+  subclub=`echo $resource_path | cut -d'/' -f2`
+
+  echo "Found resources folder for $subclub"
+
+  # Make directories if nonexistent
+  if [ ! -d "_resources" ]; then
+    echo "Making \`_resources/' directory"
+    mkdir "_resources";
+  fi
+
+  if [ ! -d "_resources/${subclub}" ]; then
+    echo "Making \`_resources/$subclub/' directory"
+    mkdir "_resources/$subclub";
+  fi
+
+  echo "Copying files from"
+  echo "    $resource_path"
+  echo "to"
+  echo "    _resources/$subclub/"
+
+  cp -r "$resource_path/"* \
+    "_resources/$subclub/"
+done
 
 # Build site
 if [ "$1" != "production" ]; then

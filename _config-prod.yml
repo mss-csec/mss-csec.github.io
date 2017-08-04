@@ -5,6 +5,8 @@ exclude:
   - node_modules/
   - README.md
   - scripts/
+  - _lessons/test/
+  - _resources/test/
   - _subclubs/test/
   - Vagrantfile
   - vagrant-ssh.config
