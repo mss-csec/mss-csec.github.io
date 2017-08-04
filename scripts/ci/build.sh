@@ -33,18 +33,18 @@ for lesson_path in `ls -d _subclubs/**/lessons/*`; do
     mkdir "_lessons";
   fi
 
-  if [ ! -d "_lessons/${subclub}" ]; then
+  if [ ! -d "_lessons/$subclub" ]; then
     echo "Making \`_lessons/$subclub/' directory"
     mkdir "_lessons/$subclub";
   fi
 
   # Remove lesson directory if existent
-  if [ -d "_lessons/${subclub}/${title}" ]; then
+  if [ -d "_lessons/$subclub/$title" ]; then
     echo "Removing old \`_lessons/$subclub/$title/' directory"
     rm -r "_lessons/$subclub/$title"
   fi
 
-  if [[ ! "$title" =~ ^_.* ]]; then
+  if [[ ! "$title" =~ ^_.* ]] && [ ! -z `ls "$lesson_path"` ]; then
     echo "Making \`_lessons/$subclub/$title/' directory"
     mkdir "_lessons/$subclub/$title"
 
@@ -71,7 +71,7 @@ done
 # /_subclubs/:subclub/resources
 #   --> /_resources/:subclub/
 # LOW PRIORITY
-for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources'`; do
+for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources' ! -empty`; do
   subclub=`echo $resource_path | cut -d'/' -f2`
 
   echo "Found resources folder for $subclub"
@@ -82,7 +82,7 @@ for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources'`; do
     mkdir "_resources";
   fi
 
-  if [ ! -d "_resources/${subclub}" ]; then
+  if [ ! -d "_resources/$subclub" ]; then
     echo "Making \`_resources/$subclub/' directory"
     mkdir "_resources/$subclub";
   fi
