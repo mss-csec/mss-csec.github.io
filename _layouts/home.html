@@ -23,7 +23,7 @@ layout: default
       {% assign row_offset = row | times: row_size %}
       {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
         {% assign subclub_obj = subclubs | where: "name", subclub | first %}
-        {% assign subclub_index = subclub_obj.items[0] %}
+        {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
         {% assign subclub_schedule = subclub_index.schedule %}
         {% assign subclub_title = subclub_index.title %}
       <div class="{{ row_matrix[row_size] }} columns" id="schedule_{{ subclub | xml_escape }}">
