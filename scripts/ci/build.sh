@@ -70,7 +70,6 @@ done
 
 # /_subclubs/:subclub/resources
 #   --> /_resources/:subclub/
-# LOW PRIORITY
 for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources' ! -empty`; do
   subclub=`echo $resource_path | cut -d'/' -f2`
 
@@ -94,6 +93,14 @@ for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources' ! -empty`; 
 
   cp -r "$resource_path/"* \
     "_resources/$subclub/"
+
+  # Only delete original files in a production environment
+  if [ "$1" = "production" ]; then
+    echo "Removing \`$resource_path/' directory"
+    rm -r "$resource_path"
+  fi
+
+  echo
 done
 
 # Build site
