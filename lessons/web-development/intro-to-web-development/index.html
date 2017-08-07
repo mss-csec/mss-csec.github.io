@@ -29,9 +29,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/web-development/intro-to-web-development/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-08-07T02:18:09+00:00" />
+<meta property="article:published_time" content="2017-08-07T16:00:19+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Intro to Web Development","datePublished":"2017-08-07T02:18:09+00:00","dateModified":"2017-08-07T02:18:09+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/web-development/intro-to-web-development/index"},"url":"https://mss-csec.github.io/lessons/web-development/intro-to-web-development/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Intro to Web Development","datePublished":"2017-08-07T16:00:19+00:00","dateModified":"2017-08-07T16:00:19+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/web-development/intro-to-web-development/index"},"url":"https://mss-csec.github.io/lessons/web-development/intro-to-web-development/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -111,7 +111,271 @@
 </header>
 
   <main>
+    <div class="hero">
+  <h1 class="title"><em>Intro to Web Development</em></h1>
+</div>
+<div class="content container">
+  <div class="row">
+  <div class="three columns" id="lesson-listing">
+    <h3>Lessons</h3>
+    <div id="lesson-timeline">
+      <div>
+        <h6 class="lesson-state">Last lesson</h6>
+        <h5 class="lesson-name lesson-last"></h5>
+      </div>
+      <div>
+        <h6 class="lesson-state">Next up</h6>
+        <h5 class="lesson-name lesson-next"></h5>
+      </div>
+    </div>
     
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+          
+          
+    <div class="lesson">
+      <a href="/lessons/web-development/intro-to-web-development/" title="Jan 19 2038">Intro to Web Development</a>
+    </div>
+      
+      
+    
+  </div>
+  <div class="nine columns">
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>AsciiDoc syntax is also supported.
+Personally, I prefer AsciiDoc for its extensibility and flexibility, but the markup language you choose is your own choice.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="an-explanation-of-the-front-matter">An explanation of the front-matter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The front-matter is the stuff between the two triple-hyphens (<code>---</code>) at the top of this file.
+They should always be at the top without any preceding whitespace, never at the bottom, and most definitely not in the middle.
+The front-matter consists of four fields, of the format <code>:key: value</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <em>liquid</em> field, which tells <code>jekyll-asciidoc</code> to render Liquid.
+<strong>Never, ever, EVER change this.
+If you do, a puppy dies and you lose the benefits of Liquid templating.</strong></p>
+</li>
+<li>
+<p>A <em>layout</em> field, that states how this document will be rendered.
+It should be <code>lesson</code> and not anything else.</p>
+</li>
+<li>
+<p>A <em>category</em> field, which states the subclub that this lesson belongs to.
+See the instructions in the README for further details.
+It should go without saying that this field <strong>must</strong> remain constant across all lessons from the same subclub.</p>
+</li>
+<li>
+<p>A <em>lesson</em> field.
+This states what number this lesson is.
+So if the field is set to 1, this lesson will be treated as the first lesson, if it is set to 2, it will treated as the 2nd, etc.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>All four fields are mandatory. If any of them are missing or malformed, the site may not compile and chances are your lesson will not appear.</p>
+</div>
+<div class="paragraph">
+<p>Note that unlike the Markdown version, there is no explicit title field.
+This is because the title is written right after the front matter --- it&#8217;s the text just after the single equals sign.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-review-of-asciidoc-syntax">A review of AsciiDoc syntax</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is <em>not</em> meant to be a substitute for reading the <a href="http://asciidoctor.org/docs/">official documentation</a>.
+It is meant as a review of AsciiDoc syntax, assuming you are somewhat familiar with it already.
+There are many subtleties in AsciiDoc that cannot be covered in this review.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="this-is-a-big-heading-use-it-for-sections">This is a big heading. Use it for sections.</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="this-is-a-smaller-heading-use-it-for-subsections">This is a smaller heading. Use it for subsections.</h3>
+<div class="sect3">
+<h4 id="this-is-a-much-smaller-heading-use-it-for-subsubsections">This is a much smaller heading. Use it for subsubsections.</h4>
+<div class="sect4">
+<h5 id="you-can-use-up-to">You can use up to</h5>
+<div class="sect5">
+<h6 id="six-hashes-the-more-hashes-the-less-prominent-the-heading-level">six hashes. The more hashes, the less prominent the heading level.</h6>
+<div class="paragraph">
+<p>This is a paragraph.
+It is recommended to type in the <em>one sentence per line</em> style.
+You don&#8217;t have to use it, but it keeps things readable (and looks like poetry to boot).</p>
+</div>
+<div class="paragraph">
+<p>Paragraphs are delimited by two linebreaks (<code>\n\n</code>).
+However, you can force line breaks with a space followed by a plus (<code> +</code>) at the end of a line.<br>
+You can also <strong>bold</strong>, <em>italicize</em>, <strong><em>bold and italicize</em></strong>, or <span class="line-through">strikethrough</span>.
+You can also <a href="https://www.google.ca">link to stuff</a>,
+<span class="image"><img src="https://i.imgur.com/U1TnTl0.jpg" alt="add an image"></span>,
+and if you need inline code, <code>use two backticks</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We</p>
+</li>
+<li>
+<p>also</p>
+</li>
+<li>
+<p>have</p>
+</li>
+<li>
+<p>lists.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Nest them by increasing the number of list markers.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ordered</p>
+</li>
+<li>
+<p>lists</p>
+</li>
+<li>
+<p>are</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>supported</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>too!</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>And you can quote people here, with just four underscores!</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; some random guy on the internet
+</div>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"This is highlighted C++ code</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="o">//</span> <span class="n">This</span> <span class="n">is</span> <span class="n">also</span> <span class="n">C</span><span class="o">++</span><span class="p">,</span> <span class="n">but</span> <span class="n">with</span> <span class="n">line</span> <span class="n">numbers</span><span class="p">.</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<hr>
+<div class="paragraph">
+<p>Three apostrophes form a horizontal rule.
+Use it to delimit parts of a lesson.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tables</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have support</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">and it&#8217;s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">awesome!</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Did you know that printers used to catch on fire?
+I have proof.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<details>
+    <summary>And if you ever need raw HTML&hellip;</summary>
+    <p>&#8230;just enclose it in a passthrough block.</p>
+</details>
+<div class="paragraph">
+<p>For a cheatsheet of AsciiDoc syntax, see the <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference">AsciiDoc Syntax Quick Reference</a>.
+For a complete and extensive reference, see the <a href="http://asciidoctor.org/docs/user-manual/">Asciidoctor User Manual</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Citation needed.
+</div>
+</div>
+  </div>
+</div>
+
+<script>window.addEventListener("DOMContentLoaded", function (){
+  APP.renderSubclubSchedule($('#lesson-timeline'),{
+    
+"intro-to-web-development": {
+  date: "Jan 19 2038",
+  url: "/lessons/web-development/intro-to-web-development/",
+  title: "Intro to Web Development"
+}
+      
+  })});
+</script>
+
+</div>
+
   </main>
   <!-- footer -->
   <footer class="site-footer">
@@ -125,7 +389,7 @@
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/ff57173183922486479ccd1953aaa2974e1efdb8">20170807-ff57173</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/2d9e82feb6e4ee72ffb3eafd3c62b0ddd48ef127">2d9e82f</a></p>
       </div>
     </div>
   </div>
