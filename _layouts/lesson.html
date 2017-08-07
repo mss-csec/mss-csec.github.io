@@ -1,3 +1,60 @@
 ---
-layout: default
+layout: page
 ---
+<div class="row">
+  <div class="three columns" id="lesson-listing">
+    <h3>Lessons</h3>
+    <div id="lesson-timeline">
+      <div>
+        <h6 class="lesson-state">Last lesson</h6>
+        <h5 class="lesson-name lesson-last"></h5>
+      </div>
+      <div>
+        <h6 class="lesson-state">Next up</h6>
+        <h5 class="lesson-name lesson-next"></h5>
+      </div>
+    </div>
+    {% assign subclubs = site.subclubs | group_by: "category" %}
+    {% assign subclub = page.category %}
+    {% assign subclub_obj = subclubs | where: "name", subclub | first %}
+    {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+    {% assign subclub_schedule = subclub_index.schedule %}
+    {% assign subclub_json = "" | split: '' %}
+
+    {% if site.production == true %}
+      {% assign lessons = site.lessons | group_by: "category" %}
+      {% assign subclub_obj = lessons | where: "name", subclub | first %}
+    {% endif %}
+
+    {% for entry in subclub_schedule %}
+      {% assign lesson_title = entry[0] | xml_escape %}
+      {% for item in subclub_obj.items %}
+        {% assign split_path = item.path | split: '/' %}
+        {% if split_path contains entry[0] %}
+          {% assign lesson_title = item.title | xml_escape %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    <div class="lesson">
+      <a href="{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_title }}</a>
+    </div>
+      {% capture entry_json %}
+"{{ entry[0] | xml_escape }}": {
+  date: "{{ entry[1] | xml_escape }}",
+  url: "{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/",
+  title: "{{ lesson_title }}"
+}
+      {% endcapture %}
+      {% assign subclub_json = subclub_json | push: entry_json %}
+    {% endfor %}
+  </div>
+  <div class="nine columns">
+    {{ content }}
+  </div>
+</div>
+
+<script>window.addEventListener("DOMContentLoaded", function (){
+  APP.renderSubclubSchedule($('#lesson-timeline'),{
+    {{ subclub_json | join: ',' }}
+  })});
+</script>
