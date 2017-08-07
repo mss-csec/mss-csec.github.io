@@ -34,7 +34,7 @@ APP.loadSubclubSchedule = (data) ->
 
   dateMostRecent = new Date cloned_data[mostRecent]
   dateNextUp = new Date cloned_data[nextUp]
-  
+
   mostRecent:
     id: mostRecent
     date: dateMostRecent
@@ -69,21 +69,25 @@ APP.renderSubclubSchedule = ($el, data) ->
     _this = $(this)
     lesson = data[scheduleData.mostRecent.id]
     if _this.prop 'tagName' == 'A'
+      _this.addClass 'lesson-link'
       _this.attr 'href', lesson.url
       _this.attr 'title', lesson.date
       _this.html lesson.title
     else
-      _this.html "<a href='#{lesson.url}' title='#{lesson.date}'>#{lesson.title}</a>"
+      _this.html "<a href='#{lesson.url}'
+        class='lesson-link' title='#{lesson.date}'>#{lesson.title}</a>"
 
   $lesson_next.each () ->
     _this = $(this)
     lesson = data[scheduleData.nextUp.id]
     if _this.prop 'tagName' == 'A'
+      _this.addClass 'lesson-link'
       _this.attr 'href', lesson.url
       _this.attr 'title', lesson.title
       _this.html lesson.date
     else
-      _this.html "<a href='#{lesson.url}' title='#{lesson.title}'>#{lesson.date}</a>"
+      _this.html "<a href='#{lesson.url}'
+        class='lesson-link' title='#{lesson.title}'>#{lesson.date}</a>"
 
   true
 

@@ -14,7 +14,7 @@ layout: default
     Change the below variable to change the number of lessons displayed in one row
     {% endcomment %}
     {% assign row_size = 3 %}
-    
+
     {% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
     {% assign subclubs = site.subclubs | group_by: "category" %}
     {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
@@ -26,20 +26,20 @@ layout: default
         {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
         {% assign subclub_schedule = subclub_index.schedule %}
         {% assign subclub_title = subclub_index.title %}
-      <div class="{{ row_matrix[row_size] }} columns" id="schedule_{{ subclub | xml_escape }}">
-        <h2>{{ subclub_title | xml_escape }}</h2>
+      <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
+        <h2 class="subclub-link"><a href="{{ subclub | uri_escape }}"><em>{{ subclub_title | xml_escape }}</em></a></h2>
         <div class="row">
           <div class="one-half column">
-            <h3>Last lesson</h3>
-            <h4 class="lesson-link lesson-last"></h4>
+            <h4 class="lesson-state">Last lesson</h4>
+            <h3 class="lesson-name lesson-last"></h3>
           </div>
           <div class="one-half column">
-            <h3>Next up</h3>
-            <h4 class="lesson-link lesson-next"></h4>
+            <h4 class="lesson-state">Next up</h4>
+            <h3 class="lesson-name lesson-next"></h3>
           </div>
         </div>
         <script>window.addEventListener("DOMContentLoaded", function (){
-        APP.renderSubclubSchedule($('[id="schedule_{{ subclub | xml_escape }}"]'),{
+        APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
           {% if site.production == true %}
             {% assign lessons = site.lessons | group_by: "category" %}
             {% assign subclub_obj = lessons | where: "name", subclub | first %}
@@ -64,8 +64,8 @@ layout: default
       </div>
       {% endfor %}
       {% if site.displayed_subclubs.size < row_size %} {% comment %}>{% endcomment %}
-      <div class="{{ row_matrix[row_size] }} columns subclubs_more">
-        <h2><a href="{{ '/subclubs' | relative_url }}">More subclubs&hellip;</a></h2>
+      <div class="{{ row_matrix[row_size] }} columns more-subclubs">
+        <h2><a href="{{ '/subclubs' | relative_url }}"><em>More subclubs&hellip;</em></a></h2>
       </div>
       {% endif %}
     </div>

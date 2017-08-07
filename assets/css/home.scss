@@ -4,18 +4,57 @@
 @import "base/variables";
 @import "base/mixins";
 
+$hero-height: 16 * $ex; // 320px
+$schedule-height: 8 * $ex; // 160px
+
 .hero {
-  height: 16 * $ex;
+  height: $hero-height;
   margin-bottom: 0;
 }
 
 .schedule {
+  min-height: $schedule-height;
   background-image: linear-gradient(100deg, #40db98, #4098db);
   text-align: center;
   padding: $ex2 0;
   margin-bottom: $ex2;
-}
 
-.schedule .lesson-link {
-  margin: 0;
+  h2 {
+    line-height: $ex3;
+  }
+
+  h3 {
+    font-size: 1.6 * $ex; // 32px
+    line-height: $ex2;
+  }
+
+  h4 {
+    font-size: $ex;
+    line-height: 1.5 * $ex; // 30px
+  }
+
+  .lesson-state {
+    color: $fg-secondary;
+    margin-bottom: $ex05;
+  }
+
+  .lesson-name {
+    word-wrap: break-word; // depr.
+    overflow-wrap: break-word;
+    margin: 0;
+  }
+
+  .lesson-link {
+    color: $fg-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .more-subclubs h2 {
+    line-height: $schedule-height;
+    margin-bottom: 0;
+  }
 }
