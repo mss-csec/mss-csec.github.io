@@ -1,5 +1,5 @@
 ---
-layout: landing
+layout: page
 title: Subclubs
 permalink: /subclubs/
 category: subclub-landing
