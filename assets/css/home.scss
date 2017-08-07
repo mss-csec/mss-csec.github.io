@@ -20,11 +20,12 @@ $schedule-height: 8 * $ex; // 160px
   margin-bottom: $ex2;
 
   h2 {
+    font-size: 1.8 * $ex; // 32px
     line-height: $ex3;
   }
 
   h3 {
-    font-size: 1.6 * $ex; // 32px
+    font-size: 1.2 * $ex; // 24px
     line-height: $ex2;
   }
 
