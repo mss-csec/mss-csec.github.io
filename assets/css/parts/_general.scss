@@ -2,6 +2,16 @@
 
 h1, h2, h3, h4, h5, h6 {
   @include heading;
+
+  font-weight: normal;
+  letter-spacing: normal;
+
+  em {
+    background-color: $brand-colour;
+    color: $fg-accent;
+    font-style: normal;
+    padding: .1em;
+  }
 }
 
 input[type="email"],
