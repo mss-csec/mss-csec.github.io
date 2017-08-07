@@ -80,11 +80,12 @@ Main coffeescript file
       _this = $(this);
       lesson = data[scheduleData.mostRecent.id];
       if (_this.prop('tagName' === 'A')) {
+        _this.addClass('lesson-link');
         _this.attr('href', lesson.url);
         _this.attr('title', lesson.date);
         return _this.html(lesson.title);
       } else {
-        return _this.html("<a href='" + lesson.url + "' title='" + lesson.date + "'>" + lesson.title + "</a>");
+        return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.date + "'>" + lesson.title + "</a>");
       }
     });
     $lesson_next.each(function() {
@@ -92,11 +93,12 @@ Main coffeescript file
       _this = $(this);
       lesson = data[scheduleData.nextUp.id];
       if (_this.prop('tagName' === 'A')) {
+        _this.addClass('lesson-link');
         _this.attr('href', lesson.url);
         _this.attr('title', lesson.title);
         return _this.html(lesson.date);
       } else {
-        return _this.html("<a href='" + lesson.url + "' title='" + lesson.title + "'>" + lesson.date + "</a>");
+        return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.title + "'>" + lesson.date + "</a>");
       }
     });
     return true;
