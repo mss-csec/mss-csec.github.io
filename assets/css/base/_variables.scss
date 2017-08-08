@@ -5,7 +5,7 @@
 $brand-colour: #f52f2f;
 
 $fg-primary: #232323;
-$fg-secondary: #666;
+$fg-secondary: #777;
 $fg-accent: #fff;
 
 $bg-primary: #fff;
@@ -50,6 +50,8 @@ $bp-phablet   : 550px;
 $bp-tablet    : 750px;
 $bp-desktop   : 1200px;
 $bp-desktophd : $df-container-width;
+
+$bp-small-height: 768px;
 
 // Misc
 $df-padding: $ex05;

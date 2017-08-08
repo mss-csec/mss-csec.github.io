@@ -4,7 +4,7 @@
 @import "base/variables";
 @import "base/mixins";
 
-$hero-height: 16 * $ex; // 320px
+$hero-height: 25 * $ex; // 500px
 $schedule-height: 8 * $ex; // 160px
 
 .hero {
@@ -12,15 +12,20 @@ $schedule-height: 8 * $ex; // 160px
   margin-bottom: 0;
 }
 
+@media (max-height: $bp-small-height) {
+  .hero {
+    height: 20 * $ex; // 400px
+  }
+}
+
 .schedule {
   min-height: $schedule-height;
-  background-image: linear-gradient(100deg, #40db98, #4098db);
-  text-align: center;
+  background-color: lighten($bg-secondary, 3%);
   padding: $ex2 0;
   margin-bottom: $ex2;
 
   h2 {
-    font-size: 1.8 * $ex; // 32px
+    font-size: 1.8 * $ex; // 36px
     line-height: $ex3;
   }
 
@@ -32,6 +37,45 @@ $schedule-height: 8 * $ex; // 160px
   h4 {
     font-size: $ex;
     line-height: 1.5 * $ex; // 30px
+  }
+
+  .subclub-title {
+    display: inline-block;
+    overflow-x: hidden;
+  }
+
+  .subclub-link {
+    position: relative;
+    color: $brand-colour;
+    text-decoration: none;
+    padding: .2em 0;
+
+    &::before,
+    &::after {
+      @include pseudo;
+      @include transition;
+      @include dimensions($ex2, 4px);
+
+      bottom: 0;
+      left: 0;
+      background-color: darken($bg-secondary, 15%);
+      transform: scaleX(1);
+      transform-origin: 0;
+    }
+
+    &::after {
+      width: 100%;
+      background-color: $brand-colour;
+      transform: scaleX(0);
+    }
+
+    &:hover::before {
+      transform: scaleX(4);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 
   .lesson-state {
@@ -55,6 +99,7 @@ $schedule-height: 8 * $ex; // 160px
   }
 
   .more-subclubs h2 {
+    text-align: center;
     line-height: $schedule-height;
     margin-bottom: 0;
   }
