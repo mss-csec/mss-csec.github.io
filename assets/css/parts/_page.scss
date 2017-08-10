@@ -17,3 +17,9 @@
 .lesson-name {
   font-size: 1.2em;
 }
+
+code table,
+code td,
+code td pre {
+  @include reset-all;
+}

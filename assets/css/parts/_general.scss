@@ -71,12 +71,6 @@ code {
   outline: 2px solid $aria-highlight;
 }
 
-// Have GFM code fence highlighter blocks echo the {% highlight %} block style
-div.highlighter-rouge {
-  margin: 1em 40px;
-  margin-bottom: 2.5em;
-}
-
 .disabled {
   opacity: 0.5;
 }

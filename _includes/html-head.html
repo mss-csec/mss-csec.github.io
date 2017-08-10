@@ -7,6 +7,11 @@
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
   <link href="{{ '/assets/lib/skeleton.css' | relative_url }}" rel="stylesheet">
+
+  {% if page.layout == 'lesson' %}
+  <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}" rel="stylesheet">
+  {% endif %}
+
   <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
 
   <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="{{ '/assets/lib/pygments-native.css' | relative_url }}">
