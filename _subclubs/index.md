@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Subclubs
-permalink: /subclubs/
 category: subclub-landing
 ---
 
@@ -13,7 +12,7 @@ category: subclub-landing
     {% assign subclub_name = subclub.name %}
     {% if subclub_name != "subclub-landing" %}
       {% assign subclub_index = subclub.items | where: "layout", "landing" | first %}
-  <li><a href="{{ site.baseurl }}/{{ subclub_name | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a></li>
+  <li><a href="{{ subclub_index.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a></li>
     {% endif %}
   {% endfor %}
 </ul>
