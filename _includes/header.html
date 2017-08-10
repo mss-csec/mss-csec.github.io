@@ -29,26 +29,26 @@
     <label for="toggle-menu"><a ontouchstart="">menu</a></label>
     <div class="responsive-menu-items">
       <div class="menu">
-        <a class="menu-header" href="{{ '/subclubs' | relative_url }}">Subclubs</a>
+        <a class="menu-header" href="{{ '/subclubs/' | relative_url }}">Subclubs</a>
 
         <dl class="menu-items">
-          {% assign subclubs = site.subclubs | group_by: "category" %}
+          {% assign subclubs = site.subclubs | group_by: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}
           {% for subclub in site.displayed_subclubs %}
-            {% assign subclub_obj = subclubs | where: "name",subclub | first %}
+            {% assign subclub_obj = subclubs | where: "name", subclub | first %}
             {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
-          <dt><a href="{{ site.baseurl }}/{{ subclub | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a></dt>
+          <dt><a href="{{ subclub_index.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a></dt>
           {% endfor %}
-          {% if site.subclubs.size > site.displayed_subclubs.size %}
-          <dt class="menu-items-more"><a href="{{ '/subclubs' | relative_url }}">All subclubs</a></dt>
+          {% if subclubs.size > site.displayed_subclubs.size %}
+          <dt class="menu-items-more"><a href="{{ '/subclubs/' | relative_url }}">All subclubs</a></dt>
           {% endif %}
         </dl>
       </div>
 
       <div class="menu">
-        <a class="menu-header" href="{{ '/resources' | relative_url }}">Resources</a>
+        <a class="menu-header" href="{{ '/resources/' | relative_url }}">Resources</a>
 
         <dl class="menu-items">
-          <dt class="menu-items-more"><a href="{{ '/resources' | relative_url }}">All resources</a></dt>
+          <dt class="menu-items-more"><a href="{{ '/resources/' | relative_url }}">All resources</a></dt>
         </dl>
       </div>
 

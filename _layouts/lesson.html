@@ -17,7 +17,7 @@ layout: page
 {% assign lesson_listings = "" | split: '' %}
 
 <div class="breadcrumbs">
-  <a href="{{ site.baseurl }}" class="icon-home"></a> / <a href="{{ site.baseurl }}/lessons/">Lessons</a> / <a href="{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
+  <a href="{{ site.baseurl }}" class="icon-home"></a> / <a href="{{ site.baseurl }}/lessons/">Lessons</a> / <a href="{{ subclub_index.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
 </div>
 <div class="row">
   <div class="three columns" id="lesson-listing">
@@ -39,7 +39,7 @@ layout: page
           {% endif %}
           {% capture lesson_listing %}
     <div class="{{ class_name }}">
-      <{{ tag_name }} href="{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</{{ tag_name }}>
+      <{{ tag_name }} href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</{{ tag_name }}>
     </div>
           {% endcapture %}
           {% assign lesson_listings = lesson_listings | push: lesson_listing %}
@@ -64,14 +64,14 @@ layout: page
       <h5 class="lesson-state">Previous</h5>
       <p class="lesson-name lesson-prev">
         {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a href="{{ lesson_prev_obj.url }}.html">{{ lesson_prev_obj.title | xml_escape }}</a>
+        <a href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_prev_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
       {% if ordered_lessons.size > lesson_next_index %}
       <h5 class="lesson-state">Next</h5>
       <p class="lesson-name lesson-next">
         {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a href="{{ lesson_next_obj.url }}.html">{{ lesson_next_obj.title | xml_escape }}</a>
+        <a href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_next_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
     </div>

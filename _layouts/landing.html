@@ -30,7 +30,7 @@ layout: page
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
     <div class="lesson">
-      <a href="{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
+      <a href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
     </div>
           {% break %}
         {% endif %}
@@ -46,16 +46,18 @@ layout: page
   APP.renderSubclubSchedule($('#lesson-timeline'),{
     {% for entry in subclub_schedule %}
       {% assign lesson_title = subclub_title | xml_escape %}
+      {% assign lesson_url = '' %}
       {% for item in subclub_obj.items %}
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
           {% assign lesson_title = item.title | xml_escape %}
+          {% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}
           {% break %}
         {% endif %}
       {% endfor %}
     "{{ entry[0] | xml_escape }}": {
       date: "{{ entry[1] | xml_escape }}",
-      url: "{{ site.baseurl }}/lessons/{{ subclub | uri_escape }}/{{ entry[0] | uri_escape }}/",
+      url: "{{ lesson_url }}/",
       title: "{{ lesson_title }}"
     },
     {% endfor %}
