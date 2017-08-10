@@ -1,0 +1,19 @@
+// Page styles
+
+.breadcrumbs {
+  margin-top: -$ex;
+  margin-bottom: $ex;
+}
+
+#lesson-listing {
+  position: sticky;
+  top: 0;
+  background-color: $bg-secondary;
+  max-height: 100vh;
+  overflow-x: auto;
+  padding: $ex;
+}
+
+.lesson-name {
+  font-size: 1.2em;
+}
