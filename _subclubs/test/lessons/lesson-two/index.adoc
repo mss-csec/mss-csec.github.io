@@ -1,0 +1,28 @@
+---
+liquid: true
+layout: lesson
+category: test
+lesson: 2
+---
+= Code blocks
+
+Things are supposed to happen here no?
+
+....
+class Sentence:
+    def __init__(self, *words):
+        self.words = words
+
+    def print(self):
+        print " ".join(self.words)
+
+sent = Sentence("Hello,","world!")
+sent.print()
+....
+
+[source,python]
+----
+import antigravity
+
+print "HAHAHAHA I CAN FLY"
+----

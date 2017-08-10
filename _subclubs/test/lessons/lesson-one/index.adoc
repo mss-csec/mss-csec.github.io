@@ -1,7 +1,8 @@
 ---
 liquid: true
-layout: landing
+layout: lesson
 category: test
+lesson: 1
 ---
 = Testing
 
