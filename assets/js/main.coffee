@@ -11,13 +11,15 @@ UTILS = {}
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
 
+APP.SUBCLUB_END_HOUR = 17;
+
 APP.loadSubclubSchedule = (data) ->
-  cloned_data = $.extend true, {}, data
+  clonedData = $.extend true, {}, data
   today = (new Date()).getTime()
 
-  for k, v of cloned_data
-    v = (new Date v.date ? v).getTime()
-    cloned_data[k] = v
+  for k, v of clonedData
+    v = (new Date v.date ? v).setHours(APP.SUBCLUB_END_HOUR)
+    clonedData[k] = v
 
     # Should only be true on initialization
     if not mostRecent? and not nextUp?
@@ -25,21 +27,24 @@ APP.loadSubclubSchedule = (data) ->
       nextUp = k
 
     if v < today and
-    (v > cloned_data[mostRecent] or cloned_data[mostRecent] > today)
+    (v > clonedData[mostRecent] or clonedData[mostRecent] > today)
        mostRecent = k
 
     if v > today and
-    (v < cloned_data[nextUp] or cloned_data[nextUp] < today)
+    (v < clonedData[nextUp] or clonedData[nextUp] < today)
       nextUp = k
 
-  dateMostRecent = new Date cloned_data[mostRecent]
-  dateNextUp = new Date cloned_data[nextUp]
+  if clonedData[mostRecent] < today
+    dateMostRecent = new Date clonedData[mostRecent]
+
+  if clonedData[nextUp] >= today
+    dateNextUp = new Date clonedData[nextUp]
 
   mostRecent:
-    id: mostRecent
+    id: if dateMostRecent? then mostRecent else null
     date: dateMostRecent
   nextUp:
-    id: nextUp
+    id: if dateNextUp? then nextUp else null
     date: dateNextUp
 
 __loadSubclubScheduleFromUrl = (url) ->
@@ -65,29 +70,47 @@ APP.renderSubclubSchedule = ($el, data) ->
   $lesson_last = $el.find '.lesson-last'
   $lesson_next = $el.find '.lesson-next'
 
-  $lesson_last.each () ->
-    _this = $(this)
-    lesson = data[scheduleData.mostRecent.id]
-    if _this.prop 'tagName' == 'A'
-      _this.addClass 'lesson-link'
-      _this.attr 'href', lesson.url
-      _this.attr 'title', lesson.date
-      _this.html lesson.title
-    else
-      _this.html "<a href='#{lesson.url}'
-        class='lesson-link' title='#{lesson.date}'>#{lesson.title}</a>"
+  if scheduleData.mostRecent.id != null
+    $lesson_last.each () ->
+      _this = $(this)
+      lesson = data[scheduleData.mostRecent.id]
+      if _this.prop 'tagName' == 'A'
+        _this.addClass 'lesson-link'
+        _this.attr 'href', lesson.url
+        _this.attr 'title', lesson.date
+        _this.html lesson.title
+      else
+        _this.html "<a href='#{lesson.url}'
+          class='lesson-link' title='#{lesson.date}'>#{lesson.title}</a>"
+  else
+    $lesson_last.each () ->
+      _this = $(this)
+      if _this.prop 'tagName' == 'A'
+        _this.addClass 'lesson-link', 'disabled'
+        _this.html "null"
+      else
+        _this.html "<a class='lesson-link disabled'>null</a>"
 
-  $lesson_next.each () ->
-    _this = $(this)
-    lesson = data[scheduleData.nextUp.id]
-    if _this.prop 'tagName' == 'A'
-      _this.addClass 'lesson-link'
-      _this.attr 'href', lesson.url
-      _this.attr 'title', lesson.title
-      _this.html lesson.date
-    else
-      _this.html "<a href='#{lesson.url}'
-        class='lesson-link' title='#{lesson.title}'>#{lesson.date}</a>"
+  if scheduleData.nextUp.id != null
+    $lesson_next.each () ->
+      _this = $(this)
+      lesson = data[scheduleData.nextUp.id]
+      if _this.prop 'tagName' == 'A'
+        _this.addClass 'lesson-link'
+        _this.attr 'href', lesson.url
+        _this.attr 'title', lesson.title
+        _this.html lesson.date
+      else
+        _this.html "<a href='#{lesson.url}'
+          class='lesson-link' title='#{lesson.title}'>#{lesson.date}</a>"
+  else
+    $lesson_next.each () ->
+      _this = $(this)
+      if _this.prop 'tagName' == 'A'
+        _this.addClass 'lesson-link', 'disabled'
+        _this.html "null"
+      else
+        _this.html "<a class='lesson-link disabled'>null</a>"
 
   true
 
