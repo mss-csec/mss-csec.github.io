@@ -17,7 +17,7 @@ layout: page
 <div class="row">
   <div class="three columns" id="lesson-listing">
     <h3>Lessons</h3>
-    <div id="lesson-timeline">
+    <div class="lesson-callout" id="lesson-timeline">
       <h5 class="lesson-state">Last lesson</h5>
       <p class="lesson-name lesson-last"></p>
       <h5 class="lesson-state">Next meeting</h5>
@@ -29,9 +29,9 @@ layout: page
       {% for entry in subclub_schedule %}
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
-    <div class="lesson">
-      <a href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
-    </div>
+    <p class="lesson-name">
+      <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
+    </p>
           {% break %}
         {% endif %}
       {% endfor %}

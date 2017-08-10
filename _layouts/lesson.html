@@ -30,17 +30,15 @@ layout: page
       {% for entry in subclub_schedule %}
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
-          {% assign tag_name = "a" %}
-          {% assign class_name = "lesson" %}
+          {% assign class_name = "lesson-name" %}
           {% if item.lesson == lesson_cur %}
-            {% assign tag_name = "strong" %}
-            {% assign class_name = "lesson lesson-cur" %}
+            {% assign class_name = "lesson-name lesson-cur" %}
             {% assign lesson_cur_index = o_forloop.index0 %}
           {% endif %}
           {% capture lesson_listing %}
-    <div class="{{ class_name }}">
-      <{{ tag_name }} href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</{{ tag_name }}>
-    </div>
+    <p class="{{ class_name }}">
+      <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
+    </p>
           {% endcapture %}
           {% assign lesson_listings = lesson_listings | push: lesson_listing %}
           {% break %}
@@ -48,7 +46,7 @@ layout: page
       {% endfor %}
     {% endfor %}
 
-    <div id="lesson-pagination">
+    <div class=" lesson-callout" id="lesson-pagination">
       {% comment %}
 
       TODO:
@@ -64,14 +62,14 @@ layout: page
       <h5 class="lesson-state">Previous</h5>
       <p class="lesson-name lesson-prev">
         {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_prev_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_prev_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
       {% if ordered_lessons.size > lesson_next_index %}
       <h5 class="lesson-state">Next</h5>
       <p class="lesson-name lesson-next">
         {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_next_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_next_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
     </div>
