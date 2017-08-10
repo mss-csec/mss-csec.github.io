@@ -39,6 +39,14 @@ $schedule-height: 8 * $ex; // 160px
     line-height: 1.5 * $ex; // 30px
   }
 
+  > .container > .row {
+    margin-top: $ex;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
   .subclub-title {
     display: inline-block;
     overflow-x: hidden;
@@ -46,9 +54,9 @@ $schedule-height: 8 * $ex; // 160px
 
   .subclub-link {
     position: relative;
+    display: inline-block;
     color: $brand-colour;
     text-decoration: none;
-    padding: .2em 0;
 
     &::before,
     &::after {
@@ -98,9 +106,89 @@ $schedule-height: 8 * $ex; // 160px
     }
   }
 
-  .more-subclubs h2 {
-    text-align: center;
-    line-height: $schedule-height;
+  .more-subclubs-listing {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 4 * $ex; // 80px
+
+    h4 {
+      margin-bottom: $ex05;
+      margin-right: $ex05;
+    }
+  }
+}
+
+@media (min-width: $bp-tablet) and (max-width: $bp-desktop) {
+  .schedule .column {
+    width: 100%;
+    margin-top: $ex05;
+    margin-left: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .schedule .more-subclubs-listing {
+    max-height: 100%;
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .schedule h2 {
+    font-size: 1.6 * $ex; // 32px
+    margin-bottom: $ex05;
+  }
+
+  .schedule h3 {
+    font-size: $ex;
+    line-height: 1.6 * $ex; // 32px
+  }
+
+  .schedule h4 {
+    font-size: 0.8 * $ex; // 16px
+    line-height: 1.2 * $ex; // 24px
+  }
+
+  .schedule > .container > .row {
+    margin-top: 0;
+  }
+
+  .schedule .columns {
+    width: 100%;
+    margin-left: 0;
+    margin-top: $ex05;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: $bp-phablet) {
+  .schedule {
+    padding: $ex 0;
+    margin-bottom: $ex;
+  }
+
+  .schedule .column {
+    margin-top: $ex05;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .schedule .lesson-state {
     margin-bottom: 0;
+  }
+
+  .schedule .more-subclubs-listing {
+    max-height: 100%;
+
+    h4 {
+      margin-bottom: 5px;
+    }
   }
 }

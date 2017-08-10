@@ -16,7 +16,7 @@ layout: default
     {% assign row_size = 3 %}
 
     {% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
-    {% assign subclubs = site.subclubs | group_by: "category" %}
+    {% assign subclubs = site.subclubs | group_by: "category" | where_exp: "item", "item.name != 'subclub-landing'"%}
     {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
     {% for row in (0..number_rows) %}
     <div class="row">
@@ -63,9 +63,24 @@ layout: default
         });</script>
       </div>
       {% endfor %}
-      {% if site.displayed_subclubs.size < row_size %} {% comment %}>{% endcomment %}
+      {% if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}
       <div class="{{ row_matrix[row_size] }} columns more-subclubs">
-        <h2><a href="{{ '/subclubs' | relative_url }}" class="subclub-link">More subclubs&hellip;</a></h2>
+        <h2 class="subclub-title"><a href="{{ '/subclubs' | relative_url }}" class="subclub-link">More subclubs</a></h2>
+        <div class="more-subclubs-listing">
+          {% assign subclub_counter = 0 %}
+          {% for subclub_obj in subclubs %}
+            {% if site.displayed_subclubs contains subclub_obj.name %}
+              {% continue %}
+            {% endif %}
+            {% if subclub_counter >= 4 %}
+              {% break %}
+            {% endif %}
+            {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+            {% assign subclub_title = subclub_index.title | xml_escape %}
+            <h4><a class="lesson-link" href="{{ subclub_index.url | uri_escape }}.html">{{ subclub_title }}</a></h4>
+            {% assign subclub_counter = subclub_counter | plus: 1 %}
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
     </div>
