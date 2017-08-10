@@ -13,6 +13,12 @@ UTILS.reverseIntSort = (a, b) -> b - a
 
 APP.SUBCLUB_END_HOUR = 17;
 
+# Returns the most recent and the next up lesson given a complete schedule
+# in hash form
+#
+# data: A hash where the keys are the lesson id, and the values either a date
+#       in a JavaScript-parsable format, or a hash containing such a date field.
+#       Cloned inside the method to prevent side effects.
 APP.loadSubclubSchedule = (data) ->
   clonedData = $.extend true, {}, data
   today = (new Date()).getTime()
@@ -47,6 +53,7 @@ APP.loadSubclubSchedule = (data) ->
     id: if dateNextUp? then nextUp else null
     date: dateNextUp
 
+# Loads a schedule from a URL
 __loadSubclubScheduleFromUrl = (url) ->
   $.ajax url: url
   .then (resp) ->
@@ -54,6 +61,13 @@ __loadSubclubScheduleFromUrl = (url) ->
   .then (data) ->
     [data, APP.loadSubclubSchedule data]
 
+# Renders the most recent and next up lesson titles and dates in a valid HTML
+# element
+#
+# $el: The element to render within. Must contain elements with class
+#      '.lesson-last' and/or elements with class '.lesson-last'
+# data: A hash where the keys are the lesson id, and the values a hash
+#       containing the lesson URL, the lesson date, and the lesson title.
 APP.renderSubclubSchedule = ($el, data) ->
   scheduleData = {}
 
