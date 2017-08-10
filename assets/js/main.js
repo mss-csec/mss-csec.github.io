@@ -18,34 +18,40 @@ Main coffeescript file
     return b - a;
   };
 
+  APP.SUBCLUB_END_HOUR = 17;
+
   APP.loadSubclubSchedule = function(data) {
-    var cloned_data, dateMostRecent, dateNextUp, k, mostRecent, nextUp, ref, today, v;
-    cloned_data = $.extend(true, {}, data);
+    var clonedData, dateMostRecent, dateNextUp, k, mostRecent, nextUp, ref, today, v;
+    clonedData = $.extend(true, {}, data);
     today = (new Date()).getTime();
-    for (k in cloned_data) {
-      v = cloned_data[k];
-      v = (new Date((ref = v.date) != null ? ref : v)).getTime();
-      cloned_data[k] = v;
+    for (k in clonedData) {
+      v = clonedData[k];
+      v = (new Date((ref = v.date) != null ? ref : v)).setHours(APP.SUBCLUB_END_HOUR);
+      clonedData[k] = v;
       if ((typeof mostRecent === "undefined" || mostRecent === null) && (typeof nextUp === "undefined" || nextUp === null)) {
         mostRecent = k;
         nextUp = k;
       }
-      if (v < today && (v > cloned_data[mostRecent] || cloned_data[mostRecent] > today)) {
+      if (v < today && (v > clonedData[mostRecent] || clonedData[mostRecent] > today)) {
         mostRecent = k;
       }
-      if (v > today && (v < cloned_data[nextUp] || cloned_data[nextUp] < today)) {
+      if (v > today && (v < clonedData[nextUp] || clonedData[nextUp] < today)) {
         nextUp = k;
       }
     }
-    dateMostRecent = new Date(cloned_data[mostRecent]);
-    dateNextUp = new Date(cloned_data[nextUp]);
+    if (clonedData[mostRecent] < today) {
+      dateMostRecent = new Date(clonedData[mostRecent]);
+    }
+    if (clonedData[nextUp] >= today) {
+      dateNextUp = new Date(clonedData[nextUp]);
+    }
     return {
       mostRecent: {
-        id: mostRecent,
+        id: dateMostRecent != null ? mostRecent : null,
         date: dateMostRecent
       },
       nextUp: {
-        id: nextUp,
+        id: dateNextUp != null ? nextUp : null,
         date: dateNextUp
       }
     };
@@ -75,32 +81,58 @@ Main coffeescript file
     }
     $lesson_last = $el.find('.lesson-last');
     $lesson_next = $el.find('.lesson-next');
-    $lesson_last.each(function() {
-      var _this, lesson;
-      _this = $(this);
-      lesson = data[scheduleData.mostRecent.id];
-      if (_this.prop('tagName' === 'A')) {
-        _this.addClass('lesson-link');
-        _this.attr('href', lesson.url);
-        _this.attr('title', lesson.date);
-        return _this.html(lesson.title);
-      } else {
-        return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.date + "'>" + lesson.title + "</a>");
-      }
-    });
-    $lesson_next.each(function() {
-      var _this, lesson;
-      _this = $(this);
-      lesson = data[scheduleData.nextUp.id];
-      if (_this.prop('tagName' === 'A')) {
-        _this.addClass('lesson-link');
-        _this.attr('href', lesson.url);
-        _this.attr('title', lesson.title);
-        return _this.html(lesson.date);
-      } else {
-        return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.title + "'>" + lesson.date + "</a>");
-      }
-    });
+    if (scheduleData.mostRecent.id !== null) {
+      $lesson_last.each(function() {
+        var _this, lesson;
+        _this = $(this);
+        lesson = data[scheduleData.mostRecent.id];
+        if (_this.prop('tagName' === 'A')) {
+          _this.addClass('lesson-link');
+          _this.attr('href', lesson.url);
+          _this.attr('title', lesson.date);
+          return _this.html(lesson.title);
+        } else {
+          return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.date + "'>" + lesson.title + "</a>");
+        }
+      });
+    } else {
+      $lesson_last.each(function() {
+        var _this;
+        _this = $(this);
+        if (_this.prop('tagName' === 'A')) {
+          _this.addClass('lesson-link', 'disabled');
+          return _this.html("null");
+        } else {
+          return _this.html("<a class='lesson-link disabled'>null</a>");
+        }
+      });
+    }
+    if (scheduleData.nextUp.id !== null) {
+      $lesson_next.each(function() {
+        var _this, lesson;
+        _this = $(this);
+        lesson = data[scheduleData.nextUp.id];
+        if (_this.prop('tagName' === 'A')) {
+          _this.addClass('lesson-link');
+          _this.attr('href', lesson.url);
+          _this.attr('title', lesson.title);
+          return _this.html(lesson.date);
+        } else {
+          return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.title + "'>" + lesson.date + "</a>");
+        }
+      });
+    } else {
+      $lesson_next.each(function() {
+        var _this;
+        _this = $(this);
+        if (_this.prop('tagName' === 'A')) {
+          _this.addClass('lesson-link', 'disabled');
+          return _this.html("null");
+        } else {
+          return _this.html("<a class='lesson-link disabled'>null</a>");
+        }
+      });
+    }
     return true;
   };
 
