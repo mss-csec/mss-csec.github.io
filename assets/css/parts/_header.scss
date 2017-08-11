@@ -2,14 +2,15 @@
   border-bottom: 2px solid $brand-colour;
   height: $ex2;
   padding: $df-padding 0;
-}
 
-.site-header .container,
-.site-header .responsive-menu-items {
-  display: flex;
-  flex-direction: row;
-  max-height: 100%;
-  flex: 1;
+
+  .container,
+  .responsive-menu-items {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+    flex: 1;
+  }
 }
 
 .main-logo {
@@ -37,57 +38,57 @@
 .menu {
   position: relative;
   margin: 0 $ex;
-}
 
-.menu-header {
-  color: $fg-primary;
-  font-size: 1.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: $ex2;
-}
+  &-header {
+    color: $fg-primary;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: $ex2;
+  }
 
-.menu:hover .menu-header {
-  color: $brand-colour;
-}
+  &:hover &-header {
+    color: $brand-colour;
+  }
 
-.menu .menu-items {
-  position: absolute;
-  left: -$ex05;
-  right: -$ex4;
-  display: none;
-  background-color: $bg-secondary;
-  padding: $df-padding;
-  margin-top: 12px;
-  z-index: $z2;
-}
+  &-items {
+    position: absolute;
+    left: -$ex05;
+    right: -$ex4;
+    display: none;
+    background-color: $bg-secondary;
+    padding: $df-padding;
+    margin-top: 12px;
+    z-index: $z2;
 
-.menu .menu-items::before {
-  @include pseudo;
+    dt {
+      font-weight: normal;
+    }
+  }
 
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 12px;
-}
+  &-items::before {
+    @include pseudo;
 
-.menu:hover .menu-items {
-  display: block;
-}
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+  }
 
-.menu-items dt {
-  font-weight: normal;
+  &:hover &-items {
+    display: block;
+  }
 }
 
 .search-box {
   margin-left: auto;
-}
 
-.search-box input,
-.search-box input:focus {
-  background-color: $bg-secondary;
-  border: 0;
-  border-radius: 0;
+  input,
+  input:focus {
+    background-color: $bg-secondary;
+    border: 0;
+    border-radius: 0;
+  }
 }
 
 @media (min-width: $bp-tablet) {

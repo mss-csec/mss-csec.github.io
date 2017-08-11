@@ -6,28 +6,28 @@
   padding: $ex 0;
   border-bottom: 2px solid $brand-colour;
   margin-top: $ex;
-}
 
-.site-footer a {
-  color: $fg-secondary;
-  text-decoration: dotted underline;
-}
+  a {
+    color: $fg-secondary;
+    text-decoration: dotted underline;
 
-.site-footer a:hover {
-  color: $fg-secondary;
-  text-decoration: underline;
-}
+    &:hover {
+      color: $fg-secondary;
+      text-decoration: underline;
+    }
+  }
 
-.site-footer .version {
-  text-align: right;
-  opacity: 0.5;
-  margin: 0;
-}
+  .version {
+    text-align: right;
+    opacity: 0.5;
+    margin: 0;
+  }
 
-@if ($dark) {
-  // Hack to make logo in footer pop less
-  // don't try this at home
-  .site-footer svg {
-    opacity: .5;
+  @if ($dark) {
+    // Hack to make logo in footer pop less
+    // don't try this at home
+    svg {
+      opacity: .5;
+    }
   }
 }

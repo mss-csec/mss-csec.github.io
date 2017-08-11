@@ -66,13 +66,10 @@ code {
 :root textarea,
 :root select {
   -webkit-tap-highlight-color: transparentize($aria-highlight, 0.4);
-}
 
-:root a:focus,
-:root input:focus,
-:root textarea:focus,
-:root select:focus {
-  outline: 2px solid $aria-highlight;
+  &:focus {
+    outline: 2px solid $aria-highlight;
+  }
 }
 
 .disabled {

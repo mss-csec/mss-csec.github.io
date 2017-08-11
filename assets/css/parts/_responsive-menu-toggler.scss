@@ -24,94 +24,94 @@
     top: -$ex05;
     right: 0;
     z-index: $z4;
+
+    + label {
+      display: block;
+    }
+
+    + label a {
+      @include no-user-select;
+
+      position: absolute;
+      top: -$ex05;
+      right: 0;
+      line-height: $ex3;
+      color: $fg-primary;
+      padding-left: $ex + 6px;
+      padding-right: $ex + 6px;
+      cursor: pointer;
+      z-index: $z3;
+    }
+
+    + label a::before,
+    + label a::after {
+      @include pseudo;
+      @include dimensions(2px, 1em);
+      @include transition;
+
+      top: $ex + 1px;
+      background-color: $brand-colour;
+      transform: rotate(20deg);
+    }
+
+    + label a::before {
+      margin-left: -5px;
+    }
+
+    + label a::after {
+      margin-left: 4px;
+    }
+
+    &:checked + label a {
+      color: $t;
+      padding-left: 0;
+    }
+
+    &:checked + label a::before {
+      transform: translateX($ex2) scale(1.2) rotate(-45deg);
+    }
+
+    &:checked + label a::after {
+      transform: translateX(-6px) scale(1.2) rotate(45deg);
+    }
+
+    + label::before {
+      @include position(0);
+      @include transition;
+
+      content: '';
+      position: fixed;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: $z2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:checked + label::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    ~ .responsive-menu-items {
+      @include position(0);
+      @include transition;
+
+      position: fixed;
+      flex-direction: column;
+      background-color: $bg-secondary;
+      z-index: $z2;
+      transform: translateX(100vw);
+    }
+
+    &:checked ~ .responsive-menu-items {
+      transform: translateX(0);
+    }
+
+    // &:focus + label a,
+    // + label a:active {
+    //   background-color: transparentize($aria-highlight, 0.4);
+    // }
   }
-
-  .responsive-menu-toggler + label {
-    display: block;
-  }
-
-  .responsive-menu-toggler + label a {
-    @include no-user-select;
-
-    position: absolute;
-    top: -$ex05;
-    right: 0;
-    line-height: $ex3;
-    color: $fg-primary;
-    padding-left: $ex + 6px;
-    padding-right: $ex + 6px;
-    cursor: pointer;
-    z-index: $z3;
-  }
-
-  .responsive-menu-toggler + label a::before,
-  .responsive-menu-toggler + label a::after {
-    @include pseudo;
-    @include dimensions(2px, 1em);
-    @include transition;
-
-    top: $ex + 1px;
-    background-color: $brand-colour;
-    transform: rotate(20deg);
-  }
-
-  .responsive-menu-toggler + label a::before {
-    margin-left: -5px;
-  }
-
-  .responsive-menu-toggler + label a::after {
-    margin-left: 4px;
-  }
-
-  .responsive-menu-toggler:checked + label a {
-    color: $t;
-    padding-left: 0;
-  }
-
-  .responsive-menu-toggler:checked + label a::before {
-    transform: translateX($ex2) scale(1.2) rotate(-45deg);
-  }
-
-  .responsive-menu-toggler:checked + label a::after {
-    transform: translateX(-6px) scale(1.2) rotate(45deg);
-  }
-
-  .responsive-menu-toggler + label::before {
-    @include position(0);
-    @include transition;
-
-    content: '';
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: $z2;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .responsive-menu-toggler:checked + label::before {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .responsive-menu-toggler ~ .responsive-menu-items {
-    @include position(0);
-    @include transition;
-
-    position: fixed;
-    flex-direction: column;
-    background-color: $bg-secondary;
-    z-index: $z2;
-    transform: translateX(100vw);
-  }
-
-  .responsive-menu-toggler:checked ~ .responsive-menu-items {
-    transform: translateX(0);
-  }
-
-  // .responsive-menu-toggler:focus + label a,
-  // .responsive-menu-toggler + label a:active {
-  //   background-color: transparentize($aria-highlight, 0.4);
-  // }
 
   .menu-header,
   .menu:hover .menu-header {
@@ -133,11 +133,11 @@
     margin-top: $ex3;
     margin-left: 0;
     margin-bottom: -$ex05;
-  }
 
-  .search-box input,
-  .search-box input:focus {
-    width: calc(100vw - 40px);
-    background-color: $bg-primary;
+    input,
+    input:focus {
+      width: calc(100vw - 40px);
+      background-color: $bg-primary;
+    }
   }
 }
