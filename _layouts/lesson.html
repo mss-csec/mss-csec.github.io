@@ -21,6 +21,7 @@ layout: page
 </div>
 <div class="row">
   <div class="three columns" id="lesson-listing">
+    <a class="collapse-el" href="#" onclick="APP.collapseLessonListing(event)" title="Collapse sidebar"></a>
     <h3>Lessons</h3>
 
     {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}
@@ -46,7 +47,7 @@ layout: page
       {% endfor %}
     {% endfor %}
 
-    <div class=" lesson-callout" id="lesson-pagination">
+    <div class="lesson-callout" id="lesson-pagination">
       {% comment %}
 
       TODO:
@@ -76,7 +77,7 @@ layout: page
 
     {{ lesson_listings | join: '' }}
   </div>
-  <div class="nine columns">
+  <div class="nine columns" id="main-content">
     {{ content }}
   </div>
 </div>

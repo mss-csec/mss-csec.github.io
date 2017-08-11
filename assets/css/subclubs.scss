@@ -5,12 +5,73 @@
 @import "base/mixins";
 
 #lesson-listing {
-  position: sticky;
-  top: $ex;
   background-color: lighten($bg-secondary, 3%);
   max-height: calc(100vh - #{$ex2});
   overflow-x: auto;
   padding: $ex;
+
+  &.closed {
+    overflow: hidden;
+  }
+}
+
+.collapse-el {
+  position: absolute;
+  top: $ex;
+  right: $ex05;
+  width: $ex2;
+  font-size: $ex2;
+  line-height: $ex2;
+  text-align: center;
+
+  &,
+  &:hover {
+    color: $fg-primary;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: #{$bp-tablet + 1px}) {
+  #lesson-listing {
+    position: sticky;
+    top: $ex;
+
+    &.closed {
+      width: 0;
+      height: $ex2 + 4px;
+      padding: 0;
+      padding-left: $ex2 + 4px;
+      margin-left: -$ex3;
+    }
+  }
+
+  .collapse-el.closed {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  #lesson-listing {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: $ex;
+
+    &.closed {
+      height: $ex3;
+      padding: $ex05;
+    }
+  }
+
+  .collapse-el {
+    top: $ex05;
+    transform: rotate(90deg);
+  }
+
+  #main-content {
+    width: 100%;
+  }
 }
 
 .lesson-name {

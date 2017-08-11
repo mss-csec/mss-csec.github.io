@@ -16,6 +16,7 @@ layout: page
 </div>
 <div class="row">
   <div class="three columns" id="lesson-listing">
+    <a class="collapse-el" href="#" onclick="APP.collapseLessonListing(event)" title="Collapse sidebar"></a>
     <h3>Lessons</h3>
     <div class="lesson-callout" id="lesson-timeline">
       <h5 class="lesson-state">Last lesson</h5>
@@ -37,7 +38,7 @@ layout: page
       {% endfor %}
     {% endfor %}
   </div>
-  <div class="nine columns">
+  <div class="nine columns" id="main-content">
     {{ content }}
   </div>
 </div>

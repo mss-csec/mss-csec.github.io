@@ -128,8 +128,38 @@ APP.renderSubclubSchedule = ($el, data) ->
 
   true
 
+APP.collapseLessonListing = (e) ->
+  e.preventDefault()
+
+  $target = $(e.target)
+  $sidebar = $target.closest '#lesson-listing'
+  $mainContent = $ '#main-content'
+  isClosed = $target.hasClass 'closed'
+
+  if isClosed
+    # Open sidebar
+    $sidebar.removeClass 'closed'
+    $mainContent.removeClass 'twelve'
+      .addClass 'nine'
+    $target.removeClass 'closed'
+      .attr 'title', 'Collapse sidebar'
+      .html '&laquo;'
+  else
+    # Collapse sidebar
+    $sidebar.addClass 'closed'
+    $mainContent.removeClass 'nine'
+      .addClass 'twelve'
+    $target.addClass 'closed'
+      .attr 'title', 'Open sidebar'
+      .html '&raquo;'
+
+  true
+
 APP.onload = () ->
   console.log "Testing Coffeescript"
+
+  $('.collapse-el').html '&laquo;'
+  $('.collapse-el.closed').html '&raquo;'
 
 window.APP = APP
 window.UTILS = UTILS
