@@ -16,6 +16,10 @@
 
   <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="{{ '/assets/lib/pygments-native.css' | relative_url }}">
 
+  {% if page.layout == 'lesson' or page.layout == 'landing' %}
+  <link href="{{ '/assets/css/subclubs.css' | relative_url }}" rel="stylesheet">
+  {% endif %}
+
   {% if page.addons.styles %}
     {% for style in page.addons.styles %}
   <link href="{{ style }}" rel="stylesheet">
