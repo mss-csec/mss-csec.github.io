@@ -136,8 +136,29 @@ Main coffeescript file
     return true;
   };
 
+  APP.collapseLessonListing = function(e) {
+    var $mainContent, $sidebar, $target, isClosed;
+    e.preventDefault();
+    $target = $(e.target);
+    $sidebar = $target.closest('#lesson-listing');
+    $mainContent = $('#main-content');
+    isClosed = $target.hasClass('closed');
+    if (isClosed) {
+      $sidebar.removeClass('closed');
+      $mainContent.removeClass('twelve').addClass('nine');
+      $target.removeClass('closed').attr('title', 'Collapse sidebar').html('&laquo;');
+    } else {
+      $sidebar.addClass('closed');
+      $mainContent.removeClass('nine').addClass('twelve');
+      $target.addClass('closed').attr('title', 'Open sidebar').html('&raquo;');
+    }
+    return true;
+  };
+
   APP.onload = function() {
-    return console.log("Testing Coffeescript");
+    console.log("Testing Coffeescript");
+    $('.collapse-el').html('&laquo;');
+    return $('.collapse-el.closed').html('&raquo;');
   };
 
   window.APP = APP;
