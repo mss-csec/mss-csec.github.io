@@ -26,3 +26,10 @@ import antigravity
 
 print "HAHAHAHA I CAN FLY"
 ----
+
+++++
+{% highlight ruby linenos %}
+puts "Hello"
+puts "world!"
+{% endhighlight %}
+++++

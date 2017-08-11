@@ -5,9 +5,9 @@ exclude:
   - node_modules/
   - README.md
   - scripts/
-  - _lessons/test/
-  - _resources/test/
-  - _subclubs/test/
+  # - _lessons/test/
+  # - _resources/test/
+  # - _subclubs/test/
   - Vagrantfile
   - vagrant-ssh.config
   - 404.html # Excluded as Github pages won't build it anyways
