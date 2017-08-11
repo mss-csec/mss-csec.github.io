@@ -9,18 +9,19 @@
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
-  <link href="/assets/lib/skeleton.css" rel="stylesheet">
+  <link href="/assets/lib/skeleton.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=d8728a3" data-alt-dark="/assets/lib/skeleton-dark.css?v=d8728a3">
 
   
-  <link href="/assets/lib/lesson-default.css" rel="stylesheet">
+  <link href="/assets/lib/lesson-default.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=d8728a3" data-alt-dark="/assets/lib/lesson-default-dark.css?v=d8728a3">
   
 
-  <link href="/assets/css/main.css" rel="stylesheet">
+  <link href="/assets/css/main.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=d8728a3" data-alt-dark="/assets/css/main-dark.css?v=d8728a3">
 
-  <link href="/assets/lib/pygments-manni.css" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="/assets/lib/pygments-native.css">
+  <link href="/assets/lib/pygments-manni.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=d8728a3" data-alt-dark="/assets/lib/pygments-native.css?v=d8728a3">
 
   
-  <link href="/assets/css/subclubs.css" rel="stylesheet">
+  
+  <link href="/assets/css/subclubs.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=d8728a3" data-alt-dark="/assets/css/subclubs-dark.css?v=d8728a3">
   
 
   
@@ -38,21 +39,24 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/getting-started/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-08-11T03:55:05+00:00" />
+<meta property="article:published_time" content="2017-08-11T20:02:46+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Getting started","datePublished":"2017-08-11T03:55:05+00:00","dateModified":"2017-08-11T03:55:05+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/getting-started/index"},"url":"https://mss-csec.github.io/lessons/beginners/getting-started/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Getting started","datePublished":"2017-08-11T20:02:46+00:00","dateModified":"2017-08-11T20:02:46+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/getting-started/index"},"url":"https://mss-csec.github.io/lessons/beginners/getting-started/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
   <script src="/assets/js/main.js" defer></script>
 
   
   <!-- END JS -->
+
+  <noscript><style>body[hidden]{display:block;}</style></noscript>
 </head>
 
-<body>
+<body hidden>
   <!-- header -->
   <header class="site-header">
   <div class="container">
@@ -115,6 +119,20 @@
       <div class="search-box">
         <input type="text" placeholder="Search...">
       </div>
+
+      <div class="options">
+        <div class="icon">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+        </div>
+        <div class="content">
+          <label>
+            <input type="checkbox" id="toggle-dark-theme">
+            Dark theme
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -140,8 +158,8 @@
   <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/beginners/">Beginners</a> / <strong class="breadcrumbs-current">Getting started</strong>
 </div>
 <div class="row">
-  <div class="three columns" id="lesson-listing">
-    <a class="collapse-el" href="#" onclick="APP.collapseLessonListing(event)" title="Collapse sidebar"></a>
+  <div class="three columns sidebar-collapsible" id="lesson-listing">
+    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
     <h3>Lessons</h3>
 
     
@@ -193,7 +211,7 @@
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/74288d998ddd88dcad51d2f9925b3785cab2f128">74288d9</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/d8728a37040f394253af4974bda3720b68e49e21">d8728a3</a></p>
       </div>
     </div>
   </div>

@@ -9,14 +9,15 @@
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
-  <link href="/assets/lib/skeleton.css" rel="stylesheet">
+  <link href="/assets/lib/skeleton.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=d8728a3" data-alt-dark="/assets/lib/skeleton-dark.css?v=d8728a3">
 
   
 
-  <link href="/assets/css/main.css" rel="stylesheet">
+  <link href="/assets/css/main.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=d8728a3" data-alt-dark="/assets/css/main-dark.css?v=d8728a3">
 
-  <link href="/assets/lib/pygments-manni.css" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="/assets/lib/pygments-native.css">
+  <link href="/assets/lib/pygments-manni.css?v=d8728a3" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=d8728a3" data-alt-dark="/assets/lib/pygments-native.css?v=d8728a3">
 
+  
   
 
   
@@ -42,13 +43,16 @@
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
   <script src="/assets/js/main.js" defer></script>
 
   
   <!-- END JS -->
+
+  <noscript><style>body[hidden]{display:block;}</style></noscript>
 </head>
 
-<body>
+<body hidden>
   <!-- header -->
   <header class="site-header">
   <div class="container">
@@ -111,6 +115,20 @@
       <div class="search-box">
         <input type="text" placeholder="Search...">
       </div>
+
+      <div class="options">
+        <div class="icon">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+        </div>
+        <div class="content">
+          <label>
+            <input type="checkbox" id="toggle-dark-theme">
+            Dark theme
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -145,7 +163,7 @@
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/74288d998ddd88dcad51d2f9925b3785cab2f128">74288d9</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/d8728a37040f394253af4974bda3720b68e49e21">d8728a3</a></p>
       </div>
     </div>
   </div>

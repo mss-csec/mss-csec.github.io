@@ -4,11 +4,16 @@ Main coffeescript file
  */
 
 (function() {
-  var APP, UTILS, __loadSubclubScheduleFromUrl;
+  var APP, CONSTS, UTILS, __collapseSidebar, __loadSubclubScheduleFromUrl, __openSidebar;
 
   APP = {};
 
   UTILS = {};
+
+  CONSTS = {
+    cookieCollapseSidebar: 'collapseSidebar',
+    cookieTheme: 'theme'
+  };
 
   UTILS.intSort = function(a, b) {
     return a - b;
@@ -16,6 +21,12 @@ Main coffeescript file
 
   UTILS.reverseIntSort = function(a, b) {
     return b - a;
+  };
+
+  UTILS.setIndefiniteCookie = function(key, value) {
+    return Cookies.set(key, value, {
+      expires: 365
+    });
   };
 
   APP.SUBCLUB_END_HOUR = 17;
@@ -136,29 +147,87 @@ Main coffeescript file
     return true;
   };
 
-  APP.collapseLessonListing = function(e) {
+  __openSidebar = function($sidebar, $target) {
+    $sidebar.removeClass('closed');
+    $target.removeClass('closed').attr('title', 'Collapse sidebar').html('&laquo;');
+    return UTILS.setIndefiniteCookie(CONSTS.cookieCollapseSidebar, '0');
+  };
+
+  __collapseSidebar = function($sidebar, $target) {
+    $sidebar.addClass('closed');
+    $target.addClass('closed').attr('title', 'Open sidebar').html('&raquo;');
+    return UTILS.setIndefiniteCookie(CONSTS.cookieCollapseSidebar, '1');
+  };
+
+  APP.toggleSidebar = function(e) {
     var $mainContent, $sidebar, $target, isClosed;
     e.preventDefault();
     $target = $(e.target);
-    $sidebar = $target.closest('#lesson-listing');
+    $sidebar = $target.closest('.sidebar-collapsible');
     $mainContent = $('#main-content');
     isClosed = $target.hasClass('closed');
     if (isClosed) {
-      $sidebar.removeClass('closed');
+      __openSidebar($sidebar, $target);
       $mainContent.removeClass('twelve').addClass('nine');
-      $target.removeClass('closed').attr('title', 'Collapse sidebar').html('&laquo;');
     } else {
-      $sidebar.addClass('closed');
+      __collapseSidebar($sidebar, $target);
       $mainContent.removeClass('nine').addClass('twelve');
-      $target.addClass('closed').attr('title', 'Open sidebar').html('&raquo;');
     }
     return true;
   };
 
+  APP.changeTheme = function(theme) {
+    var $t;
+    if (theme == null) {
+      theme = Cookies.get(CONSTS.cookieTheme);
+    }
+    $t = $('.toggled-theme');
+    return $t.each(function() {
+      var $e, altKey, altProp, newKey, newVal, oldVal;
+      $e = $(this);
+      altProp = $e.attr('data-alt-prop');
+      altKey = theme === 'dark' ? 'data-alt-dark' : 'data-alt-light';
+      newKey = theme === 'dark' ? 'data-alt-light' : 'data-alt-dark';
+      oldVal = $e.attr(altProp);
+      newVal = $e.attr(altKey);
+      $e.attr(altProp, newVal);
+      $e.attr(newKey, oldVal);
+      if (theme === 'dark') {
+        return $('body').addClass('theme-dark');
+      } else {
+        return $('body').removeClass('theme-dark');
+      }
+    });
+  };
+
+  APP.toggleDarkTheme = function() {
+    var theme;
+    theme = Cookies.get(CONSTS.cookieTheme);
+    if (theme === 'dark') {
+      Cookies.set(CONSTS.cookieTheme, 'light');
+      return APP.changeTheme('light');
+    } else {
+      Cookies.set(CONSTS.cookieTheme, 'dark');
+      return APP.changeTheme('dark');
+    }
+  };
+
   APP.onload = function() {
+    var $sidebar, $target;
     console.log("Testing Coffeescript");
+    if ('dark' === Cookies.get(CONSTS.cookieTheme)) {
+      APP.changeTheme();
+      $('#toggle-dark-theme').prop('checked', true);
+    }
+    $('body').prop('hidden', false);
     $('.collapse-el').html('&laquo;');
-    return $('.collapse-el.closed').html('&raquo;');
+    $('.collapse-el.closed').html('&raquo;');
+    if ('1' === Cookies.get(CONSTS.cookieCollapseSidebar)) {
+      $sidebar = $('.sidebar-collapsible');
+      $target = $sidebar.find('.collapse-el');
+      __collapseSidebar($sidebar, $target);
+    }
+    return $('#toggle-dark-theme').bind('change', APP.toggleDarkTheme);
   };
 
   window.APP = APP;
