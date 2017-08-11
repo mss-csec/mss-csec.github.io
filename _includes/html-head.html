@@ -6,18 +6,21 @@
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
-  <link href="{{ '/assets/lib/skeleton.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}">
 
   {% if page.layout == 'lesson' %}
-  <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
-  <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/main.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}">
 
-  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-key="{{ '/assets/lib/pygments-native.css' | relative_url }}">
+  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/pygments-manni.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/pygments-native.css' | relative_url }}?v={{ site.build_version }}">
 
+  {% if page.layout == 'home' %}
+  <link href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}">
+  {% endif %}
   {% if page.layout == 'lesson' or page.layout == 'landing' %}
-  <link href="{{ '/assets/css/subclubs.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
   {% if page.addons.styles %}
@@ -42,4 +45,6 @@
     {% endfor %}
   {% endif %}
   <!-- END JS -->
+
+  <noscript><style>body[hidden]{display:block;}</style></noscript>
 </head>

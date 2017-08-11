@@ -89,3 +89,52 @@
   border: 0;
   border-radius: 0;
 }
+
+@media (min-width: $bp-tablet) {
+  .options {
+    margin-left: $ex05;
+
+    .icon {
+      display: flex;
+      flex-direction: column;
+      width: $ex;
+      height: $ex2;
+      padding-top: 5px;
+      padding-left: 15px;
+      padding-bottom: 7px;
+    }
+
+    .circle {
+      width: 5px;
+      height: 5px;
+      background-color: $fg-primary;
+      border-radius: 5px;
+      margin-top: 3px;
+    }
+
+    &:hover .circle {
+      background-color: $brand-colour;
+    }
+
+    .content {
+      position: absolute;
+      top: $ex3 - 8px;
+      right: 0;
+      display: none;
+      background-color: $bg-secondary;
+      padding: $ex05;
+    }
+
+    &:hover .content {
+      display: block;
+    }
+
+    label, input {
+      margin: 0;
+    }
+
+    input {
+      margin-right: $ex05;
+    }
+  }
+}

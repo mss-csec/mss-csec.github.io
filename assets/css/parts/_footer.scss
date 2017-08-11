@@ -23,3 +23,11 @@
   opacity: 0.5;
   margin: 0;
 }
+
+@if ($dark) {
+  // Hack to make logo in footer pop less
+  // don't try this at home
+  .site-footer svg {
+    opacity: .5;
+  }
+}

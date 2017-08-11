@@ -10,6 +10,7 @@ UTILS = {}
 
 CONSTS =
   cookieCollapseSidebar: 'collapseSidebar'
+  cookieTheme: 'theme'
 
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
@@ -169,8 +170,42 @@ APP.toggleSidebar = (e) ->
 
   true
 
+APP.changeTheme = (theme = Cookies.get(CONSTS.cookieTheme)) ->
+  $t = $('.toggled-theme');
+  $t.each () ->
+    $e = $(this)
+    altProp = $e.attr 'data-alt-prop'
+    altKey = if theme == 'dark' then 'data-alt-dark' else 'data-alt-light'
+    newKey = if theme == 'dark' then 'data-alt-light' else 'data-alt-dark'
+    oldVal = $e.attr altProp
+    newVal = $e.attr altKey
+
+    $e.attr altProp, newVal
+    $e.attr newKey, oldVal
+
+    if theme == 'dark'
+      $('body').addClass 'theme-dark'
+    else
+      $('body').removeClass 'theme-dark'
+
+APP.toggleDarkTheme = () ->
+  theme = Cookies.get CONSTS.cookieTheme
+
+  if theme == 'dark'
+    Cookies.set CONSTS.cookieTheme, 'light'
+    APP.changeTheme 'light'
+  else
+    Cookies.set CONSTS.cookieTheme, 'dark'
+    APP.changeTheme 'dark'
+
 APP.onload = () ->
   console.log "Testing Coffeescript"
+
+  if 'dark' == Cookies.get CONSTS.cookieTheme
+    APP.changeTheme()
+    $('#toggle-dark-theme').prop 'checked', true
+
+  $('body').prop 'hidden', false
 
   $('.collapse-el').html '&laquo;'
   $('.collapse-el.closed').html '&raquo;'
@@ -179,6 +214,8 @@ APP.onload = () ->
     $sidebar = $('.sidebar-collapsible')
     $target = $sidebar.find '.collapse-el'
     __collapseSidebar $sidebar, $target
+
+  $('#toggle-dark-theme').bind 'change', APP.toggleDarkTheme
 
 window.APP = APP
 window.UTILS = UTILS

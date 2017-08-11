@@ -1,0 +1,139 @@
+#lesson-listing {
+  background-color: $bg-tertiary;
+  overflow-x: auto;
+  padding: $ex;
+
+  &.closed {
+    overflow: hidden;
+  }
+}
+
+.collapse-el {
+  position: absolute;
+  top: $ex;
+  right: $ex05;
+  width: $ex2;
+  font-size: $ex2;
+  line-height: $ex2;
+  text-align: center;
+
+  &,
+  &:hover {
+    color: $fg-primary;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: #{$bp-tablet + 1px}) {
+  #lesson-listing {
+    position: sticky;
+    top: $ex;
+    max-height: calc(100vh - #{$ex2});
+
+    &.closed {
+      width: 0;
+      height: $ex2 + 4px;
+      padding: 0;
+      padding-left: $ex2 + 4px;
+      margin-left: -$ex3;
+    }
+  }
+
+  .collapse-el.closed {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  #lesson-listing {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: $ex;
+
+    &.closed {
+      height: $ex3;
+      padding: $ex05;
+    }
+  }
+
+  .collapse-el {
+    top: $ex05;
+    transform: rotate(90deg);
+  }
+
+  #main-content {
+    width: 100%;
+  }
+}
+
+.lesson-name {
+  position: relative;
+  line-height: 1.8;
+  margin-bottom: 0;
+
+  &::before {
+    @include pseudo;
+    @include dimensions(2px, 100%);
+    @include position(0, -$ex);
+  }
+
+  &:hover::before {
+    background-color: lighten($fg-secondary, 10%);
+  }
+}
+
+.lesson-cur {
+  font-weight: bold;
+}
+
+.lesson-name.lesson-cur::before {
+  background-color: $bg-accent;
+}
+
+.lesson-link {
+  display: inline-block;
+  width: 100%;
+  color: $fg-secondary;
+  text-decoration: none;
+}
+
+.lesson-link:hover,
+.lesson-cur .lesson-link {
+  color: $fg-primary;
+}
+
+.lesson-callout {
+  padding-top: $ex;
+  padding-bottom: $ex05;
+  border: solid $fg-secondary;
+  border-width: 1px 0;
+  margin-bottom: $ex;
+
+  .lesson-state {
+    font-size: $ex;
+    margin-bottom: 0;
+  }
+
+  .lesson-name {
+    font-size: 1.1em;
+    margin-bottom: $ex05;
+
+    &::before {
+      width: 3px;
+      background-color: $bg-accent;
+      transform: scaleY(0);
+      transition: transform #{$df-anim-length / 2} ease;
+    }
+
+    &:hover::before {
+      transform: scaleY(1);
+    }
+  }
+
+  .lesson-link,
+  .lesson-link:hover {
+    color: $brand-colour;
+  }
+}

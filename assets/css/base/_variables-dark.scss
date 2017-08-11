@@ -1,18 +1,18 @@
 // CSEC Variables
 
-$dark: false;
+$dark: true;
 
 // Colors
 // Brand colours
 $brand-colour: #f52f2f;
 
-$fg-primary: #232323;
-$fg-secondary: #777;
+$fg-primary: #ededed;
+$fg-secondary: #888;
 $fg-accent: #fff;
 
-$bg-primary: #fff;
-$bg-secondary: #ededed;
-$bg-tertiary: lighten($bg-secondary, 3%);
+$bg-primary: #1a1f2a;
+$bg-secondary: #2c313c;
+$bg-tertiary: darken($bg-secondary, 3%);
 $bg-accent: $brand-colour;
 
 $aria-highlight: #32acfb;
