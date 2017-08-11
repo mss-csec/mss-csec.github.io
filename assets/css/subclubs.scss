@@ -6,7 +6,6 @@
 
 #lesson-listing {
   background-color: lighten($bg-secondary, 3%);
-  max-height: calc(100vh - #{$ex2});
   overflow-x: auto;
   padding: $ex;
 
@@ -35,6 +34,7 @@
   #lesson-listing {
     position: sticky;
     top: $ex;
+    max-height: calc(100vh - #{$ex2});
 
     &.closed {
       width: 0;

@@ -15,8 +15,8 @@ layout: page
   <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
 </div>
 <div class="row">
-  <div class="three columns" id="lesson-listing">
-    <a class="collapse-el" href="#" onclick="APP.collapseLessonListing(event)" title="Collapse sidebar"></a>
+  <div class="three columns sidebar-collapsible" id="lesson-listing">
+    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
     <h3>Lessons</h3>
     <div class="lesson-callout" id="lesson-timeline">
       <h5 class="lesson-state">Last lesson</h5>

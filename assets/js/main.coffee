@@ -8,8 +8,14 @@ Main coffeescript file
 APP = {}
 UTILS = {}
 
+CONSTS =
+  cookieCollapseSidebar: 'collapseSidebar'
+
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
+
+UTILS.setIndefiniteCookie = (key, value) ->
+  Cookies.set key, value, expires: 365
 
 APP.SUBCLUB_END_HOUR = 17;
 
@@ -128,30 +134,38 @@ APP.renderSubclubSchedule = ($el, data) ->
 
   true
 
-APP.collapseLessonListing = (e) ->
+__openSidebar = ($sidebar, $target) ->
+  $sidebar.removeClass 'closed'
+  $target.removeClass 'closed'
+    .attr 'title', 'Collapse sidebar'
+    .html '&laquo;'
+  UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '0'
+
+__collapseSidebar = ($sidebar, $target) ->
+  $sidebar.addClass 'closed'
+  $target.addClass 'closed'
+    .attr 'title', 'Open sidebar'
+    .html '&raquo;'
+  UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '1'
+
+APP.toggleSidebar = (e) ->
   e.preventDefault()
 
   $target = $(e.target)
-  $sidebar = $target.closest '#lesson-listing'
-  $mainContent = $ '#main-content'
+  $sidebar = $target.closest '.sidebar-collapsible'
+  $mainContent = $('#main-content')
   isClosed = $target.hasClass 'closed'
 
   if isClosed
     # Open sidebar
-    $sidebar.removeClass 'closed'
+    __openSidebar $sidebar, $target
     $mainContent.removeClass 'twelve'
       .addClass 'nine'
-    $target.removeClass 'closed'
-      .attr 'title', 'Collapse sidebar'
-      .html '&laquo;'
   else
     # Collapse sidebar
-    $sidebar.addClass 'closed'
+    __collapseSidebar $sidebar, $target
     $mainContent.removeClass 'nine'
       .addClass 'twelve'
-    $target.addClass 'closed'
-      .attr 'title', 'Open sidebar'
-      .html '&raquo;'
 
   true
 
@@ -160,6 +174,11 @@ APP.onload = () ->
 
   $('.collapse-el').html '&laquo;'
   $('.collapse-el.closed').html '&raquo;'
+
+  if '1' == Cookies.get CONSTS.cookieCollapseSidebar
+    $sidebar = $('.sidebar-collapsible')
+    $target = $sidebar.find '.collapse-el'
+    __collapseSidebar $sidebar, $target
 
 window.APP = APP
 window.UTILS = UTILS
