@@ -57,7 +57,7 @@ layout: default
               {% endif %}
             {% endfor %}
           "{{ entry[0] | xml_escape }}": {
-            date: "{{ entry[1] | xml_escape }}",
+            date: "{{ entry[1] | date: site.datefmt }}",
             url: "{{ lesson_url }}/",
             title: "{{ lesson_title }}"
           },
