@@ -26,6 +26,7 @@
 
 @media (min-width: #{$bp-tablet + 1px}) {
   #lesson-listing {
+    position: relative;
     position: sticky;
     top: $ex;
     max-height: calc(100vh - #{$ex2});

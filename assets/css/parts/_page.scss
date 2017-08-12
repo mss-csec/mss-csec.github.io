@@ -5,6 +5,10 @@
   margin-top: -$ex;
   margin-bottom: $ex;
 
+  .icon-home:hover {
+    text-decoration: none;
+  }
+
   &-current {
     color: $fg-primary;
   }

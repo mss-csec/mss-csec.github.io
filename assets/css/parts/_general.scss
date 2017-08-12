@@ -72,6 +72,14 @@ code {
   }
 }
 
+a {
+  color: $brand-colour;
+
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
+
 .disabled {
   opacity: 0.5;
 }
