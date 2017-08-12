@@ -63,7 +63,7 @@ echo "Restoring stash..."
 git stash pop || true
 
 # Update submodules to their remotes
-git submodule update --recursive --remote
+git submodule update --remote
 
 # Build Jekyll
 chmod +x ./scripts/ci/build.sh
@@ -82,7 +82,7 @@ if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   git commit -m "remove files"
 
   git checkout $BUILD_BRANCH
-  
+
   # Try --- *TRY* --- to rebase the build branch onto the deploy branch.
   # See documentation of __auto_resolve for details on how conflicts are resolved
   echo "Attempting to rebase $BUILD_BRANCH onto $DEPLOY_BRANCH..."
