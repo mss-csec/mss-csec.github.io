@@ -24,6 +24,11 @@
   }
 }
 
+.lesson-date em {
+  color: $fg-primary;
+  font-style: normal;
+}
+
 @media (min-width: #{$bp-tablet + 1px}) {
   #lesson-listing {
     position: relative;
@@ -43,6 +48,10 @@
   .collapse-el.closed {
     top: 2px;
     right: 2px;
+  }
+
+  .lesson-date {
+    float: right;
   }
 }
 
@@ -66,6 +75,10 @@
 
   #main-content {
     width: 100%;
+  }
+
+  .lesson-date {
+    display: block;
   }
 }
 

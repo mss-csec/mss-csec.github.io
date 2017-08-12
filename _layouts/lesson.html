@@ -16,36 +16,38 @@ layout: page
 {% assign lesson_cur_index = lesson_cur %}
 {% assign lesson_listings = "" | split: '' %}
 
+{% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}
+{% for item in ordered_lessons %}
+  {% assign lesson_obj = item %}
+  {% assign o_forloop = forloop %}
+  {% for entry in subclub_schedule %}
+    {% assign split_path = item.path | split: '/' %}
+    {% if split_path contains entry[0] %}
+      {% assign class_name = "lesson-name" %}
+      {% if item.lesson == lesson_cur %}
+        {% assign class_name = "lesson-name lesson-cur" %}
+        {% assign lesson_cur_index = o_forloop.index0 %}
+        {% assign lesson_cur_date = entry[1] | date: site.datefmt %}
+      {% endif %}
+      {% capture lesson_listing %}
+<p class="{{ class_name }}">
+  <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}</a>
+</p>
+      {% endcapture %}
+      {% assign lesson_listings = lesson_listings | push: lesson_listing %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 <div class="breadcrumbs">
   <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
+  <span class="lesson-date">Dated: <em>{{ lesson_cur_date }}</em></span>
 </div>
 <div class="row">
   <div class="three columns sidebar-collapsible" id="lesson-listing">
     <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
     <h3>Lessons</h3>
-
-    {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}
-    {% for item in ordered_lessons %}
-      {% assign lesson_obj = item %}
-      {% assign o_forloop = forloop %}
-      {% for entry in subclub_schedule %}
-        {% assign split_path = item.path | split: '/' %}
-        {% if split_path contains entry[0] %}
-          {% assign class_name = "lesson-name" %}
-          {% if item.lesson == lesson_cur %}
-            {% assign class_name = "lesson-name lesson-cur" %}
-            {% assign lesson_cur_index = o_forloop.index0 %}
-          {% endif %}
-          {% capture lesson_listing %}
-    <p class="{{ class_name }}">
-      <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | xml_escape }}">{{ lesson_obj.title | xml_escape }}</a>
-    </p>
-          {% endcapture %}
-          {% assign lesson_listings = lesson_listings | push: lesson_listing %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
 
     <div class="lesson-callout" id="lesson-pagination">
       {% comment %}

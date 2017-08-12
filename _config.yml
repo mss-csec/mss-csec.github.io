@@ -89,6 +89,7 @@ collections:
     output: true
     permalink: /:collection/:path
 
+datefmt: '%B %d, %Y'
 
 displayed_subclubs:
   - beginners
