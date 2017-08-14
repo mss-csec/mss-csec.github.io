@@ -9,9 +9,16 @@
   margin-bottom: $ex2;
 
   .title {
+    font-size: 2.5 * $ex; // 50px
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 3.8 * $ex; // 76px
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+@media (max-width: $bp-phablet) {
+  .title {
+    font-size: $ex2;
   }
 }

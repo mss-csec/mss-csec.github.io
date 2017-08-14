@@ -10,8 +10,70 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $brand-colour;
     color: $fg-accent;
     font-style: normal;
-    padding: .1em;
-    padding-top: .25em;
+    padding: .15em $ex05;
+    padding-top: .3em;
+  }
+}
+
+h1 {
+  font-size: 2 * $ex; // 40px
+  line-height: 2.2 * $ex; // 44px
+}
+
+h2 {
+  font-size: 1.8 * $ex; // 36px
+  line-height: 2 * $ex; // 40px
+}
+
+h3 {
+  font-size: 1.6 * $ex; // 32px
+  line-height: 1.8 * $ex; // 36px
+}
+
+h4 {
+  font-size: 1.4 * $ex; // 28px
+  line-height: 1.7 * $ex; // 34px
+}
+
+h5 {
+  font-size: 1.2 * $ex; // 24px
+  line-height: 1.6 * $ex; // 32px
+}
+
+h6 {
+  font-size: $ex; // 20px
+  line-height: 1.5 * $ex; // 30px
+}
+
+@media (max-width: $bp-phablet) {
+  h1 {
+    font-size: 1.8 * $ex; // 36px
+    line-height: 2 * $ex; // 40px
+  }
+
+  h2 {
+    font-size: 1.6 * $ex; // 32px
+    line-height: 1.8 * $ex; // 36px
+  }
+
+  h3 {
+    font-size: 1.4 * $ex; // 28px
+    line-height: 1.7 * $ex; // 34px
+  }
+
+  h4 {
+    font-size: 1.2 * $ex; // 24px
+    line-height: 1.6 * $ex; // 32px
+  }
+
+  h5 {
+    font-size: 1.05 * $ex; // 21px
+    line-height: 1.6 * $ex; // 32px
+  }
+
+  h6 {
+    font-size: 0.9 * $ex; // 18px
+    line-height: 1.4 * $ex; // 28px
   }
 }
 
