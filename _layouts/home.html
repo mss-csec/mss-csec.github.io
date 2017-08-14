@@ -92,14 +92,28 @@ layout: default
   </div>
 </div>
 
-<div class="container">
-  <p>Hello, person! We see you discovered our top-secret website-in-construction.</p>
+<div class="container row">
+  <div class="one-half column announcements">
+    <h2><a href="{{ '/posts/' | relative_url }}">Announcements</a></h2>
+    {% for post in site.posts limit: 3 %}
+      <article>
+        <header>
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <h6>Posted on {{ post.date | date: site.datefmt }}</h6>
+        </header>
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+        <div class="post-fade"><a href="{{ post.url }}"></a></div>
+      </article>
+    {% endfor %}
+    <a href="{{ '/posts/' | relative_url }}">View all posts</a>
+  </div>
+  <div class="one-half column resources">
+    <h2><em>Resources</em></h2>
+    <p>Hello, person! We see you discovered our top-secret website-in-construction.</p>
 
-  <p>Unfortunately, we have no content to offer but the fact that we'll probably be back in September with a swanking new website to suit all of your MSS CSEC needs. Until then, have a great summer!</p>
-</div>
-
-<div class="container">
-  <pre><code>It is currently <span id="time">time to enable JavaScript, you dimwit</span>. <span id="message"></span></code></pre>
+    <p>Unfortunately, we have no content to offer but the fact that we'll probably be back in September with a swanking new website to suit all of your MSS CSEC needs. Until then, have a great summer!</p>
+    <pre><code>It is currently <span id="time">time to enable JavaScript, you dimwit</span>. <span id="message"></span></code></pre>
+  </div>
 </div>
 
 <script>

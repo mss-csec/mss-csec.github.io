@@ -9,11 +9,16 @@ APP = {}
 UTILS = {}
 
 CONSTS =
+  animDuration: 230
   cookieCollapseSidebar: 'collapseSidebar'
+  cookieStickyPrefix: 'sticky-'
   cookieTheme: 'theme'
 
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
+
+UTILS.spaceship = (a, b) ->
+  a < b ? -1 : (a > b ? 1 : 0)
 
 UTILS.setIndefiniteCookie = (key, value) ->
   Cookies.set key, value, expires: 365
@@ -201,11 +206,33 @@ APP.toggleDarkTheme = () ->
 APP.onload = () ->
   console.log "Testing Coffeescript"
 
+  # Parse theme changes
   if 'dark' == Cookies.get CONSTS.cookieTheme
     APP.changeTheme()
     $('#toggle-dark-theme').prop 'checked', true
 
-  $('body').prop 'hidden', false
+  # Add event handlers
+  $('#toggle-dark-theme').on 'change', APP.toggleDarkTheme
+  $('.announcement-sticky .close-el').on 'click', (e) ->
+    sticky = $(this).closest '.announcement-sticky'
+
+    e.preventDefault()
+
+    sticky.fadeOut 2 * CONSTS.animDuration, () ->
+      $(this).remove()
+
+    Cookies.set "#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}", '1'
+
+  # DOM manipulation
+  __DOMRemoveSticky = () ->
+    sticky = $('.announcement-sticky')
+
+    if Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}") == '1' or
+    (sticky.length and
+    (new Date()).getTime() > (new Date(sticky.data 'displayUntil')).getTime())
+      sticky.remove()
+
+  __DOMRemoveSticky()
 
   $('.collapse-el').html '&laquo;'
   $('.collapse-el.closed').html '&raquo;'
@@ -215,7 +242,8 @@ APP.onload = () ->
     $target = $sidebar.find '.collapse-el'
     __collapseSidebar $sidebar, $target
 
-  $('#toggle-dark-theme').bind 'change', APP.toggleDarkTheme
+  # Unhide body
+  $('body').prop 'hidden', false
 
 window.APP = APP
 window.UTILS = UTILS

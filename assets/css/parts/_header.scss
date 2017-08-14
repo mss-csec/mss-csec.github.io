@@ -31,7 +31,7 @@
   }
 
   main {
-    margin-top: $ex3;
+    margin-top: $ex3 + 2px;
   }
 }
 
@@ -137,5 +137,35 @@
     input {
       margin-right: $ex05;
     }
+  }
+}
+
+.announcement-sticky {
+  text-align: center;
+  margin-bottom: 0;
+
+  &,
+  a {
+    background-color: $bg-accent;
+    color: $fg-accent;
+  }
+
+  .read-more {
+    text-decoration: underline;
+  }
+
+  .close-el {
+    float: right;
+    background-color: $t;
+    padding: 0 0.2em;
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .announcement-sticky {
+    position: fixed;
+    top: $ex3 + 2px;
+    left: 0;
+    right: 0;
   }
 }

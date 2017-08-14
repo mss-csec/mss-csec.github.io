@@ -1,3 +1,10 @@
+{% assign stickies = site.posts | where_exp: "item", "item.tags contains 'sticky'" %}
+{% for sticky in stickies limit: 1 %}
+{% assign sticky_fallback_date = sticky.date | date: '%s' | plus: 604800 | date: '%F' %}
+<p class="announcement-sticky" data-display-until="{{ sticky.display_until | default: sticky_fallback_date }}" data-id="{{ sticky.id }}">
+  {{ sticky.summary }} <a href="{{ sticky.url }}" class="read-more">Read more &raquo;</a> <a href="#" class="close-el">&times;</a>
+</p>
+{% endfor %}
 <header class="site-header">
   <div class="container">
     <a class="logo main-logo" aria-label="{csec}" href="{{ '/' | relative_url }}">
