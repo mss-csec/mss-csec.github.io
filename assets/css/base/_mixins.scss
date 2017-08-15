@@ -55,6 +55,28 @@
   height: $height;
 }
 
+// Prefix keyframes
+//
+// $name - The name of the keyframe
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Prefix animations
+//
+// $val - The desired value of the animation shorthand property
+
+@mixin animation($val) {
+  -webkit-animation: #{$val};
+          animation: #{$val};
+}
+
 // Style mixins
 
 // Reset background, padding, border & margin

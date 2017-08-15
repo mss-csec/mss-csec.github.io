@@ -1,0 +1,11 @@
+// Keyframes
+
+@keyframes bouncingDots {
+  0% { transform: translateY(0) }
+  10% { transform: translateY(-.5em) }
+  20% { transform: translateY(0) }
+  25% { transform: translateY(-.25em) }
+  30% { transform: translateY(0) }
+  32% { transform: translateY(-.1em) }
+  34% { transform: translateY(0) }
+}
