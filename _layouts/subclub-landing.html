@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<div class="hero">
+  <h1 class="title"><em>{{ page.title }}</em></h1>
+</div>
+<div class="schedule" style="background:none">
+<div class="container">
+{% assign subclubs = site.subclubs | group_by: "category" | sort: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}
+
+{% assign row_size = 3 %}
+
+{% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
+{% assign number_rows = subclubs.size | divided_by: row_size %}
+{% for row in (0..number_rows) %}
+<div class="row">
+  {% assign row_offset = row | times: row_size %}
+  {% for subclub_obj in subclubs limit:row_size offset:row_offset %}
+    {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+    {% assign subclub_schedule = subclub_index.schedule %}
+    {% assign subclub_title = subclub_index.title %}
+    {% assign subclub = subclub_title | slugify %}
+    {% assign subclub_url = subclub_index.url | split: '/' | pop | join: '/' | uri_escape %}
+  <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
+    <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
+    <p>{{ subclub_index.excerpt | strip_html | truncatewords: 50 }}</p>
+    <div class="row">
+      <div class="one-half column">
+        <h4 class="lesson-state">Last lesson</h4>
+        <h3 class="lesson-name lesson-last"></h3>
+      </div>
+      <div class="one-half column">
+        <h4 class="lesson-state">Next meeting</h4>
+        <h3 class="lesson-name lesson-next"></h3>
+      </div>
+    </div>
+    <script>window.addEventListener("DOMContentLoaded", function (){
+    APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
+      {% if site.production == true %}
+        {% assign lessons = site.lessons | group_by: "category" %}
+        {% assign subclub_obj = lessons | where: "name", subclub | first %}
+      {% endif %}
+      {% for entry in subclub_schedule %}
+        {% assign lesson_title = subclub_title | xml_escape %}
+        {% assign lesson_url = subclub_url | uri_escape %}
+        {% for item in subclub_obj.items %}
+          {% assign split_path = item.path | split: '/' %}
+          {% if split_path contains entry[0] %}
+            {% assign lesson_title = item.title | xml_escape %}
+            {% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      "{{ entry[0] | xml_escape }}": {
+        date: "{{ entry[1] | date: site.datefmt }}",
+        url: "{{ lesson_url }}/",
+        title: "{{ lesson_title }}"
+      },
+      {% endfor %}
+    });
+    });</script>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+</div>
+</div>
+
+<style>
+.four.columns { background-color: whitesmoke; padding: 10px; }
+.theme-dark .four.columns { background-color: #262a33; }
+.schedule > .container > .row { margin-top: 20px !important; /* $ex */ }
+@media (min-width: 550px) { /* $bp-phablet */
+  .four.columns { margin-left: 2%; padding: 20px; /* $ex */ }
+}
+</style>
