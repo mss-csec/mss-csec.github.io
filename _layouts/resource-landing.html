@@ -1,0 +1,25 @@
+---
+layout: page
+---
+
+{% assign resources_catized = site.resources | group_by: 'category' %}
+<div class="row">
+  <div class="four columns">
+    <h2>Guides</h2>
+    {% assign guides = site.resources | where_exp: 'item', 'item.path contains "guides"' | sort: 'title' %}
+    {% for guide in guides %}
+      <article>
+        <header>
+          <h3><a href="{{ guide.url }}">{{ guide.title }}</a></h3>
+        </header>
+        {{ guide.summary | markdownify }}
+      </article>
+    {% endfor %}
+  </div>
+  <div class="four columns">
+    <h2>CSEC</h2>
+  </div>
+  <div class="four columns">
+    <h2>Misc.</h2>
+  </div>
+</div>
