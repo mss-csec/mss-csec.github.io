@@ -94,7 +94,7 @@ layout: default
 
 <div class="container row">
   <div class="one-half column announcements">
-    <h2><a href="{{ '/posts/' | relative_url }}">Announcements</a></h2>
+    <h2><a href="{{ '/posts/' | relative_url }}"><em>Announcements</em></a></h2>
     {% for post in site.posts limit: 3 %}
       <article>
         <header>
@@ -102,10 +102,9 @@ layout: default
           <h6>Posted on {{ post.date | date: site.datefmt }}</h6>
         </header>
         <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-        <div class="post-fade"><a href="{{ post.url }}"></a></div>
       </article>
     {% endfor %}
-    <a href="{{ '/posts/' | relative_url }}">View all posts</a>
+    <a href="{{ '/posts/' | relative_url }}" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
   </div>
   <div class="one-half column resources">
     <h2><em>Resources</em></h2>

@@ -164,7 +164,6 @@ $schedule-height: 8 * $ex; // 160px
 @media (max-width: $bp-phablet) {
   .schedule {
     padding: $ex 0;
-    margin-bottom: $ex;
   }
 
   .schedule .column {
@@ -187,3 +186,111 @@ $schedule-height: 8 * $ex; // 160px
     }
   }
 }
+
+.announcements,
+.resources {
+  h2 {
+    margin-top: $ex;
+
+    em {
+      @include transition;
+
+      margin-left: -$ex05;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:hover em {
+      background-color: $bg-secondary;
+      color: $brand-colour;
+    }
+  }
+}
+
+article {
+  margin-top: $ex2;
+  margin-bottom: -$ex05;
+}
+
+article header {
+  margin-bottom: $ex05;
+
+  h3 {
+    margin-bottom: $ex05 / 2;
+
+    a {
+      @include transition;
+
+      color: $fg-primary;
+    }
+
+    a:hover {
+      color: $brand-colour;
+      text-decoration: none;
+    }
+  }
+
+  h6 {
+    color: $fg-secondary;
+    font-size: 0.75 * $ex;
+    margin-bottom: 0;
+  }
+}
+
+@keyframes bouncingDots {
+  0% { transform: translateY(0) }
+  10% { transform: translateY(-.5em) }
+  20% { transform: translateY(0) }
+  25% { transform: translateY(-.25em) }
+  30% { transform: translateY(0) }
+  32% { transform: translateY(-.1em) }
+  34% { transform: translateY(0) }
+}
+
+.view-all {
+  font-size: 1.1em;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .dot {
+    @include dimensions(2px);
+
+    display: inline-block;
+    background-color: currentColor;
+    border-radius: 2px;
+    margin-left: 2px;
+    animation-fill-mode: both;
+  }
+
+  &:hover .dot:first-child {
+    animation: bouncingDots 2s ease-in 0.1s infinite;
+
+    + .dot {
+      animation: bouncingDots 2s ease-in 0.15s infinite;
+    }
+
+    + .dot + .dot {
+      animation: bouncingDots 2s ease-in 0.2s infinite;
+    }
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .column.resources,
+  .column.announcements {
+    width: 100%;
+  }
+
+  .announcements {
+    margin-bottom: $ex;
+  }
+
+  .view-all .dot {
+    animation: none !important;
+  }
+}
+
