@@ -47,7 +47,8 @@
     line-height: $ex2;
   }
 
-  &:hover &-header {
+  &:hover &-header,
+  &-header:focus {
     color: $brand-colour;
   }
 
@@ -75,7 +76,8 @@
     height: 12px;
   }
 
-  &:hover &-items {
+  &:hover &-items,
+  &-header:focus + &-items {
     display: block;
   }
 }
@@ -113,7 +115,8 @@
       margin-top: 3px;
     }
 
-    &:hover .circle {
+    &:hover .circle,
+    .icon:focus .circle {
       background-color: $brand-colour;
     }
 
@@ -126,7 +129,8 @@
       padding: $ex05;
     }
 
-    &:hover .content {
+    &:hover .content,
+    .icon:focus + .content {
       display: block;
     }
 
@@ -143,6 +147,7 @@
 .announcement-sticky {
   text-align: center;
   margin-bottom: 0;
+  z-index: 1;
 
   &,
   a {

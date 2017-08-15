@@ -213,7 +213,7 @@ APP.onload = () ->
 
   # Add event handlers
   $('#toggle-dark-theme').on 'change', APP.toggleDarkTheme
-  $('.announcement-sticky .close-el').on 'click', (e) ->
+  $('.announcement-sticky').on 'click', 'a', (e) ->
     sticky = $(this).closest '.announcement-sticky'
 
     e.preventDefault()
@@ -222,6 +222,9 @@ APP.onload = () ->
       $(this).remove()
 
     Cookies.set "#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}", '1'
+
+    if $(this).attr('href') != '#'
+      window.location = $(this).attr 'href'
 
   # DOM manipulation
   __DOMRemoveSticky = () ->

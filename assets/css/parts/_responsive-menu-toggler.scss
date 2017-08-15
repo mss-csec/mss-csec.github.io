@@ -2,8 +2,7 @@
 
 .responsive-menu-toggler {
   position: absolute;
-  clip: rect(0, 0, 0, 0);
-  // -webkit-tap-highlight-color: $t;
+  display: none !important;
 }
 
 .responsive-menu-toggler + label {
@@ -15,6 +14,7 @@
     @include reset-all;
     @include dimensions(90px, $ex3);
 
+    display: block !important;
     clip: initial;
     -webkit-appearance: none;
     // -moz-appearance: none doesn't work in Firefox

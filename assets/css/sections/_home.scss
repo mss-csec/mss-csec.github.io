@@ -43,7 +43,7 @@ $schedule-height: 8 * $ex; // 160px
 
   .subclub-title {
     display: inline-block;
-    overflow-x: hidden;
+    margin-bottom: $ex05 / 2;
   }
 
   .subclub-link {
@@ -51,6 +51,7 @@ $schedule-height: 8 * $ex; // 160px
     display: inline-block;
     color: $brand-colour;
     text-decoration: none;
+    overflow-x: hidden;
 
     &::before,
     &::after {
