@@ -1,25 +1,24 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to this site!"
 date:   2017-06-27 21:29:26 -0400
-categories: jekyll update
+categories: announcements
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+Hello, person! We see you discovered our top-secret website-in-construction.
+Unfortunately, we have no content to offer but the fact that we'll probably be back in September with a swanking new website to suit all of your MSS CSEC needs.
+Until then, have a great summer!
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+<pre><code>It is currently <span id="time">time to enable JavaScript, you dimwit</span>. <span id="message"></span></code></pre>
 
-Jekyll also offers powerful support for code snippets:
+<script>
+document.getElementById('time').textContent = (new Date()).toLocaleString();
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+var h = (new Date()).getHours(), msg = "";
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+if (23 <= h || h <= 1) msg = "Go to sleep, you moron."
+if (2 <= h && h <= 7) msg = "I'm telling your parents you're still awake."
+if (8 <= h && h <= 10) msg = "Rise and shine, walnut-head."
+if (11 <= h && h <= 22) msg = "I hope you enjoy trying to be productive and utterly failing at it."
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+document.getElementById('message').textContent = msg
+</script>
