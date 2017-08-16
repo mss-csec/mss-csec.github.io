@@ -1,0 +1,6 @@
+---
+layout: resource
+summary: >
+  Find out how to install and use Codeblocks on Windows, Linux, or macOS.
+---
+= Installing CodeBlocks

@@ -95,6 +95,11 @@ displayed_subclubs:
   - beginners
   - advanced
 
+displayed_resources:
+  - guides/installing-codeblocks
+  - guides/using-codeblocks-on-school-computers
+  - guides/using-the-ccc-grader
+
 project_url: https://github.com/mss-csec/mss-csec.github.io
 
 build_version: development
