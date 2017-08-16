@@ -7,7 +7,7 @@ permalink: /posts/
 <article>
   <header>
     <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-    <h6>Posted on {{ post.date | date: site.datefmt }}</h6>
+    <h6>Posted on <time datetime="{{ post.date | date: site.mdatefmt }}">{{ post.date | date: site.datefmt }}</time></h6>
   </header>
   {{ post.content | markdownify }}
   <footer>

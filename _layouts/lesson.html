@@ -27,7 +27,7 @@ layout: page
       {% if item.lesson == lesson_cur %}
         {% assign class_name = "lesson-name lesson-cur" %}
         {% assign lesson_cur_index = o_forloop.index0 %}
-        {% assign lesson_cur_date = entry[1] | date: site.datefmt %}
+        {% assign lesson_cur_date = entry[1] %}
       {% endif %}
       {% capture lesson_listing %}
 <p class="{{ class_name }}">
@@ -42,7 +42,7 @@ layout: page
 
 <div class="breadcrumbs">
   <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
-  <span class="lesson-date">Dated: <em>{{ lesson_cur_date }}</em></span>
+  <span class="lesson-date">Dated: <time datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</em></span>
 </div>
 <div class="row">
   <div class="three columns sidebar-collapsible" id="lesson-listing">

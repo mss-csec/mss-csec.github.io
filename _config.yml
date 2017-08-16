@@ -90,6 +90,7 @@ collections:
     permalink: /:collection/:path
 
 datefmt: '%B %d, %Y'
+mdatefmt: '%FT%T%z'
 
 displayed_subclubs:
   - beginners
