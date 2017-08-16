@@ -1,4 +1,59 @@
 ---
 layout: default
 ---
-{{ content }}
+<div class="hero">
+  <div style="width:100%">
+    <h1 class="title"><em>{{ page.title }}</em></h1>
+    <p class="lesson-date" style="float:none;color:#ededed;margin-bottom:0">Posted on <time>{{ page.date | date: site.datefmt }}</time></p>
+  </div>
+</div>
+<div class="content container">
+  <div class="row">
+    {% comment %}
+    <div class="three columns sidebar-collapsible" id="lesson-listing">
+      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+      <h2>Posts</h2>
+      <div class="lesson-callout">
+        {% if page.previous != nil %}
+        <h5 class="lesson-state">Previous</h5>
+        <p class="lesson-name lesson-prev">
+          <a class="lesson-link" href="{{ page.previous.url }}" title="{{ page.previous.date | date: site.datefmt }}">{{ page.previous.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+        {% if page.next != nil %}
+        <h5 class="lesson-state">Next</h5>
+        <p class="lesson-name lesson-next">
+          <a class="lesson-link" href="{{ page.next.url }}" title="{{ page.next.date | date: site.datefmt }}">{{ page.next.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+      </div>
+      {% for post in site.posts %}
+        {% assign class_name = 'lesson-name' %}
+        {% if post.id == page.id %}
+          {% assign class_name = 'lesson-name lesson-cur' %}
+        {% endif %}
+      <p class="{{ class_name }}">
+        <a class="lesson-link" href="{{ post.url }}" title="{{ post.date | date: site.datefmt }}">{{ post.title | xml_escape }}</a>
+      </p>
+      {% endfor %}
+    </div>
+    {% endcomment %}
+    <div class="eight columns offset-by-two" id="main-content">
+      <div class="paginator">
+        {% if page.previous != nil %}
+        <a class="paginator-item" href="{{ page.previous.url }}" title="{{ page.previous.date | date: site.datefmt }}"><strong>Previous</strong><br>{{ page.previous.title | xml_escape }}</a>
+        {% else %}
+        <span class="paginator-item paginator-valign disabled">(No previous posts)</span>
+        {% endif %}
+        <a class="paginator-item paginator-valign" href="{{ '/posts/' | relative_url }}">All posts</a>
+        {% if page.next != nil %}
+        <a class="paginator-item" href="{{ page.next.url }}" title="{{ page.next.date | date: site.datefmt }}"><strong>Next</strong><br>{{ page.next.title | xml_escape }}</a>
+        {% else %}
+        <span class="paginator-item paginator-valign disabled">(No newer posts)</span>
+        {% endif %}
+      </div>
+      <hr>
+      {{ content }}
+    </div>
+  </div>
+</div>

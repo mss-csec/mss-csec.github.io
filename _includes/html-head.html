@@ -19,7 +19,7 @@
   {% if page.layout == 'home' or page.layout == 'subclub-landing' %}
   <link href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
-  {% if page.layout == 'lesson' or page.layout == 'landing' %}
+  {% if page.layout == 'lesson' or page.layout == 'landing' or page.layout == 'post' %}
   <link href="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 

@@ -29,6 +29,40 @@
   font-style: normal;
 }
 
+.paginator {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: .95em;
+  margin-top: -$ex;
+  margin-bottom: -$ex05;
+
+  &-item {
+    @include transition;
+
+    flex: 1;
+    color: $fg-secondary;
+    text-align: center;
+    padding: $ex05 0;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &-valign {
+    height: 100%;
+  }
+}
+
 @media (min-width: #{$bp-tablet + 1px}) {
   #lesson-listing {
     position: relative;
@@ -75,10 +109,18 @@
 
   #main-content {
     width: 100%;
+
+    &.offset-by-two {
+      margin-left: 0;
+    }
   }
 
   .lesson-date {
     display: block;
+  }
+
+  .paginator-item {
+    padding: 0;
   }
 }
 
