@@ -11,9 +11,13 @@ permalink: /posts/
   </header>
   {{ post.content | markdownify }}
   <footer>
-    {% for tag in post.tags %}
-     {{ tag }}
-    {% endfor %}
+    {% if post.tags.size > 0%}
+    <div class="tags">Tags:
+      {% for tag in post.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
   </footer>
 </article>
 {% endfor %}

@@ -14,8 +14,50 @@
   }
 }
 
+article {
+  margin-top: $ex2;
+  margin-bottom: -$ex05;
+}
+
+article header {
+  margin-bottom: $ex05;
+
+  h3 {
+    margin-bottom: $ex05 / 2;
+
+    a {
+      @include transition;
+
+      color: $fg-primary;
+      @if ($dark) { border-bottom: 3px solid transparentize($fg-primary, .7); }
+    }
+
+    a:hover {
+      color: $brand-colour;
+      text-decoration: none;
+      @if ($dark) { border-color: transparentize($brand-colour, .5); }
+    }
+  }
+
+  h6 {
+    color: $fg-secondary;
+    font-size: 0.75 * $ex;
+    margin-bottom: 0;
+  }
+}
+
 code table,
 code td,
 code td pre {
   @include reset-all;
+}
+
+.tags {
+  font-size: .9em;
+  color: $fg-secondary;
+}
+
+.tag {
+  background-color: $bg-secondary;
+  padding: .2em;
 }

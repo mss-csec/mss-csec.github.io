@@ -210,38 +210,6 @@ $schedule-height: 8 * $ex; // 160px
   }
 }
 
-article {
-  margin-top: $ex2;
-  margin-bottom: -$ex05;
-}
-
-article header {
-  margin-bottom: $ex05;
-
-  h3 {
-    margin-bottom: $ex05 / 2;
-
-    a {
-      @include transition;
-
-      color: $fg-primary;
-      @if ($dark) { border-bottom: 3px solid transparentize($fg-primary, .7); }
-    }
-
-    a:hover {
-      color: $brand-colour;
-      text-decoration: none;
-      @if ($dark) { border-color: transparentize($brand-colour, .5); }
-    }
-  }
-
-  h6 {
-    color: $fg-secondary;
-    font-size: 0.75 * $ex;
-    margin-bottom: 0;
-  }
-}
-
 .resources header {
   margin-bottom: $ex;
 }
