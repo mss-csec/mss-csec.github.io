@@ -13,6 +13,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: .15em $ex05;
     padding-top: .3em;
   }
+
+  em.offset-text {
+    margin-left: -$ex05;
+  }
 }
 
 h1 {
@@ -98,11 +102,8 @@ body {
   background-color: $bg-primary;
   flex-direction: column;
   overflow-x: hidden;
-}
 
-// also known as "lol get rekt IE"
-@supports (color: red) {
-  body { height: auto; }
+  @include notIE { height: auto; }
 }
 
 .site-header,

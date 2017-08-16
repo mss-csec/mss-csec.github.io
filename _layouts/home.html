@@ -94,7 +94,7 @@ layout: default
 
 <div class="container row">
   <div class="one-half column announcements">
-    <h2><a href="{{ '/posts/' | relative_url }}"><em>Announcements</em></a></h2>
+    <h2><a href="{{ '/posts/' | relative_url }}"><em class="offset-text">Announcements</em></a></h2>
     {% for post in site.posts limit: 3 %}
     <article>
       <header>
@@ -107,7 +107,7 @@ layout: default
     <a href="{{ '/posts/' | relative_url }}" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
   </div>
   <div class="one-half column resources">
-    <h2><a href="{{ '/resources/' | relative_url }}"><em>Resources</em></a></h2>
+    <h2><a href="{{ '/resources/' | relative_url }}"><em class="offset-text">Resources</em></a></h2>
 
     {% for resource_id in site.displayed_resources %}
       {% for resource in site.resources %}

@@ -55,6 +55,18 @@
   height: $height;
 }
 
+// IE-antispecific support
+//
+//
+
+@mixin notIE {
+  @at-root {
+    @supports (top: 0) {
+      & { @content; }
+    }
+  }
+}
+
 // Prefix keyframes
 //
 // $name - The name of the keyframe

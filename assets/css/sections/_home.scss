@@ -195,8 +195,6 @@ $schedule-height: 8 * $ex; // 160px
 
     em {
       @include transition;
-
-      margin-left: -$ex05;
     }
 
     a:hover {

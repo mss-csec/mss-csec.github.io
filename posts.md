@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Posts
+title: News & Announcements
 permalink: /posts/
 ---
 {% for post in site.posts %}
