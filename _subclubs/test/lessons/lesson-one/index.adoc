@@ -23,3 +23,11 @@ int main() {
 }
 {% endhighlight %}
 ++++
+
+\(What about LaTeX?\)
+
+\[What about LaTeX?\]
+
+\(\cancel{abc}\)
+
+\(\overline{\LaTeX}\)

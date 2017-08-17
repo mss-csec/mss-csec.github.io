@@ -266,7 +266,7 @@ APP.onload = () ->
     mjSRI = 'sha384-Ra6zh6uYMmH5ydwCqqMoykyf1T/+ZcnOQfFPhDrp2kI4OIxadnhsvvA2vv9A7xYv'
 
     script = document.createElement 'script'
-    script.src = "#{mjSrc}"
+    script.src = mjSrc
     script.integrity = mjSRI
     script.crossOrigin = 'anonymous'
     document.querySelector('head').appendChild script
@@ -274,6 +274,16 @@ APP.onload = () ->
   $('script[type="math/tex"]').replaceWith __renderKatex false
 
   $('script[type="math/tex; mode=display"]').replaceWith __renderKatex true
+
+  window.renderMathInElement document.body,
+    delimiters: [
+      { left: "\\[", right: "\\]", display: true }
+      { left: "\\(", right: "\\)", display: false }
+    ]
+    throwOnError: true
+    errorCallback: () ->
+      console.log 'KaTeX rendering failed! Loading MathJax'
+      __useMathJax()
 
   if __katexFail
     console.log 'KaTeX rendering failed! Loading MathJax'
