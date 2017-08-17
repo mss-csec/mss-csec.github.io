@@ -248,6 +248,51 @@ APP.onload = () ->
   # Unhide body
   $('body').prop 'hidden', false
 
+  # KaTeX rendering
+  __katexFail = false
+  __renderKatex = (isDisplay) ->
+    () ->
+      try
+        katex.renderToString $(this).text().replace(/%.*/g, ''),
+          throwOnError: false # for now
+          displayMode: isDisplay
+      catch e
+        # Set up loading MathJax
+        __katexFail = true
+        $(this)
+
+
+  $('script[type="math/tex"]').replaceWith __renderKatex false
+
+  $('script[type="math/tex; mode=display"]').replaceWith __renderKatex true
+
+  if __katexFail
+    console.log 'KaTeX rendering failed! Loading MathJax'
+
+    head = document.querySelector 'head'
+    mjSrc = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'
+    mjSRI = 'sha384-Ra6zh6uYMmH5ydwCqqMoykyf1T/+ZcnOQfFPhDrp2kI4OIxadnhsvvA2vv9A7xYv'
+    mjConfig = 'TeX-AMS_CHTML'
+
+    head.insertAdjacentHTML 'beforeend', "
+    <script type='text/x-mathjax-config'>
+      MathJax.Hub.Config({
+        extensions: [
+          'TeX/AMSmath.js',
+          'TeX/AMSsymbols.js',
+          'TeX/cancel.js',
+          'TeX/color.js'
+        ],
+        jax: ['input/TeX', 'output/CommonHTML']
+      });
+    </script>"
+
+    script = document.createElement 'script'
+    script.src = "#{mjSrc}?=config=#{mjConfig}"
+    script.integrity = mjSRI
+    script.crossOrigin = 'anonymous'
+    head.appendChild script
+
 window.APP = APP
 window.UTILS = UTILS
 

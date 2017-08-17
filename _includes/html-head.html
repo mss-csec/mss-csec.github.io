@@ -4,6 +4,8 @@
 
   <!-- BEGIN CSS -->
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.1/katex.min.css" integrity="sha384-BDqcjN11/6D69oC63ObubLHNvQR2fNjin6+AzxA3xalB0swTj17TxVV1tL1Q5Png" crossorigin="anonymous">
 <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
   <link href="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}">
@@ -36,7 +38,13 @@
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+
+  {% if page.layout == 'home' or page.layout == 'lesson' or page.layout == 'landing' or page.layout == 'page' or page.layout == 'post' or page.layout == 'resource' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.1/katex.min.js" integrity="sha384-sKYm5us3z9/bRQA+cc3gPzqwI5RVgL8vJQx1lpBudr9IzHOR8fnFUH68dz1GsTQw" crossorigin="anonymous" defer></script>
+  {% endif %}
+
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 
   {% if page.addons.scripts %}
