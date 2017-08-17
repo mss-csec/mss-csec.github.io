@@ -1,0 +1,6 @@
+// Misc.
+
+// Highlight MathJax equation refs, when targeted
+.MJXc-display :target {
+  outline: 2px solid red;
+}

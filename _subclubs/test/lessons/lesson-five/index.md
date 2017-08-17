@@ -35,8 +35,8 @@ $$1 + 1 = 2$$
 
 $$
 \begin{aligned}
-1 + 1 &= (+) 1 1 \\
-&= \left((+) 1\right) 1 \\
+1 + 1 &= (+)\;1\;1 \\
+&= \left((+)\;1\right)\;1 \\
 &= 2
 \end{aligned}
 $$
@@ -54,6 +54,9 @@ $$
 
 $$
 \begin{equation}
+\label{eq:myself}
 \textcolor{blue}{me}
 \end{equation}
 $$
+
+According to $$\eqref{eq:myself}$$, I am me.

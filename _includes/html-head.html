@@ -48,11 +48,52 @@
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 
   {% if page.addons.scripts %}
-    {% for script in page.scripts %}
+    {% for script in page.addons.scripts %}
   <script src="{{ script }}" defer></script>
     {% endfor %}
   {% endif %}
+
+  <!-- BEGIN MATHJAX -->
+  <script type='text/x-mathjax-config'>
+    MathJax.Hub.Config({
+      extensions: [
+        'TeX/AMSmath.js',
+        'TeX/AMSsymbols.js',
+        'TeX/cancel.js',
+        'TeX/color.js'
+        {% if page.addons.mathjax.extensions %}
+          {% for ext in page.addons.mathjax.extensions %}
+        ,'{{ ext }}'
+          {% endfor %}
+        {% endif %}
+      ],
+      jax: [
+        'input/TeX',
+        'output/CommonHTML'
+        {% if page.addons.mathjax.jax %}
+          {% for jax in page.addons.mathjax.jax %}
+        ,'{{ jax }}'
+          {% endfor %}
+        {% endif %}
+      ],
+      TeX: {
+        equationNumbers: {
+          autoNumber: 'AMS'
+        }
+      }
+      {% if page.addons.mathjax.core %}
+        {% for entry in page.addons.mathjax.core %}
+      , {{ entry[0] }}: {{ entry[1] | jsonify }}
+        {% endfor %}
+      {% endif %}
+    });
+  </script>
+  <!-- END MATHJAX -->
   <!-- END JS -->
 
-  <noscript><style>body[hidden]{display:block;}</style></noscript>
+  <noscript><style>
+  body[hidden]{display:block;}
+  script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
+  script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
+  </style></noscript>
 </head>
