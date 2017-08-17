@@ -66,6 +66,8 @@ APP.loadSubclubSchedule = (data) ->
     date: dateNextUp
 
 # Loads a schedule from a URL
+#
+# @private
 __loadSubclubScheduleFromUrl = (url) ->
   $.ajax url: url
   .then (resp) ->
@@ -140,20 +142,34 @@ APP.renderSubclubSchedule = ($el, data) ->
 
   true
 
-__openSidebar = ($sidebar, $target) ->
+# Opens a given sidebar
+#
+# $sidebar: The sidebar to open
+#
+# @private
+__openSidebar = ($sidebar) ->
   $sidebar.removeClass 'closed'
-  $target.removeClass 'closed'
+  $sidebar.find('.collapse-el').removeClass 'closed'
     .attr 'title', 'Collapse sidebar'
     .html '&laquo;'
   UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '0'
 
-__collapseSidebar = ($sidebar, $target) ->
+# Collapses a given sidebar
+#
+# $sidebar: The sidebar to collapse
+#
+# @private
+__collapseSidebar = ($sidebar) ->
   $sidebar.addClass 'closed'
-  $target.addClass 'closed'
+  $sidebar.find('.collapse-el').addClass 'closed'
     .attr 'title', 'Open sidebar'
     .html '&raquo;'
   UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '1'
 
+# Toggles the sidebar that is the ancestor of the element this function is
+# bound to
+#
+# e: The event object passed to this handler
 APP.toggleSidebar = (e) ->
   e.preventDefault()
 
@@ -164,18 +180,21 @@ APP.toggleSidebar = (e) ->
 
   if isClosed
     # Open sidebar
-    __openSidebar $sidebar, $target
+    __openSidebar $sidebar
     $mainContent.removeClass 'twelve'
       .addClass 'nine'
   else
     # Collapse sidebar
-    __collapseSidebar $sidebar, $target
+    __collapseSidebar $sidebar
     $mainContent.removeClass 'nine'
       .addClass 'twelve'
 
   true
 
-APP.changeTheme = (theme = Cookies.get(CONSTS.cookieTheme)) ->
+# Changes the sitewide theme
+#
+# theme: A string, either 'light' or 'dark', corresponding to the desired theme
+APP.changeTheme = (theme) ->
   $t = $('.toggled-theme');
   $t.each () ->
     $e = $(this)
@@ -193,26 +212,25 @@ APP.changeTheme = (theme = Cookies.get(CONSTS.cookieTheme)) ->
     else
       $('body').removeClass 'theme-dark'
 
-APP.toggleDarkTheme = () ->
-  theme = Cookies.get CONSTS.cookieTheme
-
-  if theme == 'dark'
-    Cookies.set CONSTS.cookieTheme, 'light'
-    APP.changeTheme 'light'
-  else
-    Cookies.set CONSTS.cookieTheme, 'dark'
-    APP.changeTheme 'dark'
-
 APP.onload = () ->
-  console.log "Testing Coffeescript"
+  console.log "Loaded on #{(new Date()).toLocaleString()}"
 
   # Parse theme changes
   if 'dark' == Cookies.get CONSTS.cookieTheme
-    APP.changeTheme()
+    APP.changeTheme 'dark'
     $('#toggle-dark-theme').prop 'checked', true
 
   # Add event handlers
-  $('#toggle-dark-theme').on 'change', APP.toggleDarkTheme
+  $('#toggle-dark-theme').on 'change', () ->
+    theme = Cookies.get CONSTS.cookieTheme
+
+    if theme == 'dark'
+      Cookies.set CONSTS.cookieTheme, 'light'
+      APP.changeTheme 'light'
+    else
+      Cookies.set CONSTS.cookieTheme, 'dark'
+      APP.changeTheme 'dark'
+
   $('.announcement-sticky').on 'click', 'a', (e) ->
     sticky = $(this).closest '.announcement-sticky'
 
@@ -241,9 +259,9 @@ APP.onload = () ->
   $('.collapse-el.closed').html '&raquo;'
 
   if '1' == Cookies.get CONSTS.cookieCollapseSidebar
-    $sidebar = $('.sidebar-collapsible')
-    $target = $sidebar.find '.collapse-el'
-    __collapseSidebar $sidebar, $target
+    __collapseSidebar $('.sidebar-collapsible')
+    $('#main-content').removeClass 'nine'
+      .addClass 'twelve'
 
   # Unhide body
   $('body').prop 'hidden', false

@@ -6,11 +6,13 @@
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.css" integrity="sha384-XFgyVzCwumZgSg6F85gbh6ev/BVWgP7QAb1V3GOchWQPifusZTU0ODnQsysBK61F" crossorigin="anonymous">
-<!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
+
+  {% assign layout = page.layout %}
+  {% assign ext = page.path | split: '.' | last %}
 
   <link href="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}">
 
-  {% if page.layout == 'lesson' %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}
   <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
@@ -18,10 +20,10 @@
 
   <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/pygments-manni.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/pygments-native.css' | relative_url }}?v={{ site.build_version }}">
 
-  {% if page.layout == 'home' or page.layout == 'subclub-landing' %}
+  {% if layout == 'home' or layout == 'subclub-landing' %}
   <link href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
-  {% if page.layout == 'lesson' or page.layout == 'landing' or page.layout == 'post' %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}
   <link href="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
