@@ -7,18 +7,22 @@
 
   <!-- BEGIN CSS -->
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
-<!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"> -->
 
-  <link href="/assets/lib/skeleton.css?v=f179517" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=f179517" data-alt-dark="/assets/lib/skeleton-dark.css?v=f179517">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.css" integrity="sha384-XFgyVzCwumZgSg6F85gbh6ev/BVWgP7QAb1V3GOchWQPifusZTU0ODnQsysBK61F" crossorigin="anonymous">
+
+  
+  
+
+  <link href="/assets/lib/skeleton.css?v=e05841e" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=e05841e" data-alt-dark="/assets/lib/skeleton-dark.css?v=e05841e">
 
   
 
-  <link href="/assets/css/main.css?v=f179517" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=f179517" data-alt-dark="/assets/css/main-dark.css?v=f179517">
+  <link href="/assets/css/main.css?v=e05841e" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=e05841e" data-alt-dark="/assets/css/main-dark.css?v=e05841e">
 
-  <link href="/assets/lib/pygments-manni.css?v=f179517" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=f179517" data-alt-dark="/assets/lib/pygments-native.css?v=f179517">
+  <link href="/assets/lib/pygments-manni.css?v=e05841e" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=e05841e" data-alt-dark="/assets/lib/pygments-native.css?v=e05841e">
 
   
-  <link href="/assets/css/home.css?v=f179517" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/home.css?v=f179517" data-alt-dark="/assets/css/home-dark.css?v=f179517">
+  <link href="/assets/css/home.css?v=e05841e" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/home.css?v=e05841e" data-alt-dark="/assets/css/home-dark.css?v=e05841e">
   
   
 
@@ -43,18 +47,61 @@
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.js" integrity="sha384-RpxfKy6OA0Us+WtIGBbrVlfwW4HuETdB9CD8KbG6qSbYbCanfnyid62sojNvydoB" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
+
   <script src="/assets/js/main.js" defer></script>
 
   
+
+  <!-- BEGIN MATHJAX -->
+  <script type='text/x-mathjax-config'>
+    MathJax.Hub.Config({
+      extensions: [
+        'tex2jax.js',
+        'TeX/AMSmath.js',
+        'TeX/AMSsymbols.js',
+        'TeX/cancel.js',
+        'TeX/color.js'
+        
+      ],
+      jax: [
+        'input/TeX',
+        'output/CommonHTML'
+        
+      ],
+      TeX: {
+        equationNumbers: {
+          autoNumber: 'AMS'
+        }
+      },
+      tex2jax: {
+        balanceBraces: false,
+        processEnvironments: false,
+        processRefs: false
+        
+      }
+      
+    });
+  </script>
+  <!-- END MATHJAX -->
   <!-- END JS -->
 
-  <noscript><style>body[hidden]{display:block;}</style></noscript>
+  <noscript><style>
+  body[hidden]{display:block;}
+  script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
+  script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
+  </style></noscript>
 </head>
 
 <body hidden>
   <!-- header -->
-  <header class="site-header">
+  
+
+<header class="site-header">
   <div class="container">
     <a class="logo main-logo" aria-label="{csec}" href="/">
       <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -117,11 +164,11 @@
       </div>
 
       <div class="options">
-        <div class="icon">
+        <a class="icon" tabindex="0">
           <span class="circle"></span>
           <span class="circle"></span>
           <span class="circle"></span>
-        </div>
+        </a>
         <div class="content">
           <label>
             <input type="checkbox" id="toggle-dark-theme">
@@ -264,28 +311,82 @@
   </div>
 </div>
 
-<div class="container">
-  <p>Hello, person! We see you discovered our top-secret website-in-construction.</p>
+<div class="container row">
+  <div class="one-half column announcements">
+    <h2><a href="/posts/"><em class="offset-text">Announcements</em></a></h2>
+    
+    <article>
+      <header>
+        <h3><a href="/announcements/2017/06/welcome-to-jekyll/">Welcome to this site!</a></h3>
+        <h6>Posted on <time datetime="2017-06-27T21:29:26-0400">June 27, 2017</time></h6>
+      </header>
+      <p>Hello, person! We see you discovered our top-secret website-in-construction.
+Unfortunately, we have no content to offer but the fact that we’ll probably be back in September with a swanking new website to suit all of your MSS CSEC needs.
+Until then, have a great summer!
 
-  <p>Unfortunately, we have no content to offer but the fact that we'll probably be back in September with a swanking new website to suit all of your MSS CSEC needs. Until then, have a great summer!</p>
+</p>
+    </article>
+    
+    <a href="/posts/" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+  </div>
+  <div class="one-half column resources">
+    <h2><a href="/resources/"><em class="offset-text">Resources</em></a></h2>
+
+    
+      
+        
+      
+        
+      
+        
+    <article>
+      <header>
+        <h3><a href="/resources/guides/installing-codeblocks/">Installing CodeBlocks</a></h3>
+      </header>
+      <p>Find out how to install and use Codeblocks on Windows, Linux, or macOS.</p>
+
+    </article>
+          
+    
+      
+        
+      
+        
+      
+        
+      
+        
+    <article>
+      <header>
+        <h3><a href="/resources/guides/using-codeblocks-on-school-computers/">Using CodeBlocks on school computers</a></h3>
+      </header>
+      <p>Learn how to Build and Run with CodeBlocks on the school computers. <strong>Requires a USB drive.</strong></p>
+
+    </article>
+          
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+    <article>
+      <header>
+        <h3><a href="/resources/guides/using-the-ccc-grader/">Using the CCC grader</a></h3>
+      </header>
+      <p>Navigate the UX disaster that is UWaterloo software with this guide. <strong>Note:</strong> Will not guarantee you a perfect score on the CCC.</p>
+
+    </article>
+          
+    
+    <a href="/resources/" class="view-all">View all resources<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+  </div>
 </div>
-
-<div class="container">
-  <pre><code>It is currently <span id="time">time to enable JavaScript, you dimwit</span>. <span id="message"></span></code></pre>
-</div>
-
-<script>
-document.getElementById('time').textContent = (new Date()).toLocaleString();
-
-var h = (new Date()).getHours(), msg = "";
-
-if (23 <= h || h <= 1) msg = "Go to sleep, you moron."
-if (2 <= h && h <= 7) msg = "I'm telling your parents you're still awake."
-if (8 <= h && h <= 10) msg = "Rise and shine, walnut-head."
-if (11 <= h && h <= 22) msg = "I hope you enjoy trying to be productive and utterly failing at it."
-
-document.getElementById('message').textContent = msg
-</script>
 
   </main>
   <!-- footer -->
@@ -300,7 +401,7 @@ document.getElementById('message').textContent = msg
       <div class="three columns"></div>
       <div class="three columns"></div>
       <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f179517992b26e1c6589e8bb5b0a377a63dfd533">f179517</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/e05841eddb1315aefa2fce7737b66b7301037562">e05841e</a></p>
       </div>
     </div>
   </div>

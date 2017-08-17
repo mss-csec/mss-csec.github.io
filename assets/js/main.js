@@ -11,7 +11,9 @@ Main coffeescript file
   UTILS = {};
 
   CONSTS = {
+    animDuration: 230,
     cookieCollapseSidebar: 'collapseSidebar',
+    cookieStickyPrefix: 'sticky-',
     cookieTheme: 'theme'
   };
 
@@ -21,6 +23,15 @@ Main coffeescript file
 
   UTILS.reverseIntSort = function(a, b) {
     return b - a;
+  };
+
+  UTILS.spaceship = function(a, b) {
+    var ref, ref1;
+    return (ref = a < b) != null ? ref : -{
+      1: (ref1 = a > b) != null ? ref1 : {
+        1: 0
+      }
+    };
   };
 
   UTILS.setIndefiniteCookie = function(key, value) {
@@ -147,15 +158,15 @@ Main coffeescript file
     return true;
   };
 
-  __openSidebar = function($sidebar, $target) {
+  __openSidebar = function($sidebar) {
     $sidebar.removeClass('closed');
-    $target.removeClass('closed').attr('title', 'Collapse sidebar').html('&laquo;');
+    $sidebar.find('.collapse-el').removeClass('closed').attr('title', 'Collapse sidebar').html('&laquo;');
     return UTILS.setIndefiniteCookie(CONSTS.cookieCollapseSidebar, '0');
   };
 
-  __collapseSidebar = function($sidebar, $target) {
+  __collapseSidebar = function($sidebar) {
     $sidebar.addClass('closed');
-    $target.addClass('closed').attr('title', 'Open sidebar').html('&raquo;');
+    $sidebar.find('.collapse-el').addClass('closed').attr('title', 'Open sidebar').html('&raquo;');
     return UTILS.setIndefiniteCookie(CONSTS.cookieCollapseSidebar, '1');
   };
 
@@ -167,10 +178,10 @@ Main coffeescript file
     $mainContent = $('#main-content');
     isClosed = $target.hasClass('closed');
     if (isClosed) {
-      __openSidebar($sidebar, $target);
+      __openSidebar($sidebar);
       $mainContent.removeClass('twelve').addClass('nine');
     } else {
-      __collapseSidebar($sidebar, $target);
+      __collapseSidebar($sidebar);
       $mainContent.removeClass('nine').addClass('twelve');
     }
     return true;
@@ -178,9 +189,6 @@ Main coffeescript file
 
   APP.changeTheme = function(theme) {
     var $t;
-    if (theme == null) {
-      theme = Cookies.get(CONSTS.cookieTheme);
-    }
     $t = $('.toggled-theme');
     return $t.each(function() {
       var $e, altKey, altProp, newKey, newVal, oldVal;
@@ -200,34 +208,99 @@ Main coffeescript file
     });
   };
 
-  APP.toggleDarkTheme = function() {
-    var theme;
-    theme = Cookies.get(CONSTS.cookieTheme);
-    if (theme === 'dark') {
-      Cookies.set(CONSTS.cookieTheme, 'light');
-      return APP.changeTheme('light');
-    } else {
-      Cookies.set(CONSTS.cookieTheme, 'dark');
-      return APP.changeTheme('dark');
-    }
-  };
-
   APP.onload = function() {
-    var $sidebar, $target;
-    console.log("Testing Coffeescript");
+    var __DOMRemoveSticky, __katexFail, __renderKatex, __useMathJax;
+    console.log("Loaded on " + ((new Date()).toLocaleString()));
     if ('dark' === Cookies.get(CONSTS.cookieTheme)) {
-      APP.changeTheme();
+      APP.changeTheme('dark');
       $('#toggle-dark-theme').prop('checked', true);
     }
-    $('body').prop('hidden', false);
+    $('#toggle-dark-theme').on('change', function() {
+      var theme;
+      theme = Cookies.get(CONSTS.cookieTheme);
+      if (theme === 'dark') {
+        Cookies.set(CONSTS.cookieTheme, 'light');
+        return APP.changeTheme('light');
+      } else {
+        Cookies.set(CONSTS.cookieTheme, 'dark');
+        return APP.changeTheme('dark');
+      }
+    });
+    $('.announcement-sticky').on('click', 'a', function(e) {
+      var sticky;
+      sticky = $(this).closest('.announcement-sticky');
+      e.preventDefault();
+      sticky.fadeOut(2 * CONSTS.animDuration, function() {
+        return $(this).remove();
+      });
+      Cookies.set("" + CONSTS.cookieStickyPrefix + (sticky.data('id')), '1');
+      if ($(this).attr('href') !== '#') {
+        return window.location = $(this).attr('href');
+      }
+    });
+    __DOMRemoveSticky = function() {
+      var sticky;
+      sticky = $('.announcement-sticky');
+      if (Cookies.get("" + CONSTS.cookieStickyPrefix + (sticky.data('id'))) === '1' || (sticky.length && (new Date()).getTime() > (new Date(sticky.data('displayUntil'))).getTime())) {
+        return sticky.remove();
+      }
+    };
+    __DOMRemoveSticky();
     $('.collapse-el').html('&laquo;');
     $('.collapse-el.closed').html('&raquo;');
     if ('1' === Cookies.get(CONSTS.cookieCollapseSidebar)) {
-      $sidebar = $('.sidebar-collapsible');
-      $target = $sidebar.find('.collapse-el');
-      __collapseSidebar($sidebar, $target);
+      __collapseSidebar($('.sidebar-collapsible'));
+      $('#main-content').removeClass('nine').addClass('twelve');
     }
-    return $('#toggle-dark-theme').bind('change', APP.toggleDarkTheme);
+    $('body').prop('hidden', false);
+    __katexFail = false;
+    __renderKatex = function(isDisplay) {
+      return function() {
+        try {
+          return katex.renderToString($(this).text().replace(/%.*/g, ''), {
+            throwOnError: true,
+            displayMode: isDisplay
+          });
+        } catch (error) {
+          __katexFail = true;
+          return $(this);
+        }
+      };
+    };
+    __useMathJax = function() {
+      var mjSRI, mjSrc, script;
+      mjSrc = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js';
+      mjSRI = 'sha384-Ra6zh6uYMmH5ydwCqqMoykyf1T/+ZcnOQfFPhDrp2kI4OIxadnhsvvA2vv9A7xYv';
+      script = document.createElement('script');
+      script.src = mjSrc;
+      script.integrity = mjSRI;
+      script.crossOrigin = 'anonymous';
+      return document.querySelector('head').appendChild(script);
+    };
+    $('script[type="math/tex"]').replaceWith(__renderKatex(false));
+    $('script[type="math/tex; mode=display"]').replaceWith(__renderKatex(true));
+    window.renderMathInElement(document.body, {
+      delimiters: [
+        {
+          left: "\\[",
+          right: "\\]",
+          display: true
+        }, {
+          left: "\\(",
+          right: "\\)",
+          display: false
+        }
+      ],
+      throwOnError: true,
+      errorCallback: function() {
+        console.log('KaTeX rendering failed! Loading MathJax');
+        return __useMathJax();
+      }
+    });
+    if (__katexFail) {
+      console.log('KaTeX rendering failed! Loading MathJax');
+      return __useMathJax();
+    }
   };
 
   window.APP = APP;
