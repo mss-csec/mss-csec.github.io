@@ -44,7 +44,7 @@ for lesson_path in `ls -d _subclubs/**/lessons/*`; do
     rm -r "_lessons/$subclub/$title"
   fi
 
-  if [[ ! "$title" =~ ^_.* ]] && [ ! -z `ls "$lesson_path"` ]; then
+  if [[ ! "$title" =~ ^_.* ]] && [[ ! -z `ls "$lesson_path"` ]]; then
     echo "Making \`_lessons/$subclub/$title/' directory"
     mkdir "_lessons/$subclub/$title"
 
