@@ -1,3 +1,6 @@
 [submodule "_subclubs/web-development"]
 	path = _subclubs/web-development
 	url = https://github.com/mss-csec/web-development-subclub
+[submodule "_subclubs/beginners"]
+	path = _subclubs/beginners
+	url = https://github.com/mss-csec/beginners-subclub.git
