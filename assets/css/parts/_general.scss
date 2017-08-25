@@ -143,6 +143,12 @@ a {
   }
 }
 
+@if ($dark) {
+  img {
+    background-color: $fg-primary;
+  }
+}
+
 .disabled {
   opacity: 0.5;
 }

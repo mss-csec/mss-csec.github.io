@@ -47,7 +47,9 @@ kramdown:
 asciidoc:
   ext: adoc
 
-asciidoctor: {}
+asciidoctor:
+  attributes:
+    cpp: "C++"
 
 #theme: minima
 

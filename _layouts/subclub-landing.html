@@ -20,7 +20,7 @@ layout: default
     {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
     {% assign subclub_schedule = subclub_index.schedule %}
     {% assign subclub_title = subclub_index.title %}
-    {% assign subclub = subclub_title | slugify %}
+    {% assign subclub = subclub_obj.name %}
     {% assign subclub_url = subclub_index.url | split: '/' | pop | join: '/' | uri_escape %}
   <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
     <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>

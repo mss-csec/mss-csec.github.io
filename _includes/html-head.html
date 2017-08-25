@@ -12,7 +12,7 @@
 
   <link href="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}">
 
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
   <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
