@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<!-- head -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BEGIN CSS -->
+  <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.css" integrity="sha384-XFgyVzCwumZgSg6F85gbh6ev/BVWgP7QAb1V3GOchWQPifusZTU0ODnQsysBK61F" crossorigin="anonymous">
+
+  
+  
+
+  <link href="/assets/lib/skeleton.css?v=0783fd0" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=0783fd0" data-alt-dark="/assets/lib/skeleton-dark.css?v=0783fd0">
+
+  
+  <link href="/assets/lib/lesson-default.css?v=0783fd0" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=0783fd0" data-alt-dark="/assets/lib/lesson-default-dark.css?v=0783fd0">
+  
+
+  <link href="/assets/css/main.css?v=0783fd0" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=0783fd0" data-alt-dark="/assets/css/main-dark.css?v=0783fd0">
+
+  <link href="/assets/lib/pygments-manni.css?v=0783fd0" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=0783fd0" data-alt-dark="/assets/lib/pygments-native.css?v=0783fd0">
+
+  
+  
+  <link href="/assets/css/subclubs.css?v=0783fd0" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=0783fd0" data-alt-dark="/assets/css/subclubs-dark.css?v=0783fd0">
+  
+
+  
+  <!-- END CSS -->
+
+  <title>Loop Structures | MSS CSEC • Markville's Computer Science and Engineering Club
+</title>
+
+  <!-- Begin Jekyll SEO tag v2.2.3 -->
+<meta property="og:title" content="Loop Structures" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Markville’s Computer Science and Engineering Club" />
+<meta property="og:description" content="Markville’s Computer Science and Engineering Club" />
+<link rel="canonical" href="https://mss-csec.github.io/lessons/beginners/loop-structures/index" />
+<meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/loop-structures/index" />
+<meta property="og:site_name" content="MSS CSEC" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-08-25T15:24:41+00:00" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Loop Structures","datePublished":"2017-08-25T15:24:41+00:00","dateModified":"2017-08-25T15:24:41+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/loop-structures/index"},"url":"https://mss-csec.github.io/lessons/beginners/loop-structures/index"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- BEGIN JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.js" integrity="sha384-RpxfKy6OA0Us+WtIGBbrVlfwW4HuETdB9CD8KbG6qSbYbCanfnyid62sojNvydoB" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
+
+  <script src="/assets/js/main.js" defer></script>
+
+  
+
+  <!-- BEGIN MATHJAX -->
+  <script type='text/x-mathjax-config'>
+    MathJax.Hub.Config({
+      extensions: [
+        'tex2jax.js',
+        'TeX/AMSmath.js',
+        'TeX/AMSsymbols.js',
+        'TeX/cancel.js',
+        'TeX/color.js'
+        
+      ],
+      jax: [
+        'input/TeX',
+        'output/CommonHTML'
+        
+      ],
+      TeX: {
+        equationNumbers: {
+          autoNumber: 'AMS'
+        }
+      },
+      tex2jax: {
+        balanceBraces: false,
+        processEnvironments: false,
+        processRefs: false
+        
+      }
+      
+    });
+  </script>
+  <!-- END MATHJAX -->
+  <!-- END JS -->
+
+  <noscript><style>
+  body[hidden]{display:block;}
+  script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
+  script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
+  </style></noscript>
+</head>
+
+<body hidden>
+  <!-- header -->
+  
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo main-logo" aria-label="{csec}" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <defs>
+          <mask id="m"><path d="M12.82 36q-3.06 0-4.96-.6-1.89-.61-2.82-2.14-.89-1.52-.77-4.29l.16-4.02q0-2.54-.89-3.5-.88-1.01-2.73-1.01H0v-2.25h.77q1.9 0 2.82-1.01.93-1.04.93-3.29l-.08-2.9Q4.44 4 11.78 4h2.54v2.29h-3.3q-3.75 0-3.75 4.26l.08 2.82q0 4.42-3.51 5.95 3.43 1.13 3.43 6.23l-.12 3.38q0 2.7 1.17 3.74 1.17 1.09 3.91 1.09h2.06V36zm16.7-5.95q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zm18.8-.04q-4.68 0-7.82-2.9l1.62-2.74.24-.36.24.16q0 .08.04.36.08.28.24.56.16.28.44.56.93.93 2.1 1.45 1.21.48 2.98.48 2.18 0 3.43-.76 1.25-.81 1.25-2.17 0-1.17-1.01-1.93t-3.63-1.61q-6.94-1.97-6.94-5.71 0-2.13 1.74-3.38 1.78-1.25 5.04-1.25 2.5 0 4.19.72 1.74.68 3.14 2.17l-1.66 2.01-.28.32-.2-.2q-.04-.44-.2-.72-.12-.28-.57-.64-.93-.72-2.1-1.09-1.13-.4-2.26-.4-1.74 0-2.86.6-1.09.6-1.09 1.69 0 1.01 1.13 1.85 1.13.85 4.07 1.69 3.47 1.05 4.88 2.29 1.46 1.21 1.46 3.18 0 2.5-1.98 4.14-1.94 1.61-5.65 1.61zm21.02 0q-4.11 0-6.58-2.5-2.42-2.5-2.42-7.03 0-3.02 1.13-5.18 1.13-2.21 3.02-3.34 1.94-1.17 4.31-1.17 3.34 0 5.41 2.21 2.1 2.21 2.1 6.51 0 .44-.08 1.33h-13.1q.16 3.38 1.9 5.1 1.74 1.73 4.4 1.73 2.9 0 4.76-2.05l1.62 1.57q-2.34 2.82-6.46 2.82zm4.03-11.42q0-2.58-1.33-4.06Q70.75 13 68.61 13q-2.02 0-3.51 1.41-1.5 1.41-1.86 4.18zm16.66 11.46q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zM100.92 36v-2.25h2.06q2.74 0 3.91-1.09 1.17-1.05 1.17-3.74l-.12-3.38q0-5.1 3.43-6.23-3.51-1.53-3.51-5.95l.08-2.82q0-4.26-3.75-4.26h-3.31V4h2.54q7.34 0 7.34 6.99l-.08 2.9q0 2.25.93 3.3.93 1.01 2.82 1.01h.76v2.25h-.81q-1.86 0-2.74 1.01-.89.97-.89 3.5l.16 4.02q.12 2.78-.81 4.3-.89 1.53-2.78 2.13-1.9.6-4.96.6z" fill="#fff" /></mask>
+        <!-- Give each of the six letters a unique colour -->
+        <!-- <linearGradient id="grad">
+          <stop offset="0%" stop-color="#f52f2f" />
+          <stop offset="17%" stop-color="#f52f2f" />
+          <stop offset="17%" stop-color="orange" />
+          <stop offset="33%" stop-color="orange" />
+          <stop offset="33%" stop-color="gold" />
+          <stop offset="50%" stop-color="gold" />
+          <stop offset="50%" stop-color="green" />
+          <stop offset="67%" stop-color="green" />
+          <stop offset="67%" stop-color="blue" />
+          <stop offset="83%" stop-color="blue" />
+          <stop offset="83%" stop-color="purple" />
+          <stop offset="100%" stop-color="purple" />
+        </linearGradient> -->
+        </defs>
+        <rect class="main-logo-background" width="144" height="40" mask="url(#m)" fill="#f52f2f"></rect>
+      </svg>
+      <img class="svg-fallback" src="/assets/images/logo.png" style="display:none">
+    </a>
+
+    <input type="checkbox" class="responsive-menu-toggler" id="toggle-menu">
+    <label for="toggle-menu"><a ontouchstart="">menu</a></label>
+    <div class="responsive-menu-items">
+      <div class="menu">
+        <a class="menu-header" href="/subclubs/">Subclubs</a>
+
+        <dl class="menu-items">
+          
+          
+            
+            
+          <dt><a href="/subclubs/beginners/">Beginners</a></dt>
+          
+            
+            
+          <dt><a href="/"></a></dt>
+          
+          
+          <dt class="menu-items-more"><a href="/subclubs/">All subclubs</a></dt>
+          
+        </dl>
+      </div>
+
+      <div class="menu">
+        <a class="menu-header" href="/resources/">Resources</a>
+
+        <dl class="menu-items">
+          <dt class="menu-items-more"><a href="/resources/">All resources</a></dt>
+        </dl>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <div class="options">
+        <a class="icon" tabindex="0">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+        </a>
+        <div class="content">
+          <label>
+            <input type="checkbox" id="toggle-dark-theme">
+            Dark theme
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <div class="hero">
+  <h1 class="title"><em>Loop Structures</em></h1>
+</div>
+<div class="content container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+
+<div class="breadcrumbs">
+  <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/beginners/">Beginners</a> / <strong class="breadcrumbs-current">Loop Structures</strong>
+  <span class="lesson-date">Dated: <time datetime="2017-11-03T00:00:00+0000">November 03, 2017</em></span>
+</div>
+<div class="row">
+  <div class="three columns sidebar-collapsible" id="lesson-listing">
+    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+    <h2>Lessons</h2>
+
+    <div class="lesson-callout" id="lesson-pagination">
+      
+      
+      
+      
+      <h5 class="lesson-state">Previous</h5>
+      <p class="lesson-name lesson-prev">
+        
+        <a class="lesson-link" href="/lessons/beginners/if-structures/">If Structures</a>
+      </p>
+      
+      
+      <h5 class="lesson-state">Next</h5>
+      <p class="lesson-name lesson-next">
+        
+        <a class="lesson-link" href="/lessons/beginners/arrays/">Arrays</a>
+      </p>
+      
+    </div>
+
+    
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/installing-an-ide/" title="September 15, 2017">Installing an IDE</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/the-structure-of-a-c-file/" title="September 22, 2017">The Structure of a C++ File</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/simple-outputs/" title="September 29, 2017">Simple Outputs</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/simple-operators/" title="October 06, 2017">Simple Operators</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/an-introduction-to-variables/" title="October 13, 2017">An Introduction to Variables</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/simple-inputs-and-wcipeg/" title="October 20, 2017">Simple Inputs and WCIPEG</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/if-structures/" title="October 27, 2017">If Structures</a>
+</p>
+      
+<p class="lesson-name lesson-cur">
+  <a class="lesson-link" href="/lessons/beginners/loop-structures/" title="November 03, 2017">Loop Structures</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/arrays/" title="November 17, 2017">Arrays</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/multidimensional-arrays/" title="November 24, 2017">Multidimensional Arrays</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/strings/" title="December 01, 2017">Strings</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/other-containers/" title="December 08, 2017">Other Containers</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/functions/" title="December 15, 2017">Functions</a>
+</p>
+      
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/beginners/structures/" title="December 22, 2017">Structures</a>
+</p>
+      
+  </div>
+  <div class="nine columns" id="main-content">
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Goal: To be able to implement While and For loops into code</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A loop is a mean of control flow where certain commands are repeated
+multiple times. They are used whenever similar actions are performed
+numerous times. The number of times and when to stop repeating can be
+controlled and can differ based on the values of variables.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="while-loops">While Loops</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The while loop is the most basic type of loop structure in C++. They are
+formatted as follows:</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// commands to loop if condition is true
+</span><span class="p">}</span></code></pre></figure>
+<div class="paragraph right text-center">
+<p><span class="image"><img src="media/image2.png" alt="flowchart of a while loop" width="165" height="209"></span></p>
+</div>
+<div class="paragraph">
+<p>Once the program enters a while loop, it will check the condition stated
+in parenthesis. <strong>If the condition results to true, then everything in
+the braces will be executed.</strong> Once everything in the braces is executed,
+the program will move back to the beginning of the loop structure and
+check whether the condition still results to true or not. If the
+condition still results true, then the whole looping process repeats. If
+the condition results false, then the program will move down to any
+commands after the while loop.</p>
+</div>
+<div class="paragraph">
+<p>As long as the condition in parenthesis remains true, <strong>the program will
+endlessly loop inside of the while loop.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Sample Code:</strong></p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// if condition returns false, go to line 10
+</span>    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// checks if the counter is below 3
+</span>        <span class="n">counter</span><span class="o">++</span><span class="p">;</span>          <span class="c1">// adds one to the counter
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>                       <span class="c1">// after looping, it goes back to line 6
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"End"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p>In the previous example, a counter variable was initialized and the
+program will continue to loop and increase the counter by 1 when the
+counter is less than 3. Once the condition results false, it moves out
+of the while loop to the remaining code on Line 10.</p>
+</div>
+<div class="paragraph">
+<p>Apart from having the condition at the beginning of a while loop, a
+command known as <strong>break</strong> tells the program to immediately exit the
+current loop it is in. Break can be combined with an if statement so
+that the program can leave the loop if the condition in the if statement
+is met.</p>
+</div>
+<div class="paragraph">
+<p>The following code will have the same outputs as the code above:</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>         <span class="c1">// initializes counter variable
+</span>    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>           <span class="c1">// condition will always return true
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// exit condition
+</span>            <span class="k">break</span><span class="p">;</span>           <span class="c1">// goes immediately to line 13
+</span>        <span class="p">}</span>
+        <span class="n">counter</span><span class="o">++</span><span class="p">;</span>           <span class="c1">// adds one to the counter
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>                        <span class="c1">// goes back to line 6
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"End"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+</div>
+</div>
+<div class="sect1">
+<h2 id="for-loops">For Loops</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the examples above, a counter variable was manually made in order to
+use the while loop. Typically, while loops are not used when the program
+loops a known number of times. For loops are also known as <strong>counted
+loops</strong> because it is <strong>made to have a counter variable.</strong> The format of
+the for loop resembles the following.</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">counterVariable</span><span class="p">;</span> <span class="n">condition</span><span class="p">;</span> <span class="n">changetoCounter</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// commands while condition above is true
+</span><span class="p">}</span></code></pre></figure>
+<div class="paragraph">
+<p>The section in parentheses are divided into three groups</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The first part initializes the counter variable to be used for the
+entire loop structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Variable names for counters are often <code>i</code> or <code>j</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The second part is the condition that usually includes the counter
+variable.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the condition results true, the program goes through the for loop</p>
+</li>
+<li>
+<p>If the condition results false, the program will exit the for loop</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The third part is the changes the counter variable goes through each
+time the program loops</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Notice how each section is divided by semicolons.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example Code:</strong></p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// set counter, i, to 3
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// if i &lt;= 0, go to line 9
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>   <span class="c1">// goes back to line 6 and subtracts 1 to i
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"End"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p><strong>Output:</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>3
+2
+1
+End</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On line 6, a counter was created and set to 3 to start off. The program
+continued to loop, and the counter kept decrementing by one until the
+counter was 0, and the condition results false.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="brief-introduction-to-scope">Brief Introduction to Scope</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In C++, scope refers to a specific region in code that are <strong>surrounded
+by braces.</strong> For example, the <strong>main function</strong> is its own scope and it can
+nest smaller scopes if it had loop or if structures in it. Braces act as
+<strong>barriers</strong> for variables. Chapter 8 warned how a variable cannot be
+initialized in an if structure and used outside of the if structure.
+This is because any initialized variable cannot be used outside of the
+scope it was initialized in.</p>
+</div>
+<div class="paragraph">
+<p>When a variable is initialized in a smaller scope (Ex: a loop), a place
+in memory is made and no other variable can be created with the same
+name as that variable. That variable is able to be accessed within
+smaller scopes and can be used any time so long as the program is still
+at the scope the variable was initialized in. When the program leaves
+that scope (Ex: when it leaves a loop), <strong>all variables initialized
+inside that scope are destroyed</strong> and space in the memory is freed. This
+means that a variable initialized in the smaller scope <strong>no longer
+exists</strong>. This also means that <strong>another variable with the exact same name
+can be made</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This is why properly indenting code is important. Indentations show
+where exactly variables are able to be used and when they will be
+destroyed. It also shows how each scope nests within larger scopes. The
+number of indents a command has represents the number of nested scopes
+there are.</p>
+</div>
+<div class="paragraph">
+<p>On the example code on the next page, there are two different instances
+where variable <code>i</code> is initialized. However, since they were not declared
+in the same scope, the <strong>two variables did not co-exist</strong>. Instead, the
+second <code>i</code> variable was initialized when the first <code>i</code> variable was
+already destroyed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Demonstration of Scopes:</strong></p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="c1">// pay attention to all the indents
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// variable declared in the scope of the main fcn
+</span>    <span class="kt">int</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// counter declared in the scope of the for loop
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">var</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// i no longer exists, but var still exists
+</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// i now exists again, since it was reinitialized
+</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">var</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// i no longer exists... again
+</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">var</span><span class="p">;</span>   <span class="c1">// outputs total number of loops
+</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">var</span> <span class="n">does</span> <span class="n">not</span> <span class="n">exist</span> <span class="n">anymore</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p><strong>Output:</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0
+1
+2
+0
+1
+2
+6</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="in-summary">In Summary</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>While loops and for loops are used to have the program repeat the same
+commands multiple times</p>
+</li>
+<li>
+<p>The program will leave the while loop once the condition in the while
+loop results false</p>
+</li>
+<li>
+<p>For loops include a counter variable as well as an if condition</p>
+</li>
+<li>
+<p>A for loop is for counted loops and a while loop is for non-counted
+loops</p>
+</li>
+<li>
+<p>Break can be used on both loops to end the looping procedure</p>
+</li>
+<li>
+<p>Variables cannot be used outside of the scope the variable has been
+initialized in</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contest-questions">Contest Questions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://wcipeg.com/problem/p154ex8"><em>Exact Divisors</em></a></p>
+</li>
+<li>
+<p><a href="http://wcipeg.com/problem/P118EX4"><em>Times Tables</em></a></p>
+</li>
+<li>
+<p><a href="http://wcipeg.com/problem/ccc05j2"><em>RSA Numbers</em></a></p>
+</li>
+<li>
+<p><a href="http://wcipeg.com/problem/mockccc14s2"><em>Sleep Cycle</em></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>More difficult, great question</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="further-reading-on-loops-structures">Further Reading on Loops Structures</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="do-while-loops">Do-While Loops</h3>
+<div class="paragraph">
+<p>Do-while loops are modified while loops. They makes sure that <strong>the
+program runs everything in the loop structure at least once</strong>. The
+condition for looping is checked at the very end of the loop structure
+and not at the beginning. The syntax of the do-while loop is the
+following:</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="k">do</span><span class="p">{</span>
+    <span class="c1">//code to be executed atleast once
+</span><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+</div>
+<div class="sect2">
+<h3 id="extra-information-on-for-loops-and-nested-loops">Extra Information on For Loops and Nested Loops</h3>
+<div class="paragraph">
+<p>Nothing between the parenthesis in a for loop are required for a for
+loop to run. (except the semicolons) The for loop does not need an exit
+condition or a variable initialization. This allows the for loop to be
+more flexible as a counter variable can be initialized and used inside
+and outside of the scope of the for loop.</p>
+</div>
+<div class="paragraph">
+<p>When a loop is found inside of another loop, the inner loop is known as
+a <strong>nested loop</strong>. Nesting loops are commonly used in code. When the
+<strong>break</strong> command is used inside of a nested loop, the program will <strong>exit
+the innermost loop</strong> that it is currently in. That means, the program did
+not exit the larger loop yet and will require a separate break
+statement.</p>
+</div>
+<div class="paragraph">
+<p>An demonstration of how for loops can be used and how nested loops works
+are shown below.</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="c1">// counter variable pre-initialized
+</span>    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;)</span> <span class="p">{</span>
+    <span class="c1">// this for loop can be replaced with a while loop
+</span>    <span class="c1">// since there is not increase nor initialization
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// nests another loop if line 9 results true
+</span>            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// no condition
+</span>                <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">3</span><span class="p">){</span>
+                    <span class="k">break</span><span class="p">;</span>              <span class="c1">//go to line 16
+</span>                <span class="p">}</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">j</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span> <span class="c1">// counters can be modified within the loop
+</span>    <span class="p">}</span>
+    <span class="c1">// variable i can still be used because it was not
+</span>    <span class="c1">// initialized inside of the for loop
+</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p><strong>Output:</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0 0
+0 1
+0 2
+2 0
+2 1
+2 2</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+</div>
+
+</div>
+
+  </main>
+  <!-- footer -->
+  <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="three columns">
+        <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
+          <rect width="116" height="40" mask="url(#m)" fill="#aaa"></rect>
+        </svg>
+      </div>
+      <div class="three columns"></div>
+      <div class="three columns"></div>
+      <div class="offset-by-six three columns">
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/0783fd0eee6b14fb940c9d1797b7d035a9a333de">0783fd0</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
