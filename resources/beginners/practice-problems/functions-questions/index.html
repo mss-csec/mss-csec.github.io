@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<!-- head -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BEGIN CSS -->
+  <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.css" integrity="sha384-XFgyVzCwumZgSg6F85gbh6ev/BVWgP7QAb1V3GOchWQPifusZTU0ODnQsysBK61F" crossorigin="anonymous">
+
+  
+  
+
+  <link href="/assets/lib/skeleton.css?v=c6e7898" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=c6e7898" data-alt-dark="/assets/lib/skeleton-dark.css?v=c6e7898">
+
+  
+  <link href="/assets/lib/lesson-default.css?v=c6e7898" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=c6e7898" data-alt-dark="/assets/lib/lesson-default-dark.css?v=c6e7898">
+  
+
+  <link href="/assets/css/main.css?v=c6e7898" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=c6e7898" data-alt-dark="/assets/css/main-dark.css?v=c6e7898">
+
+  <link href="/assets/lib/pygments-manni.css?v=c6e7898" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=c6e7898" data-alt-dark="/assets/lib/pygments-native.css?v=c6e7898">
+
+  
+  
+
+  
+  <!-- END CSS -->
+
+  <title>Functions Questions | MSS CSEC • Markville's Computer Science and Engineering Club
+</title>
+
+  <!-- Begin Jekyll SEO tag v2.2.3 -->
+<meta property="og:title" content="Functions Questions" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Markville’s Computer Science and Engineering Club" />
+<meta property="og:description" content="Markville’s Computer Science and Engineering Club" />
+<link rel="canonical" href="https://mss-csec.github.io/resources/beginners/practice-problems/functions-questions/" />
+<meta property="og:url" content="https://mss-csec.github.io/resources/beginners/practice-problems/functions-questions/" />
+<meta property="og:site_name" content="MSS CSEC" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-08-25T15:16:23+00:00" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Functions Questions","datePublished":"2017-08-25T15:16:23+00:00","dateModified":"2017-08-25T15:16:23+00:00","description":"Markville’s Computer Science and Engineering Club","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/resources/beginners/practice-problems/functions-questions/"},"url":"https://mss-csec.github.io/resources/beginners/practice-problems/functions-questions/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- BEGIN JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.js" integrity="sha384-RpxfKy6OA0Us+WtIGBbrVlfwW4HuETdB9CD8KbG6qSbYbCanfnyid62sojNvydoB" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
+
+  <script src="/assets/js/main.js" defer></script>
+
+  
+
+  <!-- BEGIN MATHJAX -->
+  <script type='text/x-mathjax-config'>
+    MathJax.Hub.Config({
+      extensions: [
+        'tex2jax.js',
+        'TeX/AMSmath.js',
+        'TeX/AMSsymbols.js',
+        'TeX/cancel.js',
+        'TeX/color.js'
+        
+      ],
+      jax: [
+        'input/TeX',
+        'output/CommonHTML'
+        
+      ],
+      TeX: {
+        equationNumbers: {
+          autoNumber: 'AMS'
+        }
+      },
+      tex2jax: {
+        balanceBraces: false,
+        processEnvironments: false,
+        processRefs: false
+        
+      }
+      
+    });
+  </script>
+  <!-- END MATHJAX -->
+  <!-- END JS -->
+
+  <noscript><style>
+  body[hidden]{display:block;}
+  script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
+  script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
+  </style></noscript>
+</head>
+
+<body hidden>
+  <!-- header -->
+  
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo main-logo" aria-label="{csec}" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <defs>
+          <mask id="m"><path d="M12.82 36q-3.06 0-4.96-.6-1.89-.61-2.82-2.14-.89-1.52-.77-4.29l.16-4.02q0-2.54-.89-3.5-.88-1.01-2.73-1.01H0v-2.25h.77q1.9 0 2.82-1.01.93-1.04.93-3.29l-.08-2.9Q4.44 4 11.78 4h2.54v2.29h-3.3q-3.75 0-3.75 4.26l.08 2.82q0 4.42-3.51 5.95 3.43 1.13 3.43 6.23l-.12 3.38q0 2.7 1.17 3.74 1.17 1.09 3.91 1.09h2.06V36zm16.7-5.95q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zm18.8-.04q-4.68 0-7.82-2.9l1.62-2.74.24-.36.24.16q0 .08.04.36.08.28.24.56.16.28.44.56.93.93 2.1 1.45 1.21.48 2.98.48 2.18 0 3.43-.76 1.25-.81 1.25-2.17 0-1.17-1.01-1.93t-3.63-1.61q-6.94-1.97-6.94-5.71 0-2.13 1.74-3.38 1.78-1.25 5.04-1.25 2.5 0 4.19.72 1.74.68 3.14 2.17l-1.66 2.01-.28.32-.2-.2q-.04-.44-.2-.72-.12-.28-.57-.64-.93-.72-2.1-1.09-1.13-.4-2.26-.4-1.74 0-2.86.6-1.09.6-1.09 1.69 0 1.01 1.13 1.85 1.13.85 4.07 1.69 3.47 1.05 4.88 2.29 1.46 1.21 1.46 3.18 0 2.5-1.98 4.14-1.94 1.61-5.65 1.61zm21.02 0q-4.11 0-6.58-2.5-2.42-2.5-2.42-7.03 0-3.02 1.13-5.18 1.13-2.21 3.02-3.34 1.94-1.17 4.31-1.17 3.34 0 5.41 2.21 2.1 2.21 2.1 6.51 0 .44-.08 1.33h-13.1q.16 3.38 1.9 5.1 1.74 1.73 4.4 1.73 2.9 0 4.76-2.05l1.62 1.57q-2.34 2.82-6.46 2.82zm4.03-11.42q0-2.58-1.33-4.06Q70.75 13 68.61 13q-2.02 0-3.51 1.41-1.5 1.41-1.86 4.18zm16.66 11.46q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zM100.92 36v-2.25h2.06q2.74 0 3.91-1.09 1.17-1.05 1.17-3.74l-.12-3.38q0-5.1 3.43-6.23-3.51-1.53-3.51-5.95l.08-2.82q0-4.26-3.75-4.26h-3.31V4h2.54q7.34 0 7.34 6.99l-.08 2.9q0 2.25.93 3.3.93 1.01 2.82 1.01h.76v2.25h-.81q-1.86 0-2.74 1.01-.89.97-.89 3.5l.16 4.02q.12 2.78-.81 4.3-.89 1.53-2.78 2.13-1.9.6-4.96.6z" fill="#fff" /></mask>
+        <!-- Give each of the six letters a unique colour -->
+        <!-- <linearGradient id="grad">
+          <stop offset="0%" stop-color="#f52f2f" />
+          <stop offset="17%" stop-color="#f52f2f" />
+          <stop offset="17%" stop-color="orange" />
+          <stop offset="33%" stop-color="orange" />
+          <stop offset="33%" stop-color="gold" />
+          <stop offset="50%" stop-color="gold" />
+          <stop offset="50%" stop-color="green" />
+          <stop offset="67%" stop-color="green" />
+          <stop offset="67%" stop-color="blue" />
+          <stop offset="83%" stop-color="blue" />
+          <stop offset="83%" stop-color="purple" />
+          <stop offset="100%" stop-color="purple" />
+        </linearGradient> -->
+        </defs>
+        <rect class="main-logo-background" width="144" height="40" mask="url(#m)" fill="#f52f2f"></rect>
+      </svg>
+      <img class="svg-fallback" src="/assets/images/logo.png" style="display:none">
+    </a>
+
+    <input type="checkbox" class="responsive-menu-toggler" id="toggle-menu">
+    <label for="toggle-menu"><a ontouchstart="">menu</a></label>
+    <div class="responsive-menu-items">
+      <div class="menu">
+        <a class="menu-header" href="/subclubs/">Subclubs</a>
+
+        <dl class="menu-items">
+          
+          
+            
+            
+          <dt><a href="/subclubs/beginners/">Beginners</a></dt>
+          
+            
+            
+          <dt><a href="/"></a></dt>
+          
+          
+          <dt class="menu-items-more"><a href="/subclubs/">All subclubs</a></dt>
+          
+        </dl>
+      </div>
+
+      <div class="menu">
+        <a class="menu-header" href="/resources/">Resources</a>
+
+        <dl class="menu-items">
+          <dt class="menu-items-more"><a href="/resources/">All resources</a></dt>
+        </dl>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <div class="options">
+        <a class="icon" tabindex="0">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+        </a>
+        <div class="content">
+          <label>
+            <input type="checkbox" id="toggle-dark-theme">
+            Dark theme
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <div class="hero">
+  <h1 class="title"><em>Functions Questions</em></h1>
+</div>
+<div class="content container">
+  <div class="sect1">
+<h2 id="part-i">Part I</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Write a function, <em>drawBox</em>, that draws a box out of X’s with a
+given width and height. This function will have no return value.</p>
+<div class="paragraph">
+<p>For example, a 3 by 4 box will look like the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>XXXX
+X  X
+XXXX</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Write a function that returns if a year is a leap year. This
+function will return a boolean value: true or false.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Any year divisible by 4 is a leap year. However, if the year is
+divisible by 100 and <strong>not</strong> divisible by 400, the year is <strong>not</strong> a leap
+year.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Below is the formula used to convert a temperature from Celcius to
+Farenheit.</p>
+<div class="paragraph">
+<p>\[F = (9*C)/5 + 32\]</p>
+</div>
+<div class="paragraph">
+<p>Write a function that converts a temperature from Celcius to Farenheit.
+Round the final temperature to the nearest integer.</p>
+</div>
+</li>
+<li>
+<p>Write a function that finds the area of a circle with a given
+radius. The function will return a double with a precision of 2 decimal
+places.</p>
+</li>
+<li>
+<p></p>
+</li>
+<li>
+<p>Write a function that accepts three side lengths. It will return
+whether the three sides can form a triangle.</p>
+</li>
+<li>
+<p>Modify the function so that it returns whether the three side
+lengths form a right-angle triangle.</p>
+</li>
+<li>
+<p>Write a function that accepts a positive integer and returns if the
+value is prime.</p>
+</li>
+<li>
+<p></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Write a function that accepts two strings, str1 and str2, as
+arguments. Your function will search for the first occurrence of str2
+within str1 and return where it is found. If str2 is not found anywhere
+in str1, your function should return -1. You are basically coding the
+<a href="http://www.cplusplus.com/reference/string/string/find/">find()</a>
+function in the string library; <strong>do not use that function</strong>.</p>
+</li>
+<li>
+<p>Modify your function so that the search is case insensitive.</p>
+</li>
+<li>
+<p>Create your own
+<a href="http://www.cplusplus.com/reference/string/string/replace/">replace()</a>
+function. This function takes two strings str1, str2 and str3. Anytime
+str2 is found in str1, it is replaced with str3. Return the final
+string. The search is <strong>case sensitive</strong>.</p>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Sample Testcase:</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">str1</th>
+<th class="tableblock halign-left valign-top">str2</th>
+<th class="tableblock halign-left valign-top">str3</th>
+<th class="tableblock halign-left valign-top">Return Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"Aayyy%lmao"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"a"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"Woah"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"AWoahyyy%lmWoaho"</code></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="part-ii">Part II</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Write a function that passes two integer values,a and b, by
+reference. Have the function swap the values <strong>if</strong> the two variables if a
+&gt; b.</p>
+</li>
+<li>
+<p></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Write a function that takes a string as an argument and returns a
+string that is in all caps.</p>
+</li>
+<li>
+<p>Modify your function so that the string argument is changed
+directly. Change the return type of the function from string to void.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Write a function that sorts an integer array from least to greatest.
+Do not use sort(). Choose one of the following sorts:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Read the following piece of code and determine the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The output</p>
+</li>
+<li>
+<p>The return values and parameters of each function call. <strong>Only use an IDE to check your answer.</strong></p>
+<div class="paragraph">
+<p><strong>Code A</strong></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">china</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">germany</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">canada</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="n">germany</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">+</span><span class="n">germany</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">france</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">canada</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">china</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">china</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">canada</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">germany</span><span class="p">(</span><span class="n">france</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p>+
+<strong>Code B</strong></p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">kazakhstan</span><span class="p">(</span><span class="kt">int</span> <span class="n">b</span><span class="p">,</span><span class="kt">int</span> <span class="n">a</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">kyrgyzstan</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">azerbaijan</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="o">=</span><span class="n">kazakhstan</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">c</span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">c</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">kazakhstan</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">kyrgyzstan</span><span class="p">(</span><span class="n">kazakhstan</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">azerbaijan</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p>+
+<strong>Code C</strong></p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">brazil</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">){</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">chile</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">,</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">){</span>
+    <span class="n">y</span><span class="o">+=</span><span class="mi">3</span><span class="p">;</span>
+    <span class="n">x</span><span class="o">+=</span><span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">y</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">peru</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">){</span>
+    <span class="n">x</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">chile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+    <span class="n">brazil</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">brazil</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">chile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">peru</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+</div>
+</div>
+<div class="sect1">
+<h2 id="part-iii">Part III</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Write a recursive function that takes an integer <em>n</em> and returns <em>n</em>
+factorial.</p>
+</li>
+<li>
+<p>Write a recursive function that takes an integer <em>n</em> and returns the
+<em>n</em>th
+<a href="https://www.mathsisfun.com/algebra/triangular-numbers.html">triangular
+number</a>. <strong>Do not use a loop or \(\dfrac{n (n + 1)}{2}\).</strong></p>
+</li>
+<li>
+<p>Write a recursive function that takes a string argument and reverses
+the string.</p>
+</li>
+<li>
+<p>Write a recursive function that finds the nth term of the
+<a href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">Fibonacci
+Sequence</a>. This is also known as &#8220;the worst Fibonacci function&#8221; but do
+it anyways.</p>
+</li>
+<li>
+<p>Write a recursive function that finds the GCF of two integers using
+the
+<a href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm">Euclidian
+method</a>.</p>
+</li>
+<li>
+<p>Write a recursive function that returns a value from
+<a href="http://www.mathsisfun.com/pascals-triangle.html">Pascal&#8217;s Triangle</a>
+given its row and column. The row and column numbers in Pascal’s
+Triangle start at 0.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Challenge:</strong> Solve the <a href="http://wcipeg.com/problem/ccc05j5">J5 problem</a> for
+the 2015 CCC. This problem will use recursion.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="part-iv">PART IV</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>A formula for the area of a triangle
+is \(A = \frac{b*h}{2}\) . Have a function named <code>areaT</code> return
+the area of a triangle given its base and height. The parameters and
+return type will be integers.</p>
+</li>
+<li>
+<p>One can also use Heron&#8217;s Formula to find the area of a triangle with
+side lengths a, b, and c.</p>
+<div class="paragraph">
+<p>\[A = \sqrt{s(s - a)(s - b)(s - c)}\]</p>
+</div>
+<div class="paragraph">
+<p>The value of s is the semiperimeter of the triangle:
+\(\dfrac{a + b + c}{2}\)</p>
+</div>
+<div class="paragraph">
+<p>Create another function named <code>areaT</code> that takes three integer side
+lengths and returns the area using Heron&#8217;s Formula.</p>
+</div>
+</li>
+<li>
+<p>Create another function named <code>areaT</code> that takes the side length of an
+equilateral triangle and returns the area of that triangle.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sample-calls">Sample Calls</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Call</th>
+<th class="tableblock halign-left valign-top">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>drawBox(4,5);</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>drawBox(10,1);</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XXXXXXXXXX</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>drawBox(5,0);</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Sample Call</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Call</th>
+<th class="tableblock halign-left valign-top">Return Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>isLeapYear(1992);</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>isLeapYear(1900);</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>isLeapYear(2000);</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+  </main>
+  <!-- footer -->
+  <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="three columns">
+        <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
+          <rect width="116" height="40" mask="url(#m)" fill="#aaa"></rect>
+        </svg>
+      </div>
+      <div class="three columns"></div>
+      <div class="three columns"></div>
+      <div class="offset-by-six three columns">
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/c6e789823eae63defd5e2135d32fa2d6055c7d0a">c6e7898</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
