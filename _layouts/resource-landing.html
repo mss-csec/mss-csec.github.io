@@ -3,23 +3,82 @@ layout: page
 ---
 
 {% assign resources_catized = site.resources | group_by: 'category' %}
-<div class="row">
-  <div class="four columns">
-    <h2><em class="offset-text">Guides</em></h2>
-    {% assign guides = site.resources | where_exp: 'item', 'item.path contains "guides"' | sort: 'title' %}
-    {% for guide in guides %}
-      <article>
-        <header>
-          <h3><a href="{{ guide.url }}">{{ guide.title }}</a></h3>
-        </header>
-        {{ guide.summary | markdownify }}
-      </article>
+{% assign row_size = 3 %}
+<div class="search-box">
+</div>
+
+<!-- Guides -->
+
+<article class="thing">
+  <h2 id="guides"><em class="offset-text">Guides</em></h2>
+  {% assign guides = site.resources | where_exp: 'item', 'item.path contains "/guides/"' | sort: 'title' %}
+  {% assign number_rows = guides.size | divided_by: row_size %}
+  {% for row in (0..number_rows) %}
+  <div class="row">
+    {% assign row_offset = row | times: row_size %}
+    {% for guide in guides limit:row_size offset:row_offset %}
+    <div class="four columns">
+      <header>
+        <h3><a href="{{ guide.url }}">{{ guide.title }}</a></h3>
+      </header>
+      {{ guide.summary | markdownify }}
+    </div>
     {% endfor %}
   </div>
-  <div class="four columns">
-    <h2><em class="offset-text">CSEC</em></h2>
+  {% endfor %}
+</article>
+
+<!-- General -->
+
+<!--
+{% assign generals = resources_catized | where: 'name', 'general' | first %}
+{% assign generals = generals.items | sort: 'title' %}
+{% if generals and generals.size > 0 %}
+<article class="thing">
+  <h2><em class="offset-text">General</em></h2>
+  {% assign number_rows = generals.size | divided_by: row_size %}
+  {% for row in (0..number_rows) %}
+  <div class="row">
+    {% assign row_offset = row | times: row_size %}
+    {% for general in generals limit:row_size offset:row_offset %}
+    <div class="four columns">
+      <header>
+        <h3><a href="{{ general.url }}">{{ general.title }}</a></h3>
+      </header>
+      {{ general.summary | markdownify }}
+    </div>
+    {% endfor %}
   </div>
-  <div class="four columns">
-    <h2><em class="offset-text">Misc.</em></h2>
+  {% endfor %}
+</article>
+{% endif %}
+-->
+
+<!-- Subclubs -->
+
+{% assign subclubs = site.subclubs | group_by: "category" | sort: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}
+{% for subclub_obj in subclubs %}
+  {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+  {% assign subclub_name = subclub_obj.name %}
+  {% assign resources = resources_catized | where: 'name', subclub_name | first %}
+  {% if resources.items and resources.items.size > 0 %}
+    {% assign resources = resources.items | sort: 'title' %}
+<article class="thing">
+  <h2 id="{{ subclub_name }}"><em class="offset-text">{{ subclub_index.title | xml_escape }}</em></h2>
+    {% assign number_rows = resources.size | divided_by: row_size %}
+    {% for row in (0..number_rows) %}
+  <div class="row">
+      {% assign row_offset = row | times: row_size %}
+      {% for resource in resources limit:row_size offset:row_offset %}
+    <div class="four columns">
+      <header>
+        <h3><a href="{{ resource.url }}">{{ resource.title }}</a></h3>
+      </header>
+      {{ resource.summary | markdownify }}
+    </div>
+      {% endfor %}
   </div>
-</div>
+    {% endfor %}
+  {% endif %}
+</article>
+{% endfor %}

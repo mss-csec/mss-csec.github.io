@@ -85,7 +85,7 @@ collections:
   # Contains all CSEC resources and guides. Includes lesson resources
   resources:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:collection/:path
   # Contains all subclubs, and their landing pages.
   subclubs:
     output: true
