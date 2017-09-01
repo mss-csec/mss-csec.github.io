@@ -307,6 +307,12 @@ APP.onload = () ->
     console.log 'KaTeX rendering failed! Loading MathJax'
     __useMathJax()
 
+  # Anchor-js
+  anchors.options =
+    visible: 'touch',
+    icon: '§'
+  anchors.add '#main-content h2, #main-content h3'
+
 window.APP = APP
 window.UTILS = UTILS
 

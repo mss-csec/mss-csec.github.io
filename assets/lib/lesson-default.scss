@@ -87,7 +87,7 @@ table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr
 em em{font-style:normal}
 strong strong{font-weight:400}
 .keyseq{color:$fg-secondary}
-kbd{font-family:monospace;display:inline-block;color:$fg-primary;font-size:.65em;line-height:1.45;background-color:$bg-tertiary;border:1px solid $border-colour;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 transparentize($fg-primary,.7),0 0 0 .1em $bg-primary inset;box-shadow:0 1px 0 transparentize($fg-primary,.7),0 0 0 .1em $bg-primary inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+kbd{font-family:monospace;display:inline-block;color:$fg-primary;font-size:.7em;line-height:1.45;background-color:$bg-tertiary;border:1px solid $border-colour;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 transparentize($fg-primary,.7),0 0 0 .1em $bg-primary inset;box-shadow:0 1px 0 transparentize($fg-primary,.7),0 0 0 .1em $bg-primary inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
 .menuseq,.menuref{color:$fg-primary}
