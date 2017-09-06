@@ -23,6 +23,15 @@ UTILS.spaceship = (a, b) ->
 UTILS.setIndefiniteCookie = (key, value) ->
   Cookies.set key, value, expires: 365
 
+# Truncate a string of text to at most <length> characters, without severing
+# words
+UTILS.fuzzyTruncate = (text, length = 250, clipper = '...') ->
+  if text.length <= length then return text
+
+  lastDelim = text.lastIndexOf " ", length
+
+  return text.slice(0, if lastDelim > -1 then lastDelim else Infinity) + clipper
+
 APP.SUBCLUB_END_HOUR = 17;
 
 # Returns the most recent and the next up lesson given a complete schedule
