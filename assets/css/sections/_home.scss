@@ -246,6 +246,7 @@ $schedule-height: 8 * $ex; // 160px
   .column.resources,
   .column.announcements {
     width: 100%;
+    margin-left: 0;
   }
 
   .announcements {

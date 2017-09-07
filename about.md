@@ -1,18 +1,31 @@
 ---
 layout: page
-title: About
+title: About CSEC
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+###### Markville's *Computer Science Education Club* is a group of students who share a deep interest in computer science and competitive programming.
+###### We participate in competitions and hold sessions every week where we teach lessons on how to program.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+***
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+## Activities
 
+Every year, CSEC participates in two major programming competitions:
+the [CCC](http://cemc.uwaterloo.ca/contests/computing.html) and
+the [ECOO](http://ecoocs.org/).
+The Beginners' subclub prepares for the Junior level of the CCC, and the Advanced subclub prepares for the Senior level of the CCC.
+The top eight students of the Senior CCC, top four students of the Junior CCC, and top four female students are then chosen to represent MSS in the ECOO.
 
-[jekyll-organization]: https://github.com/jekyll
+## Our exec team
+
+<!-- No. -->
+
+<style>
+.content h6 {
+    margin-bottom: .3em;
+}
+.content p {
+    font-size: 1.1em;
+}
+</style>

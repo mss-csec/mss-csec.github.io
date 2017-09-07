@@ -1,15 +1,31 @@
 <footer class="site-footer">
   <div class="container">
     <div class="row">
-      <div class="three columns">
+      <div class="two columns">
         <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
           <rect width="116" height="40" mask="url(#m)" fill="#aaa"></rect>
         </svg>
+        <p class="version">Build <a href="{{ site.project_url | uri_escape }}{{ site.build_url | uri_escape }}" target="_blank">{{ site.build_version | xml_escape }}</a></p>
       </div>
-      <div class="three columns"></div>
-      <div class="three columns"></div>
-      <div class="offset-by-six three columns">
-        <p class="version">Build <a href="{{ site.project_url | uri_escape }}{{ site.build_url | uri_escape }}">{{ site.build_version | xml_escape }}</a></p>
+      <div class="two columns">
+        <h5>This is CSEC</h5>
+        <p><a href="{{ '/about' | relative_url }}">About us</a></p>
+        <p><a href="{{ '/subclubs' | relative_url }}">Subclubs</a></p>
+        <p><a href="{{ '/resources' | relative_url }}">Resources</a></p>
+        <p><a href="#" onclick="event.preventDefault();FEEDBACKDisplayModal()">Give feedback</a></p>
+      </div>
+      <div class="two columns">
+        <h5>Announcements</h5>
+        {% for post in site.posts limit: 3 %}
+        <p><a href="{{ post.url }}">{{ post.title | xml_escape }}</a></p>
+        {% endfor %}
+        <p><a href="{{ '/posts' }}">All posts&hellip;</a></p>
+      </div>
+      <div class="two columns">
+        <h5>Markville SS</h5>
+        <p><a href="http://markville.ss.yrdsb.ca/" target="_blank" class="link-extern">School website</a></p>
+        <p><a href="http://schools.yrdsb.ca/markville.ss/teacher/computers/computers.htm" target="_blank" class="link-extern">MSS Comp Sci</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/Markville_Secondary_School" target="_blank" class="link-extern">Wikipedia</a></p>
       </div>
     </div>
   </div>
