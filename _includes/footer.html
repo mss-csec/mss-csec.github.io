@@ -3,8 +3,12 @@
     <div class="row">
       <div class="two columns">
         <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
-          <rect width="116" height="40" mask="url(#m)" fill="#aaa"></rect>
+          <rect width="116" height="40" mask="url(#m)" fill="currentColor"></rect>
         </svg>
+        <p class="yo">
+          <a href="{{ site.project_url }}" title="Our GitHub">{% include icons/gh.svg %}</a>
+          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()">{% include icons/mail.svg %}</a>
+        </p>
         <p class="version">Build <a href="{{ site.project_url | uri_escape }}{{ site.build_url | uri_escape }}" target="_blank">{{ site.build_version | xml_escape }}</a></p>
       </div>
       <div class="two columns">

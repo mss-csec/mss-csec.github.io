@@ -3,13 +3,31 @@
 .site-footer {
   background-color: $bg-secondary;
   color: lighten($fg-secondary, 15%);
-  padding: $ex 0;
+  padding: $ex2 0;
   border-bottom: 2px solid $brand-colour;
-  margin-top: $ex;
+  margin-top: $ex2;
+
+  h5 {
+    position: relative;
+    margin-bottom: 1.5 * $ex05;
+
+    &::after {
+      @include pseudo;
+      @include dimensions($ex, 3px);
+
+      bottom: -4px;
+      left: 0;
+      @if ($dark) { background-color: lighten($bg-secondary, 15%); }
+      @else {       background-color: darken($bg-secondary, 15%); }
+    }
+  }
+
+  p {
+    margin-bottom: .1em;
+  }
 
   a {
     color: $fg-secondary;
-    text-decoration: dotted underline;
 
     &:hover {
       color: $fg-secondary;
@@ -17,17 +35,41 @@
     }
   }
 
-  .version {
-    text-align: right;
-    opacity: 0.5;
-    margin: 0;
+  svg {
+    opacity: .5;
   }
 
-  @if ($dark) {
-    // Hack to make logo in footer pop less
-    // don't try this at home
+  .yo {
+    margin-top: $ex05;
+
     svg {
-      opacity: .5;
+      @include dimensions(1.2 * $ex);
+      padding-right: $ex05;
     }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:hover svg {
+      opacity: .7;
+    }
+  }
+
+  .version {
+    opacity: .5;
+    margin: 0;
+
+    a:not(:hover) {
+      text-decoration: dotted underline;
+    }
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .site-footer .columns {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: $ex;
   }
 }
