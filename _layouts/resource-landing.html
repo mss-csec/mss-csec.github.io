@@ -4,8 +4,6 @@ layout: page
 
 {% assign resources_catized = site.resources | group_by: 'category' %}
 {% assign row_size = 3 %}
-<div class="search-box">
-</div>
 
 <!-- Guides -->
 
@@ -82,3 +80,7 @@ layout: page
   {% endif %}
 </article>
 {% endfor %}
+
+<script>
+window.addEventListener("DOMContentLoaded",function(){anchors.options={visible:'touch',icon:'§'};anchors.add('.thing h2')})
+</script>
