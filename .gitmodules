@@ -4,3 +4,7 @@
 [submodule "_subclubs/beginners"]
 	path = _subclubs/beginners
 	url = https://github.com/mss-csec/beginners-subclub.git
+[submodule "_subclubs/advanced"]
+	path = _subclubs/advanced
+	url = git@github.com:mss-csec/advanced-subclub.git
+	branch = master
