@@ -40,6 +40,21 @@ Main coffeescript file
     });
   };
 
+  UTILS.fuzzyTruncate = function(text, length, clipper) {
+    var lastDelim;
+    if (length == null) {
+      length = 250;
+    }
+    if (clipper == null) {
+      clipper = '...';
+    }
+    if (text.length <= length) {
+      return text;
+    }
+    lastDelim = text.lastIndexOf(" ", length);
+    return text.slice(0, lastDelim > -1 ? lastDelim : 2e308) + clipper;
+  };
+
   APP.SUBCLUB_END_HOUR = 17;
 
   APP.loadSubclubSchedule = function(data) {
@@ -208,6 +223,12 @@ Main coffeescript file
     });
   };
 
+  APP.revealEmail = function() {
+    var email;
+    email = [[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],(![]+[])[+!+[]],(!![]+[])[+!+[]],[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],[+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],([![]]+[][[]])[+!+[]+[+[]]],(![]+[])[!+[]+!+[]],(![]+[])[!+[]+!+[]],(!![]+[])[!+[]+!+[]+!+[]],(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]],[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],[+!+[]]+[+!+[]]+[+!+[]],[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],[+!+[]]+[+!+[]]+[!+[]+!+[]],(![]+[])[!+[]+!+[]+!+[]],[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],([![]]+[][[]])[+!+[]+[+[]]],[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]],[+!+[]]+[+[]]+[!+[]+!+[]+!+[]],[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],(![]+[])[+!+[]],([![]]+[][[]])[+!+[]+[+[]]],(![]+[])[!+[]+!+[]],(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]],[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]],[+!+[]]+[+!+[]]+[+!+[]],[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]].map(function(a){return a|0?String[atob('ZnJvbUNoYXJDb2Rl')](a):a}).join('');
+    return alert(email);
+  };
+
   APP.onload = function() {
     var __DOMRemoveSticky, __katexFail, __renderKatex, __useMathJax;
     console.log("Loaded on " + ((new Date()).toLocaleString()));
@@ -299,8 +320,13 @@ Main coffeescript file
     });
     if (__katexFail) {
       console.log('KaTeX rendering failed! Loading MathJax');
-      return __useMathJax();
+      __useMathJax();
     }
+    anchors.options = {
+      visible: 'touch',
+      icon: '§'
+    };
+    return anchors.add('#main-content h2, #main-content h3');
   };
 
   window.APP = APP;

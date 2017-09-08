@@ -13,19 +13,19 @@
   
   
 
-  <link href="/assets/lib/skeleton.css?v=5a5cfad" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=5a5cfad" data-alt-dark="/assets/lib/skeleton-dark.css?v=5a5cfad">
+  <link href="/assets/lib/skeleton.css?v=32c1f72" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=32c1f72" data-alt-dark="/assets/lib/skeleton-dark.css?v=32c1f72">
 
   
-  <link href="/assets/lib/lesson-default.css?v=5a5cfad" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=5a5cfad" data-alt-dark="/assets/lib/lesson-default-dark.css?v=5a5cfad">
+  <link href="/assets/lib/lesson-default.css?v=32c1f72" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=32c1f72" data-alt-dark="/assets/lib/lesson-default-dark.css?v=32c1f72">
   
 
-  <link href="/assets/css/main.css?v=5a5cfad" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=5a5cfad" data-alt-dark="/assets/css/main-dark.css?v=5a5cfad">
+  <link href="/assets/css/main.css?v=32c1f72" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=32c1f72" data-alt-dark="/assets/css/main-dark.css?v=32c1f72">
 
-  <link href="/assets/lib/pygments-manni.css?v=5a5cfad" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=5a5cfad" data-alt-dark="/assets/lib/pygments-native.css?v=5a5cfad">
+  <link href="/assets/lib/pygments-manni.css?v=32c1f72" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=32c1f72" data-alt-dark="/assets/lib/pygments-native.css?v=32c1f72">
 
   
   
-  <link href="/assets/css/subclubs.css?v=5a5cfad" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=5a5cfad" data-alt-dark="/assets/css/subclubs-dark.css?v=5a5cfad">
+  <link href="/assets/css/subclubs.css?v=32c1f72" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=32c1f72" data-alt-dark="/assets/css/subclubs-dark.css?v=32c1f72">
   
 
   
@@ -53,6 +53,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js" integrity="sha384-vWR/JwZ17UvVCsqyfcCiaUK/5IAENMkGqXYrBRCURUFLS+aW63Zpsz5XqiDzrMQu" crossorigin="anonymous" defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/katex.min.js" integrity="sha384-RpxfKy6OA0Us+WtIGBbrVlfwW4HuETdB9CD8KbG6qSbYbCanfnyid62sojNvydoB" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.2/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
@@ -149,7 +150,7 @@
           
             
             
-          <dt><a href="/"></a></dt>
+          <dt><a href="/subclubs/advanced/">Advanced</a></dt>
           
           
           <dt class="menu-items-more"><a href="/subclubs/">All subclubs</a></dt>
@@ -166,7 +167,9 @@
       </div>
 
       <div class="search-box">
-        <input type="text" placeholder="Search...">
+        <form action="/search" id="search-form" method="get">
+          <input type="search" id="search" name="q" placeholder="Search...">
+        </form>
       </div>
 
       <div class="options">
@@ -195,7 +198,6 @@
 </div>
 <div class="content container">
   <div class="row">
-    
     <div class="eight columns offset-by-two" id="main-content">
       <div class="paginator">
         
@@ -239,15 +241,37 @@ document.getElementById('message').textContent = msg
   <footer class="site-footer">
   <div class="container">
     <div class="row">
-      <div class="three columns">
+      <div class="two columns">
         <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
-          <rect width="116" height="40" mask="url(#m)" fill="#aaa"></rect>
+          <rect width="116" height="40" mask="url(#m)" fill="currentColor"></rect>
         </svg>
+        <p class="yo">
+          <a href="https://github.com/mss-csec/mss-csec.github.io" title="Our GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.53 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
+</a>
+        </p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/32c1f72dcb5fca50b407f5ad4c5fb0d092db2441" target="_blank">32c1f72</a></p>
       </div>
-      <div class="three columns"></div>
-      <div class="three columns"></div>
-      <div class="offset-by-six three columns">
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/5a5cfada7468f3e863f4bcba2dfe9ccf0e5f527b">5a5cfad</a></p>
+      <div class="two columns">
+        <h5>This is CSEC</h5>
+        <p><a href="/about">About us</a></p>
+        <p><a href="/subclubs">Subclubs</a></p>
+        <p><a href="/resources">Resources</a></p>
+        <p><a href="#" onclick="event.preventDefault();FEEDBACKDisplayModal()">Give feedback</a></p>
+      </div>
+      <div class="two columns">
+        <h5>Announcements</h5>
+        
+        <p><a href="/announcements/2017/06/welcome-to-jekyll/">Welcome to this site!</a></p>
+        
+        <p><a href="/posts">All posts&hellip;</a></p>
+      </div>
+      <div class="two columns">
+        <h5>Markville SS</h5>
+        <p><a href="http://markville.ss.yrdsb.ca/" target="_blank" class="link-extern">School website</a></p>
+        <p><a href="http://schools.yrdsb.ca/markville.ss/teacher/computers/computers.htm" target="_blank" class="link-extern">MSS Comp Sci</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/Markville_Secondary_School" target="_blank" class="link-extern">Wikipedia</a></p>
       </div>
     </div>
   </div>

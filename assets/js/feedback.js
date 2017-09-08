@@ -1,5 +1,5 @@
 (function() {
-  var FEEDBACK_BUG_ADDON, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, isMobile;
+  var FEEDBACK_BUG_ADDON, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, frustrationTimeout, isMobile;
 
   FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform";
 
@@ -12,6 +12,8 @@
   };
 
   frustrationCount = 0;
+
+  frustrationTimeout = null;
 
   displayModal = function(calmdown, please, futext, oktext, addbuttons) {
     var modal;
@@ -42,25 +44,29 @@
   };
 
   window.addEventListener("keydown", function(e) {
-    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable')) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable') || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
       return null;
     }
     frustrationCount += 1;
-    if (frustrationCount > 4 && document.querySelectorAll('#feedback-modal').length === 0) {
+    clearTimeout(frustrationTimeout);
+    frustrationTimeout = setTimeout((function() {
+      return frustrationCount = 0;
+    }), 100);
+    if (frustrationCount > 3 && document.querySelectorAll('#feedback-modal').length === 0) {
       frustrationHandler("I'm fine, my cat just stepped on my keyboard.");
       return frustrationCount = 0;
     }
   });
 
   window.addEventListener("keyup", function(e) {
-    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable')) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable') || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
       return null;
     }
     return frustrationCount = frustrationCount > 0 ? frustrationCount - 1 : 0;
   });
 
   window.addEventListener("DOMContentLoaded", function() {
-    document.querySelector("head").insertAdjacentHTML("beforeend", "<style>\n#open-feedback-modal {\n  position: fixed; bottom: 20px; right: 20px;\n  box-sizing: border-box; width: 40px; height: 40px;\n  background-color: #f52f2f; color: white;\n  line-height: 40px; text-align: center; font-weight: 700; font-size: 20px;\n  border-radius: 40px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);\n  transition: .3s ease;\n}\n#open-feedback-modal:hover {\n  background-color: #f75858;\n  text-decoration: none;\n  box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 5px 10px rgba(0, 0, 0, .4);\n}\n#feedback-modal-bg {\n  position: fixed; top: 0; bottom: 0; left: 0; right: 0;\n  background: rgba(0, 0, 0, .7);\n  z-index: 10;\n}\n#feedback-modal-wrapper {\n  position: fixed; top: 50%; left: 50%;\n  width: 60%; max-width: 800px; max-height: 75%;\n  background: white;\n  padding: 40px; border-radius: 15px; margin: auto;\n  z-index: 10; overflow-y: auto;\n  transform: translateX(-50%) translateY(-50%);\n}\n.theme-dark #feedback-modal-wrapper {\n  background-color: #1a1f2a;\n}\n#feedback-modal .login-note { font-size: .95em; }\n@media (max-width: 768px) { #feedback-modal .login-note { display: none; } }\n#feedback-modal .button {\n  width: 100%;\n}\n#feedback-modal .buttons p {\n  font-size: 1.1em; text-align: center;\n  margin-bottom: 0;\n}\n</style>");
+    document.querySelector("head").insertAdjacentHTML("beforeend", "<style>\n#open-feedback-modal {\n  position: fixed; bottom: 20px; right: 20px;\n  box-sizing: border-box; width: 40px; height: 40px;\n  background-color: #f52f2f; color: white;\n  line-height: 40px; text-align: center; font-weight: 700; font-size: 20px;\n  border-radius: 40px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);\n  transition: .3s ease;\n}\n#open-feedback-modal:hover {\n  background-color: #f75858;\n  text-decoration: none;\n  box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 5px 10px rgba(0, 0, 0, .4);\n}\n#feedback-modal-bg {\n  position: fixed; top: 0; bottom: 0; left: 0; right: 0;\n  background: rgba(0, 0, 0, .7);\n  z-index: 10;\n}\n#feedback-modal-wrapper {\n  position: fixed; top: 50%; left: 50%;\n  width: 60%; max-width: 800px; max-height: 75%;\n  background: white;\n  padding: 40px; border-radius: 15px; margin: auto;\n  z-index: 10; overflow-y: auto;\n  transform: translateX(-50%) translateY(-50%);\n}\n.theme-dark #feedback-modal-wrapper { background-color: #1a1f2a; }\n#feedback-modal .login-note { font-size: .95em; }\n@media (max-width: 768px) { #feedback-modal .login-note { display: none; } }\n#feedback-modal .button { width: 100%; }\n#feedback-modal .buttons p {\n  font-size: 1.1em; text-align: center;\n  margin-bottom: 0;\n}\n#feedback-modal .button:not(.button-primary) {\n  color: #f52f2f;\n  border-color: rgba(245, 47, 47, .6);\n}\n#feedback-modal .button:not(.button-primary):hover { border-color: #f52f2f; }\n</style>");
     return document.body.insertAdjacentHTML("beforeend", "<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>?</a>");
   });
 
