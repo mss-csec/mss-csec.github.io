@@ -1,6 +1,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="theme-color" content="#f52f2f">
+
+  <link rel="dns-prefetch" href="https://brick.a.ssl.fastly.net">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+  {% seo title=false %}
+
+  {% assign icon_loc = '/assets/images/favicons/icon' | relative_url %}
+  <link rel="mask-icon" href="{{ icon_loc }}-pinned.svg?v={{ site.build_version }}" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="{{ icon_loc }}.ico?v={{ site.build_version }}" type="image/x-icon">
 
   <!-- BEGIN CSS -->
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
@@ -35,8 +46,6 @@
   <!-- END CSS -->
 
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }} • {{ site.description }}</title>
-
-  {% seo title=false %}
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
