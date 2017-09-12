@@ -3,7 +3,12 @@ layout: default
 ---
 
 <div class="hero">
-  <h1 class="title"><em>MSS CSEC is Slowly Engineering a Club website</em></h1>
+  <h1 class="title">
+    <em>Computer</em><br>
+    <em>Science</em><br>
+    <em>Education</em><br>
+    <em>Club</em>
+  </h1>
 </div>
 
 <!-- Display schedule -->
@@ -68,6 +73,7 @@ layout: default
       {% endfor %}
       {% if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}
       <div class="{{ row_matrix[row_size] }} columns more-subclubs">
+      {% comment %}<!--
         <h2 class="subclub-title"><a href="{{ '/subclubs/' | relative_url }}" class="subclub-link">More subclubs</a></h2>
         <div class="more-subclubs-listing">
           {% assign subclub_counter = 0 %}
@@ -84,6 +90,12 @@ layout: default
             <h4><a class="lesson-link" href="{{ subclub_url }}/">{{ subclub_title }}</a></h4>
             {% assign subclub_counter = subclub_counter | plus: 1 %}
           {% endfor %}
+        </div>
+      -->{% endcomment %}
+        <h2 class="subclub-title"><a href="{{ site.signup_link }}" class="subclub-link">Sign up for CSEC</a></h2>
+        <div class="more-subclubs-listing" style="display:block">
+          <a class="lesson-link" href="{{ site.signup_link }}"><h4>Be the first to receive updates about our lessons and activities.</h4></a>
+          <p class="disabled">Requires a valid YRDSB Gapps account.</p>
         </div>
       </div>
       {% endif %}
