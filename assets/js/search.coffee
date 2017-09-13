@@ -46,10 +46,11 @@ initSearch = (rawStore) ->
   {% endif %}"
 
   if null != localStorage.getItem storageKey
-    idx = JSON.parse(localStorage.getItem(storageKey))
+    rawStore = JSON.parse(localStorage.getItem(storageKey))
 
-    if commit == idx.commit
-      return idx = lunr.Index.load idx.store
+    if commit == rawStore.commit
+      store = rawStore.store
+      return idx = lunr.Index.load rawStore.idx
 
   idx = lunr () ->
     this.ref 'id'
@@ -68,7 +69,7 @@ initSearch = (rawStore) ->
       store[key] = { type: 'post', title, content, url }
       this.add { id: key, type: 'post', title, content }
 
-  localStorage.setItem storageKey, JSON.stringify { commit, store: idx }
+  localStorage.setItem storageKey, JSON.stringify { commit, store, idx }
 
   idx
 
@@ -98,7 +99,7 @@ searchStore = {
     # Iterate over lessons
   {% for entry in subclub_schedule %}
     {% assign lesson_title = subclub | xml_escape %}
-    {% assign lesson_url = subclub_url | uri_escape %}
+    {% assign lesson_url = subclub_index.url %}
     {% assign lesson_content = subclub | xml_escape %}
     {% for item in subclub_obj.items %}
       {% assign split_path = item.path | split: '/' %}
@@ -142,7 +143,7 @@ searchStore = {
 };
 {% endcomment %}
 ###
-{% assign subclubs = site.subclubs | group_by: "category" | sort: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}searchStore = {subclubs:{ {% for subclub_obj in subclubs %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub = subclub_obj.name %}{% assign resources = site.resources | group_by: "category" | where: "name", subclub | first %}{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% for entry in subclub_schedule %}{% assign lesson_title = subclub | xml_escape %}{% assign lesson_url = subclub_url | uri_escape %}{% assign lesson_content = subclub | sml_escape %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}{% assign lesson_content = item.content | strip_html | strip_newlines | jsonify %}{% break %}{% endif %}{% endfor %}"{{ lesson_url | slugify }}":{url:"{{ lesson_url }}",title:"{{ lesson_title }}",subclub:"{{ subclub | xml_escape }}",content:{{ lesson_content }}},{% endfor %}{% if resources.items %}{% for resource in resources.items %}"{{ resource.url | slugify }}":{url:"{{ resource.url | uri_escape }}",title:"{{ resource.title | xml_escape }}",subclub:"{{ subclub | xml_escape }}",content:{{ resource.content | strip_html | strip_newlines | jsonify }}},{% endfor %}{% endif %}{% endfor %}},posts:{ {% for post in site.posts %}"{{ post.url | slugify }}":{url:"{{ post.url | uri_escape }}",title:"{{ post.title | xml_escape }}",content:{{ post.content | strip_html | strip_newlines | jsonify }}},{% endfor %}}};
+{% assign subclubs = site.subclubs | group_by: "category" | sort: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}searchStore = {subclubs:{ {% for subclub_obj in subclubs %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub = subclub_obj.name %}{% assign resources = site.resources | group_by: "category" | where: "name", subclub | first %}{% if site.production == false %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% for entry in subclub_schedule %}{% assign lesson_title = subclub | xml_escape %}{% assign lesson_url = subclub_index.url %}{% assign lesson_content = subclub | sml_escape %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}{% assign lesson_content = item.content | strip_html | strip_newlines | jsonify %}{% break %}{% endif %}{% endfor %}"{{ lesson_url | slugify }}":{url:"{{ lesson_url }}",title:"{{ lesson_title }}",subclub:"{{ subclub | xml_escape }}",content:{{ lesson_content }}},{% endfor %}{% if resources.items %}{% for resource in resources.items %}"{{ resource.url | slugify }}":{url:"{{ resource.url | uri_escape }}",title:"{{ resource.title | xml_escape }}",subclub:"{{ subclub | xml_escape }}",content:{{ resource.content | strip_html | strip_newlines | jsonify }}},{% endfor %}{% endif %}{% endfor %}},posts:{ {% for post in site.posts %}"{{ post.url | slugify }}":{url:"{{ post.url | uri_escape }}",title:"{{ post.title | xml_escape }}",content:{{ post.content | strip_html | strip_newlines | jsonify }}},{% endfor %}}};
 $(() ->
   query = extractQuery queryKey
   $('#search-query').text query
