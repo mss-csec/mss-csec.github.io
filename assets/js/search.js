@@ -38,11 +38,12 @@
 
   initSearch = function(rawStore) {
     var commit;
-    commit = "32c1f72";
+    commit = "0ec87aa";
     if (null !== localStorage.getItem(storageKey)) {
-      idx = JSON.parse(localStorage.getItem(storageKey));
-      if (commit === idx.commit) {
-        return idx = lunr.Index.load(idx.store);
+      rawStore = JSON.parse(localStorage.getItem(storageKey));
+      if (commit === rawStore.commit) {
+        store = rawStore.store;
+        return idx = lunr.Index.load(rawStore.idx);
       }
     }
     idx = lunr(function() {
@@ -92,7 +93,8 @@
     });
     localStorage.setItem(storageKey, JSON.stringify({
       commit: commit,
-      store: idx
+      store: store,
+      idx: idx
     }));
     return idx;
   };
@@ -109,98 +111,98 @@
 
   searchStore = {
     subclubs: {
-      "": {
-        url: "",
+      "subclubs-advanced-index": {
+        url: "/subclubs/advanced/index",
         title: "advanced",
         subclub: "advanced",
         content: advanced
       },
-      "": {
-        url: "",
+      "subclubs-advanced-index": {
+        url: "/subclubs/advanced/index",
         title: "advanced",
         subclub: "advanced",
         content: advanced
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
       },
-      "": {
-        url: "",
+      "subclubs-beginners-index": {
+        url: "/subclubs/beginners/index",
         title: "beginners",
         subclub: "beginners",
         content: beginners
@@ -259,38 +261,38 @@
         subclub: "beginners",
         content: "TermDefinitionArrayA container that stores a series of data values of the sametypeBoolean ValuesData that can be one of two values, true (1) or false(0)CompilerA program that takes a code file and translates it into aset of instructions that a computer could understand and follow.ConsoleAn interface that can receive input values and display outputvalues.ContainerA collection of variables stored under a given identifier.Control FlowThe order in which a computer executes code.DebuggerA program that is used to help test and debug code files.DocumentationStructure of a code file. This includes whitespacingand commenting.ElementA variable inside of a container.FunctionA command for a computer. Typically, functions will includeinputs and result one output.Global VariablesVariables that are initialized outside of afunction, they are able to be used throughout the entire C++ file.Hard CodingGiving values to variables directly in the code file.IdentifierA name that a computer uses to refer to a specificlocation in memory.IndexA data value that indicates which variable is being referred toin a containerIntegrated development Environment (IDE)A program that is designedfor programmers to write code.LibraryA file that contains a list of functions that a computershould know.Local VariablesVariables that are initialized in a function. Thesevariables can only be used in the function they are declared in.Operatora symbol that manipulates or compares data values (Ex:+, =, &gt;, !)ParameterData Values that are sent to a function when that functionis calledMemoryA part in a computer that is used to store/retrieve dataRecursionThe process of having a function call itselfScalar Data ValuesData values that take up little memory. They arenormally passed to a function by value.ScopeA range/area in a code file that limits where variables can beused in.SpaghettiA type of code that is convoluted and unnecessarily hard to read.It is difficult to edit spaghetti code as it is prone to bugs.Therefore, creating spaghetti code is frowned upon.StringA container that stores a series of charactersString LiteralA sequence of characters enclosed by quotation marks.(Ex: \"hello\")SyntaxGuidelines on how specific functions can be used.VariableAn identifier used in a code file that refers to a specific location in memory.WhitespaceAny part of the code that is left blank. This includesspaces, indents, and empty lines."
       },
-      "": {
-        url: "",
+      "subclubs-test-index": {
+        url: "/subclubs/test/index",
         title: "test",
         subclub: "test",
         content: test
       },
-      "": {
-        url: "",
+      "subclubs-test-index": {
+        url: "/subclubs/test/index",
         title: "test",
         subclub: "test",
         content: test
       },
-      "": {
-        url: "",
+      "subclubs-test-index": {
+        url: "/subclubs/test/index",
         title: "test",
         subclub: "test",
         content: test
       },
-      "": {
-        url: "",
+      "subclubs-test-index": {
+        url: "/subclubs/test/index",
         title: "test",
         subclub: "test",
         content: test
       },
-      "": {
-        url: "",
+      "subclubs-test-index": {
+        url: "/subclubs/test/index",
         title: "test",
         subclub: "test",
         content: test
       },
-      "": {
-        url: "",
+      "subclubs-web-development-index": {
+        url: "/subclubs/web-development/index",
         title: "web-development",
         subclub: "web-development",
         content: web - development

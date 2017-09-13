@@ -4,7 +4,7 @@ Main coffeescript file
  */
 
 (function() {
-  var APP, CONSTS, UTILS, __collapseSidebar, __loadSubclubScheduleFromUrl, __openSidebar;
+  var APP, CONSTS, UTILS, __collapseSidebar, __dispatchCustomEvent, __loadSubclubScheduleFromUrl, __openSidebar;
 
   APP = {};
 
@@ -202,10 +202,28 @@ Main coffeescript file
     return true;
   };
 
+  APP.currentTheme = 'light';
+
+  __dispatchCustomEvent = function(obj, name, detail) {
+    var event;
+    if (detail == null) {
+      detail = null;
+    }
+    if (typeof CustomEvent.constructor.name !== 'undefined') {
+      return obj.dispatchEvent(new CustomEvent(name, {
+        detail: detail
+      }));
+    } else {
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent(name, false, false, detail);
+      return obj.dispatchEvent(event);
+    }
+  };
+
   APP.changeTheme = function(theme) {
     var $t;
     $t = $('.toggled-theme');
-    return $t.each(function() {
+    $t.each(function() {
       var $e, altKey, altProp, newKey, newVal, oldVal;
       $e = $(this);
       altProp = $e.attr('data-alt-prop');
@@ -214,13 +232,16 @@ Main coffeescript file
       oldVal = $e.attr(altProp);
       newVal = $e.attr(altKey);
       $e.attr(altProp, newVal);
-      $e.attr(newKey, oldVal);
-      if (theme === 'dark') {
-        return $('body').addClass('theme-dark');
-      } else {
-        return $('body').removeClass('theme-dark');
-      }
+      return $e.attr(newKey, oldVal);
     });
+    if (theme === 'dark') {
+      $('body').addClass('theme-dark');
+      APP.currentTheme = 'dark';
+    } else {
+      $('body').removeClass('theme-dark');
+      APP.currentTheme = 'light';
+    }
+    return __dispatchCustomEvent(window, 'changetheme');
   };
 
   APP.revealEmail = function() {
