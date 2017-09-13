@@ -108,3 +108,6 @@ displayed_resources:
 project_url: https://github.com/mss-csec/mss-csec.github.io
 
 build_version: development
+
+signup_link: https://docs.google.com/forms/d/e/1FAIpQLSel4MODJNxJ-r6rSBHEb_Fj5mRo7fEZXf43go8b6QbxODAAfA/viewform
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform
