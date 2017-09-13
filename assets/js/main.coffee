@@ -200,6 +200,18 @@ APP.toggleSidebar = (e) ->
 
   true
 
+# The current sitewide theme
+APP.currentTheme = 'light'
+
+# Cross-browser way to dispatch a custom event
+__dispatchCustomEvent = (obj, name, detail = null) ->
+  if typeof CustomEvent.constructor.name != 'undefined'
+    obj.dispatchEvent new CustomEvent(name, { detail })
+  else
+    event = document.createEvent 'CustomEvent'
+    event.initCustomEvent name, false, false, detail
+    obj.dispatchEvent event
+
 # Changes the sitewide theme
 #
 # theme: A string, either 'light' or 'dark', corresponding to the desired theme
@@ -216,10 +228,14 @@ APP.changeTheme = (theme) ->
     $e.attr altProp, newVal
     $e.attr newKey, oldVal
 
-    if theme == 'dark'
-      $('body').addClass 'theme-dark'
-    else
-      $('body').removeClass 'theme-dark'
+  if theme == 'dark'
+    $('body').addClass 'theme-dark'
+    APP.currentTheme = 'dark'
+  else
+    $('body').removeClass 'theme-dark'
+    APP.currentTheme = 'light'
+
+  __dispatchCustomEvent window, 'changetheme'
 
 # Unobfuscates our club email
 APP.revealEmail = () ->

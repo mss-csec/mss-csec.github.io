@@ -2,9 +2,38 @@ $hero-height: 25 * $ex; // 500px
 $schedule-height: 8 * $ex; // 160px
 
 .hero {
+  position: relative;
   height: $hero-height;
+  background-image: none;
+  background-color: transparentize($bg-tertiary, .6);
   text-align: left;
   margin-bottom: 0;
+
+  .title {
+    z-index: $z1;
+  }
+}
+
+#background-anim {
+  position: absolute;
+
+  &-desc:not(:empty) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: transparentize($bg-tertiary, .4);
+    font-size: .8em;
+    padding: 0 .3em;
+  }
+
+  .GameOfLife__grid-line {
+    stroke-width: 1;
+    // stroke: transparentize($fg-secondary, .8);
+  }
+  .GameOfLife__cell {
+    opacity: .7;
+    will-change: fill;
+  }
 }
 
 @media (max-height: $bp-small-height) {

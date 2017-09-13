@@ -3,12 +3,14 @@ layout: default
 ---
 
 <div class="hero">
+  <svg id="background-anim"></svg>
   <h1 class="title">
     <em>Computer</em><br>
     <em>Science</em><br>
     <em>Education</em><br>
     <em>Club</em>
   </h1>
+  <a id="background-anim-desc" target="_blank"></a>
 </div>
 
 <!-- Display schedule -->
@@ -137,3 +139,69 @@ layout: default
     <a href="{{ '/resources/' | relative_url }}" class="view-all">View all resources<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
   </div>
 </div>
+
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+  var initCells = function() {
+    // get hero's dimensions and create a matrix based on that
+    var heroWidth = $('.hero').width(),
+        heroHeight = $('.hero').height(),
+        cellsX = Math.ceil(heroWidth / 20),
+        cellsY = Math.ceil(heroHeight / 20),
+        array = [];
+
+    $('#background-anim').css({
+      left: (heroWidth - cellsX * 20) / 2,
+      top: (heroHeight - cellsY * 20) / 2,
+      width: cellsX * 20,
+      height: cellsY * 20
+    });
+
+    for (var i=0; i<cellsY; i++) {
+      array.push(new Array(cellsX));
+      for (var j=0; j<cellsX; j++) {
+        array[i][j] = Math.random() < 0.12;
+      }
+    }
+
+    return array.slice();
+  }, initGame = function() {
+    var game = new GameOfLife({
+      init_cells: initCells(),
+      cell_width: 20,
+      cell_height: 20,
+      canvas_id: 'background-anim',
+      colourful: true
+    }),
+    delay = performance.now(),
+    step = function(timestamp) {
+      if (timestamp - delay >= 500) {
+        delay = timestamp;
+        game.step();
+      }
+
+      return reqAnimFrame = requestAnimationFrame(step);
+    };
+
+    reqAnimFrame = requestAnimationFrame(step);
+  }, reqAnimFrame, resizeTimeout;
+
+  $.when(
+    $.getScript("{{ '/assets/lib/randomColor.min.js' | relative_url }}"),
+    $.getScript("{{ '/assets/lib/gameoflife.js' | relative_url }}")
+  ).then(initGame, function(err) {
+    console.error(err);
+  });
+
+  $(window).on('resize', function() {
+    cancelAnimationFrame(reqAnimFrame);
+    clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(initGame, 1000);
+  });
+
+  $('#background-anim-desc')
+    .attr('href', 'https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life')
+    .text('Conway\'s Game of Life');
+});
+</script>

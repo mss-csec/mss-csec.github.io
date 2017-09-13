@@ -127,6 +127,7 @@
       display: none;
       background-color: $bg-secondary;
       padding: $ex05;
+      z-index: $z2;
     }
 
     &:hover .content,
