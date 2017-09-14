@@ -1,7 +1,8 @@
 ---
+liquid: true
 ---
 
-FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform"
+FEEDBACK_URL = "{{ site.feedback_link }}"
 FEEDBACK_BUG_ADDON = "?entry.2071656823=%3D%3D%3D+BUG+%3D%3D%3D%0A%0ASummary:+%3Csummarize+bug+here%3E%0A%0ASteps+to+reproduce:%0A%3Csummarize+what+you+did+up+to+and+including+when+the+bug+reared+its+ugly+head%3E%0A%0AAdditional+notes:%0A%3Cany+additional+stuff+you+want+to+add%3E"
 
 body = document.body
@@ -10,6 +11,7 @@ isMobile = () -> /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer
 
 frustrationCount = 0
 frustrationTimeout = null
+frustrationKeys = []
 
 displayModal = (calmdown, please, futext, oktext, addbuttons = [{ url: FEEDBACK_URL + FEEDBACK_BUG_ADDON, text: "I'd like to fill out a bug report!"}]) ->
   addbuttons = addbuttons.map (btn) -> "<p><a class='button' href='#{btn.url}' target='_blank'>#{btn.text}</a></p>"
@@ -47,9 +49,11 @@ window.addEventListener "keydown", (e) ->
   if e.target.tagName == "INPUT" or e.target.tagName == "TEXTAREA" or e.target.hasAttribute('contenteditable') or e.altKey or e.ctrlKey or e.metaKey or e.shiftKey
     return null
 
-  frustrationCount += 1
-  clearTimeout frustrationTimeout
-  frustrationTimeout = setTimeout (() -> frustrationCount = 0), 100
+  if -1 == frustrationKeys.indexOf e.keyCode
+    frustrationKeys.push e.keyCode
+    frustrationCount += 1
+    clearTimeout frustrationTimeout
+    frustrationTimeout = setTimeout (() -> frustrationCount = 0), 100
 
   if frustrationCount > 3 and document.querySelectorAll('#feedback-modal').length == 0
     frustrationHandler "I'm fine, my cat just stepped on my keyboard."
@@ -58,6 +62,7 @@ window.addEventListener "keydown", (e) ->
 window.addEventListener "keyup", (e) ->
   if e.target.tagName == "INPUT" or e.target.tagName == "TEXTAREA" or e.target.hasAttribute('contenteditable') or e.altKey or e.ctrlKey or e.metaKey or e.shiftKey
     return null
+  frustrationKeys = []
   frustrationCount = if frustrationCount > 0 then frustrationCount - 1 else 0
 
 window.addEventListener "DOMContentLoaded", () ->
