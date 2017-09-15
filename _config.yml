@@ -34,6 +34,7 @@ gems:
   - jekyll-seo-tag
 
 # Build settings
+encoding: utf-8
 markdown: kramdown
 highlighter: rouge
 permalink: /:categories/:year/:month/:title/
