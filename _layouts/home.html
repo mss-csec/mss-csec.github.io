@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="hero">
-  <svg id="background-anim"></svg>
+  <canvas id="background-anim"></canvas>
   <h1 class="title">
     <em>Computer</em><br>
     <em>Science</em><br>
@@ -97,7 +97,7 @@ layout: default
         <h2 class="subclub-title"><a href="{{ site.signup_link }}" class="subclub-link">Sign up for CSEC</a></h2>
         <div class="more-subclubs-listing" style="display:block">
           <a class="lesson-link" href="{{ site.signup_link }}"><h4>Be the first to receive updates about our lessons and activities.</h4></a>
-          <p class="disabled">Requires a valid YRDSB Gapps account.</p>
+          <p class="disabled" style="margin-bottom:0">Requires a valid YRDSB Gapps account.</p>
         </div>
       </div>
       <!-- {% endif %} -->
@@ -142,25 +142,27 @@ layout: default
 
 <script>
 window.addEventListener("DOMContentLoaded", function() {
-  var initCells = function() {
+  var cellDimensions = 10,
+      initCells = function() {
     // get hero's dimensions and create a matrix based on that
     var heroWidth = $('.hero').width(),
         heroHeight = $('.hero').height(),
-        cellsX = Math.ceil(heroWidth / 20),
-        cellsY = Math.ceil(heroHeight / 20),
+        cellsX = Math.ceil(heroWidth / cellDimensions),
+        cellsY = Math.ceil(heroHeight / cellDimensions),
         array = [];
 
-    $('#background-anim').css({
-      left: (heroWidth - cellsX * 20) / 2,
-      top: (heroHeight - cellsY * 20) / 2,
-      width: cellsX * 20,
-      height: cellsY * 20
-    });
+    $('#background-anim')
+      .attr('width', cellsX * cellDimensions)
+      .attr('height', cellsY * cellDimensions)
+      .css({
+        left: (heroWidth - cellsX * cellDimensions) / 2,
+        top: (heroHeight - cellsY * cellDimensions) / 2
+      });
 
     for (var i=0; i<cellsY; i++) {
       array.push(new Array(cellsX));
       for (var j=0; j<cellsX; j++) {
-        array[i][j] = Math.random() < 0.12;
+        array[i][j] = Math.random() < 0.2;
       }
     }
 
@@ -168,14 +170,14 @@ window.addEventListener("DOMContentLoaded", function() {
   }, initGame = function() {
     var game = new GameOfLife({
       init_cells: initCells(),
-      cell_width: 20,
-      cell_height: 20,
+      cell_width: cellDimensions,
+      cell_height: cellDimensions,
       canvas_id: 'background-anim',
       colourful: true
     }),
     delay = performance.now(),
     step = function(timestamp) {
-      if (timestamp - delay >= 500) {
+      if (timestamp - delay >= 200) {
         delay = timestamp;
         game.step();
       }
@@ -187,7 +189,6 @@ window.addEventListener("DOMContentLoaded", function() {
   }, reqAnimFrame, resizeTimeout;
 
   $.when(
-    $.getScript("{{ '/assets/lib/randomColor.min.js' | relative_url }}"),
     $.getScript("{{ '/assets/lib/gameoflife.js' | relative_url }}")
   ).then(initGame, function(err) {
     console.error(err);
@@ -201,7 +202,7 @@ window.addEventListener("DOMContentLoaded", function() {
   });
 
   $('#background-anim-desc')
-    .attr('href', 'https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life')
-    .text('Conway\'s Game of Life');
+    .attr('href', 'https://github.com/nomatteus/conway-game-of-life-js')
+    .text('Conway\'s Game of Life | Matt Ruten');
 });
 </script>
