@@ -1,5 +1,5 @@
 (function() {
-  var FEEDBACK_BUG_ADDON, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, frustrationTimeout, isMobile;
+  var FEEDBACK_BUG_ADDON, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, frustrationKeys, frustrationTimeout, isMobile;
 
   FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform";
 
@@ -14,6 +14,8 @@
   frustrationCount = 0;
 
   frustrationTimeout = null;
+
+  frustrationKeys = [];
 
   displayModal = function(calmdown, please, futext, oktext, addbuttons) {
     var modal;
@@ -47,11 +49,14 @@
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable') || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
       return null;
     }
-    frustrationCount += 1;
-    clearTimeout(frustrationTimeout);
-    frustrationTimeout = setTimeout((function() {
-      return frustrationCount = 0;
-    }), 100);
+    if (-1 === frustrationKeys.indexOf(e.keyCode)) {
+      frustrationKeys.push(e.keyCode);
+      frustrationCount += 1;
+      clearTimeout(frustrationTimeout);
+      frustrationTimeout = setTimeout((function() {
+        return frustrationCount = 0;
+      }), 100);
+    }
     if (frustrationCount > 3 && document.querySelectorAll('#feedback-modal').length === 0) {
       frustrationHandler("I'm fine, my cat just stepped on my keyboard.");
       return frustrationCount = 0;
@@ -62,6 +67,7 @@
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.hasAttribute('contenteditable') || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
       return null;
     }
+    frustrationKeys = [];
     return frustrationCount = frustrationCount > 0 ? frustrationCount - 1 : 0;
   });
 

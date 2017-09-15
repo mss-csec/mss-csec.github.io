@@ -1,19 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2017-09-13T04:11:39+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science and Engineering Club
-</subtitle><entry><title type="html">Welcome to this site!</title><link href="https://mss-csec.github.io/announcements/2017/06/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to this site!" /><published>2017-06-28T01:29:26+00:00</published><updated>2017-06-28T01:29:26+00:00</updated><id>https://mss-csec.github.io/announcements/2017/06/welcome-to-jekyll</id><content type="html" xml:base="https://mss-csec.github.io/announcements/2017/06/welcome-to-jekyll/">&lt;p&gt;Hello, person! We see you discovered our top-secret website-in-construction.
-Unfortunately, we have no content to offer but the fact that we’ll probably be back in September with a swanking new website to suit all of your MSS CSEC needs.
-Until then, have a great summer!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2017-09-15T01:06:17+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science and Engineering Club
+</subtitle><entry><title type="html">Welcome to the new CSEC website!</title><link href="https://mss-csec.github.io/announcements/2017/09/welcome-to-the-new-csec-site/" rel="alternate" type="text/html" title="Welcome to the new CSEC website!" /><published>2017-09-14T22:51:25+00:00</published><updated>2017-09-14T22:51:25+00:00</updated><id>https://mss-csec.github.io/announcements/2017/09/welcome-to-the-new-csec-site</id><content type="html" xml:base="https://mss-csec.github.io/announcements/2017/09/welcome-to-the-new-csec-site/">&lt;p&gt;Welcome to Markville CSEC’s brand new website!
+We’re still moving in and getting accustomed to our new setting, and this site is not yet totally complete, so please bear with any issues you see.
+If, in particular, you have any suggestions and bugs to report, please click the “?” at the bottom-right of your screen.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;It is currently &lt;span id=&quot;time&quot;&gt;time to enable JavaScript, you dimwit&lt;/span&gt;. &lt;span id=&quot;message&quot;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;whats-ready-and-whats-not&quot;&gt;What’s ready and what’s not&lt;/h2&gt;
 
-&lt;script&gt;
-document.getElementById('time').textContent = (new Date()).toLocaleString();
+&lt;h3 id=&quot;subclubs&quot;&gt;Subclubs&lt;/h3&gt;
 
-var h = (new Date()).getHours(), msg = &quot;&quot;;
+&lt;p&gt;As of publication date, there are only two visible subclubs: &lt;a href=&quot;/subclubs/beginners&quot;&gt;Beginners’&lt;/a&gt; and &lt;a href=&quot;/subclubs/advanced&quot;&gt;Advanced&lt;/a&gt;.
+We will be adding the &lt;em&gt;Artificial Intelligence&lt;/em&gt; and &lt;em&gt;Nuances of Programming&lt;/em&gt; subclubs at a later date, pending their existence.&lt;/p&gt;
 
-if (23 &lt;= h || h &lt;= 1) msg = &quot;Go to sleep, you moron.&quot;
-if (2 &lt;= h &amp;&amp; h &lt;= 7) msg = &quot;I'm telling your parents you're still awake.&quot;
-if (8 &lt;= h &amp;&amp; h &lt;= 10) msg = &quot;Rise and shine, walnut-head.&quot;
-if (11 &lt;= h &amp;&amp; h &lt;= 22) msg = &quot;I hope you enjoy trying to be productive and utterly failing at it.&quot;
+&lt;p&gt;If you’re wondering where the Web Development subclub went, it has unfortunately been discontinued for the 2017-2018 school year.&lt;/p&gt;
 
-document.getElementById('message').textContent = msg
-&lt;/script&gt;</content><author><name></name></author><summary type="html">Hello, person! We see you discovered our top-secret website-in-construction. Unfortunately, we have no content to offer but the fact that we’ll probably be back in September with a swanking new website to suit all of your MSS CSEC needs. Until then, have a great summer!</summary></entry></feed>
+&lt;h3 id=&quot;lessons&quot;&gt;Lessons&lt;/h3&gt;
+
+&lt;p&gt;We have ported all of the Beginners’ lessons, and are in the process of porting Advanced lessons.
+This process should be complete by the end of September.&lt;/p&gt;
+
+&lt;h3 id=&quot;resources&quot;&gt;Resources&lt;/h3&gt;
+
+&lt;p&gt;The Beginners’ resources have all been ported; however, kinks exist to be ironed out.
+As well, you may notice that the guides are empty; we’re currently working on writing them. Stay tuned!&lt;/p&gt;
+
+&lt;h3 id=&quot;miscellaneous&quot;&gt;Miscellaneous&lt;/h3&gt;
+
+&lt;p&gt;There’s still a few bits left to polish; in particular, search doesn’t work yet, which is something we’re actively trying to fix.
+As well, we will be updating the hero backgrounds over the next few weeks with new images and visualizations from a select group of students.
+Check back frequently to see what we’re up to!&lt;/p&gt;
+
+&lt;h2 id=&quot;contact-us&quot;&gt;Contact us&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot; title=&quot;Our email&quot; onclick=&quot;event.preventDefault();APP.revealEmail()&quot;&gt;Email us!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mss-csec/mss-csec.github.io&quot;&gt;Check us out on GitHub!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform&quot;&gt;Give feedback&lt;/a&gt; (or better yet, &lt;a href=&quot;https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform?entry.2071656823=%3D%3D%3D+BUG+%3D%3D%3D%0A%0ASummary:+%3Csummarize+bug+here%3E%0A%0ASteps+to+reproduce:%0A%3Csummarize+what+you+did+up+to+and+including+when+the+bug+reared+its+ugly+head%3E%0A%0AAdditional+notes:%0A%3Cany+additional+stuff+you+want+to+add%3E&quot;&gt;report a bug&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="announcement" /><category term="news" /><category term="sticky" /><summary type="html">Welcome to Markville CSEC’s brand new website! We’re still moving in and getting accustomed to our new setting, and this site is not yet totally complete, so please bear with any issues you see. If, in particular, you have any suggestions and bugs to report, please click the “?” at the bottom-right of your screen. What’s ready and what’s not Subclubs As of publication date, there are only two visible subclubs: Beginners’ and Advanced. We will be adding the Artificial Intelligence and Nuances of Programming subclubs at a later date, pending their existence. If you’re wondering where the Web Development subclub went, it has unfortunately been discontinued for the 2017-2018 school year. Lessons We have ported all of the Beginners’ lessons, and are in the process of porting Advanced lessons. This process should be complete by the end of September. Resources The Beginners’ resources have all been ported; however, kinks exist to be ironed out. As well, you may notice that the guides are empty; we’re currently working on writing them. Stay tuned! Miscellaneous There’s still a few bits left to polish; in particular, search doesn’t work yet, which is something we’re actively trying to fix. As well, we will be updating the hero backgrounds over the next few weeks with new images and visualizations from a select group of students. Check back frequently to see what we’re up to! Contact us Email us! Check us out on GitHub! Give feedback (or better yet, report a bug)</summary></entry></feed>

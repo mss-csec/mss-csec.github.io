@@ -38,7 +38,7 @@
 
   initSearch = function(rawStore) {
     var commit;
-    commit = "0ec87aa";
+    commit = "0e493f5";
     if (null !== localStorage.getItem(storageKey)) {
       rawStore = JSON.parse(localStorage.getItem(storageKey));
       if (commit === rawStore.commit) {
@@ -260,49 +260,13 @@
         title: "Common Terms and Definitions",
         subclub: "beginners",
         content: "TermDefinitionArrayA container that stores a series of data values of the sametypeBoolean ValuesData that can be one of two values, true (1) or false(0)CompilerA program that takes a code file and translates it into aset of instructions that a computer could understand and follow.ConsoleAn interface that can receive input values and display outputvalues.ContainerA collection of variables stored under a given identifier.Control FlowThe order in which a computer executes code.DebuggerA program that is used to help test and debug code files.DocumentationStructure of a code file. This includes whitespacingand commenting.ElementA variable inside of a container.FunctionA command for a computer. Typically, functions will includeinputs and result one output.Global VariablesVariables that are initialized outside of afunction, they are able to be used throughout the entire C++ file.Hard CodingGiving values to variables directly in the code file.IdentifierA name that a computer uses to refer to a specificlocation in memory.IndexA data value that indicates which variable is being referred toin a containerIntegrated development Environment (IDE)A program that is designedfor programmers to write code.LibraryA file that contains a list of functions that a computershould know.Local VariablesVariables that are initialized in a function. Thesevariables can only be used in the function they are declared in.Operatora symbol that manipulates or compares data values (Ex:+, =, &gt;, !)ParameterData Values that are sent to a function when that functionis calledMemoryA part in a computer that is used to store/retrieve dataRecursionThe process of having a function call itselfScalar Data ValuesData values that take up little memory. They arenormally passed to a function by value.ScopeA range/area in a code file that limits where variables can beused in.SpaghettiA type of code that is convoluted and unnecessarily hard to read.It is difficult to edit spaghetti code as it is prone to bugs.Therefore, creating spaghetti code is frowned upon.StringA container that stores a series of charactersString LiteralA sequence of characters enclosed by quotation marks.(Ex: \"hello\")SyntaxGuidelines on how specific functions can be used.VariableAn identifier used in a code file that refers to a specific location in memory.WhitespaceAny part of the code that is left blank. This includesspaces, indents, and empty lines."
-      },
-      "subclubs-test-index": {
-        url: "/subclubs/test/index",
-        title: "test",
-        subclub: "test",
-        content: test
-      },
-      "subclubs-test-index": {
-        url: "/subclubs/test/index",
-        title: "test",
-        subclub: "test",
-        content: test
-      },
-      "subclubs-test-index": {
-        url: "/subclubs/test/index",
-        title: "test",
-        subclub: "test",
-        content: test
-      },
-      "subclubs-test-index": {
-        url: "/subclubs/test/index",
-        title: "test",
-        subclub: "test",
-        content: test
-      },
-      "subclubs-test-index": {
-        url: "/subclubs/test/index",
-        title: "test",
-        subclub: "test",
-        content: test
-      },
-      "subclubs-web-development-index": {
-        url: "/subclubs/web-development/index",
-        title: "web-development",
-        subclub: "web-development",
-        content: web - development
       }
     },
     posts: {
-      "announcements-2017-06-welcome-to-jekyll": {
-        url: "/announcements/2017/06/welcome-to-jekyll/",
-        title: "Welcome to this site!",
-        content: "Hello, person! We see you discovered our top-secret website-in-construction.Unfortunately, we have no content to offer but the fact that we’ll probably be back in September with a swanking new website to suit all of your MSS CSEC needs.Until then, have a great summer!It is currently time to enable JavaScript, you dimwit. "
+      "announcements-2017-09-welcome-to-the-new-csec-site": {
+        url: "/announcements/2017/09/welcome-to-the-new-csec-site/",
+        title: "Welcome to the new CSEC website!",
+        content: "Welcome to Markville CSEC’s brand new website!We’re still moving in and getting accustomed to our new setting, and this site is not yet totally complete, so please bear with any issues you see.If, in particular, you have any suggestions and bugs to report, please click the “?” at the bottom-right of your screen.What’s ready and what’s notSubclubsAs of publication date, there are only two visible subclubs: Beginners’ and Advanced.We will be adding the Artificial Intelligence and Nuances of Programming subclubs at a later date, pending their existence.If you’re wondering where the Web Development subclub went, it has unfortunately been discontinued for the 2017-2018 school year.LessonsWe have ported all of the Beginners’ lessons, and are in the process of porting Advanced lessons.This process should be complete by the end of September.ResourcesThe Beginners’ resources have all been ported; however, kinks exist to be ironed out.As well, you may notice that the guides are empty; we’re currently working on writing them. Stay tuned!MiscellaneousThere’s still a few bits left to polish; in particular, search doesn’t work yet, which is something we’re actively trying to fix.As well, we will be updating the hero backgrounds over the next few weeks with new images and visualizations from a select group of students.Check back frequently to see what we’re up to!Contact us  Email us!  Check us out on GitHub!  Give feedback (or better yet, report a bug)"
       }
     }
   };
