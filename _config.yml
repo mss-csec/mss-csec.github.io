@@ -18,7 +18,7 @@ title: MSS CSEC
 
 # TODO: Change description
 description: > # this means to ignore newlines until "baseurl:"
-  Markville's Computer Science and Engineering Club
+  Markville's Computer Science Education Club
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mss-csec.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
