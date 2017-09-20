@@ -73,7 +73,7 @@ layout: default
         });</script>
       </div>
       {% endfor %}
-      <!-- {% if row >= number_rows and subclubs.size > site.displayed_subclubs.size %} -->
+      <!-- {% comment %}{% if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->
       <div class="{{ row_matrix[row_size] }} columns more-subclubs">
       {% comment %}<!--
         <h2 class="subclub-title"><a href="{{ '/subclubs/' | relative_url }}" class="subclub-link">More subclubs</a></h2>
@@ -100,7 +100,7 @@ layout: default
           <p class="disabled" style="margin-bottom:0">Requires a valid YRDSB Gapps account.</p>
         </div>
       </div>
-      <!-- {% endif %} -->
+      <!-- {% comment %}{% endif %}{% endcomment %} -->
     </div>
     {% endfor %}
   </div>
