@@ -6,22 +6,6 @@
 (function() {
   var CELL_ALIVE = 1, CELL_DEAD = 0;
 
-  var randomColorFactory = function() {
-    if (typeof randomColor === "function") {
-      return function() {
-        return randomColor({ luminosity: APP.currentTheme });
-      };
-    } else {
-      return function () {
-        var r=Math.floor(Math.random()*256),
-            g=Math.floor(Math.random()*256),
-            b=Math.floor(Math.random()*256),
-            a=(Math.floor(Math.random()*6)+5)/10; // rand between 0.5 and 1.0
-        return "rgba(" + r + "," + g + "," + b + "," + a + ")";
-      };
-    }
-  };
-
   window.GameOfLife = (function() {
     // User-set params
     var cell_array,
@@ -69,7 +53,7 @@
         //      - Based on the rules, set the next gen cell to alive or dead
 
         var current_gen = cell_array,
-            next_gen = current_gen.slice(),      // New array to hold the next gen cells
+            next_gen = current_gen.map(function (a) { return new Array(a.length) }),      // New array to hold the next gen cells
             length_y = cell_array.length,
             length_x = cell_array[0].length,
             y, x;
@@ -97,19 +81,13 @@
 
             // Set new state to current state, but it may change below
             var new_state = cell.getState();
-            if (cell.getState() == CELL_ALIVE) {
-              if (alive_count < 2 || alive_count > 3) {
-                // new state: dead, overpopulation/ underpopulation
-                new_state = CELL_DEAD;
-              } else if (alive_count === 2 || alive_count === 3) {
-                // lives on to next generation
-                new_state = CELL_ALIVE;
-              }
+
+            if (alive_count === 3 ||
+                (new_state == CELL_ALIVE && alive_count === 2)) {
+              new_state = CELL_ALIVE;
             } else {
-              if (alive_count === 3) {
-                // new state: live, reproduction
-                new_state = CELL_ALIVE;
-              }
+              // new state: dead, overpopulation/ underpopulation
+              new_state = CELL_DEAD;
             }
 
             //console.log("Cell at x,y: " + x + "," + y + " has dead_count: " + dead_count + "and alive_count: " + alive_count);
@@ -170,41 +148,26 @@
         drawCell;
 
     function GameDisplay(num_cells_x, num_cells_y, cell_width, cell_height, canvas_id, colourful, cell_array) {
-      var randClr = randomColorFactory();
-
-      canvas = document.getElementById(canvas_id);
-      width_pixels = num_cells_x * cell_width;
-      height_pixels = num_cells_y * cell_height;
+      var canvas = document.getElementById(canvas_id),
+          ctx = canvas.getContext('2d'),
+          width_pixels = num_cells_x * cell_width,
+          height_pixels = num_cells_y * cell_height;
       //console.log("width_pixels: " + width_pixels);
       //console.log("height_pixels: " + height_pixels);
 
       // Encapsulate cell array
       this.cell_array = cell_array;
 
+      // Set fill style
+      ctx.fillStyle = APP.currentTheme === 'light' ? '#c0bbbb' : '#4d4444';
+
       // Re-init factory on theme change
       window.addEventListener("changetheme", function() {
-        randClr = randomColorFactory();
+        ctx.fillStyle = APP.currentTheme === 'light' ? '#c0bbbb' : '#4d4444';
         updateCells(true);
       }, false);
 
       // Fcn definitions
-
-      drawGridLines = function() {
-        // foreach column
-        for (var i = 0; i <= num_cells_x; i++) {
-          canvas.insertAdjacentHTML('beforeend',
-            '<line class="GameOfLife__grid-line" ' +
-            'x1="' + i*cell_width + '" y1="0" ' +
-            'x2="' + i*cell_width + '" y2="' + height_pixels + '"/>');
-        }
-        // foreach row
-        for (var j = 0; j <= num_cells_y; j++) {
-          canvas.insertAdjacentHTML('beforeend',
-            '<line class="GameOfLife__grid-line" ' +
-            'x1="0" y1="' + j*cell_height + '" ' +
-            'x2="' + width_pixels + '" y2="' + j*cell_height + '"/>');
-        }
-      };
 
       updateCells = function(flush, cell_array) {
         var length_y, length_x,
@@ -230,28 +193,14 @@
       drawCell = function(cell, flush) {
         // find start point (top left)
         var start_x = cell.getXPos() * cell_width,
-            start_y = cell.getYPos() * cell_height,
-            cell_el = canvas.getElementById('GameOfLife_' +
-              start_x + '-' + start_y);
+            start_y = cell.getYPos() * cell_height;
 
-        if (cell_el !== null) {
-          if (cell.getState() == CELL_ALIVE && (cell_el.style.fill === 'transparent' || flush)) {
-            cell_el.style.fill = randClr();
-          } else if (cell.getState() == CELL_DEAD) {
-            cell_el.style.fill = 'transparent';
-          }
-        } else {
-          canvas.insertAdjacentHTML('beforeend', [
-            '<rect class="GameOfLife__cell" ',
-            'id="GameOfLife_', start_x, '-', start_y, '" ',
-            'fill="', cell.getState() == CELL_ALIVE ? randClr() : 'transparent', '" ',
-            'x="', start_x, '" y="', start_y, '" ',
-            'width="', cell_width, '" height="', cell_height, '"/>'
-          ].join(''));
+        if (cell.getState() == CELL_ALIVE || (cell.getState() == CELL_ALIVE && flush)) {
+          ctx.fillRect(start_x, start_y, cell_width, cell_height);
+        } else if (cell.getState() == CELL_DEAD) {
+          ctx.clearRect(start_x, start_y, cell_width, cell_height);
         }
       };
-
-      // drawGridLines();
     };
 
     GameDisplay.prototype.update = function(cell_array) {
