@@ -27,7 +27,7 @@ logo: /assets/images/favicons/icon-128.png
 #twitter_username: jekyllrb
 #github_username:  jekyll
 
-gems:
+plugins:
   - jekyll-asciidoc
   - jekyll-coffeescript
   - jekyll-feed
