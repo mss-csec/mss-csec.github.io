@@ -347,7 +347,8 @@ Main coffeescript file
       visible: 'touch',
       icon: '§'
     };
-    return anchors.add('#main-content h2, #main-content h3');
+    anchors.add('#main-content h2, #main-content h3');
+    return SCRIPTS.run();
   };
 
   window.APP = APP;
