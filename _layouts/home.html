@@ -37,16 +37,16 @@ layout: default
       <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
         <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
         <div class="row">
-          <div class="one-half column">
+          <!--<div class="one-half column">
             <h4 class="lesson-state">Last lesson</h4>
             <h3 class="lesson-name lesson-last"></h3>
-          </div>
+          </div>-->
           <div class="one-half column">
             <h4 class="lesson-state">Next meeting</h4>
-            <h3 class="lesson-name lesson-next"></h3>
+            <h3 class="lesson-name lesson-next">TBD</h3>
           </div>
         </div>
-        <script>SCRIPTS.add(function (){
+        <!--<script>SCRIPTS.add(function (){
         APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
           {% if site.production == true %}
             {% assign lessons = site.lessons | group_by: "category" %}
@@ -70,7 +70,7 @@ layout: default
           },
           {% endfor %}
         });
-        });</script>
+        });</script>-->
       </div>
       {% endfor %}
       <!-- {% comment %}{ if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->
