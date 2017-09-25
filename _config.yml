@@ -52,7 +52,10 @@ asciidoc:
 
 asciidoctor:
   attributes:
+    source-highlighter: rouge
+    source-language: cpp
     cpp: "C++"
+    pp: "++"
 
 #theme: minima
 

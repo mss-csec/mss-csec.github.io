@@ -52,6 +52,76 @@ code td pre {
   @include reset-all;
 }
 
+// Highlight callouts
+.conum {
+  @include no-user-select;
+
+  background-color: $fg-primary;
+  color: $bg-primary;
+  border-radius: $df-radius;
+}
+
+.colist.arabic {
+  counter-reset: callout;
+
+  ol {
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    margin-left: .5em;
+  }
+
+  li::before {
+    position: absolute;
+    left: -2em;
+    counter-increment: callout;
+    content: '(' counter(callout) ')';
+    background-color: $fg-primary;
+    color: $bg-primary;
+    font: bold .9em monospace;
+    margin-top: .2em;
+    border-radius: $df-radius;
+  }
+}
+
+// Hide line numbers on small devices
+.rouge-table .gutter {
+  display: none;
+}
+
+@media only screen and (min-width: $bp-tablet) {
+  // Show line numbers at adequate screen width
+  .rouge-table .gutter {
+    display: table-cell;
+  }
+
+  // Override Asciidoctor default CSS and add line numbers
+  .listingblock .content pre.highlight {
+    background: none;
+    padding: 0;
+  }
+
+  .listingblock.linenos .content pre.highlight {
+    counter-reset: lines;
+
+    .line {
+      position: relative;
+      margin-left: 32px;
+    }
+
+    .line::before {
+      position: absolute;
+      left: -48px;
+      text-align: right;
+      width: 32px;
+      counter-increment: lines;
+      content: counter(lines);
+    }
+  }
+}
+
 .tags {
   font-size: .9em;
   color: $fg-secondary;

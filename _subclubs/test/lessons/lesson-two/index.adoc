@@ -27,6 +27,72 @@ import antigravity
 print "HAHAHAHA I CAN FLY"
 ----
 
+.link:http://wcipeg.com/problem/ccc12s3[CCC12S3 - Absolutely Acidic]
+[source,cpp,role="linenoms"]
+----
+#include <map>
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+
+int N;
+map<int,int> R;
+
+int main()
+{
+    scanf("%d", &N);
+
+    for (int i=0;i<N;i++)
+    {
+        int k;
+        scanf("%d", &k);
+        R[k] = (R.count(k) > 0 ? R[k] : 0) + 1;
+    }
+
+    map<int,int>::iterator rit; <1>
+    int first=0, fval=0, second=0, sval=0;
+    for (rit=R.begin();rit!=R.end();++rit) // <2>
+    {
+        if (rit->second > fval) // <3>
+        {
+            first = rit->first;
+            fval = rit->second;
+        }
+        else if (rit -> second == fval)
+        {
+            sval = fval;
+            if (first > rit->first && (second > rit->first || second == 0))
+                second = rit->first;
+            else if (rit->first > first) {
+                second = (second > first || second == 0) ? first : second;
+                first = rit->first;
+            }
+        }
+        else if (rit->second > sval)
+        {
+            second = rit->first;
+            sval = rit->second;
+        }
+        else if (rit->second == sval)
+        {
+            if (abs(first - second) < abs(first - rit->first)) {
+            //printf("*%d ? %d*\n", abs(first-second), abs(first-rit->first));
+                second = rit->first; <4>
+            }
+        }
+
+        //printf("%d > %d\n",first, second);
+    }
+    printf("%d", abs(first - second));
+    return 0;
+}
+----
+<1> Iterators are slow, but cool. Avoid them in competition use if possible.
+<2> This is how you iterate iterators.
+<3> Here, because `rit` is a map iterator, it has a `first` and `second` property. The `first` property accesses the key, and the `second` accesses the value.
+<4> wtf is going on
+
 ++++
 {% highlight ruby linenos %}
 puts "Hello"

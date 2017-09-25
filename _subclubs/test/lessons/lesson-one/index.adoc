@@ -14,15 +14,14 @@ I wonder if Asciidoc works?
 
 image::/assets/images/logo.png[hmm]
 
-++++
-{% highlight cpp %}
+[source]
+----
 #include <stdio.h>
 
 int main() {
     printf("Hello, world!\n");
 }
-{% endhighlight %}
-++++
+----
 
 \(What about LaTeX?\)
 

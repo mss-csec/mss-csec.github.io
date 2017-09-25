@@ -8,7 +8,9 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.5.2" # Keep with GitHub Pages
+gem "jekyll", "3.6.0" # Keep with GitHub Pages
+                      # EDIT 2017-09-24: Update to 3.6.0 ahead of GH (which uses 3.5.2) due to
+                      # asciidoctor-rouge requiring Rouge 2
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.0"
@@ -21,6 +23,9 @@ gem "minima", "~> 2.0"
 group :jekyll_plugins do
   # Add AsciiDoc as a compatible syntax
   gem "jekyll-asciidoc", "~> 2.1.0"
+
+  # Use Rouge for Asciidoctor highlighting
+  gem "asciidoctor-rouge"
 
   # Use Jekyll Coffeescript
   gem "jekyll-coffeescript"
