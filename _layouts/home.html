@@ -46,7 +46,7 @@ layout: default
             <h3 class="lesson-name lesson-next"></h3>
           </div>
         </div>
-        <script>window.addEventListener("DOMContentLoaded", function (){
+        <script>SCRIPTS.add(function (){
         APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
           {% if site.production == true %}
             {% assign lessons = site.lessons | group_by: "category" %}
@@ -141,7 +141,7 @@ layout: default
 </div>
 
 <script>
-window.addEventListener("DOMContentLoaded", function() {
+SCRIPTS.add(function() {
   var cellDimensions = 10,
       initCells = function() {
     // get hero's dimensions and create a matrix based on that

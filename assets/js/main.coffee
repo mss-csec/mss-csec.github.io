@@ -343,6 +343,9 @@ APP.onload = () ->
     icon: '§'
   anchors.add '#main-content h2, #main-content h3'
 
+  # Run page scripts
+  SCRIPTS.run()
+
 window.APP = APP
 window.UTILS = UTILS
 

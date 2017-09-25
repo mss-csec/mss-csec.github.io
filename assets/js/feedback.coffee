@@ -65,8 +65,7 @@ window.addEventListener "keyup", (e) ->
   frustrationKeys = []
   frustrationCount = if frustrationCount > 0 then frustrationCount - 1 else 0
 
-window.addEventListener "DOMContentLoaded", () ->
-  document.querySelector("head").insertAdjacentHTML "beforeend", """
+document.querySelector("head").insertAdjacentHTML "beforeend", """
 <style>
 #open-feedback-modal {
   position: fixed; bottom: 20px; right: 20px;
@@ -109,4 +108,4 @@ window.addEventListener "DOMContentLoaded", () ->
 #feedback-modal .button:not(.button-primary):hover { border-color: #f52f2f; }
 </style>
 """
-  document.body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>?</a>"""
+document.body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>?</a>"""

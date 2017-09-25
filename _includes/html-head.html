@@ -66,6 +66,25 @@
     {% endfor %}
   {% endif %}
 
+  <!-- BEGIN PAGE-ADDED JS -->
+  <script>
+    window.SCRIPTS = (function (g) {
+      var scripts = [];
+
+      return {
+        add: function (fn) {
+          scripts.push(fn);
+        },
+        run: function () {
+          for (var i=0;i<scripts.length;i++) {
+            scripts[i].call(g);
+          }
+        }
+      };
+    })(window);
+  </script>
+  <!-- END PAGE-ADDED JS -->
+
   <!-- BEGIN MATHJAX -->
   <script type='text/x-mathjax-config'>
     MathJax.Hub.Config({

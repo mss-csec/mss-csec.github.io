@@ -43,7 +43,7 @@ layout: page
   </div>
 </div>
 
-<script>window.addEventListener("DOMContentLoaded", function (){
+<script>SCRIPTS.add(function (){
   APP.renderSubclubSchedule($('#lesson-timeline'),{
     {% for entry in subclub_schedule %}
       {% assign lesson_title = subclub_title | xml_escape %}
