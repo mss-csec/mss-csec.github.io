@@ -124,7 +124,7 @@
 
 .lesson-name {
   position: relative;
-  line-height: 1.8;
+  line-height: 1.5;
   margin-bottom: 0;
 
   &::before {
@@ -151,6 +151,7 @@
   width: 100%;
   color: $fg-secondary;
   text-decoration: none;
+  padding: $ex05/2 0;
 }
 
 .lesson-link:hover,
@@ -189,5 +190,6 @@
   .lesson-link,
   .lesson-link:hover {
     color: $brand-colour;
+    padding: 0;
   }
 }
