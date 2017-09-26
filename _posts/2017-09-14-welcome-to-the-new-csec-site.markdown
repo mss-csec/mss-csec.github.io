@@ -5,7 +5,7 @@ date:   2017-09-14 18:51:25 -0400
 categories: announcements
 tags: announcement news sticky
 summary: "This site is currently in beta."
-display_until: 2017-09-22
+display_until: 2017-10-06
 ---
 
 Welcome to Markville CSEC's brand new website!
