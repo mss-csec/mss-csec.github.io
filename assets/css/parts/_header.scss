@@ -1,8 +1,15 @@
 .site-header {
-  border-bottom: 2px solid $brand-colour;
-  height: $ex2;
-  padding: $df-padding 0;
+  @include transition;
+  @include position(0, 0, 0);
+  position: fixed;
 
+  height: $ex2;
+  color: $fg-primary;
+  background-color: $bg-primary;
+  padding: $df-padding 0;
+  border-top: 2px solid $brand-colour;
+  border-bottom: 1px solid $bg-secondary;
+  z-index: $z2;
 
   .container,
   .responsive-menu-items {
@@ -14,25 +21,8 @@
 }
 
 .main-logo {
+  z-index: $z4;
   margin-right: $ex;
-}
-
-@media (max-width: $bp-tablet) {
-  .site-header {
-    @include position(0, 0, 0);
-
-    position: fixed;
-    background-color: $bg-primary;
-    z-index: $z2;
-  }
-
-  .main-logo {
-    z-index: $z4;
-  }
-
-  main {
-    margin-top: $ex3 + 2px;
-  }
 }
 
 .menu {
@@ -40,7 +30,7 @@
   margin: 0 $ex;
 
   &-header {
-    color: $fg-primary;
+    color: currentColor;
     font-size: 1.2em;
     text-transform: uppercase;
     text-decoration: none;
@@ -59,7 +49,7 @@
     display: none;
     background-color: $bg-secondary;
     padding: $df-padding;
-    margin-top: 12px;
+    margin-top: $df-padding;
     z-index: $z2;
 
     dt {
@@ -70,10 +60,10 @@
   &-items::before {
     @include pseudo;
 
-    top: -12px;
+    top: -$df-padding;
     left: 0;
     right: 0;
-    height: 12px;
+    height: $df-padding;
   }
 
   &:hover &-items,
@@ -87,13 +77,41 @@
 
   input,
   input:focus {
-    background-color: $bg-secondary;
+    @include transition;
+
+    @if ($dark) { background-color: lighten($bg-secondary, 3%); }
+    @else       { background-color: $bg-secondary; }
     border: 0;
     border-radius: 0;
   }
 }
 
+// Hack
+.site-header.at-top .search-box input {
+  background-color: transparentize($fg-accent, .7);
+}
+
+.site-header.at-top:hover .search-box input {
+  @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
+  @else       { background-color: transparentize($bg-secondary, .3); }
+}
+
 @media (min-width: $bp-tablet) {
+  .site-header {
+    color: $fg-primary;
+    background-color: $bg-primary;
+    border-bottom-width: 1px;
+
+    &.at-top {
+      background-color: $t;
+      border-bottom-color: $t;
+    }
+
+    &.at-top:hover {
+      background-color: transparentize($bg-primary, .3);
+    }
+  }
+
   .options {
     margin-left: $ex05;
 
@@ -102,6 +120,7 @@
       flex-direction: column;
       width: $ex;
       height: $ex2;
+      color: currentColor;
       padding-top: 5px;
       padding-left: 15px;
       padding-bottom: 7px;
@@ -110,7 +129,7 @@
     .circle {
       width: 5px;
       height: 5px;
-      background-color: $fg-primary;
+      background-color: currentColor;
       border-radius: 5px;
       margin-top: 3px;
     }
@@ -122,7 +141,7 @@
 
     .content {
       position: absolute;
-      top: $ex3 - 8px;
+      top: $ex3 - $ex05;
       right: 0;
       display: none;
       background-color: $bg-secondary;
@@ -146,9 +165,13 @@
 }
 
 .announcement-sticky {
+  position: fixed;
+  top: $ex3 + 2px;
+  left: 0;
+  right: 0;
   text-align: center;
   margin-bottom: 0;
-  z-index: 1;
+  z-index: 10;
 
   &,
   a {
@@ -165,13 +188,8 @@
     background-color: $t;
     padding: 0 0.2em;
   }
-}
 
-@media (max-width: $bp-tablet) {
-  .announcement-sticky {
-    position: fixed;
-    top: $ex3 + 2px;
-    left: 0;
-    right: 0;
+  ~ main {
+    margin-top: $ex3;
   }
 }

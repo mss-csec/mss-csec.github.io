@@ -2,26 +2,29 @@
 
 .hero {
   display: flex;
-  background-image: linear-gradient(100deg, #db9840, #d43b5c);
+  @if ($dark) { background-image: linear-gradient(100deg, #5f0d0d, #411471); }
+  @else       { background-image: linear-gradient(100deg, #f8b763, #f25e7d); }
   min-height: 12 * $ex; // 240px
   height: 12 * $ex;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  padding-top: $ex; // compensate for header
   margin-bottom: $ex2;
 
   @include notIE { height: auto; }
 
   .title {
-    font-size: 2.5 * $ex; // 50px
+    font-size: $ex2;
     font-weight: bold;
-    line-height: 4 * $ex; // 80px
+    line-height: 3.2 * $ex; // 64px
     margin: $ex auto;
   }
 }
 
-@media (max-width: $bp-phablet) {
+@media (min-width: $bp-phablet) {
   .hero .title {
-    font-size: $ex2;
-    line-height: 3.2 * $ex; // 64px
+    font-size: 2.5 * $ex; // 50px
+    line-height: 4 * $ex; // 80px
   }
 }

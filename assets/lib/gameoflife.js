@@ -132,7 +132,12 @@
 
     GameOfLife.prototype.getInterval = function() {
       return interval;
-    }
+    };
+
+    // Provide way to change theme
+    GameOfLife.prototype.changeTheme = function() {
+      display.changeTheme();
+    };
 
     return GameOfLife;
   })();
@@ -147,7 +152,8 @@
   var GameDisplay = (function() {
     var drawGridLines,
         updateCells,
-        drawCell;
+        drawCell,
+        changeTheme;
 
     function GameDisplay(num_cells_x, num_cells_y, cell_width, cell_height, canvas_id, colourful, cell_array) {
       var canvas = document.getElementById(canvas_id),
@@ -160,17 +166,7 @@
       // Encapsulate cell array
       this.cell_array = cell_array;
 
-      // Set fill style
-      ctx.fillStyle = APP.currentTheme === 'light' ? '#c0bbbb' : '#4d4444';
-
-      // Re-init factory on theme change
-      window.addEventListener("changetheme", function() {
-        ctx.fillStyle = APP.currentTheme === 'light' ? '#c0bbbb' : '#4d4444';
-        updateCells(true);
-      }, false);
-
       // Fcn definitions
-
       updateCells = function(flush, cell_array) {
         var length_y, length_x,
             y, x;
@@ -203,10 +199,21 @@
           ctx.clearRect(start_x, start_y, cell_width, cell_height);
         }
       };
+
+      changeTheme = function() {
+        ctx.fillStyle = APP.currentTheme === 'light' ? '#d0c7c7' : '#4d4444';
+      };
+
+      changeTheme();
     };
 
     GameDisplay.prototype.update = function(cell_array) {
       updateCells(false, cell_array);
+    };
+
+    GameDisplay.prototype.changeTheme = function() {
+      changeTheme();
+      updateCells(true);
     };
 
     return GameDisplay;

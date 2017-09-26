@@ -1,13 +1,21 @@
 $hero-height: 25 * $ex; // 500px
 $schedule-height: 8 * $ex; // 160px
 
+.has-anim .site-header.at-top .search-box input {
+  @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
+  @else       { background-color: transparentize($bg-secondary, .3); }
+}
+
 .hero {
   position: relative;
   height: $hero-height;
-  background-image: none;
-  background-color: transparentize($bg-tertiary, .6);
   text-align: left;
   margin-bottom: 0;
+
+  .has-anim & {
+    background-image: none;
+    background-color: transparentize($bg-tertiary, .6);
+  }
 
   .title {
     z-index: $z1;

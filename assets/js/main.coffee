@@ -274,7 +274,16 @@ APP.onload = () ->
     if $(this).attr('href') != '#'
       window.location = $(this).attr 'href'
 
+  # Scrolling
+  $(window).on 'scroll', (e) ->
+    if window.scrollY > 100
+      $('.site-header').removeClass 'at-top'
+    else
+      $('.site-header').addClass 'at-top'
+
   # DOM manipulation
+  $('.site-header').addClass 'at-top'
+
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')
 
@@ -284,6 +293,7 @@ APP.onload = () ->
       sticky.remove()
 
   __DOMRemoveSticky()
+  $('.announcement-sticky + .site-header').removeClass 'at-top'
 
   $('.collapse-el').html '&laquo;'
   $('.collapse-el.closed').html '&raquo;'

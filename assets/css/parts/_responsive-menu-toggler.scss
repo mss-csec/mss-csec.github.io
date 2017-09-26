@@ -132,7 +132,7 @@
     input,
     input:focus {
       width: calc(100vw - 40px);
-      background-color: $bg-primary;
+      background-color: $bg-primary !important;
     }
   }
 

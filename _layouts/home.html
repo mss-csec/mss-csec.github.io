@@ -142,11 +142,12 @@ layout: default
 
 <script>
 SCRIPTS.add(function() {
-  var cellDimensions = 10,
+  var game,
+      cellDimensions = 10,
       initCells = function() {
     // get hero's dimensions and create a matrix based on that
     var heroWidth = $('.hero').width(),
-        heroHeight = $('.hero').height(),
+        heroHeight = $('.hero').height() + 20,
         cellsX = Math.ceil(heroWidth / cellDimensions),
         cellsY = Math.ceil(heroHeight / cellDimensions),
         array = [];
@@ -168,7 +169,7 @@ SCRIPTS.add(function() {
 
     return array.slice();
   }, initGame = function() {
-    var game = new GameOfLife({
+    game = new GameOfLife({
       init_cells: initCells(),
       cell_width: cellDimensions,
       cell_height: cellDimensions,
@@ -201,8 +202,14 @@ SCRIPTS.add(function() {
     resizeTimeout = setTimeout(initGame, 1000);
   });
 
+  $(window).on('changetheme', function(e) {
+    game.changeTheme();
+  });
+
   $('#background-anim-desc')
     .attr('href', 'https://github.com/nomatteus/conway-game-of-life-js')
     .text('Conway\'s Game of Life | Matt Ruten');
+
+  $('body').addClass('has-anim');
 });
 </script>

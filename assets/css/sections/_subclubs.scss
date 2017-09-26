@@ -65,8 +65,8 @@
   #lesson-listing {
     position: relative;
     position: sticky;
-    top: $ex;
-    max-height: calc(100vh - #{$ex2});
+    top: $ex4;
+    max-height: calc(100vh - #{$ex4 + $ex});
 
     &.closed {
       width: 0;
