@@ -6,12 +6,27 @@
 
   <link rel="dns-prefetch" href="https://brick.a.ssl.fastly.net">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://googletagmanager.com">
 
   {% seo title=false %}
 
   {% assign icon_loc = '/assets/images/favicons/icon' | relative_url %}
   <link rel="mask-icon" href="{{ icon_loc }}-pinned.svg?v={{ site.build_version }}" color="#f52f2f">
   <link id="favicon" rel="shortcut icon" href="{{ icon_loc }}.ico?v={{ site.build_version }}" type="image/x-icon">
+
+  {% if site.production %}
+  <!-- BEGIN GA -->
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=UA-107141139-1" async></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+
+    gtag('config', '{{ site.ga_id }}');
+  </script>
+  <!-- END GA -->
+  {% endif %}
 
   <!-- BEGIN CSS -->
   <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">

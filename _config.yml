@@ -57,8 +57,6 @@ asciidoctor:
     cpp: "C++"
     pp: "++"
 
-#theme: minima
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -115,3 +113,5 @@ build_version: development
 
 signup_link: https://docs.google.com/forms/d/e/1FAIpQLSel4MODJNxJ-r6rSBHEb_Fj5mRo7fEZXf43go8b6QbxODAAfA/viewform
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform
+
+ga_id: UA-107141139-1
