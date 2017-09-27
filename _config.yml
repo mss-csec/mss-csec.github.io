@@ -52,10 +52,11 @@ asciidoc:
 
 asciidoctor:
   attributes:
-    source-highlighter: rouge
-    source-language: cpp
-    cpp: "C++"
-    pp: "++"
+    stem: latexmath # Allow math support
+    source-highlighter: rouge # Use rouge as the default syntax highlighter
+    source-language: cpp # Set default language to C++
+    cpp: "C++" # Substitution macro for C++
+    pp: "++" # Ditto ++
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

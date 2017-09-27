@@ -30,3 +30,10 @@ int main() {
 \(\cancel{abc}\)
 
 \(\overline{\LaTeX}\)
+
+stem:[\sqrt{cpp} = +c+]
+
+[stem]
+++++
+Hello + It's me + Your friend +1{cpp}23+
+++++
