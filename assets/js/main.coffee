@@ -262,14 +262,13 @@ APP.onload = () ->
       APP.changeTheme 'dark'
 
   $('.announcement-sticky').on 'click', 'a', (e) ->
-    sticky = $(this).closest '.announcement-sticky'
+    $sticky = $(this).closest '.announcement-sticky'
 
     e.preventDefault()
 
-    sticky.fadeOut 2 * CONSTS.animDuration, () ->
-      $(this).remove()
+    $sticky.remove()
 
-    Cookies.set "#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}", '1'
+    Cookies.set "#{CONSTS.cookieStickyPrefix}#{$sticky.data 'id'}", '1'
 
     if $(this).attr('href') != '#'
       window.location = $(this).attr 'href'
@@ -293,7 +292,6 @@ APP.onload = () ->
       sticky.remove()
 
   __DOMRemoveSticky()
-  $('.announcement-sticky + .site-header').removeClass 'at-top'
 
   $('.collapse-el').html '&laquo;'
   $('.collapse-el.closed').html '&raquo;'

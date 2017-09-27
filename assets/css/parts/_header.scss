@@ -86,16 +86,6 @@
   }
 }
 
-// Hack
-.site-header.at-top .search-box input {
-  background-color: transparentize($fg-accent, .7);
-}
-
-.site-header.at-top:hover .search-box input {
-  @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
-  @else       { background-color: transparentize($bg-secondary, .3); }
-}
-
 @media (min-width: $bp-tablet) {
   .site-header {
     color: $fg-primary;
@@ -105,10 +95,23 @@
     &.at-top {
       background-color: $t;
       border-bottom-color: $t;
+
+      .search-box input {
+        background-color: transparentize($fg-accent, .7);
+      }
     }
 
     &.at-top:hover {
       background-color: transparentize($bg-primary, .3);
+
+      .menu-items {
+        background-color: transparentize($bg-secondary, .3);
+      }
+
+      .search-box input {
+        @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
+        @else       { background-color: transparentize($bg-secondary, .3); }
+      }
     }
   }
 
@@ -191,5 +194,19 @@
 
   ~ main {
     margin-top: $ex3;
+  }
+}
+
+@media (min-width: $bp-tablet) {
+  .announcement-sticky {
+    top: 0;
+
+    + .site-header {
+      top: 24px; // 1em (15px) * 1.6 line height
+    }
+
+    ~ main {
+      margin-top: 24px;
+    }
   }
 }
