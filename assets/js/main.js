@@ -280,6 +280,14 @@ Main coffeescript file
         return window.location = $(this).attr('href');
       }
     });
+    $(window).on('scroll', function(e) {
+      if (window.scrollY > 100) {
+        return $('.site-header').removeClass('at-top');
+      } else {
+        return $('.site-header').addClass('at-top');
+      }
+    });
+    $('.site-header').addClass('at-top');
     __DOMRemoveSticky = function() {
       var sticky;
       sticky = $('.announcement-sticky');
@@ -288,6 +296,7 @@ Main coffeescript file
       }
     };
     __DOMRemoveSticky();
+    $('.announcement-sticky + .site-header').removeClass('at-top');
     $('.collapse-el').html('&laquo;');
     $('.collapse-el.closed').html('&raquo;');
     if ('1' === Cookies.get(CONSTS.cookieCollapseSidebar)) {
