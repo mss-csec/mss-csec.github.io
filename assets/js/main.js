@@ -269,13 +269,11 @@ Main coffeescript file
       }
     });
     $('.announcement-sticky').on('click', 'a', function(e) {
-      var sticky;
-      sticky = $(this).closest('.announcement-sticky');
+      var $sticky;
+      $sticky = $(this).closest('.announcement-sticky');
       e.preventDefault();
-      sticky.fadeOut(2 * CONSTS.animDuration, function() {
-        return $(this).remove();
-      });
-      Cookies.set("" + CONSTS.cookieStickyPrefix + (sticky.data('id')), '1');
+      $sticky.remove();
+      Cookies.set("" + CONSTS.cookieStickyPrefix + ($sticky.data('id')), '1');
       if ($(this).attr('href') !== '#') {
         return window.location = $(this).attr('href');
       }
@@ -296,7 +294,6 @@ Main coffeescript file
       }
     };
     __DOMRemoveSticky();
-    $('.announcement-sticky + .site-header').removeClass('at-top');
     $('.collapse-el').html('&laquo;');
     $('.collapse-el.closed').html('&raquo;');
     if ('1' === Cookies.get(CONSTS.cookieCollapseSidebar)) {
