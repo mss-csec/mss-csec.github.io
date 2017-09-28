@@ -32,6 +32,7 @@ plugins:
   - jekyll-coffeescript
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Build settings
 encoding: utf-8
