@@ -276,12 +276,12 @@ APP.onload = () ->
   # Scrolling
   $(window).on 'scroll', (e) ->
     if window.scrollY > 100
-      $('.site-header').removeClass 'at-top'
+      $('body:not(.no-hero) .site-header').removeClass 'at-top'
     else
-      $('.site-header').addClass 'at-top'
+      $('body:not(.no-hero) .site-header').addClass 'at-top'
 
   # DOM manipulation
-  $('.site-header').addClass 'at-top'
+  $('body:not(.no-hero) .site-header').addClass 'at-top'
 
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')
