@@ -32,6 +32,8 @@ GEM
     jekyll-coffeescript (1.0.2)
       coffee-script (~> 2.2)
       coffee-script-source (~> 1.11.1)
+    jekyll-compose (0.5.0)
+      jekyll (>= 3.0.0)
     jekyll-feed (0.9.2)
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.0)
@@ -49,8 +51,6 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
-    minima (2.1.1)
-      jekyll (~> 3.3)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.0)
@@ -77,10 +77,10 @@ DEPENDENCIES
   jekyll (= 3.6.0)
   jekyll-asciidoc (~> 2.1.0)
   jekyll-coffeescript
+  jekyll-compose
   jekyll-feed (~> 0.6)
   jekyll-seo-tag
   jekyll-sitemap
-  minima (~> 2.0)
   therubyracer
   tzinfo-data
 

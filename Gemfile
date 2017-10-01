@@ -12,9 +12,6 @@ gem "jekyll", "3.6.0" # Keep with GitHub Pages
                       # EDIT 2017-09-24: Update to 3.6.0 ahead of GH (which uses 3.5.2) due to
                       # asciidoctor-rouge requiring Rouge 2
 
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.0"
-
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins
@@ -29,6 +26,9 @@ group :jekyll_plugins do
 
   # Use Jekyll Coffeescript
   gem "jekyll-coffeescript"
+
+  # Use Jekyll Compose
+  gem "jekyll-compose"
 
   # Create a RSS feed
   gem "jekyll-feed", "~> 0.6"
