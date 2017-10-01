@@ -302,7 +302,8 @@ APP.onload = () ->
       .addClass 'twelve'
 
   # Unhide body
-  $('body').prop 'hidden', false
+  $('body')
+    .removeClass 'no-js'
 
   # KaTeX rendering
   __katexFail = false

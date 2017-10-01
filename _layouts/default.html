@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en">
 <!-- head -->
 {% include html-head.html %}
-<body hidden>
+<body class="no-js {% if page.addons.class %}{{ page.addons.class }}{% endif %}">
   <!-- header -->
   {% include header.html %}
   <main>

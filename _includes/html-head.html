@@ -8,6 +8,8 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://googletagmanager.com">
 
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }} • {{ site.description }}</title>
+
   {% seo title=false %}
 
   {% assign icon_loc = '/assets/images/favicons/icon' | relative_url %}
@@ -57,8 +59,6 @@
     {% endfor %}
   {% endif %}
   <!-- END CSS -->
-
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }} • {{ site.description }}</title>
 
   <!-- BEGIN JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
@@ -148,7 +148,6 @@
   <!-- END JS -->
 
   <noscript><style>
-  body[hidden]{display:block;}
   script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
   script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
   </style></noscript>
