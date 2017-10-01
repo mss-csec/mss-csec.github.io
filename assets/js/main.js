@@ -280,12 +280,12 @@ Main coffeescript file
     });
     $(window).on('scroll', function(e) {
       if (window.scrollY > 100) {
-        return $('.site-header').removeClass('at-top');
+        return $('body:not(.no-hero) .site-header').removeClass('at-top');
       } else {
-        return $('.site-header').addClass('at-top');
+        return $('body:not(.no-hero) .site-header').addClass('at-top');
       }
     });
-    $('.site-header').addClass('at-top');
+    $('body:not(.no-hero) .site-header').addClass('at-top');
     __DOMRemoveSticky = function() {
       var sticky;
       sticky = $('.announcement-sticky');
@@ -300,7 +300,7 @@ Main coffeescript file
       __collapseSidebar($('.sidebar-collapsible'));
       $('#main-content').removeClass('nine').addClass('twelve');
     }
-    $('body').prop('hidden', false);
+    $('body').removeClass('no-js');
     __katexFail = false;
     __renderKatex = function(isDisplay) {
       return function() {
