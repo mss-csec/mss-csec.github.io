@@ -23,9 +23,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-02T15:21:21+00:00" />
+<meta property="article:published_time" content="2017-10-04T22:15:53+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Type Modifiers and Pointers","datePublished":"2017-10-02T15:21:21+00:00","dateModified":"2017-10-02T15:21:21+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Type Modifiers and Pointers","datePublished":"2017-10-04T22:15:53+00:00","dateModified":"2017-10-04T22:15:53+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -355,12 +355,320 @@ The second statment is wrong.</p>
 <div class="paragraph">
 <p>Specifically, one of the thirty-two bits must be used to hold the sign of the number.
 The rest thirty-one are used to indicate the magnitude of the number.
-As such, a thirty-two bit <code>int</code> (or <code>int32</code>) can store integers between, inclusive, -2,147,483,648 and 2,147,483,647.</p>
+As such, a thirty-two bit <code>int</code> (or <code>int32</code>) can store integers between, inclusive, \(-2,147,483,648\) and \(2,147,483,647\).</p>
 </div>
 <div class="paragraph">
 <p>A <strong>type</strong> does not refer to the type of value that is <em>stored</em>, but rather the type of value that should be <em>interpreted</em> from the stored data.
 A <code>float</code>, for example, which stores the value of \(\sqrt{2}\) to its highest precision, will be interpreted as something like \(1.414214\). However, if you interpret its data as an <code>int</code>, then you&#8217;ll get \(1,068,827,891\).</p>
 </div>
+<div class="paragraph">
+<p>It&#8217;s kind of like words across different languages.
+In English, "die" means <em>to cease living</em>.
+In Dutch, "die" means <em>this one</em>.
+They&#8217;re denoted&#8201;&#8212;&#8201;stored&#8201;&#8212;&#8201;the same way, but the <em>interpretation</em> is different, which leads to unfortunate misunderstandings like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="http://68.media.tumblr.com/tumblr_lq48s3ZUz81r1vpugo1_500.png" alt="Mama, die, die, die&#8230;&#8203;; source: tumblr"></span></p>
+</div>
+<div class="sect2">
+<h3 id="variables-in-memory">Variables in Memory</h3>
+<div class="quoteblock">
+<blockquote>
+In programming, a <strong>variable</strong> refers to a segment of memory which is to be read from or written to during calculations.
+</blockquote>
+<div class="attribution">
+&#8212; Me, in like the first paragraph
+</div>
+</div>
+<div class="paragraph">
+<p>Variables are put into segments of memory.
+So what&#8217;s memory?</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;m sure you&#8217;re familiar with what RAM sticks are: they&#8217;re your "working memory" while your computer runs.
+Each stick of RAM is delimited into little chunks of eight bits called <em>bytes</em>.
+So that we can find these bytes, each and every one of them has an <strong>address</strong>.</p>
+</div>
+<div class="paragraph">
+<p>You can think of working memory as a giant warehouse.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://www.thesun.co.uk/wp-content/uploads/2016/03/1625857.main_image.jpg?strip=all" alt="Amazon warehouse; source: The Sun"></span></p>
+</div>
+<div class="paragraph">
+<p>In each little shelf is a small sheet of paper, holding an eight-bit binary number (or, if you wish, a number between 0 and 255).</p>
+</div>
+<div class="paragraph">
+<p>The CPU is like a little office in the next building over.
+It doesn&#8217;t understand what&#8217;s going on; all it does is take instructions and carry them out.</p>
+</div>
+<div class="paragraph">
+<p>One instruction says to assign byte \(\text{2300003A}_{16}\)<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> the value at byte \(\text{23000038}_{16}\).
+The CPU (office) requests for byte \(\text{23000038}_{16}\) from the RAM (warehouse), and so the workers at the warehouse retrieve this data for the CPU.
+The CPU then reads that the data is \(\text{00}_{16}\), and so tells the warehouse to assign byte \(\text{23000038}_{16}\) the value \(\text{00}_{16}\).</p>
+</div>
+<div class="paragraph">
+<p>This is what an assignment between variables actually is<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>: the CPU requests from RAM, then tells RAM to change a value.</p>
+</div>
+<div class="paragraph">
+<p>Now, most types take <em>more</em> than one byte, but the same process still works.
+If you&#8217;re using <code>int</code>s (four bytes), then the CPU will request four bytes and tell memory to assign four bytes.
+If you&#8217;re working with <code>float</code>s (four bytes), then the CPU will request and ask to write four bytes, but will use floating-point operations instead.</p>
+</div>
+<div class="paragraph">
+<p>Consider what the following code does:</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre>	<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mo">07</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p>The CPU, reading these instructions, will assign memory values to each <code>int</code>.
+If we say that <code>i</code> is address <code>100</code>, <code>j</code> is at <code>104</code>, and <code>k</code> is at <code>108</code>, then the process will be something like this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>CPU tells RAM to assign <code>100</code> (four bytes) to <code>00000007</code></p>
+</li>
+<li>
+<p>CPU tells RAM to assign <code>104</code> (four bytes) to <code>00000005</code></p>
+</li>
+<li>
+<p>CPU requests the values of addresses <code>100</code> (four bytes) and <code>104</code> (four bytes), obtaining <code>000000007</code> and <code>00000005</code></p>
+</li>
+<li>
+<p>CPU adds these values together , obtaining <code>0000000C</code></p>
+</li>
+<li>
+<p>CPU tells RAM to assign <code>108</code> (four bytes) to <code>0000000C</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="type-modifiers">Type Modifiers</h3>
+<div class="paragraph">
+<p>Notice that we are specifying how many bytes to to assign and request.
+What if we only needed to use two bytes for our variable?
+What if we needed more than four bytes, because we expect to use numbers larger than \(2,147,483,647\)?
+What if we don&#8217;t need to store negatives in our variable?</p>
+</div>
+<div class="paragraph">
+<p>This is where <strong>type modifiers</strong> come in.
+They modify the lengths and behaviours of variables.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s a few you should know about:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>short</code>: halves the length of a variable.
+Applicable to <code>int</code> only.</p>
+</li>
+<li>
+<p><code>long</code>: doubles the length of a variable.
+Applicable to <code>int</code>, <code>long</code><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>, <code>char</code>, and <code>double</code><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
+</li>
+<li>
+<p><code>unsigned</code>: the first bit of the variable will now be used as another digit rather than a sign indicator.
+Applicable to <code>int</code>, <code>long</code>, and <code>char</code>.</p>
+</li>
+<li>
+<p><code>signed</code>: opposite of above. Not really too useful, since it isn&#8217;t really necessary much of the time.</p>
+</li>
+<li>
+<p><code>const</code>: prevents this variable from being altered.
+This is actually a compile-time behaviour, and doesn&#8217;t affect how the hardware handles things.</p>
+</li>
+<li>
+<p><code>static</code>: declares this variable with a global lifetime, despite that it may be in a non-global scope.
+Not particularly useful for your purposes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are many questions where you may be asked to compute something very large; these are where <code>long long</code>s become vital.</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">si</span><span class="p">;</span>		<span class="c1">//declare a short int (2-byte int) called si
+</span>    <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>		<span class="c1">//declare a long long (8-byte int) called ll
+</span>    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ui</span><span class="p">;</span>	<span class="o">//</span><span class="n">declare</span> <span class="n">an</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="n">byte</span> <span class="n">u</span><span class="o">-</span><span class="kt">int</span><span class="p">)</span> <span class="n">called</span> <span class="n">ui</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="paragraph">
+<p>Oftentimes the standard library will use types like <code>uint32_t</code>, or <code>size_t</code>.
+The <a href="http://www.cplusplus.com/reference/cstdint/">&lt;stdint.h&gt;</a> and <a href="http://www.cplusplus.com/reference/cstddef/">&lt;stddef.h&gt;</a> libraries contains these types.
+If you get compiler errors that mention these, now you might know what the heck they are!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pointers">Pointers</h3>
+<div class="paragraph">
+<p>Recall our little exercise at the end of the <em>Variables in Memory</em> section.</p>
+</div>
+<div class="paragraph">
+<p>Addresses are just numbers&#8201;&#8212;&#8201;four-byte numbers, at that, if you&#8217;re running 32-bit programs<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>.
+What if you wanted to say "hey, get me the value stored at the address indicated by that variable"?</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pointers.svg/220px-Pointers.svg.png" alt="a pointer; source: wikipedia"></span></p>
+</div>
+<div class="paragraph">
+<p>Essentially, you&#8217;re setting a variable to <strong>reference</strong> some address in memory.</p>
+</div>
+<div class="paragraph">
+<p>Now, they&#8217;re not actually references.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pointers are not actually references.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pointers are <strong>not</strong> actually references.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Pointers merely store a number.
+When <em>interpreted</em> as a pointer, it <em>refers</em> to an address.
+But this is <em>only</em> when interpreted with the right instructions.</p>
+</div>
+<div class="paragraph">
+<p>Changing the value of the pointer <em>itself</em> will only move the "arrow of reference."
+It doesn&#8217;t change what the pointer is pointing to.</p>
+</div>
+<div class="paragraph">
+<p>To use it, you must <strong>dereference</strong> it first by telling the CPU, "hey, instead of just changing this address (the pointer), change the address (the address "referenced" by the pointer) that this address (the pointer) stores."</p>
+</div>
+<div class="paragraph">
+<p>Take a second to digest that sentence; the distinctions are important.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s a few new operations you now need to know:</p>
+</div>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">p</span> <span class="o">+=</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="k">new</span> <span class="n">p</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
+    <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">p</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="ulist">
+<ul>
+<li>
+<p>Line 2: when declaring a pointer, an asterick must be placed <strong>before</strong> the variable name, which denotes it as a pointer.
+This is a <strong>type modifier</strong>, applicable to <em>all</em> types<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.
+Whitespace does not matter: <code>int * p</code>, <code>int* p</code>, <code>int *p</code>, <code>int*p</code> all do the same thing<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>.</p>
+</li>
+<li>
+<p>Line 3: to set a pointer point to another variable, use the <strong>addressof</strong> operator. In C++, that&#8217;s <code>&amp;</code>.</p>
+</li>
+<li>
+<p>Line 4: to actually use the memory you&#8217;re referring to, you have to <strong>dereference</strong> a pointer with the dereference operator <code>*</code><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup></p>
+</li>
+<li>
+<p>Line 5: you can dynamically allocate memory using the <code>new</code> and <code>new[]</code> operator. In this case, <code>p</code> became a pointer "pointing to an array"<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup> of length 55 (that was the value of <code>a</code>).</p>
+</li>
+<li>
+<p>Line 6: dereferencing <code>p</code> now refers to the "first element" of "the array".</p>
+</li>
+<li>
+<p>Line 7: to access the next element, go 1 block after the location specified by <code>p</code>. This is why arrays are zero-indexed.</p>
+</li>
+<li>
+<p>Line 8: as a shorthand to the previous notation, you can use the <strong>index</strong> operator for quick pointer arithmetic.</p>
+</li>
+<li>
+<p>Line 9: when you&#8217;re done with memory, <code>delete</code> it.
+If you keep asking for more memory, then you&#8217;ll run out sometime and you&#8217;ll get a segfault.
+No one likes a segfault.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Notice that with pointer arithmetic we can pretty much add or subtract anything we want.
+If you really wanted, you can try accessing <code>p[55]</code>, despite it being past the length of the array.</p>
+</div>
+<div class="paragraph">
+<p>Or <code>p[-1]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Be careful when using pointers and indicies in C++; you&#8217;ll need to keep track of everything yourself.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. this is hexadecimal, a 16-digit base (or radix) for numbers. It&#8217;s a common way to represent binary numbers, since it&#8217;s much more compact than writing every bit out. This way, each digit represents one <strong>nibble</strong>, or half-byte.
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. actually there&#8217;s also the <strong>cache</strong> between the RAM and CPU, which speeds up this retrieval process. But that&#8217;s not so important to know right now.
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. due to legacy issues, the <code>long</code> is a 4-byte <code>int</code>. <code>long int</code> <em>may</em> actually refer to a 4-byte int depending on your operating system, and so if you want an 8-byte int you&#8217;ll need a <code>long long</code>.
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. actually, it makes <code>double</code>s 12 bytes long up from 8 bytes; doubles are already  "long floats."
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. if you&#8217;re running 64-bit programs, they&#8217;re eight bytes.
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. a pointer is a type, and so you can have a pointer to a pointer. Or a pointer to a pointer to a pointer. Or a pointer to a pointer to a pointer to a pointer to a pointer&#8230;&#8203; you get the point. You&#8217;d declare it as <code>int ***** fifth_dimentional_pointer</code>.
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. you can declare different levels of pointers on the same line: <code>int a, *b, **c</code> gives you an int a, a pointer to int b, and a pointer to a pointer to int c.
+</div>
+<div class="footnote" id="_footnote_8">
+<a href="#_footnoteref_8">8</a>. the dereference operator has <strong>a lower</strong> precedence than the access operator <code>.</code>; if you&#8217;re using a pointer to a <code>struct</code> or <code>class</code>, then you need specify that you&#8217;re dereferencing <em>first</em>: <code>(*obj).member</code>. There is a shorthand for this: <code>`obj->member</code> does the same thing.
+</div>
+<div class="footnote" id="_footnote_9">
+<a href="#_footnoteref_9">9</a>. it isn&#8217;t, it&#8217;s pointing a memory location which the <em>operating system</em> treats as a <em>contiguous block of memory</em>. It can act like an array, but it needn&#8217;t.
 </div>
 </div>
   </div>
