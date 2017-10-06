@@ -14,7 +14,8 @@ Main coffeescript file
     animDuration: 230,
     cookieCollapseSidebar: 'collapseSidebar',
     cookieStickyPrefix: 'sticky-',
-    cookieTheme: 'theme'
+    cookieTheme: 'theme',
+    easterEgg: 'pascha'
   };
 
   UTILS.intSort = function(a, b) {
@@ -251,12 +252,48 @@ Main coffeescript file
   };
 
   APP.onload = function() {
-    var __DOMRemoveSticky, __katexFail, __renderKatex, __useMathJax;
+    var __DOMRemoveSticky, __easterEgg, __easterEggTrigger, __katexFail, __renderKatex, __useMathJax;
     console.log("Loaded on " + ((new Date()).toLocaleString()));
     if ('dark' === Cookies.get(CONSTS.cookieTheme)) {
       APP.changeTheme('dark');
       $('#toggle-dark-theme').prop('checked', true);
     }
+    __easterEgg = function() {
+      $('body').toggleClass('easter-egg');
+      if ('false' === Cookies.get(CONSTS.easterEgg)) {
+        return Cookies.set(CONSTS.easterEgg, 'true');
+      } else {
+        return Cookies.set(CONSTS.easterEgg, 'false');
+      }
+    };
+    __easterEggTrigger = function() {
+      var ind, map, to;
+      map = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+      ind = 0;
+      to = null;
+      return function(e) {
+        clearTimeout(to);
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+          return;
+        }
+        if (map[ind] === e.keyCode) {
+          ind++;
+        } else {
+          return ind = 0;
+        }
+        if (ind === map.length) {
+          ind = 0;
+          return __easterEgg();
+        }
+        return to = setTimeout(function() {
+          return ind = 0;
+        }, 200);
+      };
+    };
+    if ('true' === Cookies.get(CONSTS.easterEgg)) {
+      $('body').addClass('easter-egg');
+    }
+    $(window).on('keydown', __easterEggTrigger());
     $('#toggle-dark-theme').on('change', function() {
       var theme;
       theme = Cookies.get(CONSTS.cookieTheme);
