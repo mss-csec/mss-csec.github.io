@@ -65,14 +65,14 @@ window.addEventListener "keyup", (e) ->
   frustrationKeys = []
   frustrationCount = if frustrationCount > 0 then frustrationCount - 1 else 0
 
-document.querySelector("head").insertAdjacentHTML "beforeend", """
+document.querySelector("head").insertAdjacentHTML "beforeend", "
 <style>
 #open-feedback-modal {
   position: fixed; bottom: 20px; right: 20px;
-  box-sizing: border-box; width: 40px; height: 40px;
+  box-sizing: border-box; width: 160px; height: 50px;
   background-color: #f52f2f; color: white;
-  line-height: 40px; text-align: center; font-weight: 700; font-size: 20px;
-  border-radius: 40px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);
+  line-height: 50px; font-size: 20px; font-weight: 700; text-align: center;
+  border-radius: 50px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);
   transition: .3s ease;
 }
 #open-feedback-modal:hover {
@@ -88,7 +88,7 @@ document.querySelector("head").insertAdjacentHTML "beforeend", """
 #feedback-modal-wrapper {
   position: fixed; top: 50%; left: 50%;
   width: 60%; max-width: 800px; max-height: 75%;
-  background: white;
+  background-color: white;
   padding: 40px; border-radius: 15px; margin: auto;
   z-index: 10; overflow-y: auto;
   transform: translateX(-50%) translateY(-50%);
@@ -107,5 +107,5 @@ document.querySelector("head").insertAdjacentHTML "beforeend", """
 }
 #feedback-modal .button:not(.button-primary):hover { border-color: #f52f2f; }
 </style>
-"""
-document.body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>?</a>"""
+"
+document.body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>Give feedback</a>"""
