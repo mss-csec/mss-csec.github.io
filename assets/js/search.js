@@ -38,7 +38,7 @@
 
   initSearch = function(rawStore) {
     var commit, savedStore;
-    commit = "0a6767b";
+    commit = "a17cef1";
     if (null !== localStorage.getItem(storageKey)) {
       try {
         savedStore = JSON.parse(localStorage.getItem(storageKey));
