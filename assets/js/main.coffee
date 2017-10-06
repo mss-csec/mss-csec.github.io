@@ -13,6 +13,7 @@ CONSTS =
   cookieCollapseSidebar: 'collapseSidebar'
   cookieStickyPrefix: 'sticky-'
   cookieTheme: 'theme'
+  easterEgg: 'pascha'
 
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
@@ -249,6 +250,40 @@ APP.onload = () ->
   if 'dark' == Cookies.get CONSTS.cookieTheme
     APP.changeTheme 'dark'
     $('#toggle-dark-theme').prop 'checked', true
+
+  # Easter egg
+  __easterEgg = () ->
+    $('body').toggleClass 'easter-egg'
+
+    if 'false' == Cookies.get CONSTS.easterEgg
+      Cookies.set CONSTS.easterEgg, 'true'
+    else
+      Cookies.set CONSTS.easterEgg, 'false'
+  __easterEggTrigger = () ->
+    map = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
+    ind = 0
+    to = null
+
+    (e) ->
+      clearTimeout to
+
+      return if e.altKey or e.ctrlKey or e.metaKey or e.shiftKey
+
+      if map[ind] == e.keyCode
+        ind++
+      else
+        return ind = 0
+
+      if ind == map.length
+        ind = 0
+        return __easterEgg()
+
+      to = setTimeout () ->
+        ind = 0
+      , 200
+  if 'true' == Cookies.get CONSTS.easterEgg
+    $('body').addClass 'easter-egg'
+  $(window).on 'keydown', __easterEggTrigger()
 
   # Add event handlers
   $('#toggle-dark-theme').on 'change', () ->

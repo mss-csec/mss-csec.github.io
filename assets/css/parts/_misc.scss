@@ -4,3 +4,26 @@
 .MJXc-display :target {
   outline: 2px solid red;
 }
+
+// lol easter egg
+body.easter-egg {
+  $easter-image: '/assets/images/kawaii-art-kawaii-anime.png';
+  background-image: url($easter-image);
+
+  article, div:not(.hero), footer, header, main, section {
+    background-size: $ex2;
+    background-image: url($easter-image);
+  }
+
+  h1:not(.title), h2, h3, h4, h5, h6, p {
+    background-color: $bg-primary;
+  }
+
+  .site-header, .site-footer {
+    background-size: $ex4;
+  }
+
+  div.container, div.row, .site-header div {
+    background-image: none;
+  }
+}
