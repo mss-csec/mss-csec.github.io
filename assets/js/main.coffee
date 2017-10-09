@@ -38,35 +38,54 @@ APP.SUBCLUB_END_HOUR = 17;
 # Returns the most recent and the next up lesson given a complete schedule
 # in hash form
 #
-# data: A hash where the keys are the lesson id, and the values either a date
-#       in a JavaScript-parsable format, or a hash containing such a date field.
-#       Cloned inside the method to prevent side effects.
-APP.loadSubclubSchedule = (data) ->
-  clonedData = $.extend true, {}, data
+# sched: A hash where the keys are the lesson id, and the values either a date
+#        in a JavaScript-parsable format, or a hash containing such a date
+#        field. Cloned inside the method to prevent side effects.
+APP.loadSubclubSchedule = (sched) ->
+  clonedSched = $.extend true, {}, sched
   today = (new Date()).getTime()
 
-  for k, v of clonedData
-    v = (new Date v.date ? v).setHours(APP.SUBCLUB_END_HOUR)
-    clonedData[k] = v
+  for id, data of clonedSched
+    # t: time of lesson, l: lesson no.
+    data =
+      t: (new Date data.date ? data).setHours(APP.SUBCLUB_END_HOUR),
+      l: parseInt data.lesson
+    clonedSched[id] = data
 
     # Should only be true on initialization
     if not mostRecent? and not nextUp?
-      mostRecent = k
-      nextUp = k
+      mostRecent = id
+      nextUp = id
 
-    if v < today and
-    (v > clonedData[mostRecent] or clonedData[mostRecent] > today)
-       mostRecent = k
+    # The lesson date is before now, and:
+    #  1. the lesson date is before that of the lesson recognized as being the
+    #     most recent, OR
+    #  2. the lesson recognized as being the most recent is after today
+    # If the lesson has the same date as the lesson recognized as being the most
+    # recent, use the lesson attribute as tiebreaker (greater is recognized)
+    if data.t <= today and
+    (data.t >= clonedSched[mostRecent].t or clonedSched[mostRecent].t > today)
+      if data.t == clonedSched[mostRecent].t and
+      data.l < clonedSched[mostRecent].l
+        continue
 
-    if v > today and
-    (v < clonedData[nextUp] or clonedData[nextUp] < today)
-      nextUp = k
+      mostRecent = id
 
-  if clonedData[mostRecent] < today
-    dateMostRecent = new Date clonedData[mostRecent]
+    # ditto, but replace "before" with "after", "most recent" with "next up",
+    # and "greater" with "lesser"
+    if data.t > today and
+    (data.t <= clonedSched[nextUp].t or clonedSched[nextUp].t < today)
+      if data.t == clonedSched[nextUp].t and
+      data.l > clonedSched[nextUp].l
+        continue
 
-  if clonedData[nextUp] >= today
-    dateNextUp = new Date clonedData[nextUp]
+      nextUp = id
+
+  if clonedSched[mostRecent].t < today
+    dateMostRecent = new Date clonedSched[mostRecent].t
+
+  if clonedSched[nextUp].t >= today
+    dateNextUp = new Date clonedSched[nextUp].t
 
   mostRecent:
     id: if dateMostRecent? then mostRecent else null

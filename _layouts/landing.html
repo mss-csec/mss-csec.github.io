@@ -48,18 +48,21 @@ layout: page
     {% for entry in subclub_schedule %}
       {% assign lesson_title = subclub_title | xml_escape %}
       {% assign lesson_url = '' %}
+      {% assign lesson_no = -1 %}
       {% for item in subclub_obj.items %}
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
           {% assign lesson_title = item.title | xml_escape %}
           {% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}
+          {% assign lesson_no = item.lesson | xml_escape %}
           {% break %}
         {% endif %}
       {% endfor %}
     "{{ entry[0] | xml_escape }}": {
       date: "{{ entry[1] | date: site.datefmt }}",
       url: "{{ lesson_url }}/",
-      title: "{{ lesson_title }}"
+      title: "{{ lesson_title }}",
+      lesson: "{{ lesson_no }}"
     },
     {% endfor %}
   })});
