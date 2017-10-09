@@ -58,30 +58,39 @@ Main coffeescript file
 
   APP.SUBCLUB_END_HOUR = 17;
 
-  APP.loadSubclubSchedule = function(data) {
-    var clonedData, dateMostRecent, dateNextUp, k, mostRecent, nextUp, ref, today, v;
-    clonedData = $.extend(true, {}, data);
+  APP.loadSubclubSchedule = function(sched) {
+    var clonedSched, data, dateMostRecent, dateNextUp, id, mostRecent, nextUp, ref, today;
+    clonedSched = $.extend(true, {}, sched);
     today = (new Date()).getTime();
-    for (k in clonedData) {
-      v = clonedData[k];
-      v = (new Date((ref = v.date) != null ? ref : v)).setHours(APP.SUBCLUB_END_HOUR);
-      clonedData[k] = v;
+    for (id in clonedSched) {
+      data = clonedSched[id];
+      data = {
+        t: (new Date((ref = data.date) != null ? ref : data)).setHours(APP.SUBCLUB_END_HOUR),
+        l: parseInt(data.lesson)
+      };
+      clonedSched[id] = data;
       if ((typeof mostRecent === "undefined" || mostRecent === null) && (typeof nextUp === "undefined" || nextUp === null)) {
-        mostRecent = k;
-        nextUp = k;
+        mostRecent = id;
+        nextUp = id;
       }
-      if (v < today && (v > clonedData[mostRecent] || clonedData[mostRecent] > today)) {
-        mostRecent = k;
+      if (data.t <= today && (data.t >= clonedSched[mostRecent].t || clonedSched[mostRecent].t > today)) {
+        if (data.t === clonedSched[mostRecent].t && data.l < clonedSched[mostRecent].l) {
+          continue;
+        }
+        mostRecent = id;
       }
-      if (v > today && (v < clonedData[nextUp] || clonedData[nextUp] < today)) {
-        nextUp = k;
+      if (data.t > today && (data.t <= clonedSched[nextUp].t || clonedSched[nextUp].t < today)) {
+        if (data.t === clonedSched[nextUp].t && data.l > clonedSched[nextUp].l) {
+          continue;
+        }
+        nextUp = id;
       }
     }
-    if (clonedData[mostRecent] < today) {
-      dateMostRecent = new Date(clonedData[mostRecent]);
+    if (clonedSched[mostRecent].t < today) {
+      dateMostRecent = new Date(clonedSched[mostRecent].t);
     }
-    if (clonedData[nextUp] >= today) {
-      dateNextUp = new Date(clonedData[nextUp]);
+    if (clonedSched[nextUp].t >= today) {
+      dateNextUp = new Date(clonedSched[nextUp].t);
     }
     return {
       mostRecent: {
