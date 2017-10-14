@@ -2,8 +2,18 @@
 liquid: true
 ---
 
-FEEDBACK_URL = "{{ site.feedback_link }}"
-FEEDBACK_BUG_ADDON = "?entry.2071656823=%3D%3D%3D+BUG+%3D%3D%3D%0A%0ASummary:+%3Csummarize+bug+here%3E%0A%0ASteps+to+reproduce:%0A%3Csummarize+what+you+did+up+to+and+including+when+the+bug+reared+its+ugly+head%3E%0A%0AAdditional+notes:%0A%3Cany+additional+stuff+you+want+to+add%3E"
+FEEDBACK_URL = "{{ site.feedback_link }}?entry.1117270848="
+FEEDBACK_TEMPLATE = """=== BUG ===
+
+Summary:
+<summarize bug here>
+
+Steps to reproduce:
+<summarize what you did up to and including when the bug reared its ugly head>
+
+Additional notes:
+<any additional stuff you want to add>"""
+FEEDBACK_BUG_ADDON = "&entry.2071656823=#{encodeURIComponent(FEEDBACK_TEMPLATE)}"
 
 body = document.body
 
@@ -13,7 +23,7 @@ frustrationCount = 0
 frustrationTimeout = null
 frustrationKeys = []
 
-displayModal = (calmdown, please, futext, oktext, addbuttons = [{ url: FEEDBACK_URL + FEEDBACK_BUG_ADDON, text: "I'd like to fill out a bug report!"}]) ->
+displayModal = (calmdown, please, futext, oktext, addbuttons = [{ url: FEEDBACK_URL + encodeURIComponent(location.href) + FEEDBACK_BUG_ADDON, text: "I'd like to fill out a bug report!"}]) ->
   addbuttons = addbuttons.map (btn) -> "<p><a class='button' href='#{btn.url}' target='_blank'>#{btn.text}</a></p>"
   modal = """<div id="feedback-modal">
 <div id="feedback-modal-bg" onclick="event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))"></div>
@@ -23,14 +33,14 @@ displayModal = (calmdown, please, futext, oktext, addbuttons = [{ url: FEEDBACK_
     <p>#{please}</p>
     <p class="login-note">(Please note: you must be signed into a YRDSB Gapps account in order to fill out the form.)</p>
     <div class="buttons">
-      <p><a class="button button-primary" href="#{FEEDBACK_URL}" target="_blank">#{futext}</a></p>
+      <p><a class="button button-primary" href="#{FEEDBACK_URL}#{encodeURIComponent(location.href)}" target="_blank">#{futext}</a></p>
       #{addbuttons.join("\n")}
       <p><a href="#" onclick="event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))">#{oktext}</a></p>
     </div>
   </div>
 </div>
 </div>"""
-  document.body.insertAdjacentHTML "beforeend", modal
+  body.insertAdjacentHTML "beforeend", modal
 
 window.FEEDBACKDisplayModal = () ->
   displayModal "Thanks for participating!",
@@ -108,4 +118,4 @@ document.querySelector("head").insertAdjacentHTML "beforeend", "
 #feedback-modal .button:not(.button-primary):hover { border-color: #f52f2f; }
 </style>
 "
-document.body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>Give feedback</a>"""
+body.insertAdjacentHTML "beforeend", """<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>Give feedback</a>"""
