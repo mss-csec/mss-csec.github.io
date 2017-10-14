@@ -1,5 +1,5 @@
 (function() {
-  var contentLength, executeSearch, extractQuery, idx, initSearch, queryKey, renderResults, storageKey, store,
+  var contentLength, executeSearch, extractQuery, idx, initSearch, queryKey, renderResults, sanitizeQuery, storageKey, store,
     hasProp = {}.hasOwnProperty;
 
   queryKey = 'q';
@@ -12,11 +12,15 @@
 
   store = {};
 
+  sanitizeQuery = function(query) {
+    return encodeURIComponent(query).replace(/%20/g, '+');
+  };
+
   extractQuery = function(query) {
     var index, searchString;
     searchString = window.location.search.slice(1);
     index = searchString.indexOf(query + '=');
-    query = searchString.slice(index + query.length + 1, searchString.indexOf('&', index) + 1 || 2e308);
+    query = searchString.slice(index + query.length + 1, searchString.indexOf('&', index) + 1 || searchString.length);
     return decodeURIComponent(query.replace(/\+/g, '%20'));
   };
 
@@ -38,7 +42,7 @@
 
   initSearch = function(rawStore) {
     var commit, savedStore;
-    commit = "78b85b5";
+    commit = "127e010";
     if (null !== localStorage.getItem(storageKey)) {
       try {
         savedStore = JSON.parse(localStorage.getItem(storageKey));
@@ -119,7 +123,7 @@
       e.preventDefault();
       history.pushState({
         newQuery: newQuery
-      }, '', "?" + queryKey + "=" + newQuery);
+      }, '', "?" + queryKey + "=" + (sanitizeQuery(newQuery)));
       return executeSearch(newQuery);
     });
     $(window).on('popstate', function(e) {
@@ -127,7 +131,7 @@
     });
     history.replaceState({
       query: query
-    }, '', "?" + queryKey + "=" + query);
+    }, '', "?" + queryKey + "=" + (sanitizeQuery(query)));
     initSearch(searchStore);
     return executeSearch(query);
   });

@@ -1,9 +1,11 @@
 (function() {
-  var FEEDBACK_BUG_ADDON, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, frustrationKeys, frustrationTimeout, isMobile;
+  var FEEDBACK_BUG_ADDON, FEEDBACK_TEMPLATE, FEEDBACK_URL, body, displayModal, frustrationCount, frustrationHandler, frustrationKeys, frustrationTimeout, isMobile;
 
-  FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform";
+  FEEDBACK_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform?entry.1117270848=";
 
-  FEEDBACK_BUG_ADDON = "?entry.2071656823=%3D%3D%3D+BUG+%3D%3D%3D%0A%0ASummary:+%3Csummarize+bug+here%3E%0A%0ASteps+to+reproduce:%0A%3Csummarize+what+you+did+up+to+and+including+when+the+bug+reared+its+ugly+head%3E%0A%0AAdditional+notes:%0A%3Cany+additional+stuff+you+want+to+add%3E";
+  FEEDBACK_TEMPLATE = "=== BUG ===\n\nSummary:\n<summarize bug here>\n\nSteps to reproduce:\n<summarize what you did up to and including when the bug reared its ugly head>\n\nAdditional notes:\n<any additional stuff you want to add>";
+
+  FEEDBACK_BUG_ADDON = "&entry.2071656823=" + (encodeURIComponent(FEEDBACK_TEMPLATE));
 
   body = document.body;
 
@@ -22,7 +24,7 @@
     if (addbuttons == null) {
       addbuttons = [
         {
-          url: FEEDBACK_URL + FEEDBACK_BUG_ADDON,
+          url: FEEDBACK_URL + encodeURIComponent(location.href) + FEEDBACK_BUG_ADDON,
           text: "I'd like to fill out a bug report!"
         }
       ];
@@ -30,8 +32,8 @@
     addbuttons = addbuttons.map(function(btn) {
       return "<p><a class='button' href='" + btn.url + "' target='_blank'>" + btn.text + "</a></p>";
     });
-    modal = "<div id=\"feedback-modal\">\n<div id=\"feedback-modal-bg\" onclick=\"event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))\"></div>\n<div id=\"feedback-modal-wrapper\">\n  <div id=\"feedback-modal-content\">\n    <h2>" + calmdown + "</h2>\n    <p>" + please + "</p>\n    <p class=\"login-note\">(Please note: you must be signed into a YRDSB Gapps account in order to fill out the form.)</p>\n    <div class=\"buttons\">\n      <p><a class=\"button button-primary\" href=\"" + FEEDBACK_URL + "\" target=\"_blank\">" + futext + "</a></p>\n      " + (addbuttons.join("\n")) + "\n      <p><a href=\"#\" onclick=\"event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))\">" + oktext + "</a></p>\n    </div>\n  </div>\n</div>\n</div>";
-    return document.body.insertAdjacentHTML("beforeend", modal);
+    modal = "<div id=\"feedback-modal\">\n<div id=\"feedback-modal-bg\" onclick=\"event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))\"></div>\n<div id=\"feedback-modal-wrapper\">\n  <div id=\"feedback-modal-content\">\n    <h2>" + calmdown + "</h2>\n    <p>" + please + "</p>\n    <p class=\"login-note\">(Please note: you must be signed into a YRDSB Gapps account in order to fill out the form.)</p>\n    <div class=\"buttons\">\n      <p><a class=\"button button-primary\" href=\"" + FEEDBACK_URL + (encodeURIComponent(location.href)) + "\" target=\"_blank\">" + futext + "</a></p>\n      " + (addbuttons.join("\n")) + "\n      <p><a href=\"#\" onclick=\"event.preventDefault();document.body.removeChild(document.getElementById('feedback-modal'))\">" + oktext + "</a></p>\n    </div>\n  </div>\n</div>\n</div>";
+    return body.insertAdjacentHTML("beforeend", modal);
   };
 
   window.FEEDBACKDisplayModal = function() {
@@ -73,6 +75,6 @@
 
   document.querySelector("head").insertAdjacentHTML("beforeend", "<style> #open-feedback-modal { position: fixed; bottom: 20px; right: 20px; box-sizing: border-box; width: 160px; height: 50px; background-color: #f52f2f; color: white; line-height: 50px; font-size: 20px; font-weight: 700; text-align: center; border-radius: 50px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4); transition: .3s ease; } #open-feedback-modal:hover { background-color: #f75858; text-decoration: none; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 5px 10px rgba(0, 0, 0, .4); } #feedback-modal-bg { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, .7); z-index: 10; } #feedback-modal-wrapper { position: fixed; top: 50%; left: 50%; width: 60%; max-width: 800px; max-height: 75%; background-color: white; padding: 40px; border-radius: 15px; margin: auto; z-index: 10; overflow-y: auto; transform: translateX(-50%) translateY(-50%); } .theme-dark #feedback-modal-wrapper { background-color: #1a1f2a; } #feedback-modal .login-note { font-size: .95em; } @media (max-width: 768px) { #feedback-modal .login-note { display: none; } } #feedback-modal .button { width: 100%; } #feedback-modal .buttons p { font-size: 1.1em; text-align: center; margin-bottom: 0; } #feedback-modal .button:not(.button-primary) { color: #f52f2f; border-color: rgba(245, 47, 47, .6); } #feedback-modal .button:not(.button-primary):hover { border-color: #f52f2f; } </style>");
 
-  document.body.insertAdjacentHTML("beforeend", "<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>Give feedback</a>");
+  body.insertAdjacentHTML("beforeend", "<a id='open-feedback-modal' href='#' title='Give feedback' onclick='event.preventDefault();FEEDBACKDisplayModal()'>Give feedback</a>");
 
 }).call(this);
