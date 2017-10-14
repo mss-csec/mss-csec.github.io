@@ -3,7 +3,7 @@ layout: post
 title:  "CSEC Orientation This Friday, Oct. 6!"
 date:   2017-10-02 08:56:00 -0400
 categories: announcements
-tags: announcement news
+tags: news general orientation
 ---
 
 Hello everyone!
