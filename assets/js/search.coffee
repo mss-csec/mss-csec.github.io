@@ -10,13 +10,17 @@ contentLength = 300
 idx = null
 store = {}
 
+# Turn URI Component into plus-seperated string
+sanitizeQuery = (query) ->
+  return encodeURIComponent(query).replace /%20/g, '+'
+
 # Extract query from URL
 extractQuery = (query) ->
   searchString = window.location.search.slice 1
   index = searchString.indexOf query + '='
 
   query = searchString.slice index + query.length + 1,
-    searchString.indexOf('&', index) + 1 or Infinity
+    searchString.indexOf('&', index) + 1 or searchString.length
   return decodeURIComponent query.replace(/\+/g, '%20')
 
 # Render list of results as HTML
@@ -92,13 +96,13 @@ $(() ->
     newQuery = $('#search').val()
     e.preventDefault()
 
-    history.pushState { newQuery }, '', "?#{queryKey}=#{newQuery}"
+    history.pushState { newQuery }, '', "?#{queryKey}=#{sanitizeQuery(newQuery)}"
     executeSearch newQuery
 
   $(window).on 'popstate', (e) ->
     executeSearch e.originalEvent.state.query
 
-  history.replaceState { query }, '', "?#{queryKey}=#{query}"
+  history.replaceState { query }, '', "?#{queryKey}=#{sanitizeQuery(query)}"
 
   initSearch searchStore
   executeSearch query
