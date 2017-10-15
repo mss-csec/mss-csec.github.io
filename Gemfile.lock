@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/asciidoctor/jekyll-asciidoc.git
+  revision: 92b8691c1de6b0c50ffa070f180f0deb81bf59e9
+  ref: 92b8691
+  specs:
+    jekyll-asciidoc (2.1.1.dev)
+      asciidoctor (>= 1.5.0)
+      jekyll (>= 2.3.0)
+
+GIT
+  remote: https://github.com/tyxchen/rouge.git
+  revision: 25bb7dfb1cf56da520e10294085800f87bf166b0
+  ref: locked-at-v2.2.1
+  specs:
+    rouge (2.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -26,9 +42,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 3)
       safe_yaml (~> 1.0)
-    jekyll-asciidoc (2.1.0)
-      asciidoctor (>= 1.5.0)
-      jekyll (>= 2.3.0)
     jekyll-coffeescript (1.0.2)
       coffee-script (~> 2.2)
       coffee-script-source (~> 1.11.1)
@@ -58,7 +71,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
-    rouge (2.2.1)
     safe_yaml (1.0.4)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -75,12 +87,13 @@ PLATFORMS
 DEPENDENCIES
   asciidoctor-rouge
   jekyll (= 3.6.0)
-  jekyll-asciidoc (~> 2.1.0)
+  jekyll-asciidoc!
   jekyll-coffeescript
   jekyll-compose
   jekyll-feed (~> 0.6)
   jekyll-seo-tag
   jekyll-sitemap
+  rouge!
   therubyracer
   tzinfo-data
 
