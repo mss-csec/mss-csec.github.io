@@ -131,6 +131,7 @@ APP.renderSubclubSchedule = ($el, data) ->
     $lesson_last.each () ->
       _this = $(this)
       lesson = data[scheduleData.mostRecent.id]
+      lesson.title = lesson.title.replace /^.*?@/, ''
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link'
         _this.attr 'href', lesson.url
@@ -152,6 +153,7 @@ APP.renderSubclubSchedule = ($el, data) ->
     $lesson_next.each () ->
       _this = $(this)
       lesson = data[scheduleData.nextUp.id]
+      lesson.title = lesson.title.replace /^.*?@/, ''
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link'
         _this.attr 'href', lesson.url
