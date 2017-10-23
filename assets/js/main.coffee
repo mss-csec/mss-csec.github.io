@@ -357,6 +357,73 @@ APP.onload = () ->
     $('#main-content').removeClass 'nine'
       .addClass 'twelve'
 
+  # Footnotes
+  # Change title attr to footnote content
+  # $('a.footnote').each () ->
+  #   content = $($(this).attr('href')).text().trim()
+  #   $(this).attr 'title', content
+  #   $(this).parent().attr 'title', content
+
+  #   content = content.replace /^\d+\.\s+/, ''
+
+  # Reveal footnote tip on click
+  $('a.footnote').on 'click', (e) ->
+    e.preventDefault()
+
+    $ftnote = $('.footnote-tip')
+    $ftnotesrc = $($(this).attr('href'))
+
+    content = $ftnotesrc.html()
+      .trim()
+      .replace /^<a.+?>\d+<\/a>\.\s+/, ''
+      .replace /^[a-z]/, (c) -> c.toUpperCase()
+
+    if $ftnote.html() == content and $ftnote.is ':visible'
+      $ftnote.hide()
+      $ftnotesrc.removeClass 'targeted'
+    else
+      # Only show tooltip when actual footnote is not visible in viewport
+      unless $(window).scrollTop() + $(window).height() >
+        $ftnotesrc.offset().top + $ftnotesrc.outerHeight() and
+      $(window).scrollTop() < $ftnotesrc.offset().top
+        # Fill in content and display
+        $ftnote.html content
+          .show()
+
+        # Now that we have the tooltip's dimensions, determine positioning
+        offset = $(this).offset()
+        top = offset.top - $ftnote.outerHeight() - 5
+        left = offset.left - ($ftnote.outerWidth() - $(this).width()) / 2
+
+        # Clamp values
+        if left + $ftnote.outerWidth() > $(window).width()
+          left = $(window).width() - $ftnote.outerWidth() - 5
+        else if left < $(this).closest('p').offset().left
+          left = $(this).closest('p').offset().left
+
+        # Position tooltip
+        $ftnote.css { top, left }
+
+        # Scroll if tooltip is outside viewport
+        if $ftnote.offset().top <
+            $(window).scrollTop() + $('.site-header').outerHeight()
+          $('html, body').scrollTop $ftnote.offset().top -
+            $('.site-header').outerHeight() - 5
+
+      $ftnotesrc.addClass 'targeted'
+
+  # Hide footnote on blur
+  $('a.footnote').on 'blur', (e) ->
+    $this = $(this)
+    # https://stackoverflow.com/a/11544685/3472393
+    setTimeout () ->
+      unless $(document.activeElement).closest('.footnote-tip').length
+        $('.footnote-tip').hide()
+        $($this.attr('href')).removeClass 'targeted'
+      else
+        $this.focus()
+    , 1
+
   # Unhide body
   $('body')
     .removeClass 'no-js'

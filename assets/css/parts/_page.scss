@@ -91,6 +91,36 @@ code td pre {
   display: none;
 }
 
+// Footnote tips
+.footnote-tip {
+  @include no-user-select;
+
+  position: absolute;
+  display: none;
+  max-width: 80%;
+  line-height: 1.15;
+  // No switch for dark theme as tooltip isn't so visible there
+  // lighten kills two birds with one stone
+  background-color: lighten($bg-secondary, 1%);
+  padding: $ex05 / 2;
+  border-radius: $df-radius;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .4);
+}
+
+.tags {
+  font-size: .9em;
+  color: $fg-secondary;
+}
+
+.tag {
+  background-color: $bg-secondary;
+  padding: .2em;
+}
+
+.hidden-highlight {
+  color: $bg-primary;
+}
+
 @media only screen and (min-width: $bp-tablet) {
   // Show line numbers at adequate screen width
   .rouge-table .gutter {
@@ -120,18 +150,8 @@ code td pre {
       content: counter(lines);
     }
   }
-}
 
-.tags {
-  font-size: .9em;
-  color: $fg-secondary;
-}
-
-.tag {
-  background-color: $bg-secondary;
-  padding: .2em;
-}
-
-.hidden-highlight {
-  color: $bg-primary;
+  .footnote-tip {
+    max-width: 320px;
+  }
 }
