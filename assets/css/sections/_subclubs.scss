@@ -149,14 +149,16 @@
 .lesson-link {
   display: inline-block;
   width: 100%;
-  color: $fg-secondary;
+  color: $fg-primary;
   text-decoration: none;
   padding: $ex05/2 0;
+  opacity: .7;
 }
 
 .lesson-link:hover,
 .lesson-cur .lesson-link {
   color: $fg-primary;
+  opacity: 1;
 }
 
 .lesson-callout {
@@ -191,5 +193,6 @@
   .lesson-link:hover {
     color: $brand-colour;
     padding: 0;
+    opacity: 1;
   }
 }

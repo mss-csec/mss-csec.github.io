@@ -156,3 +156,27 @@ a {
 .icon-home::before {
   content: "\1F3E0";
 }
+
+.error,
+.info,
+.success,
+.warning {
+  color: #000;
+}
+
+.error {
+  background-color: $error;
+  color: #fff;
+}
+
+.info {
+  background-color: $info;
+}
+
+.success {
+  background-color: $success;
+}
+
+.warning {
+  background-color: $warning;
+}

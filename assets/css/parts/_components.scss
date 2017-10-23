@@ -1,0 +1,19 @@
+// Components for the greater good
+
+// Labels
+.label {
+  border-radius: $df-radius;
+  font-size: .9em;
+  padding: 2px;
+}
+
+// Callouts
+.callout {
+  padding: $ex;
+  border: 4px solid rgba(0, 0, 0, .2);
+  border-radius: 2 * $df-radius;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
