@@ -133,6 +133,7 @@ Main coffeescript file
         var _this, lesson;
         _this = $(this);
         lesson = data[scheduleData.mostRecent.id];
+        lesson.title = lesson.title.replace(/^.*?@/, '');
         if (_this.prop('tagName' === 'A')) {
           _this.addClass('lesson-link');
           _this.attr('href', lesson.url);
@@ -159,6 +160,7 @@ Main coffeescript file
         var _this, lesson;
         _this = $(this);
         lesson = data[scheduleData.nextUp.id];
+        lesson.title = lesson.title.replace(/^.*?@/, '');
         if (_this.prop('tagName' === 'A')) {
           _this.addClass('lesson-link');
           _this.attr('href', lesson.url);
@@ -346,6 +348,51 @@ Main coffeescript file
       __collapseSidebar($('.sidebar-collapsible'));
       $('#main-content').removeClass('nine').addClass('twelve');
     }
+    $('a.footnote').on('click', function(e) {
+      var $ftnote, $ftnotesrc, content, left, offset, top;
+      e.preventDefault();
+      $ftnote = $('.footnote-tip');
+      $ftnotesrc = $($(this).attr('href'));
+      content = $ftnotesrc.html().trim().replace(/^<a.+?>\d+<\/a>\.\s+/, '').replace(/^[a-z]/, function(c) {
+        return c.toUpperCase();
+      });
+      if ($ftnote.html() === content && $ftnote.is(':visible')) {
+        $ftnote.hide();
+        return $ftnotesrc.removeClass('targeted');
+      } else {
+        if (!($(window).scrollTop() + $(window).height() > $ftnotesrc.offset().top + $ftnotesrc.outerHeight() && $(window).scrollTop() < $ftnotesrc.offset().top)) {
+          $ftnote.html(content).show();
+          offset = $(this).offset();
+          top = offset.top - $ftnote.outerHeight() - 5;
+          left = offset.left - ($ftnote.outerWidth() - $(this).width()) / 2;
+          if (left + $ftnote.outerWidth() > $(window).width()) {
+            left = $(window).width() - $ftnote.outerWidth() - 5;
+          } else if (left < $(this).closest('p').offset().left) {
+            left = $(this).closest('p').offset().left;
+          }
+          $ftnote.css({
+            top: top,
+            left: left
+          });
+          if ($ftnote.offset().top < $(window).scrollTop() + $('.site-header').outerHeight()) {
+            $('html, body').scrollTop($ftnote.offset().top - $('.site-header').outerHeight() - 5);
+          }
+        }
+        return $ftnotesrc.addClass('targeted');
+      }
+    });
+    $('a.footnote').on('blur', function(e) {
+      var $this;
+      $this = $(this);
+      return setTimeout(function() {
+        if (!$(document.activeElement).closest('.footnote-tip').length) {
+          $('.footnote-tip').hide();
+          return $($this.attr('href')).removeClass('targeted');
+        } else {
+          return $this.focus();
+        }
+      }, 1);
+    });
     $('body').removeClass('no-js');
     __katexFail = false;
     __renderKatex = function(isDisplay) {

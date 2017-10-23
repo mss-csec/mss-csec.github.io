@@ -16,7 +16,6 @@
 
   <!-- Begin Jekyll SEO tag v2.2.3 -->
 <meta property="og:title" content="Other Containers" />
-<meta name="author" content="Goal: To know how and when to use C++ containersVectors" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Markville’s Computer Science Education Club" />
 <meta property="og:description" content="Markville’s Computer Science Education Club" />
@@ -24,15 +23,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/other-containers/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-14T22:53:59+00:00" />
+<meta property="article:published_time" content="2017-10-23T03:26:39+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Other Containers","author":{"@type":"Person","name":"Goal: To know how and when to use C++ containersVectors"},"datePublished":"2017-10-14T22:53:59+00:00","dateModified":"2017-10-14T22:53:59+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"},"name":"Goal: To know how and when to use C++ containersVectors"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/other-containers/index"},"url":"https://mss-csec.github.io/lessons/beginners/other-containers/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Other Containers","datePublished":"2017-10-23T03:26:39+00:00","dateModified":"2017-10-23T03:26:39+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/other-containers/index"},"url":"https://mss-csec.github.io/lessons/beginners/other-containers/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=127e010" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=127e010" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=71f94bc" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=71f94bc" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -54,19 +53,19 @@
   
   
 
-  <link href="/assets/lib/skeleton.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=127e010" data-alt-dark="/assets/lib/skeleton-dark.css?v=127e010">
+  <link href="/assets/lib/skeleton.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=71f94bc" data-alt-dark="/assets/lib/skeleton-dark.css?v=71f94bc">
 
   
-  <link href="/assets/lib/lesson-default.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=127e010" data-alt-dark="/assets/lib/lesson-default-dark.css?v=127e010">
+  <link href="/assets/lib/lesson-default.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=71f94bc" data-alt-dark="/assets/lib/lesson-default-dark.css?v=71f94bc">
   
 
-  <link href="/assets/css/main.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=127e010" data-alt-dark="/assets/css/main-dark.css?v=127e010">
+  <link href="/assets/css/main.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=71f94bc" data-alt-dark="/assets/css/main-dark.css?v=71f94bc">
 
-  <link href="/assets/lib/pygments-manni.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=127e010" data-alt-dark="/assets/lib/pygments-native.css?v=127e010">
+  <link href="/assets/lib/pygments-manni.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=71f94bc" data-alt-dark="/assets/lib/pygments-native.css?v=71f94bc">
 
   
   
-  <link href="/assets/css/subclubs.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=127e010" data-alt-dark="/assets/css/subclubs-dark.css?v=127e010">
+  <link href="/assets/css/subclubs.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=71f94bc" data-alt-dark="/assets/css/subclubs-dark.css?v=71f94bc">
   
 
   
@@ -98,7 +97,8 @@
         },
         run: function () {
           for (var i=0;i<scripts.length;i++) {
-            scripts[i].call(g);
+            try { scripts[i].call(g); }
+            catch (e) { console.log('Onload script error: ' + e.message); }
           }
         }
       };
@@ -453,82 +453,6 @@
   
     
     
-      
-      
-      
-      
-      
-
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-      
-      
-      
-      
-
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
   
     
     
@@ -617,6 +541,53 @@
   
     
     
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
   
     
     
@@ -631,6 +602,71 @@
 
   
   
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
   
     
     
@@ -685,7 +721,7 @@
 
 <div class="breadcrumbs">
   <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/beginners/">Beginners'</a> / <strong class="breadcrumbs-current">Other Containers</strong>
-  <span class="lesson-date">Dated: <time datetime="2018-02-23T00:00:00+0000">February 23, 2018</em></span>
+  <span class="lesson-date">Dated: <time datetime="2017-02-16T00:00:00+0000">February 16, 2017</em></span>
 </div>
 <div class="row">
   <div class="three columns sidebar-collapsible" id="lesson-listing">
@@ -722,201 +758,125 @@
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-outputs/" title="October 27, 2017">Simple Outputs</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-outputs/" title="October 13, 2017">Simple Outputs</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-operators/" title="November 03, 2017">Simple Operators</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-operators/" title="October 13, 2017">Simple Operators</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/an-introduction-to-variables/" title="November 17, 2017">An Introduction to Variables</a>
+  <a class="lesson-link" href="/lessons/beginners/an-introduction-to-variables/" title="October 13, 2017">An Introduction to Variables</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-inputs-and-wcipeg/" title="December 01, 2017">Simple Inputs and WCIPEG</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-inputs-and-wcipeg/" title="October 27, 2017">Simple Inputs and WCIPEG</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/if-structures/" title="December 08, 2017">If Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/if-structures/" title="November 03, 2017">If Statements</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/loop-structures/" title="December 15, 2017">Loop Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/loop-structures/" title="November 17, 2017">Loop Structures</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/arrays/" title="January 12, 2018">Arrays</a>
+  <a class="lesson-link" href="/lessons/beginners/arrays/" title="December 08, 2017">Arrays</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/multidimensional-arrays/" title="February 09, 2018">Multidimensional Arrays</a>
+  <a class="lesson-link" href="/lessons/beginners/multidimensional-arrays/" title="December 15, 2017">Multidimensional Arrays</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/strings/" title="February 16, 2018">Strings</a>
+  <a class="lesson-link" href="/lessons/beginners/strings/" title="December 08, 2017">Strings</a>
 </p>
       
 <p class="lesson-name lesson-cur">
-  <a class="lesson-link" href="/lessons/beginners/other-containers/" title="February 23, 2018">Other Containers</a>
+  <a class="lesson-link" href="/lessons/beginners/other-containers/" title="February 16, 2017">Other Containers</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/functions/" title="March 02, 2018">Functions</a>
+  <a class="lesson-link" href="/lessons/beginners/functions/" title="February 23, 2018">Functions</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/structures/" title="March 23, 2018">Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/structures/" title="March 09, 2018">Structures</a>
 </p>
       
   </div>
   <div class="nine columns" id="main-content">
-    <div class="paragraph">
-<p>Vectors are containers used to store an unknown number of elements. In
-other languages, vectors are also known as flexible arrays. Vectors
-allow elements to be added or removed at any given time. This means that
-the <strong>size of a vector can change</strong>. Elements in a vector have indexes and
-can be accessed like an array. Vectors can be used if the <strong>&lt;vector&gt;
-library</strong> is included. Typically, arrays are used over vectors whenever
-possible. Vectors are only used when the size of an array will change
-frequently. Info on vectors and their member functions can be found
-<a href="http://www.cplusplus.com/reference/vector/vector/"><em>here</em></a>:</p>
-</div>
+    
+    <div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>Example Code:</p>
+<p>Goal: To know how and when to use C++ containers</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>1</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="vectors">Vectors</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>2</p>
+<p>Vectors are containers used to store an unknown number of elements.
+In other languages, vectors are also known as flexible arrays.
+Vectors allow elements to be added or removed at any given time.
+This means that the <strong>size of a vector can change</strong>.
+Elements in a vector have indexes and can be accessed like an array.
+Vectors can be used if the <strong><code>&lt;vector&gt;</code> library</strong> is included.
+Typically, arrays are used over vectors whenever possible.
+Vectors are only used when the size of an array will change frequently.
+Info on vectors and their member functions can be found
+<a href="http://www.cplusplus.com/reference/vector/vector/">here</a>:</p>
 </div>
-<div class="paragraph">
-<p>3</p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;  // cin, cout</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;vector&gt;    // vector container</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L5" class="line"></span>
+<span id="L6" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L7" class="line">    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span> <span class="c1">// initializes a vector of integers</span></span>
+<span id="L8" class="line">    <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>        <span class="c1">// used for vector.push_back</span></span>
+<span id="L9" class="line"></span>
+<span id="L10" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Add some numbers to the vector"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L11" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Enter 0 to stop entering numbers"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L12" class="line">    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L13" class="line">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">temp</span><span class="p">;</span>     <span class="c1">// gets user input</span></span>
+<span id="L14" class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// if 0 is inputted, the loop breaks</span></span>
+<span id="L15" class="line">            <span class="k">break</span><span class="p">;</span></span>
+<span id="L16" class="line">        <span class="p">}</span></span>
+<span id="L17" class="line">        <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span> <span class="c1">// adds an element to the end of the vector</span></span>
+<span id="L18" class="line">    <span class="p">}</span></span>
+<span id="L19" class="line"></span>
+<span id="L20" class="line">    <span class="c1">// vec.size returns the size of the vector</span></span>
+<span id="L21" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Your vector has "</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" elements: "</span><span class="p">;</span></span>
+<span id="L22" class="line">    <span class="c1">// lists all elements in the vector</span></span>
+<span id="L23" class="line">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span></span>
+<span id="L24" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>  <span class="c1">// elements in a vector have indexes too.</span></span>
+<span id="L25" class="line">    <span class="p">}</span></span>
+<span id="L26" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L27" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L28" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<div class="paragraph">
-<p>4</p>
 </div>
-<div class="paragraph">
-<p>5</p>
+<div class="literalblock">
+<div class="title">Sample run:</div>
+<div class="content">
+<pre>&gt;&gt;&gt; Add some numbers to the vector
+..  Enter 0 to stop entering numbers
+2 3 4 5 6 0
+&gt;&gt;&gt; Your vector has 5 elements: 2 3 4 5 6</pre>
 </div>
-<div class="paragraph">
-<p>6</p>
 </div>
-<div class="paragraph">
-<p>7</p>
 </div>
-<div class="paragraph">
-<p>8</p>
 </div>
-<div class="paragraph">
-<p>9</p>
-</div>
-<div class="paragraph">
-<p>10</p>
-</div>
-<div class="paragraph">
-<p>11</p>
-</div>
-<div class="paragraph">
-<p>12</p>
-</div>
-<div class="paragraph">
-<p>13</p>
-</div>
-<div class="paragraph">
-<p>14</p>
-</div>
-<div class="paragraph">
-<p>15</p>
-</div>
-<div class="paragraph">
-<p>16</p>
-</div>
-<div class="paragraph">
-<p>17</p>
-</div>
-<div class="paragraph">
-<p>18</p>
-</div>
-<div class="paragraph">
-<p>19</p>
-</div>
-<div class="paragraph">
-<p>20</p>
-</div>
-<div class="paragraph">
-<p>21</p>
-</div>
-<div class="paragraph">
-<p>22</p>
-</div>
-<div class="paragraph">
-<p>23</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">#include &lt;iostream&gt; <em>// cin, cout</em><br>
-#include &lt;vector&gt; <em>// vector container</em><br>
-using namespace std;<br>
-int main()\{<br>
-vector&lt;int&gt; vec; <em>// initializes a vector of integers</em><br>
-int temp; <em>// used for vector.push_back</em><br>
-cout&lt;&lt;"Add some numbers to the vector"<a href="#endl;<br>
-cout&lt;&lt;"Enter 0 to stop entering numbers"&lt;&lt;endl;<br>
-while(true)\{<br>
-cin">[endl;<br>
-cout&lt;&lt;"Enter 0 to stop entering numbers"&lt;&lt;endl;<br>
-while(true)\{<br>
-cin]</a>temp; <em>// gets user input</em><br>
-if (temp==0)\{ <em>// if 0 is inputted, the loop breaks</em><br>
-break;<br>
-}<br>
-vec.push_back(temp); <em>//adds an element to the end of the vector</em><br>
-}<br>
-<em>//vec.size returns the size of the vector</em><br>
-cout&lt;&lt;"Your vector has "&lt;&lt;vec.size()&lt;&lt;" elements: ";<br>
-<em>// lists all elements in the vector</em><br>
-for(int i=0;i&lt;vec.size();i++)\{<br>
-cout&lt;&lt;vec[i]&lt;&lt;" "; <em>//elements in a vector have indexes too.</em><br>
-}<br>
-return 0;<br>
-}</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample run:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Add some numbers to the vector</p>
-</div>
-<div class="paragraph">
-<p>Enter 0 to stop entering numbers</p>
-</div>
-<div class="paragraph">
-<p>2 3 4 5 6 0</p>
-</div>
-<div class="paragraph">
-<p>You vector has 5 elements: 2 3 4 5 6</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Queues (First-in, First-out)</p>
-</div>
+<div class="sect1">
+<h2 id="queues-first-in-first-out">Queues (First-in, First-out)</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Queues are containers used to store an unknown number of elements. The
 <strong>first element</strong> that is added to a queue will always be the <strong>first
@@ -924,502 +884,189 @@ element</strong> to be removed from a queue. <strong>The last element</strong> t
 a queue will be the <strong>last element</strong> to be removed. Queues do not allow
 every element to be accessed, only the first and the last element in a
 queue. They are often used to simulate queues and lines in real life.
-Queues can be used it the <strong>&lt;queue&gt; library</strong> is included.</p>
+Queues can be used if the <strong><code>&lt;queue&gt;</code> library</strong> is included.</p>
 </div>
 <div class="paragraph">
 <p>More info on queues and their member functions can be found
-<a href="http://www.cplusplus.com/reference/queue/queue/"><em>here</em></a>:</p>
+<a href="http://www.cplusplus.com/reference/queue/queue/">here</a>:</p>
 </div>
-<div class="paragraph">
-<p>Example Code:</p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;  // cin, cout</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;queue&gt;     // queue container</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L5" class="line"></span>
+<span id="L6" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L7" class="line">    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">line</span><span class="p">;</span>    <span class="c1">// initializes queue of integers</span></span>
+<span id="L8" class="line">    <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>           <span class="c1">// variable for user input</span></span>
+<span id="L9" class="line"></span>
+<span id="L10" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"How many numbers are in the queue?"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L11" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">temp</span><span class="p">;</span></span>
+<span id="L12" class="line">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">temp</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L13" class="line">        <span class="n">line</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>   <span class="c1">// adds an element to the back of the queue</span></span>
+<span id="L14" class="line">    <span class="p">}</span></span>
+<span id="L15" class="line"></span>
+<span id="L16" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"How many numbers will leave the queue?"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L17" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">temp</span><span class="p">;</span></span>
+<span id="L18" class="line">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">temp</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L19" class="line">        <span class="n">line</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span> <span class="c1">// removes an element from the front of the queue</span></span>
+<span id="L20" class="line">    <span class="p">}</span></span>
+<span id="L21" class="line"></span>
+<span id="L22" class="line">    <span class="c1">// line.size returns the size of the queue</span></span>
+<span id="L23" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The queue has "</span> <span class="o">&lt;&lt;</span> <span class="n">line</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" elements."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L24" class="line"></span>
+<span id="L25" class="line">    <span class="c1">// line.front and line.back returns the first and last element</span></span>
+<span id="L26" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The first element is "</span> <span class="o">&lt;&lt;</span> <span class="n">line</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L27" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The last element is "</span> <span class="o">&lt;&lt;</span> <span class="n">line</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L28" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L29" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>1</p>
 </div>
-<div class="paragraph">
-<p>2</p>
+<div class="literalblock">
+<div class="title">Sample Run:</div>
+<div class="content">
+<pre>&gt;&gt;&gt; How many numbers are in the queue?
+8
+&gt;&gt;&gt; How many numbers will leave the queue?
+5
+&gt;&gt;&gt; The queue has 3 elements.
+..  The first element is 5
+..  The last element is 7</pre>
 </div>
-<div class="paragraph">
-<p>3</p>
 </div>
-<div class="paragraph">
-<p>4</p>
 </div>
-<div class="paragraph">
-<p>5</p>
 </div>
-<div class="paragraph">
-<p>6</p>
-</div>
-<div class="paragraph">
-<p>7</p>
-</div>
-<div class="paragraph">
-<p>8</p>
-</div>
-<div class="paragraph">
-<p>9</p>
-</div>
-<div class="paragraph">
-<p>10</p>
-</div>
-<div class="paragraph">
-<p>11</p>
-</div>
-<div class="paragraph">
-<p>12</p>
-</div>
-<div class="paragraph">
-<p>13</p>
-</div>
-<div class="paragraph">
-<p>14</p>
-</div>
-<div class="paragraph">
-<p>15</p>
-</div>
-<div class="paragraph">
-<p>16</p>
-</div>
-<div class="paragraph">
-<p>17</p>
-</div>
-<div class="paragraph">
-<p>18</p>
-</div>
-<div class="paragraph">
-<p>19</p>
-</div>
-<div class="paragraph">
-<p>20</p>
-</div>
-<div class="paragraph">
-<p>21</p>
-</div>
-<div class="paragraph">
-<p>22</p>
-</div>
-<div class="paragraph">
-<p>23</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">#include &lt;iostream&gt; <em>// cin, cout</em><br>
-#include &lt;queue&gt; <em>// queue container</em><br>
-using namespace std;<br>
-int main()\{<br>
-queue&lt;int&gt; line; <em>// initializes queue of integers</em><br>
-int temp; <em>// variable for user input</em><br>
-cout&lt;&lt;"How many numbers are in the queue?"<a href="#endl;<br>
-cin ">[endl;<br>
-cin ]</a> temp;<br>
-for(int i=0;i&lt;temp;i)\{ +
-line.push(i); _// adds an element to the back of the queue_ +
-} +
-cout&lt;&lt;"How many numbers will leave the queue?"&lt;&lt;endl; +
-cin &gt;&gt;temp; +
-for(int i=0;i&lt;temp;i)\{<br>
-line.pop(); <em>// removes an element from the front of the queue</em><br>
-}<br>
-<em>// line.size returns the size of the queue</em><br>
-cout&lt;&lt;"The queue has "&lt;&lt;line.size()&lt;&lt;" elements."&lt;&lt;endl;<br>
-<em>// line.front and line.back returns the first and last element</em><br>
-cout&lt;&lt;"The first element is "&lt;&lt;line.front()&lt;&lt;endl;<br>
-cout&lt;&lt;"The last element is "&lt;&lt;line.back()&lt;&lt;endl;<br>
-return 0;<br>
-}</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample Run:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>How many numbers are in the queue?</p>
-</div>
-<div class="paragraph">
-<p>8</p>
-</div>
-<div class="paragraph">
-<p>How many numbers will leave the queue?</p>
-</div>
-<div class="paragraph">
-<p>5</p>
-</div>
-<div class="paragraph">
-<p>The queue has 3 elements</p>
-</div>
-<div class="paragraph">
-<p>The first element is 5</p>
-</div>
-<div class="paragraph">
-<p>The last element is 7</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Stacks (Last-in, First-out)</p>
-</div>
+<div class="sect1">
+<h2 id="stacks-last-in-first-out">Stacks (Last-in, First-out)</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Stacks are containers used to store an unknown number of elements. The
 <strong>first element</strong> that is added to a stack will be the <strong>last element</strong> to
 be removed from a stack, and the <strong>last element</strong> that is added to a stack
 will be the <strong>first element</strong> to be removed. Only the top element in a
-stack can be accessed. Stacks can be used if the <strong>&lt;stack&gt; library</strong> is
+stack can be accessed. Stacks can be used if the <strong><code>&lt;stack&gt;</code> library</strong> is
 included. More info on stacks and their member functions can be found
-<a href="http://www.cplusplus.com/reference/stack/stack/"><em>here</em></a>:</p>
+<a href="http://www.cplusplus.com/reference/stack/stack/">here</a>:</p>
 </div>
-<div class="paragraph">
-<p>Example Code:</p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;  // cin, cout</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;stack&gt;     // stack container</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L5" class="line"></span>
+<span id="L6" class="line"><span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span></span>
+<span id="L7" class="line">    <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">myStack</span><span class="p">;</span> <span class="c1">// initializes a stack</span></span>
+<span id="L8" class="line">    <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>           <span class="c1">// variable for user input</span></span>
+<span id="L9" class="line"></span>
+<span id="L10" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Type in a number to add it to the stack."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L11" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Press 0 to pop an element or -1 to exit."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L12" class="line">    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L13" class="line">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">temp</span><span class="p">;</span>            <span class="c1">// gets user input</span></span>
+<span id="L14" class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L15" class="line">            <span class="k">break</span><span class="p">;</span>              <span class="c1">// exit user input</span></span>
+<span id="L16" class="line">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L17" class="line">            <span class="n">myStack</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>      <span class="c1">// removes the top element of a stack</span></span>
+<span id="L18" class="line">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></span>
+<span id="L19" class="line">            <span class="n">myStack</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span> <span class="c1">// adds element to the top of the stack</span></span>
+<span id="L20" class="line">        <span class="p">}</span></span>
+<span id="L21" class="line">    <span class="p">}</span></span>
+<span id="L22" class="line"></span>
+<span id="L23" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Your stack has "</span> <span class="o">&lt;&lt;</span> <span class="n">myStack</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" elements."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L24" class="line">    <span class="c1">// myStack.top returns the element on the top of the stack</span></span>
+<span id="L25" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The element on the top of the stack is "</span> <span class="o">&lt;&lt;</span> <span class="n">myStack</span><span class="p">.</span><span class="n">top</span><span class="p">();</span></span>
+<span id="L26" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L27" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>1</p>
 </div>
-<div class="paragraph">
-<p>2</p>
+<div class="literalblock">
+<div class="title">Sample Run:</div>
+<div class="content">
+<pre>&gt;&gt;&gt; Type in a number to add it to the stack.
+..  Press 0 to pop an element or -1 to exit.
+3 4 6 0 2 3 0 0 0 8 -1
+&gt;&gt;&gt; Your stack has 2 elements.
+..  The element on the top of the stack is 8</pre>
 </div>
-<div class="paragraph">
-<p>3</p>
 </div>
-<div class="paragraph">
-<p>4</p>
 </div>
-<div class="paragraph">
-<p>5</p>
 </div>
-<div class="paragraph">
-<p>6</p>
-</div>
-<div class="paragraph">
-<p>7</p>
-</div>
-<div class="paragraph">
-<p>8</p>
-</div>
-<div class="paragraph">
-<p>9</p>
-</div>
-<div class="paragraph">
-<p>10</p>
-</div>
-<div class="paragraph">
-<p>11</p>
-</div>
-<div class="paragraph">
-<p>12</p>
-</div>
-<div class="paragraph">
-<p>13</p>
-</div>
-<div class="paragraph">
-<p>14</p>
-</div>
-<div class="paragraph">
-<p>15</p>
-</div>
-<div class="paragraph">
-<p>16</p>
-</div>
-<div class="paragraph">
-<p>17</p>
-</div>
-<div class="paragraph">
-<p>18</p>
-</div>
-<div class="paragraph">
-<p>19</p>
-</div>
-<div class="paragraph">
-<p>20</p>
-</div>
-<div class="paragraph">
-<p>21</p>
-</div>
-<div class="paragraph">
-<p>22</p>
-</div>
-<div class="paragraph">
-<p>23</p>
-</div>
-<div class="paragraph">
-<p>24</p>
-</div>
-<div class="paragraph">
-<p>25</p>
-</div>
-<div class="paragraph">
-<p>26</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">#include &lt;iostream&gt; <em>// cin, cout</em><br>
-#include &lt;stack&gt; <em>// stack container</em><br>
-<br>
-using namespace std;<br>
-int main()\{<br>
-stack&lt;int&gt; myStack; <em>//initializes a stack</em><br>
-int temp; <em>// variable for user input</em><br>
-cout &lt;&lt; "Type in a number to add it to the stack." &lt;&lt; endl;<br>
-cout &lt;&lt; "Press 0 to pop an element or -1 to exit." &lt;&lt; endl;<br>
-while(true)\{<br>
-cin &gt;&gt; temp; <em>// gets user input</em><br>
-if(temp==-1)\{<br>
-break; <em>// exit user input</em><br>
-}<br>
-else if(temp==0)\{<br>
-myStack.pop(); <em>// removes the top element of a stack</em><br>
-}<br>
-else\{<br>
-myStack.push(temp); <em>// adds element to the top of the stack</em><br>
-}<br>
-}<br>
-cout &lt;&lt; "Your stack has " &lt;&lt; myStack.size() &lt;&lt; " elements." &lt;&lt; endl;<br>
-<em>// myStack.top returns the element on the top of the stack</em><br>
-cout &lt;&lt; "The element on the top of the stack is " &lt;&lt; myStack.top();<br>
-return 0;<br>
-}</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample Run:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Type in a number to add it to the stack.</p>
-</div>
-<div class="paragraph">
-<p>Press 0 to pop an element or -1 to exit.</p>
-</div>
-<div class="paragraph">
-<p>3 4 6 0 2 3 0 0 0 8 -1</p>
-</div>
-<div class="paragraph">
-<p>Your stack has 2 elements.</p>
-</div>
-<div class="paragraph">
-<p>The element on the top of the stack is 8</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Pair</p>
-</div>
+<div class="sect1">
+<h2 id="pair">Pair</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Pairs are used to store <strong>two data values.</strong> They are often used in
 conjunction with other containers such as arrays or vectors. A frequent
 scenario that uses pairs is coordinates. In that scenario, an array of
-coordinates can be made with pairs. Pairs can be used if the <strong>&lt;utility&gt;
+coordinates can be made with pairs. Pairs can be used if the <strong><code>&lt;utility&gt;</code>
 library</strong> is included. More info on pairs and their member functions can
-be found <a href="http://www.cplusplus.com/reference/utility/pair/"><em>here</em></a>:</p>
+be found <a href="http://www.cplusplus.com/reference/utility/pair/">here</a>:</p>
 </div>
-<div class="paragraph">
-<p>Example Code:</p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;  // cin, cout</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;utility&gt;   // stack container</span></span>
+<span id="L3" class="line"><span class="cp">#include &lt;string&gt;    // string container</span></span>
+<span id="L4" class="line"><span class="c1">// this program stores the titles and ratings of shows</span></span>
+<span id="L5" class="line"></span>
+<span id="L6" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L7" class="line"></span>
+<span id="L8" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L9" class="line">    <span class="kt">int</span> <span class="n">numShows</span><span class="p">;</span>    <span class="c1">// variable that stores the number of shows</span></span>
+<span id="L10" class="line">    <span class="c1">// Makes an array of pairs. Each pair has a string and an integer</span></span>
+<span id="L11" class="line">    <span class="c1">// string is the first data value of pair, integer is the second</span></span>
+<span id="L12" class="line">    <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">shows</span><span class="p">[</span><span class="n">numShows</span><span class="p">];</span></span>
+<span id="L13" class="line"></span>
+<span id="L14" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"How many shows are there? "</span><span class="p">;</span></span>
+<span id="L15" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">numShows</span><span class="p">;</span></span>
+<span id="L16" class="line"></span>
+<span id="L17" class="line">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">numShows</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>            <span class="c1">// for loop for user input</span></span>
+<span id="L18" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What's the show's name: "</span><span class="p">;</span></span>
+<span id="L19" class="line">        <span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">();</span> <span class="c1">// &lt;strong&gt;always&lt;/strong&gt; put this before getline()</span></span>
+<span id="L20" class="line"></span>
+<span id="L21" class="line">        <span class="c1">// goes to the ith pair of the array, and stores a string to</span></span>
+<span id="L22" class="line">        <span class="c1">// the "first" variable of that pair</span></span>
+<span id="L23" class="line">        <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">shows</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">);</span></span>
+<span id="L24" class="line"></span>
+<span id="L25" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What's its rating: "</span><span class="p">;</span></span>
+<span id="L26" class="line">        <span class="c1">// stores integer in the second variable of the ith pair</span></span>
+<span id="L27" class="line">        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">shows</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">;</span></span>
+<span id="L28" class="line">    <span class="p">}</span></span>
+<span id="L29" class="line"></span>
+<span id="L30" class="line">    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// variable to store the show to be looked at</span></span>
+<span id="L31" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What show do you want to know about?"</span><span class="p">;</span></span>
+<span id="L32" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">;</span></span>
+<span id="L33" class="line"></span>
+<span id="L34" class="line">    <span class="c1">// accesses the value of the (x-1)th pair. Remember that arrays are</span></span>
+<span id="L35" class="line">    <span class="c1">// indexed starting with 0</span></span>
+<span id="L36" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">shows</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">" has a rating of "</span> <span class="o">&lt;&lt;</span> <span class="n">shows</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L37" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L38" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>1</p>
 </div>
-<div class="paragraph">
-<p>2</p>
+<div class="literalblock">
+<div class="title">Sample Run:</div>
+<div class="content">
+<pre>How many shows are there? 3
+What's the show's name: Bobby the Construction Worker
+What's its rating: 3
+What's the show's name: Doris the Expeditioner
+What's its rating: 9
+What's the show's name: The Magic Garbage Truck
+What's its rating: 6
+What show do you want to know about? 2
+Doris the Expeditioner has a rating of 9</pre>
 </div>
-<div class="paragraph">
-<p>3</p>
 </div>
-<div class="paragraph">
-<p>4</p>
 </div>
-<div class="paragraph">
-<p>5</p>
 </div>
-<div class="paragraph">
-<p>6</p>
-</div>
-<div class="paragraph">
-<p>7</p>
-</div>
-<div class="paragraph">
-<p>8</p>
-</div>
-<div class="paragraph">
-<p>9</p>
-</div>
-<div class="paragraph">
-<p>10</p>
-</div>
-<div class="paragraph">
-<p>11</p>
-</div>
-<div class="paragraph">
-<p>12</p>
-</div>
-<div class="paragraph">
-<p>13</p>
-</div>
-<div class="paragraph">
-<p>14</p>
-</div>
-<div class="paragraph">
-<p>15</p>
-</div>
-<div class="paragraph">
-<p>16</p>
-</div>
-<div class="paragraph">
-<p>17</p>
-</div>
-<div class="paragraph">
-<p>18</p>
-</div>
-<div class="paragraph">
-<p>19</p>
-</div>
-<div class="paragraph">
-<p>20</p>
-</div>
-<div class="paragraph">
-<p>21</p>
-</div>
-<div class="paragraph">
-<p>22</p>
-</div>
-<div class="paragraph">
-<p>23</p>
-</div>
-<div class="paragraph">
-<p>24</p>
-</div>
-<div class="paragraph">
-<p>25</p>
-</div>
-<div class="paragraph">
-<p>26</p>
-</div>
-<div class="paragraph">
-<p>27</p>
-</div>
-<div class="paragraph">
-<p>28</p>
-</div>
-<div class="paragraph">
-<p>29</p>
-</div>
-<div class="paragraph">
-<p>30</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>#include &lt;iostream&gt; <em>// cin, cout</em><br>
-#include &lt;utility&gt; <em>// stack container</em><br>
-#include &lt;string&gt; <em>// string container</em><br>
-using namespace std;<br>
-int main()\{<br>
-int numShows; <em>// variable that stores the number of shows</em><br>
-cout &lt;&lt; "How many shows are there? ";<br>
-cin &gt;&gt; numShows;<br>
-<em>// Makes an array of pairs. Each pair has a string and an integer</em><br>
-<em>// string is the first data value of pair, integer is the second</em><br>
-pair &lt;string,int&gt; shows[numShows];<br>
-for(int i=0;i&lt;numShows;i++)\{ <em>// for loop for user input</em><br>
-cout &lt;&lt; "What&#8217;s the show’s name: ";<br>
-cin.ignore(); <em>// always put this before getline()</em><br>
-_// goes to the ith pair of the array, and stores a string to _</p>
-</div>
-<div class="paragraph">
-<p><em>// the "first" variable of that pair</em><br>
-getline(cin,shows[i].first);<br>
-cout &lt;&lt; "What&#8217;s its rating: ";</p>
-</div>
-<div class="paragraph">
-<p><em>// stores integer in the second variable of the ith pair</em><br>
-cin &gt;&gt; shows[i].second;</p>
-</div>
-<div class="paragraph">
-<p>}<br>
-int x; <em>// variable to store the show to be looked at</em><br>
-cout &lt;&lt; "What show do you want to know about?";<br>
-cin &gt;&gt; x;<br>
-_// accesses the value of the (x-1)th pair. Remember how arrays are _</p>
-</div>
-<div class="paragraph">
-<p><em>// indexed starting with 0</em><br>
-cout &lt;&lt; shows[x-1].first&lt;&lt;" has a rating of "&lt;&lt; shows[x-1].second;<br>
-return 0;<br>
-}</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample Run:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>How many shows are there? 3</p>
-</div>
-<div class="paragraph">
-<p>What’s the show’s name: Bobby the Construction Worker</p>
-</div>
-<div class="paragraph">
-<p>What’s its rating: 3</p>
-</div>
-<div class="paragraph">
-<p>What’s the show’s name: Doris the Expeditioner</p>
-</div>
-<div class="paragraph">
-<p>What’s its rating: 9</p>
-</div>
-<div class="paragraph">
-<p>What’s the show’s name: The Magic Garbage Truck</p>
-</div>
-<div class="paragraph">
-<p>What’s its rating: 6</p>
-</div>
-<div class="paragraph">
-<p>What show do you want to know about? 2</p>
-</div>
-<div class="paragraph">
-<p>Doris the Expeditioner has a rating of 9</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Maps</p>
-</div>
+<div class="sect1">
+<h2 id="maps">Maps</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Maps are containers that <strong>store corresponding data values</strong>. Instead of
 using an index to refer to a specific data value, it uses another data
@@ -1429,156 +1076,61 @@ character-integer correspondence (V with 5). That being said, <strong>a data
 value cannot correspond to two or more other data values</strong>. Also, if a
 map receives an index that doesn&#8217;t have a corresponding data value, it
 <strong>returns 0</strong> if the corresponding data value should be a an integer or an
-<strong>empty string</strong> <strong>(“”)</strong> if the data value should be a string. Maps can be
+<strong>empty string</strong> <strong>("")</strong> if the data value should be a string. Maps can be
 used in a code file if the <strong>&lt;map&gt; library</strong> is included. More info on
 maps and their member functions can be found
-<a href="http://www.cplusplus.com/reference/map/map/"><em>here</em></a>.</p>
+<a href="http://www.cplusplus.com/reference/map/map/">here</a>.</p>
 </div>
-<div class="paragraph">
-<p>Example Code:</p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;  // cin, cout</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;map&gt;       // map container</span></span>
+<span id="L3" class="line"><span class="cp">#include &lt;string&gt;    // string container</span></span>
+<span id="L4" class="line"></span>
+<span id="L5" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L6" class="line"></span>
+<span id="L7" class="line"><span class="c1">// map pairs each Canadian province with its two letter abbreviation</span></span>
+<span id="L8" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L9" class="line">    <span class="c1">// initializes a map where a string corresponds to another string</span></span>
+<span id="L10" class="line">    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">provinces</span><span class="p">;</span></span>
+<span id="L11" class="line">    <span class="n">provinces</span><span class="p">[</span><span class="s">"AB"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Alberta"</span><span class="p">;</span>          <span class="c1">// gives value for each element</span></span>
+<span id="L12" class="line">    <span class="n">provinces</span><span class="p">[</span><span class="s">"BC"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"British Columbia"</span><span class="p">;</span> <span class="c1">// notice how this map has no size</span></span>
+<span id="L13" class="line">    <span class="n">provinces</span><span class="p">[</span><span class="s">"MB"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Manitoba"</span><span class="p">;</span>         <span class="c1">// this list could be gigantic</span></span>
+<span id="L14" class="line">    <span class="n">provinces</span><span class="p">[</span><span class="s">"NB"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"New Brunswick"</span><span class="p">;</span>    <span class="c1">// the list could just continue</span></span>
+<span id="L15" class="line">    <span class="n">provinces</span><span class="p">[</span><span class="s">"PE"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"PEI"</span><span class="p">;</span>              <span class="c1">// assuming we have much more provinces</span></span>
+<span id="L16" class="line">    <span class="c1">// ...This goes on for the remaining 8 provinces/territories</span></span>
+<span id="L17" class="line"></span>
+<span id="L18" class="line">    <span class="n">string</span> <span class="n">abbreviation</span><span class="p">;</span> <span class="c1">// string for user input</span></span>
+<span id="L19" class="line"></span>
+<span id="L20" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hey! Which province/territory do you live in? "</span><span class="p">;</span></span>
+<span id="L21" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">abbreviation</span><span class="p">;</span></span>
+<span id="L22" class="line"></span>
+<span id="L23" class="line">    <span class="c1">// province[s] would return the string that corresponds with string s</span></span>
+<span id="L24" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"WOW! You live in "</span> <span class="o">&lt;&lt;</span> <span class="n">provinces</span><span class="p">[</span><span class="n">abbreviation</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">"?!?!"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L25" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L26" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>1</p>
 </div>
-<div class="paragraph">
-<p>2</p>
+<div class="literalblock">
+<div class="title">Sample Run 1:</div>
+<div class="content">
+<pre>Hey! Which province/territory do you live in? MB
+WOW! You live in Manitoba?!?!</pre>
 </div>
-<div class="paragraph">
-<p>3</p>
 </div>
-<div class="paragraph">
-<p>4</p>
+<div class="literalblock">
+<div class="title">Sample Run 2:</div>
+<div class="content">
+<pre>Hey! Which province/territory do you live in? XX
+WOW! You live in ?!?!</pre>
 </div>
-<div class="paragraph">
-<p>5</p>
 </div>
-<div class="paragraph">
-<p>6</p>
 </div>
-<div class="paragraph">
-<p>7</p>
 </div>
-<div class="paragraph">
-<p>8</p>
-</div>
-<div class="paragraph">
-<p>9</p>
-</div>
-<div class="paragraph">
-<p>10</p>
-</div>
-<div class="paragraph">
-<p>11</p>
-</div>
-<div class="paragraph">
-<p>12</p>
-</div>
-<div class="paragraph">
-<p>13</p>
-</div>
-<div class="paragraph">
-<p>14</p>
-</div>
-<div class="paragraph">
-<p>15</p>
-</div>
-<div class="paragraph">
-<p>16</p>
-</div>
-<div class="paragraph">
-<p>17</p>
-</div>
-<div class="paragraph">
-<p>18</p>
-</div>
-<div class="paragraph">
-<p>19</p>
-</div>
-<div class="paragraph">
-<p>20</p>
-</div>
-<div class="paragraph">
-<p>21</p>
-</div>
-<div class="paragraph">
-<p>22</p>
-</div>
-<div class="paragraph">
-<p>23</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">#include &lt;iostream&gt; <em>// cin, cout</em><br>
-#include &lt;map&gt; <em>// map container</em><br>
-#include &lt;string&gt; <em>// string container</em><br>
-<br>
-using namespace std;<br>
-<em>//map pairs each Canadian province with its two letter abbreviation</em><br>
-int main()\{<br>
-<em>// initializes a map where a string corresponds to another string</em><br>
-map&lt;string,string&gt; provinces;<br>
-provinces["AB"]="Alberta"; <em>// gives value for each element</em><br>
-provinces["BC"]="British Columbia"; <em>// notice how this map has no
-size</em><br>
-provinces["MB"]="Manitoba"; <em>// this list could be gigantic</em><br>
-provinces["NB"]="New Brunswick"; <em>// the list could just continue</em><br>
-provinces["PE"]="PEI"; <em>// assuming we have much more provinces</em><br>
-<em>//&#8230;&#8203; This goes on for the remaining 8 provinces/territories</em><br>
-<br>
-cout &lt;&lt; "Hey! Which province/territory do you live in? ";<br>
-string abbreviation; <em>// string for user input</em><br>
-cin &gt;&gt; abbreviation;<br>
-<em>//province[s] would return the string that corresponds with string s</em><br>
-cout &lt;&lt; "WOW! You live in " &lt;&lt; provinces[abbreviation] &lt;&lt; "?!?!";<br>
-return 0;<br>
-}</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample Run 1:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Hey! Which province/territory do you live in? MB</p>
-</div>
-<div class="paragraph">
-<p>WOW! You live in Manitoba?!?!</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sample Run 2:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Hey! Which province/territory do you live in? XX</p>
-</div>
-<div class="paragraph">
-<p>WOW! You live in ?!?!</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>In Summary</p>
-</div>
+<div class="sect1">
+<h2 id="in-summary">In Summary</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -1597,18 +1149,29 @@ adding and removing elements</p>
 </li>
 <li>
 <p>A map is a container that gives a one to one correspondence between two
-data values.
-Practice Questions</p>
-</li>
-<li>
-<p><a href="http://wcipeg.com/problem/ccc14s3"><em>The Geneva Confection</em></a></p>
+data values.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="practice-questions">Practice Questions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://wcipeg.com/problem/ccc14s3">The Geneva Confection</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
   </div>
 </div>
 
 </div>
+<div class="footnote-tip" tabindex="-1"></div>
 
   </main>
   <!-- footer -->
@@ -1625,7 +1188,7 @@ Practice Questions</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/127e010ce19d4df0c10c1bd8fdaa933c0e990bc5" target="_blank">127e010</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/71f94bc320fbb11e74eceb8ad5b3a90761298528" target="_blank">71f94bc</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

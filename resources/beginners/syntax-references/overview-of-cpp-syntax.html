@@ -23,15 +23,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/resources/beginners/syntax-references/overview-of-cpp-syntax" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-14T22:53:59+00:00" />
+<meta property="article:published_time" content="2017-10-23T03:26:39+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"C++ Syntax","datePublished":"2017-10-14T22:53:59+00:00","dateModified":"2017-10-14T22:53:59+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/resources/beginners/syntax-references/overview-of-cpp-syntax"},"url":"https://mss-csec.github.io/resources/beginners/syntax-references/overview-of-cpp-syntax"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"C++ Syntax","datePublished":"2017-10-23T03:26:39+00:00","dateModified":"2017-10-23T03:26:39+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/resources/beginners/syntax-references/overview-of-cpp-syntax"},"url":"https://mss-csec.github.io/resources/beginners/syntax-references/overview-of-cpp-syntax"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=127e010" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=127e010" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=71f94bc" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=71f94bc" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -53,15 +53,15 @@
   
   
 
-  <link href="/assets/lib/skeleton.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=127e010" data-alt-dark="/assets/lib/skeleton-dark.css?v=127e010">
+  <link href="/assets/lib/skeleton.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=71f94bc" data-alt-dark="/assets/lib/skeleton-dark.css?v=71f94bc">
 
   
-  <link href="/assets/lib/lesson-default.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=127e010" data-alt-dark="/assets/lib/lesson-default-dark.css?v=127e010">
+  <link href="/assets/lib/lesson-default.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=71f94bc" data-alt-dark="/assets/lib/lesson-default-dark.css?v=71f94bc">
   
 
-  <link href="/assets/css/main.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=127e010" data-alt-dark="/assets/css/main-dark.css?v=127e010">
+  <link href="/assets/css/main.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=71f94bc" data-alt-dark="/assets/css/main-dark.css?v=71f94bc">
 
-  <link href="/assets/lib/pygments-manni.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=127e010" data-alt-dark="/assets/lib/pygments-native.css?v=127e010">
+  <link href="/assets/lib/pygments-manni.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=71f94bc" data-alt-dark="/assets/lib/pygments-native.css?v=71f94bc">
 
   
   
@@ -95,7 +95,8 @@
         },
         run: function () {
           for (var i=0;i<scripts.length;i++) {
-            scripts[i].call(g);
+            try { scripts[i].call(g); }
+            catch (e) { console.log('Onload script error: ' + e.message); }
           }
         }
       };
@@ -240,12 +241,12 @@
 <div class="sectionbody">
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="c1">//code
-</span><span class="p">}</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">]);</span> <span class="c1">//terminates chain if true
-</span><span class="k">else</span>
-    <span class="c1">//one statement will fall in an if, else,
-</span>    <span class="o">//</span><span class="k">else</span> <span class="k">if</span><span class="p">,</span> <span class="n">or</span> <span class="n">loop</span> <span class="k">if</span> <span class="n">there</span> <span class="n">are</span> <span class="n">no</span> <span class="n">braces</span><span class="p">.</span></code></pre></figure>
+    <span class="c1">//code</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">]);</span> <span class="c1">//terminates chain if true</span>
+<span class="k">else</span>
+    <span class="c1">//one statement will fall in an if, else,</span>
+    <span class="c1">//else if, or loop if there are no braces.</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -260,18 +261,18 @@
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">switch</span> <span class="p">([</span><span class="n">basic</span> <span class="n">type</span> <span class="n">variable</span><span class="p">])</span>
 <span class="p">{</span>
 <span class="k">case</span> <span class="p">[</span><span class="n">constant</span><span class="p">]:</span>
-    <span class="c1">//code here
-</span>    <span class="c1">//multiple lines work
-</span>    <span class="k">break</span><span class="p">;</span>
+    <span class="c1">//code here</span>
+    <span class="c1">//multiple lines work</span>
+    <span class="k">break</span><span class="p">;</span>
 <span class="k">case</span> <span class="p">[</span><span class="n">constant</span><span class="p">]:</span>
-    <span class="c1">//code
-</span><span class="k">case</span> <span class="p">[</span><span class="n">constant</span><span class="p">]:</span>
-    <span class="c1">//without a break, the previous case falls into this
-</span>    <span class="c1">//case and will also do the code under this case.
-</span><span class="nl">default:</span>
-    <span class="c1">//if before is satisfied, code here runs.
-</span>    <span class="c1">//previous two cases will fall here as they lack a break.
-</span><span class="p">}</span></code></pre></figure>
+    <span class="c1">//code</span>
+<span class="k">case</span> <span class="p">[</span><span class="n">constant</span><span class="p">]:</span>
+    <span class="c1">//without a break, the previous case falls into this</span>
+    <span class="c1">//case and will also do the code under this case.</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="c1">//if before is satisfied, code here runs.</span>
+    <span class="c1">//previous two cases will fall here as they lack a break.</span>
+<span class="p">}</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -279,24 +280,24 @@
 <div class="sectionbody">
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">while</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="c1">//code here that will run when condition is true
-</span>    <span class="c1">//while (1) gives infinite loop
-</span>    <span class="c1">//strongly suggested that something changes in the condition here
-</span>    <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span> <span class="c1">//exits the loop (works with all loops)
-</span>    <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">//skips all code below,
-</span>                               <span class="c1">//returning to the top
-</span>                               <span class="c1">//(works with all loops)
-</span>    <span class="c1">//code
-</span><span class="p">}</span></code></pre></figure>
+    <span class="c1">//code here that will run when condition is true</span>
+    <span class="c1">//while (1) gives infinite loop</span>
+    <span class="c1">//strongly suggested that something changes in the condition here</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span> <span class="c1">//exits the loop (works with all loops)</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">condition</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">//skips all code below,</span>
+                               <span class="c1">//returning to the top</span>
+                               <span class="c1">//(works with all loops)</span>
+    <span class="c1">//code</span>
+<span class="p">}</span></code></pre></figure>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">do</span>
 <span class="p">{</span>
-    <span class="c1">//code here is done once, then loops if the below condition is true
-</span><span class="p">}</span> <span class="k">while</span> <span class="p">([</span><span class="n">condition</span><span class="p">]);</span> <span class="o">//</span><span class="n">you</span> <span class="n">need</span> <span class="n">the</span> <span class="n">semicolon</span> <span class="n">here</span></code></pre></figure>
+    <span class="c1">//code here is done once, then loops if the below condition is true</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">([</span><span class="n">condition</span><span class="p">]);</span> <span class="c1">//you need the semicolon here</span></code></pre></figure>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">for</span> <span class="p">([</span><span class="n">initializer</span><span class="p">];</span> <span class="p">[</span><span class="n">condition</span><span class="p">];</span> <span class="p">[</span><span class="n">counter</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="c1">//code
-</span>    <span class="c1">//special loop:
-</span>    <span class="cm">/* allows creation of counter variable which
+    <span class="c1">//code</span>
+    <span class="c1">//special loop:</span>
+    <span class="cm">/* allows creation of counter variable which
      * is checked by the condition and automatically
      * updated by the counter at the end of an iteration.
      * code order is as follows:
@@ -304,9 +305,9 @@
      *                      ^                |
      *                      \----------------/
      */</span>
-    <span class="c1">//you can use a for(;;) for an infinite loop
-</span>    <span class="c1">//general usage is for (int i = 0; i &lt; times; i++)
-</span><span class="p">}</span></code></pre></figure>
+    <span class="c1">//you can use a for(;;) for an infinite loop</span>
+    <span class="c1">//general usage is for (int i = 0; i &lt; times; i++)</span>
+<span class="p">}</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -314,15 +315,15 @@
 <div class="sectionbody">
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="k">return</span> <span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">scope</span><span class="p">]</span><span class="o">::</span><span class="p">[</span><span class="n">function</span> <span class="n">name</span><span class="p">]([</span><span class="n">params</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="c1">// code
-</span>    <span class="c1">// all branches must terminate by returning a value that is of
-</span>    <span class="c1">// the return type
-</span>    <span class="c1">// return type of void does not require return
-</span>    <span class="c1">// return exits function immediately
-</span><span class="p">}</span></code></pre></figure>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="c1">// prototype - when referencing a function that's written later in the code,
-// first put up a prototype so that it won't tantrum with "I haven't seen this // yet, it must be nonexistent!"
-</span><span class="p">[</span><span class="k">return</span> <span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">function</span> <span class="n">name</span><span class="p">]([</span><span class="n">param</span> <span class="n">types</span><span class="p">]);</span></code></pre></figure>
+    <span class="c1">// code</span>
+    <span class="c1">// all branches must terminate by returning a value that is of</span>
+    <span class="c1">// the return type</span>
+    <span class="c1">// return type of void does not require return</span>
+    <span class="c1">// return exits function immediately</span>
+<span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="c1">// prototype - when referencing a function that's written later in the code,</span>
+<span class="c1">// first put up a prototype so that it won't tantrum with "I haven't seen this // yet, it must be nonexistent!"</span>
+<span class="p">[</span><span class="k">return</span> <span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">function</span> <span class="n">name</span><span class="p">]([</span><span class="n">param</span> <span class="n">types</span><span class="p">]);</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -330,73 +331,73 @@
 <div class="sectionbody">
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="p">[</span><span class="k">struct</span> <span class="n">name</span><span class="p">]</span>
 <span class="p">{</span>
-    <span class="c1">// variables or function prototypes
-</span><span class="p">};</span></code></pre></figure>
+    <span class="c1">// variables or function prototypes</span>
+<span class="p">};</span></code></pre></figure>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="err">[</span><span class="nc">class</span> <span class="n">name</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="n">inherits</span> <span class="n">from</span><span class="p">]</span>
 <span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>  <span class="c1">// denotes that everything following allows public access
-</span>    <span class="p">[</span><span class="k">class</span> <span class="nc">name</span><span class="p">](</span><span class="kt">void</span><span class="p">);</span>  <span class="c1">// constructor, called on create
-</span>    <span class="o">~</span><span class="p">[</span><span class="k">class</span> <span class="nc">name</span><span class="p">](</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// destructor, called on delete
-</span>    <span class="c1">// variables or function prototypes
-</span><span class="p">};</span></code></pre></figure>
+    <span class="k">public</span><span class="o">:</span>  <span class="c1">// denotes that everything following allows public access</span>
+    <span class="p">[</span><span class="k">class</span> <span class="nc">name</span><span class="p">](</span><span class="kt">void</span><span class="p">);</span>  <span class="c1">// constructor, called on create</span>
+    <span class="o">~</span><span class="p">[</span><span class="k">class</span> <span class="nc">name</span><span class="p">](</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// destructor, called on delete</span>
+    <span class="c1">// variables or function prototypes</span>
+<span class="p">};</span></code></pre></figure>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="p">[</span><span class="n">nsp</span> <span class="n">name</span><span class="p">]</span>
 <span class="p">{</span>
-    <span class="c1">// variables or function prototypes
-</span><span class="p">};</span></code></pre></figure>
+    <span class="c1">// variables or function prototypes</span>
+<span class="p">};</span></code></pre></figure>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="k">return</span> <span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="k">struct</span><span class="o">/</span><span class="k">class</span><span class="err">/</span><span class="nc">nsp</span> <span class="n">name</span><span class="p">]</span><span class="o">::</span><span class="p">[</span><span class="n">function</span> <span class="n">name</span><span class="p">]([</span><span class="n">params</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="c1">// code
-</span>    <span class="c1">// prototypes not within scope require a special header
-</span>    <span class="c1">// for their functions using the namespace resolution operator.
-</span><span class="p">}</span></code></pre></figure>
+    <span class="c1">// code</span>
+    <span class="c1">// prototypes not within scope require a special header</span>
+    <span class="c1">// for their functions using the namespace resolution operator.</span>
+<span class="p">}</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
 <h2 id="enums">Enums</h2>
 <div class="sectionbody">
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">enum</span> <span class="p">[</span><span class="n">enumeration</span> <span class="n">name</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="c1">// default type is int
-</span><span class="p">{</span>
-    <span class="c1">//list of terms. ex:
-</span>    <span class="n">ENUM_1</span><span class="p">,</span>                   <span class="c1">// = 0     = 0
-</span>    <span class="n">ENUM_2</span><span class="p">,</span>                   <span class="c1">// = 0 + 1 = 1
-</span>    <span class="n">ENUM_3</span><span class="p">,</span>                   <span class="c1">// = 1 + 1 = 2
-</span>    <span class="n">MUNE_0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>               <span class="c1">// = 0     = 0
-</span>    <span class="n">MUNE_1</span><span class="p">,</span>                   <span class="c1">// = 0 + 1 = 1
-</span>    <span class="n">MUNE_2</span><span class="p">,</span>                   <span class="c1">// = 1 + 1 = 2
-</span>    <span class="n">MUNE_3</span> <span class="o">=</span> <span class="n">MUNE_2</span> <span class="o">+</span> <span class="n">ENUM_3</span><span class="p">,</span> <span class="c1">// = 2 + 2 = 4
-</span>    <span class="n">MUNE_END</span>                  <span class="c1">// = 4 + 1 = 5
-</span>    <span class="c1">// enum terms are replaced by their values during compilation.
-</span>    <span class="c1">// allows for optimized readability - for example, directions can be
-</span>    <span class="c1">// enum'ed into integral values instead of a string
-</span><span class="p">};</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">enum</span> <span class="p">[</span><span class="n">enumeration</span> <span class="n">name</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="c1">// default type is int</span>
+<span class="p">{</span>
+    <span class="c1">//list of terms. ex:</span>
+    <span class="n">ENUM_1</span><span class="p">,</span>                   <span class="c1">// = 0     = 0</span>
+    <span class="n">ENUM_2</span><span class="p">,</span>                   <span class="c1">// = 0 + 1 = 1</span>
+    <span class="n">ENUM_3</span><span class="p">,</span>                   <span class="c1">// = 1 + 1 = 2</span>
+    <span class="n">MUNE_0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>               <span class="c1">// = 0     = 0</span>
+    <span class="n">MUNE_1</span><span class="p">,</span>                   <span class="c1">// = 0 + 1 = 1</span>
+    <span class="n">MUNE_2</span><span class="p">,</span>                   <span class="c1">// = 1 + 1 = 2</span>
+    <span class="n">MUNE_3</span> <span class="o">=</span> <span class="n">MUNE_2</span> <span class="o">+</span> <span class="n">ENUM_3</span><span class="p">,</span> <span class="c1">// = 2 + 2 = 4</span>
+    <span class="n">MUNE_END</span>                  <span class="c1">// = 4 + 1 = 5</span>
+    <span class="c1">// enum terms are replaced by their values during compilation.</span>
+    <span class="c1">// allows for optimized readability - for example, directions can be</span>
+    <span class="c1">// enum'ed into integral values instead of a string</span>
+<span class="p">};</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
 <h2 id="arrays">Arrays</h2>
 <div class="sectionbody">
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">size</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{[</span><span class="n">list</span><span class="p">]};</span> <span class="c1">// declaration and initialization
-</span><span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">index</span><span class="p">]]</span>                   <span class="c1">// references the index of the array
-</span>
-<span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">size1</span><span class="p">]][[</span><span class="n">size2</span><span class="p">]][[</span><span class="n">size3</span><span class="p">]];</span> <span class="c1">// you can have multi-dimensional
-</span>                                          <span class="o">//</span> <span class="n">arrays</span><span class="p">,</span> <span class="n">like</span> <span class="k">this</span> <span class="n">one</span> <span class="n">with</span> <span class="n">three</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">size</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{[</span><span class="n">list</span><span class="p">]};</span> <span class="c1">// declaration and initialization</span>
+<span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">index</span><span class="p">]]</span>                   <span class="c1">// references the index of the array</span>
+
+<span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">size1</span><span class="p">]][[</span><span class="n">size2</span><span class="p">]][[</span><span class="n">size3</span><span class="p">]];</span> <span class="c1">// you can have multi-dimensional</span>
+                                          <span class="c1">// arrays, like this one with three</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
 <h2 id="pointers">Pointers</h2>
 <div class="sectionbody">
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">[</span><span class="n">reference</span><span class="p">];</span>       <span class="c1">// decl. and init. of a reference pointer
-</span><span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="p">[</span><span class="n">type</span><span class="p">][[</span><span class="n">size</span><span class="p">]];</span> <span class="c1">//decl. and init. of an array pointer
-</span><span class="o">*</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>                               <span class="c1">// dereference pointer
-</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">offset</span><span class="p">]</span>                     <span class="c1">// pointer arithmetic - "point [offset] more [type]s later"
-</span><span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">index</span><span class="p">]]</span>                       <span class="c1">// dereference of pointer array at index
-</span><span class="o">*</span><span class="p">([</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">index</span><span class="p">])</span>                   <span class="c1">// above
-</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">name</span><span class="p">]).[</span><span class="n">property</span><span class="p">]</span>                  <span class="c1">// access property of dereferenced pointer
-</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">[</span><span class="n">property</span><span class="p">]</span>                    <span class="c1">// shortcut for above
-</span><span class="o">&amp;</span><span class="p">[</span><span class="n">reference</span><span class="p">]</span>                          <span class="c1">// take address of reference - returns a pointer
-</span>
-<span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*****</span> <span class="p">[</span><span class="n">name</span><span class="p">];</span> <span class="c1">// pointers can be nested!
-</span>                     <span class="c1">// this has the potential to become a fifth-dimensional
-</span>                     <span class="o">//</span> <span class="n">jagged</span> <span class="n">array</span><span class="p">.</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">[</span><span class="n">reference</span><span class="p">];</span>       <span class="c1">// decl. and init. of a reference pointer</span>
+<span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="p">[</span><span class="n">type</span><span class="p">][[</span><span class="n">size</span><span class="p">]];</span> <span class="c1">//decl. and init. of an array pointer</span>
+<span class="o">*</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>                               <span class="c1">// dereference pointer</span>
+<span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">offset</span><span class="p">]</span>                     <span class="c1">// pointer arithmetic - "point [offset] more [type]s later"</span>
+<span class="p">[</span><span class="n">name</span><span class="p">][[</span><span class="n">index</span><span class="p">]]</span>                       <span class="c1">// dereference of pointer array at index</span>
+<span class="o">*</span><span class="p">([</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">index</span><span class="p">])</span>                   <span class="c1">// above</span>
+<span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">name</span><span class="p">]).[</span><span class="n">property</span><span class="p">]</span>                  <span class="c1">// access property of dereferenced pointer</span>
+<span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">[</span><span class="n">property</span><span class="p">]</span>                    <span class="c1">// shortcut for above</span>
+<span class="o">&amp;</span><span class="p">[</span><span class="n">reference</span><span class="p">]</span>                          <span class="c1">// take address of reference - returns a pointer</span>
+
+<span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="o">*****</span> <span class="p">[</span><span class="n">name</span><span class="p">];</span> <span class="c1">// pointers can be nested!</span>
+                     <span class="c1">// this has the potential to become a fifth-dimensional</span>
+                     <span class="c1">// jagged array.</span></code></pre></figure>
 </div>
 </div>
 <div class="sect1">
@@ -404,13 +405,14 @@
 <div class="sectionbody">
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="c1">//begin code here
-</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//begin code here</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 </div>
 </div>
 
 </div>
+<div class="footnote-tip" tabindex="-1"></div>
 
   </main>
   <!-- footer -->
@@ -427,7 +429,7 @@
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/127e010ce19d4df0c10c1bd8fdaa933c0e990bc5" target="_blank">127e010</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/71f94bc320fbb11e74eceb8ad5b3a90761298528" target="_blank">71f94bc</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

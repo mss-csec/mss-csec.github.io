@@ -11,11 +11,11 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://googletagmanager.com">
 
-  <title>If Structures | MSS CSEC • Markville's Computer Science Education Club
+  <title>If Statements | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
   <!-- Begin Jekyll SEO tag v2.2.3 -->
-<meta property="og:title" content="If Structures" />
+<meta property="og:title" content="If Statements" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Markville’s Computer Science Education Club" />
 <meta property="og:description" content="Markville’s Computer Science Education Club" />
@@ -23,15 +23,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/if-structures/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-14T22:53:59+00:00" />
+<meta property="article:published_time" content="2017-10-23T03:26:39+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"If Structures","datePublished":"2017-10-14T22:53:59+00:00","dateModified":"2017-10-14T22:53:59+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/if-structures/index"},"url":"https://mss-csec.github.io/lessons/beginners/if-structures/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"If Statements","datePublished":"2017-10-23T03:26:39+00:00","dateModified":"2017-10-23T03:26:39+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/if-structures/index"},"url":"https://mss-csec.github.io/lessons/beginners/if-structures/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=127e010" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=127e010" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=71f94bc" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=71f94bc" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -53,19 +53,19 @@
   
   
 
-  <link href="/assets/lib/skeleton.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=127e010" data-alt-dark="/assets/lib/skeleton-dark.css?v=127e010">
+  <link href="/assets/lib/skeleton.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=71f94bc" data-alt-dark="/assets/lib/skeleton-dark.css?v=71f94bc">
 
   
-  <link href="/assets/lib/lesson-default.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=127e010" data-alt-dark="/assets/lib/lesson-default-dark.css?v=127e010">
+  <link href="/assets/lib/lesson-default.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=71f94bc" data-alt-dark="/assets/lib/lesson-default-dark.css?v=71f94bc">
   
 
-  <link href="/assets/css/main.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=127e010" data-alt-dark="/assets/css/main-dark.css?v=127e010">
+  <link href="/assets/css/main.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=71f94bc" data-alt-dark="/assets/css/main-dark.css?v=71f94bc">
 
-  <link href="/assets/lib/pygments-manni.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=127e010" data-alt-dark="/assets/lib/pygments-native.css?v=127e010">
+  <link href="/assets/lib/pygments-manni.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=71f94bc" data-alt-dark="/assets/lib/pygments-native.css?v=71f94bc">
 
   
   
-  <link href="/assets/css/subclubs.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=127e010" data-alt-dark="/assets/css/subclubs-dark.css?v=127e010">
+  <link href="/assets/css/subclubs.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=71f94bc" data-alt-dark="/assets/css/subclubs-dark.css?v=71f94bc">
   
 
   
@@ -97,7 +97,8 @@
         },
         run: function () {
           for (var i=0;i<scripts.length;i++) {
-            scripts[i].call(g);
+            try { scripts[i].call(g); }
+            catch (e) { console.log('Onload script error: ' + e.message); }
           }
         }
       };
@@ -234,7 +235,7 @@
 
   <main>
     <div class="hero">
-  <h1 class="title"><em>If Structures</em></h1>
+  <h1 class="title"><em>If Statements</em></h1>
 </div>
 <div class="content container">
   
@@ -452,82 +453,6 @@
   
     
     
-      
-      
-      
-      
-      
-
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-      
-      
-      
-      
-
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
   
     
     
@@ -616,6 +541,53 @@
   
     
     
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
   
     
     
@@ -630,6 +602,71 @@
 
   
   
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
   
     
     
@@ -683,8 +720,8 @@
 
 
 <div class="breadcrumbs">
-  <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/beginners/">Beginners'</a> / <strong class="breadcrumbs-current">If Structures</strong>
-  <span class="lesson-date">Dated: <time datetime="2017-12-08T00:00:00+0000">December 08, 2017</em></span>
+  <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/beginners/">Beginners'</a> / <strong class="breadcrumbs-current">If Statements</strong>
+  <span class="lesson-date">Dated: <time datetime="2017-11-03T00:00:00+0000">November 03, 2017</em></span>
 </div>
 <div class="row">
   <div class="three columns sidebar-collapsible" id="lesson-listing">
@@ -721,59 +758,60 @@
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-outputs/" title="October 27, 2017">Simple Outputs</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-outputs/" title="October 13, 2017">Simple Outputs</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-operators/" title="November 03, 2017">Simple Operators</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-operators/" title="October 13, 2017">Simple Operators</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/an-introduction-to-variables/" title="November 17, 2017">An Introduction to Variables</a>
+  <a class="lesson-link" href="/lessons/beginners/an-introduction-to-variables/" title="October 13, 2017">An Introduction to Variables</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/simple-inputs-and-wcipeg/" title="December 01, 2017">Simple Inputs and WCIPEG</a>
+  <a class="lesson-link" href="/lessons/beginners/simple-inputs-and-wcipeg/" title="October 27, 2017">Simple Inputs and WCIPEG</a>
 </p>
       
 <p class="lesson-name lesson-cur">
-  <a class="lesson-link" href="/lessons/beginners/if-structures/" title="December 08, 2017">If Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/if-structures/" title="November 03, 2017">If Statements</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/loop-structures/" title="December 15, 2017">Loop Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/loop-structures/" title="November 17, 2017">Loop Structures</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/arrays/" title="January 12, 2018">Arrays</a>
+  <a class="lesson-link" href="/lessons/beginners/arrays/" title="December 08, 2017">Arrays</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/multidimensional-arrays/" title="February 09, 2018">Multidimensional Arrays</a>
+  <a class="lesson-link" href="/lessons/beginners/multidimensional-arrays/" title="December 15, 2017">Multidimensional Arrays</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/strings/" title="February 16, 2018">Strings</a>
+  <a class="lesson-link" href="/lessons/beginners/strings/" title="December 08, 2017">Strings</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/other-containers/" title="February 23, 2018">Other Containers</a>
+  <a class="lesson-link" href="/lessons/beginners/other-containers/" title="February 16, 2017">Other Containers</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/functions/" title="March 02, 2018">Functions</a>
+  <a class="lesson-link" href="/lessons/beginners/functions/" title="February 23, 2018">Functions</a>
 </p>
       
 <p class="lesson-name">
-  <a class="lesson-link" href="/lessons/beginners/structures/" title="March 23, 2018">Structures</a>
+  <a class="lesson-link" href="/lessons/beginners/structures/" title="March 09, 2018">Structures</a>
 </p>
       
   </div>
   <div class="nine columns" id="main-content">
+    
     <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Goal: To be able to implement structures into code.</p>
+<p>Goal: To be able to implement if statements into code.</p>
 </div>
 </div>
 </div>
@@ -788,38 +826,28 @@ in one of two states: <strong>true or false</strong>. For a computer, <strong>tr
 as a 1,</strong> and <strong>false is stored as a 0</strong>.</p>
 </div>
 <div class="paragraph">
-<p>An example of a relational operator is ==. It checks whether two
-values/expressions are equal to each other. The symbol == is different
-from =, an operator only used for variable assignments. Be sure not to
+<p>An example of a relational operator is <code>==</code>. It checks whether two
+values/expressions are equal to each other. The symbol <code>==</code> is different
+from <code>=</code>, an operator only used for variable assignments. Be sure not to
 mix up the two operators.</p>
 </div>
-<div class="paragraph">
-<p><strong>Example Code:</strong></p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
+<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>        <span class="c1">// compares ints</span></span>
+<span id="L6" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mf">2.6</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>      <span class="c1">// compares double and ints</span></span>
+<span id="L7" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="sc">'A'</span> <span class="o">==</span> <span class="sc">'A'</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>    <span class="c1">// compares characters</span></span>
+<span id="L8" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">true</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// compares boolean values</span></span>
+<span id="L9" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L10" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>        <span class="c1">// compares ints
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mf">2.6</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>      <span class="c1">// compares double and ints
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="sc">'A'</span> <span class="o">==</span> <span class="sc">'A'</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>    <span class="c1">// compares characters
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">true</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// compares boolean values
-</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p><strong>Output:</strong></p>
 </div>
 <div class="literalblock">
+<div class="title">Output:</div>
 <div class="content">
 <pre>1
 0
@@ -921,7 +949,7 @@ compare variable types such as characters.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks if the first value is greater than or equal to the second value</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><code>5 &gt;= 4</code><br>
-<code>4 &#8656; 4</code></p>
+<code>4 &gt;= 4</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><code>true</code><br>
@@ -931,12 +959,12 @@ compare variable types such as characters.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Less than or equal to</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>&#8656;</code></p>
+<p><code>&lt;=</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks it the first value is less than or equal to the second value</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><code>3 &#8656; 3</code><br>
-<code>4 &#8656; 3</code></p>
+<p><code>3 &lt;= 3</code><br>
+<code>4 &lt;= 3</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><code>true</code>
@@ -995,66 +1023,50 @@ common logical operators.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OR</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>`</p>
+<p><code>||</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true when either side is true</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>`</p>
+<p><code>true || false</code><br>
+<code>false || false</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Returns true when either side is true</p>
+<p><code>true</code><br>
+<code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">`true</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false`<br>
-`false</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NOT</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>false`</p>
+<p><code>!</code></p>
 </div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code><br>
-<code>false</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>NOT</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>!</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Returns true if value is false and returns false if value is true</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if value is false and returns false if value is true</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p><code>!(true)</code><br>
 <code>!(false)</code></p>
 </div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>false</code><br>
+<code>true</code></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><strong>Example Code:</strong></p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
+<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">6</span> <span class="o">==</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L6" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L7" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L8" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">6</span> <span class="o">==</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p><strong>Output:</strong></p>
 </div>
 <div class="literalblock">
+<div class="title">Output:</div>
 <div class="content">
 <pre>0
 1</pre>
@@ -1078,10 +1090,14 @@ specific set of commands if a certain condition is met.</p>
 <div class="paragraph">
 <p>The basic outline of an if statement looks like the following:</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//code to be run if the condition results to true
-</span><span class="p">}</span>
-<span class="o">//</span> <span class="n">rest</span> <span class="n">of</span> <span class="n">the</span> <span class="n">code</span></code></pre></figure>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L2" class="line">    <span class="c1">//code to be run if the condition results to true</span></span>
+<span id="L3" class="line"><span class="p">}</span></span>
+<span id="L4" class="line"><span class="c1">// rest of the code</span></span></code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Inside the parenthesis will be a condition that will result either true
 or false. Normally, the if statement will have variables being compared
@@ -1107,39 +1123,27 @@ more detail in the next chapter.
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p><strong>Example Code:</strong></p>
+<div class="listingblock">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="c1">// this code will check if a number is positive</span></span>
+<span id="L2" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
+<span id="L3" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L4" class="line"></span>
+<span id="L5" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L6" class="line">    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>            <span class="c1">// initializes an integer variable</span></span>
+<span id="L7" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Type in any number."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
+<span id="L8" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span>         <span class="c1">// gets user input</span></span>
+<span id="L9" class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// all positive numbers are greater than 0</span></span>
+<span id="L10" class="line">        <span class="c1">// if num is positive, this message will be displayed</span></span>
+<span id="L11" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a positive number."</span><span class="p">;</span></span>
+<span id="L12" class="line">    <span class="p">}</span>                   <span class="c1">// if num is negative or zero, output is skipped</span></span>
+<span id="L13" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L14" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;     // this code will check if a number is positive
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>            <span class="c1">// initializes an integer variable
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="err">“</span><span class="n">Type</span> <span class="n">in</span> <span class="n">any</span> <span class="n">number</span><span class="p">.</span><span class="err">”</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span>         <span class="c1">// gets user input
-</span>    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// all positive numbers are greater than 0
-</span>        <span class="c1">// if num is positive, this message will be displayed
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a positive number."</span><span class="p">;</span>
-    <span class="p">}</span>                   <span class="c1">// if num is negative or zero, output is skipped
-</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p><strong>Sample Run:</strong></p>
 </div>
 <div class="literalblock">
+<div class="title">Sample Run:</div>
 <div class="content">
 <pre>Type in any number.
 8
@@ -1163,19 +1167,23 @@ make a program run a different set of commands if the conditions in an
 if statement results false. An if structure that includes an else if and
 else statement will resemble the following:</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">(</span><span class="n">condition1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// code to be run if condition 1 results true
-</span><span class="p">}</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// code if condition 1 results false but condition 2 results true
-</span><span class="p">}</span>
-<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition3</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// more code
-</span><span class="p">}</span>
-<span class="c1">// the number of else if statements could continue...
-</span><span class="k">else</span> <span class="p">{</span>
-    <span class="c1">// code to be run if all previous conditions result false
-</span><span class="p">}</span></code></pre></figure>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">if</span> <span class="p">(</span><span class="n">condition1</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L2" class="line">    <span class="c1">// code to be run if condition 1 results true</span></span>
+<span id="L3" class="line"><span class="p">}</span></span>
+<span id="L4" class="line"><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition2</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L5" class="line">    <span class="c1">// code if condition 1 results false but condition 2 results true</span></span>
+<span id="L6" class="line"><span class="p">}</span></span>
+<span id="L7" class="line"><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition3</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L8" class="line">    <span class="c1">// more code</span></span>
+<span id="L9" class="line"><span class="p">}</span></span>
+<span id="L10" class="line"><span class="c1">// the number of else if statements could continue...</span></span>
+<span id="L11" class="line"><span class="k">else</span> <span class="p">{</span></span>
+<span id="L12" class="line">    <span class="c1">// code to be run if all previous conditions result false</span></span>
+<span id="L13" class="line"><span class="p">}</span></span></code></pre>
+</div>
+</div>
 <div class="imageblock right text-center">
 <div class="content">
 <img src="media/image2.png" alt="flowchart of if statement logic" width="142" height="156">
@@ -1199,38 +1207,26 @@ if structure.</p>
 <p>Below is the same code modified to display messages for positive,
 negative numbers and zero.</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">// all positive numbers are greater than 0
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is an even number."</span><span class="p">;</span> <span class="c1">// skips to line 16
-</span>    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// all negative numbers are less than 0
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a negative number.”; // skips to line 16</span><span class="err">
-</span><span class="s">    }</span><span class="err">
-</span><span class="s">    else {               // 0 is neither greater or less than 0</span><span class="err">
-</span><span class="s">        cout &lt;&lt; num &lt;&lt; "</span> <span class="n">is</span> <span class="n">not</span> <span class="n">positive</span> <span class="n">nor</span> <span class="n">negative</span><span class="p">.</span><span class="s">";</span><span class="err">
-</span><span class="s">    }</span><span class="err">
-</span><span class="s">    return 0;</span><span class="err">
-</span><span class="s">}</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="listingblock linenos">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
+<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L3" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L4" class="line">    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span></span>
+<span id="L5" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span></span>
+<span id="L6" class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">// all positive numbers are greater than 0</span></span>
+<span id="L7" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is an even number."</span><span class="p">;</span> <span class="c1">// skips to line 16</span></span>
+<span id="L8" class="line">    <span class="p">}</span></span>
+<span id="L9" class="line">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// all negative numbers are less than 0</span></span>
+<span id="L10" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a negative number."</span><span class="p">;</span> <span class="c1">// skips to line 16</span></span>
+<span id="L11" class="line">    <span class="p">}</span></span>
+<span id="L12" class="line">    <span class="k">else</span> <span class="p">{</span>               <span class="c1">// 0 is neither greater or less than 0</span></span>
+<span id="L13" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is not positive nor negative."</span><span class="p">;</span></span>
+<span id="L14" class="line">    <span class="p">}</span></span>
+<span id="L15" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L16" class="line"><span class="p">}</span></span></code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1269,7 +1265,7 @@ the if structure.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="practice-questions">Practice questions</h2>
+<h2 id="contest-questions">Contest questions</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -1280,7 +1276,7 @@ the if structure.</p>
 <p><a href="http://wcipeg.com/problem/ccc15j1">Special Day</a></p>
 </li>
 <li>
-<p><a href="http://wcipeg.com/problem/ccc07j1">Who’s in the Middle</a></p>
+<p><a href="http://wcipeg.com/problem/ccc07j1">Who&#8217;s in the Middle</a></p>
 </li>
 <li>
 <p><a href="http://wcipeg.com/problem/ccc14j1">Triangle Times</a></p>
@@ -1298,50 +1294,6 @@ the if structure.</p>
 </ul>
 </div>
 </li>
-<li>
-<p>Ol’ Jimbob is back and his code looks atrocious. Sure, his code works,
-but it is very hard to read and is unnecessarily complex. Your job is to
-change <strong>only Jimbob’s if conditions</strong> so that it makes more sense. Also,
-try and figure out why Jimbob’s code works.</p>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="c1">// this program takes 3 side lengths of a triangle and outputs a message
-// saying what type of triangle it is
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Input 3 side lengths."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">;</span>
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s1</span> <span class="o">&gt;&gt;</span> <span class="n">s2</span> <span class="o">&gt;&gt;</span> <span class="n">s3</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(((</span><span class="n">s1</span><span class="o">!=</span><span class="n">s2</span><span class="p">)</span><span class="o">!=</span><span class="p">(</span><span class="n">s2</span><span class="o">==</span><span class="n">s3</span><span class="p">))</span><span class="o">+</span><span class="p">((</span><span class="n">s1</span><span class="o">!=</span><span class="n">s3</span><span class="p">)</span><span class="o">!=</span><span class="p">(</span><span class="n">s1</span><span class="o">==</span><span class="n">s2</span><span class="p">))</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The triangle is scalene."</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span><span class="p">((</span><span class="n">s1</span><span class="o">==</span><span class="n">s2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">s2</span><span class="o">==</span><span class="n">s3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">s1</span><span class="o">==</span><span class="n">s3</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The triangle is isosceles."</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"The triangle is equilateral."</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-</li>
 </ul>
 </div>
 <hr>
@@ -1353,7 +1305,7 @@ try and figure out why Jimbob’s code works.</p>
 <div class="sect2">
 <h3 id="xor">XOR</h3>
 <div class="paragraph">
-<p>The XOR operator (<code>\^</code>) is an operator that can be used like a logical
+<p>The XOR operator (<code>^</code>) is an operator that can be used like a logical
 operator.</p>
 </div>
 <div class="paragraph">
@@ -1376,20 +1328,20 @@ in scenarios beyond the scope of this chapter.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true \^ true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true ^ true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true ^ false</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true \^ false</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false \^ true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false ^ true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false ^ false</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false \^ false</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1402,28 +1354,42 @@ stores a character, the variable is holding a number that corresponds to
 that character. The characters and their corresponding number follows
 the <strong>American Standard Code for Information Interchange (ASCII)</strong>. In
 C++, each character can be referred to by using either the character
-itself enclosed by single quotation marks (<code>\'A\'</code>) or their numerical
+itself enclosed by single quotation marks (<code>'A'</code>) or their numerical
 representation (<code>65</code>).</p>
 </div>
 <div class="paragraph">
-<p>A table displaying each character’s corresponding number can be obtained
-<a href="http://www.asciitable.com/"><em>here</em></a>:</p>
+<p>A table displaying each character&#8217;s corresponding number can be obtained
+<a href="http://www.asciitable.com/">here</a>:</p>
 </div>
 <div class="paragraph">
-<p>In the code below, the value of the character variable is set to ‘A’</p>
+<p>In the code below, the value of the character variable is set to 'A':</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">char</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span></code></pre></figure>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span></span></code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>When a character is being used with a relational operator in C++, <strong>the
 numerical representation of that character is being compared</strong> and not
 the character itself. So the following two excerpts of code perform the same task:</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">111</span><span class="p">;</span>
-
-<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="sc">'a'</span><span class="p">);</span></code></pre></figure>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="err">‘</span><span class="n">o</span><span class="err">’</span><span class="p">;</span>
-
-<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="mi">97</span><span class="p">);</span></code></pre></figure>
+<div class="listingblock">
+<div class="title">Example 1</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">111</span><span class="p">;</span></span>
+<span id="L2" class="line"></span>
+<span id="L3" class="line"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="sc">'a'</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example 2</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'o'</span><span class="p">;</span></span>
+<span id="L2" class="line"></span>
+<span id="L3" class="line"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="mi">97</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>This is how C++ uses characters with relational operators.</p>
 </div>
@@ -1441,82 +1407,62 @@ value.</strong></p>
 <div class="paragraph">
 <p>A switch statement resembles the following:</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">switch</span> <span class="p">(</span><span class="n">variable</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="n">possibleValue</span><span class="p">:</span>
-    <span class="c1">// your code
-</span>    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="n">possibleValue2</span><span class="p">:</span>
-    <span class="c1">// your code
-</span>    <span class="k">break</span><span class="p">;</span>
-<span class="c1">// the number of cases may continue
-</span><span class="nl">default:</span>
-    <span class="c1">// your code
-</span><span class="p">}</span></code></pre></figure>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">switch</span> <span class="p">(</span><span class="n">variable</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span></span>
+<span id="L2" class="line"><span class="k">case</span> <span class="n">possibleValue</span><span class="p">:</span></span>
+<span id="L3" class="line">    <span class="c1">// your code</span></span>
+<span id="L4" class="line">    <span class="k">break</span><span class="p">;</span></span>
+<span id="L5" class="line"><span class="k">case</span> <span class="n">possibleValue2</span><span class="p">:</span></span>
+<span id="L6" class="line">    <span class="c1">// your code</span></span>
+<span id="L7" class="line">    <span class="k">break</span><span class="p">;</span></span>
+<span id="L8" class="line"><span class="c1">// the number of cases may continue</span></span>
+<span id="L9" class="line"><span class="k">default</span><span class="o">:</span></span>
+<span id="L10" class="line">    <span class="c1">// your code</span></span>
+<span id="L11" class="line"><span class="p">}</span></span></code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>In a switch statement, the <code>default</code> case acts as an else statement in
 an if structure. The purpose of the break statements will be explained
 in the following chapter. Switch statements are not required as they do
 the same task as if structures.</p>
 </div>
-<div class="paragraph">
-<p><strong>Example Code:</strong></p>
+<div class="listingblock linenos">
+<div class="title">Example Code:</div>
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
+<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
+<span id="L3" class="line"></span>
+<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What's your mark?"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// asks for a mark</span></span>
+<span id="L6" class="line">    <span class="kt">char</span> <span class="n">mark</span><span class="p">;</span>              <span class="c1">// char variable to store mark</span></span>
+<span id="L7" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">mark</span><span class="p">;</span></span>
+<span id="L8" class="line">    <span class="k">switch</span><span class="p">(</span><span class="n">mark</span><span class="p">){</span>           <span class="c1">// checks value of mark</span></span>
+<span id="L9" class="line">    <span class="k">case</span> <span class="sc">'A'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'A'</span></span>
+<span id="L10" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Amazing!"</span><span class="p">;</span> <span class="c1">// output if mark == 'A'</span></span>
+<span id="L11" class="line">        <span class="k">break</span><span class="p">;</span></span>
+<span id="L12" class="line">    <span class="k">case</span> <span class="sc">'B'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'B'</span></span>
+<span id="L13" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Nice nice."</span><span class="p">;</span></span>
+<span id="L14" class="line">        <span class="k">break</span><span class="p">;</span></span>
+<span id="L15" class="line">    <span class="k">case</span> <span class="sc">'C'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'C'</span></span>
+<span id="L16" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"You're getting there."</span><span class="p">;</span></span>
+<span id="L17" class="line">        <span class="k">break</span><span class="p">;</span></span>
+<span id="L18" class="line">    <span class="k">case</span> <span class="sc">'D'</span> <span class="p">:</span></span>
+<span id="L19" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Try Harder."</span><span class="p">;</span></span>
+<span id="L20" class="line">        <span class="k">break</span><span class="p">;</span></span>
+<span id="L21" class="line">    <span class="k">default</span> <span class="o">:</span></span>
+<span id="L22" class="line">        <span class="c1">// default statement if all previous return false</span></span>
+<span id="L23" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"That's not a rank!"</span><span class="p">;</span></span>
+<span id="L24" class="line">    <span class="p">}</span></span>
+<span id="L25" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span id="L26" class="line"><span class="p">}</span></span></code></pre>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What's your mark?"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// asks for a mark
-</span>    <span class="kt">char</span> <span class="n">mark</span><span class="p">;</span>              <span class="c1">// char variable to store mark
-</span>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">mark</span><span class="p">;</span>
-    <span class="k">switch</span><span class="p">(</span><span class="n">mark</span><span class="p">){</span>           <span class="c1">// checks value of mark
-</span>    <span class="k">case</span> <span class="sc">'A'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'A'
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Amazing!"</span><span class="p">;</span> <span class="c1">// output if mark == 'A'
-</span>        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">'B'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'B'
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Nice nice."</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">'C'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'C'
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"You're getting there."</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="sc">'D'</span> <span class="p">:</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Try Harder."</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">default</span> <span class="o">:</span>
-        <span class="c1">// default statement if all previous return false
-</span>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"That's not a rank!"</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
+</div>
 <div class="literalblock">
 <div class="title">Sample Case:</div>
 <div class="content">
-<pre>What’s your mark?
+<pre>What's your mark?
 A
 Amazing!</pre>
 </div>
@@ -1524,7 +1470,7 @@ Amazing!</pre>
 <div class="literalblock">
 <div class="title">Sample Case 2:</div>
 <div class="content">
-<pre>What’s your mark?
+<pre>What's your mark?
 D
 Try Harder.</pre>
 </div>
@@ -1532,9 +1478,9 @@ Try Harder.</pre>
 <div class="literalblock">
 <div class="title">Sample Case 3:</div>
 <div class="content">
-<pre>What’s your mark?
+<pre>What's your mark?
 R
-That’s not a rank!</pre>
+That's not a rank!</pre>
 </div>
 </div>
 </div>
@@ -1544,6 +1490,7 @@ That’s not a rank!</pre>
 </div>
 
 </div>
+<div class="footnote-tip" tabindex="-1"></div>
 
   </main>
   <!-- footer -->
@@ -1560,7 +1507,7 @@ That’s not a rank!</pre>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/127e010ce19d4df0c10c1bd8fdaa933c0e990bc5" target="_blank">127e010</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/71f94bc320fbb11e74eceb8ad5b3a90761298528" target="_blank">71f94bc</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

@@ -23,15 +23,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-14T22:53:59+00:00" />
+<meta property="article:published_time" content="2017-10-23T03:26:39+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to C++","datePublished":"2017-10-14T22:53:59+00:00","dateModified":"2017-10-14T22:53:59+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to C++","datePublished":"2017-10-23T03:26:39+00:00","dateModified":"2017-10-23T03:26:39+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=127e010" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=127e010" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=71f94bc" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=71f94bc" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -53,19 +53,19 @@
   
   
 
-  <link href="/assets/lib/skeleton.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=127e010" data-alt-dark="/assets/lib/skeleton-dark.css?v=127e010">
+  <link href="/assets/lib/skeleton.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton.css?v=71f94bc" data-alt-dark="/assets/lib/skeleton-dark.css?v=71f94bc">
 
   
-  <link href="/assets/lib/lesson-default.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=127e010" data-alt-dark="/assets/lib/lesson-default-dark.css?v=127e010">
+  <link href="/assets/lib/lesson-default.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default.css?v=71f94bc" data-alt-dark="/assets/lib/lesson-default-dark.css?v=71f94bc">
   
 
-  <link href="/assets/css/main.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=127e010" data-alt-dark="/assets/css/main-dark.css?v=127e010">
+  <link href="/assets/css/main.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main.css?v=71f94bc" data-alt-dark="/assets/css/main-dark.css?v=71f94bc">
 
-  <link href="/assets/lib/pygments-manni.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=127e010" data-alt-dark="/assets/lib/pygments-native.css?v=127e010">
+  <link href="/assets/lib/pygments-manni.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=71f94bc" data-alt-dark="/assets/lib/pygments-native.css?v=71f94bc">
 
   
   
-  <link href="/assets/css/subclubs.css?v=127e010" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=127e010" data-alt-dark="/assets/css/subclubs-dark.css?v=127e010">
+  <link href="/assets/css/subclubs.css?v=71f94bc" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs.css?v=71f94bc" data-alt-dark="/assets/css/subclubs-dark.css?v=71f94bc">
   
 
   
@@ -97,7 +97,8 @@
         },
         run: function () {
           for (var i=0;i<scripts.length;i++) {
-            scripts[i].call(g);
+            try { scripts[i].call(g); }
+            catch (e) { console.log('Onload script error: ' + e.message); }
           }
         }
       };
@@ -336,6 +337,35 @@
       
       
 
+  
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+      
+      
+      
+
 
 <div class="breadcrumbs">
   <a href="/" class="icon-home"></a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/advanced/">Advanced</a> / <strong class="breadcrumbs-current">Introduction to C++</strong>
@@ -387,8 +417,13 @@
   <a class="lesson-link" href="/lessons/advanced/introduction-to-algorithms/" title="October 27, 2017">Introduction to Algorithms</a>
 </p>
       
+<p class="lesson-name">
+  <a class="lesson-link" href="/lessons/advanced/recursion-and-dynamic-programming/" title="November 17, 2017">Recursion and Dynamic Programming</a>
+</p>
+      
   </div>
   <div class="nine columns" id="main-content">
+    
     <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -457,11 +492,11 @@ In other environments, they are commonly coloured green.</p>
 3
 4
 5
-</pre></td><td class="code"><pre><span class="c1">// This is a single-line comment.
-</span>
-<span class="kt">int</span> <span class="n">n</span><span class="p">;</span> <span class="c1">// This is also a single-line comment,
-</span>       <span class="c1">// but what came before the double-slashes
-</span>       <span class="o">//</span> <span class="n">will</span> <span class="n">still</span> <span class="n">be</span> <span class="n">parsed</span> <span class="n">by</span> <span class="n">the</span> <span class="n">compiler</span><span class="p">.</span></pre></td></tr></tbody></table></code></pre></figure>
+</pre></td><td class="code"><pre><span class="c1">// This is a single-line comment.</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span> <span class="c1">// This is also a single-line comment,</span>
+       <span class="c1">// but what came before the double-slashes</span>
+       <span class="c1">// will still be parsed by the compiler.</span></pre></td></tr></tbody></table></code></pre></figure>
 <div class="paragraph">
 <p>Sometimes, very long or very short explanations may be warranted.
 The beginning of a comment block is denoted by <code>/*</code> and the ending by <code>\*/</code>.
@@ -524,12 +559,12 @@ Both methods work; the C++ version is simpler (for now), but we&#8217;ll introdu
 10
 </pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;  //for std::cout, std::endl
 </span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> <span class="c1">//so we don't have to write the std::
-</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> <span class="c1">//so we don't have to write the std::</span>
+
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="c1">//print Hello World!, a newline, and flush the stream
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello World!"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="c1">//print Hello World!, a newline, and flush the stream</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello World!"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 <div class="paragraph">
@@ -614,14 +649,14 @@ We&#8217;ll just stop here.</p>
 11
 </pre></td><td class="code"><pre><span class="cp">#include &lt;stdio.h&gt;   //for std::cin and std::cout
 </span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> <span class="c1">//for dropping the std::
-</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> <span class="c1">//for dropping the std::</span>
+
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>             <span class="c1">//declare an integer n
-</span>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>          <span class="c1">//read an integer from the console, putting it in n
-</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//spit n back out, then a newline and flush the stream.
-</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>             <span class="c1">//declare an integer n</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>          <span class="c1">//read an integer from the console, putting it in n</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//spit n back out, then a newline and flush the stream.</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 <div class="paragraph">
 <p>Like with the pathological syntax of <code>std::cout</code>, the syntax of <code>std::cin</code> resembles that of a flow equation: something goes <em>from</em> <code>std::cin</code> <em>to</em> <code>n</code>.</p>
@@ -673,12 +708,12 @@ For your purposes, it&#8217;s nothing but garbage.</p>
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>                  <span class="c1">//declare an int called n
-</span>    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>           <span class="c1">//declare a character called c and assign it the value of 'A'
-</span>    <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">e</span><span class="p">;</span>      <span class="c1">//declare a double called d and assign it 0.0; then declare a double called e
-</span>
-    <span class="c1">//spit out the values of the declared variables
-</span>    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>                  <span class="c1">//declare an int called n</span>
+    <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>           <span class="c1">//declare a character called c and assign it the value of 'A'</span>
+    <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">e</span><span class="p">;</span>      <span class="c1">//declare a double called d and assign it 0.0; then declare a double called e</span>
+
+    <span class="c1">//spit out the values of the declared variables</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 <div class="paragraph">
@@ -784,20 +819,20 @@ In the former case, there&#8217;s not enough precision and the addition results 
 <div class="paragraph">
 <p>The five compound operations do both an operation and an assignment:</p>
 </div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp">    <span class="n">n</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n + m;
-</span>    <span class="n">n</span> <span class="o">-=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n - m;
-</span>    <span class="n">n</span> <span class="o">*=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n * m;
-</span>    <span class="n">n</span> <span class="o">/=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n / m;
-</span>    <span class="n">n</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n % m;
-</span>    <span class="n">n</span> <span class="o">++</span><span class="p">;</span>   <span class="c1">//equivalent to n = n + 1;, but returns the original value of n.
-</span>    <span class="o">++</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">//equivalent to n = n + 1;
-</span>    <span class="n">n</span> <span class="o">--</span><span class="p">;</span>   <span class="c1">//equivalent to n = n - 1;, but returns the original value of n.
-</span>    <span class="o">--</span> <span class="n">n</span><span class="p">;</span>   <span class="o">//</span><span class="n">equivalent</span> <span class="n">to</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp">    <span class="n">n</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n + m;</span>
+    <span class="n">n</span> <span class="o">-=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n - m;</span>
+    <span class="n">n</span> <span class="o">*=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n * m;</span>
+    <span class="n">n</span> <span class="o">/=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n / m;</span>
+    <span class="n">n</span> <span class="o">%=</span> <span class="n">m</span><span class="p">;</span> <span class="c1">//equivalent to n = n % m;</span>
+    <span class="n">n</span> <span class="o">++</span><span class="p">;</span>   <span class="c1">//equivalent to n = n + 1;, but returns the original value of n.</span>
+    <span class="o">++</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">//equivalent to n = n + 1;</span>
+    <span class="n">n</span> <span class="o">--</span><span class="p">;</span>   <span class="c1">//equivalent to n = n - 1;, but returns the original value of n.</span>
+    <span class="o">--</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">//equivalent to n = n - 1;</span></code></pre></figure>
 <div class="paragraph">
 <p>Since operations can both assign and return a value, you can do things like this:</p>
 </div>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="p">(</span><span class="n">l</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">));</span>
-    <span class="o">//</span> <span class="n">assigns</span> <span class="n">l</span> <span class="n">to</span> <span class="mi">2l</span><span class="p">,</span> <span class="n">n</span> <span class="n">to</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2l</span><span class="p">,</span> <span class="n">and</span> <span class="n">prints</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2l</span></code></pre></figure>
+    <span class="c1">// assigns l to 2l, n to m + 2l, and prints 3 + m + 2l</span></code></pre></figure>
 <div class="sect3">
 <h4 id="boolean-operations-and-branching">Boolean Operations and Branching</h4>
 <div class="paragraph">
@@ -837,8 +872,8 @@ In the former case, there&#8217;s not enough precision and the addition results 
 32
 33
 34
-</pre></td><td class="code"><pre>    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">//for n is some int
-</span>    <span class="p">{</span>
+</pre></td><td class="code"><pre>    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">//for n is some int</span>
+    <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"n is greater than 10."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
@@ -850,19 +885,19 @@ In the former case, there&#8217;s not enough precision and the addition results 
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"n is 10."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">switch</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">//for c is some char
-</span>    <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">//for c is some char</span>
+    <span class="p">{</span>
         <span class="k">case</span> <span class="sc">'Z'</span><span class="p">:</span>
             <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Z, the last letter of the alphabet"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-            <span class="k">break</span><span class="p">;</span> <span class="c1">//ends the branch
-</span>        <span class="k">case</span> <span class="sc">'Y'</span><span class="p">:</span>
+            <span class="k">break</span><span class="p">;</span> <span class="c1">//ends the branch</span>
+        <span class="k">case</span> <span class="sc">'Y'</span><span class="p">:</span>
             <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Y, a consonant, but also "</span><span class="p">;</span>
-            <span class="c1">//because there's no break statement, the 'Y' case leaks
-</span>            <span class="c1">//into the next cases.
-</span>        <span class="k">case</span> <span class="sc">'A'</span><span class="p">:</span>
-        <span class="k">case</span> <span class="sc">'E'</span><span class="p">:</span> <span class="c1">//you can chain cases that should
-</span>        <span class="k">case</span> <span class="sc">'I'</span><span class="p">:</span> <span class="c1">//result in the same behavior.
-</span>        <span class="k">case</span> <span class="sc">'O'</span><span class="p">:</span>
+            <span class="c1">//because there's no break statement, the 'Y' case leaks</span>
+            <span class="c1">//into the next cases.</span>
+        <span class="k">case</span> <span class="sc">'A'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="sc">'E'</span><span class="p">:</span> <span class="c1">//you can chain cases that should</span>
+        <span class="k">case</span> <span class="sc">'I'</span><span class="p">:</span> <span class="c1">//result in the same behavior.</span>
+        <span class="k">case</span> <span class="sc">'O'</span><span class="p">:</span>
         <span class="k">case</span> <span class="sc">'U'</span><span class="p">:</span>
             <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="s">", a vowel."</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
             <span class="k">break</span><span class="p">;</span>
@@ -1043,21 +1078,21 @@ Since they are not primitive types, vectors are automatically initialized.</p>
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>   <span class="c1">//no need to set initializations! In fact, they'll give you errors.
-</span>    <span class="kt">int</span> <span class="n">size</span><span class="p">,</span> <span class="n">in</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>   <span class="c1">//no need to set initializations! In fact, they'll give you errors.</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">,</span> <span class="n">in</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">size</span><span class="p">;</span>
 
     <span class="n">arr</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
 
-    <span class="k">while</span><span class="p">(</span><span class="n">in</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1">//leave when you get a negative input
-</span>    <span class="p">{</span>
-	<span class="n">arr</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">in</span><span class="p">);</span> <span class="c1">//will automatically add directly to the end of the vector
-</span>        <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">in</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">in</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1">//leave when you get a negative input</span>
+    <span class="p">{</span>
+	<span class="n">arr</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">in</span><span class="p">);</span> <span class="c1">//will automatically add directly to the end of the vector</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">in</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">//spit everything back out
-</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1">//spit everything back out</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1115,29 +1150,29 @@ Since they are not primitive types, vectors are automatically initialized.</p>
 
     <span class="p">...</span>
 
-    <span class="c1">//there are three statements in the declaration of a for-loop:
-</span>    <span class="c1">// - the initializer, which is run as soon as scope enters the loop,
-</span>    <span class="c1">// - the condition, which is run before each iteration, and
-</span>    <span class="c1">// - the increment, which is run after each iteration.
-</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1">//there are three statements in the declaration of a for-loop:</span>
+    <span class="c1">// - the initializer, which is run as soon as scope enters the loop,</span>
+    <span class="c1">// - the condition, which is run before each iteration, and</span>
+    <span class="c1">// - the increment, which is run after each iteration.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
     <span class="p">}</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
-    <span class="c1">//the while loop is simpler; it's like an if-statement but every
-</span>    <span class="c1">//time we're about to leave the scope of the loop it goes back to
-</span>    <span class="c1">//the condition.
-</span>    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//the while loop is simpler; it's like an if-statement but every</span>
+    <span class="c1">//time we're about to leave the scope of the loop it goes back to</span>
+    <span class="c1">//the condition.</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_size</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="o">++</span><span class="n">i</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">//the do..while loop is like the while loop, except the first
-</span>    <span class="c1">//iteration will always run.
-</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//the do..while loop is like the while loop, except the first</span>
+    <span class="c1">//iteration will always run.</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">do</span>
     <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -1287,34 +1322,34 @@ Methods/procedures just have return type <code>void</code>; that is to say, it d
 31
 </pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
 </span>
-<span class="c1">//return type, name, params
-</span><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1">//return type, name, params</span>
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="c1">//code goes here (in this case, it's unnecessary).
-</span>    <span class="c1">//if the return type is not void, you must return a value
-</span>    <span class="c1">//in every possible branch.
-</span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="c1">//code goes here (in this case, it's unnecessary).</span>
+    <span class="c1">//if the return type is not void, you must return a value</span>
+    <span class="c1">//in every possible branch.</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">//return type, name, params; in this case, this is a method
-//so it returns void
-</span><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="c1">//return type, name, params; in this case, this is a method</span>
+<span class="c1">//so it returns void</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
-    <span class="c1">//in methods, returning is optional, but you can choose to return
-</span>    <span class="c1">//down certain branches to terminate early.
-</span>    <span class="k">return</span><span class="p">;</span>
+    <span class="c1">//in methods, returning is optional, but you can choose to return</span>
+    <span class="c1">//down certain branches to terminate early.</span>
+    <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">//main can also return void in certain environments, and typically the
-//parameters are unnecessary. It's good form to include them, though.
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="c1">//main can also return void in certain environments, and typically the</span>
+<span class="c1">//parameters are unnecessary. It's good form to include them, though.</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
     <span class="n">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
 
-    <span class="c1">//the main function actually doesn't need to return, but it's good form.
-</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">//the main function actually doesn't need to return, but it's good form.</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 </div>
 <div class="sect2">
@@ -1353,15 +1388,15 @@ Methods/procedures just have return type <code>void</code>; that is to say, it d
 </span>
 <span class="k">struct</span> <span class="n">whatever</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>     <span class="c1">//member variables
-</span>    <span class="kt">void</span> <span class="n">print</span><span class="p">();</span> <span class="c1">//member function prototype
-</span><span class="p">};</span> <span class="c1">//this semicolon is important!
-</span>
-<span class="c1">// this is how you define a member function outside its parent's declaration:
-// you need the scope resolution operator (::). You can also directly define
-// it inside its parent, but it's better form to do it outside as there's
-// less clutter when you're checking what you can do with a struct.
-</span><span class="kt">void</span> <span class="n">whatever</span><span class="o">::</span><span class="n">print</span><span class="p">()</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>     <span class="c1">//member variables</span>
+    <span class="kt">void</span> <span class="n">print</span><span class="p">();</span> <span class="c1">//member function prototype</span>
+<span class="p">};</span> <span class="c1">//this semicolon is important!</span>
+
+<span class="c1">// this is how you define a member function outside its parent's declaration:</span>
+<span class="c1">// you need the scope resolution operator (::). You can also directly define</span>
+<span class="c1">// it inside its parent, but it's better form to do it outside as there's</span>
+<span class="c1">// less clutter when you're checking what you can do with a struct.</span>
+<span class="kt">void</span> <span class="n">whatever</span><span class="o">::</span><span class="n">print</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1408,6 +1443,7 @@ What you can do is make a prototype declaration to tell the compiler, "Hey, here
 </div>
 
 </div>
+<div class="footnote-tip" tabindex="-1"></div>
 
   </main>
   <!-- footer -->
@@ -1424,7 +1460,7 @@ What you can do is make a prototype declaration to tell the compiler, "Hey, here
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/127e010ce19d4df0c10c1bd8fdaa933c0e990bc5" target="_blank">127e010</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/71f94bc320fbb11e74eceb8ad5b3a90761298528" target="_blank">71f94bc</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>
