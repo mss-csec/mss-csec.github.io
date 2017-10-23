@@ -90,7 +90,8 @@
         },
         run: function () {
           for (var i=0;i<scripts.length;i++) {
-            scripts[i].call(g);
+            try { scripts[i].call(g); }
+            catch (e) { console.log('Onload script error: ' + e.message); }
           }
         }
       };
