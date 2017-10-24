@@ -1,4 +1,14 @@
 ---
 layout: page
 ---
-{{ content }}
+
+<div id="main-content">
+    {% if page.draft %}
+    <div class="callout warning">
+      <h4>This resource is a draft.</h4>
+      <p>We're currently in the process of finishing this resource. Check back frequently as we continue to add more content and improve our typos.</p>
+    </div>
+    {% endif %}
+
+    {{ content }}
+</div>

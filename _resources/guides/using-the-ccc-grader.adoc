@@ -3,5 +3,6 @@ layout: resource
 summary: >
   Navigate the UX disaster that is UWaterloo software with this guide.
   **Note:** Will not guarantee you a perfect score on the CCC.
+draft: true
 ---
 = Using the CCC grader

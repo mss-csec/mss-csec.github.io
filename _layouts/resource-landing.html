@@ -17,7 +17,7 @@ layout: page
     {% for guide in guides limit:row_size offset:row_offset %}
     <div class="four columns">
       <header>
-        <h3><a href="{{ guide.url }}">{{ guide.title }}</a></h3>
+        <h3><a href="{{ guide.url }}">{{ guide.title }}{% if guide.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></h3>
       </header>
       {{ guide.summary | markdownify }}
     </div>
@@ -41,7 +41,7 @@ layout: page
     {% for general in generals limit:row_size offset:row_offset %}
     <div class="four columns">
       <header>
-        <h3><a href="{{ general.url }}">{{ general.title }}</a></h3>
+        <h3><a href="{{ general.url }}">{{ general.title }}{% if general.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></h3>
       </header>
       {{ general.summary | markdownify }}
     </div>
@@ -70,7 +70,7 @@ layout: page
       {% for resource in resources limit:row_size offset:row_offset %}
     <div class="four columns">
       <header>
-        <h3><a href="{{ resource.url }}">{{ resource.title }}</a></h3>
+        <h3><a href="{{ resource.url }}">{{ resource.title }}{% if resource.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></h3>
       </header>
       {{ resource.summary | markdownify }}
     </div>

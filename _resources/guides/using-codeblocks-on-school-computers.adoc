@@ -3,5 +3,6 @@ layout: resource
 summary: >
   Learn how to Build and Run with CodeBlocks on the school computers.
   **Requires a USB drive.**
+draft: true
 ---
 = Using CodeBlocks on school computers
