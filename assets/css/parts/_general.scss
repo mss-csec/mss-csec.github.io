@@ -91,6 +91,23 @@ input[type="password"] {
   font: $df-font;
   color: $fg-primary;
   border-color: darken($bg-secondary, 10%);
+
+  &.error {
+    background-color: transparentize($error, .8);
+    border-color: $error;
+  }
+  &.info {
+    background-color: transparentize($info, .8);
+    border-color: $info;
+  }
+  &.success {
+    background-color: transparentize($success, .8);
+    border-color: $success;
+  }
+  &.warning {
+    background-color: transparentize($warning, .8);
+    border-color: $warning;
+  }
 }
 
 // Sticky footer
@@ -125,6 +142,7 @@ code {
 }
 
 :root a,
+:root button,
 :root input,
 :root textarea,
 :root select {
