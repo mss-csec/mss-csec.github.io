@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2017-11-03T13:05:09+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science Education Club
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2017-11-03T13:07:30+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science Education Club
 </subtitle><entry><title type="html">November 3: Combined Review</title><link href="https://mss-csec.github.io/review/2017/11/november-3-combined-review/" rel="alternate" type="text/html" title="November 3: Combined Review" /><published>2017-11-03T00:00:00+00:00</published><updated>2017-11-03T00:00:00+00:00</updated><id>https://mss-csec.github.io/review/2017/11/november-3-combined-review</id><content type="html" xml:base="https://mss-csec.github.io/review/2017/11/november-3-combined-review/">&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Solutions are only visible after a successful submission on the problem.&lt;/p&gt;
 
 &lt;h3 id=&quot;advanced&quot;&gt;Advanced&lt;/h3&gt;
@@ -29,11 +29,13 @@
   &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/problem/ccc05j3&quot;&gt;&lt;strong&gt;Returning Home&lt;/strong&gt;&lt;/a&gt; (CCC 2005 J3)
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510407&quot;&gt;&lt;em&gt;Solution, using iostream&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510785&quot;&gt;&lt;em&gt;Solution, using stdio.h&lt;/em&gt;&lt;/a&gt;
-        &lt;h4 id=&quot;challenge&quot;&gt;Challenge&lt;/h4&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510785&quot;&gt;&lt;em&gt;Solution, using stdio.h&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;challenge&quot;&gt;Challenge&lt;/h4&gt;
+&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/problem/ccc06j3&quot;&gt;&lt;strong&gt;Cell-Phone Messaging&lt;/strong&gt;&lt;/a&gt; (CCC 2006 J3)&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -64,11 +66,13 @@
   &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/problem/ccc06j1&quot;&gt;&lt;strong&gt;Canadian Calorie Counting&lt;/strong&gt;&lt;/a&gt; (CCC 2006 J1)
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510249&quot;&gt;&lt;em&gt;Solution&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510251&quot;&gt;&lt;em&gt;Solution, using switch statements&lt;/em&gt;&lt;/a&gt;
-        &lt;h4 id=&quot;challenge-1&quot;&gt;Challenge&lt;/h4&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510251&quot;&gt;&lt;em&gt;Solution, using switch statements&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;challenge-1&quot;&gt;Challenge&lt;/h4&gt;
+&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/problem/ccc06j2&quot;&gt;&lt;strong&gt;Roll the Dice&lt;/strong&gt;&lt;/a&gt; (CCC 2006 J2)
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;http://wcipeg.com/submissions/src/510255&quot;&gt;&lt;em&gt;Solution&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
