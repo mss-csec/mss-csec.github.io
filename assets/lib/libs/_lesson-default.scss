@@ -1,10 +1,5 @@
----
----
-/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
-/* Modified by @tyxchen for MSS CSEC */
-@import "base/variables";
-$border-colour: darken($bg-secondary, 10%);
-$bg-tertiary: lighten($bg-secondary, 3%);
+// Asciidoctor default stylesheet | MIT License | http://asciidoctor.org
+// Modified by @tyxchen for MSS CSEC
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -333,7 +328,7 @@ div.unbreakable{page-break-inside:avoid}
 span.icon>.fa{cursor:default}
 a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px transparentize($fg-primary,.4);cursor:default}
-.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#339fff}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:$fg-primary}
 .admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}

@@ -1,11 +1,11 @@
 // CSEC Variables
 
+@import "base/variables";
+
 $dark: true;
 
 // Colors
 // Brand colours
-$brand-colour: #f52f2f;
-
 $fg-primary: #ededed;
 $fg-secondary: #888;
 $fg-accent: #fff;
@@ -14,54 +14,3 @@ $bg-primary: #1a1f2a;
 $bg-secondary: #2c313c;
 $bg-tertiary: darken($bg-secondary, 3%);
 $bg-accent: $brand-colour;
-
-$error: #e70046;
-$info: #2ec1ec;
-$success: #1ec712;
-$warning: #ffd30d;
-
-$aria-highlight: #32acfb;
-
-$t: transparent;
-
-// Typography
-$df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
-$df-font-size: 16px;
-$df-font: #{$df-font-size}/1.5 $df-font-family;
-$acc-font-family: $df-font-family;
-
-// Layout
-$df-container-width: 1440px;
-$tb-container-width: 80%;
-$ph-container-width: 85%;
-
-$ex: 20px;
-$ex2: 40px;
-$ex3: 60px;
-$ex4: 80px;
-$ex05: 10px;
-$ex075: 15px;
-
-// z-index
-$z-2: -10;
-$z-1: -1;
-$z0: 0;
-$z1: 1;
-$z2: 10;
-$z3: 100;
-$z4: 1000;
-
-// Media breakpoints
-$bp-mobile    : 400px;
-$bp-phablet   : 550px;
-$bp-tablet    : 768px;
-$bp-desktop   : 1024px;
-$bp-desktophd : $df-container-width;
-
-$bp-small-height: 768px;
-
-// Misc
-$df-padding: $ex05;
-$df-radius: .2em;
-$df-anim-length: .23s;

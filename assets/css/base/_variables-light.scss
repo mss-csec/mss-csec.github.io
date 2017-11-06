@@ -1,0 +1,16 @@
+// CSEC Variables
+
+@import "base/variables";
+
+$dark: false;
+
+// Colors
+// Brand colours
+$fg-primary: #232323;
+$fg-secondary: #777;
+$fg-accent: #fff;
+
+$bg-primary: #fff;
+$bg-secondary: #ededed;
+$bg-tertiary: lighten($bg-secondary, 3%);
+$bg-accent: $brand-colour;
