@@ -65,14 +65,14 @@ layout: page
       <h5 class="lesson-state">Previous</h5>
       <p class="lesson-name lesson-prev">
         {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a class="lesson-link" href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_prev_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_prev_obj.date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
       {% if ordered_lessons.size > lesson_next_index %}
       <h5 class="lesson-state">Next</h5>
       <p class="lesson-name lesson-next">
         {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a class="lesson-link" href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/">{{ lesson_next_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_next_obj.date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
     </div>

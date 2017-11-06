@@ -124,24 +124,34 @@ APP.renderSubclubSchedule = ($el, data) ->
       console.log "Couldn't load or parse schedule data at #{data}"
 
   # Store elements
-  $lesson_last = $el.find '.lesson-last'
-  $lesson_next = $el.find '.lesson-next'
+  $lessonLast = $el.find '.lesson-last'
+  $lessonNext = $el.find '.lesson-next'
+
+  # Get tooltip positioning data
+  mostRecentBalloonPos = $el.data('lesson-last-balloon-pos') or 'right'
+  nextUpBalloonPos = $el.data('lesson-next-balloon-pos') or 'left'
 
   if scheduleData.mostRecent.id != null
-    $lesson_last.each () ->
+    $lessonLast.each () ->
       _this = $(this)
       lesson = data[scheduleData.mostRecent.id]
       lesson.title = lesson.title.replace /^.*?@/, ''
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link'
-        _this.attr 'href', lesson.url
-        _this.attr 'title', lesson.date
-        _this.html lesson.title
+          .attr 'href', lesson.url
+          .attr 'data-balloon', lesson.title
+          .attr 'data-balloon-pos', mostRecentBalloonPos
+          .attr 'data-ballon-bluntish', true
+          .html lesson.title
       else
         _this.html "<a href='#{lesson.url}'
-          class='lesson-link' title='#{lesson.date}'>#{lesson.title}</a>"
+            class='lesson-link'
+            data-balloon='#{lesson.date}'
+              data-balloon-pos='#{mostRecentBalloonPos}'
+              data-balloon-bluntish>
+          #{lesson.title}</a>"
   else
-    $lesson_last.each () ->
+    $lessonLast.each () ->
       _this = $(this)
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link', 'disabled'
@@ -150,20 +160,26 @@ APP.renderSubclubSchedule = ($el, data) ->
         _this.html "<a class='lesson-link disabled'>null</a>"
 
   if scheduleData.nextUp.id != null
-    $lesson_next.each () ->
+    $lessonNext.each () ->
       _this = $(this)
       lesson = data[scheduleData.nextUp.id]
       lesson.title = lesson.title.replace /^.*?@/, ''
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link'
-        _this.attr 'href', lesson.url
-        _this.attr 'title', lesson.title
-        _this.html lesson.date
+          .attr 'href', lesson.url
+          .attr 'data-balloon', lesson.title
+          .attr 'data-balloon-pos', nextUpBalloonPos
+          .attr 'data-ballon-bluntish', true
+          .html lesson.date
       else
         _this.html "<a href='#{lesson.url}'
-          class='lesson-link' title='#{lesson.title}'>#{lesson.date}</a>"
+            class='lesson-link'
+            data-balloon='#{lesson.title}'
+              data-balloon-pos='#{nextUpBalloonPos}'
+              data-balloon-bluntish>
+          #{lesson.date}</a>"
   else
-    $lesson_next.each () ->
+    $lessonNext.each () ->
       _this = $(this)
       if _this.prop 'tagName' == 'A'
         _this.addClass 'lesson-link', 'disabled'
@@ -367,7 +383,7 @@ APP.onload = () ->
   #   content = content.replace /^\d+\.\s+/, ''
 
   # Reveal footnote tip on click
-  $('a.footnote').on 'click', (e) ->
+  $('a.footnote, .footnote-ref a').on 'click', (e) ->
     e.preventDefault()
 
     $ftnote = $('.footnote-tip')
@@ -375,7 +391,8 @@ APP.onload = () ->
 
     content = $ftnotesrc.html()
       .trim()
-      .replace /^<a.+?>\d+<\/a>\.\s+/, ''
+      .replace /^<p>([\s\S]+) <a[^>]+>.<\/a><\/p>/, '$1' # Markdown-style
+      .replace /^<a.+?>\d+<\/a>\.\s+/, ''                # AsciiDoc-style
       .replace /^[a-z]/, (c) -> c.toUpperCase()
 
     if $ftnote.html() == content and $ftnote.is ':visible'
@@ -395,7 +412,7 @@ APP.onload = () ->
         top = offset.top - $ftnote.outerHeight() - 5
         left = offset.left - ($ftnote.outerWidth() - $(this).width()) / 2
 
-        # Clamp values
+        # Clamp values so that tooltips don't overflow screen horizontally
         if left + $ftnote.outerWidth() > $(window).width()
           left = $(window).width() - $ftnote.outerWidth() - 5
         else if left < $(this).closest('p').offset().left
@@ -413,7 +430,7 @@ APP.onload = () ->
       $ftnotesrc.addClass 'targeted'
 
   # Hide footnote on blur
-  $('a.footnote').on 'blur', (e) ->
+  $('a.footnote, .footnote-ref a').on 'blur', (e) ->
     $this = $(this)
     # https://stackoverflow.com/a/11544685/3472393
     setTimeout () ->
