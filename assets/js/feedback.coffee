@@ -78,17 +78,17 @@ window.addEventListener "keyup", (e) ->
 document.querySelector("head").insertAdjacentHTML "beforeend", "
 <style>
 #open-feedback-modal {
-  position: fixed; bottom: 20px; right: 20px;
-  box-sizing: border-box; width: 160px; height: 50px;
+  position: fixed; bottom: 16px; right: 12px;
+  box-sizing: border-box; width: 128px; height: 32px;
   background-color: #f52f2f; color: white;
-  line-height: 50px; font-size: 20px; font-weight: 700; text-align: center;
-  border-radius: 50px; box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);
+  line-height: 34px; font-size: 16px; font-weight: 700; text-align: center;
+  border-radius: 32px; box-shadow: 0 0 10px rgba(0, 0, 0, .5), 0 2px 5px rgba(0, 0, 0, .4);
   transition: .3s ease;
 }
 #open-feedback-modal:hover {
   background-color: #f75858;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .5), 0 5px 10px rgba(0, 0, 0, .4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, .5), 0 5px 7px rgba(0, 0, 0, .4);
 }
 #feedback-modal-bg {
   position: fixed; top: 0; bottom: 0; left: 0; right: 0;
