@@ -163,24 +163,20 @@ SCRIPTS.add(function() {
         top: (heroHeight - cellsY * cellDimensions) / 2
       });
 
-    for (var i=0; i<cellsY; i++) {
-      array.push(new Array(cellsX));
-      for (var j=0; j<cellsX; j++) {
+    for (var i=0; i<cellsX; i++) {
+      array.push(new Array(cellsY));
+      for (var j=0; j<cellsY; j++) {
         array[i][j] = Math.random() < 0.2;
       }
     }
 
     return array.slice();
   }, initGame = function() {
-    game = new GameOfLife({
-      init_cells: initCells(),
-      cell_width: cellDimensions,
-      cell_height: cellDimensions,
-      canvas_id: 'background-anim',
-      colourful: true
-    }),
-    delay = performance.now(),
-    step = function(timestamp) {
+    game = new GameOfLife($('#background-anim')[0],
+      initCells(),
+      { cell: { w: cellDimensions, h: cellDimensions }});
+    var delay = performance.now(),
+        step = function(timestamp) {
       if (timestamp - delay >= 200) {
         delay = timestamp;
         game.step();
@@ -189,11 +185,12 @@ SCRIPTS.add(function() {
       return reqAnimFrame = requestAnimationFrame(step);
     };
 
+    game.render();
     reqAnimFrame = requestAnimationFrame(step);
   }, reqAnimFrame, resizeTimeout;
 
   $.when(
-    $.getScript("{{ '/assets/lib/gameoflife.js' | relative_url }}")
+    $.getScript("{{ '/assets/lib/hero-bgs/gameoflife.js' | relative_url }}")
   ).then(initGame, function(err) {
     console.error(err);
   });
@@ -210,8 +207,8 @@ SCRIPTS.add(function() {
   });
 
   $('#background-anim-desc')
-    .attr('href', 'https://github.com/nomatteus/conway-game-of-life-js')
-    .text('Conway\'s Game of Life | Matt Ruten');
+    .attr('href', 'https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript')
+    .text('Conway\'s Game of Life | Joshua Hogendorn');
 
   $('body').addClass('has-anim');
 });
