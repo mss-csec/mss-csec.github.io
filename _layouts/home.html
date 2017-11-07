@@ -145,71 +145,103 @@ layout: default
 
 <script>
 SCRIPTS.add(function() {
-  var game,
-      cellDimensions = 10,
-      initCells = function() {
-    // get hero's dimensions and create a matrix based on that
-    var heroWidth = $('.hero').width(),
-        heroHeight = $('.hero').height() + 20,
-        cellsX = Math.ceil(heroWidth / cellDimensions),
-        cellsY = Math.ceil(heroHeight / cellDimensions),
-        array = [];
+  // Source for below {% comment %}
 
-    $('#background-anim')
-      .attr('width', cellsX * cellDimensions)
-      .attr('height', cellsY * cellDimensions)
-      .css({
-        left: (heroWidth - cellsX * cellDimensions) / 2,
-        top: (heroHeight - cellsY * cellDimensions) / 2
-      });
+  // Choose a visualization from a list and display it
+  var displayVisualization = function(visList) {
+    var doReqAnimFrame = function(fn) {
+      reqAnimFrame = requestAnimationFrame(fn);
+    }, resizeTimeout, reqAnimFrame;
 
-    for (var i=0; i<cellsX; i++) {
-      array.push(new Array(cellsY));
-      for (var j=0; j<cellsY; j++) {
-        array[i][j] = Math.random() < 0.2;
-      }
+    var chosenVis = visList[0]; // TODO: choose random
+
+    $.when.apply(this,
+      chosenVis.scripts.map($.getScript)
+    ).then(function() {
+      chosenVis.vis = chosenVis.init(doReqAnimFrame);
+
+      $('#background-anim-desc')
+        .attr('href', chosenVis.src)
+        .text(chosenVis.name + " | " + chosenVis.author);
+
+      $('body').addClass('has-anim');
+    }, function(err) {
+      console.error(err);
+    });
+
+    $(window).on('resize', function() {
+      cancelAnimationFrame(reqAnimFrame);
+      clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(function() {
+        chosenVis.vis = chosenVis.init(doReqAnimFrame)
+      }, 1000);
+    });
+
+    $(window).on('changetheme', function(e) {
+      chosenVis.vis.changeTheme();
+    });
+  };
+  //{% endcomment %}
+  var displayVisualization=function(n){var i,e,t=function(n){e=requestAnimationFrame(n)},a=n[0];$.when.apply(this,a.scripts.map($.getScript)).then(function(){a.vis=a.init(t),$("#background-anim-desc").attr("href",a.src).text(a.name+" | "+a.author),$("body").addClass("has-anim")},function(n){console.error(n)}),$(window).on("resize",function(){cancelAnimationFrame(e),clearTimeout(i),i=setTimeout(function(){a.vis=a.init(t)},1e3)}),$(window).on("changetheme",function(n){a.vis.changeTheme()})};
+
+  var visList = [
+    {
+      name: "Conway's Game of Life",
+      author: "Joshua Hogendorn",
+      src: "https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript",
+      scripts: [
+        "{{ '/assets/lib/hero-bgs/gameoflife.js' | relative_url }}"
+      ],
+      init: function(reqAnimFrame) {
+        var cellDimensions = 10,
+            delay = performance.now(),
+            initCells = function() {
+          // get hero's dimensions and create a matrix based on that
+          var heroWidth = $('.hero').width(),
+              heroHeight = $('.hero').height() + 20,
+              cellsX = Math.ceil(heroWidth / cellDimensions),
+              cellsY = Math.ceil(heroHeight / cellDimensions),
+              array = [];
+
+          $('#background-anim')
+            .attr('width', cellsX * cellDimensions)
+            .attr('height', cellsY * cellDimensions)
+            .css({
+              left: (heroWidth - cellsX * cellDimensions) / 2,
+              top: (heroHeight - cellsY * cellDimensions) / 2
+            });
+
+          for (var i=0; i<cellsX; i++) {
+            array.push(new Array(cellsY));
+            for (var j=0; j<cellsY; j++) {
+              array[i][j] = Math.random() < 0.2;
+            }
+          }
+
+          return array.slice();
+        }, step = function(timestamp) {
+          if (timestamp - delay >= 200) {
+            delay = timestamp;
+            game.step();
+          };
+
+          reqAnimFrame(step);
+        }, game = new GameOfLife(
+          $('#background-anim')[0],
+          initCells(),
+          { cell: { w: cellDimensions, h: cellDimensions }}
+        );
+
+        game.render();
+        reqAnimFrame(step);
+
+        return game;
+      },
+      vis: null
     }
+  ];
 
-    return array.slice();
-  }, initGame = function() {
-    game = new GameOfLife($('#background-anim')[0],
-      initCells(),
-      { cell: { w: cellDimensions, h: cellDimensions }});
-    var delay = performance.now(),
-        step = function(timestamp) {
-      if (timestamp - delay >= 200) {
-        delay = timestamp;
-        game.step();
-      }
-
-      return reqAnimFrame = requestAnimationFrame(step);
-    };
-
-    game.render();
-    reqAnimFrame = requestAnimationFrame(step);
-  }, reqAnimFrame, resizeTimeout;
-
-  $.when(
-    $.getScript("{{ '/assets/lib/hero-bgs/gameoflife.js' | relative_url }}")
-  ).then(initGame, function(err) {
-    console.error(err);
-  });
-
-  $(window).on('resize', function() {
-    cancelAnimationFrame(reqAnimFrame);
-    clearTimeout(resizeTimeout);
-
-    resizeTimeout = setTimeout(initGame, 1000);
-  });
-
-  $(window).on('changetheme', function(e) {
-    game.changeTheme();
-  });
-
-  $('#background-anim-desc')
-    .attr('href', 'https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript')
-    .text('Conway\'s Game of Life | Joshua Hogendorn');
-
-  $('body').addClass('has-anim');
+  displayVisualization(visList);
 });
 </script>
