@@ -239,6 +239,29 @@ SCRIPTS.add(function() {
         return game;
       },
       vis: null
+    }, {
+      name: "Quicksort",
+      author: "",
+      src: "",
+      scripts: [
+        "{{ '/assets/lib/hero-bgs/sorting.js' | relative_url }}"
+      ],
+      init: function(reqAnimFrame) {
+        var step = function(timestamp) {
+          if (timestamp - delay >= 200) {
+            delay = timestamp;
+            game.step();
+          };
+
+          reqAnimFrame(step);
+        }, game = null;
+
+        game.render();
+        reqAnimFrame(step);
+
+        return game;
+      },
+      vis: null
     }
   ];
 
