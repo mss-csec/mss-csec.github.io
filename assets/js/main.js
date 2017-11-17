@@ -115,7 +115,7 @@ Main coffeescript file
   };
 
   APP.renderSubclubSchedule = function($el, data) {
-    var $lesson_last, $lesson_next, scheduleData;
+    var $lessonLast, $lessonNext, mostRecentBalloonPos, nextUpBalloonPos, scheduleData;
     scheduleData = {};
     if (JSON.stringify(data)[0] === '{') {
       scheduleData = APP.loadSubclubSchedule(data);
@@ -126,25 +126,24 @@ Main coffeescript file
         return console.log("Couldn't load or parse schedule data at " + data);
       });
     }
-    $lesson_last = $el.find('.lesson-last');
-    $lesson_next = $el.find('.lesson-next');
+    $lessonLast = $el.find('.lesson-last');
+    $lessonNext = $el.find('.lesson-next');
+    mostRecentBalloonPos = $el.data('lesson-last-balloon-pos') || 'right';
+    nextUpBalloonPos = $el.data('lesson-next-balloon-pos') || 'left';
     if (scheduleData.mostRecent.id !== null) {
-      $lesson_last.each(function() {
+      $lessonLast.each(function() {
         var _this, lesson;
         _this = $(this);
         lesson = data[scheduleData.mostRecent.id];
         lesson.title = lesson.title.replace(/^.*?@/, '');
         if (_this.prop('tagName' === 'A')) {
-          _this.addClass('lesson-link');
-          _this.attr('href', lesson.url);
-          _this.attr('title', lesson.date);
-          return _this.html(lesson.title);
+          return _this.addClass('lesson-link').attr('href', lesson.url).attr('data-balloon', lesson.title).attr('data-balloon-pos', mostRecentBalloonPos).attr('data-ballon-bluntish', true).html(lesson.title);
         } else {
-          return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.date + "'>" + lesson.title + "</a>");
+          return _this.html("<a href='" + lesson.url + "' class='lesson-link' data-balloon='" + lesson.date + "' data-balloon-pos='" + mostRecentBalloonPos + "' data-balloon-bluntish> " + lesson.title + "</a>");
         }
       });
     } else {
-      $lesson_last.each(function() {
+      $lessonLast.each(function() {
         var _this;
         _this = $(this);
         if (_this.prop('tagName' === 'A')) {
@@ -156,22 +155,19 @@ Main coffeescript file
       });
     }
     if (scheduleData.nextUp.id !== null) {
-      $lesson_next.each(function() {
+      $lessonNext.each(function() {
         var _this, lesson;
         _this = $(this);
         lesson = data[scheduleData.nextUp.id];
         lesson.title = lesson.title.replace(/^.*?@/, '');
         if (_this.prop('tagName' === 'A')) {
-          _this.addClass('lesson-link');
-          _this.attr('href', lesson.url);
-          _this.attr('title', lesson.title);
-          return _this.html(lesson.date);
+          return _this.addClass('lesson-link').attr('href', lesson.url).attr('data-balloon', lesson.title).attr('data-balloon-pos', nextUpBalloonPos).attr('data-ballon-bluntish', true).html(lesson.date);
         } else {
-          return _this.html("<a href='" + lesson.url + "' class='lesson-link' title='" + lesson.title + "'>" + lesson.date + "</a>");
+          return _this.html("<a href='" + lesson.url + "' class='lesson-link' data-balloon='" + lesson.title + "' data-balloon-pos='" + nextUpBalloonPos + "' data-balloon-bluntish> " + lesson.date + "</a>");
         }
       });
     } else {
-      $lesson_next.each(function() {
+      $lessonNext.each(function() {
         var _this;
         _this = $(this);
         if (_this.prop('tagName' === 'A')) {
@@ -348,12 +344,12 @@ Main coffeescript file
       __collapseSidebar($('.sidebar-collapsible'));
       $('#main-content').removeClass('nine').addClass('twelve');
     }
-    $('a.footnote').on('click', function(e) {
+    $('a.footnote, .footnote-ref a').on('click', function(e) {
       var $ftnote, $ftnotesrc, content, left, offset, top;
       e.preventDefault();
       $ftnote = $('.footnote-tip');
       $ftnotesrc = $($(this).attr('href'));
-      content = $ftnotesrc.html().trim().replace(/^<a.+?>\d+<\/a>\.\s+/, '').replace(/^[a-z]/, function(c) {
+      content = $ftnotesrc.html().trim().replace(/^<p>([\s\S]+) <a[^>]+>.<\/a><\/p>/, '$1').replace(/^<a.+?>\d+<\/a>\.\s+/, '').replace(/^[a-z]/, function(c) {
         return c.toUpperCase();
       });
       if ($ftnote.html() === content && $ftnote.is(':visible')) {
@@ -381,7 +377,7 @@ Main coffeescript file
         return $ftnotesrc.addClass('targeted');
       }
     });
-    $('a.footnote').on('blur', function(e) {
+    $('a.footnote, .footnote-ref a').on('blur', function(e) {
       var $this;
       $this = $(this);
       return setTimeout(function() {
