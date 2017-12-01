@@ -23,9 +23,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/data-structures/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-11-21T20:27:52+00:00" />
+<meta property="article:published_time" content="2017-12-01T02:07:49+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Data Structures","datePublished":"2017-11-21T20:27:52+00:00","dateModified":"2017-11-21T20:27:52+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/data-structures/index"},"url":"https://mss-csec.github.io/lessons/advanced/data-structures/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Data Structures","datePublished":"2017-12-01T02:07:49+00:00","dateModified":"2017-12-01T02:07:49+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/data-structures/index"},"url":"https://mss-csec.github.io/lessons/advanced/data-structures/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -453,14 +453,14 @@
       <h5 class="lesson-state">Previous</h5>
       <p class="lesson-name lesson-prev">
         
-        <a class="lesson-link" href="/lessons/advanced/recursion-and-dynamic-programming/" data-balloon="November 21, 2017" data-balloon-pos="up-left">Recursion and Dynamic Programming</a>
+        <a class="lesson-link" href="/lessons/advanced/recursion-and-dynamic-programming/" data-balloon="December 01, 2017" data-balloon-pos="up-left">Recursion and Dynamic Programming</a>
       </p>
       
       
       <h5 class="lesson-state">Next</h5>
       <p class="lesson-name lesson-next">
         
-        <a class="lesson-link" href="/lessons/advanced/introduction-to-graph-theory/" data-balloon="November 21, 2017" data-balloon-pos="up-left">Introduction to Graph Theory</a>
+        <a class="lesson-link" href="/lessons/advanced/introduction-to-graph-theory/" data-balloon="December 01, 2017" data-balloon-pos="up-left">Introduction to Graph Theory</a>
       </p>
       
     </div>
@@ -506,7 +506,870 @@
       <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
     </div>
     
-    
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data structures are methods of storing data in a way that optimizes certain important operations.</p>
+</div>
+<div class="paragraph">
+<p>You won&#8217;t get far without any of these.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This lesson is intended mainly as a reference, and as such contain summary sections.</p>
+</div>
+<div class="paragraph">
+<p>There are, of course, lesson portions; but if you are learning these for the first time, <strong>do not</strong> only read the summaries, as they will be of no help.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#sequence-containers">Sequence Containers</a>
+<ul class="sectlevel2">
+<li><a href="#vector">Vector</a></li>
+<li><a href="#linked-list">Linked List</a></li>
+<li><a href="#double-ended-queue-deque">Double-Ended Queue (Deque)</a></li>
+</ul>
+</li>
+<li><a href="#container-adaptors">Container Adaptors</a>
+<ul class="sectlevel2">
+<li><a href="#stack">Stack</a></li>
+<li><a href="#queue">Queue</a></li>
+<li><a href="#heap">Heap</a></li>
+</ul>
+</li>
+<li><a href="#trees">Trees</a>
+<ul class="sectlevel2">
+<li><a href="#binary-search-tree">Binary Search Tree</a></li>
+<li><a href="#prefix-tree-trie">Prefix Tree (Trie)</a></li>
+<li><a href="#disjoint-set">Disjoint-Set</a></li>
+</ul>
+</li>
+<li><a href="#other">Other</a>
+<ul class="sectlevel2">
+<li><a href="#hash-table">Hash Table</a></li>
+</ul>
+</li>
+<li><a href="#practice">Practice</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sequence-containers">Sequence Containers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sequence containers are used to store groups of similar objects in some undefined sequence, usually chronological.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Vector</th>
+<th class="tableblock halign-left valign-top">Linked List</th>
+<th class="tableblock halign-left valign-top">Deque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/vector/vector/"><code>std::vector&lt;T&gt;</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/list/list/"><code>std::list&lt;T&gt;</code></a>
+<a href="http://www.cplusplus.com/reference/forward_list/forward_list/"><code>std::forward_list&lt;T&gt;</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/deque/deque/"><code>std::deque&lt;T&gt;</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T*</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Random Access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push/Pop Back</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push/Pop Front</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert/Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Merge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="vector">Vector</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/vector/vector/"><code>std::vector&lt;T&gt;</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T*</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Random Access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push/Pop Back</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert/Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Merge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Vectors are the most basic container: an array of elements.</p>
+</div>
+<div class="paragraph">
+<p><strong>Accessing</strong> an element at index \(i\) only requires looking \(i\) elements in memory after the first element.
+Since this process is so simple, we can do this in \(\text{O}(1)\).
+This ability is called <strong>random access</strong>.</p>
+</div>
+<div class="paragraph">
+<p>We can <strong>resize</strong> vectors by reallocating memory and copying the data over.
+As this is also a simple step, this takes \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p>To <strong>push</strong><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> or <strong>pop</strong><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>, we need only to resize if necessary before assigning to the last element.
+This, again, takes \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p>To <strong>insert</strong> or <strong>erase</strong> at any position, however, requires that <em>every element after</em> is shifted<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> so that there is space or the gap is filled.
+Since up to all the elements might need to be shifted, and each shift must be made with a swap, this takes \(\text{O}(n)\) time.</p>
+</div>
+<div class="paragraph">
+<p>If we needed to <strong>merge</strong> two vectors and combine their data, then we would have to push up as many elements as are in both.
+So, once again, this operation can occur in \(\text{O}(n)\) time.</p>
+</div>
+<div class="paragraph">
+<p>Vectors are your most basic container.
+Most applications for storing data will use these.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="linked-list">Linked List</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/list/list/"><code>std::list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>
+<a href="http://www.cplusplus.com/reference/forward_list/forward_list/"><code>std::forward_list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup> <sup>C++11</sup></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Random Access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push/Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert/Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Merge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Linked lists</strong> use a very different approach from the vector.
+Instead of storing every element contiguously in memory, the  location of the first element is stored and each element stores the location of the next element.</p>
+</div>
+<div class="paragraph">
+<p>In this way, we get a "linked" list, since each element "links" to the next.</p>
+</div>
+<div class="paragraph">
+<p>A <strong>doubly-linked list</strong> stores also the last element and every element also stores the location of the previous element.</p>
+</div>
+<div class="paragraph">
+<p>We must traverse linked lists, however, element-by-element, since otherwise we don&#8217;t know where anything is.
+<strong>Access</strong>, then, is \(\text{O}(n)\).</p>
+</div>
+<div class="paragraph">
+<p>To <strong>insert</strong> or <strong>erase</strong> at any point<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>, we only need to manipulate a few pointers; as such, we can achieve \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p>To <strong>push</strong> or <strong>pop</strong> from the front or back<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, we do exactly what we did with insertion and erasure, and once again achieve \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p>And to <strong>merge</strong>, all we need to do is link the last element of one linked list to the first element of the other linked list&#8201;&#8212;&#8201;then traversal will go through both lists.
+As such, we can achieve \(\text{O}(1)\) merging.</p>
+</div>
+<div class="paragraph">
+<p>Now, seeing that more operations here have \(\text{O}(1)\) time than with vectors, you may be asking, "Why not use linked lists everywhere?"</p>
+</div>
+<div class="paragraph">
+<p>The reason why you don&#8217;t see them more is because most of the time, we need to do a lot of random-access, and that wouldn&#8217;t be good with an \(\text{O}(n)\) random-access speed.</p>
+</div>
+<div class="paragraph">
+<p>They are, however, useful where you need to combine or separate lists in different orders; for example, if you were to rotate an array by \(k\) elements, you&#8217;d need to do \(n\) swaps in a vector compared to a break and merge with a linked list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="double-ended-queue-deque">Double-Ended Queue (Deque)</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/deque/deque/"><code>std::deque&lt;T&gt;</code></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Random Access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push/Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert/Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Merge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(n)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>D</strong>ouble <strong>e</strong>nded <strong>que</strong>ues, or deques (pronounced like <em>deck</em>), were containers made for the purpose of quick pushing and popping from <em>both</em> the front <em>and</em> the back.</p>
+</div>
+<div class="paragraph">
+<p>Typically, they take the form of a collection of vectors: pushing to the back adds to the end vector and pushing to the front adds to the begin vector.
+When the end or begin vector runs out of space, a new one is declared and instantiated to have the respective position.</p>
+</div>
+<div class="paragraph">
+<p>The collection of vectors is usually handled like both a vector <em>and</em> a linked list; each vector links to the next and previous vectors for the sake of traversal, and a master vector of pointers to each vector is kept for the sake of random access.</p>
+</div>
+<div class="paragraph">
+<p>As such, <strong>access</strong> takes two redirections, one to find where the desired vector is and one to find which element of the vector is the desired element, achieving \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Pushing</strong> and <strong>popping</strong> is trivial, and once again takes \(\text{O}(1)\) time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Insertion</strong> and <strong>Erasure</strong>, like the vector, requires the shifting of all elements, and as expected takes \(\text{O}(n)\) time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Merging</strong> is, too, just like the vector<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup>: it takes \(\text{O}(n)\) time to push every element.</p>
+</div>
+<div class="paragraph">
+<p>Deques have operations which run exactly at the same time complexity as vectors, but they have more functionality.
+So once again, you might ask, "Why should I ever use the verctor if I can use a deque?"</p>
+</div>
+<div class="paragraph">
+<p>Deques use much more overhead processing: the same operation on a deque usually takes twice as long as one on a vector.
+And freeing all the memory from a deque is an \(\text{O}(n)\) operation, which I learned from bitter experience.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="container-adaptors">Container Adaptors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Container adaptors take base sequence containers and specialize them for a specific purpose.
+These are the most simple of what are considered proper <em>data structures</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="stack">Stack</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/stack/stack/"><code>std::stack&lt;T&gt;</code></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">top</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Stacks are first-in, last-out containers.
+Think of a <em>stack</em> of objects, like paper: you can put stuff on and take stuff off the top, but it&#8217;s messy to do it from anywhere else.</p>
+</div>
+<div class="paragraph">
+<p>You may have heard of the "stack" and "heap" when it comes to memory allocation; the "stack" refers to the stack of function calls.
+A function cannot return until all the functions it was calling returns; the <em>first</em> function to be called is the <em>last</em> one to be returned from, and vice-versa.</p>
+</div>
+<div class="paragraph">
+<p>We say that where we can push and pop is the <strong>top</strong> of the stack.
+Most implementations also allow a <strong>peek</strong>, which is to return the value of the top element.</p>
+</div>
+<div class="paragraph">
+<p>These have many applications in client-side interfaces, such as the call stack or in menus.
+These are typically implemented with vectors.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="queue">Queue</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/queue/queue/"><code>std::queue&lt;T&gt;</code></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Push</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">front, back</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">back</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">front</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Queues are first-in, first-out containers.
+Think of a a <em>queue</em> of customers waiting for the cashier at Foody Mart: the first one in the line gets out of the line first.
+If someone cuts in, we get undesirable results.</p>
+</div>
+<div class="paragraph">
+<p>We say that the <strong>front</strong> of the queue is where we pop, and the <strong>back</strong> of the queue is where we push.
+You can typically <strong>peek</strong> at the front, and sometimes at the back.</p>
+</div>
+<div class="paragraph">
+<p>These have many applications in network-side interfaces; for example, you&#8217;d want to process the first packet you receive first rather than last.
+They&#8217;re also useful when dealing with multithreading (which is kind of like a network) to avoid desyncs.</p>
+</div>
+<div class="paragraph">
+<p>These are typically implemented with deques.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="heap">Heap</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/queue/priority_queue/"><code>std::priority_queue&lt;T&gt;</code></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Peek</th>
+<th class="tableblock halign-left valign-top">Push</th>
+<th class="tableblock halign-left valign-top">Pop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dependent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\log{n})\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\log{n})\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Heaps are containers which "automatically sort" data.
+While their mechanisms are somewhat out of the scope of this article since you can just use <code>std::priority_queue&lt;T&gt;</code>, the result is that the top element is <em>always</em> the maximum (or minimum if you use the opposing predicate).</p>
+</div>
+<div class="paragraph">
+<p>These are very useful in graph theory, which will be the focus of the next lesson.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trees">Trees</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="binary-search-tree">Binary Search Tree</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/set/set/"><code>std::set&lt;T&gt;</code></a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\log{n})\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\log{n})\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Theta(n)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You&#8217;ve heard of binary search.
+The binary search tree constructs a tree optimized for searching.</p>
+</div>
+<div class="paragraph">
+<p>Whereas a heap keeps <em>one</em> element in the right place, the binary tree keeps <em>all</em> of them in the right place.
+Unfortunately, because of its structure, the minimum/maximum element is almost never going to be near the beginning of the search, and so it isn&#8217;t just a better version of the heap.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prefix-tree-trie">Prefix Tree (Trie)</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Theta(m\log{n})\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A trie stores prefixes (hence the name "prefix tree").
+The name "trie" comes from the middle syllable of "retrieval."
+I&#8217;m not quite sure why.</p>
+</div>
+<div class="paragraph">
+<p>This is a method for storing large numbers of strings in a way that&#8217;s both easy on memory and fast for retrieval.
+Instead of making a giant array, we construct a tree.
+Its root has all the first letters as children, and each node has all the next relevant letters as children.
+A special character, usually <code>nul</code>, denotes the end of string.</p>
+</div>
+<div class="paragraph">
+<p>We most likely won&#8217;t run into this, but it&#8217;s useful to know about.
+Perhaps it&#8217;ll inspire a solution to some other problem.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disjoint-set">Disjoint-Set</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Union</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\alpha(n))\)<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\alpha(n))\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Theta(n)\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Say you have some large number of things<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>.
+Each thing constitutes their own group<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>You will be asked to check if two things are in the same group.
+You will be told to merge groups, given two individual things: one from each group.</p>
+</div>
+<div class="paragraph">
+<p>Enter the disjoint-set data structure!</p>
+</div>
+<div class="paragraph">
+<p>We begin with an array as long as the number of elements.</p>
+</div>
+<div class="paragraph">
+<p>We use two rules to determine which elements are in which sets:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If the value of an element is their index \(i\), then we say that that element is in set \(i\).</p>
+</li>
+<li>
+<p>If the value \(n\) of an element is <em>not</em> their index, then they are in the set that the element at index \(n\) is at.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For example, take the following array:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ind. 0 1 2 3 4 5 6 7 8 9
+val. 0 1 2 2 4 5 2 3 8 9</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Elements \(\{0, 1, 2, 4, 5, 8, 9\}\) are in sets \(\{0, 1, 2, 4, 5, 8, 9\}\), respectively, by rule 1.
+Elements \(\{3, 6\}\) are in set \(2\) by rule 2.
+And element \(7\) is in the same set as element \(3\) by rule 2, so it&#8217;s also in set 2.</p>
+</div>
+<div class="paragraph">
+<p>You can represent this situation mathematically as \(\{\{0\},\{1\},\{2,3,6,7\},\{4\},\{5\},\{8\},\{9\}\}\).
+We can also represent this in a forest of trees (hence why this is under the tree section) like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0 1 2 4 5 8 9
+    |\
+    3 6
+    |
+    7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When we <strong>find</strong>, we simply traverse the tree.
+We can use this to do an optimization by <em>flattening</em> the tree: for every element we pass through, we set it to the root element.
+For example, if we passed a find operation through element \(7\) in our previous example, we would change \(7\) to point to \(2\), shortening later running times.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0 1 2 4 5 8 9
+   /|\
+  3 6 7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When we <strong>merge</strong>, we only need to find the roots of both elements before setting one root to another root.
+For example, if we merged the sets of elements \(1\) and \(2\), we would set the value of element \(2\) to \(1\) (or vice versa, depending on implementation).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0 1 4 5 8 9
+  |
+  2
+ /|\
+3 6 7</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we ran a merge now on \(7\) and \(5\), we would first do a find, and then a merge:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0 1 4 5 8 9     0 1 4 8 9
+  |\             /|\
+  2 7     --&gt;   2 5 7
+  |\            |\
+  3 6           3 6</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Naturally, when asked for something that requires millions of elements, this becomes very useful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other">Other</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="hash-table">Hash Table</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/map/map/"><code>std::map&lt;const T,T&gt;</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keys can be of any type</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Erase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega(n)\)<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A hash table is an <strong>associative</strong> container: a value is found based on its <strong>key</strong>.
+This is somewhat similar to that of a how you can access elements in vector by its index, but here, the keys can be of <em>any type</em> and, if an <code>int</code>, can take <em>any value</em>, including negatives and numbers in the billions (which normally wouldn&#8217;t fit on a 32-bit pointer).</p>
+</div>
+<div class="paragraph">
+<p>It does this by implementing a <strong>hash function</strong> that takes the key, does some voodoo magic on it, and returns an index small enough to keep in a smaller array.
+For example, if there&#8217;s fifty elements in a hash table, the table&#8217;s capacity might actually be something like seventy-three.</p>
+</div>
+<div class="paragraph">
+<p>Doing this allows you to use large, negative, and non-integral keys.
+For example, it&#8217;s very useful to use these to convert from <code>std::string</code><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup> to <code>int</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="practice">Practice</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Structure</th>
+<th class="tableblock halign-left valign-top">Problems</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linked List</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deque</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc15s1">CCC15S1: Zero that Out</a></p>
+<p class="tableblock"><a href="http://wcipeg.com/problem/ccc14s3">CCC14S3: The Geneva Confection</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Queue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc13s2">CCC13S2: Bridge Transport</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heap</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binary Search Tree</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trie</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disjoint-Set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc15s3">CCC15S3: Gates</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hash Table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc96s4">CCC96S4: When in Rome</a></p>
+<p class="tableblock"><a href="http://wcipeg.com/problem/ccc17s3">CCC17S3: Nailed It!</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. insert to back
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. erase at back
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. to the right for insertions, to the left for deletions
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. doubly-linked list
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. singly-linked list
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. at where the current iterator is
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. only front in a singly-linked list
+</div>
+<div class="footnote" id="_footnote_8">
+<a href="#_footnoteref_8">8</a>. it can be argued that with the correct conditions, we can append a deque as with a linked list, but the master vector still needs to be updated in \(\text{O}(n)\) time
+</div>
+<div class="footnote" id="_footnote_9">
+<a href="#_footnoteref_9">9</a>. find and insert are <em>best</em> and <em>average case</em>; the worse case is \(\text{O}(n)\), but that doesn&#8217;t occur as often.
+</div>
+<div class="footnote" id="_footnote_10">
+<a href="#_footnoteref_10">10</a>. for \(m\), the length of the data
+</div>
+<div class="footnote" id="_footnote_11">
+<a href="#_footnoteref_11">11</a>. \(\alpha(n)\) is the inverse <a href="https://en.wikipedia.org/wiki/Ackermann_function">ackermann function</a>, which for all practical inputs is less than five.
+</div>
+<div class="footnote" id="_footnote_12">
+<a href="#_footnoteref_12">12</a>. elements
+</div>
+<div class="footnote" id="_footnote_13">
+<a href="#_footnoteref_13">13</a>. set
+</div>
+<div class="footnote" id="_footnote_14">
+<a href="#_footnoteref_14">14</a>. the Big Omega (\(\Omega\)) denotes the <em>lower bound</em>: it&#8217;ll use more memory than \(n\) times some constant multiple.
+</div>
+<div class="footnote" id="_footnote_15">
+<a href="#_footnoteref_15">15</a>. only use <code>std::string</code> with <code>std::map&lt;const T, T&gt;</code>; you&#8217;ll run into lots of problems with <code>char*</code>
+</div>
+<div class="footnote" id="_footnote_16">
+<a href="#_footnoteref_16">16</a>. this problem&#8217;s problem statement starts out with the best sentence ever
+</div>
+</div>
   </div>
 </div>
 
