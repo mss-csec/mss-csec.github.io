@@ -289,3 +289,29 @@ $schedule-height: 8 * $ex; // 160px
   }
 }
 
+// CCC-SPECIFIC STUFF
+.title.ccc a {
+  font-size: .7em;
+
+  em {
+    @include transition;
+  }
+
+  svg {
+    @include transition;
+    margin-left: 1.5*$ex05;
+    transform: translateX(0);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover em {
+    background-color: transparentize($brand-color, .2);
+  }
+
+  &:hover svg {
+    transform: translateX(5px);
+  }
+}
