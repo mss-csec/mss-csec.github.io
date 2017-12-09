@@ -3,105 +3,62 @@
 # Exit if any subcommand fails
 set -e
 
+lessons_dir='_lessons'
+resources_dir='_resources'
+subclubs_dir='_subclubs'
+
 echo "Starting build"
+echo
+
+# Make directories if nonexistent
+if [ ! -d "$lessons_dir" ]; then
+  echo "Making \`$lessons_dir/' directory"
+  mkdir "$lessons_dir";
+fi
+
+if [ ! -d "$resources_dir" ]; then
+  echo "Making \`$resources_dir/' directory"
+  mkdir "$resources_dir";
+fi
 
 # Normalize file structure
-# /_subclubs/:subclub/lessons/:permatitle/index.md
-# /_subclubs/:subclub/lessons/:permatitle/hero.jpg
-#   --> /_lessons/:subclub/:permatitle/index.md
-#   --> /_lessons/:subclub/:permatitle/hero.jpg
-for lesson_path in `ls -d _subclubs/**/lessons/*`; do
-  subclub=`echo $lesson_path | cut -d'/' -f2`
-  title=`  echo $lesson_path | cut -d'/' -f4`
+# /_subclubs/:subclub/<dir>/*
+#   --> /_<dir>/:subclub/*
+
+for subclub_subdir in `echo _subclubs/*/*/`; do
+  subclub=`echo $subclub_subdir | cut -d'/' -f2`
+  subdir=`echo $subclub_subdir | cut -d'/' -f3`
 
   # Perform some sanity checks
-  if [ "$subclub" = "lessons" ] || [ "$subclub" = "_subclubs" ] ||
-      [ "$title" = "lessons" ]; then
+  if [ "$subclub" = "$subclubs_dir" ] || [ "$subclub" = "$subdir" ]; then
     echo "ERROR: Pattern matching picked up the wrong patterns!"
-    echo "Full path: $lesson_path/"
+    echo "Full path: $subclub_subdir/"
     echo "Patterns:"
     echo "  subclub => $subclub"
-    echo "  title   => $title"
+    echo "  subdir  => $subdir"
     exit 1;
   fi
 
-  echo "Found lesson $subclub/$title"
+  echo "$subclub/$subdir:"
 
-  # Make directories if nonexistent
-  if [ ! -d "_lessons" ]; then
-    echo "Making \`_lessons/' directory"
-    mkdir "_lessons";
+  dir_diff=`diff -qrx '_*' "$subclub_subdir" "_$subdir/$subclub" &2> /dev/null`
+
+  if [ -z "$dir_diff" ]; then
+    echo "No change, skipping directory."
+    continue
   fi
 
-  if [ ! -d "_lessons/$subclub" ]; then
-    echo "Making \`_lessons/$subclub/' directory"
-    mkdir "_lessons/$subclub";
-  fi
-
-  # Remove lesson directory if existent
-  if [ -d "_lessons/$subclub/$title" ]; then
-    echo "Removing old \`_lessons/$subclub/$title/' directory"
-    rm -r "_lessons/$subclub/$title"
-  fi
-
-  if [[ ! "$title" =~ ^_.* ]] && [[ ! -z `ls "$lesson_path"` ]]; then
-    echo "Making \`_lessons/$subclub/$title/' directory"
-    mkdir "_lessons/$subclub/$title"
-
-    # Copy over files
-    echo "Copying files from"
-    echo "    $lesson_path/"
-    echo "to"
-    echo "    _lessons/$subclub/$title/"
-    cp -r "$lesson_path/"* \
-      "_lessons/$subclub/$title/"
-  else
-    echo "Skipping lesson $subclub/$title"
-  fi
+  echo $dir_diff
+  rsync -rc --delete --exclude='_*' "$subclub_subdir" "_$subdir/$subclub"
 
   # Only delete original files in a production environment
   if [ "$1" = "production" ]; then
-    echo "Removing \`$lesson_path/' directory"
-    rm -r "$lesson_path"
+    echo "Removing \`$subclub_subdir' directory"
+    rm -r ${subclub_subdir%%/}
   fi
-
-  echo
 done
 
-# /_subclubs/:subclub/resources
-#   --> /_resources/:subclub/
-for resource_path in `find _subclubs/* -maxdepth 1 -name 'resources' ! -empty`; do
-  subclub=`echo $resource_path | cut -d'/' -f2`
-
-  echo "Found resources folder for $subclub"
-
-  # Make directories if nonexistent
-  if [ ! -d "_resources" ]; then
-    echo "Making \`_resources/' directory"
-    mkdir "_resources";
-  fi
-
-  if [ ! -d "_resources/$subclub" ]; then
-    echo "Making \`_resources/$subclub/' directory"
-    mkdir "_resources/$subclub";
-  fi
-
-  echo "Copying files from"
-  echo "    $resource_path"
-  echo "to"
-  echo "    _resources/$subclub/"
-
-  cp -r "$resource_path/"* \
-    "_resources/$subclub/"
-
-  # Only delete original files in a production environment
-  if [ "$1" = "production" ]; then
-    echo "Removing \`$resource_path/' directory"
-    rm -r "$resource_path"
-  fi
-
-  echo
-done
+echo
 
 # Build site
 if [ "$1" != "production" ]; then
@@ -131,4 +88,3 @@ fi
 echo "Build successful"
 
 exit 0
-
