@@ -39,7 +39,7 @@ layout: default
         {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
         {% assign subclub_schedule = subclub_index.schedule %}
         {% assign subclub_title = subclub_index.title %}
-        {% assign subclub_url = subclub_index.url | split: '/' | pop | join: '/' | uri_escape %}
+        {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
       <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
         <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
         <div class="row">
@@ -66,7 +66,7 @@ layout: default
               {% assign split_path = item.path | split: '/' %}
               {% if split_path contains entry[0] and item.layout == 'lesson' %}
                 {% assign lesson_title = item.title | xml_escape %}
-                {% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}
+                {% assign lesson_url = item.url | remove: '/index' | uri_escape %}
                 {% assign lesson_no = item.lesson | xml_escape %}
                 {% break %}
               {% endif %}
@@ -97,7 +97,7 @@ layout: default
             {% endif %}
             {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
             {% assign subclub_title = subclub_index.title | xml_escape %}
-            {% assign subclub_url = subclub_index.url | split: '/' | pop | join: '/' | uri_escape %}
+            {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
             <h4><a class="lesson-link" href="{{ subclub_url }}/">{{ subclub_title }}</a></h4>
             {% assign subclub_counter = subclub_counter | plus: 1 %}
           {% endfor %}

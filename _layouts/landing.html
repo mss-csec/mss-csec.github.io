@@ -31,7 +31,7 @@ layout: page
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] %}
     <p class="lesson-name">
-      <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
+      <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
     </p>
           {% break %}
         {% endif %}
@@ -53,7 +53,7 @@ layout: page
         {% assign split_path = item.path | split: '/' %}
         {% if split_path contains entry[0] and item.layout == 'lesson' %}
           {% assign lesson_title = item.title | xml_escape %}
-          {% assign lesson_url = item.url | split: '/' | pop | join: '/' | uri_escape %}
+          {% assign lesson_url = item.url | remove: '/index' | uri_escape %}
           {% assign lesson_no = item.lesson | xml_escape %}
           {% break %}
         {% endif %}
