@@ -24,11 +24,18 @@ layout: page
     {% assign split_path = item.path | split: '/' %}
     {% if split_path contains entry[0] %}
       {% assign class_name = "lesson-name" %}
+      {% if last_lesson_was_cur %}
+        {% assign lesson_next_date = lesson_date %}
+      {% endif %}
       {% if item.lesson == lesson_cur %}
         {% assign class_name = "lesson-name lesson-cur" %}
         {% assign lesson_cur_index = o_forloop.index0 %}
+
+        {% assign lesson_prev_date = lesson_date %}
         {% assign lesson_cur_date = entry[1] %}
+        {% assign last_lesson_was_cur = true %}
       {% endif %}
+      {% assign lesson_date = entry[1] %}
       {% capture lesson_listing %}
 <p class="{{ class_name }}">
   <a class="lesson-link" href="{{ lesson_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
@@ -50,29 +57,20 @@ layout: page
     <h2>Lessons</h2>
 
     <div class="lesson-callout" id="lesson-pagination">
-      {% comment %}
-
-      TODO:
-
-      Don't rely on lesson numbers.
-      Apparently the order might get screwed up by the examples.
-      This shouldn't be an issue in prod, but just to be safe, no.
-
-      {% endcomment %}
       {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
       {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
       {% if 0 <= lesson_prev_index %}
       <h5 class="lesson-state">Previous</h5>
       <p class="lesson-name lesson-prev">
         {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a class="lesson-link" href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_prev_obj.date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_prev_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_prev_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
       {% if ordered_lessons.size > lesson_next_index %}
       <h5 class="lesson-state">Next</h5>
       <p class="lesson-name lesson-next">
         {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a class="lesson-link" href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_next_obj.date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
+        <a class="lesson-link" href="{{ lesson_next_obj.url | split: '/' | pop | join: '/' | uri_escape }}/" data-balloon="{{ lesson_next_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
       </p>
       {% endif %}
     </div>
