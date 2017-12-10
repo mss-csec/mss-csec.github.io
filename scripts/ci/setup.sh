@@ -5,6 +5,9 @@ set -e
 
 echo "Starting setup"
 
+# Install rsync (needed for build)
+sudo apt-get install -y rsync
+
 # Ignore file mode changes
 git config core.fileMode false
 
