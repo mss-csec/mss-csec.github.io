@@ -43,7 +43,7 @@ for subclub_subdir in `echo _subclubs/*/*/`; do
 
   dir_diff=`diff -qrx '_*' "$subclub_subdir" "_$subdir/$subclub" &2> /dev/null`
 
-  if [ -z "$dir_diff" ]; then
+  if [ -z "$dir_diff" ] && [ -d "_$subdir/$subclub" ]; then
     echo "No change, skipping directory."
     continue
   fi
