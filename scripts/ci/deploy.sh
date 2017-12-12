@@ -72,14 +72,14 @@ chmod +x ./scripts/ci/build.sh
 # Add and commit built files
 echo "Adding and committing files..."
 git add -fA
-git commit --allow-empty -m "built $commit"
+git commit --allow-empty --quiet -m "built $commit"
 
 if [ "$BUILD_BRANCH" != "$DEPLOY_BRANCH" ]; then
   # Checkout the deploy branch and remove all pre-existing files
   git checkout $DEPLOY_BRANCH
   find . -maxdepth 1 ! -name '.git' -exec rm -rf {} \;
   git add -fA
-  git commit -m "remove files"
+  git commit --quiet -m "remove files"
 
   git checkout $BUILD_BRANCH
 
