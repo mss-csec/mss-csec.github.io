@@ -42,7 +42,7 @@ class GameOfLife
             @grid = opts.grid
         if opts.cell?
             @cell = opts.cell
-        @canvas.fillStyle = if APP.currentTheme == 'light' then '#d0c7c7' else '#4d4444'
+        @canvas.fillStyle = if APP.currentTheme == 'light' then '#eeebeb' else '#2d2d35'
     # Count the neighbours in the adjacent cells, uses toroidal rules to map the edges.
     _countNeighbours: (x, y) ->
         xp = if x + 1 > @grid.x - 1 then 0 else x + 1
@@ -95,7 +95,7 @@ class GameOfLife
 
     # Change the theme
     changeTheme: () ->
-        @canvas.fillStyle = if APP.currentTheme == 'light' then '#d0c7c7' else '#4d4444'
+        @canvas.fillStyle = if APP.currentTheme == 'light' then '#eeebeb' else '#2d2d35'
     # Step
     step: () ->
         @runGeneration()

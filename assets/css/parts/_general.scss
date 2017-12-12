@@ -198,3 +198,16 @@ a {
 .warning {
   background-color: $warning;
 }
+
+@media (#{$bp-larger-than-mobile}) {
+  .br-mobile { display: none; }
+}
+@media (#{$bp-larger-than-phablet}) {
+  .br-phablet { display: none; }
+}
+@media (#{$bp-larger-than-tablet}) {
+  .br-tablet { display: none; }
+}
+@media (#{$bp-larger-than-desktop}) {
+  .br-desktop { display: none; }
+}
