@@ -41,7 +41,7 @@ Modifications by Terry Chen on behalf of MSS CSEC, 2017
       if (opts.cell != null) {
         this.cell = opts.cell;
       }
-      this.canvas.fillStyle = APP.currentTheme === 'light' ? '#d0c7c7' : '#4d4444';
+      this.canvas.fillStyle = APP.currentTheme === 'light' ? '#eeebeb' : '#2d2d35';
     }
 
     GameOfLife.prototype._countNeighbours = function(x, y) {
@@ -98,7 +98,7 @@ Modifications by Terry Chen on behalf of MSS CSEC, 2017
     };
 
     GameOfLife.prototype.changeTheme = function() {
-      return this.canvas.fillStyle = APP.currentTheme === 'light' ? '#d0c7c7' : '#4d4444';
+      return this.canvas.fillStyle = APP.currentTheme === 'light' ? '#eeebeb' : '#2d2d35';
     };
 
     GameOfLife.prototype.step = function() {
