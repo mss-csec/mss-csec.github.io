@@ -45,9 +45,7 @@ renderResults = (results) ->
 
 # Initialize search engine
 initSearch = (rawStore) ->
-  commit = "{% if site.production %}{{ site.build_version }}
-  {% else %}#{Date.now()}
-  {% endif %}"
+  commit = "{{ site.time | md5 }}"
 
   if null != localStorage.getItem storageKey
     try
