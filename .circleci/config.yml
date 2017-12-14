@@ -3,10 +3,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4-node # ruby-2.4.0 + nodejs ?
+      - image: circleci/ruby@sha256:b0e9e54d2579457720e60de9f650d096f32cdd54870d80dba5a46c294074ba06 # ruby 2.4.0 + nodejs 8.9.3/npm 5.5.1
 
     environment:
       BUNDLE_INSTALL_DIR: ~/.bundle
+      NPM_INSTALL_DIR: ./node_modules
       SOURCE_BRANCH: staging
       DEPLOY_BRANCH: master
       USER_EMAIL: markville.compsci@gmail.com
@@ -32,6 +33,7 @@ jobs:
       - restore_cache:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
+            - mss-csec-{{ checksum "package-lock.json" }}
             - mss-csec-
 
       # Setup environment
@@ -53,6 +55,12 @@ jobs:
           key: mss-csec-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.bundle
+
+      # Save npm cache
+      - save_cache:
+          key: mss-csec-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
 
       # Configure git details
       - run:
