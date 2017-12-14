@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4 # ruby-2.4.0
+      - image: circleci/ruby:2.4-node # ruby-2.4.0 + nodejs ?
 
     environment:
       BUNDLE_INSTALL_DIR: ~/.bundle
@@ -38,7 +38,9 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            ./scripts/ci/setup.sh
+            which nodejs && nodejs --version
+            which npm && npm --version
+            # ./scripts/ci/setup.sh
 
       # Save binary cache
       - save_cache:
@@ -56,8 +58,10 @@ jobs:
       - run:
           name: Configure git details
           command: |
-            git config user.email "$USER_EMAIL"
-            git config user.name "$USER_NAME"
+            if [ "$CIRCLE_BRANCH" == "staging" ]; then
+              git config user.email "$USER_EMAIL"
+              git config user.name "$USER_NAME"
+            fi
 
       # Deploy
       - deploy:
