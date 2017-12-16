@@ -2,7 +2,7 @@
   "name": "mss-csec.github.io",
   "version": "1.0.0",
   "description": "MSS CSEC's website",
-  "main": "index.js",
+  "main": "scripts/build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +18,9 @@
   "homepage": "https://github.com/mss-csec/mss-csec.github.io#readme",
   "devDependencies": {
     "autoprefixer": "^7.2.3",
-    "postcss-brunch": "^2.1.0",
-    "sass-brunch": "^2.10.4",
-    "uglify-js-brunch": "^2.10.0"
+    "glob-fs": "^0.1.7",
+    "node-sass": "^4.7.2",
+    "postcss": "^6.0.14",
+    "postcss-extract-styles": "^1.1.1"
   }
 }
