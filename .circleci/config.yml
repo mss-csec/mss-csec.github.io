@@ -28,6 +28,11 @@ jobs:
           name: Chmod scripts
           command: chmod +x ./scripts/**/*.sh
 
+      # Restore binary cache
+      - restore_cache:
+          keys:
+            - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+
       # Restore bundle cache
       - restore_cache:
           keys:
@@ -39,6 +44,12 @@ jobs:
           name: Setup environment
           command: |
             ./scripts/ci/setup.sh
+
+      # Save binary cache
+      - save_cache:
+          key: jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+          paths:
+            - ./bin
 
       # Save bundle cache
       - save_cache:

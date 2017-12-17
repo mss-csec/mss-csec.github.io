@@ -5,8 +5,8 @@ set -e
 
 echo "Starting setup"
 
-# Install rsync (needed for build)
-sudo apt-get install -y rsync
+# Install deb packages needed for build
+yes | find ./bin/ -name '*.deb' -exec sudo dpkg -i --force-depends {} \+
 
 # Ignore file mode changes
 git config core.fileMode false
