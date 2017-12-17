@@ -46,14 +46,6 @@ jobs:
           paths:
             - ~/.bundle
 
-      # Test Jekyll plugins
-      - run:
-          name: Test Jekyll plugins
-          # So far, we do nothing.
-          command: |
-            ls -R
-            echo "Done testing"
-
       # Configure git details
       - run:
           name: Configure git details
@@ -67,3 +59,19 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               ./scripts/ci/deploy.sh
             fi
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+  auto-build:
+    triggers:
+      - schedule:
+          cron: "0 17 * * 5"
+          filters:
+            branches:
+              only:
+                - staging
+    jobs:
+      - build
