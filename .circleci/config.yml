@@ -14,11 +14,6 @@ jobs:
 
     working_directory: ~/mss-csec.github.io
 
-    branches:
-      ignore:
-        - develop # for now
-        - master
-
     steps:
       # Checkout repository
       - checkout
@@ -27,6 +22,11 @@ jobs:
       - run:
           name: Chmod scripts
           command: chmod +x ./scripts/**/*.sh
+
+      # Restore binary cache
+      - restore_cache:
+          keys:
+            - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
 
       # Restore bundle cache
       - restore_cache:
@@ -40,19 +40,17 @@ jobs:
           command: |
             ./scripts/ci/setup.sh
 
+      # Save binary cache
+      - save_cache:
+          key: jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+          paths:
+            - ./bin
+
       # Save bundle cache
       - save_cache:
           key: mss-csec-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.bundle
-
-      # Test Jekyll plugins
-      - run:
-          name: Test Jekyll plugins
-          # So far, we do nothing.
-          command: |
-            ls -R
-            echo "Done testing"
 
       # Configure git details
       - run:
@@ -67,3 +65,23 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               ./scripts/ci/deploy.sh
             fi
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - staging
+  auto-build:
+    triggers:
+      - schedule:
+          cron: "0 17 * * 5"
+          filters:
+            branches:
+              only:
+                - staging
+    jobs:
+      - build
