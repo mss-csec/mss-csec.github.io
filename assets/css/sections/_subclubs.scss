@@ -26,8 +26,8 @@
   }
 }
 
-.lesson-date time {
-  color: $fg-primary;
+.lesson-date {
+  font-weight: bold;
 }
 
 .paginator {
@@ -82,6 +82,13 @@
   .collapse-el.closed {
     top: 2px;
     right: 2px;
+  }
+
+  .lesson-num {
+    float: right;
+    color: $fg-secondary;
+    font-size: .8em;
+    font-weight: 300;
   }
 
   .lesson-date {

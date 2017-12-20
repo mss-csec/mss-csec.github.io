@@ -47,43 +47,48 @@ layout: page
   {% endfor %}
 {% endfor %}
 
-<div class="breadcrumbs">
-  <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
-  <span class="lesson-date">Dated: <time datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</em></span>
-</div>
-<div class="row">
-  <div class="three columns sidebar-collapsible" id="lesson-listing">
-    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
-    <h2>Lessons</h2>
+<!-- TODO: remove inline style when revamp propagates to all pages -->
+<div class="content container" style="margin-top:100px">
+  <div class="row">
+    <div class="three columns sidebar-collapsible" id="lesson-listing">
+      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+      <h2>Lessons</h2>
 
-    <div class="lesson-callout" id="lesson-pagination">
-      {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
-      {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
-      {% if 0 <= lesson_prev_index %}
-      <h5 class="lesson-state">Previous</h5>
-      <p class="lesson-name lesson-prev">
-        {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a class="lesson-link" href="{{ lesson_prev_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_prev_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
-      </p>
-      {% endif %}
-      {% if ordered_lessons.size > lesson_next_index %}
-      <h5 class="lesson-state">Next</h5>
-      <p class="lesson-name lesson-next">
-        {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a class="lesson-link" href="{{ lesson_next_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_next_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
-      </p>
-      {% endif %}
-    </div>
+      <div class="lesson-callout" id="lesson-pagination">
+        {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
+        {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
+        {% if 0 <= lesson_prev_index %}
+        <h5 class="lesson-state">Previous</h5>
+        <p class="lesson-name lesson-prev">
+          {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
+          <a class="lesson-link" href="{{ lesson_prev_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_prev_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+        {% if ordered_lessons.size > lesson_next_index %}
+        <h5 class="lesson-state">Next</h5>
+        <p class="lesson-name lesson-next">
+          {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
+          <a class="lesson-link" href="{{ lesson_next_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_next_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+      </div>
 
-    {{ lesson_listings | join: '' }}
-  </div>
-  <div class="nine columns" id="main-content">
-    {% if page.draft %}
-    <div class="callout warning">
-      <h4>This lesson is a draft.</h4>
-      <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
+      {{ lesson_listings | join: '' }}
     </div>
-    {% endif %}
-    {{ content }}
+    <div class="nine columns" id="main-content">
+      <h1 class="page-title">{{ page.title }} <span class="lesson-num">#{{ page.lesson }}</span></h1>
+      <div class="breadcrumbs">
+        <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
+        <time class="lesson-date" datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</time>
+      </div>
+      {% if page.draft %}
+      <div class="callout warning">
+        <h4>This lesson is a draft.</h4>
+        <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
+      </div>
+      {% endif %}
+      {{ content }}
+    </div>
   </div>
 </div>
+<div class="footnote-tip" tabindex="-1"></div>

@@ -1,16 +1,19 @@
 // Page styles
 
+.page-title {
+  font-size: 52px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
 .breadcrumbs {
   color: $fg-secondary;
-  margin-top: -$ex;
-  margin-bottom: $ex;
+  margin-top: $ex;
+  margin-bottom: 1.5 * $ex;
 
   .icon-home:hover {
     text-decoration: none;
-  }
-
-  &-current {
-    color: $fg-primary;
   }
 }
 
