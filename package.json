@@ -21,6 +21,8 @@
     "glob-fs": "^0.1.7",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.14",
-    "postcss-extract-styles": "^1.1.1"
+    "postcss-extract-styles": "^1.1.1",
+    "postcss-sass-color-functions": "^1.1.0",
+    "uglify-js": "^3.2.2"
   }
 }
