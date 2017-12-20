@@ -1,9 +1,0 @@
----
----
-/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
-/* Modified by @tyxchen for MSS CSEC */
-@import "base/variables-dark";
-$border-colour: lighten($bg-secondary, 10%);
-$bg-tertiary: darken($bg-secondary, 3%);
-
-@import "../lib/libs/lesson-default";

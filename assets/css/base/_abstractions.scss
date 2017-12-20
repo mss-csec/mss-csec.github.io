@@ -1,0 +1,57 @@
+// Abstract variable expressions across themes
+
+// Apply different style expressions based on theme
+//
+// @param $branches: map of <theme-name> : <expression>
+//
+// @return the parsed and JSONified map
+//
+// color: if-theme((light: $bg-primary, dark: $bg-secondary))
+//  |--> ${ "light": "$bgPrimary", "dark": "$bgSecondary" }
+@function if-theme($branches) {
+  $json: "";
+  @for $i from 1 through length($branches) {
+    $theme: nth(nth($branches, $i), 1);
+    $expr: nth(nth($branches, $i), 2);
+    // add key-val pair
+    $json: "#{$json}\"#{$theme}\": \"#{$expr}\"";
+    // add comma
+    $json: if($i < length($branches), "#{$json}, ", $json);
+  }
+  @return unquote("${ #{$json} }");
+}
+
+// Replaces mix with parseable string
+@function mix($clr1, $clr2, $weight) {
+  @return unquote("mix(#{$clr1}, #{$clr2}, #{$weight})");
+}
+
+// Replaces darken with parseable string
+@function darken($clr, $amnt) {
+  @return unquote("darken(#{$clr}, #{$amnt})");
+}
+
+// Replaces lighten with parseable string
+@function lighten($clr, $amnt) {
+  @return unquote("lighten(#{$clr}, #{$amnt})");
+}
+
+// Replaces tint with parseable string
+@function tint($clr, $amnt) {
+  @return unquote("tint(#{$clr}, #{$amnt})");
+}
+
+// Replaces shade with parseable string
+@function shade($clr, $amnt) {
+  @return unquote("shade(#{$clr}, #{$amnt})");
+}
+
+// Replaces transparentize with parseable string
+@function transparentize($clr, $amnt) {
+  @return unquote("transparentize(#{$clr}, #{$amnt})");
+}
+
+// Replaces opacify with parseable string
+@function opacify($clr, $amnt) {
+  @return unquote("opacify(#{$clr}, #{$amnt})");
+}

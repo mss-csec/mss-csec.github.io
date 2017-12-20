@@ -49,13 +49,13 @@ article header {
       @include transition;
 
       color: $fg-primary;
-      @if ($dark) { border-bottom: 3px solid transparentize($fg-primary, .7); }
+      border-bottom: if-theme(( dark: 3px solid transparentize($fg-primary, .7) ));
     }
 
     a:hover {
       color: $brand-colour;
       text-decoration: none;
-      @if ($dark) { border-color: transparentize($brand-colour, .5); }
+      border-color: if-theme(( dark: transparentize($brand-colour, .5) ));
     }
   }
 

@@ -81,8 +81,10 @@
   input:focus {
     @include transition;
 
-    @if ($dark) { background-color: lighten($bg-secondary, 3%); }
-    @else       { background-color: $bg-secondary; }
+    background-color: if-theme((
+      light: $bg-secondary,
+      dark: lighten($bg-secondary, 3%)
+    ));
     border: 0;
     border-radius: 0;
   }
@@ -177,8 +179,10 @@
       }
 
       .search-box input {
-        @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
-        @else       { background-color: transparentize($bg-secondary, .3); }
+        background-color: if-theme((
+          light: transparentize($bg-secondary, .3),
+          dark: transparentize(lighten($bg-secondary, 3%), .3)
+        ));
       }
     }
   }

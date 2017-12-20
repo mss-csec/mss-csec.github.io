@@ -166,10 +166,8 @@ a {
   }
 }
 
-@if ($dark) {
-  img {
-    background-color: $fg-primary;
-  }
+img {
+  background-color: if-theme(( dark: $fg-primary ));
 }
 
 // Icons

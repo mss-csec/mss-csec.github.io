@@ -2,8 +2,10 @@
 
 .hero {
   display: flex;
-  @if ($dark) { background-image: linear-gradient(100deg, #5f0d0d, #411471); }
-  @else       { background-image: linear-gradient(100deg, #f8b763, #f25e7d); }
+  background-image: linear-gradient(100deg, if-theme((
+    light: "#f8b763, #f25e7d",
+    dark:  "#5f0d0d, #411471"
+  )));
   min-height: 12 * $ex; // 240px
   height: 12 * $ex;
   align-items: center;
