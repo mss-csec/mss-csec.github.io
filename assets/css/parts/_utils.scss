@@ -1,0 +1,75 @@
+// Utility classes/styles
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.icon-home::before {
+  content: "\1F3E0";
+}
+
+.error,
+.info,
+.important,
+.success,
+.warning,
+.caution {
+  color: rgba(35, 35, 35, .9);
+  border-color: rgba(0, 0, 0, .2);
+}
+
+.error {
+  background-color: $error;
+  color: rgba(255, 255, 255, .9);
+}
+
+.info,
+.important {
+  background-color: $info;
+}
+
+.success {
+  background-color: $success;
+}
+
+.warning,
+.caution {
+  background-color: $warning;
+}
+
+.hide-mobile,
+.hide-phablet,
+.hide-tablet,
+.hide-desktop,
+.hide-desktophd {
+  display: none;
+}
+
+@media (#{$bp-larger-than-mobile}) {
+  .hide-mobile { display: initial; }
+  .show-mobile { display: none; }
+}
+@media (#{$bp-larger-than-phablet}) {
+  .hide-phablet { display: initial; }
+  .show-phablet { display: none; }
+}
+@media (#{$bp-larger-than-tablet}) {
+  .hide-tablet { display: initial; }
+  .show-tablet { display: none; }
+}
+@media (#{$bp-larger-than-desktop}) {
+  .hide-desktop { display: initial; }
+  .show-desktop { display: none; }
+}
+@media (#{$bp-larger-than-desktophd}) {
+  .hide-desktophd { display: initial; }
+  .show-desktophd { display: none; }
+}

@@ -16,6 +16,10 @@
   .icon-home:hover {
     text-decoration: none;
   }
+
+  &-current {
+    color: $fg-primary;
+  }
 }
 
 article {
@@ -50,10 +54,28 @@ article header {
   }
 }
 
+// Make paragraphs and stuff readable
+.paragraph,
+.olist,
+.ulist,
+.admonitionblock {
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+// Style quoteblocks
+.quoteblock {
+  max-width: calc(800px - 8em);
+  margin-left: 4em;
+  margin-top: 1.25em;
+}
+
+// Reset styling on code blocks
 code table,
 code td,
 code td pre {
   @include reset-all;
+  white-space: pre;
 }
 
 // Make tables responsive
@@ -94,6 +116,53 @@ table {
     font: bold .9em monospace;
     margin-top: .2em;
     border-radius: $df-radius;
+  }
+}
+
+// Style admonition blocks
+.admonitionblock {
+  padding: $ex05;
+  border: 4px solid rgba(0, 0, 0, .2);
+  border-radius: 2 * $df-radius;
+  margin: 1em 0;
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    margin: 0;
+  }
+
+  table td.icon,
+  table td.content {
+    @include reset(padding border);
+
+    color: currentColor;
+    text-align: left;
+  }
+
+  table td.icon {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: $ex05;
+  }
+
+  table .title {
+    font-family: inherit;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+
+  :not(pre) > code {
+    background-color: rgba(0, 0, 0, .05);
+    border-color: rgba(0, 0, 0, .15);
+  }
+
+  &.note,
+  &.note table td.icon {
+    background-color: $bg-secondary;
+    border-color: transparentize($fg-primary, .8);
   }
 }
 

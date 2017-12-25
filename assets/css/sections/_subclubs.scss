@@ -152,14 +152,7 @@
 
 .lesson-date {
   display: block;
-  font-weight: bold;
-}
-
-// TODO: perhaps move to _page.scss?
-.paragraph,
-.olist,
-.ulist {
-  max-width: 800px;
+  color: $fg-primary;
 }
 
 @media (#{$bp-larger-than-tablet}) {
@@ -167,11 +160,11 @@
 
   .page-header {
     position: relative;
-    margin-bottom: (2 + 1.5) * $ex; // 1.5 to factor in margin of .breadcrumbs
+    margin-bottom: $ex3;
 
     &::after {
       @include pseudo;
-      @include position(null, 0, 0, -30px);
+      @include position(null, 0, 0, -$ex);
 
       left: 0;
       right: 0;
@@ -186,10 +179,11 @@
 
   #lesson-listing {
     position: sticky;
-    top: $ex;
+    top: 0;
     width: 22%; // .three.columns
     background-color: $bg-primary;
     padding: 0;
+    padding-top: $ex05;
   }
 
   .lesson-callout {
@@ -303,11 +297,13 @@
     }
 
     .content.container {
+      max-width: 720px;
       margin-top: $ex3;
     }
 
     #main-content {
       float: none;
+      width: 100%;
       margin: auto;
     }
 
