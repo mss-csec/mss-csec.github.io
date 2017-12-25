@@ -1,18 +1,39 @@
 @import "base/mixins";
 
+#toc {
+  display: none;
+}
+
 #lesson-listing {
+  position: relative;
+  top: 0;
+  width: 100%;
   background-color: $bg-tertiary;
   overflow-x: auto;
   padding: $ex;
+  margin-bottom: $ex;
 
   &.closed {
+    height: $ex3;
+    padding: $ex05;
     overflow: hidden;
+  }
+}
+
+#main-content {
+  width: 100%;
+  max-width: 800px;
+
+  &.blog-post {
+    float: none;
+    margin: auto;
   }
 }
 
 .collapse-el {
   position: absolute;
-  top: $ex;
+  top: $ex05;
+  transform: rotate(90deg);
   right: $ex05;
   width: $ex2;
   font-size: $ex2;
@@ -26,7 +47,17 @@
   }
 }
 
+.lesson-num {
+  position: absolute;
+  bottom: -0.08em;
+  right: 0;
+  color: $fg-secondary;
+  font-size: .8em;
+  font-weight: 300;
+}
+
 .lesson-date {
+  display: block;
   font-weight: bold;
 }
 
@@ -44,6 +75,7 @@
     flex: 1;
     color: $fg-secondary;
     text-align: center;
+    padding: 0;
 
     &:first-child {
       text-align: left;
@@ -63,96 +95,13 @@
   }
 }
 
-@media (min-width: #{$bp-tablet + 1px}) {
-  #lesson-listing {
-    position: relative;
-    position: sticky;
-    top: $ex4;
-    max-height: calc(100vh - #{$ex4 + $ex});
-
-    &.closed {
-      width: 0;
-      height: $ex2 + 4px;
-      padding: 0;
-      padding-left: $ex2 + 4px;
-      margin-left: -$ex3;
-    }
-  }
-
-  .collapse-el.closed {
-    top: 2px;
-    right: 2px;
-  }
-
-  .lesson-num {
-    float: right;
-    color: $fg-secondary;
-    font-size: .8em;
-    font-weight: 300;
-  }
-
-  .lesson-date {
-    float: right;
-  }
-}
-
-@media (max-width: $bp-tablet) {
-  #lesson-listing {
-    position: relative;
-    top: 0;
-    width: 100%;
-    margin-bottom: $ex;
-
-    &.closed {
-      height: $ex3;
-      padding: $ex05;
-    }
-  }
-
-  .collapse-el {
-    top: $ex05;
-    transform: rotate(90deg);
-  }
-
-  #main-content {
-    width: 100%;
-
-    &.offset-by-two {
-      margin-left: 0;
-    }
-  }
-
-  .lesson-date {
-    display: block;
-  }
-
-  .paginator-item {
-    padding: 0;
-  }
-}
-
 .lesson-name {
-  position: relative;
   line-height: 1.5;
   margin-bottom: 0;
-
-  &::before {
-    @include pseudo;
-    @include dimensions(2px, 100%);
-    @include position(0, -$ex);
-  }
-
-  &:hover::before {
-    background-color: lighten($fg-secondary, 10%);
-  }
 }
 
 .lesson-cur {
   font-weight: bold;
-}
-
-.lesson-name.lesson-cur::before {
-  background-color: $bg-accent;
 }
 
 .lesson-link {
@@ -185,17 +134,6 @@
   .lesson-name {
     font-size: 1.1em;
     margin-bottom: $ex05;
-
-    &::before {
-      width: 3px;
-      background-color: $bg-accent;
-      transform: scaleY(0);
-      transition: transform #{$df-anim-length / 2} ease;
-    }
-
-    &:hover::before {
-      transform: scaleY(1);
-    }
   }
 
   .lesson-link,
@@ -203,5 +141,125 @@
     color: $brand-colour;
     padding: 0;
     opacity: 1;
+  }
+}
+
+@media (#{$bp-larger-than-tablet}) {
+  .content.container {
+    margin-top: 5 * $ex;
+  }
+
+  .lesson .site-header {
+    position: absolute;
+    box-shadow: none;
+  }
+
+  #toc {
+    position: sticky;
+    top: 0;
+    display: flex;
+    background-color: $bg-tertiary;
+    padding: $ex05;
+    padding-top: .75 * $ex;
+    margin-bottom: 1.5 * $ex;
+    z-index: $z1;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+
+      ul {
+        display: none;
+      }
+    }
+
+    li {
+      margin: 0;
+      margin-left: $ex;
+    }
+
+    a {
+      padding: 0 0.2em;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .in-view {
+      background-color: $bg-accent;
+      color: $fg-accent;
+    }
+  }
+
+  #lesson-listing {
+    position: sticky;
+    top: $ex05;
+    width: 22%; // .three.columns
+    background-color: $bg-primary;
+    padding: 0;
+  }
+
+  #main-content {
+    width: 65.333333333333%; // .eight.columns
+  }
+
+  .sect1 > h2:target {
+    outline: none;
+  }
+
+  .collapse-el {
+    display: none;
+  }
+
+  .responsive-menu-items .options {
+    margin-right: $ex2;
+  }
+
+  .make-distraction-free {
+    position: absolute;
+    top: 15px;
+    right: calc(50vw - 720px);
+    font-size: 1.2em;
+    z-index: $z3;
+  }
+
+  .make-distraction-free {
+    display: block;
+
+    .distraction-free & {
+      top: $ex;
+      right: $ex;
+    }
+  }
+
+  .distraction-free {
+    .site-header,
+    .site-footer,
+    .breadcrumbs,
+    .anchorjs-link,
+    #lesson-listing,
+    #toc,
+    #open-feedback-modal {
+      display: none;
+    }
+
+    .content.container {
+      margin-top: $ex3;
+    }
+
+    #main-content {
+      float: none;
+      margin: auto;
+    }
+
+    .page-title {
+      margin-bottom: $ex;
+    }
+  }
+
+  .lesson-date {
+    float: right;
   }
 }

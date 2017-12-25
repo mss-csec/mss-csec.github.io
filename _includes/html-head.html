@@ -73,6 +73,10 @@
 
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}
+  <script src="{{ '/assets/js/subclubs.js' | relative_url }}" defer></script>
+  {% endif %}
+
   <script src="{{ '/assets/js/feedback.js' | relative_url }}" defer></script>
 
   {% if page.addons.scripts %}

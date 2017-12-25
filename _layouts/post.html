@@ -9,7 +9,7 @@ layout: default
 </div>
 <div class="content container">
   <div class="row">
-    <div class="eight columns offset-by-two" id="main-content">
+    <div class="eight columns blog-post" id="main-content">
       <div class="paginator">
         {% if page.previous != nil %}
         <a class="paginator-item" href="{{ page.previous.url }}" title="Posted on {{ page.previous.date | date: site.datefmt }}"><strong>Previous</strong><br>{{ page.previous.title | xml_escape }}</a>

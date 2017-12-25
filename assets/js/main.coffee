@@ -340,15 +340,18 @@ APP.onload = () ->
     if $(this).attr('href') != '#'
       window.location = $(this).attr 'href'
 
-  # Scrolling
-  $(window).on 'scroll', (e) ->
-    if window.scrollY > 100
-      $('body:not(.no-hero) .site-header').removeClass 'at-top'
-    else
-      $('body:not(.no-hero) .site-header').addClass 'at-top'
+  # Header
+  if !$('body').hasClass('no-hero') and
+  !$('body').hasClass('lesson') and
+  window.innerWidth > 800
+    $(window).on 'scroll', (e) ->
+      if window.scrollY > 100
+        $('body .site-header').removeClass 'at-top'
+      else
+        $('body .site-header').addClass 'at-top'
+    $('body .site-header').addClass 'at-top'
 
   # DOM manipulation
-  $('body:not(.no-hero) .site-header').addClass 'at-top'
 
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')

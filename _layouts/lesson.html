@@ -1,5 +1,5 @@
 ---
-layout: default 
+layout: default
 ---
 {% assign subclubs = site.subclubs | group_by: "category" %}
 {% assign subclub = page.category %}
@@ -47,8 +47,8 @@ layout: default
   {% endfor %}
 {% endfor %}
 
-<!-- TODO: remove inline style when revamp propagates to all pages -->
-<div class="content container" style="margin-top:100px">
+<a href="#" class="make-distraction-free">DF</a>
+<div class="content container">
   <div class="row">
     <div class="three columns sidebar-collapsible" id="lesson-listing">
       <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
