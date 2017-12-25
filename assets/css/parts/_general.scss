@@ -167,6 +167,14 @@ a {
   }
 }
 
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .disabled {
   opacity: 0.5;
 }

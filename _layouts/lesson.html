@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default 
 ---
 {% assign subclubs = site.subclubs | group_by: "category" %}
 {% assign subclub = page.category %}
@@ -75,8 +75,9 @@ layout: page
 
       {{ lesson_listings | join: '' }}
     </div>
-    <div class="nine columns" id="main-content">
-      <h1 class="page-title">{{ page.title }} <span class="lesson-num">#{{ page.lesson }}</span></h1>
+
+    <div class="eight columns" id="main-content">
+      <h1 class="page-title">{{ page.title }}<span class="invisible">&nbsp;#{{ page.lesson }}</span><span class="lesson-num">#{{ page.lesson }}</span></h1>
       <div class="breadcrumbs">
         <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
         <time class="lesson-date" datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</time>

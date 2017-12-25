@@ -222,19 +222,14 @@ APP.toggleSidebar = (e) ->
 
   $target = $(e.target)
   $sidebar = $target.closest '.sidebar-collapsible'
-  $mainContent = $('#main-content')
   isClosed = $target.hasClass 'closed'
 
   if isClosed
     # Open sidebar
     __openSidebar $sidebar
-    $mainContent.removeClass 'twelve'
-      .addClass 'nine'
   else
     # Collapse sidebar
     __collapseSidebar $sidebar
-    $mainContent.removeClass 'nine'
-      .addClass 'twelve'
 
   true
 
