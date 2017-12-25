@@ -207,15 +207,31 @@ a {
   background-color: $warning;
 }
 
+.hide-mobile,
+.hide-phablet,
+.hide-tablet,
+.hide-desktop,
+.hide-desktophd {
+  display: none;
+}
+
 @media (#{$bp-larger-than-mobile}) {
-  .br-mobile { display: none; }
+  .hide-mobile { display: initial; }
+  .show-mobile { display: none; }
 }
 @media (#{$bp-larger-than-phablet}) {
-  .br-phablet { display: none; }
+  .hide-phablet { display: initial; }
+  .show-phablet { display: none; }
 }
 @media (#{$bp-larger-than-tablet}) {
-  .br-tablet { display: none; }
+  .hide-tablet { display: initial; }
+  .show-tablet { display: none; }
 }
 @media (#{$bp-larger-than-desktop}) {
-  .br-desktop { display: none; }
+  .hide-desktop { display: initial; }
+  .show-desktop { display: none; }
+}
+@media (#{$bp-larger-than-desktophd}) {
+  .hide-desktophd { display: initial; }
+  .show-desktophd { display: none; }
 }

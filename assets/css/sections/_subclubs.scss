@@ -1,8 +1,6 @@
 @import "base/mixins";
 
-#toc {
-  display: none;
-}
+// Sidebar
 
 #lesson-listing {
   position: relative;
@@ -11,22 +9,15 @@
   background-color: $bg-tertiary;
   overflow-x: auto;
   padding: $ex;
-  margin-bottom: $ex;
 
-  &.closed {
-    height: $ex3;
-    padding: $ex05;
-    overflow: hidden;
-  }
-}
+  @media (max-width: #{$bp-tablet - 1px}) {
+    margin-top: -$ex05;
 
-#main-content {
-  width: 100%;
-  max-width: 800px;
-
-  &.blog-post {
-    float: none;
-    margin: auto;
+    &.closed {
+      height: $ex3;
+      padding: $ex05 $ex;
+      overflow: hidden;
+    }
   }
 }
 
@@ -45,20 +36,6 @@
     color: $fg-primary;
     text-decoration: none;
   }
-}
-
-.lesson-num {
-  position: absolute;
-  bottom: -0.08em;
-  right: 0;
-  color: $fg-secondary;
-  font-size: .8em;
-  font-weight: 300;
-}
-
-.lesson-date {
-  display: block;
-  font-weight: bold;
 }
 
 .paginator {
@@ -144,15 +121,95 @@
   }
 }
 
+// Main content
+
+.content.container {
+  margin-top: $ex3;
+}
+
+#toc {
+  display: none;
+}
+
+#main-content {
+  width: 100%;
+  margin: 0;
+
+  &.blog-post {
+    float: none;
+    margin: auto;
+  }
+}
+
+.lesson-num {
+  position: absolute;
+  bottom: -0.08em;
+  right: 0;
+  color: $fg-secondary;
+  font-size: .8em;
+  font-weight: 300;
+}
+
+.lesson-date {
+  display: block;
+  font-weight: bold;
+}
+
+// TODO: perhaps move to _page.scss?
+.paragraph,
+.olist,
+.ulist {
+  max-width: 800px;
+}
+
 @media (#{$bp-larger-than-tablet}) {
+  // Header
+
+  .page-header {
+    position: relative;
+    margin-bottom: (2 + 1.5) * $ex; // 1.5 to factor in margin of .breadcrumbs
+
+    &::after {
+      @include pseudo;
+      @include position(null, 0, 0, -30px);
+
+      left: 0;
+      right: 0;
+      height: 0.5 * $ex05;
+
+      @if ($dark) { background-image: linear-gradient(100deg, #5f0d0d, #411471); }
+      @else       { background-image: linear-gradient(100deg, #f8b763, #f25e7d); }
+    }
+  }
+
+  // Sidebar
+
+  #lesson-listing {
+    position: sticky;
+    top: $ex;
+    width: 22%; // .three.columns
+    background-color: $bg-primary;
+    padding: 0;
+  }
+
+  .lesson-callout {
+    @include reset(padding border);
+  }
+
+  .collapse-el {
+    display: none;
+  }
+
   .content.container {
-    margin-top: 5 * $ex;
+    margin-top: 4.5 * $ex;
   }
 
   .lesson .site-header {
     position: absolute;
     box-shadow: none;
   }
+
+  // Main content
 
   #toc {
     position: sticky;
@@ -193,25 +250,24 @@
     }
   }
 
-  #lesson-listing {
-    position: sticky;
-    top: $ex05;
-    width: 22%; // .three.columns
-    background-color: $bg-primary;
-    padding: 0;
-  }
-
   #main-content {
-    width: 65.333333333333%; // .eight.columns
+    width: 74%; // .nine.columns
+    margin-left: 4%;
+
+    > :first-child {
+      margin-top: 0;
+    }
   }
 
   .sect1 > h2:target {
     outline: none;
   }
 
-  .collapse-el {
-    display: none;
+  .lesson-date {
+    float: right;
   }
+
+  // Distraction-free mode
 
   .responsive-menu-items .options {
     margin-right: $ex2;
@@ -238,6 +294,7 @@
     .site-header,
     .site-footer,
     .breadcrumbs,
+    .callout,
     .anchorjs-link,
     #lesson-listing,
     #toc,
@@ -257,9 +314,5 @@
     .page-title {
       margin-bottom: $ex;
     }
-  }
-
-  .lesson-date {
-    float: right;
   }
 }

@@ -56,6 +56,13 @@ code td pre {
   @include reset-all;
 }
 
+// Make tables responsive
+table {
+  display: block; // This doesn't affect the layout of the table itself
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 // Highlight callouts
 .conum {
   @include no-user-select;
@@ -126,6 +133,10 @@ code td pre {
 }
 
 @media only screen and (min-width: $bp-tablet) {
+  table {
+    display: table;
+  }
+
   // Show line numbers at adequate screen width
   .rouge-table .gutter {
     display: table-cell;
