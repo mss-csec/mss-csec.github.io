@@ -160,11 +160,11 @@
 
   .page-header {
     position: relative;
-    margin-bottom: $ex3;
+    padding-bottom: 1.5 * $ex;
 
     &::after {
       @include pseudo;
-      @include position(null, 0, 0, -$ex);
+      @include position(null, 0, 0, $ex2);
 
       left: 0;
       right: 0;
@@ -209,11 +209,11 @@
     position: sticky;
     top: 0;
     display: flex;
+    align-items: center;
     background-color: $bg-tertiary;
     padding: $ex05;
-    padding-top: .75 * $ex;
     margin-bottom: 1.5 * $ex;
-    z-index: $z1;
+    z-index: $z2;
 
     ul {
       display: flex;
@@ -241,6 +241,18 @@
     .in-view {
       background-color: $bg-accent;
       color: $fg-accent;
+    }
+
+    &.toc-fixed {
+      @include position(0, 0, 0);
+
+      position: fixed;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+      ul {
+        max-width: 70%;
+      }
     }
   }
 

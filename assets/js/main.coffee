@@ -9,11 +9,19 @@ APP = {}
 UTILS = {}
 
 CONSTS =
+  ex: 20
+  bpMobile: 400
+  bpPhablet: 550
+  bpTablet: 768
+  bpDesktop: 1024
+  bpDesktopHd: 1440
   animDuration: 230
   cookieCollapseSidebar: 'collapseSidebar'
   cookieStickyPrefix: 'sticky-'
   cookieTheme: 'theme'
   easterEgg: 'pascha'
+
+Object.freeze CONSTS
 
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
@@ -343,7 +351,7 @@ APP.onload = () ->
   # Header
   if !$('body').hasClass('no-hero') and
   !$('body').hasClass('lesson') and
-  window.innerWidth > 800
+  window.innerWidth > CONSTS.bpTablet
     $(window).on 'scroll', (e) ->
       if window.scrollY > 100
         $('body .site-header').removeClass 'at-top'
@@ -493,6 +501,7 @@ APP.onload = () ->
   # Run page scripts
   SCRIPTS.run()
 
+window.CONSTS = CONSTS
 window.APP = APP
 window.UTILS = UTILS
 

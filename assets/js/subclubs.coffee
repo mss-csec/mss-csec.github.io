@@ -4,14 +4,14 @@
 # Scroll to section
 scrollToSection = ($section) ->
   window.location.hash = '#' + $section.attr 'id'
-  $('html, body').scrollTop $section.offset().top - $('#toc').outerHeight()
+  $('html, body').scrollTop $section.offset().top - $('#toc').outerHeight() - .5 * CONSTS.ex
 
 # Distraction-free
 $('.make-distraction-free').on 'click', (e) ->
   e.preventDefault()
   $('body').toggleClass 'distraction-free'
 
-# Jumping through sections
+# Automatically adjust scroll pos when jumping through sections
 $('#toc a').on 'click', (e) ->
   e.preventDefault()
 
@@ -23,9 +23,10 @@ if window.location.hash
 
   scrollToSection $target if $target.length
 
-# IntersectionObserver
-if window.IntersectionObserver
-  tocObserver = new IntersectionObserver (entries, observer) ->
+# Scroll area observers
+if window.IntersectionObserver and window.innerWidth >= CONSTS.bpTablet
+  # Observer for sections in the TOC
+  sectionObserver = new IntersectionObserver (entries, observer) ->
     for entry in entries
       ratio = entry.intersectionRatio
       target = entry.target
@@ -38,4 +39,30 @@ if window.IntersectionObserver
 
   , threshold: [0, 1]
 
-  $('.sect1').each (_, section) -> tocObserver.observe section
+  $('.sect1').each (_, section) -> sectionObserver.observe section
+
+  # Observer for fixed TOC
+  tocObserver = new IntersectionObserver (entries, observer) ->
+    # We'll only ever have one entry: the header
+    entry = entries[0]
+    header = entry.target
+    toc = $('#toc')
+    offset = $(header).offset().left
+
+    if entry.intersectionRatio
+      toc.addClass 'invisible'
+    else
+      toc.removeClass 'invisible'
+      toc.css
+        paddingLeft: offset
+        paddingRight: offset
+      $('#lesson-listing').css { top: toc.outerHeight() + CONSTS.ex }
+
+  , threshold: [0]
+
+  $('#toc')
+    .addClass 'toc-fixed invisible'
+    .append "<a href='#' onclick='event.preventDefault();window.scroll(0,0)'>Scroll to top</a>"
+  $('#toctitle').text $('.page-title')[0].firstChild.textContent
+  $('#lesson-listing').css { paddingTop: 0, top: $('#toc').outerHeight() + CONSTS.ex }
+  tocObserver.observe $('.page-header')[0]
