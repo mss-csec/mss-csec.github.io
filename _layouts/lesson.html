@@ -47,7 +47,8 @@ layout: default
   {% endfor %}
 {% endfor %}
 
-<a href="#" class="make-distraction-free"><span class="inactive">{% include icons/expand.svg %}</span><span class="active">{% include icons/compress.svg %}</span></a>
+<a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode">{% include icons/compress.svg %}</a>
+
 <header class="page-header">
   <div class="container">
     <h1 class="page-title">{{ page.title }}<span class="invisible">&nbsp;#{{ page.lesson }}</span><span class="lesson-num">#{{ page.lesson }}</span></h1>

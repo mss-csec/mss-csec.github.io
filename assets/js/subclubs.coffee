@@ -6,10 +6,15 @@ scrollToSection = ($section) ->
   window.location.hash = '#' + $section.attr 'id'
   $('html, body').scrollTop $section.offset().top - $('#toc').outerHeight() - .5 * CONSTS.ex
 
-# Distraction-free
+# Distraction-free mode
 $('.make-distraction-free').on 'click', (e) ->
   e.preventDefault()
+
   $('body').toggleClass 'distraction-free'
+
+$(window).on 'keypress', (e) ->
+  if e.keyCode == 27 # escape
+    $('body').removeClass 'distraction-free'
 
 # Automatically adjust scroll pos when jumping through sections
 $('#toc a').on 'click', (e) ->

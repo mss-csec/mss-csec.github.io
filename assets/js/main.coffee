@@ -257,7 +257,7 @@ __dispatchCustomEvent = (obj, name, detail = null) ->
 #
 # theme: A string, either 'light' or 'dark', corresponding to the desired theme
 APP.changeTheme = (theme) ->
-  $t = $('.toggled-theme');
+  $t = $('.toggled-theme')
   $t.each () ->
     $e = $(this)
     altProp = $e.attr 'data-alt-prop'
@@ -270,11 +270,15 @@ APP.changeTheme = (theme) ->
     $e.attr newKey, oldVal
 
   if theme == 'dark'
+    $('body').removeClass 'theme-light'
     $('body').addClass 'theme-dark'
     APP.currentTheme = 'dark'
+    $('.toggle-theme').attr 'title', 'Use light theme'
   else
     $('body').removeClass 'theme-dark'
+    $('body').addClass 'theme-light'
     APP.currentTheme = 'light'
+    $('.toggle-theme').attr 'title', 'Use dark theme'
 
   __dispatchCustomEvent window, 'changetheme'
 
@@ -289,7 +293,6 @@ APP.onload = () ->
   # Parse theme changes
   if 'dark' == Cookies.get CONSTS.cookieTheme
     APP.changeTheme 'dark'
-    $('#toggle-dark-theme').prop 'checked', true
 
   # Easter egg
   __easterEgg = () ->
@@ -326,8 +329,10 @@ APP.onload = () ->
   $(window).on 'keydown', __easterEggTrigger()
 
   # Add event handlers
-  $('#toggle-dark-theme').on 'change', () ->
+  $('.toggle-theme').on 'click', (e) ->
     theme = Cookies.get CONSTS.cookieTheme
+
+    e.preventDefault()
 
     if theme == 'dark'
       Cookies.set CONSTS.cookieTheme, 'light'
