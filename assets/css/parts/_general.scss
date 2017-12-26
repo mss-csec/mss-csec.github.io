@@ -171,3 +171,8 @@ a {
     background-color: $fg-primary;
   }
 }
+
+// Icons
+svg > path {
+  fill: currentColor;
+}
