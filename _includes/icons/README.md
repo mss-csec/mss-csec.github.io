@@ -8,6 +8,8 @@ are licensed under a [CC-BY 4.0 License](https://creativecommons.org/licenses/by
 All of the SVG icons have an extra `height='16'` attribute added to the root svg element.
 This is done to prevent what is known as a [fatwigoo](http://www.otsukare.info/2017/11/02/fatwigoo).
 
+Each icon is also given a class corresponding to their file name.
+
 ## How are the icons customized?
 
 1. Download `fontawesome-free-5.0.2.zip` to this directory
