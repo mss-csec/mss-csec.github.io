@@ -24,7 +24,9 @@ if window.location.hash
   scrollToSection $target if $target.length
 
 # Scroll area observers
-if window.IntersectionObserver and window.innerWidth >= CONSTS.bpTablet
+if window.IntersectionObserver and
+window.innerWidth >= CONSTS.bpTablet and
+!$('body').hasClass 'landing'
   # Observer for sections in the TOC
   sectionObserver = new IntersectionObserver (entries, observer) ->
     for entry in entries
@@ -45,9 +47,8 @@ if window.IntersectionObserver and window.innerWidth >= CONSTS.bpTablet
   tocObserver = new IntersectionObserver (entries, observer) ->
     # We'll only ever have one entry: the header
     entry = entries[0]
-    header = entry.target
     toc = $('#toc')
-    offset = $(header).offset().left
+    offset = $('.content.container').offset().left
 
     if entry.intersectionRatio
       toc.addClass 'invisible'
@@ -64,5 +65,7 @@ if window.IntersectionObserver and window.innerWidth >= CONSTS.bpTablet
     .addClass 'toc-fixed invisible'
     .append "<a href='#' onclick='event.preventDefault();window.scroll(0,0)'>Scroll to top</a>"
   $('#toctitle').text $('.page-title')[0].firstChild.textContent
-  $('#lesson-listing').css { paddingTop: 0, top: $('#toc').outerHeight() + CONSTS.ex }
+  $('#lesson-listing').css
+    paddingTop: 0
+    top: $('#toc').outerHeight() + CONSTS.ex
   tocObserver.observe $('.page-header')[0]

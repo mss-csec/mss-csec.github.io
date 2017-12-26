@@ -350,7 +350,9 @@ APP.onload = () ->
 
   # Header
   if !$('body').hasClass('no-hero') and
+  !$('body').hasClass('landing') and
   !$('body').hasClass('lesson') and
+  !$('body').hasClass('resource') and
   window.innerWidth > CONSTS.bpTablet
     $(window).on 'scroll', (e) ->
       if window.scrollY > 100

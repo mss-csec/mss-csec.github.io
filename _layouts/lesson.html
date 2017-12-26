@@ -48,15 +48,18 @@ layout: default
 {% endfor %}
 
 <a href="#" class="make-distraction-free">DF</a>
-<div class="content container">
-  <header class="page-header">
+<header class="page-header">
+  <div class="container">
     <h1 class="page-title">{{ page.title }}<span class="invisible">&nbsp;#{{ page.lesson }}</span><span class="lesson-num">#{{ page.lesson }}</span></h1>
     <div class="breadcrumbs">
       <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
       <time class="lesson-date" datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</time>
     </div>
-  </header>
+    <div class="bar bg-gradient"></div>
+  </div>
+</header>
 
+<div class="content container">
   <div class="row">
     <div class="columns sidebar-collapsible" id="lesson-listing">
       <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>

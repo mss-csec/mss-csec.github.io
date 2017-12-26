@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 ---
 {% assign subclubs = site.subclubs | group_by: "category" %}
 {% assign subclub = page.category %}
@@ -11,35 +11,43 @@ layout: page
   {% assign subclub_obj = lessons | where: "name", subclub | first %}
 {% endif %}
 
-<div class="breadcrumbs">
-  <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
-</div>
-<div class="row">
-  <div class="three columns sidebar-collapsible" id="lesson-listing">
-    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
-    <h2>Lessons</h2>
-    <div class="lesson-callout" id="lesson-timeline" data-lesson-last-balloon-pos="up-left" data-lesson-next-balloon-pos="up-left">
-      <h5 class="lesson-state">Last lesson</h5>
-      <p class="lesson-name lesson-last"></p>
-      <h5 class="lesson-state">Next meeting</h5>
-      <p class="lesson-name lesson-next"></p>
+<header class="page-header bg-gradient">
+  <div class="container">
+    <h1 class="page-title"><em class="offset-text">{{ page.title }}</em></h1>
+    <div class="breadcrumbs">
+      <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
     </div>
-    {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}
-    {% for item in ordered_lessons %}
-      {% assign lesson_obj = item %}
-      {% for entry in subclub_schedule %}
-        {% assign split_path = item.path | split: '/' %}
-        {% if split_path contains entry[0] %}
-    <p class="lesson-name">
-      <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
-    </p>
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
   </div>
-  <div class="nine columns" id="main-content">
-    {{ content }}
+</header>
+
+<div class="content container">
+  <div class="row">
+    <div class="three columns sidebar-collapsible" id="lesson-listing">
+      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+      <h2 class="show-tablet">Lessons</h2>
+      <div class="lesson-callout" id="lesson-timeline" data-lesson-last-balloon-pos="up-left" data-lesson-next-balloon-pos="up-left">
+        <h5 class="lesson-state">Last lesson</h5>
+        <p class="lesson-name lesson-last"></p>
+        <h5 class="lesson-state">Next meeting</h5>
+        <p class="lesson-name lesson-next"></p>
+      </div>
+      {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}
+      {% for item in ordered_lessons %}
+        {% assign lesson_obj = item %}
+        {% for entry in subclub_schedule %}
+          {% assign split_path = item.path | split: '/' %}
+          {% if split_path contains entry[0] %}
+      <p class="lesson-name">
+        <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
+      </p>
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="nine columns" id="main-content">
+      {{ content }}
+    </div>
   </div>
 </div>
 

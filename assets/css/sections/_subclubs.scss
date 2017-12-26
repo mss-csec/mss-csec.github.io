@@ -1,5 +1,22 @@
 @import "base/mixins";
 
+// Header
+
+.page-header {
+  margin-top: $ex3;
+
+  .landing & {
+    height: 5 * $ex;
+    padding-top: 1.5 * $ex;
+    padding-bottom: 1.5 * $ex - 2px;
+    margin-bottom: $ex;
+  }
+}
+
+.landing .page-title {
+  margin-top: $ex05 + 3px;
+}
+
 // Sidebar
 
 #lesson-listing {
@@ -123,10 +140,6 @@
 
 // Main content
 
-.content.container {
-  margin-top: $ex3;
-}
-
 #toc {
   display: none;
 }
@@ -160,18 +173,14 @@
 
   .page-header {
     position: relative;
+    padding-top: 1.5 * $ex;
     padding-bottom: 1.5 * $ex;
 
-    &::after {
-      @include pseudo;
-      @include position(null, 0, 0, $ex2);
+    .bar {
+      @include position(null, 0, 0, $ex05);
 
-      left: 0;
-      right: 0;
+      position: absolute;
       height: 0.5 * $ex05;
-
-      @if ($dark) { background-image: linear-gradient(100deg, #5f0d0d, #411471); }
-      @else       { background-image: linear-gradient(100deg, #f8b763, #f25e7d); }
     }
   }
 
@@ -179,7 +188,7 @@
 
   #lesson-listing {
     position: sticky;
-    top: 0;
+    top: $ex;
     width: 22%; // .three.columns
     background-color: $bg-primary;
     padding: 0;
@@ -194,10 +203,7 @@
     display: none;
   }
 
-  .content.container {
-    margin-top: 4.5 * $ex;
-  }
-
+  .landing .site-header,
   .lesson .site-header {
     position: absolute;
     box-shadow: none;
@@ -247,12 +253,21 @@
       @include position(0, 0, 0);
 
       position: fixed;
-      justify-content: space-between;
       box-sizing: border-box;
 
       ul {
         max-width: 70%;
       }
+
+      // scroll to top
+      > :last-child {
+        margin-left: auto;
+      }
+    }
+
+    // We don't show TOC on landing b/c it shouldn't exist
+    .landing & {
+      display: none;
     }
   }
 
@@ -308,9 +323,13 @@
       display: none;
     }
 
-    .content.container {
+    .page-header {
+      padding: 0;
+      margin-bottom: $ex;
+    }
+
+    .container {
       max-width: 720px;
-      margin-top: $ex3;
     }
 
     #main-content {
