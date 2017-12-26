@@ -294,20 +294,39 @@
     margin-right: $ex2;
   }
 
+  // TODO: Integrate button with menu
   .make-distraction-free {
     position: absolute;
-    top: 15px;
+    display: block;
+    top: 1.5 * $ex05;
     right: calc(50vw - 720px);
     font-size: 1.2em;
     z-index: $z3;
-  }
 
-  .make-distraction-free {
-    display: block;
+    .inactive,
+    .active {
+      position: absolute;
+      right: 0;
+
+      svg {
+        height: $ex;
+      }
+    }
+
+    .active {
+      visibility: hidden;
+    }
 
     .distraction-free & {
       top: $ex;
       right: $ex;
+
+      .inactive {
+        visibility: hidden;
+      }
+      .active {
+        visibility: visible;
+      }
     }
   }
 

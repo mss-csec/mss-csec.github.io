@@ -87,7 +87,7 @@
   }
 }
 
-@media (min-width: $bp-tablet) {
+@media (#{$bp-larger-than-tablet}) {
   .site-header {
     color: $fg-primary;
     background-color: $bg-primary;
@@ -121,7 +121,6 @@
 
     .icon {
       display: flex;
-      flex-direction: column;
       width: $ex;
       height: $ex2;
       color: currentColor;
@@ -130,17 +129,14 @@
       padding-bottom: 7px;
     }
 
-    .circle {
-      width: 5px;
-      height: 5px;
-      background-color: currentColor;
-      border-radius: 5px;
-      margin-top: 3px;
+    .icon svg {
+      margin-top: 4px;
+      height: $ex;
     }
 
-    &:hover .circle,
-    .icon:focus .circle {
-      background-color: $brand-colour;
+    &:hover .icon,
+    .icon:focus {
+      color: $brand-colour;
     }
 
     .content {
