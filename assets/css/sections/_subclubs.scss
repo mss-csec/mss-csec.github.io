@@ -3,6 +3,7 @@
 // Header
 
 .page-header {
+  position: relative;
   padding-top: 1.5 * $ex;
   margin-top: $ex3;
 
@@ -10,6 +11,13 @@
     height: 5 * $ex;
     padding-bottom: 1.5 * $ex - 2px;
     margin-bottom: $ex;
+  }
+
+  .bar {
+    @include position(null, 0, 0, $ex05);
+
+    position: absolute;
+    height: 0.5 * $ex05;
   }
 }
 
@@ -64,8 +72,8 @@
   align-items: center;
   flex-direction: row;
   font-size: .95em;
-  margin-top: -$ex;
-  margin-bottom: -$ex05;
+  padding-top: .5 * $ex05;
+  padding-bottom: $ex;
 
   &-item {
     @include transition;
@@ -176,19 +184,12 @@
   // Header
 
   .page-header {
-    position: relative;
     margin-bottom: 1.5 * $ex;
 
     .lesson &,
+    .post &,
     .resource & {
       padding-top: 0;
-    }
-
-    .bar {
-      @include position(null, 0, 0, $ex05);
-
-      position: absolute;
-      height: 0.5 * $ex05;
     }
   }
 
@@ -213,6 +214,7 @@
 
   .landing .site-header,
   .lesson .site-header,
+  .post .site-header,
   .resource .site-header {
     position: absolute;
     box-shadow: none;
@@ -305,6 +307,7 @@
   // Distraction-free mode
 
   .distraction-free {
+    .distraction,
     .site-header,
     .site-footer,
     .breadcrumbs,

@@ -357,6 +357,7 @@ APP.onload = () ->
   if !$('body').hasClass('no-hero') and
   !$('body').hasClass('landing') and
   !$('body').hasClass('lesson') and
+  !$('body').hasClass('post') and
   !$('body').hasClass('resource') and
   window.innerWidth > CONSTS.bpTablet
     $(window).on 'scroll', (e) ->

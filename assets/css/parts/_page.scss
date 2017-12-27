@@ -21,6 +21,12 @@
   &-current {
     color: $fg-primary;
   }
+
+  // Post-specific styles
+  .post & {
+    margin-top: $ex05;
+    margin-bottom: $ex;
+  }
 }
 
 article {

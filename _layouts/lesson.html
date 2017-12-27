@@ -56,7 +56,7 @@ layout: default
       <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
       <time class="lesson-date" datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</time>
     </div>
-    <div class="bar bg-gradient"></div>
+    <div class="bar bg-gradient hide-tablet"></div>
   </div>
 </header>
 
