@@ -5,6 +5,7 @@
   font-size: 52px;
   line-height: 52px;
   letter-spacing: -1px;
+  word-wrap: break-word;
   margin: 0;
 }
 
@@ -202,7 +203,11 @@ table {
   color: $bg-primary;
 }
 
-@media only screen and (min-width: $bp-tablet) {
+@media (#{$bp-larger-than-tablet}) {
+  .page-title {
+    word-wrap: normal;
+  }
+
   table {
     display: table;
   }

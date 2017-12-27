@@ -55,6 +55,9 @@ window.innerWidth >= CONSTS.bpTablet and
     toc = $('#toc')
     offset = $('.content.container').offset().left
 
+    if $('#main-content').is(':first-child')
+      offset = $('#main-content').offset().left
+
     if entry.intersectionRatio
       toc.addClass 'invisible'
     else
@@ -62,7 +65,7 @@ window.innerWidth >= CONSTS.bpTablet and
       toc.css
         paddingLeft: offset
         paddingRight: offset
-      $('#lesson-listing').css { top: toc.outerHeight() + CONSTS.ex }
+      $('.sidebar-collapsible').css { top: toc.outerHeight() + CONSTS.ex }
 
   , threshold: [0]
 
@@ -70,7 +73,7 @@ window.innerWidth >= CONSTS.bpTablet and
     .addClass 'toc-fixed invisible'
     .append "<a href='#' onclick='event.preventDefault();window.scroll(0,0)'>Scroll to top</a>"
   $('#toctitle').text $('.page-title')[0].firstChild.textContent
-  $('#lesson-listing').css
+  $('.sidebar-collapsible').css
     paddingTop: 0
     top: $('#toc').outerHeight() + CONSTS.ex
   tocObserver.observe $('.page-header')[0]

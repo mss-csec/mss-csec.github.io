@@ -383,8 +383,6 @@ APP.onload = () ->
 
   if '1' == Cookies.get CONSTS.cookieCollapseSidebar
     __collapseSidebar $('.sidebar-collapsible')
-    $('#main-content').removeClass 'nine'
-      .addClass 'twelve'
 
   # Footnotes
   # Change title attr to footnote content

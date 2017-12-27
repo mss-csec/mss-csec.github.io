@@ -3,11 +3,11 @@
 // Header
 
 .page-header {
+  padding-top: 1.5 * $ex;
   margin-top: $ex3;
 
   .landing & {
     height: 5 * $ex;
-    padding-top: 1.5 * $ex;
     padding-bottom: 1.5 * $ex - 2px;
     margin-bottom: $ex;
   }
@@ -173,8 +173,15 @@
 
   .page-header {
     position: relative;
-    padding-top: 1.5 * $ex;
-    padding-bottom: 1.5 * $ex;
+    margin-bottom: 1.5 * $ex;
+
+    .lesson & {
+      padding-top: 0;
+    }
+
+    .resource & {
+      padding-top: $ex3;
+    }
 
     .bar {
       @include position(null, 0, 0, $ex05);
@@ -204,7 +211,8 @@
   }
 
   .landing .site-header,
-  .lesson .site-header {
+  .lesson .site-header,
+  .resource .site-header {
     position: absolute;
     box-shadow: none;
   }
@@ -277,6 +285,11 @@
 
     > :first-child {
       margin-top: 0;
+    }
+
+    &:first-child {
+      float: none;
+      margin: auto;
     }
   }
 

@@ -205,6 +205,11 @@
   .make-distraction-free {
     display: inline-block;
 
+    // Icons don't have perfectly square metrics, unfortunately
+    .icon-expand {
+      width: $ex - 1px;
+    }
+
     .icon-compress {
       visibility: hidden;
     }

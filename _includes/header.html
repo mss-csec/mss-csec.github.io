@@ -101,7 +101,7 @@
 
         <a href="#" class="toggle toggle-theme" tabindex="0" title="Use dark theme">{% include icons/solid-moon.svg %}{% include icons/solid-sun.svg %}</a>
 
-        {% if page.layout == "lesson" %}
+        {% if layout == 'lesson' or layout == 'resource' or layout == 'post' %}
         <a href="#" class="toggle make-distraction-free" tabindex="0" title="Enter distraction-free mode">{% include icons/expand.svg %}</a>
         {% endif %}
       </div>
