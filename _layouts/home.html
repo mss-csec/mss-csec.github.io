@@ -36,6 +36,10 @@ layout: default
     {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
     {% for row in (0..number_rows) %}
     <div class="row">
+{% comment %}{% raw %}
+Source for collapsed section below
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
       {% assign row_offset = row | times: row_size %}
       {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
         {% assign subclub_obj = subclubs | where: "name", subclub | first %}
@@ -43,6 +47,10 @@ layout: default
         {% assign subclub_schedule = subclub_index.schedule %}
         {% assign subclub_title = subclub_index.title %}
         {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+{% endraw %}{% endcomment %}
+
+      {% assign row_offset = row | times: row_size %}{% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}{% assign subclub_obj = subclubs | where: "name", subclub | first %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub_title = subclub_index.title %}{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+
       <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
         <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
         <div class="row">
@@ -57,6 +65,10 @@ layout: default
         </div>
         <script>SCRIPTS.add(function (){
         APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
+{% comment %}{% raw %}
+Source for collapsed section below
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
           {% if site.production == true %}
             {% assign lessons = site.lessons | group_by: "category" %}
             {% assign subclub_obj = lessons | where: "name", subclub | first %}
@@ -81,6 +93,10 @@ layout: default
             lesson: "{{ lesson_no }}"
           },
           {% endfor %}
+{% endraw %}{% endcomment %}
+
+          {% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% for entry in subclub_schedule %}{% assign lesson_title = entry[0] | xml_escape %}{% assign lesson_url = subclub_url | uri_escape %}{% assign lesson_no = -1 %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] and item.layout == 'lesson' %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | remove: '/index' | uri_escape %}{% assign lesson_no = item.lesson | xml_escape %}{% break %}{% endif %}{% endfor %}"{{ entry[0] | xml_escape }}":{date:"{{ entry[1] | date: site.datefmt }}",url:"{{ lesson_url }}/",title:"{{ lesson_title }}",lesson:"{{ lesson_no }}"},{% endfor %}
+
         });
         });</script>
       </div>
