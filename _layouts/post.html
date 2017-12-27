@@ -10,7 +10,7 @@ layout: default
       <header class="page-header">
         <h1 class="page-title">{{ page.title }}</h1>
         <div class="breadcrumbs">
-          <time datetime="{{ page.date | date: site.mdatefmt }}">{{ page.date | date: site.datefmt }}</time>
+          Posted on <time class="lesson-date" datetime="{{ page.date | date: site.mdatefmt }}" style="display:inline;float:none">{{ page.date | date: site.datefmt }}</time>
         </div>
 
         <div class="bar bg-gradient" style="position:static"></div>

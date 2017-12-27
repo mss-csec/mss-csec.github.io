@@ -29,6 +29,11 @@
   }
 }
 
+// Prevent single page container from being overly wide
+.page .content.container {
+  max-width: 800px;
+}
+
 article {
   margin-top: $ex2;
   margin-bottom: -$ex05;
@@ -62,10 +67,7 @@ article header {
 }
 
 // Make paragraphs and stuff readable
-.paragraph,
-.colist,
-.olist,
-.ulist,
+article p,
 .admonitionblock {
   max-width: 800px;
   box-sizing: border-box;
