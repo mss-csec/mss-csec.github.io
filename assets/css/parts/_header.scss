@@ -112,11 +112,11 @@
   }
 }
 
-.theme-light .toggle-theme .icon-solid-sun {
+.theme-light .toggle-theme .icon:last-child {
   visibility: hidden;
 }
 
-.theme-dark .toggle-theme .icon-solid-moon {
+.theme-dark .toggle-theme .icon:first-child {
   visibility: hidden;
 }
 

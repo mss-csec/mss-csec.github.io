@@ -15,6 +15,10 @@
 
 .landing .page-title {
   margin-top: $ex05 + 3px;
+
+  em {
+    box-shadow: 0 1px 2px #0000004d;
+  }
 }
 
 // Sidebar
@@ -175,12 +179,9 @@
     position: relative;
     margin-bottom: 1.5 * $ex;
 
-    .lesson & {
-      padding-top: 0;
-    }
-
+    .lesson &,
     .resource & {
-      padding-top: $ex3;
+      padding-top: 0;
     }
 
     .bar {
@@ -283,7 +284,7 @@
     width: 74%; // .nine.columns
     margin-left: 4%;
 
-    > :first-child {
+    > article {
       margin-top: 0;
     }
 
