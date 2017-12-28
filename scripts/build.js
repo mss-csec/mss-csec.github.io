@@ -5,7 +5,7 @@ const fs = require('fs'),
       sass = require('node-sass'),
       postcss = require('postcss'),
       autoprfxr = require('autoprefixer'),
-      extrStyles = require('postcss-extract-styles')({ pattern: /\$([a-zA-Z0-9]+|{[\s\S]+?})/g }),
+      extrStyles = require('postcss-extract-styles')({ pattern: /\$(\w+|\[[^\]]+\])/ }),
       clrFcns = require('postcss-sass-color-functions'),
       uglify = require('uglify-js');
 
@@ -20,15 +20,18 @@ const variables = {
   bgSecondary: [ '#ededed', '#2c313c' ],
   bgTertiary:  [ `lighten(#ededed, 3%)`, `darken(#2c313c, 3%)` ],
   bgAccent:    [ '#f52f2f', '#f52f2f' ],
-};
+}, themes = variables.theme; // alias
 
-// alias
-const themes = variables.theme;
+const blacklist = [
+  'lib/pygments-manni.css',
+  'lib/pygments-native.css'
+];
 
 glob.readdirStream('_site/assets/**/*.css')
   .on('data', (file) => {
     fs.readFile(file.path, (err, css) => {
       if (err) throw err;
+      if (~blacklist.indexOf(file.path.split('/').slice(-2).join('/'))) return;
 
       postcss([ autoprfxr, extrStyles ])
         .process(css)
@@ -38,16 +41,14 @@ glob.readdirStream('_site/assets/**/*.css')
           for (let i = 0, theme; i < themes.length, theme = themes[i]; i++) {
             let path = file.path.replace('.css', `-${theme}.css`);
 
-            let extracted = res.extracted.replace(/\$({[\s\S]+?})/g, (_, rules) => {
-              rules = JSON.parse(rules);
+            let extracted = res.extracted.replace(/\$(\[[^\]]+\])/g, (_, rules) => {
+              rules = JSON.parse('{' + rules.slice(1,-1).replace(/=>/g, ':') + '}');
 
               if (rules.hasOwnProperty(theme)) {
                 return rules[theme];
               }
               return 'null';
-            }).replace(/\$([a-zA-Z0-9])/, (_, ident) => variables.hasOwnProperty(ident) ? variables[ident][i] : _);
-
-            console.log(extracted);
+            }).replace(/\$(\w+)/g, (_, ident) => variables.hasOwnProperty(ident) ? variables[ident][i] : _);
 
             postcss([ clrFcns ])
               .process(extracted)

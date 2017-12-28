@@ -14,11 +14,11 @@
     $theme: nth(nth($branches, $i), 1);
     $expr: nth(nth($branches, $i), 2);
     // add key-val pair
-    $json: "#{$json}\"#{$theme}\": \"#{$expr}\"";
+    $json: "#{$json}\"#{$theme}\" => \"#{$expr}\"";
     // add comma
     $json: if($i < length($branches), "#{$json}, ", $json);
   }
-  @return unquote("${ #{$json} }");
+  @return unquote("$[ #{$json} ]");
 }
 
 // Replaces mix with parseable string
