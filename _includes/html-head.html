@@ -48,30 +48,31 @@
   {% assign layout = page.layout %}
   {% assign ext = page.path | split: '.' | last %}
 
-  <noscript>
   <link href="{{ '/assets/lib/skeleton.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-
   <link href="{{ '/assets/lib/balloon.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
   <link href="{{ '/assets/lib/lesson-default.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
   {% endif %}
-
   <link href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-
-  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet">
-
   {% if layout == 'home' or layout == 'subclub-landing' %}
   <link href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
   {% endif %}
-
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
   <link href="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  {% endif %}
+
+  <noscript>
+  <link href="{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  <link href="{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
+  <link href="{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  {% endif %}
+  <link href="{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet">
+  {% if layout == 'home' or layout == 'subclub-landing' %}
+  <link href="{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
+  {% endif %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
   <link href="{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
   {% endif %}
   </noscript>
