@@ -1,6 +1,6 @@
 // Colors
 // Brand colours
-$brand-colour: #f52f2f;
+$brand-colour: unquote("$brandColour");
 
 $error: #e70046;
 $info: #3ac4ed;

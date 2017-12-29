@@ -257,17 +257,8 @@ __dispatchCustomEvent = (obj, name, detail = null) ->
 #
 # theme: A string, either 'light' or 'dark', corresponding to the desired theme
 APP.changeTheme = (theme) ->
-  $t = $('.toggled-theme')
-  $t.each () ->
-    $e = $(this)
-    altProp = $e.attr 'data-alt-prop'
-    altKey = if theme == 'dark' then 'data-alt-dark' else 'data-alt-light'
-    newKey = if theme == 'dark' then 'data-alt-light' else 'data-alt-dark'
-    oldVal = $e.attr altProp
-    newVal = $e.attr altKey
-
-    $e.attr altProp, newVal
-    $e.attr newKey, oldVal
+  $('.toggled-theme').each (i, e) ->
+    e.href = window.STYLESHEETS[theme][i]
 
   if theme == 'dark'
     $('body').removeClass 'theme-light'
