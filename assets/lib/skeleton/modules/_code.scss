@@ -7,7 +7,9 @@ code {
   font-size: 90%;
   white-space: nowrap;
   background: transparentize($light-grey, .9);
-  border: 1px solid $light-grey;
+  //border: 1px solid $light-grey;
+  border: 1px solid;
+  border-color: $light-grey;
   border-radius: $global-radius;
 }
 
