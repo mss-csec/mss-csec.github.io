@@ -1,13 +1,14 @@
 #!/usr/bin/nodejs
 
 const fs = require('fs'),
-      glob = require('glob-fs')({ gitignore: true }),
+      glob = require('glob-fs'),
       sass = require('node-sass'),
       postcss = require('postcss'),
       autoprfxr = require('autoprefixer'),
       extrStyles = require('postcss-extract-styles')({ pattern: /\$(\w+|\[[^\]]+\])/ }),
       clrFcns = require('postcss-sass-color-functions'),
-      uglify = require('uglify-js');
+      uglify = require('uglify-js'),
+      isProduction = 'production' === process.argv[2];
 
 const variables = {
   theme:       [ 'light'  , 'dark'    ],
@@ -18,28 +19,33 @@ const variables = {
   fgAccent:    [ '#fff'   , '#fff'    ],
   bgPrimary:   [ '#fff'   , '#1a1f2a' ],
   bgSecondary: [ '#ededed', '#2c313c' ],
-  bgTertiary:  [ `lighten(#ededed, 3%)`, `darken(#2c313c, 3%)` ],
+  bgTertiary:  [ '#f5f5f5', '#262a33' ],
   bgAccent:    [ '#f52f2f', '#f52f2f' ],
 }, themes = variables.theme; // alias
 
 const blacklist = [
   'lib/pygments-manni.css',
-  'lib/pygments-native.css'
+  'lib/pygments-native.css',
+  'lib/lunr.min.js'
 ];
 
-glob.readdirStream('_site/assets/**/*.css')
-  .on('data', (file) => {
-    fs.readFile(file.path, (err, css) => {
+glob().readdir('_site/assets/**/*.css', (err, files) => {
+  if (err) throw err;
+
+  files.forEach((file) => {
+    file = '../' + file;
+
+    fs.readFile(file, (err, css) => {
       if (err) throw err;
-      if (~blacklist.indexOf(file.path.split('/').slice(-2).join('/'))) return;
+      if (~blacklist.indexOf(file.split('/').slice(-2).join('/'))) return;
 
       postcss([ autoprfxr, extrStyles ])
         .process(css)
         .then((res) => {
-          fs.writeFile(file.path, res.css);
+          fs.writeFile(file, res.css);
 
           for (let i = 0, theme; i < themes.length, theme = themes[i]; i++) {
-            let path = file.path.replace('.css', `-${theme}.css`);
+            let path = file.replace('.css', `-${theme}.css`);
 
             let extracted = res.extracted.replace(/\$(\[[^\]]+\])/g, (_, rules) => {
               rules = JSON.parse('{' + rules.slice(1,-1).replace(/=>/g, ':') + '}');
@@ -59,27 +65,27 @@ glob.readdirStream('_site/assets/**/*.css')
 
         });
     });
-  })
-  .on('error', console.error)
-  .on('end', () => {
-    console.log('');
   });
+});
 
+if (isProduction) {
+  glob().readdir('_site/assets/**/*.js', (err, files) => {
+    if (err) throw err;
 
-// glob.readdirStream('_site/assets/**/*.js')
-//   .on('data', (file) => {
-//     fs.readFile(file.path, (err, js) => {
-//       if (err) throw err;
+    files.forEach((file) => {
+      file = '../' + file;
 
-//       uglified = uglify.minify(js);
+      fs.readFile(file, (err, js) => {
+        if (err) throw err;
+        if (~blacklist.indexOf(file.split('/').slice(-2).join('/'))) return;
 
-//       if (uglified.error) throw uglified.error;
-//       if (uglified.warnings) console.warn(uglified.warnings);
+        let uglified = uglify.minify(js.toString());
 
-//       fs.writeFile(file.path, uglified.code);
-//     });
-//   })
-//   .on('error', console.error)
-//   .on('end', () => {
-//     console.log('');
-//   });
+        if (uglified.error) { console.error(file); throw uglified.error; }
+        if (uglified.warnings) console.warn(uglified.warnings);
+
+        fs.writeFile(file, uglified.code);
+      });
+    });
+  });
+}
