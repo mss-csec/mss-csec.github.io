@@ -100,7 +100,7 @@
       ]
     };
 
-    d.scripts[d.scripts.length - 1].insertAdjacentHTML('afterend', '<link href="' + STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="') + '" class="toggled-theme" rel="stylesheet" onload="document.documentElement.style.backgroundColor=null">');
+    d.scripts[d.scripts.length - 1].insertAdjacentHTML('afterend', '<link href="' + STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="') + '" class="toggled-theme" rel="stylesheet">');
 
     delete window.t; delete window.d;
   </script>

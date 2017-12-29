@@ -445,8 +445,8 @@ APP.onload = () ->
     , 1
 
   # Unhide body
-  $('body')
-    .removeClass 'no-js'
+  document.documentElement.style.backgroundColor = null;
+  $('body').removeClass 'no-js'
 
   # KaTeX rendering
   __katexFail = false

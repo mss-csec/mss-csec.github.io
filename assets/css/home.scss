@@ -7,11 +7,13 @@
 $hero-height: 25 * $ex; // 500px
 $schedule-height: 8 * $ex; // 160px
 
-.has-anim .site-header.at-top .search-box input {
-  background-color: if-theme((
-    light: transparentize($bg-secondary, .3),
-    dark: transparentize(lighten($bg-secondary, 3%), .3)
-  ));
+@media (#{$bp-larger-than-tablet}) {
+  .has-anim .site-header.at-top .search-box input {
+    background-color: if-theme((
+      light: transparentize($bg-secondary, .3),
+      dark: transparentize(lighten($bg-secondary, 3%), .3)
+    ));
+  }
 }
 
 .hero {
@@ -108,7 +110,10 @@ $schedule-height: 8 * $ex; // 160px
 
     &::after {
       width: 100%;
-      background-color: $brand-colour;
+      background-color: if-theme((
+        light: $brand-colour,
+        dark: $brand-colour
+      ));
       transform: scaleX(0);
     }
 
