@@ -11,7 +11,7 @@
 // Variables
 // -----------------------------------------
 
-$balloon-bg:             transparentize($fg-primary, .1); // fade-out(#111, .1) !default;
+$balloon-bg:             if-theme(( light: rgba(35, 35, 35, .9), dark: rgba(26, 31, 42, .9) )); //transparentize($fg-primary, .1); // fade-out(#111, .1) !default;
 $balloon-fg:             $bg-primary; // default #fff where used
 $balloon-base-size:      $ex05; // 10px !default;
 $balloon-arrow-height:   0.6 * $ex05; // 6px;
@@ -39,7 +39,9 @@ $balloon-df-margin:      2px; // default 5px where used
     $height: 3 * $balloon-arrow-height;
   }
 
-  background: no-repeat url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
+//  background: no-repeat url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$color}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
   background-size: 100% auto;
   width: $width;
   height: $height;
@@ -147,7 +149,7 @@ button[data-balloon] {
     &:before,
     &:after {
       @include opacity(1);
-      pointer-events: auto;
+      // pointer-events: auto; // added: why
     }
 
     &:after {
