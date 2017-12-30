@@ -2,7 +2,6 @@
 
 const fs = require('fs'),
       glob = require('glob-fs'),
-      sass = require('node-sass'),
       postcss = require('postcss'),
       autoprfxr = require('autoprefixer'),
       extrStyles = require('postcss-extract-styles')({ pattern: /\$(\w+|\[[^\]]+\])/ }),

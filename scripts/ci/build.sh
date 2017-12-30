@@ -46,9 +46,10 @@ for subclub_subdir in `echo _subclubs/*/*/`; do
   if [ -z "$dir_diff" ] && [ -d "_$subdir/$subclub" ]; then
     echo "No change, skipping directory."
     continue
+  elif [ -d "_$subdir/$subclub" ]; then
+    echo $dir_diff
   fi
 
-  echo $dir_diff
   rsync -rc --delete --exclude='_*' "$subclub_subdir" "_$subdir/$subclub"
 
   # Only delete original files in a production environment
@@ -62,7 +63,8 @@ echo
 
 # Build site
 if [ "$1" != "production" ]; then
-  bundle exec jekyll build
+  bundle exec jekyll build  # Jekyll
+  ./scripts/build.js        # NodeJS post-processing
 else
   echo "production: true" \
     >> _config-prod.yml
@@ -71,18 +73,8 @@ else
   echo "build_version: $(echo $CIRCLE_SHA1 | cut -c-7)" \
     >> _config-prod.yml
 
-  bundle exec jekyll build --config _config.yml,_config-prod.yml
-
-  # Delete and move files
-  find . -maxdepth 1 \
-      ! -name '.git' ! -name '.gitignore' ! -name '_site' \
-      ! -name '.circleci' ! -name '.vagrant' \
-      -exec rm -rf {} \;
-
-  mv _site/* .
-  rm -R _site/
-
-  touch .nojekyll
+  bundle exec jekyll build --config _config.yml,_config-prod.yml  # Jekyll
+  ./scripts/build.js $1                                           # NodeJS post-processing
 fi
 
 echo "Build successful"

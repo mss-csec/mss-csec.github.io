@@ -8,8 +8,11 @@ jobs:
     environment:
       BUNDLE_INSTALL_DIR: ~/.bundle
       NPM_INSTALL_DIR: ./node_modules
+      JEKYLL_ENV: production
+      NODE_ENV: production
       SOURCE_BRANCH: staging
       DEPLOY_BRANCH: master
+      BUILD_BRANCH: build-master
       USER_EMAIL: markville.compsci@gmail.com
       USER_NAME: MSS CSEC
 
@@ -29,7 +32,7 @@ jobs:
           keys:
             - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
 
-      # Restore bundle cache
+      # Restore bundle+npm cache
       - restore_cache:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
@@ -40,9 +43,7 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            which nodejs && nodejs --version
-            which npm && npm --version
-            # ./scripts/ci/setup.sh
+            ./scripts/ci/setup.sh
 
       # Save binary cache
       - save_cache:
@@ -69,6 +70,31 @@ jobs:
             if [ "$CIRCLE_BRANCH" == "staging" ]; then
               git config user.email "$USER_EMAIL"
               git config user.name "$USER_NAME"
+            fi
+
+      # Pre-build setup
+      - run:
+          name: Pre-build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              ./scripts/ci/pre-build.sh
+            fi
+
+      # Build
+      - run:
+          name: Build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              chmod +x ./scripts/ci/build.sh
+              ./scripts/ci/build.sh production
+            fi
+
+      # Post-build
+      - run:
+          name: Post-build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              ./scripts/ci/post-build.sh
             fi
 
       # Deploy
