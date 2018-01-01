@@ -75,6 +75,7 @@
 
 .search-box {
   margin-left: auto;
+  margin-right: $ex05;
 
   input,
   input:focus {
@@ -87,85 +88,40 @@
   }
 }
 
-@media (min-width: $bp-tablet) {
-  .site-header {
-    color: $fg-primary;
-    background-color: $bg-primary;
-    border-bottom-width: 1px;
+.toggle {
+  position: relative;
+  display: block;
+  height: $ex;
+  margin-left: $ex05;
+  margin-bottom: $ex05;
 
-    &.at-top {
-      background-color: $t;
-      box-shadow: none;
-
-      .search-box input {
-        background-color: transparentize($fg-accent, .7);
-      }
-    }
-
-    &.at-top:hover {
-      background-color: transparentize($bg-primary, .3);
-
-      .menu-items {
-        background-color: transparentize($bg-secondary, .3);
-      }
-
-      .search-box input {
-        @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
-        @else       { background-color: transparentize($bg-secondary, .3); }
-      }
-    }
+  .icon {
+    position: absolute;
+    bottom: 1px;
+    height: 1em;
   }
 
-  .options {
-    margin-left: $ex05;
-
-    .icon {
-      display: flex;
-      flex-direction: column;
-      width: $ex;
-      height: $ex2;
-      color: currentColor;
-      padding-top: 5px;
-      padding-left: 15px;
-      padding-bottom: 7px;
-    }
-
-    .circle {
-      width: 5px;
-      height: 5px;
-      background-color: currentColor;
-      border-radius: 5px;
-      margin-top: 3px;
-    }
-
-    &:hover .circle,
-    .icon:focus .circle {
-      background-color: $brand-colour;
-    }
-
-    .content {
-      position: absolute;
-      top: $ex3 - $ex05;
-      right: 0;
-      display: none;
-      background-color: $bg-secondary;
-      padding: $ex05;
-      z-index: $z2;
-    }
-
-    &:hover .content,
-    .icon:focus + .content {
-      display: block;
-    }
-
-    label, input {
-      margin: 0;
-    }
-
-    input {
-      margin-right: $ex05;
-    }
+  &:hover,
+  &:focus {
+    color: $brand-colour;
   }
+
+  &::after {
+    content: attr(title);
+    margin-left: $ex;
+  }
+}
+
+.theme-light .toggle-theme .icon:last-child {
+  visibility: hidden;
+}
+
+.theme-dark .toggle-theme .icon:first-child {
+  visibility: hidden;
+}
+
+.make-distraction-free {
+  display: none;
 }
 
 .announcement-sticky {
@@ -194,11 +150,81 @@
   }
 
   ~ main {
-    margin-top: $ex3;
+    margin-top: $ex + 4px;
   }
 }
 
-@media (min-width: $bp-tablet) {
+@media (#{$bp-larger-than-tablet}) {
+  .site-header {
+    color: $fg-primary;
+    background-color: $bg-primary;
+    border-bottom-width: 1px;
+
+    &.at-top {
+      background-color: $t;
+      box-shadow: none;
+
+      .search-box input {
+        background-color: transparentize($fg-accent, .7);
+      }
+    }
+
+    &.at-top:hover {
+      background-color: transparentize($bg-primary, .3);
+
+      .menu-items {
+        background-color: transparentize($bg-secondary, .3);
+      }
+
+      .search-box input {
+        @if ($dark) { background-color: transparentize(lighten($bg-secondary, 3%), .3); }
+        @else       { background-color: transparentize($bg-secondary, .3); }
+      }
+    }
+  }
+
+  .toggles {
+    height: $ex;
+    align-self: center;
+    margin: 0;
+  }
+
+  .toggle {
+    display: inline-block;
+    color: currentColor;
+
+    .icon {
+      height: $ex;
+    }
+
+    &::after {
+      content: "";
+    }
+  }
+
+  .make-distraction-free {
+    display: inline-block;
+
+    // Icons don't have perfectly square metrics, unfortunately
+    .icon-expand {
+      width: $ex - 1px;
+    }
+
+    .icon-compress {
+      visibility: hidden;
+    }
+
+    .distraction-free & {
+      position: absolute;
+      top: $ex;
+      right: $ex;
+
+      .icon-compress {
+        visibility: visible;
+      }
+    }
+  }
+
   .announcement-sticky {
     top: 0;
 

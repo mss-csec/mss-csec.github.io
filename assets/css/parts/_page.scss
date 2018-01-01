@@ -1,9 +1,18 @@
 // Page styles
 
+.page-title {
+  position: relative;
+  font-size: 52px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
 .breadcrumbs {
   color: $fg-secondary;
-  margin-top: -$ex;
-  margin-bottom: $ex;
+  margin-top: $ex;
+  margin-bottom: 1.5 * $ex;
 
   .icon-home:hover {
     text-decoration: none;
@@ -12,6 +21,17 @@
   &-current {
     color: $fg-primary;
   }
+
+  // Post-specific styles
+  .post & {
+    margin-top: $ex05;
+    margin-bottom: $ex;
+  }
+}
+
+// Prevent single page container from being overly wide
+.page .content.container {
+  max-width: 800px;
 }
 
 article {
@@ -46,10 +66,33 @@ article header {
   }
 }
 
+// Make paragraphs and stuff readable
+article p,
+.admonitionblock {
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+// Style quoteblocks
+.quoteblock {
+  max-width: calc(800px - 8em);
+  margin-left: 4em;
+  margin-top: 1.25em;
+}
+
+// Reset styling on code blocks
 code table,
 code td,
 code td pre {
   @include reset-all;
+  white-space: pre;
+}
+
+// Make tables responsive
+table {
+  display: block; // This doesn't affect the layout of the table itself
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 // Highlight callouts
@@ -83,6 +126,57 @@ code td pre {
     font: bold .9em monospace;
     margin-top: .2em;
     border-radius: $df-radius;
+  }
+}
+
+// Style admonition blocks
+.admonitionblock {
+  padding: $ex05;
+  border: 4px solid rgba(0, 0, 0, .2);
+  border-radius: 2 * $df-radius;
+  margin: 1em 0;
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    margin: 0;
+  }
+
+  table td.icon,
+  table td.content {
+    @include reset(padding border);
+
+    color: currentColor;
+    text-align: left;
+  }
+
+  table td.icon {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: $ex05;
+  }
+
+  table .title {
+    font-family: inherit;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
+
+  .paragraph:last-child p {
+    margin-bottom: 0;
+  }
+
+  :not(pre) > code {
+    background-color: rgba(0, 0, 0, .05);
+    border-color: rgba(0, 0, 0, .15);
+  }
+
+  &.note,
+  &.note table td.icon {
+    background-color: $bg-secondary;
+    border-color: transparentize($fg-primary, .8);
   }
 }
 
@@ -121,7 +215,15 @@ code td pre {
   color: $bg-primary;
 }
 
-@media only screen and (min-width: $bp-tablet) {
+@media (#{$bp-larger-than-tablet}) {
+  .page-title {
+    word-wrap: normal;
+  }
+
+  table {
+    display: table;
+  }
+
   // Show line numbers at adequate screen width
   .rouge-table .gutter {
     display: table-cell;

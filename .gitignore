@@ -4,3 +4,6 @@ _site
 .vagrant
 
 vagrant-ssh.config
+
+_includes/icons/fontawesome-5.0.2
+_includes/icons/fontawesome-free-5.0.2.zip

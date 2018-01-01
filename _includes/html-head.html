@@ -51,7 +51,7 @@
   {% if layout == 'home' or layout == 'subclub-landing' %}
   <link href="{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
   <link href="{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}" data-alt-dark="{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}">
   {% endif %}
 
@@ -72,6 +72,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}
+  <script src="{{ '/assets/js/subclubs.js' | relative_url }}" defer></script>
+  {% endif %}
 
   <script src="{{ '/assets/js/feedback.js' | relative_url }}" defer></script>
 

@@ -135,6 +135,11 @@ main {
 
 code {
   overflow-x: auto;
+
+  :not(pre) > & {
+    background-color: transparentize($fg-primary, .95);
+    border-color: transparentize($fg-primary, .85);
+  }
 }
 
 :root * {
@@ -167,47 +172,7 @@ a {
   }
 }
 
-.disabled {
-  opacity: 0.5;
-}
-
-.icon-home::before {
-  content: "\1F3E0";
-}
-
-.error,
-.info,
-.success,
-.warning {
-  color: #000;
-}
-
-.error {
-  background-color: $error;
-  color: #fff;
-}
-
-.info {
-  background-color: $info;
-}
-
-.success {
-  background-color: $success;
-}
-
-.warning {
-  background-color: $warning;
-}
-
-@media (#{$bp-larger-than-mobile}) {
-  .br-mobile { display: none; }
-}
-@media (#{$bp-larger-than-phablet}) {
-  .br-phablet { display: none; }
-}
-@media (#{$bp-larger-than-tablet}) {
-  .br-tablet { display: none; }
-}
-@media (#{$bp-larger-than-desktop}) {
-  .br-desktop { display: none; }
+// Icons
+svg > path {
+  fill: currentColor;
 }

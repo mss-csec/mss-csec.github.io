@@ -1,14 +1,47 @@
 ---
-layout: page
+layout: default
 ---
+{% assign subclubs = site.subclubs | group_by: "category" %}
+{% assign subclub = page.category %}
 
-<div id="main-content">
-    {% if page.draft %}
-    <div class="callout warning">
-      <h4>This resource is a draft.</h4>
-      <p>We're currently in the process of finishing this resource. Check back frequently as we continue to add more content and improve our typos.</p>
+{% if subclub %}
+  {% assign subclub_obj = subclubs | where: "name", subclub | first %}
+  {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+{% endif %}
+
+<a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode">{% include icons/compress.svg %}</a>
+
+
+<div class="content container">
+  <div class="row">
+    <div id="main-content" class="columns">
+
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title }}</h1>
+      <div class="breadcrumbs">
+        {% if subclub and subclub_index %}
+        <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/resources">Resources</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
+        {% elsif subclub %}
+        <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/resources">Resources</a> / <a href="{{ site.baseurl }}/resources#{{ subclub | slugify }}">{{ subclub }}</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
+        {% else %}
+        <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/resources">Resources</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
+        {% endif %}
+      </div>
+      <div class="bar bg-gradient hide-tablet"></div>
+      <div class="container">
+      </div>
+    </header>
+
+      {% if page.draft %}
+      <div class="callout warning">
+        <h4>This resource is a draft.</h4>
+        <p>We're currently in the process of finishing this resource. Check back frequently as we continue to add more content and improve our typos.</p>
+      </div>
+      {% endif %}
+
+      <article>
+      {{ content }}
+      </article>
     </div>
-    {% endif %}
-
-    {{ content }}
+  </div>
 </div>

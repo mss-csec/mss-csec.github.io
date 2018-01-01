@@ -9,11 +9,19 @@ APP = {}
 UTILS = {}
 
 CONSTS =
+  ex: 20
+  bpMobile: 400
+  bpPhablet: 550
+  bpTablet: 768
+  bpDesktop: 1024
+  bpDesktopHd: 1440
   animDuration: 230
   cookieCollapseSidebar: 'collapseSidebar'
   cookieStickyPrefix: 'sticky-'
   cookieTheme: 'theme'
   easterEgg: 'pascha'
+
+Object.freeze CONSTS
 
 UTILS.intSort = (a, b) -> a - b
 UTILS.reverseIntSort = (a, b) -> b - a
@@ -222,19 +230,14 @@ APP.toggleSidebar = (e) ->
 
   $target = $(e.target)
   $sidebar = $target.closest '.sidebar-collapsible'
-  $mainContent = $('#main-content')
   isClosed = $target.hasClass 'closed'
 
   if isClosed
     # Open sidebar
     __openSidebar $sidebar
-    $mainContent.removeClass 'twelve'
-      .addClass 'nine'
   else
     # Collapse sidebar
     __collapseSidebar $sidebar
-    $mainContent.removeClass 'nine'
-      .addClass 'twelve'
 
   true
 
@@ -254,7 +257,7 @@ __dispatchCustomEvent = (obj, name, detail = null) ->
 #
 # theme: A string, either 'light' or 'dark', corresponding to the desired theme
 APP.changeTheme = (theme) ->
-  $t = $('.toggled-theme');
+  $t = $('.toggled-theme')
   $t.each () ->
     $e = $(this)
     altProp = $e.attr 'data-alt-prop'
@@ -267,11 +270,15 @@ APP.changeTheme = (theme) ->
     $e.attr newKey, oldVal
 
   if theme == 'dark'
+    $('body').removeClass 'theme-light'
     $('body').addClass 'theme-dark'
     APP.currentTheme = 'dark'
+    $('.toggle-theme').attr 'title', 'Use light theme'
   else
     $('body').removeClass 'theme-dark'
+    $('body').addClass 'theme-light'
     APP.currentTheme = 'light'
+    $('.toggle-theme').attr 'title', 'Use dark theme'
 
   __dispatchCustomEvent window, 'changetheme'
 
@@ -286,7 +293,6 @@ APP.onload = () ->
   # Parse theme changes
   if 'dark' == Cookies.get CONSTS.cookieTheme
     APP.changeTheme 'dark'
-    $('#toggle-dark-theme').prop 'checked', true
 
   # Easter egg
   __easterEgg = () ->
@@ -323,8 +329,10 @@ APP.onload = () ->
   $(window).on 'keydown', __easterEggTrigger()
 
   # Add event handlers
-  $('#toggle-dark-theme').on 'change', () ->
+  $('.toggle-theme').on 'click', (e) ->
     theme = Cookies.get CONSTS.cookieTheme
+
+    e.preventDefault()
 
     if theme == 'dark'
       Cookies.set CONSTS.cookieTheme, 'light'
@@ -345,15 +353,21 @@ APP.onload = () ->
     if $(this).attr('href') != '#'
       window.location = $(this).attr 'href'
 
-  # Scrolling
-  $(window).on 'scroll', (e) ->
-    if window.scrollY > 100
-      $('body:not(.no-hero) .site-header').removeClass 'at-top'
-    else
-      $('body:not(.no-hero) .site-header').addClass 'at-top'
+  # Header
+  if !$('body').hasClass('no-hero') and
+  !$('body').hasClass('landing') and
+  !$('body').hasClass('lesson') and
+  !$('body').hasClass('post') and
+  !$('body').hasClass('resource') and
+  window.innerWidth > CONSTS.bpTablet
+    $(window).on 'scroll', (e) ->
+      if window.scrollY > 100
+        $('body .site-header').removeClass 'at-top'
+      else
+        $('body .site-header').addClass 'at-top'
+    $('body .site-header').addClass 'at-top'
 
   # DOM manipulation
-  $('body:not(.no-hero) .site-header').addClass 'at-top'
 
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')
@@ -370,8 +384,6 @@ APP.onload = () ->
 
   if '1' == Cookies.get CONSTS.cookieCollapseSidebar
     __collapseSidebar $('.sidebar-collapsible')
-    $('#main-content').removeClass 'nine'
-      .addClass 'twelve'
 
   # Footnotes
   # Change title attr to footnote content
@@ -495,6 +507,7 @@ APP.onload = () ->
   # Run page scripts
   SCRIPTS.run()
 
+window.CONSTS = CONSTS
 window.APP = APP
 window.UTILS = UTILS
 

@@ -1,6 +1,10 @@
 ---
-layout: page
+layout: default
 ---
+{% comment %}
+Source for collapsed section below
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
 {% assign subclubs = site.subclubs | group_by: "category" %}
 {% assign subclub = page.category %}
 {% assign subclub_obj = subclubs | where: "name", subclub | first %}
@@ -46,44 +50,60 @@ layout: page
     {% endif %}
   {% endfor %}
 {% endfor %}
+{% endcomment %}
 
-<div class="breadcrumbs">
-  <a href="{{ site.baseurl }}/" class="icon-home"></a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <strong class="breadcrumbs-current">{{ page.title | xml_escape }}</strong>
-  <span class="lesson-date">Dated: <time datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</em></span>
-</div>
-<div class="row">
-  <div class="three columns sidebar-collapsible" id="lesson-listing">
-    <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
-    <h2>Lessons</h2>
+{% assign subclubs = site.subclubs | group_by: "category" %}{% assign subclub = page.category %}{% assign subclub_obj = subclubs | where: "name", subclub | first %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% assign lesson_cur = page.lesson %}{% assign lesson_cur_index = lesson_cur %}{% assign lesson_listings = "" | split: '' %}{% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}{% for item in ordered_lessons %}{% assign lesson_obj = item %}{% assign o_forloop = forloop %}{% for entry in subclub_schedule %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}{% assign class_name = "lesson-name" %}{% if last_lesson_was_cur %}{% assign lesson_next_date = lesson_date %}{% endif %}{% if item.lesson == lesson_cur %}{% assign class_name = "lesson-name lesson-cur" %}{% assign lesson_cur_index = o_forloop.index0 %}{% assign lesson_prev_date = lesson_date %}{% assign lesson_cur_date = entry[1] %}{% assign last_lesson_was_cur = true %}{% endif %}{% assign lesson_date = entry[1] %}{% capture lesson_listing %}<p class="{{ class_name }}"><a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></p>{% endcapture %}{% assign lesson_listings = lesson_listings | push: lesson_listing %}{% break %}{% endif %}{% endfor %}{% endfor %}
 
-    <div class="lesson-callout" id="lesson-pagination">
-      {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
-      {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
-      {% if 0 <= lesson_prev_index %}
-      <h5 class="lesson-state">Previous</h5>
-      <p class="lesson-name lesson-prev">
-        {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
-        <a class="lesson-link" href="{{ lesson_prev_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_prev_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
-      </p>
-      {% endif %}
-      {% if ordered_lessons.size > lesson_next_index %}
-      <h5 class="lesson-state">Next</h5>
-      <p class="lesson-name lesson-next">
-        {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
-        <a class="lesson-link" href="{{ lesson_next_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_next_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
-      </p>
-      {% endif %}
+<a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode">{% include icons/compress.svg %}</a>
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}<span class="invisible">&nbsp;#{{ page.lesson }}</span><span class="lesson-num">#{{ page.lesson }}</span></h1>
+    <div class="breadcrumbs">
+      <a href="{{ site.baseurl }}/">~</a> / <a href="{{ site.baseurl }}/subclubs/">Subclubs</a> / <a href="{{ subclub_index.url | remove: '/index' | uri_escape }}/">{{ subclub_index.title | xml_escape }}</a> / <span class="breadcrumbs-current">{{ page.title | xml_escape }}</span>
+      <time class="lesson-date" datetime="{{ lesson_cur_date | date: site.mdatefmt }}">{{ lesson_cur_date | date: site.datefmt }}</time>
+    </div>
+    <div class="bar bg-gradient hide-tablet"></div>
+  </div>
+</header>
+
+<div class="content container">
+  <div class="row">
+    <div class="columns sidebar-collapsible" id="lesson-listing">
+      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+      <h2 class="show-tablet">Lessons</h2>
+
+      <div class="lesson-callout" id="lesson-pagination">
+        {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
+        {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
+        {% if 0 <= lesson_prev_index %}
+        <h5 class="lesson-state">Previous<span class="hide-tablet"> lesson</span></h5>
+        <p class="lesson-name lesson-prev">
+          {% assign lesson_prev_obj = ordered_lessons[lesson_prev_index] %}
+          <a class="lesson-link" href="{{ lesson_prev_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_prev_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_prev_obj.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+        {% if ordered_lessons.size > lesson_next_index %}
+        <h5 class="lesson-state">Next<span class="hide-tablet"> lesson</span></h5>
+        <p class="lesson-name lesson-next">
+          {% assign lesson_next_obj = ordered_lessons[lesson_next_index] %}
+          <a class="lesson-link" href="{{ lesson_next_obj.url | remove: '/index' | uri_escape }}/" data-balloon="{{ lesson_next_date | date: site.datefmt }}" data-balloon-pos="up-left">{{ lesson_next_obj.title | xml_escape }}</a>
+        </p>
+        {% endif %}
+      </div>
+
+      {{ lesson_listings | join: '' }}
     </div>
 
-    {{ lesson_listings | join: '' }}
-  </div>
-  <div class="nine columns" id="main-content">
-    {% if page.draft %}
-    <div class="callout warning">
-      <h4>This lesson is a draft.</h4>
-      <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
+    <div class="columns" id="main-content">
+      {% if page.draft %}
+      <div class="callout warning">
+        <h4>This lesson is a draft.</h4>
+        <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
+      </div>
+      {% endif %}
+      <article>{{ content }}</article>
     </div>
-    {% endif %}
-    {{ content }}
   </div>
 </div>
+<div class="footnote-tip" tabindex="-1"></div>

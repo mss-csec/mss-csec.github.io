@@ -1,10 +1,14 @@
 {% assign stickies = site.posts | where_exp: "item", "item.tags contains 'sticky'" %}
 {% for sticky in stickies limit: 1 %}
-{% assign sticky_fallback_date = sticky.date | date: '%s' | plus: 604800 | date: '%F' %}
-<p class="announcement-sticky" data-display-until="{{ sticky.display_until | default: sticky_fallback_date }}" data-id="{{ sticky.id }}">
+{% assign sticky_fallback_date = sticky.date | date: '%s' | plus: 604800 %}
+{% assign cur_date = site.time | date: '%s' | plus: 0 %}
+{% if cur_date <= sticky_fallback_date %}
+<p class="announcement-sticky" data-display-until="{{ sticky.display_until | default: sticky_fallback_date | date: '%F' }}" data-id="{{ sticky.id }}">
   {{ sticky.summary }} <a href="{{ sticky.url }}" class="read-more">Read more &raquo;</a> <a href="#" class="close-el">&times;</a>
 </p>
+{% endif %}
 {% endfor %}
+
 <header class="site-header">
   <div class="container">
     <a class="logo main-logo" aria-label="{csec}" href="{{ '/' | relative_url }}" title="Happy Holidays from CSEC!">
@@ -96,18 +100,14 @@
         </form>
       </div>
 
-      <div class="options">
-        <a class="icon" tabindex="0">
-          <span class="circle"></span>
-          <span class="circle"></span>
-          <span class="circle"></span>
-        </a>
-        <div class="content">
-          <label>
-            <input type="checkbox" id="toggle-dark-theme">
-            Dark theme
-          </label>
-        </div>
+      <div class="menu toggles">
+        <span class="menu-header show-tablet">Options</span>
+
+        <a href="#" class="toggle toggle-theme" tabindex="0" title="Use dark theme">{% include icons/moon.svg %}{% include icons/solid-sun.svg %}</a>
+
+        {% if layout == 'lesson' or layout == 'resource' or layout == 'post' %}
+        <a href="#" class="toggle make-distraction-free" tabindex="0" title="Enter distraction-free mode">{% include icons/expand.svg %}</a>
+        {% endif %}
       </div>
     </div>
   </div>

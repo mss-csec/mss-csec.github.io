@@ -1,18 +1,59 @@
 @import "base/mixins";
 
+// Header
+
+.page-header {
+  position: relative;
+  padding-top: 1.5 * $ex;
+  margin-top: $ex3;
+
+  .landing & {
+    height: 5 * $ex;
+    padding-bottom: 1.5 * $ex - 2px;
+    margin-bottom: $ex;
+  }
+
+  .bar {
+    @include position(null, 0, 0, $ex05);
+
+    position: absolute;
+    height: 0.5 * $ex05;
+  }
+}
+
+.landing .page-title {
+  margin-top: $ex05 + 3px;
+
+  em {
+    box-shadow: 0 1px 2px #0000004d;
+  }
+}
+
+// Sidebar
+
 #lesson-listing {
+  position: relative;
+  top: 0;
+  width: 100%;
   background-color: $bg-tertiary;
   overflow-x: auto;
   padding: $ex;
 
-  &.closed {
-    overflow: hidden;
+  @media (max-width: #{$bp-tablet - 1px}) {
+    margin-top: -$ex05;
+
+    &.closed {
+      height: $ex3;
+      padding: $ex05 $ex;
+      overflow: hidden;
+    }
   }
 }
 
 .collapse-el {
   position: absolute;
-  top: $ex;
+  top: $ex05;
+  transform: rotate(90deg);
   right: $ex05;
   width: $ex2;
   font-size: $ex2;
@@ -26,17 +67,13 @@
   }
 }
 
-.lesson-date time {
-  color: $fg-primary;
-}
-
 .paginator {
   display: flex;
   align-items: center;
   flex-direction: row;
   font-size: .95em;
-  margin-top: -$ex;
-  margin-bottom: -$ex05;
+  padding-top: .5 * $ex05;
+  padding-bottom: $ex;
 
   &-item {
     @include transition;
@@ -44,6 +81,7 @@
     flex: 1;
     color: $fg-secondary;
     text-align: center;
+    padding: 0;
 
     &:first-child {
       text-align: left;
@@ -63,89 +101,13 @@
   }
 }
 
-@media (min-width: #{$bp-tablet + 1px}) {
-  #lesson-listing {
-    position: relative;
-    position: sticky;
-    top: $ex4;
-    max-height: calc(100vh - #{$ex4 + $ex});
-
-    &.closed {
-      width: 0;
-      height: $ex2 + 4px;
-      padding: 0;
-      padding-left: $ex2 + 4px;
-      margin-left: -$ex3;
-    }
-  }
-
-  .collapse-el.closed {
-    top: 2px;
-    right: 2px;
-  }
-
-  .lesson-date {
-    float: right;
-  }
-}
-
-@media (max-width: $bp-tablet) {
-  #lesson-listing {
-    position: relative;
-    top: 0;
-    width: 100%;
-    margin-bottom: $ex;
-
-    &.closed {
-      height: $ex3;
-      padding: $ex05;
-    }
-  }
-
-  .collapse-el {
-    top: $ex05;
-    transform: rotate(90deg);
-  }
-
-  #main-content {
-    width: 100%;
-
-    &.offset-by-two {
-      margin-left: 0;
-    }
-  }
-
-  .lesson-date {
-    display: block;
-  }
-
-  .paginator-item {
-    padding: 0;
-  }
-}
-
 .lesson-name {
-  position: relative;
   line-height: 1.5;
   margin-bottom: 0;
-
-  &::before {
-    @include pseudo;
-    @include dimensions(2px, 100%);
-    @include position(0, -$ex);
-  }
-
-  &:hover::before {
-    background-color: lighten($fg-secondary, 10%);
-  }
 }
 
 .lesson-cur {
   font-weight: bold;
-}
-
-.lesson-name.lesson-cur::before {
-  background-color: $bg-accent;
 }
 
 .lesson-link {
@@ -178,17 +140,6 @@
   .lesson-name {
     font-size: 1.1em;
     margin-bottom: $ex05;
-
-    &::before {
-      width: 3px;
-      background-color: $bg-accent;
-      transform: scaleY(0);
-      transition: transform #{$df-anim-length / 2} ease;
-    }
-
-    &:hover::before {
-      transform: scaleY(1);
-    }
   }
 
   .lesson-link,
@@ -196,5 +147,195 @@
     color: $brand-colour;
     padding: 0;
     opacity: 1;
+  }
+}
+
+// Main content
+
+#toc {
+  display: none;
+}
+
+#main-content {
+  width: 100%;
+  margin: 0;
+
+  &.blog-post {
+    float: none;
+    margin: auto;
+  }
+}
+
+.lesson-num {
+  position: absolute;
+  bottom: -0.08em;
+  right: 0;
+  color: $fg-secondary;
+  font-size: .8em;
+  font-weight: 300;
+}
+
+.lesson-date {
+  display: block;
+  color: $fg-primary;
+}
+
+@media (#{$bp-larger-than-tablet}) {
+  // Header
+
+  .page-header {
+    margin-bottom: 1.5 * $ex;
+
+    .lesson &,
+    .post &,
+    .resource & {
+      padding-top: 0;
+    }
+  }
+
+  // Sidebar
+
+  #lesson-listing {
+    position: sticky;
+    top: $ex;
+    width: 22%; // .three.columns
+    background-color: $bg-primary;
+    padding: 0;
+    padding-top: $ex05;
+  }
+
+  .lesson-callout {
+    @include reset(padding border);
+  }
+
+  .collapse-el {
+    display: none;
+  }
+
+  .landing .site-header,
+  .lesson .site-header,
+  .post .site-header,
+  .resource .site-header {
+    position: absolute;
+    box-shadow: none;
+  }
+
+  // Main content
+
+  #toc {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    background-color: $bg-tertiary;
+    padding: $ex05;
+    margin-bottom: 1.5 * $ex;
+    z-index: $z2;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+
+      ul {
+        display: none;
+      }
+    }
+
+    li {
+      margin: 0;
+      margin-left: $ex;
+    }
+
+    a {
+      padding: 0 0.2em;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .in-view {
+      background-color: $bg-accent;
+      color: $fg-accent;
+    }
+
+    &.toc-fixed {
+      @include position(0, 0, 0);
+
+      position: fixed;
+      box-sizing: border-box;
+
+      ul {
+        max-width: 70%;
+      }
+
+      // scroll to top
+      > :last-child {
+        margin-left: auto;
+      }
+    }
+
+    // We don't show TOC on landing b/c it shouldn't exist
+    .landing & {
+      display: none;
+    }
+  }
+
+  #main-content {
+    width: 74%; // .nine.columns
+    margin-left: 4%;
+
+    > article {
+      margin-top: 0;
+    }
+
+    &:first-child {
+      float: none;
+      margin: auto;
+    }
+  }
+
+  .sect1 > h2:target {
+    outline: none;
+  }
+
+  .lesson-date {
+    float: right;
+  }
+
+  // Distraction-free mode
+
+  .distraction-free {
+    .distraction,
+    .site-header,
+    .site-footer,
+    .breadcrumbs,
+    .callout,
+    .anchorjs-link,
+    #lesson-listing,
+    #toc,
+    #open-feedback-modal {
+      display: none;
+    }
+
+    .page-header {
+      padding: 0;
+      margin-bottom: $ex;
+    }
+
+    .container {
+      max-width: 720px;
+    }
+
+    #main-content {
+      float: none;
+      width: 100%;
+      margin: auto;
+    }
+
+    .page-title {
+      margin-bottom: $ex;
+    }
   }
 }

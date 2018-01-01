@@ -6,6 +6,12 @@
   outline: 2px solid $brand-colour;
 }
 
+// Some elements we want to style w/ a background gradient
+.bg-gradient {
+  @if ($dark) { background-image: linear-gradient(100deg, #5f0d0d, #411471); }
+  @else       { background-image: linear-gradient(100deg, #f8b763, #f25e7d); }
+}
+
 // lol easter egg
 body.easter-egg {
   $easter-image: '/assets/images/kawaii-art-kawaii-anime.png';
