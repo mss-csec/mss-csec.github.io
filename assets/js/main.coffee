@@ -216,13 +216,17 @@ APP.changeTheme = (theme) ->
   if theme == 'dark'
     $('body').removeClass 'theme-light'
     $('body').addClass 'theme-dark'
-    APP.currentTheme = 'dark'
     $('.toggle-theme').attr 'title', 'Use light theme'
+
+    APP.currentTheme = 'dark'
+    document.documentElement.style.backgroundColor = '#1a1f2a'
   else
     $('body').removeClass 'theme-dark'
     $('body').addClass 'theme-light'
-    APP.currentTheme = 'light'
     $('.toggle-theme').attr 'title', 'Use dark theme'
+
+    APP.currentTheme = 'light'
+    document.documentElement.style.backgroundColor = '#fff'
 
   __dispatchCustomEvent window, 'changetheme'
 
@@ -317,9 +321,9 @@ APP.onload = () ->
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')
 
-    if Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}") == '1' or
-    (sticky.length and
-    (new Date()).getTime() > (new Date(sticky.data 'displayUntil')).getTime())
+    if sticky.length and
+      (Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}") == '1' or
+        (new Date()).getTime() > (new Date sticky.data 'displayUntil').getTime())
       sticky.remove()
 
   __DOMRemoveSticky()
@@ -402,7 +406,6 @@ APP.onload = () ->
     , 1
 
   # Unhide body
-  document.documentElement.style.backgroundColor = null;
   $('body').removeClass 'no-js'
 
   # KaTeX rendering

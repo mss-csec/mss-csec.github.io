@@ -148,7 +148,7 @@ table {
   table td.content {
     @include reset(padding border);
 
-    color: currentColor;
+    color: currentColor !important;
     text-align: left;
   }
 
@@ -156,12 +156,13 @@ table {
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     margin-bottom: $ex05;
-  }
 
-  table .title {
-    font-family: inherit;
-    font-size: 1.1em;
-    font-weight: 700;
+    // nesting to overwrite default styling  ...sigh
+    .title {
+      font-family: inherit;
+      font-size: 1.1em;
+      font-weight: 700;
+    }
   }
 
   .paragraph:last-child p {

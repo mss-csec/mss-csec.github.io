@@ -12,14 +12,19 @@ const fs = require('fs'),
 const variables = {
   theme:       [ 'light'  , 'dark'    ],
 
-  brandColour: [ '#f52f2f', '#f52f2f' ],
+  brandColour:   '#f52f2f',
   fgPrimary:   [ '#232323', '#ededed' ],
   fgSecondary: [ '#777'   , '#888'    ],
-  fgAccent:    [ '#fff'   , '#fff'    ],
+  fgAccent:      '#fff'   ,
   bgPrimary:   [ '#fff'   , '#1a1f2a' ],
   bgSecondary: [ '#ededed', '#2c313c' ],
   bgTertiary:  [ '#f5f5f5', '#262a33' ],
-  bgAccent:    [ '#f52f2f', '#f52f2f' ],
+  bgAccent:      '#f52f2f',
+
+  error:         '#e70046',
+  info:          '#3ac4ed',
+  success:       '#1ec712',
+  warning:       '#ffd30d',
 }, themes = variables.theme; // alias
 
 const blacklist = [
@@ -41,7 +46,12 @@ glob().readdir('_site/assets/**/*.css', (err, files) => {
       postcss([ autoprfxr, extrStyles ])
         .process(css)
         .then((res) => {
-          fs.writeFile(file, res.css);
+
+          postcss([ clrFcns ])
+            .process(res.css)
+            .then((res) => {
+              fs.writeFile(file, res.css);
+            });
 
           for (let i = 0, theme; i < themes.length, theme = themes[i]; i++) {
             let path = file.replace('.css', `-${theme}.css`);
@@ -51,9 +61,18 @@ glob().readdir('_site/assets/**/*.css', (err, files) => {
 
               if (rules.hasOwnProperty(theme)) {
                 return rules[theme];
+              } else if (rules.hasOwnProperty('all')) {
+                return rules.all;
               }
+
               return 'null';
-            }).replace(/\$(\w+)/g, (_, ident) => variables.hasOwnProperty(ident) ? variables[ident][i] : _);
+            }).replace(/\$(\w+)/g, (_, ident) => {
+              if (variables.hasOwnProperty(ident))
+                return Array.isArray(variables[ident]) ?
+                  variables[ident][i] :
+                  variables[ident];
+              return _;
+            });
 
             postcss([ clrFcns ])
               .process(extracted)

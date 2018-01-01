@@ -87,7 +87,7 @@
         "{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}",
         "{{ '/assets/lib/pygments-manni.css' | relative_url }}",
         {% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}"{% endif %}
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}"{% endif %}
       ],
       dark: [
         "{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}",
@@ -96,7 +96,7 @@
         "{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}",
         "{{ '/assets/lib/pygments-native.css' | relative_url }}",
         {% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}"{% endif %}
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}"{% endif %}
       ]
     };
 
@@ -104,7 +104,7 @@
 
     delete window.t; delete window.d;
   </script>
-  {% endraw %}{% endcomment %}<script>window.STYLESHEETS={light:["{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/pygments-manni.css' | relative_url }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}"{% endif %}],dark:["{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-dark.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/pygments-native.css' | relative_url }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}"{% endif %}]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link href="'+STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="')+'" class="toggled-theme" rel="stylesheet">');delete window.t;delete window.d</script>
+  {% endraw %}{% endcomment %}<script>window.STYLESHEETS={light:["{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/pygments-manni.css' | relative_url }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}"{% endif %}],dark:["{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-dark.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/pygments-native.css' | relative_url }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}"{% endif %}]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link href="'+STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="')+'" class="toggled-theme" rel="stylesheet">');delete window.t;delete window.d</script>
 
   {% if page.addons.styles %}
     {% for style in page.addons.styles %}
@@ -160,7 +160,7 @@
       };
     })(window);
   </script>
-  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var scripts=[];return{add:function(fn){scripts.push(fn)},run:function(){for(var i=0;i<scripts.length;i+=1){try{scripts[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
+  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){scripts.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
   <!-- END PAGE-ADDED JS -->
 
   <!-- BEGIN MATHJAX -->

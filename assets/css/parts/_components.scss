@@ -11,7 +11,8 @@
 .callout {
   background-color: $bg-secondary;
   padding: $ex;
-  border: 4px solid transparentize($fg-primary, .8);
+  border: 4px solid;
+  border-color: transparentize($fg-primary, .8);
   border-radius: 2 * $df-radius;
   margin: 1.5 * $ex 0;
 
