@@ -39,9 +39,9 @@ renderResults = (results) ->
         <p>#{UTILS.fuzzyTruncate(item.content, contentLength)}</p>
       </article>"
 
-    searchResults.html builder.join('')
+    searchResults.innerHTML = builder.join('')
   else
-    searchResults.html '<h3>No search results found.</h3>'
+    searchResults.innerHTML = '<h3>No search results found.</h3>'
 
 # Initialize search engine
 initSearch = (rawStore) ->
@@ -80,28 +80,27 @@ initSearch = (rawStore) ->
 executeSearch = (query) ->
   results = idx.search query
 
-  $('#search').val query
-  $('#search-query').text query
-  $('title')
-    .text "Search results for #{query} | {{ site.title }} • {{ site.description }}"
+  $('#search').value = query
+  $('#search-query').textContent = query
+  $('title').textContent = "Search results for #{query} |
+    {{ site.title }} • {{ site.description }}"
 
   renderResults results
 
-$(() ->
+document.addEventListener 'DOMContentLoaded', () ->
   query = extractQuery queryKey
 
-  $('#search-form').on 'submit', (e) ->
-    newQuery = $('#search').val()
+  $('#search-form').addEventListener 'submit', (e) ->
+    newQuery = $('#search').value
     e.preventDefault()
 
     history.pushState { newQuery }, '', "?#{queryKey}=#{sanitizeQuery(newQuery)}"
     executeSearch newQuery
 
-  $(window).on 'popstate', (e) ->
+  window.addEventListener 'popstate', (e) ->
     executeSearch e.originalEvent.state.query
 
   history.replaceState { query }, '', "?#{queryKey}=#{sanitizeQuery(query)}"
 
   initSearch searchStore
   executeSearch query
-)
