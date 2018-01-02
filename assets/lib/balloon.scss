@@ -11,7 +11,8 @@
 // Variables
 // -----------------------------------------
 
-$balloon-bg:             if-theme(( light: rgba(35, 35, 35, .9), dark: rgba(26, 31, 42, .9) )); //transparentize($fg-primary, .1); // fade-out(#111, .1) !default;
+// Manual definition needed due to the svg below
+$balloon-bg:             if-theme(( light: rgba(35, 35, 35, .9), dark: rgba(237, 237, 237, .9) )); //transparentize($fg-primary, .1); // fade-out(#111, .1) !default;
 $balloon-fg:             $bg-primary; // default #fff where used
 $balloon-base-size:      $ex05; // 10px !default;
 $balloon-arrow-height:   0.6 * $ex05; // 6px;

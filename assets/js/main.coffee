@@ -85,8 +85,8 @@ APP.renderSubclubSchedule = ($el, data) ->
   $lessonNext = $el.find '.lesson-next'
 
   # Get tooltip positioning data
-  mostRecentBalloonPos = $el.data('lesson-last-balloon-pos') or 'right'
-  nextUpBalloonPos = $el.data('lesson-next-balloon-pos') or 'left'
+  mostRecentBalloonPos = $el.attr('data-lesson-last-balloon-pos') or 'right'
+  nextUpBalloonPos = $el.attr('data-lesson-next-balloon-pos') or 'left'
 
   if scheduleData.mostRecent.id != null
     $lessonLast.each () ->
