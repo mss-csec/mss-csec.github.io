@@ -36,8 +36,8 @@ jobs:
       - restore_cache:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
             - mss-csec-{{ checksum "package-lock.json" }}
-            - mss-csec-
 
       # Setup environment
       - run:
@@ -81,6 +81,7 @@ jobs:
           name: Build
           command: |
             chmod +x ./scripts/ci/build.sh
+            chmod +x ./scripts/build.js
             ./scripts/ci/build.sh production
 
       # Post-build
@@ -105,7 +106,6 @@ workflows:
             branches:
               only:
                 - staging
-                - rebased-using-nodejs # temp.
   auto-build:
     triggers:
       - schedule:
