@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Build
           command: |
-            # chmod +x ./scripts/ci/build.sh
+            chmod +x ./scripts/ci/build.sh
             ./scripts/ci/build.sh production
 
       # Post-build
