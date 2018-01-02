@@ -160,7 +160,7 @@
       };
     })(window);
   </script>
-  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){scripts.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
+  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
   <!-- END PAGE-ADDED JS -->
 
   <!-- BEGIN MATHJAX -->

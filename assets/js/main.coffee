@@ -310,7 +310,7 @@ APP.onload = () ->
   !$('body').hasClass('resource') and
   window.innerWidth > CONSTS.bpTablet
     $(window).on 'scroll', (e) ->
-      if window.scrollY > 100
+      if window.pageYOffset > 100
         $('body .site-header').removeClass 'at-top'
       else
         $('body .site-header').addClass 'at-top'
@@ -361,9 +361,9 @@ APP.onload = () ->
       $ftnotesrc.removeClass 'targeted'
     else
       # Only show tooltip when actual footnote is not visible in viewport
-      unless window.scrollY + window.innerHeight >
+      unless window.pageYOffset + window.innerHeight >
         $ftnotesrc.offset().top + $ftnotesrc.outerHeight() and
-      window.scrollY < $ftnotesrc.offset().top
+      window.pageYOffset < $ftnotesrc.offset().top
         # Fill in content and display
         $ftnote.show()
           .html content
@@ -386,7 +386,7 @@ APP.onload = () ->
 
         # Scroll if tooltip is outside viewport
         if $ftnote.offset().top <
-            window.scrollY + $('.site-header').outerHeight()
+            window.pageYOffset + $('.site-header').outerHeight()
           window.scroll 0, $ftnote.offset().top -
             $('.site-header').outerHeight() - 5
 

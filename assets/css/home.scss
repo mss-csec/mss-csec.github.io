@@ -28,6 +28,7 @@ $schedule-height: 8 * $ex; // 160px
   }
 
   .title {
+    position: relative; // IE 10
     z-index: $z1;
   }
 }
