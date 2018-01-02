@@ -24,7 +24,7 @@ jobs:
 
       # Chmod CI scripts
       - run:
-          name: Chmod scripts
+          name: Chmod setup scripts
           command: chmod +x ./scripts/**/*.sh
 
       # Restore binary cache
@@ -78,12 +78,17 @@ jobs:
           command: |
             ./scripts/ci/pre-build.sh
 
+      # Chmod again (b/c we switched branches a bunch of times)
+      - run:
+          name: Chmod build/deploy scripts
+          command: |
+            chmod +x ./scripts/**/*.sh
+            chmod +x ./scripts/build.js
+
       # Build
       - run:
           name: Build
           command: |
-            chmod +x ./scripts/ci/build.sh
-            chmod +x ./scripts/build.js
             ./scripts/ci/build.sh production
 
       # Post-build
