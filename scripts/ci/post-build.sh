@@ -8,7 +8,7 @@ echo "Starting post-build"
 # Delete and move files
 find . -maxdepth 1 \
     ! -name '.git' ! -name '.gitignore' ! -name '_site' \
-    ! -name '.circleci' ! -name '.vagrant' \
+    ! -name 'scripts' ! -name '.circleci' ! -name '.vagrant' \
     -exec rm -rf {} \;
 
 mv _site/* .

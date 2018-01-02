@@ -24,6 +24,9 @@ __auto_resolve() {
 
 echo "Starting deploy"
 
+# Remove scripts directory before we do anything bad (i.e. accidentally add it)
+rm -R scripts
+
 # Add and commit built files
 echo "Adding and committing files..."
 git add -fA
