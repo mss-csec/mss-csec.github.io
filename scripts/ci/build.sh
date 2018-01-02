@@ -64,7 +64,7 @@ echo
 # Build site
 if [ "$1" != "production" ]; then
   bundle exec jekyll build  # Jekyll
-  ./scripts/build.js        # NodeJS post-processing
+  time ./scripts/build.js   # NodeJS post-processing
 else
   echo "production: true" \
     >> _config-prod.yml
@@ -74,7 +74,7 @@ else
     >> _config-prod.yml
 
   bundle exec jekyll build --config _config.yml,_config-prod.yml  # Jekyll
-  ./scripts/build.js $1                                           # NodeJS post-processing
+  time ./scripts/build.js $1                                      # NodeJS post-processing
 fi
 
 echo "Build successful"

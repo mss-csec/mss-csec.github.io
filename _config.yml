@@ -66,6 +66,7 @@ asciidoctor:
 # to override the default setting.
 exclude:
   - assets/lib/*.txt
+  - bin/
   - Gemfile
   - Gemfile.lock
   - node_modules/
