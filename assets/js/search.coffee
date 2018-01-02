@@ -87,7 +87,7 @@ executeSearch = (query) ->
 
   renderResults results
 
-document.addEventListener 'DOMContentLoaded', () ->
+window.addEventListener 'load', () ->
   query = extractQuery queryKey
 
   $('#search-form').on 'submit', (e) ->
