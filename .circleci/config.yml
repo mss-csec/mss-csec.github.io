@@ -37,6 +37,7 @@ jobs:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
       - restore_cache:
+          keys:
             - mss-csec-{{ checksum "package-lock.json" }}
 
       # Setup environment
