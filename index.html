@@ -3,6 +3,9 @@
 <!-- head -->
 <head>
   <meta charset="utf-8">
+
+  <script>window.d=document,window.s=d.documentElement.style;switch(window.t=d.cookie.replace(/(?:(?:^|.*;\s*)theme\s*=\s*([^;]*).*$)|^.*$/,"$1")||'light'){case 'light':s.backgroundColor='#fff';break;case 'dark':s.backgroundColor='#1a1f2a';break}delete window.s</script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="theme-color" content="#f52f2f">
@@ -28,8 +31,8 @@
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=726816b" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=726816b" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=d33a582" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=d33a582" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -51,26 +54,35 @@
   
   
 
-  <link href="/assets/lib/skeleton-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton-light.css?v=726816b" data-alt-dark="/assets/lib/skeleton-dark.css?v=726816b">
-
-  <link href="/assets/lib/balloon-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/balloon-light.css?v=726816b" data-alt-dark="/assets/lib/balloon-dark.css?v=726816b">
-
+  <link href="/assets/lib/skeleton.css?v=d33a582" rel="stylesheet">
+  <link href="/assets/lib/balloon.css?v=d33a582" rel="stylesheet">
   
-
-  <link href="/assets/css/main-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main-light.css?v=726816b" data-alt-dark="/assets/css/main-dark.css?v=726816b">
-
-  <link href="/assets/lib/pygments-manni.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=726816b" data-alt-dark="/assets/lib/pygments-native.css?v=726816b">
-
+  <link href="/assets/css/main.css?v=d33a582" rel="stylesheet">
   
-  <link href="/assets/css/home-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/home-light.css?v=726816b" data-alt-dark="/assets/css/home-dark.css?v=726816b">
+  <link href="/assets/css/home.css?v=d33a582" rel="stylesheet">
   
   
 
+  <noscript>
+  <link href="/assets/lib/skeleton-light.css?v=d33a582" rel="stylesheet">
+  <link href="/assets/lib/balloon-light.css?v=d33a582" rel="stylesheet">
   
+  <link href="/assets/css/main-light.css?v=d33a582" rel="stylesheet">
+  <link href="/assets/lib/pygments-manni.css" rel="stylesheet">
+  
+  <link href="/assets/css/home-light.css?v=d33a582" rel="stylesheet">
+  
+  
+  </noscript>
+
+  <script>window.STYLESHEETS={light:["/assets/lib/skeleton-light.css?v=d33a582","/assets/lib/balloon-light.css?v=d33a582","/assets/css/main-light.css?v=d33a582","/assets/lib/pygments-manni.css","/assets/css/home-light.css?v=d33a582",],dark:["/assets/lib/skeleton-dark.css?v=d33a582","/assets/lib/balloon-dark.css?v=d33a582","/assets/css/main-dark.css?v=d33a582","/assets/lib/pygments-native.css","/assets/css/home-dark.css?v=d33a582",]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link href="'+STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="')+'" class="toggled-theme" rel="stylesheet">');delete window.t;delete window.d</script>
+
+  
+
   <!-- END CSS -->
 
   <!-- BEGIN JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/1.3.5/cash.min.js" integrity="sha384-lQ7xw9BfI+dxbYXadQYkYebeHeyMeYYYUrM/oD5Z0g/ediwh63F/Mf6x48hs4m3E" crossorigin="anonymous" defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js" integrity="sha384-vWR/JwZ17UvVCsqyfcCiaUK/5IAENMkGqXYrBRCURUFLS+aW63Zpsz5XqiDzrMQu" crossorigin="anonymous" defer></script>
@@ -78,64 +90,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/consts.js?v=d33a582" defer></script>
+
+  <script src="/assets/js/utils.js?v=d33a582" defer></script>
+
+  <script src="/assets/js/main.js?v=d33a582" defer></script>
 
   
 
-  <script src="/assets/js/feedback.js" defer></script>
+  <script src="/assets/js/feedback.js?v=d33a582" defer></script>
 
   
 
   <!-- BEGIN PAGE-ADDED JS -->
-  <script>
-    window.SCRIPTS = (function (g) {
-      var scripts = [];
-
-      return {
-        add: function (fn) {
-          scripts.push(fn);
-        },
-        run: function () {
-          for (var i=0;i<scripts.length;i++) {
-            try { scripts[i].call(g); }
-            catch (e) { console.log('Onload script error: ' + e.message); }
-          }
-        }
-      };
-    })(window);
-  </script>
+  <script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
   <!-- END PAGE-ADDED JS -->
 
   <!-- BEGIN MATHJAX -->
-  <script type='text/x-mathjax-config'>
-    MathJax.Hub.Config({
-      extensions: [
-        'tex2jax.js',
-        'TeX/AMSmath.js',
-        'TeX/AMSsymbols.js',
-        'TeX/cancel.js',
-        'TeX/color.js'
-        
-      ],
-      jax: [
-        'input/TeX',
-        'output/CommonHTML'
-        
-      ],
-      TeX: {
-        equationNumbers: {
-          autoNumber: 'AMS'
-        }
-      },
-      tex2jax: {
-        balanceBraces: false,
-        processEnvironments: false,
-        processRefs: false
-        
-      }
-      
-    });
-  </script>
+  <script type='text/x-mathjax-config'>MathJax.Hub.Config({extensions:['tex2jax.js','TeX/AMSmath.js','TeX/AMSsymbols.js','TeX/cancel.js','TeX/color.js'],jax:['input/TeX','output/CommonHTML'],TeX:{equationNumbers:{autoNumber:'AMS'}},tex2jax:{balanceBraces:false,processEnvironments:false,processRefs:false}})</script>
   <!-- END MATHJAX -->
   <!-- END JS -->
 
@@ -181,7 +153,7 @@
       <!--<img class="svg-fallback" src="/assets/images/logo.png" style="display:none">-->
     </a>
 <script>// Christmas cheer!
-(() => {
+(function() {
   var logo = document.querySelector('.main-logo'), grad = logo.querySelector('#grad');
   var animFrame = null, running = false, stop = true;
 
@@ -264,9 +236,9 @@
     <div class="hero">
   <canvas id="background-anim"></canvas>
   <h1 class="title ccc">
-    <em>The 2018 <br class="show-mobile">CCC <br class="show-phablet hide-mobile"> is here!</em><br>
+    <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
     <div class="note">
-      <em>February 14th, <br class="show-mobile">Periods 3&ndash;5</em><br>
+      <em>February 14th,<br class="show-mobile"> Periods 3&ndash;5</em><br>
       <a target="_blank" href="https://bit.ly/MSSCCC18"><em>Sign up today<svg xmlns="http://www.w3.org/svg/2000" height="20" width="25"><path stroke-width="0" fill="currentColor" d="m0 8h17.343l-5.172-5.172l2.828-2.828l10 10l-10 10l-2.828-2.828l5.172-5.172h-17.343z"/></svg></em></a>
     </div>
   </h1>
@@ -441,8 +413,12 @@ Meetings will resume next Friday, October 27.
 
 <script>
 SCRIPTS.add(function() {
+  /**@license MIT-promiscuous-©Ruben Verborgh*/
+  (function(n,t){function c(n,t){return(typeof t)[0]==n}function u(o,i){return i=function f(e,h,l,a,p,s){function y(n){return function(t){p&&(p=0,f(c,n,t))}}if(a=f.q,e!=c)return u(function(n,t){a.push({p:this,r:n,j:t,1:e,0:h})});if(l&&c(n,l)|c(t,l))try{p=l.then}catch(m){h=0,l=m}if(c(n,p))try{p.call(l,y(1),h=y(0))}catch(m){h(m)}else for(i=function(t,i){return c(n,t=h?t:i)?u(function(n,c){r(this,n,c,l,t)}):o},s=0;a.length>s;)p=a[s++],c(n,e=p[h])?r(p.p,p.r,p.j,l,e):(h?p.r:p.j)(l)},i.q=[],o.call(o={then:function(n,t){return i(n,t)},"catch":function(n){return i(0,n)}},function(n){i(c,1,n)},function(n){i(c,0,n)}),o}function r(u,r,o,i,f){setTimeout(function(){try{i=f(i),f=i&&c(t,i)|c(n,i)&&i.then,c(n,f)?i==u?o(TypeError()):f.call(i,r,o):r(i)}catch(e){o(e)}})}function o(n){return u(function(t){t(n)})}window.Promise=window.Promise||u,u.resolve=o,u.reject=function(n){return u(function(t,c){c(n)})},u.all=function(n){return u(function(t,c,u,r){r=[],u=n.length||t(r),n.map(function(n,i){o(n).then(function(n){r[i]=n,--u||t(r)},c)})})},u.race=function(n){return u(function(t,c){n.map(function(n){o(n).then(t,c)})})}})("f","o");
+  /**@license MIT-unfetch-©Jason Miller(@developit)*/
+  !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):e.unfetch=n()}(this,function(){return"function"==typeof fetch?fetch.bind():function(e,n){return n=n||{},new Promise(function(t,o){function r(){var e,n=[],t=[],o={};return s.getAllResponseHeaders().replace(/^(.*?):\s*([\s\S]*?)$/gm,function(r,s,u){n.push(s=s.toLowerCase()),t.push([s,u]),e=o[s],o[s]=e?e+","+u:u}),{ok:1==(s.status/200|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:r,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return o[e.toLowerCase()]},has:function(e){return e.toLowerCase()in o}}}}var s=new XMLHttpRequest;s.open(n.method||"get",e);for(var u in n.headers)s.setRequestHeader(u,n.headers[u]);s.withCredentials="include"==n.credentials,s.onload=function(){t(r())},s.onerror=o,s.send(n.body)})}});
   // Source for below 
-  var displayVisualization=function(n){var i,e,t=function(n){e=requestAnimationFrame(n)},a=n[0];$.when.apply(this,a.scripts.map($.getScript)).then(function(){a.vis=a.init(t),$("#background-anim-desc").attr("href",a.src).text(a.name+" | "+a.author),$("body").addClass("has-anim")},function(n){console.error(n)}),$(window).on("resize",function(){cancelAnimationFrame(e),clearTimeout(i),i=setTimeout(function(){a.vis=a.init(t)},1e3)}),$(window).on("changetheme",function(n){a.vis.changeTheme()})};
+  var displayVisualization=function(a){var c,d,b=function(g){d=requestAnimationFrame(g)},f=a[0];Promise.all(f.scripts.map(function(g){return unfetch(g).then(function(h){return h.text()})})).then(function(g){g.forEach(function(h){(0,eval)(h)}),f.vis=f.init(b),$('#background-anim-desc').attr('href',f.src).text(f.name+' | '+f.author),$('body').addClass('has-anim')},function(g){console.error(g)}),$(window).on('resize',function(){cancelAnimationFrame(d),clearTimeout(c),c=setTimeout(function(){f.vis=f.init(b)},1e3)}),$(window).on('changetheme',function(){f.vis.changeTheme()})};
 
   var visList = [
     {
@@ -543,7 +519,7 @@ SCRIPTS.add(function() {
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/726816b07150550d2d776197b90d369549e82de9" target="_blank">726816b</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/d33a5828ba4f729b395e5dd1f07c6b60293a007b" target="_blank">d33a582</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

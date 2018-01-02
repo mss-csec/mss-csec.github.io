@@ -3,12 +3,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4 # ruby-2.4.0
+      - image: circleci/ruby@sha256:b0e9e54d2579457720e60de9f650d096f32cdd54870d80dba5a46c294074ba06 # ruby 2.4.0 + nodejs 8.9.3/npm 5.5.1
 
     environment:
       BUNDLE_INSTALL_DIR: ~/.bundle
+      NPM_INSTALL_DIR: ./node_modules
+      JEKYLL_ENV: production
+      NODE_ENV: production
       SOURCE_BRANCH: staging
       DEPLOY_BRANCH: master
+      BUILD_BRANCH: build-master
       USER_EMAIL: markville.compsci@gmail.com
       USER_NAME: MSS CSEC
 
@@ -20,7 +24,7 @@ jobs:
 
       # Chmod CI scripts
       - run:
-          name: Chmod scripts
+          name: Chmod setup scripts
           command: chmod +x ./scripts/**/*.sh
 
       # Restore binary cache
@@ -28,11 +32,14 @@ jobs:
           keys:
             - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
 
-      # Restore bundle cache
+      # Restore bundle+npm cache
       - restore_cache:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
-            - mss-csec-
+
+      - restore_cache:
+          keys:
+            - mss-csec-{{ checksum "package-lock.json" }}
 
       # Setup environment
       - run:
@@ -52,12 +59,43 @@ jobs:
           paths:
             - ~/.bundle
 
+      # Save npm cache
+      - save_cache:
+          key: mss-csec-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
       # Configure git details
       - run:
           name: Configure git details
           command: |
             git config user.email "$USER_EMAIL"
             git config user.name "$USER_NAME"
+
+      # Pre-build setup
+      - run:
+          name: Pre-build
+          command: |
+            ./scripts/ci/pre-build.sh
+
+      # Chmod again (b/c we switched branches a bunch of times)
+      - run:
+          name: Chmod build/deploy scripts
+          command: |
+            chmod +x ./scripts/**/*.sh
+            chmod +x ./scripts/build.js
+
+      # Build
+      - run:
+          name: Build
+          command: |
+            ./scripts/ci/build.sh production
+
+      # Post-build
+      - run:
+          name: Post-build
+          command: |
+            ./scripts/ci/post-build.sh
 
       # Deploy
       - deploy:
