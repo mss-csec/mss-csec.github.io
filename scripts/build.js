@@ -1,4 +1,4 @@
-#!/usr/bin/nodejs
+#!/usr/bin/env nodejs
 
 const fs = require('fs'),
       glob = require('glob-fs'),
