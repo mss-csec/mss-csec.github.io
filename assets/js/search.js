@@ -42,7 +42,7 @@
 
   initSearch = function(rawStore) {
     var commit, savedStore;
-    commit = "2017-12-29 17:00:18 +0000";
+    commit = "2018-01-02 02:26:00 +0000";
     if (null !== localStorage.getItem(storageKey)) {
       try {
         savedStore = JSON.parse(localStorage.getItem(storageKey));

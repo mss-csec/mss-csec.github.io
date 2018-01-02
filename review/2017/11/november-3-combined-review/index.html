@@ -30,8 +30,8 @@
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=5df797c" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=5df797c" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=726816b" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=726816b" type="image/x-icon">
 
   
   <!-- BEGIN GA -->
@@ -53,21 +53,21 @@
   
   
 
-  <link href="/assets/lib/skeleton-light.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton-light.css?v=5df797c" data-alt-dark="/assets/lib/skeleton-dark.css?v=5df797c">
+  <link href="/assets/lib/skeleton-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/skeleton-light.css?v=726816b" data-alt-dark="/assets/lib/skeleton-dark.css?v=726816b">
 
-  <link href="/assets/lib/balloon-light.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/balloon-light.css?v=5df797c" data-alt-dark="/assets/lib/balloon-dark.css?v=5df797c">
-
-  
-  <link href="/assets/lib/lesson-default-light.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default-light.css?v=5df797c" data-alt-dark="/assets/lib/lesson-default-dark.css?v=5df797c">
-  
-
-  <link href="/assets/css/main-light.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main-light.css?v=5df797c" data-alt-dark="/assets/css/main-dark.css?v=5df797c">
-
-  <link href="/assets/lib/pygments-manni.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=5df797c" data-alt-dark="/assets/lib/pygments-native.css?v=5df797c">
+  <link href="/assets/lib/balloon-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/balloon-light.css?v=726816b" data-alt-dark="/assets/lib/balloon-dark.css?v=726816b">
 
   
+  <link href="/assets/lib/lesson-default-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/lesson-default-light.css?v=726816b" data-alt-dark="/assets/lib/lesson-default-dark.css?v=726816b">
   
-  <link href="/assets/css/subclubs-light.css?v=5df797c" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs-light.css?v=5df797c" data-alt-dark="/assets/css/subclubs-dark.css?v=5df797c">
+
+  <link href="/assets/css/main-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/main-light.css?v=726816b" data-alt-dark="/assets/css/main-dark.css?v=726816b">
+
+  <link href="/assets/lib/pygments-manni.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/lib/pygments-manni.css?v=726816b" data-alt-dark="/assets/lib/pygments-native.css?v=726816b">
+
+  
+  
+  <link href="/assets/css/subclubs-light.css?v=726816b" rel="stylesheet" class="toggled-theme" data-alt-prop="href" data-alt-light="/assets/css/subclubs-light.css?v=726816b" data-alt-dark="/assets/css/subclubs-dark.css?v=726816b">
   
 
   
@@ -83,6 +83,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
   <script src="/assets/js/main.js" defer></script>
+
+  
+  <script src="/assets/js/subclubs.js" defer></script>
+  
 
   <script src="/assets/js/feedback.js" defer></script>
 
@@ -147,14 +151,14 @@
   </style></noscript>
 </head>
 
-<body class="no-js ">
+<body class="no-js theme-light post ">
   <!-- header -->
   
 
 
-<p class="announcement-sticky" data-display-until="2017-10-06" data-id="/announcements/2017/09/welcome-to-the-new-csec-site">
-  This site is currently in beta. <a href="/announcements/2017/09/welcome-to-the-new-csec-site/" class="read-more">Read more &raquo;</a> <a href="#" class="close-el">&times;</a>
-</p>
+
+
+
 
 <header class="site-header">
   <div class="container">
@@ -249,43 +253,51 @@
         </form>
       </div>
 
-      <div class="options">
-        <a class="icon" tabindex="0">
-          <span class="circle"></span>
-          <span class="circle"></span>
-          <span class="circle"></span>
-        </a>
-        <div class="content">
-          <label>
-            <input type="checkbox" id="toggle-dark-theme">
-            Dark theme
-          </label>
-        </div>
+      <div class="menu toggles">
+        <span class="menu-header show-tablet">Options</span>
+
+        <a href="#" class="toggle toggle-theme" tabindex="0" title="Use dark theme"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-moon"><path d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-solid-sun"><path d="M274.835 12.646l25.516 62.393c4.213 10.301 16.671 14.349 26.134 8.492l57.316-35.479c15.49-9.588 34.808 4.447 30.475 22.142l-16.03 65.475c-2.647 10.81 5.053 21.408 16.152 22.231l67.224 4.987c18.167 1.348 25.546 24.057 11.641 35.826L441.81 242.26c-8.495 7.19-8.495 20.289 0 27.479l51.454 43.548c13.906 11.769 6.527 34.478-11.641 35.826l-67.224 4.987c-11.099.823-18.799 11.421-16.152 22.231l16.03 65.475c4.332 17.695-14.986 31.73-30.475 22.142l-57.316-35.479c-9.463-5.858-21.922-1.81-26.134 8.492l-25.516 62.393c-6.896 16.862-30.774 16.862-37.67 0l-25.516-62.393c-4.213-10.301-16.671-14.349-26.134-8.492l-57.317 35.479c-15.49 9.588-34.808-4.447-30.475-22.142l16.03-65.475c2.647-10.81-5.053-21.408-16.152-22.231l-67.224-4.987c-18.167-1.348-25.546-24.057-11.641-35.826L70.19 269.74c8.495-7.19 8.495-20.289 0-27.479l-51.454-43.548c-13.906-11.769-6.527-34.478 11.641-35.826l67.224-4.987c11.099-.823 18.799-11.421 16.152-22.231l-16.03-65.475c-4.332-17.695 14.986-31.73 30.475-22.142l57.317 35.479c9.463 5.858 21.921 1.81 26.134-8.492l25.516-62.393c6.896-16.861 30.774-16.861 37.67 0zM392 256c0-74.991-61.01-136-136-136-74.991 0-136 61.009-136 136s61.009 136 136 136c74.99 0 136-61.009 136-136zm-32 0c0 57.346-46.654 104-104 104s-104-46.654-104-104 46.654-104 104-104 104 46.654 104 104z"/></svg>
+</a>
+
+        
+        <a href="#" class="toggle make-distraction-free" tabindex="0" title="Enter distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-expand"><path d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"/></svg>
+</a>
+        
       </div>
     </div>
   </div>
 </header>
 
   <main>
-    <div class="hero" style="padding-top:40px">
-  <div style="width:100%;margin:20px auto">
-    <h1 class="title" style="margin-top:0"><em>November 3: Combined Review</em></h1>
-    <p style="float:none;color:#ededed;margin-bottom:0">Posted on <time datetime="2017-11-03T00:00:00+0000">November 03, 2017</time></p>
-  </div>
-</div>
+    <a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-compress"><path d="M436 192H312c-13.3 0-24-10.7-24-24V44c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-276-24V44c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 300V344c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H312c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"/></svg>
+</a>
+
 <div class="content container">
   <div class="row">
-    <div class="eight columns offset-by-two" id="main-content">
-      <div class="paginator">
-        
-        <a class="paginator-item" href="/announcements/2017/10/no-meeting-on-october-20/" title="Posted on October 14, 2017"><strong>Previous</strong><br>CSEC Will Not Be Meeting This Friday, October 20</a>
-        
-        <a class="paginator-item paginator-valign" href="/posts/">All posts</a>
-        
-        <a class="paginator-item" href="/announcements/2017/11/november-24-pa-day/" title="Posted on November 21, 2017"><strong>Next</strong><br>November 24: PA Day</a>
-        
-      </div>
-      <hr>
+    <div class="columns blog-post" id="main-content">
+      <header class="page-header">
+        <h1 class="page-title">November 3: Combined Review</h1>
+        <div class="breadcrumbs">
+          Posted on <time class="lesson-date" datetime="2017-11-03T00:00:00+0000" style="display:inline;float:none">November 03, 2017</time>
+        </div>
+
+        <div class="bar bg-gradient" style="position:static"></div>
+
+        <div class="paginator distraction">
+          
+          <a class="paginator-item" href="/announcements/2017/10/no-meeting-on-october-20/" title="Posted on October 14, 2017"><strong>Previous</strong><br>CSEC Will Not Be Meeting This Friday, October 20</a>
+          
+          <a class="paginator-item paginator-valign" href="/posts/">All posts</a>
+          
+          <a class="paginator-item" href="/announcements/2017/11/november-24-pa-day/" title="Posted on November 21, 2017"><strong>Next</strong><br>November 24: PA Day</a>
+          
+        </div>
+
+        <div class="bar bg-gradient distraction"></div>
+      </header>
+
+      <article>
       <p><strong>NOTE</strong>: Solutions are only visible after a successful submission on the problem.</p>
 
 <h3 id="advanced">Advanced</h3>
@@ -367,6 +379,8 @@
   </li>
 </ul>
 
+      </article>
+
       <footer>
         
       </footer>
@@ -384,12 +398,12 @@
           <rect width="116" height="40" mask="url(#m)" fill="currentColor"></rect>
         </svg>
         <p class="yo">
-          <a href="https://github.com/mss-csec/mss-csec.github.io" title="Our GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24"><path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38C13.71 14.53 16 11.53 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          <a href="https://github.com/mss-csec/mss-csec.github.io" title="Our GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" height="16" class="icon icon-github"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
 </a>
-          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16" width="24"><path fill="currentColor" fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg>
+          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/5df797c7369c348af1175a966fa4206891518cfe" target="_blank">5df797c</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/726816b07150550d2d776197b90d369549e82de9" target="_blank">726816b</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

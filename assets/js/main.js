@@ -11,12 +11,20 @@ Main coffeescript file
   UTILS = {};
 
   CONSTS = {
+    ex: 20,
+    bpMobile: 400,
+    bpPhablet: 550,
+    bpTablet: 768,
+    bpDesktop: 1024,
+    bpDesktopHd: 1440,
     animDuration: 230,
     cookieCollapseSidebar: 'collapseSidebar',
     cookieStickyPrefix: 'sticky-',
     cookieTheme: 'theme',
     easterEgg: 'pascha'
   };
+
+  Object.freeze(CONSTS);
 
   UTILS.intSort = function(a, b) {
     return a - b;
@@ -194,18 +202,15 @@ Main coffeescript file
   };
 
   APP.toggleSidebar = function(e) {
-    var $mainContent, $sidebar, $target, isClosed;
+    var $sidebar, $target, isClosed;
     e.preventDefault();
     $target = $(e.target);
     $sidebar = $target.closest('.sidebar-collapsible');
-    $mainContent = $('#main-content');
     isClosed = $target.hasClass('closed');
     if (isClosed) {
       __openSidebar($sidebar);
-      $mainContent.removeClass('twelve').addClass('nine');
     } else {
       __collapseSidebar($sidebar);
-      $mainContent.removeClass('nine').addClass('twelve');
     }
     return true;
   };
@@ -243,11 +248,15 @@ Main coffeescript file
       return $e.attr(newKey, oldVal);
     });
     if (theme === 'dark') {
+      $('body').removeClass('theme-light');
       $('body').addClass('theme-dark');
       APP.currentTheme = 'dark';
+      $('.toggle-theme').attr('title', 'Use light theme');
     } else {
       $('body').removeClass('theme-dark');
+      $('body').addClass('theme-light');
       APP.currentTheme = 'light';
+      $('.toggle-theme').attr('title', 'Use dark theme');
     }
     return __dispatchCustomEvent(window, 'changetheme');
   };
@@ -263,7 +272,6 @@ Main coffeescript file
     console.log("Loaded on " + ((new Date()).toLocaleString()));
     if ('dark' === Cookies.get(CONSTS.cookieTheme)) {
       APP.changeTheme('dark');
-      $('#toggle-dark-theme').prop('checked', true);
     }
     __easterEgg = function() {
       $('body').toggleClass('easter-egg');
@@ -301,9 +309,10 @@ Main coffeescript file
       $('body').addClass('easter-egg');
     }
     $(window).on('keydown', __easterEggTrigger());
-    $('#toggle-dark-theme').on('change', function() {
+    $('.toggle-theme').on('click', function(e) {
       var theme;
       theme = Cookies.get(CONSTS.cookieTheme);
+      e.preventDefault();
       if (theme === 'dark') {
         Cookies.set(CONSTS.cookieTheme, 'light');
         return APP.changeTheme('light');
@@ -322,14 +331,16 @@ Main coffeescript file
         return window.location = $(this).attr('href');
       }
     });
-    $(window).on('scroll', function(e) {
-      if (window.scrollY > 100) {
-        return $('body:not(.no-hero) .site-header').removeClass('at-top');
-      } else {
-        return $('body:not(.no-hero) .site-header').addClass('at-top');
-      }
-    });
-    $('body:not(.no-hero) .site-header').addClass('at-top');
+    if (!$('body').hasClass('no-hero') && !$('body').hasClass('landing') && !$('body').hasClass('lesson') && !$('body').hasClass('post') && !$('body').hasClass('resource') && window.innerWidth > CONSTS.bpTablet) {
+      $(window).on('scroll', function(e) {
+        if (window.scrollY > 100) {
+          return $('body .site-header').removeClass('at-top');
+        } else {
+          return $('body .site-header').addClass('at-top');
+        }
+      });
+      $('body .site-header').addClass('at-top');
+    }
     __DOMRemoveSticky = function() {
       var sticky;
       sticky = $('.announcement-sticky');
@@ -342,7 +353,6 @@ Main coffeescript file
     $('.collapse-el.closed').html('&raquo;');
     if ('1' === Cookies.get(CONSTS.cookieCollapseSidebar)) {
       __collapseSidebar($('.sidebar-collapsible'));
-      $('#main-content').removeClass('nine').addClass('twelve');
     }
     $('a.footnote, .footnote-ref a').on('click', function(e) {
       var $ftnote, $ftnotesrc, content, left, offset, top;
@@ -445,6 +455,8 @@ Main coffeescript file
     anchors.add('#main-content h2, #main-content h3');
     return SCRIPTS.run();
   };
+
+  window.CONSTS = CONSTS;
 
   window.APP = APP;
 
