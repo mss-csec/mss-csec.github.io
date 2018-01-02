@@ -17,8 +17,10 @@
 
       bottom: -4px;
       left: 0;
-      @if ($dark) { background-color: lighten($bg-secondary, 15%); }
-      @else {       background-color: darken($bg-secondary, 15%); }
+      background-color: if-theme((
+        light: darken($bg-secondary, 15%),
+        dark: lighten($bg-secondary, 15%)
+      ));
     }
   }
 

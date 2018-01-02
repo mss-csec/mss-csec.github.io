@@ -4,7 +4,8 @@
 # Scroll to section
 scrollToSection = ($section) ->
   window.location.hash = '#' + $section.attr 'id'
-  $('html, body').scrollTop $section.offset().top - $('#toc').outerHeight() - .5 * CONSTS.ex
+  window.scroll 0,
+    $section.offset().top - $('#toc').outerHeight() - .5 * CONSTS.ex
 
 # Distraction-free mode
 $('.make-distraction-free').on 'click', (e) ->
@@ -12,9 +13,9 @@ $('.make-distraction-free').on 'click', (e) ->
 
   $('body').toggleClass 'distraction-free'
 
-$(window).on 'keypress', (e) ->
-  if e.keyCode == 27 # escape
-    $('body').removeClass 'distraction-free'
+  $(window).one 'keypress', (e) ->
+    if e.keyCode == 27 # escape
+      $('body').removeClass 'distraction-free'
 
 # Automatically adjust scroll pos when jumping through sections
 $('#toc a').on 'click', (e) ->
@@ -29,9 +30,12 @@ if window.location.hash
   scrollToSection $target if $target.length
 
 # Scroll area observers
+
 if window.IntersectionObserver and
 window.innerWidth >= CONSTS.bpTablet and
-!$('body').hasClass 'landing'
+!$('body').hasClass('landing') and
+!$('body').hasClass('post') and
+$('#toc').length
   # Observer for sections in the TOC
   sectionObserver = new IntersectionObserver (entries, observer) ->
     for entry in entries
@@ -46,7 +50,7 @@ window.innerWidth >= CONSTS.bpTablet and
 
   , threshold: [0, 1]
 
-  $('.sect1').each (_, section) -> sectionObserver.observe section
+  $('.sect1').each (section) -> sectionObserver.observe section
 
   # Observer for fixed TOC
   tocObserver = new IntersectionObserver (entries, observer) ->
@@ -63,17 +67,26 @@ window.innerWidth >= CONSTS.bpTablet and
     else
       toc.removeClass 'invisible'
       toc.css
-        paddingLeft: offset
-        paddingRight: offset
-      $('.sidebar-collapsible').css { top: toc.outerHeight() + CONSTS.ex }
+        paddingLeft: UTILS.numToPx offset
+        paddingRight: UTILS.numToPx offset
+      $('.sidebar-collapsible').css
+        top: UTILS.numToPx toc.outerHeight() + CONSTS.ex
 
   , threshold: [0]
 
   $('#toc')
-    .addClass 'toc-fixed invisible'
-    .append "<a href='#' onclick='event.preventDefault();window.scroll(0,0)'>Scroll to top</a>"
+    .addClass 'toc-fixed'
+    .addClass 'invisible'
+    .append "<a href='#'
+      onclick='event.preventDefault();window.scroll(0,0)'
+    >Scroll to top</a>"
+
+  # The RHS is like this as we need to get the contents of a text node
+  # This is something that cannot be done with Cash/jQ
   $('#toctitle').text $('.page-title')[0].firstChild.textContent
-  $('.sidebar-collapsible').css
-    paddingTop: 0
-    top: $('#toc').outerHeight() + CONSTS.ex
+
   tocObserver.observe $('.page-header')[0]
+
+  $('.sidebar-collapsible').css
+    paddingTop: UTILS.numToPx 0
+    top: UTILS.numToPx $('#toc').outerHeight() + CONSTS.ex

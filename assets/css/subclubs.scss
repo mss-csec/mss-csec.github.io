@@ -1,4 +1,7 @@
-@import "base/mixins";
+---
+---
+
+@import "base/core";
 
 // Header
 
@@ -128,7 +131,8 @@
 .lesson-callout {
   padding-top: $ex;
   padding-bottom: $ex05;
-  border: solid $fg-secondary;
+  border-style: solid;
+  border-color: $fg-secondary;
   border-width: 1px 0;
   margin-bottom: $ex;
 

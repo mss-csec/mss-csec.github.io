@@ -2,14 +2,24 @@
 // Brand colours
 $brand-colour: #f52f2f;
 
-$error: #e70046;
-$info: #3ac4ed;
-$success: #1ec712;
-$warning: #ffd30d;
+$error: unquote("$error");
+$info: unquote("$info");
+$success: unquote("$success");
+$warning: unquote("$warning");
 
 $aria-highlight: #32acfb;
 
 $t: transparent;
+
+// Dynamic colours
+$fg-primary: unquote("$fgPrimary");
+$fg-secondary: unquote("$fgSecondary");
+$fg-accent: unquote("$fgAccent");
+
+$bg-primary: unquote("$bgPrimary");
+$bg-secondary: unquote("$bgSecondary");
+$bg-tertiary: unquote("$bgTertiary");
+$bg-accent: unquote("$bgAccent");
 
 // Typography
 $df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue",

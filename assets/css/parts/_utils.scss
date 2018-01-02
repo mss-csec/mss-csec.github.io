@@ -23,7 +23,7 @@
 .warning,
 .caution {
   color: rgba(20, 20, 20, .9);
-  border-color: rgba(0, 0, 0, .2);
+  border-color: if-theme(( all: rgba(0, 0, 0, .2) ));
 }
 
 .error {

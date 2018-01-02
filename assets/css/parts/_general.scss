@@ -90,6 +90,7 @@ input[type="url"],
 input[type="password"] {
   font: $df-font;
   color: $fg-primary;
+  background-color: $bg-primary;
   border-color: darken($bg-secondary, 10%);
 
   &.error {
@@ -166,10 +167,8 @@ a {
   }
 }
 
-@if ($dark) {
-  img {
-    background-color: $fg-primary;
-  }
+img {
+  background-color: if-theme(( dark: $fg-primary ));
 }
 
 // Icons

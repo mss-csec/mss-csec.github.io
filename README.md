@@ -5,8 +5,8 @@ This repository contains the source code for the MSS CSEC website.
 ## Requirements
 
 - Ruby 2.4.0
-- NodeJS 6.10.3
-- Jekyll 3.4.3
+- NodeJS 8.9.3
+- Jekyll 3.6.0
 
 ## How we build
 

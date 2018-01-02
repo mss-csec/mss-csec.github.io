@@ -6,40 +6,6 @@ Main coffeescript file
 ###
 
 APP = {}
-UTILS = {}
-
-CONSTS =
-  ex: 20
-  bpMobile: 400
-  bpPhablet: 550
-  bpTablet: 768
-  bpDesktop: 1024
-  bpDesktopHd: 1440
-  animDuration: 230
-  cookieCollapseSidebar: 'collapseSidebar'
-  cookieStickyPrefix: 'sticky-'
-  cookieTheme: 'theme'
-  easterEgg: 'pascha'
-
-Object.freeze CONSTS
-
-UTILS.intSort = (a, b) -> a - b
-UTILS.reverseIntSort = (a, b) -> b - a
-
-UTILS.spaceship = (a, b) ->
-  a < b ? -1 : (a > b ? 1 : 0)
-
-UTILS.setIndefiniteCookie = (key, value) ->
-  Cookies.set key, value, expires: 365
-
-# Truncate a string of text to at most <length> characters, without severing
-# words
-UTILS.fuzzyTruncate = (text, length = 250, clipper = '...') ->
-  if text.length <= length then return text
-
-  lastDelim = text.lastIndexOf " ", length
-
-  return text.slice(0, if lastDelim > -1 then lastDelim else Infinity) + clipper
 
 APP.SUBCLUB_END_HOUR = 17;
 
@@ -50,7 +16,7 @@ APP.SUBCLUB_END_HOUR = 17;
 #        in a JavaScript-parsable format, or a hash containing such a date
 #        field. Cloned inside the method to prevent side effects.
 APP.loadSubclubSchedule = (sched) ->
-  clonedSched = $.extend true, {}, sched
+  clonedSched = JSON.parse JSON.stringify sched
   today = (new Date()).getTime()
 
   for id, data of clonedSched
@@ -102,16 +68,6 @@ APP.loadSubclubSchedule = (sched) ->
     id: if dateNextUp? then nextUp else null
     date: dateNextUp
 
-# Loads a schedule from a URL
-#
-# @private
-__loadSubclubScheduleFromUrl = (url) ->
-  $.ajax url: url
-  .then (resp) ->
-    JSON.parse resp
-  .then (data) ->
-    [data, APP.loadSubclubSchedule data]
-
 # Renders the most recent and next up lesson titles and dates in a valid HTML
 # element
 #
@@ -122,34 +78,27 @@ __loadSubclubScheduleFromUrl = (url) ->
 APP.renderSubclubSchedule = ($el, data) ->
   scheduleData = {}
 
-  if JSON.stringify(data)[0] == '{'
-    scheduleData = APP.loadSubclubSchedule data
-  else
-    __loadSubclubScheduleFromUrl data
-    .then (d) ->
-      [data, scheduleData] = d
-    .then null, (err) ->
-      console.log "Couldn't load or parse schedule data at #{data}"
+  scheduleData = APP.loadSubclubSchedule data
 
   # Store elements
   $lessonLast = $el.find '.lesson-last'
   $lessonNext = $el.find '.lesson-next'
 
   # Get tooltip positioning data
-  mostRecentBalloonPos = $el.data('lesson-last-balloon-pos') or 'right'
-  nextUpBalloonPos = $el.data('lesson-next-balloon-pos') or 'left'
+  mostRecentBalloonPos = $el.attr('data-lesson-last-balloon-pos') or 'right'
+  nextUpBalloonPos = $el.attr('data-lesson-next-balloon-pos') or 'left'
 
   if scheduleData.mostRecent.id != null
     $lessonLast.each () ->
       _this = $(this)
       lesson = data[scheduleData.mostRecent.id]
       lesson.title = lesson.title.replace /^.*?@/, ''
-      if _this.prop 'tagName' == 'A'
+      if _this.is 'a'
         _this.addClass 'lesson-link'
           .attr 'href', lesson.url
           .attr 'data-balloon', lesson.title
           .attr 'data-balloon-pos', mostRecentBalloonPos
-          .attr 'data-ballon-bluntish', true
+          .attr 'data-balloon-bluntish', true
           .html lesson.title
       else
         _this.html "<a href='#{lesson.url}'
@@ -162,8 +111,9 @@ APP.renderSubclubSchedule = ($el, data) ->
     $lessonLast.each () ->
       _this = $(this)
       if _this.prop 'tagName' == 'A'
-        _this.addClass 'lesson-link', 'disabled'
-        _this.html "null"
+        _this.addClass 'lesson-link'
+          .addClass 'disabled'
+          .html "null"
       else
         _this.html "<a class='lesson-link disabled'>null</a>"
 
@@ -172,12 +122,12 @@ APP.renderSubclubSchedule = ($el, data) ->
       _this = $(this)
       lesson = data[scheduleData.nextUp.id]
       lesson.title = lesson.title.replace /^.*?@/, ''
-      if _this.prop 'tagName' == 'A'
+      if _this.is 'a'
         _this.addClass 'lesson-link'
           .attr 'href', lesson.url
           .attr 'data-balloon', lesson.title
           .attr 'data-balloon-pos', nextUpBalloonPos
-          .attr 'data-ballon-bluntish', true
+          .attr 'data-balloon-bluntish', true
           .html lesson.date
       else
         _this.html "<a href='#{lesson.url}'
@@ -190,8 +140,9 @@ APP.renderSubclubSchedule = ($el, data) ->
     $lessonNext.each () ->
       _this = $(this)
       if _this.prop 'tagName' == 'A'
-        _this.addClass 'lesson-link', 'disabled'
-        _this.html "null"
+        _this.addClass 'lesson-link'
+          .addClass 'disabled'
+          .html "null"
       else
         _this.html "<a class='lesson-link disabled'>null</a>"
 
@@ -204,9 +155,10 @@ APP.renderSubclubSchedule = ($el, data) ->
 # @private
 __openSidebar = ($sidebar) ->
   $sidebar.removeClass 'closed'
-  $sidebar.find('.collapse-el').removeClass 'closed'
-    .attr 'title', 'Collapse sidebar'
-    .html '&laquo;'
+    .find '.collapse-el'
+      .removeClass 'closed'
+      .attr 'title', 'Collapse sidebar'
+      .html '&laquo;'
   UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '0'
 
 # Collapses a given sidebar
@@ -216,9 +168,10 @@ __openSidebar = ($sidebar) ->
 # @private
 __collapseSidebar = ($sidebar) ->
   $sidebar.addClass 'closed'
-  $sidebar.find('.collapse-el').addClass 'closed'
-    .attr 'title', 'Open sidebar'
-    .html '&raquo;'
+    .find '.collapse-el'
+      .addClass 'closed'
+      .attr 'title', 'Open sidebar'
+      .html '&raquo;'
   UTILS.setIndefiniteCookie CONSTS.cookieCollapseSidebar, '1'
 
 # Toggles the sidebar that is the ancestor of the element this function is
@@ -257,28 +210,23 @@ __dispatchCustomEvent = (obj, name, detail = null) ->
 #
 # theme: A string, either 'light' or 'dark', corresponding to the desired theme
 APP.changeTheme = (theme) ->
-  $t = $('.toggled-theme')
-  $t.each () ->
-    $e = $(this)
-    altProp = $e.attr 'data-alt-prop'
-    altKey = if theme == 'dark' then 'data-alt-dark' else 'data-alt-light'
-    newKey = if theme == 'dark' then 'data-alt-light' else 'data-alt-dark'
-    oldVal = $e.attr altProp
-    newVal = $e.attr altKey
-
-    $e.attr altProp, newVal
-    $e.attr newKey, oldVal
+  $('.toggled-theme').each (e, i) ->
+    e.href = window.STYLESHEETS[theme][i]
 
   if theme == 'dark'
     $('body').removeClass 'theme-light'
     $('body').addClass 'theme-dark'
-    APP.currentTheme = 'dark'
     $('.toggle-theme').attr 'title', 'Use light theme'
+
+    APP.currentTheme = 'dark'
+    document.documentElement.style.backgroundColor = '#1a1f2a'
   else
     $('body').removeClass 'theme-dark'
     $('body').addClass 'theme-light'
-    APP.currentTheme = 'light'
     $('.toggle-theme').attr 'title', 'Use dark theme'
+
+    APP.currentTheme = 'light'
+    document.documentElement.style.backgroundColor = '#fff'
 
   __dispatchCustomEvent window, 'changetheme'
 
@@ -308,8 +256,6 @@ APP.onload = () ->
     to = null
 
     (e) ->
-      clearTimeout to
-
       return if e.altKey or e.ctrlKey or e.metaKey or e.shiftKey
 
       if map[ind] == e.keyCode
@@ -319,14 +265,16 @@ APP.onload = () ->
 
       if ind == map.length
         ind = 0
+        clearTimeout to
         return __easterEgg()
 
-      to = setTimeout () ->
+      to = window.setTimeout () ->
         ind = 0
-      , 200
+      , 1500
   if 'true' == Cookies.get CONSTS.easterEgg
     $('body').addClass 'easter-egg'
-  $(window).on 'keydown', __easterEggTrigger()
+  # $(window).on 'keydown', __easterEggTrigger()
+  window.addEventListener 'keydown', __easterEggTrigger()
 
   # Add event handlers
   $('.toggle-theme').on 'click', (e) ->
@@ -361,7 +309,7 @@ APP.onload = () ->
   !$('body').hasClass('resource') and
   window.innerWidth > CONSTS.bpTablet
     $(window).on 'scroll', (e) ->
-      if window.scrollY > 100
+      if window.pageYOffset > 100
         $('body .site-header').removeClass 'at-top'
       else
         $('body .site-header').addClass 'at-top'
@@ -372,9 +320,9 @@ APP.onload = () ->
   __DOMRemoveSticky = () ->
     sticky = $('.announcement-sticky')
 
-    if Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}") == '1' or
-    (sticky.length and
-    (new Date()).getTime() > (new Date(sticky.data 'displayUntil')).getTime())
+    if sticky.length and
+      (Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.data 'id'}") == '1' or
+        (new Date()).getTime() > (new Date sticky.data 'displayUntil').getTime())
       sticky.remove()
 
   __DOMRemoveSticky()
@@ -407,17 +355,17 @@ APP.onload = () ->
       .replace /^<a.+?>\d+<\/a>\.\s+/, ''                # AsciiDoc-style
       .replace /^[a-z]/, (c) -> c.toUpperCase()
 
-    if $ftnote.html() == content and $ftnote.is ':visible'
+    if $ftnote.html() == content and $ftnote[0].offsetParent?
       $ftnote.hide()
       $ftnotesrc.removeClass 'targeted'
     else
       # Only show tooltip when actual footnote is not visible in viewport
-      unless $(window).scrollTop() + $(window).height() >
+      unless window.pageYOffset + window.innerHeight >
         $ftnotesrc.offset().top + $ftnotesrc.outerHeight() and
-      $(window).scrollTop() < $ftnotesrc.offset().top
+      window.pageYOffset < $ftnotesrc.offset().top
         # Fill in content and display
-        $ftnote.html content
-          .show()
+        $ftnote.show()
+          .html content
 
         # Now that we have the tooltip's dimensions, determine positioning
         offset = $(this).offset()
@@ -425,18 +373,20 @@ APP.onload = () ->
         left = offset.left - ($ftnote.outerWidth() - $(this).width()) / 2
 
         # Clamp values so that tooltips don't overflow screen horizontally
-        if left + $ftnote.outerWidth() > $(window).width()
-          left = $(window).width() - $ftnote.outerWidth() - 5
+        if left + $ftnote.outerWidth() > window.innerWidth
+          left = window.innerWidth - $ftnote.outerWidth() - 5
         else if left < $(this).closest('p').offset().left
           left = $(this).closest('p').offset().left
 
         # Position tooltip
-        $ftnote.css { top, left }
+        $ftnote.css
+          top: UTILS.numToPx top
+          left: UTILS.numToPx left
 
         # Scroll if tooltip is outside viewport
         if $ftnote.offset().top <
-            $(window).scrollTop() + $('.site-header').outerHeight()
-          $('html, body').scrollTop $ftnote.offset().top -
+            window.pageYOffset + $('.site-header').outerHeight()
+          window.scroll 0, $ftnote.offset().top -
             $('.site-header').outerHeight() - 5
 
       $ftnotesrc.addClass 'targeted'
@@ -446,29 +396,29 @@ APP.onload = () ->
     $this = $(this)
     # https://stackoverflow.com/a/11544685/3472393
     setTimeout () ->
-      unless $(document.activeElement).closest('.footnote-tip').length
+      unless document.activeElement != document.body and
+      $(document.activeElement).closest('.footnote-tip').length
         $('.footnote-tip').hide()
         $($this.attr('href')).removeClass 'targeted'
       else
-        $this.focus()
+        $this.trigger 'focus'
     , 1
 
   # Unhide body
-  $('body')
-    .removeClass 'no-js'
+  $('body').removeClass 'no-js'
 
   # KaTeX rendering
   __katexFail = false
-  __renderKatex = (isDisplay) ->
-    () ->
-      try
-        katex.renderToString $(this).text().replace(/%.*/g, ''),
-          throwOnError: true
-          displayMode: isDisplay
-      catch
-        # Set up loading MathJax
-        __katexFail = true
-        $(this)
+  __renderKatex = (tex) ->
+    try
+      console.log tex
+      katex.renderToString $(tex).text().replace(/%.*/g, ''),
+        throwOnError: true
+        displayMode: ~tex.type.indexOf 'mode=display'
+    catch e
+      # Set up loading MathJax
+      console.log e.message
+      __katexFail = true
 
   __useMathJax = () ->
     mjSrc = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js'
@@ -478,11 +428,9 @@ APP.onload = () ->
     script.src = mjSrc
     script.integrity = mjSRI
     script.crossOrigin = 'anonymous'
-    document.querySelector('head').appendChild script
+    $('head').append script
 
-  $('script[type="math/tex"]').replaceWith __renderKatex false
-
-  $('script[type="math/tex; mode=display"]').replaceWith __renderKatex true
+  $('script[type*="math/tex"]').each __renderKatex
 
   window.renderMathInElement document.body,
     delimiters: [

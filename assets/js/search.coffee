@@ -39,7 +39,7 @@ renderResults = (results) ->
         <p>#{UTILS.fuzzyTruncate(item.content, contentLength)}</p>
       </article>"
 
-    searchResults.html builder.join('')
+    searchResults.html builder.join ''
   else
     searchResults.html '<h3>No search results found.</h3>'
 
@@ -82,12 +82,12 @@ executeSearch = (query) ->
 
   $('#search').val query
   $('#search-query').text query
-  $('title')
-    .text "Search results for #{query} | {{ site.title }} • {{ site.description }}"
+  $('title').text "Search results for #{query} |
+    {{ site.title }} • {{ site.description }}"
 
   renderResults results
 
-$(() ->
+document.addEventListener 'DOMContentLoaded', () ->
   query = extractQuery queryKey
 
   $('#search-form').on 'submit', (e) ->
@@ -97,11 +97,10 @@ $(() ->
     history.pushState { newQuery }, '', "?#{queryKey}=#{sanitizeQuery(newQuery)}"
     executeSearch newQuery
 
-  $(window).on 'popstate', (e) ->
+  window.addEventListener 'popstate', (e) ->
     executeSearch e.originalEvent.state.query
 
   history.replaceState { query }, '', "?#{queryKey}=#{sanitizeQuery(query)}"
 
   initSearch searchStore
   executeSearch query
-)

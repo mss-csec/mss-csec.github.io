@@ -1,15 +1,31 @@
 // Forms
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='url'],
+input[type='password'],
 textarea,
 select {
   height: 38px;
   padding: 6px 10px; // The 6px vertically centers text on FF, ignored by Webkit
   background-color: #fff;
-  border: 1px solid lighten($border-color, 8.8%);
+  //border: 1px solid lighten($border-color, 8.8%);
+  border: 1px solid;
+  border-color: lighten($border-color, 8.8%);
   border-radius: $global-radius;
   box-shadow: none;
   box-sizing: border-box;
+
+  // new
+  &:focus {
+    border: 1px solid;
+    border-color: $primary-color;
+    outline: 0;
+  }
 }
 
 // Removes awkward default styles on some inputs for iOS
@@ -36,24 +52,26 @@ textarea {
   padding-bottom: 6px;
 }
 
-input {
-  &[type="email"]:focus,
-  &[type="number"]:focus,
-  &[type="search"]:focus,
-  &[type="text"]:focus,
-  &[type="tel"]:focus,
-  &[type="url"]:focus,
-  &[type="password"]:focus {
-    border: 1px solid $primary-color;
-    outline: 0;
-  }
-}
+// Dup. above
+// input {
+//   &[type="email"]:focus,
+//   &[type="number"]:focus,
+//   &[type="search"]:focus,
+//   &[type="text"]:focus,
+//   &[type="tel"]:focus,
+//   &[type="url"]:focus,
+//   &[type="password"]:focus {
+//     border: 1px solid $primary-color;
+//     outline: 0;
+//   }
+// }
 
-textarea:focus,
-select:focus {
-  border: 1px solid $primary-color;
-  outline: 0;
-}
+// Dup. above
+// textarea:focus,
+// select:focus {
+//   border: 1px solid $primary-color;
+//   outline: 0;
+// }
 
 label,
 legend {

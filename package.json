@@ -1,0 +1,27 @@
+{
+  "name": "mss-csec.github.io",
+  "version": "1.0.0",
+  "description": "MSS CSEC's website",
+  "main": "scripts/build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mss-csec/mss-csec.github.io.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mss-csec/mss-csec.github.io/issues"
+  },
+  "homepage": "https://github.com/mss-csec/mss-csec.github.io#readme",
+  "dependencies": {
+    "autoprefixer": "^7.2.3",
+    "glob-fs": "^0.1.7",
+    "postcss": "^6.0.14",
+    "postcss-extract-styles": "^1.1.1",
+    "postcss-sass-color-functions": "^1.1.0",
+    "uglify-js": "^3.2.2"
+  }
+}
