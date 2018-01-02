@@ -67,35 +67,27 @@ jobs:
       - run:
           name: Configure git details
           command: |
-            if [ "$CIRCLE_BRANCH" == "staging" ]; then
-              git config user.email "$USER_EMAIL"
-              git config user.name "$USER_NAME"
-            fi
+            git config user.email "$USER_EMAIL"
+            git config user.name "$USER_NAME"
 
       # Pre-build setup
       - run:
           name: Pre-build
           command: |
-            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              ./scripts/ci/pre-build.sh
-            fi
+            ./scripts/ci/pre-build.sh
 
       # Build
       - run:
           name: Build
           command: |
-            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              chmod +x ./scripts/ci/build.sh
-              ./scripts/ci/build.sh production
-            fi
+            # chmod +x ./scripts/ci/build.sh
+            ./scripts/ci/build.sh production
 
       # Post-build
       - run:
           name: Post-build
           command: |
-            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
-              ./scripts/ci/post-build.sh
-            fi
+            ./scripts/ci/post-build.sh
 
       # Deploy
       - deploy:
@@ -113,6 +105,7 @@ workflows:
             branches:
               only:
                 - staging
+                - rebased-using-nodejs # temp.
   auto-build:
     triggers:
       - schedule:
