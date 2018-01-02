@@ -39,9 +39,9 @@ renderResults = (results) ->
         <p>#{UTILS.fuzzyTruncate(item.content, contentLength)}</p>
       </article>"
 
-    searchResults.innerHTML = builder.join('')
+    searchResults.html builder.join ''
   else
-    searchResults.innerHTML = '<h3>No search results found.</h3>'
+    searchResults.html '<h3>No search results found.</h3>'
 
 # Initialize search engine
 initSearch = (rawStore) ->
@@ -80,9 +80,9 @@ initSearch = (rawStore) ->
 executeSearch = (query) ->
   results = idx.search query
 
-  $('#search').value = query
-  $('#search-query').textContent = query
-  $('title').textContent = "Search results for #{query} |
+  $('#search').val query
+  $('#search-query').text query
+  $('title').text "Search results for #{query} |
     {{ site.title }} • {{ site.description }}"
 
   renderResults results
@@ -90,8 +90,8 @@ executeSearch = (query) ->
 document.addEventListener 'DOMContentLoaded', () ->
   query = extractQuery queryKey
 
-  $('#search-form').addEventListener 'submit', (e) ->
-    newQuery = $('#search').value
+  $('#search-form').on 'submit', (e) ->
+    newQuery = $('#search').val()
     e.preventDefault()
 
     history.pushState { newQuery }, '', "?#{queryKey}=#{sanitizeQuery(newQuery)}"

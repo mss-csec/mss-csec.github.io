@@ -258,7 +258,6 @@ APP.onload = () ->
     (e) ->
       return if e.altKey or e.ctrlKey or e.metaKey or e.shiftKey
 
-      console.log e.keyCode, ind
       if map[ind] == e.keyCode
         ind++
       else
