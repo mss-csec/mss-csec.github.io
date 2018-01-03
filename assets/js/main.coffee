@@ -410,8 +410,7 @@ APP.onload = () ->
   __katexFail = false
   __renderKatex = (tex) ->
     try
-      console.log tex
-      katex.renderToString $(tex).text().replace(/%.*/g, ''),
+      $(tex).after katex.renderToString $(tex).text().replace(/%.*/g, ''),
         throwOnError: true
         displayMode: ~tex.type.indexOf 'mode=display'
     catch e
@@ -440,6 +439,13 @@ APP.onload = () ->
     errorCallback: () ->
       console.log 'KaTeX rendering failed! Loading MathJax'
       __useMathJax()
+
+  if $('.katex').length
+    $('head').append "<link
+      rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css'
+      integrity='sha384-B41nY7vEWuDrE9Mr+J2nBL0Liu+nl/rBXTdpQal730oTHdlrlXHzYMOhDU60cwde'
+      crossorigin='anonymous'>"
 
   if __katexFail
     console.log 'KaTeX rendering failed! Loading MathJax'
