@@ -28,6 +28,7 @@ const variables = {
 }, themes = variables.theme; // alias
 
 const blacklist = [
+  'lib/lato/import.css',
   'lib/pygments-manni.css',
   'lib/pygments-native.css',
   'lib/lunr.min.js'
