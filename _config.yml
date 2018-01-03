@@ -66,7 +66,6 @@ asciidoctor:
 # to override the default setting.
 exclude:
   - assets/lib/*.txt
-  - assets/lib/lato/src/
   - bin/
   - Gemfile
   - Gemfile.lock
