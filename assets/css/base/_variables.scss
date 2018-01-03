@@ -22,11 +22,11 @@ $bg-tertiary: unquote("$bgTertiary");
 $bg-accent: unquote("$bgAccent");
 
 // Typography
-$df-font-family: "Lato", "Roboto", "HelveticaNeue", "Helvetica Neue",
+$ld-font-family: Lato;
+$df-font-family: "Roboto", "HelveticaNeue", "Helvetica Neue",
     Helvetica, Arial, sans-serif;
 $df-font-size: 16px;
 $df-font: #{$df-font-size}/1.5 $df-font-family;
-$acc-font-family: $df-font-family;
 
 // Layout
 $df-container-width: 1440px;

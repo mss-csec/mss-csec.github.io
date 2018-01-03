@@ -88,7 +88,7 @@ input[type="text"],
 input[type="tel"],
 input[type="url"],
 input[type="password"] {
-  font: $df-font;
+  font: inherit;
   color: $fg-primary;
   background-color: $bg-primary;
   border-color: darken($bg-secondary, 10%);
@@ -122,6 +122,10 @@ body {
   overflow-x: hidden;
 
   @include notIE { height: auto; }
+
+  .wf-l & {
+    font-family: $ld-font-family;
+  }
 }
 
 .site-header,
