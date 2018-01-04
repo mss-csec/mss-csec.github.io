@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <script>window.d=document,window.s=d.documentElement.style;switch(window.t=d.cookie.replace(/(?:(?:^|.*;\s*)theme\s*=\s*([^;]*).*$)|^.*$/,"$1")||'light'){case 'light':s.backgroundColor='#fff';break;case 'dark':s.backgroundColor='#1a1f2a';break}delete window.s</script>
+  <script>switch(window.d=document,window.s=d.documentElement.style,window.t=d.cookie.replace(/(?:(?:^|.*;\s*)theme\s*=\s*([^;]*).*$)|^.*$/,'$1')||'light'){case'light':s.backgroundColor='#fff';break;case'dark':s.backgroundColor='#1a1f2a';}'1'==d.cookie.replace(/(?:(?:^|.*;\s*)wf-l\s*=\s*([^;]*).*$)|^.*$/,'$1')&&(d.documentElement.className+=' wf-l',window.wfl=!0),delete window.s</script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -26,64 +26,54 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/introduction-to-graph-theory/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-01-02T14:56:29+00:00" />
+<meta property="article:published_time" content="2018-01-04T17:18:41+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to Graph Theory","datePublished":"2018-01-02T14:56:29+00:00","dateModified":"2018-01-02T14:56:29+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-graph-theory/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-graph-theory/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to Graph Theory","datePublished":"2018-01-04T17:18:41+00:00","dateModified":"2018-01-04T17:18:41+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-graph-theory/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-graph-theory/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=d33a582" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=d33a582" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=8ad9524" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=8ad9524" type="image/x-icon">
 
-  
   <!-- BEGIN GA -->
-  <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-107141139-1', 'auto');
-  ga('send', 'pageview');
-  </script>
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
-
   <!-- END GA -->
-  
 
   <!-- BEGIN CSS -->
-  <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css" integrity="sha384-B41nY7vEWuDrE9Mr+J2nBL0Liu+nl/rBXTdpQal730oTHdlrlXHzYMOhDU60cwde" crossorigin="anonymous">
-
   
   
 
-  <link href="/assets/lib/skeleton.css?v=d33a582" rel="stylesheet">
-  <link href="/assets/lib/balloon.css?v=d33a582" rel="stylesheet">
+  <link href="/assets/lib/skeleton.css" rel="stylesheet">
+  <link href="/assets/lib/lesson-default.css" rel="stylesheet">
+  <link href="/assets/css/main.css?v=8ad9524" rel="stylesheet">
   
-  <link href="/assets/lib/lesson-default.css?v=d33a582" rel="stylesheet">
-  
-  <link href="/assets/css/main.css?v=d33a582" rel="stylesheet">
-  
-  
-  <link href="/assets/css/subclubs.css?v=d33a582" rel="stylesheet">
-  
+  <link href="/assets/css/subclubs.css?v=8ad9524" rel="stylesheet">
+
+  <link rel="preload" href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="/assets/lib/balloon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
-  <link href="/assets/lib/skeleton-light.css?v=d33a582" rel="stylesheet">
-  <link href="/assets/lib/balloon-light.css?v=d33a582" rel="stylesheet">
+  <link href="https://brick.a.ssl.fastly.net/Lato:300,400,700,400i:f" rel="stylesheet">
+  <link href="/assets/lib/balloon.css" rel="stylesheet">
+
+  <link href="/assets/lib/skeleton-light.css?v=8ad9524" rel="stylesheet">
+  <link href="/assets/lib/balloon-light.css?v=8ad9524" rel="stylesheet">
+  <link href="/assets/lib/lesson-default-light.css?v=8ad9524" rel="stylesheet">
+  <link href="/assets/css/main-light.css?v=8ad9524" rel="stylesheet">
   
-  <link href="/assets/lib/lesson-default-light.css?v=d33a582" rel="stylesheet">
-  
-  <link href="/assets/css/main-light.css?v=d33a582" rel="stylesheet">
+  <link href="/assets/css/subclubs-light.css?v=8ad9524" rel="stylesheet">
   <link href="/assets/lib/pygments-manni.css" rel="stylesheet">
-  
-  
-  <link href="/assets/css/subclubs-light.css?v=d33a582" rel="stylesheet">
-  
   </noscript>
 
-  <script>window.STYLESHEETS={light:["/assets/lib/skeleton-light.css?v=d33a582","/assets/lib/balloon-light.css?v=d33a582","/assets/lib/lesson-default-light.css?v=d33a582","/assets/css/main-light.css?v=d33a582","/assets/lib/pygments-manni.css","/assets/css/subclubs-light.css?v=d33a582"],dark:["/assets/lib/skeleton-dark.css?v=d33a582","/assets/lib/balloon-dark.css?v=d33a582","/assets/lib/lesson-default-dark.css?v=d33a582","/assets/css/main-dark.css?v=d33a582","/assets/lib/pygments-native.css","/assets/css/subclubs-dark.css?v=d33a582"]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link href="'+STYLESHEETS[t].join('" class="toggled-theme" rel="stylesheet"><link href="')+'" class="toggled-theme" rel="stylesheet">');delete window.t;delete window.d</script>
+  <script>window.STYLESHEETS={light:["/assets/lib/skeleton-light.css?v=8ad9524","/assets/lib/balloon-light.css?v=8ad9524","/assets/lib/lesson-default-light.css?v=8ad9524","/assets/css/main-light.css?v=8ad9524","/assets/css/subclubs-light.css?v=8ad9524","/assets/lib/pygments-manni.css"],dark:["/assets/lib/skeleton-dark.css?v=8ad9524","/assets/lib/balloon-dark.css?v=8ad9524","/assets/lib/lesson-default-dark.css?v=8ad9524","/assets/css/main-dark.css?v=8ad9524","/assets/css/subclubs-dark.css?v=8ad9524","/assets/lib/pygments-native.css"]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link rel="preload" href="'+STYLESHEETS[t].join('" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><link rel="preload" href="')+'" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">');delete window.t;delete window.d</script>
 
   
+
+  <script>/**@license MIT-promiscuous-©Ruben Verborgh*/(function(n,t){function c(n,t){return(typeof t)[0]==n}function u(o,i){return i=function f(e,h,l,a,p,s){function y(n){return function(t){p&&(p=0,f(c,n,t))}}if(a=f.q,e!=c)return u(function(n,t){a.push({p:this,r:n,j:t,1:e,0:h})});if(l&&c(n,l)|c(t,l))try{p=l.then}catch(m){h=0,l=m}if(c(n,p))try{p.call(l,y(1),h=y(0))}catch(m){h(m)}else for(i=function(t,i){return c(n,t=h?t:i)?u(function(n,c){r(this,n,c,l,t)}):o},s=0;a.length>s;)p=a[s++],c(n,e=p[h])?r(p.p,p.r,p.j,l,e):(h?p.r:p.j)(l)},i.q=[],o.call(o={then:function(n,t){return i(n,t)},"catch":function(n){return i(0,n)}},function(n){i(c,1,n)},function(n){i(c,0,n)}),o}function r(u,r,o,i,f){setTimeout(function(){try{i=f(i),f=i&&c(t,i)|c(n,i)&&i.then,c(n,f)?i==u?o(TypeError()):f.call(i,r,o):r(i)}catch(e){o(e)}})}function o(n){return u(function(t){t(n)})}window.Promise=window.Promise||u,u.resolve=o,u.reject=function(n){return u(function(t,c){c(n)})},u.all=function(n){return u(function(t,c,u,r){r=[],u=n.length||t(r),n.map(function(n,i){o(n).then(function(n){r[i]=n,--u||t(r)},c)})})},u.race=function(n){return u(function(t,c){n.map(function(n){o(n).then(t,c)})})}})("f","o");
+/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */(function(a){"use strict";a.loadCSS||(a.loadCSS=function(){});var b=loadCSS.relpreload={};if(b.support=function(){var d;try{d=a.document.createElement("link").relList.supports("preload")}catch(f){d=!1}return function(){return d}}(),b.bindMediaToggle=function(d){function f(){d.media=g}var g=d.media||"all";d.addEventListener?d.addEventListener("load",f):d.attachEvent&&d.attachEvent("onload",f),setTimeout(function(){d.rel="stylesheet",d.media="only x"}),setTimeout(f,3e3)},b.poly=function(){if(!b.support())for(var g,d=a.document.getElementsByTagName("link"),f=0;f<d.length;f++)g=d[f],"preload"!==g.rel||"style"!==g.getAttribute("as")||g.getAttribute("data-loadcss")||(g.setAttribute("data-loadcss",!0),b.bindMediaToggle(g))},!b.support()){b.poly();var c=a.setInterval(b.poly,500);a.addEventListener?a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}):a.attachEvent&&a.attachEvent("onload",function(){b.poly(),a.clearInterval(c)})}"undefined"==typeof exports?a.loadCSS=loadCSS:exports.loadCSS=loadCSS})("undefined"==typeof global?this:global);
+/* Font Face Observer v2.0.13 - © Bram Stein. License: BSD-3-Clause */!window.wfl&&(new (function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a()}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a()})}function r(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}function t(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+b+";"}function y(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function z(a,b){function c(){var a=k;y(a)&&a.a.parentNode&&b(a.g)}var k=a;l(a.b,c);l(a.c,c);y(a)};function A(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var B=null,C=null,E=null,F=null;function G(){if(null===C)if(J()&&/Apple/.test(window.navigator.vendor)){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);C=!!a&&603>parseInt(a[1],10)}else C=!1;return C}function J(){null===F&&(F=!!document.fonts);return F}function K(){if(null===E){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}E=""!==a.style.font}return E}function L(a,b){return[a.style,a.weight,K()?a.stretch:"","100px",b].join(" ")}A.prototype.load=function(a,b){var c=this,k=a||"BESbswy",q=0,D=b||3E3,H=(new Date).getTime();return new Promise(function(a,b){if(J()&&!G()){var M=new Promise(function(a,b){function e(){(new Date).getTime()-H>=D?b():document.fonts.load(L(c,'"'+c.family+'"'),k).then(function(c){1<=c.length?a():setTimeout(e,25)},function(){b()})}e()}),N=new Promise(function(a,c){q=setTimeout(c,D)});Promise.race([N,M]).then(function(){clearTimeout(q);a(c)},function(){b(c)})}else m(function(){function u(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=h)(b=f!=g&&f!=h&&g!=h)||(null===B&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=B&&(f==v&&g==v&&h==v||f==w&&g==w&&h==w||f==x&&g==x&&h==x)),b=!b;b&&(d.parentNode&&d.parentNode.removeChild(d),clearTimeout(q),a(c))}function I(){if((new Date).getTime()-H>=D)d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=n.a.offsetWidth,h=p.a.offsetWidth,u();q=setTimeout(I,50)}}var e=new r(k),n=new r(k),p=new r(k),f=-1,g=-1,h=-1,v=-1,w=-1,x=-1,d=document.createElement("div");d.dir="ltr";t(e,L(c,"sans-serif"));t(n,L(c,"serif"));t(p,L(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);v=e.a.offsetWidth;w=n.a.offsetWidth;x=p.a.offsetWidth;I();z(e,function(a){f=a;u()});t(e,L(c,'"'+c.family+'",sans-serif'));z(n,function(a){g=a;u()});t(n,L(c,'"'+c.family+'",serif'));z(p,function(a){h=a;u()});t(p,L(c,'"'+c.family+'",monospace'))})})};return A;}())('Lato')).load().then(function(){document.documentElement.className+=' wf-l';document.cookie='wf-l=1;path=/;max-age=3600';delete window.wfl},function(){console.log('Could not load Lato')})</script>
 
   <!-- END CSS -->
 
@@ -96,17 +86,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
-  <script src="/assets/js/consts.js?v=d33a582" defer></script>
+  <script src="/assets/js/main.js?v=8ad9524" defer></script>
 
-  <script src="/assets/js/utils.js?v=d33a582" defer></script>
+  <script src="/assets/js/subclubs.js?v=8ad9524" defer></script>
 
-  <script src="/assets/js/main.js?v=d33a582" defer></script>
-
-  
-  <script src="/assets/js/subclubs.js?v=d33a582" defer></script>
-  
-
-  <script src="/assets/js/feedback.js?v=d33a582" defer></script>
+  <script src="/assets/js/feedback.js?v=8ad9524" defer></script>
 
   
 
@@ -120,6 +104,7 @@
   <!-- END JS -->
 
   <noscript><style>
+  html,body{font-family:Lato,sans-serif;font-display:swap;}
   script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
   script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
   </style></noscript>
@@ -502,7 +487,7 @@ The graph overall is disconnected.</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/d33a5828ba4f729b395e5dd1f07c6b60293a007b" target="_blank">d33a582</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/8ad95249add6f95c84751d18267911342a0be152" target="_blank">8ad9524</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>
