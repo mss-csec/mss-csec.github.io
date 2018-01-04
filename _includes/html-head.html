@@ -109,10 +109,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
-  <script src="{{ '/assets/js/consts.js' | relative_url }}?v={{ site.build_version }}" defer></script>
-
-  <script src="{{ '/assets/js/utils.js' | relative_url }}?v={{ site.build_version }}" defer></script>
-
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.build_version }}" defer></script>
 
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<script src="{{ '/assets/js/subclubs.js' | relative_url }}?v={{ site.build_version }}" defer></script>{% endif %}
@@ -195,6 +191,7 @@
   <!-- END JS -->
 
   <noscript><style>
+  html,body{font-family:Lato,sans-serif;font-display:swap;}
   script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
   script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
   </style></noscript>

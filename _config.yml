@@ -29,7 +29,6 @@ logo: /assets/images/favicons/icon-128.png
 
 plugins:
   - jekyll-asciidoc
-  - jekyll-coffeescript
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap

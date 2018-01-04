@@ -28,9 +28,6 @@ group :jekyll_plugins do
   # Use Rouge for Asciidoctor highlighting
   gem "asciidoctor-rouge"
 
-  # Use Jekyll Coffeescript
-  gem "jekyll-coffeescript"
-
   # Use Jekyll Compose
   gem "jekyll-compose"
 
@@ -50,6 +47,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ###
 # END JEKYLL CONFIG
 ###
-
-# Install a JS runtime to compile Coffeescript
-gem 'therubyracer'

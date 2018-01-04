@@ -73,6 +73,4 @@ $.fn.extend
     this.each (e) -> e.style.display = 'block'
     this
 
-
-
-window.UTILS = UTILS
+module.exports = UTILS

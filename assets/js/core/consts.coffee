@@ -1,7 +1,7 @@
 ---
 ---
 
-window.CONSTS =
+module.exports = Object.freeze
   ex: 20
   bpMobile: 400
   bpPhablet: 550
@@ -13,5 +13,3 @@ window.CONSTS =
   cookieStickyPrefix: 'sticky-'
   cookieTheme: 'theme'
   easterEgg: 'pascha'
-
-Object.freeze window.CONSTS

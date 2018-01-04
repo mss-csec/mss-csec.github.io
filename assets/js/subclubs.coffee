@@ -1,6 +1,10 @@
 ---
 ---
 
+# Basically imports let's face it
+require('./components/sidebar')(APP)
+require('./components/footnotes')()
+
 # Scroll to section
 scrollToSection = ($section) ->
   window.location.hash = '#' + $section.attr 'id'
