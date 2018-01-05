@@ -73,13 +73,6 @@ article p,
   box-sizing: border-box;
 }
 
-// Style quoteblocks
-.quoteblock {
-  max-width: calc(800px - 8em);
-  margin-left: 4em;
-  margin-top: 1.25em;
-}
-
 // Reset styling on code blocks
 code table,
 code td,
@@ -222,6 +215,13 @@ table {
 
   table {
     display: table;
+  }
+
+  // Style quoteblocks
+  .quoteblock {
+    max-width: calc(800px - 8em);
+    margin-left: 4em;
+    margin-top: 1.25em;
   }
 
   // Show line numbers at adequate screen width
