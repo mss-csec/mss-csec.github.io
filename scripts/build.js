@@ -40,6 +40,7 @@ const jspath = '_site/assets/js';
 
 // Files to *not* process
 const blacklist = [
+  'lib/lato/import.css',
   'lib/pygments-manni.css',
   'lib/pygments-native.css'
 ];
