@@ -1,5 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2018-01-05T17:00:25+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science Education Club
-</subtitle><entry><title type="html">November 24: PA Day</title><link href="https://mss-csec.github.io/announcements/2017/11/november-24-pa-day/" rel="alternate" type="text/html" title="November 24: PA Day" /><published>2017-11-21T00:00:00+00:00</published><updated>2017-11-21T00:00:00+00:00</updated><id>https://mss-csec.github.io/announcements/2017/11/november-24-pa-day</id><content type="html" xml:base="https://mss-csec.github.io/announcements/2017/11/november-24-pa-day/">&lt;p&gt;As is usual on PA days (or P.D. days), CSEC will not be meeting this Friday November 24. Our next meeting will be on December 1, two weeks from now.&lt;/p&gt;</content><author><name></name></author><category term="general" /><category term="pa-day" /><summary type="html">As is usual on PA days (or P.D. days), CSEC will not be meeting this Friday November 24. Our next meeting will be on December 1, two weeks from now.</summary></entry><entry><title type="html">November 3: Combined Review</title><link href="https://mss-csec.github.io/review/2017/11/november-3-combined-review/" rel="alternate" type="text/html" title="November 3: Combined Review" /><published>2017-11-03T00:00:00+00:00</published><updated>2017-11-03T00:00:00+00:00</updated><id>https://mss-csec.github.io/review/2017/11/november-3-combined-review</id><content type="html" xml:base="https://mss-csec.github.io/review/2017/11/november-3-combined-review/">&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Solutions are only visible after a successful submission on the problem.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="https://mss-csec.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mss-csec.github.io/" rel="alternate" type="text/html" /><updated>2018-01-06T17:26:07+00:00</updated><id>https://mss-csec.github.io/</id><title type="html">MSS CSEC</title><subtitle>Markville's Computer Science Education Club
+</subtitle><entry><title type="html">January 7: Scheduled testing</title><link href="https://mss-csec.github.io/announcements/2018/01/scheduled-testing/" rel="alternate" type="text/html" title="January 7: Scheduled testing" /><published>2018-01-06T00:00:00+00:00</published><updated>2018-01-06T00:00:00+00:00</updated><id>https://mss-csec.github.io/announcements/2018/01/scheduled-testing</id><content type="html" xml:base="https://mss-csec.github.io/announcements/2018/01/scheduled-testing/">&lt;p&gt;Recently, we’ve been attempting to make the CSEC website really, really fast. So far, we’ve accomplished:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Minifying our JavaScript so that they load faster. Sometimes, twice as fast.&lt;/li&gt;
+  &lt;li&gt;Reducing the size of our webfonts by 83%. &lt;em&gt;Eighty-three percent&lt;/em&gt;. We didn’t think it was possible, but apparently it is.&lt;/li&gt;
+  &lt;li&gt;Separating the styles that make our site colourful from the styles that make our site flow, so when you switch between themes it keeps the flow (unlike before).&lt;/li&gt;
+  &lt;li&gt;Loading all of our assets asyncronously so that they doesn’t block the page content from loading. It might not actually be faster, but it sure feels a lot faster.&lt;/li&gt;
+  &lt;li&gt;Clandestinely installing rockets on the GitHub Pages servers. OK, that’s a lie.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our home page now ranks somewhere within the 97th percentile of all websites in terms of loading speed.
+Given that that’s better than I’ll ever achieve on the Senior CCC, I think it’s pretty impressive. But of course, we can do better.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, to do better, we need to do some live testing that might break the entire site and be super embarrassing.
+That’s why we’re shutting the CSEC site down for an hour on January 7, 2018, from 4pm to 5pm EST.&lt;/p&gt;
+
+&lt;p&gt;We can guarantee, though, that if we succeed, we’ll be faster than ever before. Maybe we’ll even break into the 99th percentile. We’ll see.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-exactly-are-you-doing&quot;&gt;What exactly are you doing?&lt;/h3&gt;
+
+&lt;p&gt;We’re testing using &lt;a href=&quot;https://rawgit.com&quot;&gt;rawgit.com&lt;/a&gt; to deliver all of our static assets (i.e. CSS, JS) and get around GitHub’s 10 minute cache limit.
+To do so, we’re splitting up the build process, so that static assets go on a separate branch where they can be retrieved by rawgit.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-do-you-need-to-shut-down-the-site-to-do-this-cant-you-just-do-it-on-the-fly-like-the-other-changes-you-made&quot;&gt;Why do you need to shut down the site to do this? Can’t you just do it on the fly like the other changes you made?&lt;/h3&gt;
+
+&lt;p&gt;It’s good practice to test major changes to the build process or site structure before deployment, to root out bugs and other little nasties that may pop up.
+However, while those changes could be (and were) rigorously tested on a local machine, these changes can only be tested live.
+In effect, we don’t have a chance to flush out whatever nasties might be in our code before deploying it, so we’d rather shut down the site for a bit to do the necessary post-deployment testing.&lt;/p&gt;
+
+&lt;h3 id=&quot;will-this-take-more-than-one-hour&quot;&gt;Will this take more than one hour?&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Murphy's_law&quot;&gt;Fingers crossed it won’t.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;is-this-necessary&quot;&gt;Is this necessary?&lt;/h3&gt;
+
+&lt;p&gt;In the grand scheme of things, perhaps not.
+But in this age of webpages weighing megabytes and taking 15 seconds to load, we think it’s a worthy cause to try and slim down as much as possible.&lt;/p&gt;</content><author><name></name></author><category term="announcement" /><category term="news" /><category term="sticky" /><summary type="html">Recently, we’ve been attempting to make the CSEC website really, really fast. So far, we’ve accomplished:</summary></entry><entry><title type="html">November 24: PA Day</title><link href="https://mss-csec.github.io/announcements/2017/11/november-24-pa-day/" rel="alternate" type="text/html" title="November 24: PA Day" /><published>2017-11-21T00:00:00+00:00</published><updated>2017-11-21T00:00:00+00:00</updated><id>https://mss-csec.github.io/announcements/2017/11/november-24-pa-day</id><content type="html" xml:base="https://mss-csec.github.io/announcements/2017/11/november-24-pa-day/">&lt;p&gt;As is usual on PA days (or P.D. days), CSEC will not be meeting this Friday November 24. Our next meeting will be on December 1, two weeks from now.&lt;/p&gt;</content><author><name></name></author><category term="general" /><category term="pa-day" /><summary type="html">As is usual on PA days (or P.D. days), CSEC will not be meeting this Friday November 24. Our next meeting will be on December 1, two weeks from now.</summary></entry><entry><title type="html">November 3: Combined Review</title><link href="https://mss-csec.github.io/review/2017/11/november-3-combined-review/" rel="alternate" type="text/html" title="November 3: Combined Review" /><published>2017-11-03T00:00:00+00:00</published><updated>2017-11-03T00:00:00+00:00</updated><id>https://mss-csec.github.io/review/2017/11/november-3-combined-review</id><content type="html" xml:base="https://mss-csec.github.io/review/2017/11/november-3-combined-review/">&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Solutions are only visible after a successful submission on the problem.&lt;/p&gt;
 
 &lt;h3 id=&quot;advanced&quot;&gt;Advanced&lt;/h3&gt;
 &lt;h4 id=&quot;review&quot;&gt;Review&lt;/h4&gt;
