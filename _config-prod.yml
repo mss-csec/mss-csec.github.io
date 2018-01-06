@@ -1,5 +1,8 @@
 exclude:
+  - _assets/
   - assets/lib/*.txt
+  - assets/lib/lato/src/
+  - bin/
   - Gemfile
   - Gemfile.lock
   - node_modules/
@@ -14,8 +17,5 @@ exclude:
   - Vagrantfile
   - vagrant-ssh.config
   - 404.html # Excluded as Github pages won't build it anyways
-
-sass:
-  style: compressed
 
 production: true

@@ -63,8 +63,8 @@ echo
 
 # Build site
 if [ "$1" != "production" ]; then
+  time ./scripts/build.js
   bundle exec jekyll build  # Jekyll
-  time ./scripts/build.js   # NodeJS post-processing
 else
   echo "production: true" \
     >> _config-prod.yml
@@ -73,8 +73,8 @@ else
   echo "build_version: $(echo $CIRCLE_SHA1 | cut -c-7)" \
     >> _config-prod.yml
 
+  time ./scripts/build.js $1
   bundle exec jekyll build --config _config.yml,_config-prod.yml  # Jekyll
-  time ./scripts/build.js $1                                      # NodeJS post-processing
 fi
 
 echo "Build successful"

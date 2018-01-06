@@ -45,7 +45,7 @@ renderResults = (results) ->
 
 # Initialize search engine
 initSearch = (rawStore) ->
-  commit = "{{ site.time | md5 }}"
+  commit = "{{ site.time | date: '%s' }}"
 
   if null != localStorage.getItem storageKey
     try
