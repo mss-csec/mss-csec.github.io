@@ -6,7 +6,7 @@ module.exports = () ->
 
   if sticky.length and
     (Cookies.get("#{CONSTS.cookieStickyPrefix}#{sticky.attr 'data-id'}") == '1' or
-      (new Date()).getTime() > (new Date sticky.attr 'data-displayUntil').getTime())
+      (new Date()).getTime() > (new Date sticky.attr 'data-display-until').getTime())
     sticky.remove()
 
   sticky.on 'click', 'a', (e) ->
