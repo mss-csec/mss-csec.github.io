@@ -7,6 +7,8 @@ lessons_dir='_lessons'
 resources_dir='_resources'
 subclubs_dir='_subclubs'
 
+asset_commit=`git ls-remote ${CIRCLE_REPOSITORY_URL} refs/heads/${ASSETS_BRANCH} | cut -f1`
+
 echo "Starting build"
 echo
 
@@ -63,7 +65,6 @@ echo
 
 # Build site
 if [ "$1" != "production" ]; then
-  time ./scripts/build.js
   bundle exec jekyll build  # Jekyll
 else
   echo "production: true" \
@@ -72,8 +73,9 @@ else
     >> _config-prod.yml
   echo "build_version: $(echo $CIRCLE_SHA1 | cut -c-7)" \
     >> _config-prod.yml
+  echo "cdn_url: //cdn.rawgit.com/mss-csec/mss-csec.github.io/$asset_commit"
+    >> _config-prod.yml
 
-  time ./scripts/build.js $1
   bundle exec jekyll build --config _config.yml,_config-prod.yml  # Jekyll
 fi
 

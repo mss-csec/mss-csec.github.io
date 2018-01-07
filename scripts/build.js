@@ -106,7 +106,7 @@ glob([ 'assets/**/*.scss' ])
           outputStyle: isProduction ? 'compressed' : 'expanded'
         }, (err, css) => {
           if (err) {
-            console.error(err.file)
+            console.error(err.file);
             console.error(`Line ${err.line} column ${err.column}`);
             console.error(err.message);
             reject(err.status);
