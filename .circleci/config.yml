@@ -80,14 +80,10 @@ jobs:
           keys:
             - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
 
-      # Restore bundle+npm cache
+      # Restore bundle cache
       - restore_cache:
           keys:
             - mss-csec-{{ checksum "Gemfile.lock" }}
-
-      - restore_cache:
-          keys:
-            - mss-csec-{{ checksum "package-lock.json" }}
 
       # Setup environment
       - run:
@@ -96,22 +92,16 @@ jobs:
             ./scripts/ci/setup-build.sh
 
       # Save binary cache
-      - save_cache:
-          key: jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
-          paths:
-            - ./bin
+      # - save_cache:
+      #     key: jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+      #     paths:
+      #       - ./bin
 
       # Save bundle cache
       - save_cache:
           key: mss-csec-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.bundle
-
-      # Save npm cache
-      - save_cache:
-          key: mss-csec-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
 
       # Configure git details
       - run:
@@ -131,7 +121,6 @@ jobs:
           name: Chmod build/deploy scripts
           command: |
             chmod +x ./scripts/**/*.sh
-            chmod +x ./scripts/build.js
 
       # Build
       - run:
