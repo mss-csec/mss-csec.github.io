@@ -48,8 +48,8 @@
   {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ cdn_url }}/assets/css/home.css" rel="stylesheet">{% endif %}
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/css/subclubs.css" rel="stylesheet">{% endif %}
 
-  <link rel="preload" href="//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="{{ cdn_url }}/assets/lib/balloon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
@@ -105,31 +105,35 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
-    src: url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),
-         url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff');
+    font-display: swap;
+    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),
+         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    src: url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),
-         url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff');
+    font-display: swap;
+    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),
+         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    src: url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),
-         url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff');
+    font-display: swap;
+    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),
+         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: italic;
     font-weight: 400;
-    src: url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),
-         url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff');
+    font-display: swap;
+    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),
+         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff');
   }</style>
-  {% endraw %}{% endcomment %}<style>@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff')}@font-face{font-family:'Lato';font-style:italic;font-weight:400;src:url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),url(//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff')}</style>
+  {% endraw %}{% endcomment %}<style>@font-face{font-family:'Lato';font-style:normal;font-weight:300;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff')}@font-face{font-family:'Lato';font-style:italic;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff')}</style>
   <!-- END CSS -->
 
   <!-- BEGIN JS -->
@@ -145,7 +149,8 @@
 
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<script src="{{ cdn_url }}/assets/js/subclubs.js" defer></script>{% endif %}
 
-  <script src="{{ cdn_url }}/assets/js/feedback.js" defer></script>
+  {% if page.search %}<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.5/lunr.min.js" integrity="sha384-lv3Lkkrx9LN/lMWbg2+JwjtuT4yasvw8qh1mjxy+XcxOv7qURBznqU4s2DPqdp8q" crossorigin="anonymous" defer></script>
+  <script src="{{ cdn_url }}/assets/js/search.js" defer></script>{% endif %}
 
   {% if page.addons.scripts %}{% for script in page.addons.scripts %}<script src="{{ script }}" defer></script>{% endfor %}{% endif %}
 

@@ -73,7 +73,7 @@ else
     >> _config-prod.yml
   echo "build_version: $(echo $CIRCLE_SHA1 | cut -c-7)" \
     >> _config-prod.yml
-  echo "cdn_url: //cdn.rawgit.com/mss-csec/mss-csec.github.io/$asset_commit"
+  echo "cdn_url: https://cdn.rawgit.com/mss-csec/mss-csec.github.io/$asset_commit" \
     >> _config-prod.yml
 
   bundle exec jekyll build --config _config.yml,_config-prod.yml  # Jekyll

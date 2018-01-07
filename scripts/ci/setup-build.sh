@@ -19,9 +19,6 @@ gem install bundler:1.15.3 --conservative
 bundle check --path $BUNDLE_INSTALL_DIR || \
   bundle install --path $BUNDLE_INSTALL_DIR
 
-# Set up npm
-npm install
-
 echo "Setup successful"
 
 exit 0

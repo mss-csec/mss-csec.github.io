@@ -45,7 +45,7 @@ renderResults = (results) ->
 
 # Initialize search engine
 initSearch = (rawStore) ->
-  commit = "{{ site.time | date: '%s' }}"
+  commit = window.searchStoreId # "{{ site.time | date: '%s' }}"
 
   if null != localStorage.getItem storageKey
     try
@@ -102,5 +102,5 @@ window.addEventListener 'load', () ->
 
   history.replaceState { query }, '', "?#{queryKey}=#{sanitizeQuery(query)}"
 
-  initSearch searchStore
+  initSearch window.searchStore
   executeSearch query

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<!-- head -->
+{% include html-head.html %}
+<body class="no-js">
+  <div>
+    <h1>
+    We're <span>under maintenance.</span>
+    </h1>
+    <h6>We'll be back <time>at 5pm</time>.</h6>
+  </div>
+  <style>html,body {background:#fff;color:#222;
+  font: 20px/1 sans-serif;
+  margin: 0;
+}
+div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  text-align: center;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+span::after {
+  content: "|";
+  vertical-align: 4px;
+  color: #f52f2f !important;
+  text-shadow: none !important;
+  -webkit-animation: blink 1.5s infinite;
+  animation: blink 1.5s infinite;
+}
+#open-feedback-modal { display: none; }
+@-webkit-keyframes blink {
+  from { opacity: 1 }
+  25% { opacity: 1 }
+  50% { opacity: 0 }
+  75% { opacity: 0 }
+  to { opacity: 1 }
+}
+@keyframes blink {
+  from { opacity: 1 }
+  25% { opacity: 1 }
+  50% { opacity: 0 }
+  75% { opacity: 0 }
+  to { opacity: 1 }
+}</style>
+<script>var lines = [
+  "changing engines.",
+  "bringing you gifts.",
+  "wrangling pythons.",
+  "fighting fires.",
+  "hacking hackers.",
+  "chasing bugs.",
+  "searching for rubies.",
+  "testing top-secret stuff.",
+  "under maintenance."
+];
+
+var span = document.querySelector('span'),
+    heading = document.querySelector('h1'),
+    countdown = document.querySelector('time');
+
+function typeout(el, news, cb) {
+  var si1, si2,
+      p1 = function() { return new Promise(function (resolve) {
+        si1 = setInterval(function() {
+          el.textContent = el.textContent.slice(0, -1);
+          if (!el.textContent) resolve();
+        }, 100);
+      }) },
+      p2 = function() { return new Promise(function (resolve) {
+        var i = 0;
+        si2 = setInterval(function() {
+          el.textContent += news[i++];
+          if (i == news.length) resolve();
+        }, 100);
+      }) };
+
+      p1().then(function() {
+        clearInterval(si1);
+
+        setTimeout(function() {
+          p2().then(function() {
+            clearInterval(si2);
+            cb();
+          });
+        }, Math.random() * 200 + 300);
+      });
+}
+
+function flicker() {
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(255, 0, 0, .7)';
+  }, 1000)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 1100)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(255, 0, 0, .7)';
+  }, 1200)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 1275)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '.05em .05em #222, .15em .15em rgba(255, 0, 255, .7), -.1em -.1em rgba(0, 255, 255, .7)';
+  }, 3400)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .1em .1em rgba(242, 242, 0, .7), -.1em -.1em rgba(0, 255, 255, .7)';
+  }, 3500)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 3600)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(0, 255, 0, .7)';
+  }, 6000)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 6200)
+}
+
+flicker();
+setInterval(flicker, 7000);
+
+var li = 0;
+setTimeout(function tt() {
+  typeout(span, lines[li++], function() {
+    if (li == lines.length) li = 0;
+    setTimeout(tt, 3000);
+  });
+}, 4000);</script>
+</body>
+</html>
+
