@@ -1,10 +1,8 @@
 ---
 layout: default
+search: true
 addons:
   class: no-hero
-  scripts:
-    - /assets/lib/lunr.min.js
-    - /assets/js/search.js
 ---
 <div class="content container">
   <h4 style="margin-top:100px">Search results for <em id="search-query"></em> :</h4>
