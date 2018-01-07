@@ -84,7 +84,7 @@ glob([ 'assets/**/*.scss' ])
     let filePromises = files.map(file => new Promise((resolve, reject) => {
       if (~blacklist.indexOf(file.split('/').slice(-2).join('/')) ||
           /_[^/]+\.scss$/.test(file))
-        return resolve({ css: '', file, header: '---\n---\n\n' });
+        return resolve({ css: '', file });
 
       let newFile = file.replace('.scss', '.css');
       fs.readFile(file, (err, data) => {
@@ -116,74 +116,82 @@ glob([ 'assets/**/*.scss' ])
     }));
 
     return await Promise.all(filePromises);
-  })
+  }, err => console.error('Error in compiling SCSS: ', err.message))
   .then(files => {
     let acceptedFiles = [];
 
     for (let file of files) {
-      if (!/_[^\/]+\.scss$/.test(file.file)) {
+      if (!~blacklist.indexOf(file.file.split('/').slice(-2).join('/')) &&
+          !/_[^\/]+\.scss$/.test(file.file)) {
         acceptedFiles.push(file);
-      } else {
+      } else if (/_[^\/]+\.scss$/.test(file.file)) {
         fs.unlinkSync(file.file);
       }
     }
 
     return acceptedFiles;
-  })
-  .then(compiledFiles => {
-    for (let { css, file } of compiledFiles) {
-      if (~blacklist.indexOf(file.split('/').slice(-2).join('/'))) continue;
-
-      // Apply autoprefixer and extract any declarations with variables
+  }, err => console.error('Error in filtering CSS: ', err.message))
+  .then(async function(compiledFiles) {
+    // Apply autoprefixer and extract any declarations with variables
+    let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
       postcss([ autoprfxr, extrStyles ])
         .process(css)
-        .then(res => {
+        .then(({ css, extracted }) => { resolve({ css, extracted, file }) });
+    }));
 
-          // Run the layout CSS through the colour functions plugin, in case
-          // those are used
-          postcss([ clrFcns ])
-            .process(res.css)
-            .then(res => {
-              fs.writeFile(file, res.css, err => { if (err) throw err });
-            });
+    return await Promise.all(postCssPromises);
+  }, err => console.error('Error in autoprefixing/extracting CSS: ', err.message))
+  .then(extractedFiles => {
+    let themedFiles = [];
 
-          // Iterate through themes for each CSS source
-          for (let i = 0, theme; i < themes.length, theme = themes[i]; i++) {
-            let path = file.replace('.css', `-${theme}.css`);
+    for (let { extracted, file } of extractedFiles) {
+      // Iterate through themes for each CSS source
+      for (let i = 0, theme; i < themes.length, theme = themes[i]; i++) {
 
-            // Replace conditionals/variables
-            let extracted = res.extracted.replace(/\$(\[[^\]]+\])/g, (_, rules) => {
-              // Transform conditional statements into valid JSON
-              rules = JSON.parse('{' + rules.slice(1,-1).replace(/=>/g, ':') + '}');
+        // Replace conditionals/variables
+        let css = extracted.replace(/\$(\[[^\]]+\])/g, (_, rules) => {
+          // Transform conditional statements into valid JSON
+          rules = JSON.parse('{' + rules.slice(1,-1).replace(/=>/g, ':') + '}');
 
-              if (rules.hasOwnProperty(theme)) {
-                return rules[theme];
-              } else if (rules.hasOwnProperty('all')) {
-                // 'all' is placed as a fallback so that individual theme
-                // branches can overwrite it
-                return rules.all;
-              }
-
-              // it's an invalid value; could be shorted but I wouldn't take
-              // the chance
-              return 'null';
-            }).replace(/\$(\w+)/g, (_, ident) => {
-              // Replace variables with their values
-              if (variables.hasOwnProperty(ident))
-                return Array.isArray(variables[ident]) ?
-                  variables[ident][i] :
-                  variables[ident];
-              return _;
-            });
-
-            postcss([ clrFcns ])
-              .process(extracted)
-              .then(res => {
-                fs.writeFile(path, res.css, err => { if (err) throw err });
-              });
+          if (rules.hasOwnProperty(theme)) {
+            return rules[theme];
+          } else if (rules.hasOwnProperty('all')) {
+            // 'all' is placed as a fallback so that individual theme
+            // branches can overwrite it
+            return rules.all;
           }
+
+          // it's an invalid value; could be shorted but I wouldn't take
+          // the chance
+          return 'null';
+        }).replace(/\$(\w+)/g, (_, ident) => {
+          // Replace variables with their values
+          if (variables.hasOwnProperty(ident))
+            return Array.isArray(variables[ident]) ?
+              variables[ident][i] :
+              variables[ident];
+          return _;
         });
+
+        themedFiles.push({ css, file: file.replace('.css', `-${theme}.css`) });
+      }
     }
+
+    return extractedFiles.concat(themedFiles);
+  }, err => console.error('Error in theming CSS: ', err.message))
+  .then(async function(compiledFiles) {
+    // Run the CSSes through the colour functions plugin
+    let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
+      postcss([ clrFcns ])
+        .process(css)
+        .then(({ css }) => {
+          fs.writeFile(file, css, err => { if (err) throw err });
+          resolve();
+        });
+    }));
+
+    await Promise.all(postCssPromises);
+    console.log('Finished processing SCSS');
   }, err => console.error('Error in processing CSS: ', err.message));
 
 // Compile CoffeeScript, Browserify it, and minify (in prod)
@@ -270,22 +278,29 @@ glob([ 'assets/**/*.coffee' ])
 
     return acceptedFiles;
   })
-  .then(files => {
+  .then(async function(files) {
     // Minify in production mode
     if (isProduction) {
-      for (let file of files) {
+      let filePromises = files.map(file => new Promise(resolve => {
         fs.readFile(file, (err, js) => {
-          if (err) throw err;
+          if (err) reject(err);
 
           let uglified = uglify.minify(js.toString());
 
-          if (uglified.error) { console.error(file); throw uglified.error; }
+          if (uglified.error) { console.error(file); reject(uglified.error); }
           if (uglified.warnings) console.warn(uglified.warnings);
 
           js = uglified.code;
 
-          fs.writeFile(file, js, err => { if (err) throw err });
+          fs.writeFile(file, js, err => {
+            if (err) reject(err);
+            resolve();
+          });
         });
-      }
+      }));
+
+      await Promise.all(filePromises);
     }
+
+    console.log('Finished processing CoffeeScript');
   }, err => console.error('Error in processing CoffeeScript: ', err.message));
