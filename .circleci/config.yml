@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Build assets
           command: |
-            ./scripts/ci/assets.sh
+            ./scripts/ci/assets.sh production
 
 
   build:

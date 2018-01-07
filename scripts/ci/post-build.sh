@@ -9,6 +9,7 @@ echo "Starting post-build"
 find . -maxdepth 1 \
     ! -name '.git' ! -name '.gitignore' ! -name '_site' \
     ! -name 'scripts' ! -name '.circleci' ! -name '.vagrant' \
+    ! -name '.' \
     -exec rm -rf {} \;
 
 mv _site/* .

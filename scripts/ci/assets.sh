@@ -27,8 +27,12 @@ fi
 find . -maxdepth 1 \
     ! -name '.git' ! -name '.gitignore' ! -name 'assets' \
     ! -name 'scripts' ! -name '.circleci' ! -name '.vagrant' \
+    ! -name '.' \
     -exec rm -rf {} \;
+find assets/ -type f ! -name '*.css' ! -name '*.js' -exec rm -f {} \;
 
+# Add assets
+git add -A .
 git add -f assets/
 git commit -m "assets $CIRCLE_SHA1"
 
