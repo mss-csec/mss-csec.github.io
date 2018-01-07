@@ -221,7 +221,7 @@ SCRIPTS.add(function() {
       author: "Joshua Hogendorn",
       src: "https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript",
       scripts: [
-        "{{ '/assets/lib/hero-bgs/gameoflife.js' | relative_url }}"
+        "{{ site.cdn_url }}/assets/lib/hero-bgs/gameoflife.js"
       ],
       init: function(reqAnimFrame) {
         var cellDimensions = 10,
@@ -274,7 +274,7 @@ SCRIPTS.add(function() {
       author: "",
       src: "",
       scripts: [
-        "{{ '/assets/lib/hero-bgs/sorting.js' | relative_url }}"
+        "{{ site.cdn_url }}/assets/lib/hero-bgs/sorting.js"
       ],
       init: function(reqAnimFrame) {
         var step = function(timestamp) {
