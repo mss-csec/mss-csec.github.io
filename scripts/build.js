@@ -46,32 +46,24 @@ const blacklist = [
   'lib/pygments-native.css'
 ];
 
-// Extract Jekyll-style headers from mixed content
-const extractHeader = (content) => {
-  let header = [ '---' ]
-
+// Delete Jekyll-style headers from mixed content
+const deleteHeader = (content) => {
   if (content instanceof Buffer) content = content.toString();
 
   if (content.startsWith('---')) {
     let splitSrc = content.split('\n'),
-        headerBuilder = [],
         line = 1; // offset by 1 for ending delim
     for (; line < splitSrc.length; line++) {
       if (splitSrc[line].startsWith('---')) {
         line++;
         break;
       }
-      headerBuilder.push(splitSrc[line]);
     }
 
-    header = header.concat(headerBuilder);
     content = splitSrc.slice(line).join('\n');
   }
 
-  header.push('---');
-  header.push('\n');
-
-  return { content, header: header.join('\n') };
+  return content;
 };
 
 // First, copy assets dir recursively
@@ -98,7 +90,7 @@ glob([ 'assets/**/*.scss' ])
       fs.readFile(file, (err, data) => {
         if (err) reject(err);
 
-        let { content, header } = extractHeader(data);
+        let content = deleteHeader(data);
 
         sass.render({
           data: content,
@@ -117,8 +109,7 @@ glob([ 'assets/**/*.scss' ])
 
           resolve({
             css: css.css.toString(),
-            file: newFile,
-            header
+            file: newFile
           });
         });
       });
@@ -140,7 +131,7 @@ glob([ 'assets/**/*.scss' ])
     return acceptedFiles;
   })
   .then(compiledFiles => {
-    for (let { css, file, header } of compiledFiles) {
+    for (let { css, file } of compiledFiles) {
       if (~blacklist.indexOf(file.split('/').slice(-2).join('/'))) continue;
 
       // Apply autoprefixer and extract any declarations with variables
@@ -153,7 +144,7 @@ glob([ 'assets/**/*.scss' ])
           postcss([ clrFcns ])
             .process(res.css)
             .then(res => {
-              fs.writeFile(file, header + res.css.trimLeft(), err => { if (err) throw err });
+              fs.writeFile(file, res.css, err => { if (err) throw err });
             });
 
           // Iterate through themes for each CSS source
@@ -188,7 +179,7 @@ glob([ 'assets/**/*.scss' ])
             postcss([ clrFcns ])
               .process(extracted)
               .then(res => {
-                fs.writeFile(path, header + res.css.trimLeft(), err => { if (err) throw err });
+                fs.writeFile(path, res.css, err => { if (err) throw err });
               });
           }
         });
@@ -206,9 +197,9 @@ glob([ 'assets/**/*.coffee' ])
       fs.readFile(file, (err, data) => {
         if (err) throw err;
         if (~blacklist.indexOf(file.split('/').slice(-2).join('/')))
-          return resolve({ file, header: '---\n---\n\n' });
+          return resolve(file);
 
-        let { content, header } = extractHeader(data);
+        let content = deleteHeader(data);
 
         let compiled = coffee.compile(content, {
           bare: true
@@ -220,7 +211,7 @@ glob([ 'assets/**/*.coffee' ])
           // Delete source CS file
           fs.unlink(file, err => { if (err) reject(err) });
 
-          resolve({ file: newFile, header });
+          resolve(newFile);
         });
       });
     }));
@@ -230,35 +221,23 @@ glob([ 'assets/**/*.coffee' ])
   .then(async function(files) {
     // Browserify only files in jspath
     let needsBundling = [],
-        regularFiles = [],
         browserifyOptions = {};
 
     for (let file of files) {
-      if (/assets\/js\/[^/]+\.js$/.test(file.file)) {
+      if (/assets\/js\/[^/]+\.js$/.test(file)) {
         needsBundling.push(file);
-      } else {
-        regularFiles.push(file);
       }
     }
 
     if (!isProduction) browserifyOptions.debug = true;
 
     // same as async/await above
-    let bundlePromises = needsBundling.map(({ file, header }) => new Promise((resolve, reject) => {
+    let bundlePromises = needsBundling.map((file) => new Promise((resolve, reject) => {
       browserify(file, browserifyOptions)
         .bundle((err, buf) => {
           if (err) reject(err);
 
-          if (isProduction) {
-            let uglified = uglify.minify(buf.toString());
-
-            if (uglified.error) { console.error(file); reject(uglified.error); }
-            if (uglified.warnings) console.warn(uglified.warnings);
-
-            buf = uglified.code;
-          }
-
-          fs.writeFile(file, header + buf.toString(), err => {
+          fs.writeFile(file, buf, err => {
             if (err) reject(err);
             resolve();
           });
@@ -266,7 +245,7 @@ glob([ 'assets/**/*.coffee' ])
     }));
 
     await Promise.all(bundlePromises);
-    return regularFiles;
+    return files;
   })
   .then(files => {
     // Remove extraneous files
@@ -276,11 +255,11 @@ glob([ 'assets/**/*.coffee' ])
     for (let file of files) {
       // Anything in a subdirectory of jspath is extraneous, so we delete it
       // and then remove the subdir (1)
-      if (!/assets\/js\/\w+\//.test(file.file)) {
+      if (!/assets\/js\/\w+\//.test(file)) {
         acceptedFiles.push(file);
       } else {
-        fs.unlinkSync(file.file);
-        rmDirs.add(file.file.match(/assets\/js\/(\w+\/)/)[1]);
+        fs.unlinkSync(file);
+        rmDirs.add(file.match(/assets\/js\/(\w+\/)/)[1]);
       }
     }
 
@@ -293,9 +272,9 @@ glob([ 'assets/**/*.coffee' ])
   })
   .then(files => {
     // Minify in production mode
-    for (let { file, header } of files) {
-      fs.readFile(file, (err, js) => {
-        if (isProduction) {
+    if (isProduction) {
+      for (let file of files) {
+        fs.readFile(file, (err, js) => {
           if (err) throw err;
 
           let uglified = uglify.minify(js.toString());
@@ -304,9 +283,9 @@ glob([ 'assets/**/*.coffee' ])
           if (uglified.warnings) console.warn(uglified.warnings);
 
           js = uglified.code;
-        }
 
-        fs.writeFile(file, header + js.toString(), err => { if (err) throw err });
-      });
+          fs.writeFile(file, js, err => { if (err) throw err });
+        });
+      }
     }
   }, err => console.error('Error in processing CoffeeScript: ', err.message));

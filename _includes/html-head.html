@@ -38,53 +38,54 @@
   <!-- END GA -->{% endif %}
 
   <!-- BEGIN CSS -->
+  {% assign cdn_url = site.cdn_url | default: '' %}
   {% assign layout = page.layout %}
   {% assign ext = page.path | split: '.' | last %}
 
-  <link href="{{ '/assets/lib/skeleton.css' | relative_url }}" rel="stylesheet">
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ '/assets/lib/lesson-default.css' | relative_url }}" rel="stylesheet">{% endif %}
-  <link href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">{% endif %}
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ '/assets/css/subclubs.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">{% endif %}
+  <link href="{{ cdn_url }}/assets/lib/skeleton.css" rel="stylesheet">
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/lib/lesson-default.css" rel="stylesheet">{% endif %}
+  <link href="{{ cdn_url }}/assets/css/main.css" rel="stylesheet">
+  {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ cdn_url }}/assets/css/home.css" rel="stylesheet">{% endif %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/css/subclubs.css" rel="stylesheet">{% endif %}
 
   <link rel="preload" href="//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="//cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="{{ '/assets/lib/lato/import.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="{{ '/assets/lib/balloon.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{{ cdn_url }}/assets/lib/lato/import.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{{ cdn_url }}/assets/lib/balloon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
-  <link href="{{ '/assets/lib/lato/import.css' | relative_url }}" rel="stylesheet">
-  <link href="{{ '/assets/lib/balloon.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ cdn_url }}/assets/lib/lato/import.css" rel="stylesheet">
+  <link href="{{ cdn_url }}/assets/lib/balloon.css" rel="stylesheet">
 
-  <link href="{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  <link href="{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">{% endif %}
-  <link href="{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">
-  {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">{% endif %}
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}" rel="stylesheet">{% endif %}
-  <link href="{{ '/assets/lib/pygments-manni.css' | relative_url }}" rel="stylesheet">
+  <link href="{{ cdn_url }}/assets/lib/skeleton-light.css" rel="stylesheet">
+  <link href="{{ cdn_url }}/assets/lib/balloon-light.css" rel="stylesheet">
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/lib/lesson-default-light.css" rel="stylesheet">{% endif %}
+  <link href="{{ cdn_url }}/assets/css/main-light.css" rel="stylesheet">
+  {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ cdn_url }}/assets/css/home-light.css" rel="stylesheet">{% endif %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/css/subclubs-light.css" rel="stylesheet">{% endif %}
+  <link href="{{ cdn_url }}/assets/lib/pygments-manni.css" rel="stylesheet">
   </noscript>
 
   {% comment %}{% raw %} Source for below
   <script>
     window.STYLESHEETS = {
       light: [
-        "{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}",
-        "{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}",
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        "{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}",
-        {% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        "{{ '/assets/lib/pygments-manni.css' | relative_url }}"
+        "{{ cdn_url }}/assets/lib/skeleton-light.css",
+        "{{ cdn_url }}/assets/lib/balloon-light.css",
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/lib/lesson-default-light.css",{% endif %}
+        "{{ cdn_url }}/assets/css/main-light.css",
+        {% if layout == 'home' or layout == 'subclub-landing' %}"{{ cdn_url }}/assets/css/home-light.css",{% endif %}
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/css/subclubs-light.css",{% endif %}
+        "{{ cdn_url }}/assets/lib/pygments-manni.css"
       ],
       dark: [
-        "{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}",
-        "{{ '/assets/lib/balloon-dark.css' | relative_url }}?v={{ site.build_version }}",
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        "{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}",
-        {% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}
-        "{{ '/assets/lib/pygments-native.css' | relative_url }}"
+        "{{ cdn_url }}/assets/lib/skeleton-dark.css",
+        "{{ cdn_url }}/assets/lib/balloon-dark.css",
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/lib/lesson-default-dark.css",{% endif %}
+        "{{ cdn_url }}/assets/css/main-dark.css",
+        {% if layout == 'home' or layout == 'subclub-landing' %}"{{ cdn_url }}/assets/css/home-dark.css",{% endif %}
+        {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/css/subclubs-dark.css",{% endif %}
+        "{{ cdn_url }}/assets/lib/pygments-native.css"
       ]
     };
 
@@ -92,7 +93,7 @@
 
     delete window.t; delete window.d;
   </script>
-  {% endraw %}{% endcomment %}<script>window.STYLESHEETS={light:["{{ '/assets/lib/skeleton-light.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-light.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-light.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-light.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/lib/pygments-manni.css' | relative_url }}"],dark:["{{ '/assets/lib/skeleton-dark.css' | relative_url }}?v={{ site.build_version }}","{{ '/assets/lib/balloon-dark.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/lib/lesson-default-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/css/main-dark.css' | relative_url }}?v={{ site.build_version }}",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ '/assets/css/home-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ '/assets/css/subclubs-dark.css' | relative_url }}?v={{ site.build_version }}",{% endif %}"{{ '/assets/lib/pygments-native.css' | relative_url }}"]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link rel="preload" href="'+STYLESHEETS[t].join('" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><link rel="preload" href="')+'" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">');delete window.t;delete window.d</script>
+  {% endraw %}{% endcomment %}<script>window.STYLESHEETS={light:["{{ cdn_url }}/assets/lib/skeleton-light.css","{{ cdn_url }}/assets/lib/balloon-light.css",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/lib/lesson-default-light.css",{% endif %}"{{ cdn_url }}/assets/css/main-light.css",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ cdn_url }}/assets/css/home-light.css",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/css/subclubs-light.css",{% endif %}"{{ cdn_url }}/assets/lib/pygments-manni.css"],dark:["{{ cdn_url }}/assets/lib/skeleton-dark.css","{{ cdn_url }}/assets/lib/balloon-dark.css",{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/lib/lesson-default-dark.css",{% endif %}"{{ cdn_url }}/assets/css/main-dark.css",{% if layout == 'home' or layout == 'subclub-landing' %}"{{ cdn_url }}/assets/css/home-dark.css",{% endif %}{% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}"{{ cdn_url }}/assets/css/subclubs-dark.css",{% endif %}"{{ cdn_url }}/assets/lib/pygments-native.css"]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link rel="preload" href="'+STYLESHEETS[t].join('" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><link rel="preload" href="')+'" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">');delete window.t;delete window.d</script>
 
   {% if page.addons.styles %}{% for style in page.addons.styles %}<link rel="preload" href="{{ style }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endfor %}{% endif %}
 
@@ -111,11 +112,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
 
-  <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.build_version }}" defer></script>
+  <script src="{{ cdn_url }}/assets/js/main.js" defer></script>
 
-  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<script src="{{ '/assets/js/subclubs.js' | relative_url }}?v={{ site.build_version }}" defer></script>{% endif %}
+  {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<script src="{{ cdn_url }}/assets/js/subclubs.js" defer></script>{% endif %}
 
-  <script src="{{ '/assets/js/feedback.js' | relative_url }}?v={{ site.build_version }}" defer></script>
+  <script src="{{ cdn_url }}/assets/js/feedback.js" defer></script>
 
   {% if page.addons.scripts %}{% for script in page.addons.scripts %}<script src="{{ script }}" defer></script>{% endfor %}{% endif %}
 
