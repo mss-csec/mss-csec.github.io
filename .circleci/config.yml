@@ -106,13 +106,13 @@ jobs:
 
 workflows:
   version: 2
-#  commit:
-#   jobs:
-#      - build:
-#          filters:
-#            branches:
-#              only:
-#                - staging
+  commit:
+   jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - staging
   auto-build:
     triggers:
       - schedule:
