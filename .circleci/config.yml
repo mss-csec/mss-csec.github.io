@@ -106,17 +106,17 @@ jobs:
 
 workflows:
   version: 2
-  commit:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - staging
+#  commit:
+#   jobs:
+#      - build:
+#          filters:
+#            branches:
+#              only:
+#                - staging
   auto-build:
     triggers:
       - schedule:
-          cron: "0 17 * * 5"
+          cron: "0 21 * * 0"
           filters:
             branches:
               only:
