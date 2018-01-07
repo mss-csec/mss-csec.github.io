@@ -40,6 +40,13 @@ git stash pop || true
 # Update submodules to their remotes
 git submodule update --remote
 
+# Move assets folder
+if [ -d 'assets' ]; then
+  rm -rf assets/
+fi
+mkdir assets/
+mv _assets/images assets/images
+
 echo "Pre-build successful"
 
 exit 0
