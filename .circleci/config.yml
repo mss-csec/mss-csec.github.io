@@ -1,16 +1,64 @@
 version: 2
 
 jobs:
+  assets:
+    docker:
+      - image: circleci/node:8.9.3
+    environment:
+      NPM_INSTALL_DIR: ./node_modules
+      NODE_ENV: production
+      SOURCE_BRANCH: staging
+      DEPLOY_BRANCH: assets
+      USER_EMAIL: markville.compsci@gmail.com
+      USER_NAME: MSS CSEC
+
+    working_directory: ~/mss-csec.github.io
+
+    steps:
+      - checkout
+
+      - run:
+          name: Chmod setup scripts
+          command: |
+            chmod +x ./scripts/**/*.sh
+
+      # Restore npm cache
+      - restore_cache:
+          keys:
+            - mss-csec-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Setup environment
+          command: |
+            ./scripts/ci/setup-assets.sh
+
+      # Save npm cache
+      - save_cache:
+          key: mss-csec-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Configure git details
+          command: |
+            git config user.email "$USER_EMAIL"
+            git config user.name "$USER_NAME"
+
+      - run:
+          name: Build assets
+          command: |
+            ./scripts/ci/assets.sh production
+
+
   build:
     docker:
-      - image: circleci/ruby@sha256:b0e9e54d2579457720e60de9f650d096f32cdd54870d80dba5a46c294074ba06 # ruby 2.4.0 + nodejs 8.9.3/npm 5.5.1
+      - image: circleci/ruby:2.4-jessie
 
     environment:
       BUNDLE_INSTALL_DIR: ~/.bundle
-      NPM_INSTALL_DIR: ./node_modules
       JEKYLL_ENV: production
-      NODE_ENV: production
       SOURCE_BRANCH: staging
+      ASSETS_BRANCH: assets
       DEPLOY_BRANCH: master
       BUILD_BRANCH: build-master
       USER_EMAIL: markville.compsci@gmail.com
@@ -45,7 +93,7 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            ./scripts/ci/setup.sh
+            ./scripts/ci/setup-build.sh
 
       # Save binary cache
       - save_cache:
@@ -107,16 +155,23 @@ jobs:
 workflows:
   version: 2
   commit:
-   jobs:
+    jobs:
+      - assets:
+          filters:
+            branches:
+              only:
+                - staging
       - build:
           filters:
             branches:
               only:
                 - staging
+          requires:
+            - assets
   auto-build:
     triggers:
       - schedule:
-          cron: "0 21 * * 0"
+          cron: "0 17 * * 5"
           filters:
             branches:
               only:
