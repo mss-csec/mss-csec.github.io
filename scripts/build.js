@@ -11,6 +11,7 @@ const fs = require('fs'),
       autoprfxr = require('autoprefixer'),
       extrStyles = require('postcss-extract-styles')({ pattern: /\$(\w+|\[[^\]]+\])/ }),
       clrFcns = require('postcss-sass-color-functions'),
+      csso = require('csso'),
       browserify = require('browserify'),
       coffee = require('coffee-script'),
       uglify = require('uglify-js'),
@@ -95,7 +96,7 @@ glob([ 'assets/**/*.scss' ])
         sass.render({
           data: content,
           includePaths: [ resolvePath(__dirname, '../assets/css/') ],
-          outputStyle: isProduction ? 'compressed' : 'expanded'
+          outputStyle: 'expanded'
         }, (err, css) => {
           if (err) {
             console.error(err.file);
@@ -184,15 +185,21 @@ glob([ 'assets/**/*.scss' ])
     let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
       postcss([ clrFcns ])
         .process(css)
-        .then(({ css }) => {
-          fs.writeFile(file, css, err => { if (err) throw err });
-          resolve();
-        });
+        .then(({ css }) => { resolve({ css, file }) });
     }));
 
-    await Promise.all(postCssPromises);
+    return await Promise.all(postCssPromises);
+  }, err => console.error('Error in parsing colour functions in CSS: ', err.message))
+  .then(compiledFiles => {
+    // Minify CSS in production mode
+    if (isProduction) {
+      for (let { css, file } of compiledFiles) {
+        fs.writeFile(file, csso.minify(css).css, err => { if (err) throw err });
+      }
+    }
+
     console.log('Finished processing SCSS');
-  }, err => console.error('Error in processing CSS: ', err.message));
+  }, err => console.error('Error in minifying CSS: ', err.message));
 
 // Compile CoffeeScript, Browserify it, and minify (in prod)
 glob([ 'assets/**/*.coffee' ])
