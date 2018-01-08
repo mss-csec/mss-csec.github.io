@@ -11,7 +11,7 @@ const fs = require('fs'),
       autoprfxr = require('autoprefixer'),
       extrStyles = require('postcss-extract-styles')({ pattern: /\$(\w+|\[[^\]]+\])/ }),
       clrFcns = require('postcss-sass-color-functions'),
-      cssnano = require('cssnano'),
+      csso = require('csso'),
       browserify = require('browserify'),
       coffee = require('coffee-script'),
       uglify = require('uglify-js'),
@@ -190,19 +190,12 @@ glob([ 'assets/**/*.scss' ])
 
     return await Promise.all(postCssPromises);
   }, err => console.error('Error in parsing colour functions in CSS: ', err.message))
-  .then(async function(compiledFiles) {
+  .then(compiledFiles => {
     // Minify CSS in production mode
     if (isProduction) {
-      let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
-        postcss([ cssnano ])
-          .process(css)
-          .then(({ css }) => {
-            fs.writeFile(file, css, err => { if (err) throw err });
-            resolve();
-          });
-      }));
-
-      await Promise.all(postCssPromises);
+      for (let { css, file } of compiledFiles) {
+        fs.writeFile(file, csso.minify(css).css, err => { if (err) throw err });
+      }
     }
 
     console.log('Finished processing SCSS');
