@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/resources/advanced/preprocessor-macros" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-01-08T02:40:25+00:00" />
+<meta property="article:published_time" content="2018-01-12T17:00:18+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Preprocessor Macros","datePublished":"2018-01-08T02:40:25+00:00","dateModified":"2018-01-08T02:40:25+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/resources/advanced/preprocessor-macros"},"url":"https://mss-csec.github.io/resources/advanced/preprocessor-macros"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Preprocessor Macros","datePublished":"2018-01-12T17:00:18+00:00","dateModified":"2018-01-12T17:00:18+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/resources/advanced/preprocessor-macros"},"url":"https://mss-csec.github.io/resources/advanced/preprocessor-macros"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -224,7 +224,163 @@
       
 
       <article>
-      
+      <div id="toc" class="toc">
+<div id="toctitle">Sections</div>
+<ul class="sectlevel1">
+<li><a href="#code-include-code"><code>#include</code></a></li>
+<li><a href="#replacement-token-code-define-code">Replacement token <code>#define</code></a></li>
+<li><a href="#function-macro-code-define-code">Function macro <code>#define</code></a></li>
+<li><a href="#token-definitions-and-code-ifdef-code-blocks">Token definitions and <code>#ifdef</code> blocks</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Preprocessor macros</strong> are powerful tools that give direct instructions to a compiler.
+They can be very useful when debugging your code.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Preprocessor macros ignore the structure of your code, and so can be dangerous if handled badly.
+If you aren&#8217;t experienced with them, it&#8217;s best to work only with macros that affect small segments of code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This article is a compilation of a number of common macros and applications of them you may want to consider.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="code-include-code"><code>#include</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Includes a header file.
+You already use this when including specific libraries from the standard library.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="replacement-token-code-define-code">Replacement token <code>#define</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once <code>#define [TOKEN] [REPLACEMENT]</code> has been invoked, <strong>all</strong> instances of <code>TOKEN</code> that appear afterword will be replaced with <code>REPLACEMENT</code>.
+This can be undone with <code>#undef [TOKEN]</code>.</p>
+</div>
+<div class="paragraph">
+<p>These are commonly used for magic numbers or readability:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#define PI 3.14159265358979</span></span>
+<span id="L2" class="line"><span class="cp">#define p3i std::pair&lt;int, std::pair&lt;int, int&gt; &gt;</span></span>
+<span id="L3" class="line"><span class="cp">#define mpii std::make_pair</span></span>
+<span id="L4" class="line"></span>
+<span id="L5" class="line"><span class="c1">//...</span></span>
+<span id="L6" class="line"></span>
+<span id="L7" class="line">    <span class="n">p3i</span> <span class="n">p</span> <span class="o">=</span> <span class="n">mpii</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mpii</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">PI</span><span class="o">*</span><span class="mi">100</span><span class="p">)));</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above line is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line">    <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="mf">3.14159265358</span><span class="o">*</span><span class="mi">100</span><span class="p">)));</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="function-macro-code-define-code">Function macro <code>#define</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>#define</code> macros can be used to make what are similar to functions, and are also usually used for readability.
+They can also be undone with <code>#undef</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#define scan(x) scanf("%d",&amp;(x));</span></span>
+<span id="L2" class="line"></span>
+<span id="L3" class="line"><span class="c1">//...</span></span>
+<span id="L4" class="line"></span>
+<span id="L5" class="line">    <span class="n">scan</span><span class="p">(</span><span class="n">n</span><span class="p">);</span></span>
+<span id="L6" class="line">    <span class="n">scan</span><span class="p">(</span><span class="n">m</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>... is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line">    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span></span>
+<span id="L2" class="line">    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">m</span><span class="p">));</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Always surround arguments of a macro function with brackets and never put in an expression with side effects.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#define dist(x,y) sqrt(x*x+y*y)</span></span>
+<span id="L2" class="line">    <span class="k">return</span> <span class="n">dist</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>... is equivalent to&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line">    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="o">*</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="o">+</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="o">*</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>... when you really wanted&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#define dist(x,y) sqrt((x)*(x)+(y)*(y))</span></span>
+<span id="L2" class="line">    <span class="k">return</span> <span class="n">dist</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">);</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>... which is equivalent to&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line">    <span class="k">return</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">));</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="token-definitions-and-code-ifdef-code-blocks">Token definitions and <code>#ifdef</code> blocks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is most useful when you want to toggle sections of code at will, such as when you&#8217;re switching between debug output to real output.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#define DEBUG</span></span>
+<span id="L2" class="line"></span>
+<span id="L3" class="line"><span class="cp">#ifdef DEBUG</span></span>
+<span id="L4" class="line">    <span class="n">printf</span><span class="p">(</span><span class="s">"%4d %4d %4d:%04d -&gt; %d"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">res</span><span class="p">);</span></span>
+<span id="L5" class="line"><span class="cp">#endif</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Commenting out the first line, <code>#define DEBUG</code>, will prevent the <code>printf</code> line from being compiled.</p>
+</div>
+</div>
+</div>
       </article>
     </div>
   </div>

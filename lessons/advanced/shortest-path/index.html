@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/shortest-path/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-01-08T02:40:25+00:00" />
+<meta property="article:published_time" content="2018-01-12T17:00:18+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shortest Path","datePublished":"2018-01-08T02:40:25+00:00","dateModified":"2018-01-08T02:40:25+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"},"url":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shortest Path","datePublished":"2018-01-12T17:00:18+00:00","dateModified":"2018-01-12T17:00:18+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"},"url":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -248,7 +248,7 @@
 <div id="toctitle">Sections</div>
 <ul class="sectlevel1">
 <li><a href="#who-cares">Who cares?</a></li>
-<li><a href="#relaxing-a-node">Relaxing a Node</a></li>
+<li><a href="#relaxing-an-edge">Relaxing an Edge</a></li>
 <li><a href="#dijkstra-s-algorithm">Dijkstra&#8217;s Algorithm</a>
 <ul class="sectlevel2">
 <li><a href="#basic-algorithm">Basic Algorithm</a></li>
@@ -292,42 +292,232 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="relaxing-a-node">Relaxing a Node</h2>
+<h2 id="relaxing-an-edge">Relaxing an Edge</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><span class="image right"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Shortest_path_with_direct_weights.svg/250px-Shortest_path_with_direct_weights.svg.png" alt="a shortest path"></span></p>
+</div>
+<div class="paragraph">
+<p>Consider the graph on the right, where we are searching for a path from node <strong>A</strong> to node <strong>F</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The <em>true distance</em> to node <strong>A</strong> is \(0\), as the total weight of the shortest path from <strong>A</strong> to <strong>A</strong> is \(0\).
+Similarly, the true distance to node <strong>B</strong> is \(4\), to node <strong>C</strong> is \(2\), etc.</p>
+</div>
+<div class="paragraph">
+<p>This is because the shortest path to <strong>B</strong> is \(A\rightarrow B\) with weight \(4\), and the shortest path the <strong>C</strong> is \(A\rightarrow C\) with weight \(2\); the only other path is \(A\rightarrow B\rightarrow C\) with weight \(4+5=9\).</p>
+</div>
+<div class="paragraph">
+<p>To find, then, the distance to node <strong>D</strong>, we must consider three paths:</p>
+</div>
+<div class="paragraph">
+<p>\(A\rightarrow B\rightarrow D\) with weight \(4+10=14\),</p>
+</div>
+<div class="paragraph">
+<p>\(A\rightarrow B\rightarrow C\rightarrow E\rightarrow D\), with weight \(4+5+3+4=16\), and</p>
+</div>
+<div class="paragraph">
+<p>\(A\rightarrow C\rightarrow E\rightarrow D\), with weight \(2+3+4=9\).</p>
+</div>
+<div class="paragraph">
+<p>Since the third path has least weight, the true distance from node <strong>A</strong> to node <strong>D</strong> is \(9\).</p>
+</div>
+<div class="paragraph">
+<p>Notice that we could have found this if we already knew the true distance from node <strong>A</strong> to nodes <strong>B</strong> or <strong>E</strong>: we could take that distance and add the weight of edges \(B\rightarrow D\) or \(E\rightarrow D\) respectively.</p>
+</div>
+<div class="paragraph">
+<p>The act of doing so is called <strong>relaxing</strong> an edge: finding (and updating) the true distance of some node <strong>Y</strong> from edge \(X\rightarrow Y\).</p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="dijkstra-s-algorithm">Dijkstra&#8217;s Algorithm</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><span class="image right"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/DijkstraDemo.gif/220px-DijkstraDemo.gif" alt="dijkstra&#8217;s algorithm on euclidean distance"></span></p>
+</div>
+<div class="paragraph">
+<p>Developed by <a href="https://en.wikipedia.org/wiki/Edsger_W._Dijkstra">Edsger W. Dijkstra</a>, Dijkstra&#8217;s Algorithm finds the shortest path between two nodes in a nonnegative-weighted graph with \(N\) nodes and \(M\) edges in \(\Theta(M\log{M})\) time using a binary heap.</p>
+</div>
 <div class="sect2">
 <h3 id="basic-algorithm">Basic Algorithm</h3>
-
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Begin with true distance \(\infty\) for all nodes.</p>
+</li>
+<li>
+<p>Add the source node to the <em>open</em> list with true distance \(0\).</p>
+</li>
+<li>
+<p>Until there are no more open nodes, or until the destination node is marked closed, iterate:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Pick the least true-distance open node.</p>
+</li>
+<li>
+<p>Relax all edges from this node.</p>
+</li>
+<li>
+<p>Close this node.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
 <h3 id="intuition-of-correctness">Intuition of Correctness</h3>
-
+<div class="paragraph">
+<p>This is equivalent to what would be breadth-first search if, instead of merely considering recursive depth, the true distance of a node were considered instead.
+As such, every node closed must be the next-closest open node to the source.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="implementation">Implementation</h3>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">struct</span> <span class="n">less_true_dist</span> <b class="conum">(1)</b></span>
+<span id="L2" class="line"><span class="p">{</span></span>
+<span id="L3" class="line">    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="n">edge_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">edge_t</span> <span class="n">b</span><span class="p">)</span></span>
+<span id="L4" class="line">    <span class="p">{</span></span>
+<span id="L5" class="line">        <span class="c1">//priority_queues are max-heaps, but we want min</span></span>
+<span id="L6" class="line">        <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">true_dist</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">true_dist</span><span class="p">;</span></span>
+<span id="L7" class="line">    <span class="p">}</span></span>
+<span id="L8" class="line"><span class="p">};</span></span>
+<span id="L9" class="line"></span>
+<span id="L10" class="line"><span class="kt">int</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph_t</span> <span class="n">g</span><span class="p">,</span> <span class="n">node_t</span> <span class="n">source</span><span class="p">,</span> <span class="n">node_t</span> <span class="n">dest</span><span class="p">)</span></span>
+<span id="L11" class="line"><span class="p">{</span></span>
+<span id="L12" class="line">    <span class="n">g</span><span class="p">.</span><span class="n">set_all_true_dist</span><span class="p">(</span><span class="n">MAXINT</span><span class="p">);</span> <b class="conum">(2)</b></span>
+<span id="L13" class="line"></span>
+<span id="L14" class="line">    <span class="n">std</span><span class="o">::</span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">edge_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">edge_t</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">less_true_dist</span><span class="o">&gt;</span> <span class="n">open_list</span><span class="p">;</span></span>
+<span id="L15" class="line">    <span class="n">open_list</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_edge</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <b class="conum">(3)</b></span>
+<span id="L16" class="line"></span>
+<span id="L17" class="line">    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dest</span><span class="p">.</span><span class="n">closed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">open_list</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span></span>
+<span id="L18" class="line">    <span class="p">{</span></span>
+<span id="L19" class="line">    	<span class="n">edge_t</span> <span class="n">next</span> <span class="o">=</span> <span class="n">open_list</span><span class="p">.</span><span class="n">top</span><span class="p">();</span></span>
+<span id="L20" class="line">        <span class="n">open_list</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span></span>
+<span id="L21" class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">closed</span><span class="p">())</span></span>
+<span id="L22" class="line">            <span class="k">continue</span><span class="p">;</span></span>
+<span id="L23" class="line"></span>
+<span id="L24" class="line">        <span class="n">next</span><span class="p">.</span><span class="n">close</span><span class="p">();</span> <b class="conum">(4)</b></span>
+<span id="L25" class="line">        <span class="k">for</span> <span class="p">(</span><span class="n">each</span> <span class="n">edge_t</span> <span class="n">e</span> <span class="n">in</span> <span class="n">next</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">edges</span><span class="p">)</span></span>
+<span id="L26" class="line">        <span class="p">{</span></span>
+<span id="L27" class="line">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">closed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">relax</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <b class="conum">(5)</b></span>
+<span id="L28" class="line">            <span class="p">{</span></span>
+<span id="L29" class="line">            	<span class="n">open_list</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">e</span><span class="p">);</span></span>
+<span id="L30" class="line">            <span class="p">}</span></span>
+<span id="L31" class="line">        <span class="p">}</span></span>
+<span id="L32" class="line">    <span class="p">}</span></span>
+<span id="L33" class="line"></span>
+<span id="L34" class="line">    <span class="k">return</span> <span class="n">dest</span><span class="p">.</span><span class="n">true_dist</span><span class="p">;</span></span>
+<span id="L35" class="line"><span class="p">}</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>A functor for STL comparisons</p>
+</li>
+<li>
+<p>Step 1.
+Usually you&#8217;d store these in an array.</p>
+</li>
+<li>
+<p>Step 2.
+Assume that <code>make_edge</code> has signature <code>edge_t make_edge(node_t from, node_t to, int weight, int true_dist)</code> and parameters are passed by reference.</p>
+</li>
+<li>
+<p>Assume that this closes the node <code>next.to</code>, automatically updating true distance.</p>
+</li>
+<li>
+<p><code>relax(edge_t e)</code> updates node <code>e.to</code> with its true distance, if applicable, and returns <code>true</code> on an update; that is, a new least true distance was found.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="bellman-ford-algorithm">Bellman-Ford Algorithm</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>First proposed by Alfonso Shimbell in 1955 and later named after mathematicians Richard Bellman and Lester Ford Jr. who published it, the Bellman-Ford algorithm can find the shortest path in a graph with <em>negative</em> weights or report the existence of a negative cycle in a graph with \(N\) nodes and \(M\) edges in \(\text{O}(NM)\) time.</p>
+</div>
 <div class="sect2">
 <h3 id="basic-algorithm-2">Basic Algorithm</h3>
-
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Begin with true distance \(\infty\) for all nodes <em>except</em> the source, which starts with true distance \(0\).</p>
+</li>
+<li>
+<p>Relax all \(M\) edges \(N\) times.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If any relaxing on the \(N^{\text{th}}\) pass succeeded, a negative cycle was found.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
 <h3 id="intuition-of-correctness-2">Intuition of Correctness</h3>
-
+<div class="paragraph">
+<p>This is pretty much brute-force.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="implementation-2">Implementation</h3>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-plaintext" data-lang="plaintext"><span id="L1" class="line">int bellman_ford(graph_t g, node_t source, node_t dest)</span>
+<span id="L2" class="line">{</span>
+<span id="L3" class="line">    g.set_all_true_dist(MAX_INT); <b class="conum">(1)</b></span>
+<span id="L4" class="line">    source.set_true_dist(0);</span>
+<span id="L5" class="line"></span>
+<span id="L6" class="line">    bool successful_relax = false;</span>
+<span id="L7" class="line">    for (int n = 0; n &lt; g.num_nodes; ++n)</span>
+<span id="L8" class="line">    {</span>
+<span id="L9" class="line">        successful_relax = false; <b class="conum">(2)</b></span>
+<span id="L10" class="line">        for (each edge_t e in g.edges)</span>
+<span id="L11" class="line">        {</span>
+<span id="L12" class="line">            successful_relax = successful_relax | relax(e); <b class="conum">(3)</b></span>
+<span id="L13" class="line">        }</span>
+<span id="L14" class="line">        if (!successful_relax)</span>
+<span id="L15" class="line">            break;</span>
+<span id="L16" class="line">    }</span>
+<span id="L17" class="line"></span>
+<span id="L18" class="line">    if (successful_relax) <b class="conum">(4)</b></span>
+<span id="L19" class="line">        return -1;</span>
+<span id="L20" class="line"></span>
+<span id="L21" class="line">    return dest.true_dist;</span>
+<span id="L22" class="line">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Step 1.</p>
+</li>
+<li>
+<p>This is to track if any relaxing was successful; if there wasn&#8217;t, there&#8217;s no need to continue.</p>
+</li>
+<li>
+<p>This is a quick hack for something that&#8217;s equivalent to <code>if(relax(e)) relax = true;</code> in less statements.
+The single-bar isn&#8217;t an error: a double-bar would <strong>short circuit</strong> if <code>successful_relax</code> were already true, skipping the actual relaxing.</p>
+</li>
+<li>
+<p>If the last iteration contained a successful relax, then there&#8217;s a negative cycle, in which case we return an error code.
+In this case, it&#8217;s <code>-1</code>.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -366,7 +556,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data Structures</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Heap</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
@@ -378,6 +568,12 @@
 <div class="paragraph">
 <p>These are some problems that you can use for practice.
 The choice of algorithm and modifications are for you to figure out.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://wcipeg.com/problem/graph3p2">GRAPH3P2: Shortest Path</a></p>
+</div>
+<div class="paragraph">
+<p><a href="http://wcipeg.com/problem/pipe">PIPE: Pipe Dream</a></p>
 </div>
 <div class="paragraph">
 <p><a href="http://wcipeg.com/problem/ccc15s4">CCC15S4: Convex Hull</a></p>
