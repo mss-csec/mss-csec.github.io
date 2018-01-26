@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/travelling-salesman/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-01-19T17:00:20+00:00" />
+<meta property="article:published_time" content="2018-01-26T17:00:19+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Travelling Salesman","datePublished":"2018-01-19T17:00:20+00:00","dateModified":"2018-01-19T17:00:20+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/travelling-salesman/index"},"url":"https://mss-csec.github.io/lessons/advanced/travelling-salesman/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Travelling Salesman","datePublished":"2018-01-26T17:00:19+00:00","dateModified":"2018-01-26T17:00:19+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/travelling-salesman/index"},"url":"https://mss-csec.github.io/lessons/advanced/travelling-salesman/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -240,7 +240,45 @@
         <p>We're currently in the process of finishing this lesson. Check back frequently as we continue to add more content and improve our typos.</p>
       </div>
       
-      <article></article>
+      <article><div id="toc" class="toc">
+<div id="toctitle">Sections</div>
+<ul class="sectlevel1">
+<li><a href="#tsp-in-a-cyclic-graph">TSP in a Cyclic Graph</a></li>
+<li><a href="#tsp-in-a-tree">TSP in a Tree</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>travelling salesman problem::given a connected graph <em>G</em>, find the shortest path that starts at any node, visits all nodes, and returns to the inital node.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tsp-in-a-cyclic-graph">TSP in a Cyclic Graph</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Travelling Salesman Problem is famous for being a simple <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-Hard</a> problem.
+One of the most widely-known algorithms for solving TSP is the <a href="https://en.wikipedia.org/wiki/Held%E2%80%93Karp_algorithm">Held-Karp algorithm</a>, which runs in \(\text{O}n<sup>22</sup>n)\) for \(n\), the number of nodes in the graph.</p>
+</div>
+<div class="paragraph">
+<p>This problem will never show up on the CCC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tsp-in-a-tree">TSP in a Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>But when the graph is a tree, it becomes trivial.
+If you traverse an edge, you must backpedal on it to get back to your original starting point, as there is no other path you can take to do so.
+As such, the distance it takes it twice the sum of the weights of all the edges in the tree, and this can be solved in \(\text{O}(n)\) time.</p>
+</div>
+<div class="paragraph">
+<p>This has shown up at least once in a past CCC contest: <a href="http://wcipeg.com/problem/ccc16s3">CCC16S3: Phonomenal Reviews</a>.</p>
+</div>
+</div>
+</div></article>
     </div>
   </div>
 </div>
