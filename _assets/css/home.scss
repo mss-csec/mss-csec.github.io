@@ -342,5 +342,74 @@ $schedule-height: 8 * $ex; // 160px
   a:hover svg {
     transform: translateX(5px);
   }
-}
 
+// Pre-CCC countdown
+
+  width: calc(100% - 20px);
+  max-width: 805px;
+
+  .em {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+
+  span {
+    display: flex;
+    flex-direction: column;
+    height: 3.5em;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    filter: blur(0);
+    transition: .3s ease;
+    transition-duration: -webkit-calc(0s);
+    transition-duration: -moz-calc(.3s);
+  }
+
+  b {
+    font-size: 2em;
+  }
+
+  i {
+    font-size: .6em;
+    line-height: 1;
+  }
+
+  .more {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    background: transparentize($bg-primary, if-theme(( light: .25, dark: .2)));
+    color: $fg-primary;
+    white-space: normal;
+    line-height: 1;
+    transform: translateY(100%);
+    transition: transform .3s;
+
+    strong,
+    p {
+      color: #f52f2f;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  &:hover span {
+    filter: blur(8px);
+  }
+
+  &:hover .more {
+    transform: translateY(0);
+  }
+}

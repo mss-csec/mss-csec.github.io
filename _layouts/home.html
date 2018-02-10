@@ -5,11 +5,52 @@ layout: default
 <div class="hero">
   <canvas id="background-anim"></canvas>
   <h1 class="title ccc">
-    <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
+    <!-- <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
     <div class="note">
       <em>February 14th,<br class="show-mobile"> Periods 3&ndash;5</em><br>
       <a target="_blank" href="https://bit.ly/MSSCCC18"><em>Sign up today<svg xmlns="http://www.w3.org/svg/2000" height="20" width="25"><path stroke-width="0" fill="currentColor" d="m0 8h17.343l-5.172-5.172l2.828-2.828l10 10l-10 10l-2.828-2.828l5.172-5.172h-17.343z"/></svg></em></a>
-    </div>
+    </div>  -->
+    <em class="em">
+      <span><b>00</b><i>days</i></span>
+      <span><b>00</b><i>hours</i></span>
+      <span><b>00</b><i>minutes</i></span>
+      <span><b>00</b><i>seconds</i></span>
+      <div class="more"><p>Let CS be your Valentine's this year.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
+      {% comment %} Source for below
+      <script>(function() {
+      var target=1518627600000,current=(new Date()).getTime(),diff=target-current;
+      diff = diff > 0 ? diff : diff;
+      var milli = diff % 1000,
+          elems = Array.prototype.slice.call(document.querySelectorAll('.title.ccc em b'));
+
+      function padLeft(n) {
+        return (new Array(Math.ceil(2-Math.log10(Math.floor(n)||1)))).join('0') + Math.floor(n);
+      }
+
+      function tick() {
+        diff -= 1000;
+        var seconds = (diff / 1000) % 60,
+            minutes = (diff / 60000) % 60,
+            hours = (diff / 3600000) % 24,
+            days = (diff / 3600000) / 24;
+        elems[0].textContent = padLeft(days);
+        elems[1].textContent = padLeft(hours);
+        elems[2].textContent = padLeft(minutes);
+        elems[3].textContent = padLeft(seconds);
+
+        // recalibrate clock every 10 seconds
+        if (diff % 10000 == 0) {
+          diff=target - (new Date()).getTime(); var milli = diff % 1000; diff -= milli - 1000;
+          setTimeout(tick, milli);
+        } else if (diff > 0) setTimeout(tick, 1000);
+      }
+
+      setTimeout(function() {
+        diff -= milli - 1000;
+        tick();
+      }, milli);
+      })();</script>{% endcomment %}<script>!function(){var e=15186276e5,t=(new Date).getTime(),n=e-t,o=(n=n)%1e3,i=Array.prototype.slice.call(document.querySelectorAll(".title.ccc em b"));function r(e){return new Array(Math.ceil(2-Math.log10(Math.floor(e)||1))).join("0")+Math.floor(e)}function a(){var t=(n-=1e3)/1e3%60,o=n/6e4%60,c=n/36e5%24,l=n/36e5/24;if(i[0].textContent=r(l),i[1].textContent=r(c),i[2].textContent=r(o),i[3].textContent=r(t),n%1e4==0){var u=(n=e-(new Date).getTime())%1e3;n-=u-1e3,setTimeout(a,u)}else n>0&&setTimeout(a,1e3)}setTimeout(function(){n-=o-1e3,a()},o)}();</script>
+    </em>
   </h1>
   <!--
   <h1 class="title">
