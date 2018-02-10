@@ -196,6 +196,10 @@ glob([ 'assets/**/*.scss' ])
       for (let { css, file } of compiledFiles) {
         fs.writeFile(file, csso.minify(css).css, err => { if (err) throw err });
       }
+    } else {
+      for (let { css, file } of compiledFiles) {
+        fs.writeFile(file, css, err => { if (err) throw err });
+      }
     }
 
     console.log('Finished processing SCSS');
