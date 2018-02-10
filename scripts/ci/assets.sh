@@ -6,6 +6,18 @@ set -e
 echo "Starting build"
 echo
 
+# if no changes between this commit and previous, abort
+if ! [ -z "$CIRCLE_COMPARE_URL" ]; then
+  commit_range=`echo $CIRCLE_COMPARE_URL | rev | cut -f1 -d'/' | rev`
+  prior_commit=`echo $commit_range | cut -f1 -d'.'`
+  recent_commit=`echo $commit_range | cut -f4 -d'.'`
+
+  if [ -z "`git diff --name-only $prior_commit $recent_commit | grep '_assets'`" ]; then
+    echo "No changes, exiting"
+    exit 0
+  fi
+fi
+
 # Delete previous deploy branch, if it exists
 # Necessary given caching
 if [ `git branch | grep $DEPLOY_BRANCH` ]; then
