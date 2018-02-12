@@ -345,8 +345,8 @@ $schedule-height: 8 * $ex; // 160px
 
 // Pre-CCC countdown
 
-  width: calc(100% - 20px);
-  max-width: 805px;
+  width: calc(100% - #{$ex});
+  max-width: 810px;
 
   .em {
     position: relative;
@@ -362,11 +362,10 @@ $schedule-height: 8 * $ex; // 160px
     height: 3.5em;
     align-items: center;
     justify-content: center;
-    opacity: 1;
     filter: blur(0);
-    transition: .3s ease;
-    transition-duration: -webkit-calc(0s);
-    transition-duration: -moz-calc(.3s);
+    transition: $df-anim-length ease;
+    -webkit-transition: 0s ease;
+    -moz-transition: $df-anim-length ease;
   }
 
   b {
@@ -379,21 +378,19 @@ $schedule-height: 8 * $ex; // 160px
   }
 
   .more {
+    @include transition;
+    @include position(0);
+
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
+    padding: $ex05;
     background: transparentize($bg-primary, if-theme(( light: .25, dark: .2)));
     color: $fg-primary;
     white-space: normal;
     line-height: 1;
     transform: translateY(100%);
-    transition: transform .3s;
 
     strong,
     p {
@@ -401,7 +398,7 @@ $schedule-height: 8 * $ex; // 160px
     }
 
     p {
-      margin-bottom: 10px;
+      margin-bottom: $ex05;
     }
   }
 

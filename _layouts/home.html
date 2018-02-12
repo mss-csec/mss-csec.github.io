@@ -18,10 +18,11 @@ layout: default
       <div class="more"><p>Let CS be your Valentine's this year.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
       {% comment %} Source for below
       <script>(function() {
-      var target=1518627600000,current=(new Date()).getTime(),diff=target-current;
-      diff = diff > 0 ? diff : diff;
-      var milli = diff % 1000,
+      var target=1518627600000,current=(new Date()).getTime(),diff=target-current,
+          taglines=["Let CS be your Valentine's this year.", "True love is Turing-complete.", "#include <love.h>", "#define love stdlib", "Roses are red, keywords are blue."],
           elems = Array.prototype.slice.call(document.querySelectorAll('.title.ccc em b'));
+      diff = diff > 0 ? diff : diff;
+      var milli = diff % 1000;
 
       function padLeft(n) {
         return (new Array(Math.ceil(2-Math.log10(Math.floor(n)||1)))).join('0') + Math.floor(n);
@@ -38,18 +39,22 @@ layout: default
         elems[2].textContent = padLeft(minutes);
         elems[3].textContent = padLeft(seconds);
 
-        // recalibrate clock every 10 seconds
-        if (diff % 10000 == 0) {
+        // recalibrate clock every second
+        if (diff > 0) {
           diff=target - (new Date()).getTime(); var milli = diff % 1000; diff -= milli - 1000;
           setTimeout(tick, milli);
-        } else if (diff > 0) setTimeout(tick, 1000);
+        } else {
+          document.querySelector('.title.ccc .more p').textContent = "The geese onslaught has arrived.";
+        }
       }
+
+      document.querySelector('.title.ccc .more p').textContent = taglines[Math.floor(Math.random() * taglines.length)];
 
       setTimeout(function() {
         diff -= milli - 1000;
         tick();
       }, milli);
-      })();</script>{% endcomment %}<script>!function(){var e=15186276e5,t=(new Date).getTime(),n=e-t,o=(n=n)%1e3,i=Array.prototype.slice.call(document.querySelectorAll(".title.ccc em b"));function r(e){return new Array(Math.ceil(2-Math.log10(Math.floor(e)||1))).join("0")+Math.floor(e)}function a(){var t=(n-=1e3)/1e3%60,o=n/6e4%60,c=n/36e5%24,l=n/36e5/24;if(i[0].textContent=r(l),i[1].textContent=r(c),i[2].textContent=r(o),i[3].textContent=r(t),n%1e4==0){var u=(n=e-(new Date).getTime())%1e3;n-=u-1e3,setTimeout(a,u)}else n>0&&setTimeout(a,1e3)}setTimeout(function(){n-=o-1e3,a()},o)}();</script>
+      })();</script>{% endcomment %}<script>!function(){var e=15186276e5,t=(new Date).getTime(),o=e-t,n=["Let CS be your Valentine's this year.","True love is Turing-complete.","#include <love.h>","#define love std","Roses are red, keywords are blue."],r=Array.prototype.slice.call(document.querySelectorAll(".title.ccc em b")),l=(o=o)%1e3;function c(e){return new Array(Math.ceil(2-Math.log10(Math.floor(e)||1))).join("0")+Math.floor(e)}function a(){var t=(o-=1e3)/1e3%60,n=o/6e4%60,l=o/36e5%24,i=o/36e5/24;if(r[0].textContent=c(i),r[1].textContent=c(l),r[2].textContent=c(n),r[3].textContent=c(t),o>0){var u=(o=e-(new Date).getTime())%1e3;o-=u-1e3,setTimeout(a,u)}else document.querySelector(".title.ccc .more p").textContent="The geese onslaught has arrived."}document.querySelector(".title.ccc .more p").textContent=n[Math.floor(Math.random()*n.length)],setTimeout(function(){o-=l-1e3,a()},l)}();</script>
     </em>
   </h1>
   <!--
