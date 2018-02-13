@@ -364,8 +364,9 @@ $schedule-height: 8 * $ex; // 160px
     justify-content: center;
     filter: blur(0);
     transition: $df-anim-length ease;
-    -webkit-transition: 0s ease;
-    -moz-transition: $df-anim-length ease;
+    @supports (-webkit-font-smoothing: auto) {
+      -webkit-transition: 0s ease;
+    }
   }
 
   b {
