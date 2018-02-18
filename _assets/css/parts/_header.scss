@@ -24,6 +24,10 @@
 .main-logo {
   z-index: $z4;
   margin-right: $ex;
+
+  &-background {
+    fill: $brand-colour;
+  }
 }
 
 .menu {
