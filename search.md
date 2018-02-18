@@ -5,9 +5,9 @@ addons:
   class: no-hero
 ---
 <div class="content container">
-  <h4 style="margin-top:100px">Search results for <em id="search-query"></em> :</h4>
+  <h4 style="margin-top:100px">Search results for <em class="search-query"></em> :</h4>
 
-  <div id="search-results">
+  <div class="search-results">
     <h3 class="disabled">Searching...</h3>
   </div>
 </div>
