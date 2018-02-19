@@ -34,7 +34,7 @@
 
 // Sidebar
 
-#lesson-listing {
+.lesson-listing {
   position: relative;
   top: 0;
   width: 100%;
@@ -199,7 +199,7 @@
 
   // Sidebar
 
-  #lesson-listing {
+  .lesson-listing {
     position: sticky;
     top: $ex;
     width: 22%; // .three.columns
@@ -317,7 +317,7 @@
     .breadcrumbs,
     .callout,
     .anchorjs-link,
-    #lesson-listing,
+    .lesson-listing,
     #toc,
     #open-feedback-modal {
       display: none;

@@ -69,11 +69,11 @@ sublime text key sequence: ctrl-shift-l end ctrl-j bksp
 
 <div class="content container">
   <div class="row">
-    <div class="columns sidebar-collapsible" id="lesson-listing">
+    <div class="columns sidebar-collapsible lesson-listing">
       <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
       <h2 class="show-tablet">Lessons</h2>
 
-      <div class="lesson-callout" id="lesson-pagination">
+      <div class="lesson-callout lesson-pagination">
         {% assign lesson_prev_index = lesson_cur_index | minus: 1 %}
         {% assign lesson_next_index = lesson_cur_index | plus: 1 %}
         {% if 0 <= lesson_prev_index %}

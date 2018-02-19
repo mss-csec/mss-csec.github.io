@@ -4,6 +4,21 @@
 # Schedule
 
 module.exports = (APP) ->
+  # Index of months
+  MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
 
   # Returns the most recent and the next up lesson given a complete schedule
   # in hash form
@@ -13,13 +28,32 @@ module.exports = (APP) ->
   #        field. Cloned inside the method to prevent side effects.
   APP.loadSubclubSchedule = (sched) ->
     clonedSched = JSON.parse JSON.stringify sched
+    schedKeys = Object.keys clonedSched
     today = (new Date()).getTime()
 
-    for id, data of clonedSched
+    for id, i in schedKeys
+      origData = clonedSched[id]
+
       # t: time of lesson, l: lesson no.
       data =
-        t: (new Date data.date ? data).setHours(APP.SUBCLUB_END_HOUR),
-        l: parseInt data.lesson
+        t: null,
+        l: parseInt origData.lesson
+
+      # Version 2: Dates can be blank, to represent a repeat of the last entry
+      if origData.date == ''
+        origData.date = sched[id].date = sched[schedKeys[i-1]].date
+
+      # Version 2: Dates can be represented either as absolute dates, or offsets
+      # to the last given date
+      if isFinite new Date origData.date
+        # Date is absolute
+        data.t = (new Date origData.date).setHours(APP.SUBCLUB_END_HOUR)
+      else
+        # Date is offset
+        # 1 day = 24 * 60 * 60 * 1000 = 86400000 milliseconds
+        data.t = new Date(parseInt(origData.date) * 86400000 +
+          clonedSched[schedKeys[i-1]].t).getTime()
+
       clonedSched[id] = data
 
       # Should only be true on initialization
@@ -59,10 +93,14 @@ module.exports = (APP) ->
 
     mostRecent:
       id: if dateMostRecent? then mostRecent else null
-      date: dateMostRecent
+      date: "#{MONTHS[dateMostRecent.getMonth()]}
+        #{dateMostRecent.getDate()},
+        #{dateMostRecent.getFullYear()}"
     nextUp:
       id: if dateNextUp? then nextUp else null
-      date: dateNextUp
+      date: "#{MONTHS[dateNextUp.getMonth()]}
+        #{dateNextUp.getDate()},
+        #{dateNextUp.getFullYear()}"
 
   # Renders the most recent and next up lesson titles and dates in a valid HTML
   # element
@@ -92,14 +130,14 @@ module.exports = (APP) ->
         if _this.is 'a'
           _this.addClass 'lesson-link'
             .attr 'href', lesson.url
-            .attr 'data-balloon', lesson.title
+            .attr 'data-balloon', scheduleData.mostRecent.date
             .attr 'data-balloon-pos', mostRecentBalloonPos
             .attr 'data-balloon-bluntish', true
             .html lesson.title
         else
           _this.html "<a href='#{lesson.url}'
               class='lesson-link'
-              data-balloon='#{lesson.date}'
+              data-balloon='#{scheduleData.mostRecent.date}'
                 data-balloon-pos='#{mostRecentBalloonPos}'
                 data-balloon-bluntish>
             #{lesson.title}</a>"
@@ -124,14 +162,14 @@ module.exports = (APP) ->
             .attr 'data-balloon', lesson.title
             .attr 'data-balloon-pos', nextUpBalloonPos
             .attr 'data-balloon-bluntish', true
-            .html lesson.date
+            .html scheduleData.nextUp.date
         else
           _this.html "<a href='#{lesson.url}'
               class='lesson-link'
               data-balloon='#{lesson.title}'
                 data-balloon-pos='#{nextUpBalloonPos}'
                 data-balloon-bluntish>
-            #{lesson.date}</a>"
+            #{scheduleData.nextUp.date}</a>"
     else
       $lessonNext.each () ->
         _this = $(this)
