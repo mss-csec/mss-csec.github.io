@@ -58,10 +58,10 @@ sublime text key sequence: ctrl-shift-l end ctrl-j bksp
         {% assign subclub_obj_i = subclub_obj %}
       {% endif %}
 
-      {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj_1 index=subclub_index %}
+      {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj_1 index=subclub_index inline=true %}
 {% endraw %}{% endcomment %}
 
-      {% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj_i = lessons | where: "name", subclub | first %}{% else %}{% assign subclub_obj_i = subclub_obj %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj_i index=subclub_index %}
+      {% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj_i = lessons | where: "name", subclub | first %}{% else %}{% assign subclub_obj_i = subclub_obj %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj_i index=subclub_index inline=true %}
   </div>
   {% endfor %}
 </div>

@@ -42,7 +42,7 @@ layout: default
           {% assign split_path = item.path | split: '/' %}
           {% if split_path contains entry[0] %}
       <p class="lesson-name">
-        <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
+        <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" data-id="{{ entry[0] }}" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
       </p>
             {% break %}
           {% endif %}
@@ -50,7 +50,7 @@ layout: default
       {% endfor %}
       {% endcomment %}
 
-      {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}{% for item in ordered_lessons %}{% assign lesson_obj = item %}{% for entry in subclub_schedule %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}<p class="lesson-name"><a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></p>{% break %}{% endif %}{% endfor %}{% endfor %}
+      {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}{% for item in ordered_lessons %}{% assign lesson_obj = item %}{% for entry in subclub_schedule %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}<p class="lesson-name"><a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" data-id="{{ entry[0] }}" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></p>{% break %}{% endif %}{% endfor %}{% endfor %}
     </div>
     <div class="nine columns" id="main-content">
       <article>
