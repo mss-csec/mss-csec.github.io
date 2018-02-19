@@ -146,9 +146,9 @@ sublime text key sequence: ctrl-shift-l end ctrl-j bksp
             {% assign lessons = site.lessons | group_by: "category" %}
             {% assign subclub_obj = lessons | where: "name", subclub | first %}
           {% endif %}
-          {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index %}
+          {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
 {% endraw %}{% endcomment %}
-{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index %}
+{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
       </div>
       {% endfor %}
       <!-- {% comment %}{ if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->

@@ -46,7 +46,7 @@ module.exports = (APP) ->
 
       # Version 2: Dates can be blank, to represent a repeat of the last entry
       if origData.date == ''
-        origData.date = sched[schedKeys[i-1]].date
+        origData.date = '0'
 
       # Version 2: Dates can be represented either as absolute dates, or offsets
       # to the last given date
@@ -60,8 +60,6 @@ module.exports = (APP) ->
           clonedSched[schedKeys[i-1]].date).getTime()
 
       origData.lesson = parseInt origData.lesson
-
-      clonedSched[id] = origData
 
     APP.schedule = clonedSched if save
 
