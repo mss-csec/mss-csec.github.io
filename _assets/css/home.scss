@@ -14,6 +14,8 @@
 // }
 
 .cta {
+  @include transition;
+
   display: inline-block;
   line-height: 1;
   padding: $ex05;
@@ -26,6 +28,10 @@
   }
   &-large {
     font-size: 1.2em;
+  }
+
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -71,7 +77,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
   padding: 6 * $ex 0;
 
   .search,
@@ -123,11 +128,12 @@
     $fg-primary: #fff;
     $bg-accent: #b40909;
     // $fg-accent: #64c987;
-    $fg-accent: #f8b763;
+    $fg-accent: #f5a132;
 
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     padding: $ex 0 0;
     overflow: hidden;
 
@@ -155,15 +161,12 @@
     }
 
     &__scroll-to-subclubs {
-      @include transition;
-
       background-color: $fg-accent;
       color: $bg-accent;
 
       &:hover {
-        background-color: darken($fg-accent, .1);
         color: $bg-accent;
-        text-decoration: none;
+        background-color: lighten($fg-accent, .1);
       }
     }
 
@@ -209,6 +212,7 @@
     $fg-accent: #f58099;
 
     flex-direction: column;
+    justify-content: center;
 
     @media (#{$bp-larger-than-tablet}) {
       flex: 3;
@@ -229,9 +233,14 @@
       color: $fg-accent;
     }
 
-    &__visit-ai-subclub {
+    &__signup {
       background-color: $fg-accent;
       color: $bg-accent;
+
+      &:hover {
+        color: $bg-accent;
+        background-color: lighten($fg-accent, .1);
+      }
     }
 
     // COMMON
@@ -291,17 +300,16 @@
       }
     }
 
+    &:target {
+      outline: none;
+    }
+
     .HomeSection-title {
       color: $fg-accent;
     }
 
     a, a:hover {
       color: $fg-accent;
-    }
-
-    &__visit-ai-subclub {
-      background-color: $fg-accent;
-      color: $bg-accent;
     }
 
     // COMMON
@@ -346,8 +354,6 @@
 
     background-color: $bg-accent;
     text-align: left;
-    // padding-top: $ex;
-    padding: $ex2 0;
     overflow: hidden;
 
     // COMMON

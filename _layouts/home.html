@@ -35,7 +35,7 @@ layout: none
       <canvas id="background-anim"></canvas>
       <h1 class="HomeSection-title">
         <div><p>We&#39;re here to help you learn.</p>
-          <a href="#schedule" class="cta cta-small HomeSection-hero__scroll-to-subclubs">Explore our subclubs {% include icons/arrow-down.svg %}</a>
+          <a href="#schedule" class="cta cta-small HomeSection-hero__scroll-to-subclubs" onclick="event.preventDefault();window.scroll({top:document.getElementById('schedule').getBoundingClientRect().top+window.scrollY,left:0,behavior:'smooth'})">Explore our subclubs {% include icons/arrow-down.svg %}</a>
         </div>
       </h1>
       <a id="background-anim-desc" target="_blank"></a>
@@ -47,8 +47,10 @@ layout: none
           {% include header.html %}
         </div>
         <div class="HomeSection-container">
-          <h1 class="HomeSection-title">Wassup</h1>
-          <div class="HomeSection-schedule__callout-ai-subclub"></div>
+          <div class="HomeSection-callout__ai-subclub">
+            <h1 class="HomeSection-title">The brand-new AI subclub</h1>
+            <a href="{{ site.signup_link }}" class="cta cta-large HomeSection-callout__signup">Sign up</a>
+          </div>
         </div>
       </div>
 
