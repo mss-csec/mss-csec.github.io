@@ -167,13 +167,13 @@
         run: function () {
           for (var i=0;i<scripts.length;i++) {
             try { scripts[i].call(g); }
-            catch (e) { console.error('Onload script error: ' + e.message + '\n' + e.stack); }
+            catch (e) { console.warn('Onload script error: ' + e.message + '\n' + e.stack); }
           }
         }
       };
     })(window);
   </script>
-  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.error('Onload script error: '+e.message+'\n'+e.stack)}}}}})(window)</script>
+  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.warn('Onload script error: '+e.message+'\n'+e.stack)}}}}})(window)</script>
   <!-- END PAGE-ADDED JS -->
 
   <!-- BEGIN MATHJAX -->

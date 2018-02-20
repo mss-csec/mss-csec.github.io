@@ -20,7 +20,7 @@ class GameOfLife
         w: 10
         h: 10
     # Provide a canvas element to draw to, optionally provide a starting seed
-    constructor: (canvas, seed, opts) ->
+    constructor: (canvas, seed, opts, colour) ->
         # if not canvas.canvas or canvas.nodeName isnt "CANVAS" # We've either been given a CanvasRenderingContext2D, which has a .canvas property, or we've been given a canvas DOM node, which will have a nodeName
         #     throw "Game needs a canvas object or canvas DOM node"
         # @canvas = if canvas.nodeName? then canvas.getContext("2d") else canvas
@@ -42,7 +42,7 @@ class GameOfLife
             @grid = opts.grid
         if opts.cell?
             @cell = opts.cell
-        @canvas.fillStyle = if APP.currentTheme == 'light' then '#eeebeb' else '#2d2d35'
+        @canvas.fillStyle = colour.blend
     # Count the neighbours in the adjacent cells, uses toroidal rules to map the edges.
     _countNeighbours: (x, y) ->
         xp = if x + 1 > @grid.x - 1 then 0 else x + 1
@@ -94,8 +94,8 @@ class GameOfLife
         return true
 
     # Change the theme
-    changeTheme: () ->
-        @canvas.fillStyle = if APP.currentTheme == 'light' then '#eeebeb' else '#2d2d35'
+    changeTheme: (colour) ->
+        @canvas.fillStyle = colour.blend
     # Step
     step: () ->
         @runGeneration()

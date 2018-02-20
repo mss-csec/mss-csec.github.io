@@ -1,0 +1,350 @@
+---
+layout: default
+---
+
+<div class="hero">
+  <canvas id="background-anim"></canvas>
+  {% comment %}
+  <h1 class="title ccc">
+    <!--
+    Display the below snippet when signups for the CCC open.
+    Change the dates, room numbers, etc. as necessary.
+    -->
+
+    <!-- PRE-CCC -->
+    <!-- <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
+    <div class="note">
+      <em>February 14th,<br class="show-mobile"> Periods 3&ndash;5</em><br>
+      <a target="_blank" href="https://bit.ly/MSSCCC18"><em>Sign up today<svg xmlns="http://www.w3.org/svg/2000" height="20" width="25"><path stroke-width="0" fill="currentColor" d="m0 8h17.343l-5.172-5.172l2.828-2.828l10 10l-10 10l-2.828-2.828l5.172-5.172h-17.343z"/></svg></em></a>
+    </div>  -->
+    <!-- /PRE-CCC -->
+
+    <!--
+    Display the below snippet when signups for the CCC close.
+    Change the dates, room numbers, etc. as necessary.
+    -->
+
+    <!-- CCC-COUNTDOWN -->
+    <!-- <em class="em">
+      <span><b>00</b><i>days</i></span>
+      <span><b>00</b><i>hours</i></span>
+      <span><b>00</b><i>minutes</i></span>
+      <span><b>00</b><i>seconds</i></span>
+      <div class="more"><p>The CCC is (almost) here.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
+      <script>(function() {
+      var target=1518627600000,current=(new Date()).getTime(),diff=target-current,
+          // Taglines are displayed randomly on page load, replacing the "The
+          // CCC is (almost) here" message.
+          // These were originally developed for the 2018 CCC, which
+          // coincidentially fell on Valentines Day.
+          // Replace with your own CS puns when the time comes near.
+          taglines=["Let CS be your Valentine's this year.", "True love is Turing-complete.", "#include <love.h>", "#define love std", ["Roses are red, keywords are blue.", "Write the CCC, past period two."]],
+          elems = Array.prototype.slice.call(document.querySelectorAll('.title.ccc em b'));
+      diff = diff > 0 ? diff : diff;
+      var milli = diff % 1000;
+
+      function padLeft(n) {
+        return (new Array(Math.ceil(2-Math.log10(Math.floor(n)||1)))).join('0') + Math.floor(n);
+      }
+
+      function clamp0(n) {
+        return n>0 ? n : 0;
+      }
+
+      function tick() {
+        diff -= 1000;
+        var seconds = (diff / 1000) % 60,
+            minutes = (diff / 60000) % 60,
+            hours = (diff / 3600000) % 24,
+            days = (diff / 3600000) / 24;
+        elems[0].textContent = padLeft(clamp0(days));
+        elems[1].textContent = padLeft(clamp0(hours));
+        elems[2].textContent = padLeft(clamp0(minutes));
+        elems[3].textContent = padLeft(clamp0(seconds));
+
+        // recalibrate clock every second
+        if (diff > 0) {
+          diff=target - (new Date()).getTime(); var milli = diff % 1000; diff -= milli - 1000;
+          setTimeout(tick, milli);
+        } else {
+          document.querySelector('.title.ccc .more p').textContent = "The geese onslaught has arrived.";
+        }
+      }
+
+      var tagline = taglines[Math.floor(Math.random() * taglines.length)];
+      if (typeof tagline === "string") {
+        document.querySelector('.title.ccc .more p').textContent = tagline;
+      } else {
+        document.querySelector('.title.ccc .more p').textContent = tagline[0];
+        document.querySelector('.title.ccc .more strong').textContent = tagline[1];
+      }
+
+      setTimeout(function() {
+        diff -= milli - 1000;
+        tick();
+      }, milli);
+      })();</script>
+    </em> -->
+    <!-- /CCC-COUNTDOWN -->
+  </h1>
+  {% endcomment %}
+  <h1 class="title">
+    <em>Computer</em><br>
+    <em>Science</em><br>
+    <em>Education</em><br>
+    <em>Club</em>
+  </h1>
+  <a id="background-anim-desc" target="_blank"></a>
+</div>
+
+<!-- Display schedule -->
+
+<div class="schedule">
+  <div class="container">
+    {% comment %}
+    Change the below variable to change the number of lessons displayed in one row
+    {% endcomment %}
+    {% assign row_size = 3 %}
+
+    {% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
+    {% assign subclubs = site.subclubs | group_by: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}
+    {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
+    {% for row in (0..number_rows) %}
+    <div class="row">
+{% comment %}{% raw %}
+Source for collapsed section below
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
+      {% assign row_offset = row | times: row_size %}
+      {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
+        {% assign subclub_obj = subclubs | where: "name", subclub | first %}
+        {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+        {% assign subclub_schedule = subclub_index.schedule %}
+        {% assign subclub_title = subclub_index.title %}
+        {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+{% endraw %}{% endcomment %}
+
+      {% assign row_offset = row | times: row_size %}{% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}{% assign subclub_obj = subclubs | where: "name", subclub | first %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub_title = subclub_index.title %}{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+
+      <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
+        <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
+        <div class="row">
+          <div class="one-half column">
+            <h4 class="lesson-state">Last lesson</h4>
+            <h3 class="lesson-name lesson-last"></h3>
+          </div>
+          <div class="one-half column">
+            <h4 class="lesson-state">Next meeting</h4>
+            <h3 class="lesson-name lesson-next"></h3>
+          </div>
+        </div>
+{% comment %}{% raw %}
+Source for collapsed section below
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
+          {% if site.production == true %}
+            {% assign lessons = site.lessons | group_by: "category" %}
+            {% assign subclub_obj = lessons | where: "name", subclub | first %}
+          {% endif %}
+          {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
+{% endraw %}{% endcomment %}
+{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
+      </div>
+      {% endfor %}
+      <!-- {% comment %}{ if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->
+      <div class="{{ row_matrix[row_size] }} columns more-subclubs">
+      {% comment %}<!--
+        <h2 class="subclub-title"><a href="{{ '/subclubs/' | relative_url }}" class="subclub-link">More subclubs</a></h2>
+        <div class="more-subclubs-listing">
+          {% assign subclub_counter = 0 %}
+          {% for subclub_obj in subclubs %}
+            {% if site.displayed_subclubs contains subclub_obj.name %}
+              {% continue %}
+            {% endif %}
+            {% if subclub_counter >= 4 %}
+              {% break %}
+            {% endif %}
+            {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+            {% assign subclub_title = subclub_index.title | xml_escape %}
+            {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+            <h4><a class="lesson-link" href="{{ subclub_url }}/">{{ subclub_title }}</a></h4>
+            {% assign subclub_counter = subclub_counter | plus: 1 %}
+          {% endfor %}
+        </div>
+      -->{% endcomment %}
+        <h2 class="subclub-title"><a href="{{ site.signup_link }}" class="subclub-link">Sign up for CSEC</a></h2>
+        <div class="more-subclubs-listing" style="display:block">
+          <a class="lesson-link" href="{{ site.signup_link }}"><h4>Be the first to receive updates about our lessons and activities.</h4></a>
+          <p class="disabled" style="margin-bottom:0">Requires a valid YRDSB Gapps account.</p>
+        </div>
+      </div>
+      <!-- {% comment %}{ endif %}{% endcomment %} -->
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container row">
+  <div class="one-half column announcements">
+    <h2><a href="{{ '/posts/' | relative_url }}"><em class="offset-text">Announcements</em></a></h2>
+    {% for post in site.posts limit: 3 %}
+    <article>
+      <header>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h6>Posted on <time datetime="{{ post.date | date: site.mdatefmt }}">{{ post.date | date: site.datefmt }}</time></h6>
+      </header>
+      <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+    </article>
+    {% endfor %}
+    <a href="{{ '/posts/' | relative_url }}" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+  </div>
+  <div class="one-half column resources">
+    <h2><a href="{{ '/resources/' | relative_url }}"><em class="offset-text">Resources</em></a></h2>
+
+    {% for resource_id in site.displayed_resources %}
+      {% for resource in site.resources %}
+        {% if resource.path contains resource_id %}
+    <article>
+      <header>
+        <h3><a href="{{ resource.url }}">{{ resource.title }}</a></h3>
+      </header>
+      {{ resource.summary | markdownify }}
+    </article>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    <a href="{{ '/resources/' | relative_url }}" class="view-all">View all resources<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+  </div>
+</div>
+
+<script>
+SCRIPTS.add(function() {
+  /**@license MIT-unfetch-©Jason Miller(@developit)*/
+  !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):e.unfetch=n()}(this,function(){return"function"==typeof fetch?fetch.bind():function(e,n){return n=n||{},new Promise(function(t,o){function r(){var e,n=[],t=[],o={};return s.getAllResponseHeaders().replace(/^(.*?):\s*([\s\S]*?)$/gm,function(r,s,u){n.push(s=s.toLowerCase()),t.push([s,u]),e=o[s],o[s]=e?e+","+u:u}),{ok:1==(s.status/200|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:r,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return o[e.toLowerCase()]},has:function(e){return e.toLowerCase()in o}}}}var s=new XMLHttpRequest;s.open(n.method||"get",e);for(var u in n.headers)s.setRequestHeader(u,n.headers[u]);s.withCredentials="include"==n.credentials,s.onload=function(){t(r())},s.onerror=o,s.send(n.body)})}});
+  // Source for below {% comment %}
+
+  // Choose a visualization from a list and display it
+  var displayVisualization = (visList) => {
+    var doReqAnimFrame = (fn) => {
+      reqAnimFrame = requestAnimationFrame(fn);
+    }, resizeTimeout, reqAnimFrame;
+
+    var chosenVis = visList[0]; // TODO: choose random
+
+    Promise.all(
+      chosenVis.scripts.map(u => unfetch(u).then(s => s.text()))
+    ).then((scripts) => {
+      // ...don't do this, please.
+      scripts.forEach((script) => { (0, eval)(script) })
+
+      chosenVis.vis = chosenVis.init(doReqAnimFrame);
+
+      $('#background-anim-desc')
+        .attr('href', chosenVis.src)
+        .text(chosenVis.name + " | " + chosenVis.author);
+
+      $('body').addClass('has-anim');
+    }, (err) => {
+      console.error(err);
+    });
+
+    $(window).on('resize', () => {
+      cancelAnimationFrame(reqAnimFrame);
+      clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(() => {
+        chosenVis.vis = chosenVis.init(doReqAnimFrame)
+      }, 1000);
+    });
+
+    $(window).on('changetheme', (e) => {
+      chosenVis.vis.changeTheme();
+    });
+  };
+  //{% endcomment %}
+  var displayVisualization=function(a){var c,d,b=function(g){d=requestAnimationFrame(g)},f=a[0];Promise.all(f.scripts.map(function(g){return unfetch(g).then(function(h){return h.text()})})).then(function(g){g.forEach(function(h){(0,eval)(h)}),f.vis=f.init(b),$('#background-anim-desc').attr('href',f.src).text(f.name+' | '+f.author),$('body').addClass('has-anim')},function(g){console.error(g)}),$(window).on('resize',function(){cancelAnimationFrame(d),clearTimeout(c),c=setTimeout(function(){f.vis=f.init(b)},1e3)}),$(window).on('changetheme',function(){f.vis.changeTheme()})};
+
+  var visList = [
+    {
+      name: "Conway's Game of Life",
+      author: "Joshua Hogendorn",
+      src: "https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript",
+      scripts: [
+        "{{ site.cdn_url }}/assets/lib/hero-bgs/gameoflife.js"
+      ],
+      init: function(reqAnimFrame) {
+        var cellDimensions = 10,
+            delay = performance.now(),
+            initCells = function() {
+          // get hero's dimensions and create a matrix based on that
+          var heroWidth = $('.hero').width(),
+              heroHeight = $('.hero').height() + 20,
+              cellsX = Math.ceil(heroWidth / cellDimensions),
+              cellsY = Math.ceil(heroHeight / cellDimensions),
+              array = [];
+
+          $('#background-anim')
+            .attr('width', cellsX * cellDimensions)
+            .attr('height', cellsY * cellDimensions)
+            .css({
+              left: (heroWidth - cellsX * cellDimensions) / 2,
+              top: (heroHeight - cellsY * cellDimensions) / 2
+            });
+
+          for (var i=0; i<cellsX; i++) {
+            array.push(new Array(cellsY));
+            for (var j=0; j<cellsY; j++) {
+              array[i][j] = Math.random() < 0.2;
+            }
+          }
+
+          return array.slice();
+        }, step = function(timestamp) {
+          if (timestamp - delay >= 200) {
+            delay = timestamp;
+            game.step();
+          };
+
+          reqAnimFrame(step);
+        }, game = new GameOfLife(
+          $('#background-anim')[0],
+          initCells(),
+          { cell: { w: cellDimensions, h: cellDimensions }}
+        );
+
+        game.render();
+        reqAnimFrame(step);
+
+        return game;
+      },
+      vis: null
+    }, {
+      name: "Quicksort",
+      author: "",
+      src: "",
+      scripts: [
+        "{{ site.cdn_url }}/assets/lib/hero-bgs/sorting.js"
+      ],
+      init: function(reqAnimFrame) {
+        var step = function(timestamp) {
+          if (timestamp - delay >= 200) {
+            delay = timestamp;
+            game.step();
+          };
+
+          reqAnimFrame(step);
+        }, game = null;
+
+        game.render();
+        reqAnimFrame(step);
+
+        return game;
+      },
+      vis: null
+    }
+  ];
+
+  displayVisualization(visList);
+});
+</script>

@@ -5,20 +5,10 @@
 }
 
 @media (max-width: $bp-tablet) {
-  main, footer {
-    @include transition;
-
-    filter: blur(0);
-  }
-
   .responsive-menu {
     &-open {
       // body
       overflow: hidden;
-
-      main, footer {
-        filter: blur(3px);
-      }
     }
 
     &-toggler {

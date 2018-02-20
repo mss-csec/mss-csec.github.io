@@ -1,350 +1,315 @@
 ---
-layout: default
+layout: none
 ---
 
-<div class="hero">
-  <canvas id="background-anim"></canvas>
-  {% comment %}
-  <h1 class="title ccc">
-    <!--
-    Display the below snippet when signups for the CCC open.
-    Change the dates, room numbers, etc. as necessary.
-    -->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<!-- head -->
+{% include html-head.html %}
+<body class="no-js theme-light {{ layout }} {% if page.addons.class %}{{ page.addons.class }}{% endif %}">
+  <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" style="position:absolute;z-index:-1000" aria-hidden><defs><mask id="m"><path d="M12.82 36q-3.06 0-4.96-.6-1.89-.61-2.82-2.14-.89-1.52-.77-4.29l.16-4.02q0-2.54-.89-3.5-.88-1.01-2.73-1.01H0v-2.25h.77q1.9 0 2.82-1.01.93-1.04.93-3.29l-.08-2.9Q4.44 4 11.78 4h2.54v2.29h-3.3q-3.75 0-3.75 4.26l.08 2.82q0 4.42-3.51 5.95 3.43 1.13 3.43 6.23l-.12 3.38q0 2.7 1.17 3.74 1.17 1.09 3.91 1.09h2.06V36zm16.7-5.95q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zm18.8-.04q-4.68 0-7.82-2.9l1.62-2.74.24-.36.24.16q0 .08.04.36.08.28.24.56.16.28.44.56.93.93 2.1 1.45 1.21.48 2.98.48 2.18 0 3.43-.76 1.25-.81 1.25-2.17 0-1.17-1.01-1.93t-3.63-1.61q-6.94-1.97-6.94-5.71 0-2.13 1.74-3.38 1.78-1.25 5.04-1.25 2.5 0 4.19.72 1.74.68 3.14 2.17l-1.66 2.01-.28.32-.2-.2q-.04-.44-.2-.72-.12-.28-.57-.64-.93-.72-2.1-1.09-1.13-.4-2.26-.4-1.74 0-2.86.6-1.09.6-1.09 1.69 0 1.01 1.13 1.85 1.13.85 4.07 1.69 3.47 1.05 4.88 2.29 1.46 1.21 1.46 3.18 0 2.5-1.98 4.14-1.94 1.61-5.65 1.61zm21.02 0q-4.11 0-6.58-2.5-2.42-2.5-2.42-7.03 0-3.02 1.13-5.18 1.13-2.21 3.02-3.34 1.94-1.17 4.31-1.17 3.34 0 5.41 2.21 2.1 2.21 2.1 6.51 0 .44-.08 1.33h-13.1q.16 3.38 1.9 5.1 1.74 1.73 4.4 1.73 2.9 0 4.76-2.05l1.62 1.57q-2.34 2.82-6.46 2.82zm4.03-11.42q0-2.58-1.33-4.06Q70.75 13 68.61 13q-2.02 0-3.51 1.41-1.5 1.41-1.86 4.18zm16.66 11.46q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zM100.92 36v-2.25h2.06q2.74 0 3.91-1.09 1.17-1.05 1.17-3.74l-.12-3.38q0-5.1 3.43-6.23-3.51-1.53-3.51-5.95l.08-2.82q0-4.26-3.75-4.26h-3.31V4h2.54q7.34 0 7.34 6.99l-.08 2.9q0 2.25.93 3.3.93 1.01 2.82 1.01h.76v2.25h-.81q-1.86 0-2.74 1.01-.89.97-.89 3.5l.16 4.02q.12 2.78-.81 4.3-.89 1.53-2.78 2.13-1.9.6-4.96.6z" fill="#fff" /></mask>
+    {% comment %}<!-- Give each of the six letters a unique colour -->
+    <linearGradient id="grad" x1="0%" x2="100%" spreadMethod="repeat">
+      <stop offset="0%" stop-color="#f52f2f" />
+      <stop offset="17%" stop-color="#f52f2f" />
+      <stop offset="17%" stop-color="#00b055" />
+      <stop offset="33%" stop-color="#00b055" />
+      <stop offset="33%" stop-color="#f52f2f" />
+      <stop offset="50%" stop-color="#f52f2f" />
+      <stop offset="50%" stop-color="#00b055" />
+      <stop offset="67%" stop-color="#00b055" />
+      <stop offset="67%" stop-color="#f52f2f" />
+      <stop offset="84%" stop-color="#f52f2f" />
+      <stop offset="84%" stop-color="#00b055" />
+      <stop offset="100%" stop-color="#00b055" />
+    </linearGradient>{% endcomment %}
+  </defs></svg>
 
-    <!-- PRE-CCC -->
-    <!-- <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
-    <div class="note">
-      <em>February 14th,<br class="show-mobile"> Periods 3&ndash;5</em><br>
-      <a target="_blank" href="https://bit.ly/MSSCCC18"><em>Sign up today<svg xmlns="http://www.w3.org/svg/2000" height="20" width="25"><path stroke-width="0" fill="currentColor" d="m0 8h17.343l-5.172-5.172l2.828-2.828l10 10l-10 10l-2.828-2.828l5.172-5.172h-17.343z"/></svg></em></a>
-    </div>  -->
-    <!-- /PRE-CCC -->
+  {% assign stickies = site.posts | where_exp: "item", "item.tags contains 'sticky'" %}{% for sticky in stickies limit: 1 %}{% assign sticky_fallback_date = sticky.date | date: '%s' | plus: 604800 %}{% assign cur_date = site.time | date: '%s' | plus: 0 %}{% if cur_date <= sticky_fallback_date %}<p class="announcement-sticky" data-display-until="{{ sticky.display_until | default: sticky_fallback_date | date: '%F' }}" data-id="{{ sticky.id }}">{{ sticky.summary }} <a href="{{ sticky.url }}" class="read-more">Read more &raquo;</a> <a href="#" class="close-el">&times;</a></p>{% endif %}{% endfor %}
 
-    <!--
-    Display the below snippet when signups for the CCC close.
-    Change the dates, room numbers, etc. as necessary.
-    -->
-
-    <!-- CCC-COUNTDOWN -->
-    <!-- <em class="em">
-      <span><b>00</b><i>days</i></span>
-      <span><b>00</b><i>hours</i></span>
-      <span><b>00</b><i>minutes</i></span>
-      <span><b>00</b><i>seconds</i></span>
-      <div class="more"><p>The CCC is (almost) here.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
-      <script>(function() {
-      var target=1518627600000,current=(new Date()).getTime(),diff=target-current,
-          // Taglines are displayed randomly on page load, replacing the "The
-          // CCC is (almost) here" message.
-          // These were originally developed for the 2018 CCC, which
-          // coincidentially fell on Valentines Day.
-          // Replace with your own CS puns when the time comes near.
-          taglines=["Let CS be your Valentine's this year.", "True love is Turing-complete.", "#include <love.h>", "#define love std", ["Roses are red, keywords are blue.", "Write the CCC, past period two."]],
-          elems = Array.prototype.slice.call(document.querySelectorAll('.title.ccc em b'));
-      diff = diff > 0 ? diff : diff;
-      var milli = diff % 1000;
-
-      function padLeft(n) {
-        return (new Array(Math.ceil(2-Math.log10(Math.floor(n)||1)))).join('0') + Math.floor(n);
-      }
-
-      function clamp0(n) {
-        return n>0 ? n : 0;
-      }
-
-      function tick() {
-        diff -= 1000;
-        var seconds = (diff / 1000) % 60,
-            minutes = (diff / 60000) % 60,
-            hours = (diff / 3600000) % 24,
-            days = (diff / 3600000) / 24;
-        elems[0].textContent = padLeft(clamp0(days));
-        elems[1].textContent = padLeft(clamp0(hours));
-        elems[2].textContent = padLeft(clamp0(minutes));
-        elems[3].textContent = padLeft(clamp0(seconds));
-
-        // recalibrate clock every second
-        if (diff > 0) {
-          diff=target - (new Date()).getTime(); var milli = diff % 1000; diff -= milli - 1000;
-          setTimeout(tick, milli);
-        } else {
-          document.querySelector('.title.ccc .more p').textContent = "The geese onslaught has arrived.";
-        }
-      }
-
-      var tagline = taglines[Math.floor(Math.random() * taglines.length)];
-      if (typeof tagline === "string") {
-        document.querySelector('.title.ccc .more p').textContent = tagline;
-      } else {
-        document.querySelector('.title.ccc .more p').textContent = tagline[0];
-        document.querySelector('.title.ccc .more strong').textContent = tagline[1];
-      }
-
-      setTimeout(function() {
-        diff -= milli - 1000;
-        tick();
-      }, milli);
-      })();</script>
-    </em> -->
-    <!-- /CCC-COUNTDOWN -->
-  </h1>
-  {% endcomment %}
-  <h1 class="title">
-    <em>Computer</em><br>
-    <em>Science</em><br>
-    <em>Education</em><br>
-    <em>Club</em>
-  </h1>
-  <a id="background-anim-desc" target="_blank"></a>
-</div>
-
-<!-- Display schedule -->
-
-<div class="schedule">
-  <div class="container">
-    {% comment %}
-    Change the below variable to change the number of lessons displayed in one row
-    {% endcomment %}
-    {% assign row_size = 3 %}
-
-    {% assign row_matrix = "null,twelve,six,four,three,null,two" | split: "," %}
-    {% assign subclubs = site.subclubs | group_by: "category" | where_exp: "item", "item.name != 'subclub-landing'" %}
-    {% assign number_rows = site.displayed_subclubs.size | divided_by: row_size %}
-    {% for row in (0..number_rows) %}
-    <div class="row">
-{% comment %}{% raw %}
-Source for collapsed section below
-sublime text key sequence: ctrl-shift-l end ctrl-j bksp
-
-      {% assign row_offset = row | times: row_size %}
-      {% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}
-        {% assign subclub_obj = subclubs | where: "name", subclub | first %}
-        {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
-        {% assign subclub_schedule = subclub_index.schedule %}
-        {% assign subclub_title = subclub_index.title %}
-        {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
-{% endraw %}{% endcomment %}
-
-      {% assign row_offset = row | times: row_size %}{% for subclub in site.displayed_subclubs limit:row_size offset:row_offset %}{% assign subclub_obj = subclubs | where: "name", subclub | first %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub_title = subclub_index.title %}{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
-
-      <div class="{{ row_matrix[row_size] }} columns" id="schedule-{{ subclub | xml_escape }}">
-        <h2 class="subclub-title"><a href="{{ subclub_url }}/" class="subclub-link">{{ subclub_title | xml_escape }}</a></h2>
-        <div class="row">
-          <div class="one-half column">
-            <h4 class="lesson-state">Last lesson</h4>
-            <h3 class="lesson-name lesson-last"></h3>
-          </div>
-          <div class="one-half column">
-            <h4 class="lesson-state">Next meeting</h4>
-            <h3 class="lesson-name lesson-next"></h3>
-          </div>
-        </div>
-{% comment %}{% raw %}
-Source for collapsed section below
-sublime text key sequence: ctrl-shift-l end ctrl-j bksp
-
-          {% if site.production == true %}
-            {% assign lessons = site.lessons | group_by: "category" %}
-            {% assign subclub_obj = lessons | where: "name", subclub | first %}
-          {% endif %}
-          {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
-{% endraw %}{% endcomment %}
-{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
+  <main>
+    <div class="HomeSection HomeSection-hero">
+      <div class="SiteHeader">
+        {% include header.html %}
       </div>
-      {% endfor %}
-      <!-- {% comment %}{ if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->
-      <div class="{{ row_matrix[row_size] }} columns more-subclubs">
-      {% comment %}<!--
-        <h2 class="subclub-title"><a href="{{ '/subclubs/' | relative_url }}" class="subclub-link">More subclubs</a></h2>
-        <div class="more-subclubs-listing">
-          {% assign subclub_counter = 0 %}
-          {% for subclub_obj in subclubs %}
-            {% if site.displayed_subclubs contains subclub_obj.name %}
-              {% continue %}
-            {% endif %}
-            {% if subclub_counter >= 4 %}
-              {% break %}
-            {% endif %}
-            {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
-            {% assign subclub_title = subclub_index.title | xml_escape %}
-            {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
-            <h4><a class="lesson-link" href="{{ subclub_url }}/">{{ subclub_title }}</a></h4>
-            {% assign subclub_counter = subclub_counter | plus: 1 %}
-          {% endfor %}
+      <canvas id="background-anim"></canvas>
+      <h1 class="HomeSection-title">
+        <div><p>We&#39;re here to help you learn.</p>
+          <a href="#schedule" class="cta cta-small HomeSection-hero__scroll-to-subclubs">Explore our subclubs {% include icons/arrow-down.svg %}</a>
         </div>
-      -->{% endcomment %}
-        <h2 class="subclub-title"><a href="{{ site.signup_link }}" class="subclub-link">Sign up for CSEC</a></h2>
-        <div class="more-subclubs-listing" style="display:block">
-          <a class="lesson-link" href="{{ site.signup_link }}"><h4>Be the first to receive updates about our lessons and activities.</h4></a>
-          <p class="disabled" style="margin-bottom:0">Requires a valid YRDSB Gapps account.</p>
-        </div>
-      </div>
-      <!-- {% comment %}{ endif %}{% endcomment %} -->
+      </h1>
+      <a id="background-anim-desc" target="_blank"></a>
     </div>
-    {% endfor %}
-  </div>
-</div>
 
-<div class="container row">
-  <div class="one-half column announcements">
-    <h2><a href="{{ '/posts/' | relative_url }}"><em class="offset-text">Announcements</em></a></h2>
-    {% for post in site.posts limit: 3 %}
-    <article>
-      <header>
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <h6>Posted on <time datetime="{{ post.date | date: site.mdatefmt }}">{{ post.date | date: site.datefmt }}</time></h6>
-      </header>
-      <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-    </article>
-    {% endfor %}
-    <a href="{{ '/posts/' | relative_url }}" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
-  </div>
-  <div class="one-half column resources">
-    <h2><a href="{{ '/resources/' | relative_url }}"><em class="offset-text">Resources</em></a></h2>
+    <div class="HomeSection HomeSection-wrapper">
+      <div class="HomeSection HomeSection-callout">
+        <div class="SiteHeader">
+          {% include header.html %}
+        </div>
+        <div class="HomeSection-container">
+          <h1 class="HomeSection-title">Wassup</h1>
+          <div class="HomeSection-schedule__callout-ai-subclub"></div>
+        </div>
+      </div>
 
-    {% for resource_id in site.displayed_resources %}
-      {% for resource in site.resources %}
-        {% if resource.path contains resource_id %}
-    <article>
-      <header>
-        <h3><a href="{{ resource.url }}">{{ resource.title }}</a></h3>
-      </header>
-      {{ resource.summary | markdownify }}
-    </article>
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
-    <a href="{{ '/resources/' | relative_url }}" class="view-all">View all resources<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
-  </div>
-</div>
+      <div class="HomeSection HomeSection-schedule" id="schedule">
+        <div class="SiteHeader">
+          {% include header.html %}
+        </div>
+        <div class="HomeSection-container">
+          <h1 class="HomeSection-title">Our schedule</h1>
+  {% comment %}{% raw %}
+  Source for collapsed section below
+  sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+          {% for subclub in site.displayed_subclubs %}
+            {% assign subclub_obj = subclubs | where: "name", subclub | first %}
+            {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+            {% assign subclub_schedule = subclub_index.schedule %}
+            {% assign subclub_title = subclub_index.title %}
+            {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+  {% endraw %}{% endcomment %}
 
-<script>
-SCRIPTS.add(function() {
-  /**@license MIT-unfetch-©Jason Miller(@developit)*/
-  !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):e.unfetch=n()}(this,function(){return"function"==typeof fetch?fetch.bind():function(e,n){return n=n||{},new Promise(function(t,o){function r(){var e,n=[],t=[],o={};return s.getAllResponseHeaders().replace(/^(.*?):\s*([\s\S]*?)$/gm,function(r,s,u){n.push(s=s.toLowerCase()),t.push([s,u]),e=o[s],o[s]=e?e+","+u:u}),{ok:1==(s.status/200|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:r,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return o[e.toLowerCase()]},has:function(e){return e.toLowerCase()in o}}}}var s=new XMLHttpRequest;s.open(n.method||"get",e);for(var u in n.headers)s.setRequestHeader(u,n.headers[u]);s.withCredentials="include"==n.credentials,s.onload=function(){t(r())},s.onerror=o,s.send(n.body)})}});
-  // Source for below {% comment %}
+          {% for subclub in site.displayed_subclubs %}{% assign subclub_obj = subclubs | where: "name", subclub | first %}{% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}{% assign subclub_schedule = subclub_index.schedule %}{% assign subclub_title = subclub_index.title %}{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
 
-  // Choose a visualization from a list and display it
-  var displayVisualization = (visList) => {
-    var doReqAnimFrame = (fn) => {
-      reqAnimFrame = requestAnimationFrame(fn);
-    }, resizeTimeout, reqAnimFrame;
+          <div class="SubclubCard" id="schedule-{{ subclub | xml_escape }}">
+            <h3 class="SubclubCard-title"><a href="{{ subclub_url }}/" class="SubclubCard-link">{{ subclub_title | xml_escape }}</a></h3>
+            <div>
+              <p class="lesson-state">Last lesson</p>
+              <p class="lesson-name lesson-last"></p>
+            </div>
+            <div>
+              <p class="lesson-state">Next meeting</p>
+              <p class="lesson-name lesson-next"></p>
+            </div>
+  {% comment %}{% raw %}
+  Source for collapsed section below
+  sublime text key sequence: ctrl-shift-l end ctrl-j bksp
 
-    var chosenVis = visList[0]; // TODO: choose random
+              {% if site.production == true %}
+                {% assign lessons = site.lessons | group_by: "category" %}
+                {% assign subclub_obj = lessons | where: "name", subclub | first %}
+              {% endif %}
+              {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
+  {% endraw %}{% endcomment %}
+  {% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
+          </div>
+          {% endfor %}
+          <div class="SubclubCard more-subclubs">
+            <h3 class="SubclubCard-title"><a href="{{ '/subclubs/' | relative_url }}" class="SubclubCard-link">More subclubs</a></h3>
+            <div class="more-subclubs-listing">
+              {% assign subclub_counter = 0 %}
+              {% for subclub_obj in subclubs %}
+                {% if site.displayed_subclubs contains subclub_obj.name %}
+                  {% continue %}
+                {% endif %}
+                {% if subclub_counter >= 4 %}
+                  {% break %}
+                {% endif %}
+                {% assign subclub_index = subclub_obj.items | where: "layout", "landing" | first %}
+                {% assign subclub_title = subclub_index.title | xml_escape %}
+                {% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+                <p><a class="lesson-link" href="{{ subclub_url }}/">{{ subclub_title }}</a></p>
+                {% assign subclub_counter = subclub_counter | plus: 1 %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    Promise.all(
-      chosenVis.scripts.map(u => unfetch(u).then(s => s.text()))
-    ).then((scripts) => {
-      // ...don't do this, please.
-      scripts.forEach((script) => { (0, eval)(script) })
+    <div class="HomeSection HomeSection-resources">
+      <div class="SiteHeader">
+        {% include header.html %}
+      </div>
+      <div class="container row">
+        <div class="one-half column announcements">
+          <h2><a href="{{ '/posts/' | relative_url }}"><em class="offset-text">Announcements</em></a></h2>
+          {% for post in site.posts limit: 3 %}
+          <article>
+            <header>
+              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <h6>Posted on <time datetime="{{ post.date | date: site.mdatefmt }}">{{ post.date | date: site.datefmt }}</time></h6>
+            </header>
+            <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+          </article>
+          {% endfor %}
+          <a href="{{ '/posts/' | relative_url }}" class="view-all">View all posts<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+        </div>
+        <div class="one-half column resources">
+          <h2><a href="{{ '/resources/' | relative_url }}"><em class="offset-text">Resources</em></a></h2>
 
-      chosenVis.vis = chosenVis.init(doReqAnimFrame);
+          {% for resource_id in site.displayed_resources %}
+            {% for resource in site.resources %}
+              {% if resource.path contains resource_id %}
+          <article>
+            <header>
+              <h3><a href="{{ resource.url }}">{{ resource.title }}</a></h3>
+            </header>
+            {{ resource.summary | markdownify }}
+          </article>
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          <a href="{{ '/resources/' | relative_url }}" class="view-all">View all resources<span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
+        </div>
+      </div>
+    </div>
+  </main>
 
-      $('#background-anim-desc')
-        .attr('href', chosenVis.src)
-        .text(chosenVis.name + " | " + chosenVis.author);
+  <script>
+  SCRIPTS.add(function() {
+    /**@license MIT-unfetch-©Jason Miller(@developit)*/
+    !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):e.unfetch=n()}(this,function(){return"function"==typeof fetch?fetch.bind():function(e,n){return n=n||{},new Promise(function(t,o){function r(){var e,n=[],t=[],o={};return s.getAllResponseHeaders().replace(/^(.*?):\s*([\s\S]*?)$/gm,function(r,s,u){n.push(s=s.toLowerCase()),t.push([s,u]),e=o[s],o[s]=e?e+","+u:u}),{ok:1==(s.status/200|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:r,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return o[e.toLowerCase()]},has:function(e){return e.toLowerCase()in o}}}}var s=new XMLHttpRequest;s.open(n.method||"get",e);for(var u in n.headers)s.setRequestHeader(u,n.headers[u]);s.withCredentials="include"==n.credentials,s.onload=function(){t(r())},s.onerror=o,s.send(n.body)})}});
+    // Source for below {% comment %}
 
-      $('body').addClass('has-anim');
-    }, (err) => {
-      console.error(err);
-    });
+    // Colours for visualizations
+    var colours = {
+      // light: {
+      //   blend: '#eeebeb',
+      //   standout: '#232323'
+      // },
+      // dark: {
+      //   blend: '#2d2d35',
+      //   standout: '#fff'
+      // }
+      light: {
+        blend: '#d10a0a',
+        standout: '#830606'
+      },
+      dark: {
+        blend: '#e02525',
+        standout: '#891616'
+      }
+    };
 
-    $(window).on('resize', () => {
-      cancelAnimationFrame(reqAnimFrame);
-      clearTimeout(resizeTimeout);
+    // Choose a visualization from a list and display it
+    var displayVisualization = (visList) => {
+      var doReqAnimFrame = (fn) => {
+        reqAnimFrame = requestAnimationFrame(fn);
+      }, resizeTimeout, reqAnimFrame;
 
-      resizeTimeout = setTimeout(() => {
-        chosenVis.vis = chosenVis.init(doReqAnimFrame)
-      }, 1000);
-    });
+      var chosenVis = visList[0]; // TODO: choose random
 
-    $(window).on('changetheme', (e) => {
-      chosenVis.vis.changeTheme();
-    });
-  };
-  //{% endcomment %}
-  var displayVisualization=function(a){var c,d,b=function(g){d=requestAnimationFrame(g)},f=a[0];Promise.all(f.scripts.map(function(g){return unfetch(g).then(function(h){return h.text()})})).then(function(g){g.forEach(function(h){(0,eval)(h)}),f.vis=f.init(b),$('#background-anim-desc').attr('href',f.src).text(f.name+' | '+f.author),$('body').addClass('has-anim')},function(g){console.error(g)}),$(window).on('resize',function(){cancelAnimationFrame(d),clearTimeout(c),c=setTimeout(function(){f.vis=f.init(b)},1e3)}),$(window).on('changetheme',function(){f.vis.changeTheme()})};
+      Promise.all(
+        chosenVis.scripts.map(u => unfetch(u).then(s => s.text()))
+      ).then((scripts) => {
+        // ...don't do this, please.
+        scripts.forEach((script) => { (0, eval)(script) })
 
-  var visList = [
-    {
-      name: "Conway's Game of Life",
-      author: "Joshua Hogendorn",
-      src: "https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript",
-      scripts: [
-        "{{ site.cdn_url }}/assets/lib/hero-bgs/gameoflife.js"
-      ],
-      init: function(reqAnimFrame) {
-        var cellDimensions = 10,
-            delay = performance.now(),
-            initCells = function() {
-          // get hero's dimensions and create a matrix based on that
-          var heroWidth = $('.hero').width(),
-              heroHeight = $('.hero').height() + 20,
-              cellsX = Math.ceil(heroWidth / cellDimensions),
-              cellsY = Math.ceil(heroHeight / cellDimensions),
-              array = [];
+        chosenVis.vis = chosenVis.init(doReqAnimFrame, colours[APP.currentTheme]);
 
-          $('#background-anim')
-            .attr('width', cellsX * cellDimensions)
-            .attr('height', cellsY * cellDimensions)
-            .css({
-              left: (heroWidth - cellsX * cellDimensions) / 2,
-              top: (heroHeight - cellsY * cellDimensions) / 2
-            });
+        $('#background-anim-desc')
+          .attr('href', chosenVis.src)
+          .text(chosenVis.name + " | " + chosenVis.author);
 
-          for (var i=0; i<cellsX; i++) {
-            array.push(new Array(cellsY));
-            for (var j=0; j<cellsY; j++) {
-              array[i][j] = Math.random() < 0.2;
+        $('body').addClass('has-anim');
+      }, (err) => {
+        console.error(err);
+      });
+
+      $(window).on('resize', () => {
+        cancelAnimationFrame(reqAnimFrame);
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(() => {
+          chosenVis.vis = chosenVis.init(doReqAnimFrame, colours[APP.currentTheme])
+        }, 1000);
+      });
+
+      $(window).on('changetheme', (e) => {
+        chosenVis.vis.changeTheme(colours[APP.currentTheme]);
+      });
+    };
+    //{% endcomment %}
+    var colours={light:{blend:'#cc0a0a',standout:'#830606'},dark:{blend:'#e02525',standout:'#891616'}},displayVisualization=function(a){var c,d,b=function(g){d=requestAnimationFrame(g)},f=a[0];Promise.all(f.scripts.map(function(g){return unfetch(g).then(function(h){return h.text()})})).then(function(g){g.forEach(function(h){(0,eval)(h)}),f.vis=f.init(b,colours[APP.currentTheme]),$('#background-anim-desc').attr('href',f.src).text(f.name+' | '+f.author),$('body').addClass('has-anim')},function(g){console.error(g)}),$(window).on('resize',function(){cancelAnimationFrame(d),clearTimeout(c),c=setTimeout(function(){f.vis=f.init(b,colours[APP.currentTheme])},1e3)}),$(window).on('changetheme',function(){f.vis.changeTheme(colours[APP.currentTheme])})};
+
+    var visList = [
+      {
+        name: "Conway's Game of Life",
+        author: "Joshua Hogendorn",
+        src: "https://github.com/jhogendorn/Game-of-Life-in-CoffeeScript",
+        scripts: [
+          "{{ site.cdn_url }}/assets/lib/hero-bgs/gameoflife.js"
+        ],
+        init: function(reqAnimFrame, colour) {
+          var cellDimensions = 10,
+              delay = performance.now(),
+              initCells = function() {
+            // get hero's dimensions and create a matrix based on that
+            var heroWidth = $('.HomeSection-hero').width(),
+                heroHeight = $('.HomeSection-hero').height() + 20,
+                cellsX = Math.ceil(heroWidth / cellDimensions),
+                cellsY = Math.ceil(heroHeight / cellDimensions),
+                array = [];
+
+            $('#background-anim')
+              .attr('width', cellsX * cellDimensions)
+              .attr('height', cellsY * cellDimensions)
+              .css({
+                left: (heroWidth - cellsX * cellDimensions) / 2,
+                top: (heroHeight - cellsY * cellDimensions) / 2
+              });
+
+            for (var i=0; i<cellsX; i++) {
+              array.push(new Array(cellsY));
+              for (var j=0; j<cellsY; j++) {
+                array[i][j] = Math.random() < 0.2;
+              }
             }
-          }
 
-          return array.slice();
-        }, step = function(timestamp) {
-          if (timestamp - delay >= 200) {
-            delay = timestamp;
-            game.step();
-          };
+            return array.slice();
+          }, step = function(timestamp) {
+            if (timestamp - delay >= 200) {
+              delay = timestamp;
+              game.step();
+            };
 
+            reqAnimFrame(step);
+          }, game = new GameOfLife(
+            $('#background-anim')[0],
+            initCells(),
+            { cell: { w: cellDimensions, h: cellDimensions }},
+            colour
+          );
+
+          game.render();
           reqAnimFrame(step);
-        }, game = new GameOfLife(
-          $('#background-anim')[0],
-          initCells(),
-          { cell: { w: cellDimensions, h: cellDimensions }}
-        );
 
-        game.render();
-        reqAnimFrame(step);
+          return game;
+        },
+        vis: null
+      }, {
+        name: "Quicksort",
+        author: "",
+        src: "",
+        scripts: [
+          "{{ site.cdn_url }}/assets/lib/hero-bgs/sorting.js"
+        ],
+        init: function(reqAnimFrame) {
+          var step = function(timestamp) {
+            if (timestamp - delay >= 200) {
+              delay = timestamp;
+              game.step();
+            };
 
-        return game;
-      },
-      vis: null
-    }, {
-      name: "Quicksort",
-      author: "",
-      src: "",
-      scripts: [
-        "{{ site.cdn_url }}/assets/lib/hero-bgs/sorting.js"
-      ],
-      init: function(reqAnimFrame) {
-        var step = function(timestamp) {
-          if (timestamp - delay >= 200) {
-            delay = timestamp;
-            game.step();
-          };
+            reqAnimFrame(step);
+          }, game = null;
 
+          game.render();
           reqAnimFrame(step);
-        }, game = null;
 
-        game.render();
-        reqAnimFrame(step);
+          return game;
+        },
+        vis: null
+      }
+    ];
 
-        return game;
-      },
-      vis: null
-    }
-  ];
+    displayVisualization(visList);
+  });
+  </script>
 
-  displayVisualization(visList);
-});
-</script>
+  <!-- footer -->
+  {% include footer.html %}
+</body>
+</html>
