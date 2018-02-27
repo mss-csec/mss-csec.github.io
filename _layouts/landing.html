@@ -22,10 +22,10 @@ layout: default
 
 <div class="content container">
   <div class="row">
-    <div class="three columns sidebar-collapsible" id="lesson-listing">
+    <div class="three columns sidebar-collapsible lesson-listing">
       <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
       <h2 class="show-tablet">Lessons</h2>
-      <div class="lesson-callout" id="lesson-timeline" data-lesson-last-balloon-pos="up-left" data-lesson-next-balloon-pos="up-left">
+      <div class="lesson-callout lesson-timeline" id="schedule-{{ subclub }}" data-lesson-last-balloon-pos="up-left" data-lesson-next-balloon-pos="up-left">
         <h5 class="lesson-state">Last lesson</h5>
         <p class="lesson-name lesson-last"></p>
         <h5 class="lesson-state">Next meeting</h5>
@@ -42,7 +42,7 @@ layout: default
           {% assign split_path = item.path | split: '/' %}
           {% if split_path contains entry[0] %}
       <p class="lesson-name">
-        <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
+        <a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" data-id="{{ entry[0] }}" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a>
       </p>
             {% break %}
           {% endif %}
@@ -50,7 +50,7 @@ layout: default
       {% endfor %}
       {% endcomment %}
 
-      {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}{% for item in ordered_lessons %}{% assign lesson_obj = item %}{% for entry in subclub_schedule %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}<p class="lesson-name"><a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></p>{% break %}{% endif %}{% endfor %}{% endfor %}
+      {% assign ordered_lessons = subclub_obj.items | where: "layout", "lesson" | sort: "lesson" %}{% for item in ordered_lessons %}{% assign lesson_obj = item %}{% for entry in subclub_schedule %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] %}<p class="lesson-name"><a class="lesson-link" href="{{ lesson_obj.url | remove: '/index' | uri_escape }}/" data-id="{{ entry[0] }}" title="{{ entry[1] | date: site.datefmt }}">{{ lesson_obj.title | xml_escape }}{% if lesson_obj.draft %}&nbsp;<span class="label warning">Draft</span>{% endif %}</a></p>{% break %}{% endif %}{% endfor %}{% endfor %}
     </div>
     <div class="nine columns" id="main-content">
       <article>
@@ -60,34 +60,5 @@ layout: default
   </div>
 </div>
 
-<script>SCRIPTS.add(function (){
-  APP.renderSubclubSchedule($('#lesson-timeline'),{
-{% comment %}
-Source for collapsed section below
-sublime text key sequence: ctrl-shift-l end ctrl-j bksp
-
-    {% for entry in subclub_schedule %}
-      {% assign lesson_title = entry[0] | xml_escape %}
-      {% assign lesson_url = '' %}
-      {% assign lesson_no = -1 %}
-      {% for item in subclub_obj.items %}
-        {% assign split_path = item.path | split: '/' %}
-        {% if split_path contains entry[0] and item.layout == 'lesson' %}
-          {% assign lesson_title = item.title | xml_escape %}
-          {% assign lesson_url = item.url | remove: '/index' | uri_escape %}
-          {% assign lesson_no = item.lesson | xml_escape %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    "{{ entry[0] | xml_escape }}": {
-      date: "{{ entry[1] | date: site.datefmt }}",
-      url: "{{ lesson_url }}/",
-      title: "{{ lesson_title }}",
-      lesson: "{{ lesson_no }}"
-    },
-    {% endfor %}
-{% endcomment %}
-
-    {% for entry in subclub_schedule %}{% assign lesson_title = entry[0] | xml_escape %}{% assign lesson_url = '' %}{% assign lesson_no = -1 %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] and item.layout == 'lesson' %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | remove: '/index' | uri_escape %}{% assign lesson_no = item.lesson | xml_escape %}{% break %}{% endif %}{% endfor %}"{{ entry[0] | xml_escape }}":{date:"{{ entry[1] | date: site.datefmt }}",url:"{{ lesson_url }}/",title:"{{ lesson_title }}",lesson:"{{ lesson_no }}"},{% endfor %}
-  })});
-</script>
+{% assign subclub_index = page %}
+{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index %}

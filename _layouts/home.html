@@ -4,21 +4,40 @@ layout: default
 
 <div class="hero">
   <canvas id="background-anim"></canvas>
+  {% comment %}
   <h1 class="title ccc">
+    <!--
+    Display the below snippet when signups for the CCC open.
+    Change the dates, room numbers, etc. as necessary.
+    -->
+
+    <!-- PRE-CCC -->
     <!-- <em>The 2018<br class="show-mobile"> CCC<br class="show-phablet hide-mobile"> is here!</em><br>
     <div class="note">
       <em>February 14th,<br class="show-mobile"> Periods 3&ndash;5</em><br>
       <a target="_blank" href="https://bit.ly/MSSCCC18"><em>Sign up today<svg xmlns="http://www.w3.org/svg/2000" height="20" width="25"><path stroke-width="0" fill="currentColor" d="m0 8h17.343l-5.172-5.172l2.828-2.828l10 10l-10 10l-2.828-2.828l5.172-5.172h-17.343z"/></svg></em></a>
     </div>  -->
-    <em class="em">
+    <!-- /PRE-CCC -->
+
+    <!--
+    Display the below snippet when signups for the CCC close.
+    Change the dates, room numbers, etc. as necessary.
+    -->
+
+    <!-- CCC-COUNTDOWN -->
+    <!-- <em class="em">
       <span><b>00</b><i>days</i></span>
       <span><b>00</b><i>hours</i></span>
       <span><b>00</b><i>minutes</i></span>
       <span><b>00</b><i>seconds</i></span>
-      <div class="more"><p>Let CS be your Valentine's this year.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
-      {% comment %} Source for below
+      <div class="more"><p>The CCC is (almost) here.</p><h3 style="margin:0"><strong>The 2018 CCC.</strong> February 14. Room 208. Periods 3&ndash;5.</h3></div>
       <script>(function() {
       var target=1518627600000,current=(new Date()).getTime(),diff=target-current,
+          // Taglines are displayed randomly on page load, replacing the "The
+          // CCC is (almost) here" message.
+          // These were originally developed for the 2018 CCC, which
+          // coincidentially fell on Valentines Day.
+          // Replace with your own CS puns when the time comes near.
           taglines=["Let CS be your Valentine's this year.", "True love is Turing-complete.", "#include <love.h>", "#define love std", ["Roses are red, keywords are blue.", "Write the CCC, past period two."]],
           elems = Array.prototype.slice.call(document.querySelectorAll('.title.ccc em b'));
       diff = diff > 0 ? diff : diff;
@@ -28,16 +47,20 @@ layout: default
         return (new Array(Math.ceil(2-Math.log10(Math.floor(n)||1)))).join('0') + Math.floor(n);
       }
 
+      function clamp0(n) {
+        return n>0 ? n : 0;
+      }
+
       function tick() {
         diff -= 1000;
         var seconds = (diff / 1000) % 60,
             minutes = (diff / 60000) % 60,
             hours = (diff / 3600000) % 24,
             days = (diff / 3600000) / 24;
-        elems[0].textContent = padLeft(days);
-        elems[1].textContent = padLeft(hours);
-        elems[2].textContent = padLeft(minutes);
-        elems[3].textContent = padLeft(seconds);
+        elems[0].textContent = padLeft(clamp0(days));
+        elems[1].textContent = padLeft(clamp0(hours));
+        elems[2].textContent = padLeft(clamp0(minutes));
+        elems[3].textContent = padLeft(clamp0(seconds));
 
         // recalibrate clock every second
         if (diff > 0) {
@@ -60,17 +83,17 @@ layout: default
         diff -= milli - 1000;
         tick();
       }, milli);
-      })();</script>{% endcomment %}<script>!function(){var e=15186276e5,t=(new Date).getTime(),o=e-t,n=["Let CS be your Valentine's this year.","True love is Turing-complete.","#include <love.h>","#define love std",["Roses are red, keywords are blue.","Write the CCC, past period two."]],r=Array.prototype.slice.call(document.querySelectorAll(".title.ccc em b")),c=(o=o)%1e3;function l(e){return new Array(Math.ceil(2-Math.log10(Math.floor(e)||1))).join("0")+Math.floor(e)}function i(){var t=(o-=1e3)/1e3%60,n=o/6e4%60,c=o/36e5%24,a=o/36e5/24;if(r[0].textContent=l(a),r[1].textContent=l(c),r[2].textContent=l(n),r[3].textContent=l(t),o>0){var u=(o=e-(new Date).getTime())%1e3;o-=u-1e3,setTimeout(i,u)}else document.querySelector(".title.ccc .more p").textContent="The geese onslaught has arrived."}var a=n[Math.floor(Math.random()*n.length)];"string"==typeof a?document.querySelector(".title.ccc .more p").textContent=a:(document.querySelector(".title.ccc .more p").textContent=a[0],document.querySelector(".title.ccc .more strong").textContent=a[1]),setTimeout(function(){o-=c-1e3,i()},c)}();</script>
-    </em>
+      })();</script>
+    </em> -->
+    <!-- /CCC-COUNTDOWN -->
   </h1>
-  <!--
+  {% endcomment %}
   <h1 class="title">
     <em>Computer</em><br>
     <em>Science</em><br>
     <em>Education</em><br>
     <em>Club</em>
   </h1>
-  -->
   <a id="background-anim-desc" target="_blank"></a>
 </div>
 
@@ -115,8 +138,6 @@ sublime text key sequence: ctrl-shift-l end ctrl-j bksp
             <h3 class="lesson-name lesson-next"></h3>
           </div>
         </div>
-        <script>SCRIPTS.add(function (){
-        APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{
 {% comment %}{% raw %}
 Source for collapsed section below
 sublime text key sequence: ctrl-shift-l end ctrl-j bksp
@@ -125,32 +146,9 @@ sublime text key sequence: ctrl-shift-l end ctrl-j bksp
             {% assign lessons = site.lessons | group_by: "category" %}
             {% assign subclub_obj = lessons | where: "name", subclub | first %}
           {% endif %}
-          {% for entry in subclub_schedule %}
-            {% assign lesson_title = entry[0] | xml_escape %}
-            {% assign lesson_url = subclub_url | uri_escape %}
-            {% assign lesson_no = -1 %}
-            {% for item in subclub_obj.items %}
-              {% assign split_path = item.path | split: '/' %}
-              {% if split_path contains entry[0] and item.layout == 'lesson' %}
-                {% assign lesson_title = item.title | xml_escape %}
-                {% assign lesson_url = item.url | remove: '/index' | uri_escape %}
-                {% assign lesson_no = item.lesson | xml_escape %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          "{{ entry[0] | xml_escape }}": {
-            date: "{{ entry[1] | date: site.datefmt }}",
-            url: "{{ lesson_url }}/",
-            title: "{{ lesson_title }}",
-            lesson: "{{ lesson_no }}"
-          },
-          {% endfor %}
+          {% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
 {% endraw %}{% endcomment %}
-
-          {% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% for entry in subclub_schedule %}{% assign lesson_title = entry[0] | xml_escape %}{% assign lesson_url = subclub_url | uri_escape %}{% assign lesson_no = -1 %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] and item.layout == 'lesson' %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | remove: '/index' | uri_escape %}{% assign lesson_no = item.lesson | xml_escape %}{% break %}{% endif %}{% endfor %}"{{ entry[0] | xml_escape }}":{date:"{{ entry[1] | date: site.datefmt }}",url:"{{ lesson_url }}/",title:"{{ lesson_title }}",lesson:"{{ lesson_no }}"},{% endfor %}
-
-        });
-        });</script>
+{% if site.production == true %}{% assign lessons = site.lessons | group_by: "category" %}{% assign subclub_obj = lessons | where: "name", subclub | first %}{% endif %}{% include js-schedule.html schedule=subclub_schedule obj=subclub_obj index=subclub_index inline=true %}
       </div>
       {% endfor %}
       <!-- {% comment %}{ if row >= number_rows and subclubs.size > site.displayed_subclubs.size %}{% endcomment %} -->

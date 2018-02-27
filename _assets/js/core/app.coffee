@@ -15,5 +15,6 @@ require('../components/misc')(APP)
 # Non-extensions
 require('../components/pascha')()
 require('../components/announcements')()
+require('../components/responsive-menu')()
 
 module.exports = APP

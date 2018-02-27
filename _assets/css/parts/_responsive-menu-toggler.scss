@@ -1,35 +1,37 @@
 // Responsive menu toggler
 
 .responsive-menu-toggler {
-  position: absolute;
-  display: none !important;
-}
-
-.responsive-menu-toggler + label {
   display: none;
 }
 
 @media (max-width: $bp-tablet) {
-  .responsive-menu-toggler {
-    @include reset-all;
-    @include dimensions(90px, $ex3);
+  main, footer {
+    @include transition;
 
-    display: block !important;
-    clip: initial;
-    -webkit-appearance: none;
-    // -moz-appearance: none doesn't work in Firefox
-    -moz-appearance: checkbox-container;
-    -ms-appearance: none;
-    appearance: none;
-    top: -$ex05;
-    right: 0;
-    z-index: $z4;
+    filter: blur(0);
+  }
 
-    + label {
-      display: block;
+  .responsive-menu {
+    &-open {
+      // body
+      overflow: hidden;
+
+      main, footer {
+        filter: blur(3px);
+      }
     }
 
-    + label a {
+    &-toggler {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      width: 4.5 * $ex;
+      height: $ex3 - $ex05;
+      z-index: $z3;
+    }
+
+    &-label {
       @include no-user-select;
 
       position: absolute;
@@ -41,58 +43,28 @@
       padding-right: $ex + 6px;
       cursor: pointer;
       z-index: $z3;
+
+      &::before,
+      &::after {
+        @include pseudo;
+        @include dimensions(2px, 1em);
+        @include transition;
+
+        top: $ex + 1px;
+        right: $ex + 6px;
+        background-color: $brand-colour;
+      }
+
+      &::before {
+        transform: translateX(-$ex2) scale(1) rotate(20deg);
+      }
+
+      &::after {
+        transform: translateX(5px) scale(1) rotate(20deg);
+      }
     }
 
-    + label a::before,
-    + label a::after {
-      @include pseudo;
-      @include dimensions(2px, 1em);
-      @include transition;
-
-      top: $ex + 1px;
-      right: $ex + 6px;
-      background-color: $brand-colour;
-    }
-
-    + label a::before {
-      transform: translateX(-$ex2) scale(1) rotate(20deg);
-    }
-
-    + label a::after {
-      transform: translateX(5px) scale(1) rotate(20deg);
-    }
-
-    &:checked + label a {
-      color: $t;
-      padding-left: 0;
-    }
-
-    &:checked + label a::before {
-      transform: translateX(-1px) scale(1.2) rotate(-45deg);
-    }
-
-    &:checked + label a::after {
-      transform: translateX(-1px) scale(1.2) rotate(45deg);
-    }
-
-    + label::before {
-      @include position(0);
-      @include transition;
-
-      content: '';
-      position: fixed;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: $z2;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    &:checked + label::before {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    ~ .responsive-menu-items {
+    &-items {
       @include position(0);
       @include transition;
 
@@ -100,10 +72,29 @@
       flex-direction: column;
       background-color: $bg-secondary;
       z-index: $z2;
+      overflow: auto;
       transform: translateX(100vw);
     }
 
-    &:checked ~ .responsive-menu-items {
+    &-open &-label {
+      color: $t;
+      padding-left: 0;
+    }
+
+    &-open &-label::before {
+      transform: translateX(-1px) scale(1.2) rotate(-45deg);
+    }
+
+    &-open &-label::after {
+      transform: translateX(-1px) scale(1.2) rotate(45deg);
+    }
+
+    &-open &-toggler::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &-open &-items {
       transform: translateX(0);
     }
   }
