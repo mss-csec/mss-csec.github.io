@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<!-- head -->
+<head>
+  <meta charset="utf-8">
+
+  <script>switch(window.d=document,window.s=d.documentElement.style,window.t=d.cookie.replace(/(?:(?:^|.*;\s*)theme\s*=\s*([^;]*).*$)|^.*$/,'$1')||'light'){case'light':s.backgroundColor='#fff';break;case'dark':s.backgroundColor='#1a1f2a';}'1'==d.cookie.replace(/(?:(?:^|.*;\s*)wf-l\s*=\s*([^;]*).*$)|^.*$/,'$1')&&(d.documentElement.className+=' wf-l',window.wfl=!0),delete window.s</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="theme-color" content="#f52f2f">
+
+  <link rel="dns-prefetch" href="https://cdn.rawgit.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://googletagmanager.com">
+
+  <title>The Expert System | MSS CSEC • Markville's Computer Science Education Club
+</title>
+
+  <!-- Begin Jekyll SEO tag v2.2.3 -->
+<meta property="og:title" content="The Expert System" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Markville’s Computer Science Education Club" />
+<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<link rel="canonical" href="https://mss-csec.github.io/lessons/artificial-intelligence/the-expert-system/index" />
+<meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/the-expert-system/index" />
+<meta property="og:site_name" content="MSS CSEC" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-27T02:15:57+00:00" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"The Expert System","datePublished":"2018-02-27T02:15:57+00:00","dateModified":"2018-02-27T02:15:57+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/the-expert-system/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/the-expert-system/index"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=328ed8f" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=328ed8f" type="image/x-icon">
+
+  <!-- BEGIN GA -->
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- END GA -->
+
+  <!-- BEGIN CSS -->
+  
+  
+  
+
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/skeleton.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/lesson-default.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/main.css" rel="stylesheet">
+  
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/subclubs.css" rel="stylesheet">
+
+  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/balloon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/balloon.css" rel="stylesheet">
+
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/skeleton-light.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/balloon-light.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/lesson-default-light.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/main-light.css" rel="stylesheet">
+  
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/subclubs-light.css" rel="stylesheet">
+  <link href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/pygments-manni.css" rel="stylesheet">
+  </noscript>
+
+  <script>window.STYLESHEETS={light:["https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/skeleton-light.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/balloon-light.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/lesson-default-light.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/main-light.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/subclubs-light.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/pygments-manni.css"],dark:["https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/skeleton-dark.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/balloon-dark.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/lesson-default-dark.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/main-dark.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/css/subclubs-dark.css","https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/lib/pygments-native.css"]};d.scripts[d.scripts.length-1].insertAdjacentHTML('afterend','<link rel="preload" href="'+STYLESHEETS[t].join('" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><link rel="preload" href="')+'" class="toggled-theme" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">');delete window.t;delete window.d</script>
+
+  
+
+  <script>/**@license MIT-promiscuous-©Ruben Verborgh*/(function(n,t){function c(n,t){return(typeof t)[0]==n}function u(o,i){return i=function f(e,h,l,a,p,s){function y(n){return function(t){p&&(p=0,f(c,n,t))}}if(a=f.q,e!=c)return u(function(n,t){a.push({p:this,r:n,j:t,1:e,0:h})});if(l&&c(n,l)|c(t,l))try{p=l.then}catch(m){h=0,l=m}if(c(n,p))try{p.call(l,y(1),h=y(0))}catch(m){h(m)}else for(i=function(t,i){return c(n,t=h?t:i)?u(function(n,c){r(this,n,c,l,t)}):o},s=0;a.length>s;)p=a[s++],c(n,e=p[h])?r(p.p,p.r,p.j,l,e):(h?p.r:p.j)(l)},i.q=[],o.call(o={then:function(n,t){return i(n,t)},"catch":function(n){return i(0,n)}},function(n){i(c,1,n)},function(n){i(c,0,n)}),o}function r(u,r,o,i,f){setTimeout(function(){try{i=f(i),f=i&&c(t,i)|c(n,i)&&i.then,c(n,f)?i==u?o(TypeError()):f.call(i,r,o):r(i)}catch(e){o(e)}})}function o(n){return u(function(t){t(n)})}window.Promise=window.Promise||u,u.resolve=o,u.reject=function(n){return u(function(t,c){c(n)})},u.all=function(n){return u(function(t,c,u,r){r=[],u=n.length||t(r),n.map(function(n,i){o(n).then(function(n){r[i]=n,--u||t(r)},c)})})},u.race=function(n){return u(function(t,c){n.map(function(n){o(n).then(t,c)})})}})("f","o");
+/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */(function(a){"use strict";a.loadCSS||(a.loadCSS=function(){});var b=loadCSS.relpreload={};if(b.support=function(){var d;try{d=a.document.createElement("link").relList.supports("preload")}catch(f){d=!1}return function(){return d}}(),b.bindMediaToggle=function(d){function f(){d.media=g}var g=d.media||"all";d.addEventListener?d.addEventListener("load",f):d.attachEvent&&d.attachEvent("onload",f),setTimeout(function(){d.rel="stylesheet",d.media="only x"}),setTimeout(f,3e3)},b.poly=function(){if(!b.support())for(var g,d=a.document.getElementsByTagName("link"),f=0;f<d.length;f++)g=d[f],"preload"!==g.rel||"style"!==g.getAttribute("as")||g.getAttribute("data-loadcss")||(g.setAttribute("data-loadcss",!0),b.bindMediaToggle(g))},!b.support()){b.poly();var c=a.setInterval(b.poly,500);a.addEventListener?a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}):a.attachEvent&&a.attachEvent("onload",function(){b.poly(),a.clearInterval(c)})}"undefined"==typeof exports?a.loadCSS=loadCSS:exports.loadCSS=loadCSS})("undefined"==typeof global?this:global);
+/* Font Face Observer v2.0.13 - © Bram Stein. License: BSD-3-Clause */!window.wfl&&(new (function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b)}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a()}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a()})}function r(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c)}function t(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:"+b+";"}function y(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function z(a,b){function c(){var a=k;y(a)&&a.a.parentNode&&b(a.g)}var k=a;l(a.b,c);l(a.c,c);y(a)};function A(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal"}var B=null,C=null,E=null,F=null;function G(){if(null===C)if(J()&&/Apple/.test(window.navigator.vendor)){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);C=!!a&&603>parseInt(a[1],10)}else C=!1;return C}function J(){null===F&&(F=!!document.fonts);return F}function K(){if(null===E){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif"}catch(b){}E=""!==a.style.font}return E}function L(a,b){return[a.style,a.weight,K()?a.stretch:"","100px",b].join(" ")}A.prototype.load=function(a,b){var c=this,k=a||"BESbswy",q=0,D=b||3E3,H=(new Date).getTime();return new Promise(function(a,b){if(J()&&!G()){var M=new Promise(function(a,b){function e(){(new Date).getTime()-H>=D?b():document.fonts.load(L(c,'"'+c.family+'"'),k).then(function(c){1<=c.length?a():setTimeout(e,25)},function(){b()})}e()}),N=new Promise(function(a,c){q=setTimeout(c,D)});Promise.race([N,M]).then(function(){clearTimeout(q);a(c)},function(){b(c)})}else m(function(){function u(){var b;if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=h)(b=f!=g&&f!=h&&g!=h)||(null===B&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=B&&(f==v&&g==v&&h==v||f==w&&g==w&&h==w||f==x&&g==x&&h==x)),b=!b;b&&(d.parentNode&&d.parentNode.removeChild(d),clearTimeout(q),a(c))}function I(){if((new Date).getTime()-H>=D)d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,g=n.a.offsetWidth,h=p.a.offsetWidth,u();q=setTimeout(I,50)}}var e=new r(k),n=new r(k),p=new r(k),f=-1,g=-1,h=-1,v=-1,w=-1,x=-1,d=document.createElement("div");d.dir="ltr";t(e,L(c,"sans-serif"));t(n,L(c,"serif"));t(p,L(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);v=e.a.offsetWidth;w=n.a.offsetWidth;x=p.a.offsetWidth;I();z(e,function(a){f=a;u()});t(e,L(c,'"'+c.family+'",sans-serif'));z(n,function(a){g=a;u()});t(n,L(c,'"'+c.family+'",serif'));z(p,function(a){h=a;u()});t(p,L(c,'"'+c.family+'",monospace'))})})};return A;}())('Lato')).load().then(function(){document.documentElement.className+=' wf-l';document.cookie='wf-l=1;path=/;max-age=3600';delete window.wfl},function(){console.log('Could not load Lato')})</script>
+
+  <style>@font-face{font-family:'Lato';font-style:normal;font-weight:300;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff')}@font-face{font-family:'Lato';font-style:italic;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff')}</style>
+  <!-- END CSS -->
+
+  <!-- BEGIN JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/1.3.5/cash.min.js" integrity="sha384-lQ7xw9BfI+dxbYXadQYkYebeHeyMeYYYUrM/oD5Z0g/ediwh63F/Mf6x48hs4m3E" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js" integrity="sha384-3C51VYzyLN6W+IdxzwqCdGDQUOJfaRbPH2h6z97sB+sD4nZ4FCymhVZFvHMGN2ZE" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.min.js" integrity="sha384-vWR/JwZ17UvVCsqyfcCiaUK/5IAENMkGqXYrBRCURUFLS+aW63Zpsz5XqiDzrMQu" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js" integrity="sha384-L9gv4ooDLrYwW0QCM6zY3EKSSPrsuUncpx26+erN0pJX4wv1B1FzVW1SvpcJPx/8" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js" integrity="sha384-RkgGHBDdR8eyBOoWeZ/vpGg1cOvSAJRflCUDACusAAIVwkwPrOUYykglPeqWakZu" crossorigin="anonymous" defer></script>
+
+  <script src="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/js/main.js" defer></script>
+
+  <script src="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/0629193eefada113918cc1a8bad6c59e8fff23ba/assets/js/subclubs.js" defer></script>
+
+  
+
+  
+
+  <!-- BEGIN PAGE-ADDED JS -->
+  <script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.error('Onload script error: '+e.message+'\n'+e.stack)}}}}})(window)</script>
+  <!-- END PAGE-ADDED JS -->
+
+  <!-- BEGIN MATHJAX -->
+  <script type='text/x-mathjax-config'>MathJax.Hub.Config({extensions:['tex2jax.js','TeX/AMSmath.js','TeX/AMSsymbols.js','TeX/cancel.js','TeX/color.js'],jax:['input/TeX','output/CommonHTML'],TeX:{equationNumbers:{autoNumber:'AMS'}},tex2jax:{balanceBraces:false,processEnvironments:false,processRefs:false}})</script>
+  <!-- END MATHJAX -->
+  <!-- END JS -->
+
+  <noscript><style>
+  html,body{font-family:Lato,sans-serif;font-display:swap;}
+  script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
+  script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
+  </style></noscript>
+
+</head>
+
+<body class="no-js theme-light lesson ">
+  <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" style="position:absolute;z-index:-1000" aria-hidden><defs><mask id="m"><path d="M12.82 36q-3.06 0-4.96-.6-1.89-.61-2.82-2.14-.89-1.52-.77-4.29l.16-4.02q0-2.54-.89-3.5-.88-1.01-2.73-1.01H0v-2.25h.77q1.9 0 2.82-1.01.93-1.04.93-3.29l-.08-2.9Q4.44 4 11.78 4h2.54v2.29h-3.3q-3.75 0-3.75 4.26l.08 2.82q0 4.42-3.51 5.95 3.43 1.13 3.43 6.23l-.12 3.38q0 2.7 1.17 3.74 1.17 1.09 3.91 1.09h2.06V36zm16.7-5.95q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zm18.8-.04q-4.68 0-7.82-2.9l1.62-2.74.24-.36.24.16q0 .08.04.36.08.28.24.56.16.28.44.56.93.93 2.1 1.45 1.21.48 2.98.48 2.18 0 3.43-.76 1.25-.81 1.25-2.17 0-1.17-1.01-1.93t-3.63-1.61q-6.94-1.97-6.94-5.71 0-2.13 1.74-3.38 1.78-1.25 5.04-1.25 2.5 0 4.19.72 1.74.68 3.14 2.17l-1.66 2.01-.28.32-.2-.2q-.04-.44-.2-.72-.12-.28-.57-.64-.93-.72-2.1-1.09-1.13-.4-2.26-.4-1.74 0-2.86.6-1.09.6-1.09 1.69 0 1.01 1.13 1.85 1.13.85 4.07 1.69 3.47 1.05 4.88 2.29 1.46 1.21 1.46 3.18 0 2.5-1.98 4.14-1.94 1.61-5.65 1.61zm21.02 0q-4.11 0-6.58-2.5-2.42-2.5-2.42-7.03 0-3.02 1.13-5.18 1.13-2.21 3.02-3.34 1.94-1.17 4.31-1.17 3.34 0 5.41 2.21 2.1 2.21 2.1 6.51 0 .44-.08 1.33h-13.1q.16 3.38 1.9 5.1 1.74 1.73 4.4 1.73 2.9 0 4.76-2.05l1.62 1.57q-2.34 2.82-6.46 2.82zm4.03-11.42q0-2.58-1.33-4.06Q70.75 13 68.61 13q-2.02 0-3.51 1.41-1.5 1.41-1.86 4.18zm16.66 11.46q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zM100.92 36v-2.25h2.06q2.74 0 3.91-1.09 1.17-1.05 1.17-3.74l-.12-3.38q0-5.1 3.43-6.23-3.51-1.53-3.51-5.95l.08-2.82q0-4.26-3.75-4.26h-3.31V4h2.54q7.34 0 7.34 6.99l-.08 2.9q0 2.25.93 3.3.93 1.01 2.82 1.01h.76v2.25h-.81q-1.86 0-2.74 1.01-.89.97-.89 3.5l.16 4.02q.12 2.78-.81 4.3-.89 1.53-2.78 2.13-1.9.6-4.96.6z" fill="#fff" /></mask>
+    
+  </defs></svg>
+
+  <!-- header -->
+  
+
+
+
+
+
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo main-logo" aria-label="{csec}" href="/" title="Happy Holidays from CSEC!">
+      <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
+        <rect class="main-logo-background" width="116" height="40" mask="url(#m)" fill="#f52f2f"></rect>
+      </svg>
+    </a>
+
+
+    <a class="responsive-menu-toggler" href="#" ontouchstart=""><span class="responsive-menu-label">menu</span></a>
+    <div class="responsive-menu-items">
+      <div class="menu">
+        <a class="menu-header" href="/subclubs/">Subclubs</a>
+
+        <dl class="menu-items">
+          
+          
+            
+            
+          <dt><a href="/subclubs/beginners/">Beginners'</a></dt>
+          
+            
+            
+          <dt><a href="/subclubs/advanced/">Advanced</a></dt>
+          
+          
+          <dt class="menu-items-more"><a href="/subclubs/">All subclubs</a></dt>
+          
+        </dl>
+      </div>
+
+      <div class="menu">
+        <a class="menu-header" href="/resources/">Resources</a>
+
+        <dl class="menu-items">
+          <dt class="menu-items-more"><a href="/resources/">All resources</a></dt>
+        </dl>
+      </div>
+
+      <div class="search-box">
+        <form action="/search" class="search-form" method="get">
+          <input type="search" class="search" name="q" placeholder="Search...">
+        </form>
+      </div>
+
+      <div class="menu toggles">
+        <span class="menu-header show-tablet">Options</span>
+
+        <a href="#" class="toggle toggle-theme" tabindex="0" title="Use dark theme"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-moon"><path d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-solid-sun"><path d="M274.835 12.646l25.516 62.393c4.213 10.301 16.671 14.349 26.134 8.492l57.316-35.479c15.49-9.588 34.808 4.447 30.475 22.142l-16.03 65.475c-2.647 10.81 5.053 21.408 16.152 22.231l67.224 4.987c18.167 1.348 25.546 24.057 11.641 35.826L441.81 242.26c-8.495 7.19-8.495 20.289 0 27.479l51.454 43.548c13.906 11.769 6.527 34.478-11.641 35.826l-67.224 4.987c-11.099.823-18.799 11.421-16.152 22.231l16.03 65.475c4.332 17.695-14.986 31.73-30.475 22.142l-57.316-35.479c-9.463-5.858-21.922-1.81-26.134 8.492l-25.516 62.393c-6.896 16.862-30.774 16.862-37.67 0l-25.516-62.393c-4.213-10.301-16.671-14.349-26.134-8.492l-57.317 35.479c-15.49 9.588-34.808-4.447-30.475-22.142l16.03-65.475c2.647-10.81-5.053-21.408-16.152-22.231l-67.224-4.987c-18.167-1.348-25.546-24.057-11.641-35.826L70.19 269.74c8.495-7.19 8.495-20.289 0-27.479l-51.454-43.548c-13.906-11.769-6.527-34.478 11.641-35.826l67.224-4.987c11.099-.823 18.799-11.421 16.152-22.231l-16.03-65.475c-4.332-17.695 14.986-31.73 30.475-22.142l57.317 35.479c9.463 5.858 21.921 1.81 26.134-8.492l25.516-62.393c6.896-16.861 30.774-16.861 37.67 0zM392 256c0-74.991-61.01-136-136-136-74.991 0-136 61.009-136 136s61.009 136 136 136c74.99 0 136-61.009 136-136zm-32 0c0 57.346-46.654 104-104 104s-104-46.654-104-104 46.654-104 104-104 104 46.654 104 104z"/></svg>
+</a>
+
+        
+        <a href="#" class="toggle make-distraction-free" tabindex="0" title="Enter distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-expand"><path d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"/></svg>
+</a>
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main>
+    
+
+
+
+<a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-compress"><path d="M436 192H312c-13.3 0-24-10.7-24-24V44c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-276-24V44c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 300V344c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H312c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"/></svg>
+</a>
+
+<header class="page-header">
+  <div class="container">
+    <h1 class="page-title">The Expert System<span class="invisible">&nbsp;#2</span><span class="lesson-num">#2</span></h1>
+    <div class="breadcrumbs">
+      <a href="/">~</a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/artificial-intelligence/">Artificial Intelligence</a> / <span class="breadcrumbs-current">The Expert System</span>
+      <time class="lesson-date" datetime="1970-01-01T00:00:00+0000">January 01, 1970</time>
+    </div>
+    <div class="bar bg-gradient hide-tablet"></div>
+  </div>
+</header>
+
+<div class="content container">
+  <div class="row">
+    <div class="columns sidebar-collapsible lesson-listing">
+      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
+      <h2 class="show-tablet">Lessons</h2>
+
+      <div class="lesson-callout lesson-pagination">
+        
+        
+        
+        <h5 class="lesson-state">Previous<span class="hide-tablet"> lesson</span></h5>
+        <p class="lesson-name lesson-prev">
+          
+          <a class="lesson-link" href="/lessons/artificial-intelligence/introduction-to-artificial-intelligence/" data-balloon="December 31, 1969" data-balloon-pos="up-left">Introduction to Artificial Intelligence</a>
+        </p>
+        
+        
+        <h5 class="lesson-state">Next<span class="hide-tablet"> lesson</span></h5>
+        <p class="lesson-name lesson-next">
+          
+          <a class="lesson-link" href="/lessons/artificial-intelligence/intelligence-and-the-ai-winter/" data-balloon="January 06, 1970" data-balloon-pos="up-left">Intelligence and the AI Winter</a>
+        </p>
+        
+      </div>
+
+      <p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/introduction-to-artificial-intelligence/" data-id="introduction-to-artificial-intelligence" title="December 31, 1969">Introduction to Artificial Intelligence</a></p><p class="lesson-name lesson-cur"><a class="lesson-link" href="/lessons/artificial-intelligence/the-expert-system/" data-id="the-expert-system" title="January 01, 1970">The Expert System</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/intelligence-and-the-ai-winter/" data-id="intelligence-and-the-ai-winter" title="January 03, 1970">Intelligence and the AI Winter</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/intractability/" data-id="intractability" title="January 05, 1970">Intractability</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/decision-trees/" data-id="decision-trees" title="January 06, 1970">Decision Trees</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/neural-networks/" data-id="neural-networks" title="January 07, 1970">Neural Networks</a></p>
+    </div>
+
+    <div class="columns" id="main-content">
+      
+      <article><div class="dlist">
+<dl>
+<dt class="hdlist1">expert system</dt>
+<dd>
+<p>a computer system that emulates the decision-making ability of a human expert.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>You are a computer-part manufacturer.
+Your customers have many requests for their computers: they want them to be fast, to be able to hold plenty of memory in RAM; they might want both an SSD and an HDD; they might want a capable graphics card and adequate interfaces with external hardware.
+But each every component in your inventory is only compatible with certain models of motherboards, and given the hundreds of models of parts you have, you need experts to handle these requests, which you get many times a day.
+If only you could automate the process of coming up with compatible configurations&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Or maybe you run a busy hospital&#8201;&#8212;&#8201;the only hospital&#8201;&#8212;&#8201;in a large city.
+And despite the funds you receive, your hospital is always overcrowded; you can&#8217;t just buy the land the neighbouring skyscraper rests on, after all.
+You get many, many outpatients who only have a cold or a scratch and just need to get a prescription filled out, requiring a diagnosis by a doctor.
+And oftentimes, those with more serious ailments are misdiagnosed, considering how much time your limited doctors must work.
+If only you could automate the process of diagnosis and triage&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>First developed in the 1970&#8217;s, the <strong>expert system</strong> was the first successful AI schema.
+Expert systems are built to emulate the decision-making of an expert, hence their name.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://xkcd.com/1924"><span class="image right"><img src="https://www.explainxkcd.com/wiki/images/3/39/solar_panels.png" alt="xkcd 1924: Solar Panels" width="300" height="300"></span></a>
+The most simple of these take the form of decision trees: if-then clauses that take some input&#8201;&#8212;&#8201;<em>"I have these symptoms&#8230;&#8203;"</em>&#8201;&#8212;&#8201;and give you the output that an expert would come to: <em>"You most likely have this affliction, but here are some other possible issues that can be narrowed down with these tests&#8230;&#8203;"</em>
+Slightly more complicated ones can be represented with a flowchart.</p>
+</div>
+<div class="paragraph">
+<p>All expert systems can be boiled down to a deterministic <strong>algorithm</strong>: a set of instructions that, when given the same inputs, will come up with the same outputs.
+The only difference between an expert system and what are <em>conventionally</em> considered algorithms are that algorithms are expected to give perfect, objective answers to perfectly objective problems.</p>
+</div>
+<div class="paragraph">
+<p>However, questions posed for artificial intelligences&#8201;&#8212;&#8201;and therefore expert systems&#8201;&#8212;&#8201;don&#8217;t have these precise metrics.
+As a result, whatever conclusions an expert system reaches are subject to the biases of the experts that were consulted during its construction.</p>
+</div>
+<div class="paragraph">
+<p>This is a good thing in many ways: an expert system that creates ideal configurations of computer parts, once constructed, can save many man-hours per consultation, most of which would be about the same questions anyways.
+The actually interesting, unaccounted for problems can be sent to the actual experts.</p>
+</div>
+<div class="paragraph">
+<p>Another pro for expert systems, as you&#8217;ll realize later on, is that whoever constructed the expert system can predict exactly what it&#8217;ll do, which makes it easier to fix any small bugs and errors or add small parts to it.</p>
+</div>
+<div class="paragraph">
+<p>What is a big problem, however, is adding an entirely new feature or making a large update to the expert system; or, in more primitive systems that resemble flowcharts, adding a single new part.
+It&#8217;s not too difficult to imagine how a small change can simply spiral out of control.</p>
+</div>
+<div class="paragraph">
+<p>Even more concerning is that certain problems are already impossible&#8201;&#8212;&#8201;practically speaking&#8201;&#8212;&#8201;to solve with an expert system.
+As just one example, there are numerous strategies available to Go players for any given position; just trying to classify the board into different positions is a feat to behold.</p>
+</div>
+<div class="paragraph">
+<p>So what now?
+What new approach should we take?</p>
+</div></article>
+    </div>
+  </div>
+</div>
+<div class="footnote-tip" tabindex="-1"></div>
+
+<script>SCRIPTS.add(function(){ APP.loadSubclubSchedule({ 
+"introduction-to-artificial-intelligence":{date:"1969-12-31T00:00:00+0000",lesson:"1",title:"Introduction to Artificial Intelligence",url:"/lessons/artificial-intelligence/introduction-to-artificial-intelligence/"},"the-expert-system":{date:"1970-01-01T00:00:00+0000",lesson:"2",title:"The Expert System",url:"/lessons/artificial-intelligence/the-expert-system/"},"intelligence-and-the-ai-winter":{date:"1970-01-03T00:00:00+0000",lesson:"3",title:"Intelligence and the AI Winter",url:"/lessons/artificial-intelligence/intelligence-and-the-ai-winter/"},"intractability":{date:"1970-01-05T00:00:00+0000",lesson:"4",title:"Intractability",url:"/lessons/artificial-intelligence/intractability/"},"decision-trees":{date:"1970-01-06T00:00:00+0000",lesson:"5",title:"Decision Trees",url:"/lessons/artificial-intelligence/decision-trees/"},"neural-networks":{date:"1970-01-07T00:00:00+0000",lesson:"6",title:"Neural Networks",url:"/lessons/artificial-intelligence/neural-networks/"},"evolutionary-algorithms":{date:"1970-01-08T00:00:00+0000",lesson:"-1",title:"evolutionary-algorithms",url:"/subclubs/artificial-intelligence/"},
+});APP.renderSubclubSchedule($('[id="schedule-artificial-intelligence"]'));});</script>
+
+
+  </main>
+  <!-- footer -->
+  <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="two columns">
+        <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
+          <rect width="116" height="40" mask="url(#m)" fill="currentColor"></rect>
+        </svg>
+        <p class="yo">
+          <a href="https://github.com/mss-csec/mss-csec.github.io" title="Our GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" height="16" class="icon icon-github"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</a>
+          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
+</a>
+        </p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/328ed8fb38a840d8090a878c7f5b46570de169b0" target="_blank">328ed8f</a></p>
+      </div>
+      <div class="two columns">
+        <h5>This is CSEC</h5>
+        <p><a href="/about">About us</a></p>
+        <p><a href="/privacy">Privacy notice</a></p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform" onclick="event.preventDefault();FEEDBACKDisplayModal()">Give feedback</a></p>
+      </div>
+      <div class="two columns">
+        <h5>Announcements</h5>
+        
+        <p><a href="/announcements/2018/01/scheduled-testing/">January 7: Scheduled testing</a></p>
+        
+        <p><a href="/announcements/2017/11/november-24-pa-day/">November 24: PA Day</a></p>
+        
+        <p><a href="/review/2017/11/november-3-combined-review/">November 3: Combined Review</a></p>
+        
+        <p><a href="/posts">All posts&hellip;</a></p>
+      </div>
+      <!--
+      <div class="two columns">
+        <h5>Markville SS</h5>
+        <p><a href="http://markville.ss.yrdsb.ca/" target="_blank" class="link-extern">School website</a></p>
+        <p><a href="http://schools.yrdsb.ca/markville.ss/teacher/computers/computers.htm" target="_blank" class="link-extern">MSS Comp Sci</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/Markville_Secondary_School" target="_blank" class="link-extern">Wikipedia</a></p>
+      </div>
+    -->
+      <div class="three offset-by-three columns">
+        <h5>Disclaimer</h5>
+        <p>The Computer Science and Education Club is a student-run organization in Markville Secondary School. All views and opinions presented here are CSEC's own, and do not represent those of the York Region District School Board or Markville Secondary School in any way.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>SCRIPTS.add(function(){FEEDBACK("https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform")})</script>
+</body>
+</html>
