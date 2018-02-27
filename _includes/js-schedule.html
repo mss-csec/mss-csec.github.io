@@ -1,0 +1,46 @@
+<script>SCRIPTS.add(function(){ {% if include.inline %}APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'),{ {% else %}APP.loadSubclubSchedule({ {% endif %}
+{% comment %}{% raw %}
+Source for collapsed section below
+Do NOT remove the single quotes at the end of the JSON when transforming;
+they are there as a buffer and if you literally follow the below instructions
+they will be automatically removed.
+sublime text key sequence: ctrl-shift-l end ctrl-j bksp
+
+{% assign subclub_schedule = include.schedule %}
+{% assign subclub_obj = include.obj %}
+{% assign subclub_index = include.index %}
+{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}
+
+{% for entry in subclub_schedule %}
+  {% assign lesson_date = entry[1] %}
+  {% assign lesson_no = -1 %}
+  {% assign lesson_title = entry[0] | xml_escape %}
+  {% assign lesson_url = subclub_url | uri_escape %}
+
+  {% if lesson_date contains ' ' or lesson_date contains '-' or lesson_date contains '/' %}
+    {% assign lesson_date = lesson_date | date: site.mdatefmt %}
+  {% endif %}
+
+  {% for item in subclub_obj.items %}
+    {% assign split_path = item.path | split: '/' %}
+    {% if split_path contains entry[0] and item.layout == 'lesson' %}
+      {% assign lesson_no = item.lesson | xml_escape %}
+      {% assign lesson_title = item.title | xml_escape %}
+      {% assign lesson_url = item.url | remove: '/index' | uri_escape %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+"{{ entry[0] | xml_escape }}":{'
+  date:
+    "{{ lesson_date }}",
+  lesson:
+    "{{ lesson_no }}",
+  title:
+    "{{ lesson_title }}",
+  url:
+    "{{ lesson_url }}/"'
+},
+{% endfor %}
+{% endraw %}{% endcomment %}{% assign subclub_schedule = include.schedule %}{% assign subclub_obj = include.obj %}{% assign subclub_index = include.index %}{% assign subclub_url = subclub_index.url | remove: '/index' | uri_escape %}{% for entry in subclub_schedule %}{% assign lesson_date = entry[1] %}{% assign lesson_no = -1 %}{% assign lesson_title = entry[0] | xml_escape %}{% assign lesson_url = subclub_url | uri_escape %}{% if lesson_date contains ' ' or lesson_date contains '-' or lesson_date contains '/' %}{% assign lesson_date = lesson_date | date: site.mdatefmt %}{% endif %}{% for item in subclub_obj.items %}{% assign split_path = item.path | split: '/' %}{% if split_path contains entry[0] and item.layout == 'lesson' %}{% assign lesson_no = item.lesson | xml_escape %}{% assign lesson_title = item.title | xml_escape %}{% assign lesson_url = item.url | remove: '/index' | uri_escape %}{% break %}{% endif %}{% endfor %}"{{ entry[0] | xml_escape }}":{date:"{{ lesson_date }}",lesson:"{{ lesson_no }}",title:"{{ lesson_title }}",url:"{{ lesson_url }}/"},{% endfor %}
+});{% unless include.inline %}APP.renderSubclubSchedule($('[id="schedule-{{ subclub | xml_escape }}"]'));{% endunless %}});</script>

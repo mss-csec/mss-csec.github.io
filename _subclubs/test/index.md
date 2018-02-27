@@ -2,12 +2,14 @@
 title: Test
 layout: landing
 category: test
+self:
+  version: 2
 schedule:
-  lesson-one: Jul 18 2017
-  lesson-two: Jul 25 2017
-  lesson-three: Aug 1 2017
-  lesson-four: Aug 8 2017
-  lesson-five: Aug 15 2017
+  lesson-one: Feb 1 2018
+  lesson-two: 
+  lesson-three: 14
+  lesson-four: 7
+  lesson-five: 
 ---
 
 I wonder if Markdown works?

@@ -25,7 +25,7 @@ extractQuery = (query) ->
 
 # Render list of results as HTML
 renderResults = (results) ->
-  searchResults = $('#search-results')
+  searchResults = $('.search-results')
 
   if results.length > 0
     builder = []
@@ -80,8 +80,8 @@ initSearch = (rawStore) ->
 executeSearch = (query) ->
   results = idx.search query
 
-  $('#search').val query
-  $('#search-query').text query
+  $('.search').val query
+  $('.search-query').text query
   $('title').text "Search results for #{query} |
     {{ site.title }} • {{ site.description }}"
 
@@ -90,8 +90,8 @@ executeSearch = (query) ->
 window.addEventListener 'load', () ->
   query = extractQuery queryKey
 
-  $('#search-form').on 'submit', (e) ->
-    newQuery = $('#search').val()
+  $('.search-form').on 'submit', (e) ->
+    newQuery = $('.search').val()
     e.preventDefault()
 
     history.pushState { newQuery }, '', "?#{queryKey}=#{sanitizeQuery(newQuery)}"

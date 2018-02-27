@@ -167,13 +167,13 @@
         run: function () {
           for (var i=0;i<scripts.length;i++) {
             try { scripts[i].call(g); }
-            catch (e) { console.log('Onload script error: ' + e.message); }
+            catch (e) { console.error('Onload script error: ' + e.message + '\n' + e.stack); }
           }
         }
       };
     })(window);
   </script>
-  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.log('Onload script error: '+e.message)}}}}})(window)</script>
+  {% endraw %}{% endcomment %}<script>window.SCRIPTS=(function(g){var s=[];return{add:function(f){s.push(f)},run:function(){for(var i=0;i<s.length;i+=1){try{s[i].call(g)}catch(e){console.error('Onload script error: '+e.message+'\n'+e.stack)}}}}})(window)</script>
   <!-- END PAGE-ADDED JS -->
 
   <!-- BEGIN MATHJAX -->
@@ -232,4 +232,5 @@
   script[type*='math/tex']{display:inline-block!important;font-family:monospace;white-space:pre;}
   script[type*='math/tex'][type*='mode=display']{display:block!important;width:100%;text-align:center;}
   </style></noscript>
+
 </head>

@@ -8,3 +8,7 @@
 	path = _subclubs/advanced
 	url = git@github.com:mss-csec/advanced-subclub.git
 	branch = master
+[submodule "_subclubs/artificial-intelligence"]
+	path = _subclubs/artificial-intelligence
+	url = https://github.com/mss-csec/artificial-intelligence.git
+	branch = master
