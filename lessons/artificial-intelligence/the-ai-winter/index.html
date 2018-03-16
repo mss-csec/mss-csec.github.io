@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/the-ai-winter/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-12T03:12:44+00:00" />
+<meta property="article:published_time" content="2018-03-16T17:00:24+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"The AI Winter","datePublished":"2018-03-12T03:12:44+00:00","dateModified":"2018-03-12T03:12:44+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/the-ai-winter/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/the-ai-winter/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"The AI Winter","datePublished":"2018-03-16T17:00:24+00:00","dateModified":"2018-03-16T17:00:24+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/the-ai-winter/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/the-ai-winter/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -236,7 +236,139 @@
 
     <div class="columns" id="main-content">
       
-      <article></article>
+      <article><div id="toc" class="toc">
+<div id="toctitle">Sections</div>
+<ul class="sectlevel1">
+<li><a href="#problems-with-expert-systems">Problems with Expert Systems</a></li>
+<li><a href="#a-program-that-learns-to-play-checkers">A Program that Learns to Play Checkers</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the fall of expert systems in the late 1980&#8217;s, pessimism in AI ran rampant.</p>
+</div>
+<div class="paragraph">
+<p>The state of AI research receeded back into what&#8217;s dubbed the "AI Winter," a period from 1974 to 1993 where pessimism in research lead to pessimism in the press, ultimately ending in slashed funding and collapses in the industry, for which expert systems were for but a brief respite.</p>
+</div>
+<div class="paragraph">
+<p>So what happened?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problems-with-expert-systems">Problems with Expert Systems</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you tune into AI discussions today, one of the problems you&#8217;ll find to be rampant is that of interpretability.
+Neural networks&#8201;&#8212;&#8201;the currently most hyped AI architecture&#8201;&#8212;&#8201;are a black box.
+It&#8217;s a feat to behold to explain how they arrive at their results<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>, and some of the recent, most impressive papers in AI are those that find new methods to do so.</p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s not a problem with expert systems.
+Expert systems are a white box: they&#8217;re completely transparent.
+Every single rule in an expert system was specified by an expert&#8201;&#8212;&#8201;a human&#8201;&#8212;&#8201;that knew what they were doing.</p>
+</div>
+<div class="paragraph">
+<p>That expert systems are a white box is definitely a pro.</p>
+</div>
+<div class="paragraph">
+<p>But it&#8217;s also its greatest weakness.</p>
+</div>
+<div class="paragraph">
+<p>That expert systems are a white box means that every single rule in it must be specified by someone else.</p>
+</div>
+<div class="paragraph">
+<p>What does that mean for problems like computer vision?
+What kind of rules can tell you if you&#8217;re looking at a lemon or a tractor-trailer?</p>
+</div>
+<div class="paragraph">
+<p>What does that mean for problems like language processing?
+What kind of rules do you need to explain that  "the spirit is willing, but the flesh is weak" shouldn&#8217;t be translated into "the vodka is good, but the meat is rotten"?</p>
+</div>
+<div class="paragraph">
+<p>And just because a system is transparent doesn&#8217;t mean that it&#8217;s easily-understood.
+Source code is entirely transparent, with absolutely-defined behaviours&#8201;&#8212;&#8201;and yet, software bugs are a fact of life.</p>
+</div>
+<div class="paragraph">
+<p>Maintaining the system and fixing bugs is at least as difficult as debugging software, and every time it needs an update, more rules will be added and more bugs introduced.
+By the early ninetys, the R1 proved too expensive to maintain, as unusual inputs resulted in grotesque outputs.</p>
+</div>
+<div class="paragraph">
+<p>Refining an expert system is simply the process of adding more rules.
+The higher-refined an expert system, the higher the proliferation of rules, the lower the maintability, and the higher the cost of supporting it.</p>
+</div>
+<div class="paragraph">
+<p>The fundamental problem with expert systems is its nature as a white box: <strong>every part of it is designed and implemented by a human</strong>.
+Expert systems may provide short-term gains, but as maintenance times lengthen, so does the cost.</p>
+</div>
+<div class="paragraph">
+<p>The whole reason why expert systems were built was because human labour is vastly more expensive than computation.
+And yet, building an expert system requires extensive human maintenance.
+Expert systems are self-defeating.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-program-that-learns-to-play-checkers">A Program that Learns to Play Checkers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since the beginning of code compilation, one little experiment was trucking along, gliding under the radar of the general public.</p>
+</div>
+<div class="paragraph">
+<p>In the late 1940&#8217;s, IBM engineer Arthur Samuel an interesting side project: writing a program that learns to play checkers.
+Samuel often tested his program on IBM 701 computers that were still on the production line.</p>
+</div>
+<div class="paragraph">
+<p>After a while, it turned out that his program was able to do something remarkable: it could beat all but the best checkers players in the world without fail, something that an expert system could never achieve<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>What&#8217;s interesting here is his approach.
+An expert system for playing checkers would be a program that plays checkers.
+But Samuel wrote a program that <em>learns</em> to play checkers.</p>
+</div>
+<div class="paragraph">
+<p>Samuel called his approach a term that we&#8217;re all very familiar with today: <strong>machine learning</strong>.
+His program played games of checkers over and over with themselves, learning optimal strategies<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> until a few were able to prevail.</p>
+</div>
+<div class="paragraph">
+<p>It took a while to find a way to structure his learning paradigm so that it&#8217;d be able to learn so well, but the success of machine learning planted a seed that began to sprout and grow explosively after the decline of the expert system in the nineties that would, arguably, become responsible of a bubble of its own&#8201;&#8212;&#8201;even after the project was shut down after then-IBM-CEO Thomas J. Watson, Jr., felt that the public would feel threatened by the prospect of intelligent machines.</p>
+</div>
+<div class="paragraph">
+<p>Something interesting emerges when you compare the definitions of <strong>intelligence</strong> and <strong>learning</strong>:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">intelligence</dt>
+<dd>
+<p><em>n.</em> the ability to acquire and apply knowledge and skills.</p>
+</dd>
+<dt class="hdlist1">learning</dt>
+<dd>
+<p><em>ger.</em> to acquire knowlege or skills.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Notice any similarities?</p>
+</div>
+<div class="paragraph">
+<p>With that in mind, it&#8217;s time to leave behind expert systems in pursuit of making machines that can learn.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. don&#8217;t worry, we&#8217;ll explain that in a later lecture
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. an expert system would perform at best as well as the best in the world; considering the amount of rules and strategies that could go into playing checkers, it would have horrible bugs; considering that it&#8217;d be quite deterministic, it&#8217;d be quite easy to exploit
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. 'optimality' was measured by a heuristic of Samuel&#8217;s design; we&#8217;ll see how this becomes important later.
+</div>
+</div></article>
     </div>
   </div>
 </div>
