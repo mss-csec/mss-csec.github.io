@@ -101,8 +101,8 @@ datefmt: '%B %d, %Y'
 mdatefmt: '%FT%T%z'
 
 displayed_subclubs:
+  - artificial-intelligence
   - beginners
-  - advanced
 
 displayed_resources:
   - guides/installing-codeblocks
