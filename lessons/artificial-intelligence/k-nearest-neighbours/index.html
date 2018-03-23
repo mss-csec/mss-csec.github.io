@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-21T19:31:22+00:00" />
+<meta property="article:published_time" content="2018-03-23T17:00:27+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"k-Nearest Neighbours","datePublished":"2018-03-21T19:31:22+00:00","dateModified":"2018-03-21T19:31:22+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"k-Nearest Neighbours","datePublished":"2018-03-23T17:00:27+00:00","dateModified":"2018-03-23T17:00:27+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -236,7 +236,95 @@
 
     <div class="columns" id="main-content">
       
-      <article></article>
+      <article><div id="toc" class="toc">
+<div id="toctitle">Sections</div>
+<ul class="sectlevel1">
+<li><a href="#bashing-your-head-at-a-problem">Bashing Your Head at a Problem</a></li>
+<li><a href="#similarities">Similarities</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>So having <em>people</em> come up with rules is too expensive.
+Instead, we should consider making machines themselves come up with rules.</p>
+</div>
+<div class="paragraph">
+<p>How?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bashing-your-head-at-a-problem">Bashing Your Head at a Problem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once again, we can try and use a brute-force approach.
+Our goal is to make a machine "learn" rules from sample data.</p>
+</div>
+<div class="paragraph right">
+<p><span class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png" alt="MNIST sample" width="300" height="300"></span></p>
+</div>
+<div class="paragraph">
+<p>One very, very simple way to do this is to just make the sample data the rules.
+If you get an input that exactly matches that of one of the sample data, we&#8217;re done!
+Obviously the result should match the label of the datapoint in the sample.</p>
+</div>
+<div class="paragraph">
+<p>On the right is a sample of the MNIST database.
+The entire database is, of course, much larger.</p>
+</div>
+<div class="paragraph">
+<p>But I think we can already start to see a problem.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s way, way too much variation among individual digits.
+And even if you tried to write a single digit in exactly the same way, you wouldn&#8217;t get it to pixel-perfect intensity.</p>
+</div>
+<div class="paragraph">
+<p>This is memorization.</p>
+</div>
+<div class="paragraph">
+<p>One datapoint in the MNIST dataset consists of the digit that was intended to be written, and a twenty-eight by twenty-eight grayscale image of the written digit.
+In other words, there&#8217;s \(256^{28\times 28}\), or about \(1.15\times10^{1888}\) distinct images to consider.</p>
+</div>
+<div class="paragraph">
+<p>There are about \(10^{80}\) atoms in the visible universe.</p>
+</div>
+<div class="paragraph">
+<p>To memorize <strong>not</strong> to learn.</p>
+</div>
+<div class="paragraph">
+<p>We certainly don&#8217;t compare every digit we see to every digit we&#8217;ve seen previously to try and find a match.
+When we learn language, we don&#8217;t memorize every sentence that appears.</p>
+</div>
+<div class="paragraph">
+<p>No, we look for <em>patterns</em>.
+In language, we look for patterns in the usage of words&#8201;&#8212;&#8201;vocabulary&#8201;&#8212;&#8201;and in the placement of words&#8201;&#8212;&#8201;grammar.
+We look for simpler rules, and for generalizations.</p>
+</div>
+<div class="paragraph">
+<p>And here, we arrive at one of the pillars of machine learning, an aphorism that extends beyond academia:</p>
+</div>
+<div class="paragraph">
+<p><span class="big"><code>To learn is to generalize.</code></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="similarities">Similarities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So how do we generalize?</p>
+</div>
+<div class="paragraph">
+<p>After just a little bit of thought, it may seem obvious that we should look for whichever sample data is most similar to the input.
+And this is quite a reasonable thing to do.</p>
+</div>
+<div class="paragraph">
+<p>In fact, it&#8217;s such a reasonable thing to do that computer scientists call it <strong>nearest neighbour search</strong>.</p>
+</div>
+</div>
+</div></article>
     </div>
   </div>
 </div>
