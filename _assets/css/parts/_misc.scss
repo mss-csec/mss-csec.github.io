@@ -18,24 +18,39 @@
 }
 
 // lol easter egg
-body.easter-egg {
+body:not(.easter-egg) {
   $easter-image: '/assets/images/kawaii-art-kawaii-anime.png';
-  background-image: url($easter-image);
+  background-image: url($easter-image) !important;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive !important;
 
-  article, div:not(.hero), footer, header, main, section {
-    background-size: $ex2;
-    background-image: url($easter-image);
+  // new for april fool's
+  cursor: url('/assets/images/kawaii-art-kawaii-anime-cursor.png'), auto !important;
+
+  * {
+    cursor: url('/assets/images/kawaii-art-kawaii-anime-cursor.png'), auto !important;
   }
 
-  h1:not(.title), h2, h3, h4, h5, h6, p {
-    background-color: $bg-primary;
+  a, input, textarea, button, .button {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive !important;
+    cursor: url('/assets/images/kawaii-art-kawaii-anime-cursor-2.png'), auto !important;
+  }
+  // end new
+
+  article, div:not(.hero), footer, header, main, section {
+    background-size: $ex2 !important;
+    background-image: url($easter-image) !important;
+  }
+
+  h1:not(.title), h2, h3, h4, h5, h6, p,
+  .menu-header, .logo {
+    background-color: $bg-primary !important;
   }
 
   .site-header, .site-footer {
-    background-size: $ex4;
+    background-size: $ex4 !important;
   }
 
   div.container, div.row, .site-header div {
-    background-image: none;
+    background-image: none !important;
   }
 }

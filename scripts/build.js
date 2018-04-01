@@ -80,7 +80,10 @@ glob([ 'assets/**/*.scss' ])
     // Compile SCSS
     // We need to get the paths for the compiled files, but this promise can't
     // be resolved until all the files are compiled, hence async/await
-    const resolvePath = require('path').resolve;
+    const {
+      resolve: resolvePath,
+      join: joinPath
+    } = require('path');
 
     let filePromises = files.map(file => new Promise((resolve, reject) => {
       if (~blacklist.indexOf(file.split('/').slice(-2).join('/')) ||
@@ -96,7 +99,35 @@ glob([ 'assets/**/*.scss' ])
         sass.render({
           data: content,
           includePaths: [ resolvePath(__dirname, '../assets/css/') ],
-          outputStyle: 'expanded'
+          outputStyle: 'expanded',
+          functions: {
+            // Transforms relative URLs
+            // This is needed since assets are served from CDN
+            'url($url)': (url) => {
+              let u = url.getValue(), newURL;
+
+              if (/^['"]?(https?:)?\/\//.test(u) || /^['"]?(data|blob):/.test(u)) {
+                // If absolute URL or data URI, simply return unchanged
+                return new sass.types.String(`url('${u}')`);
+              } else if (/^['"]?\.\.\//.test(u) || /^['"]?(\.\/|[^./])/.test(u)) {
+                // If relative URL or relative-directory URL, resolve relative to file location
+                newURL = '/' + joinPath(file, '../', u);
+              } else if (/^['"]?\//.test(u)) {
+                // If absolute URL, do nothing
+                newURL = u;
+              } else {
+                // any other url, simply return unchanged
+                return new sass.types.String(`url('${u}')`);
+              }
+
+              if (isProduction) {
+                // or whatever the appropriate hostname is
+                newURL = 'https://mss-csec.github.io' + newURL;
+              }
+
+              return new sass.types.String(`url('${newURL}')`);
+            }
+          }
         }, (err, css) => {
           if (err) {
             console.error(err.file);
@@ -137,7 +168,8 @@ glob([ 'assets/**/*.scss' ])
     let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
       postcss([ autoprfxr, extrStyles ])
         .process(css)
-        .then(({ css, extracted }) => { resolve({ css, extracted, file }) });
+        .then(({ css, extracted }) => { resolve({ css, extracted, file }) })
+        .catch(err => console.log(css.split('\n').slice(300, 310)));
     }));
 
     return await Promise.all(postCssPromises);
@@ -292,7 +324,7 @@ glob([ 'assets/**/*.coffee' ])
   .then(async function(files) {
     // Minify in production mode
     if (isProduction) {
-      let filePromises = files.map(file => new Promise(resolve => {
+      let filePromises = files.map(file => new Promise((resolve, reject) => {
         fs.readFile(file, (err, js) => {
           if (err) reject(err);
 
