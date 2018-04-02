@@ -1,0 +1,169 @@
+version: 2
+
+jobs:
+  assets:
+    docker:
+      - image: circleci/node:8.9.3
+    environment:
+      NPM_INSTALL_DIR: ./node_modules
+      NODE_ENV: production
+      SOURCE_BRANCH: staging
+      DEPLOY_BRANCH: assets
+      USER_EMAIL: markville.compsci@gmail.com
+      USER_NAME: MSS CSEC
+
+    working_directory: ~/mss-csec.github.io
+
+    steps:
+      - checkout
+
+      - run:
+          name: Chmod setup scripts
+          command: |
+            chmod +x ./scripts/**/*.sh
+
+      # Restore npm cache
+      - restore_cache:
+          keys:
+            - mss-csec-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Setup environment
+          command: |
+            ./scripts/ci/setup-assets.sh
+
+      # Save npm cache
+      - save_cache:
+          key: mss-csec-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Configure git details
+          command: |
+            git config user.email "$USER_EMAIL"
+            git config user.name "$USER_NAME"
+
+      - run:
+          name: Build assets
+          command: |
+            ./scripts/ci/assets.sh production
+
+
+  build:
+    docker:
+      - image: circleci/ruby:2.4-jessie
+
+    environment:
+      BUNDLE_INSTALL_DIR: ~/.bundle
+      JEKYLL_ENV: production
+      SOURCE_BRANCH: staging
+      ASSETS_BRANCH: assets
+      DEPLOY_BRANCH: master
+      BUILD_BRANCH: build-master
+      USER_EMAIL: markville.compsci@gmail.com
+      USER_NAME: MSS CSEC
+
+    working_directory: ~/mss-csec.github.io
+
+    steps:
+      # Checkout repository
+      - checkout
+
+      # Chmod CI scripts
+      - run:
+          name: Chmod setup scripts
+          command: chmod +x ./scripts/**/*.sh
+
+      # Restore binary cache
+      - restore_cache:
+          keys:
+            - jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - mss-csec-{{ checksum "Gemfile.lock" }}
+
+      # Setup environment
+      - run:
+          name: Setup environment
+          command: |
+            ./scripts/ci/setup-build.sh
+
+      # Save binary cache
+      # - save_cache:
+      #     key: jessiebin-libpopt0_1.16-10_amd64--rsync_3.1.1-3_amd64
+      #     paths:
+      #       - ./bin
+
+      # Save bundle cache
+      - save_cache:
+          key: mss-csec-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle
+
+      # Configure git details
+      - run:
+          name: Configure git details
+          command: |
+            git config user.email "$USER_EMAIL"
+            git config user.name "$USER_NAME"
+
+      # Pre-build setup
+      - run:
+          name: Pre-build
+          command: |
+            ./scripts/ci/pre-build.sh
+
+      # Chmod again (b/c we switched branches a bunch of times)
+      - run:
+          name: Chmod build/deploy scripts
+          command: |
+            chmod +x ./scripts/**/*.sh
+
+      # Build
+      - run:
+          name: Build
+          command: |
+            ./scripts/ci/build.sh production
+
+      # Post-build
+      - run:
+          name: Post-build
+          command: |
+            ./scripts/ci/post-build.sh
+
+      # Deploy
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              ./scripts/ci/deploy.sh
+            fi
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - assets:
+          filters:
+            branches:
+              only:
+                - staging
+      - build:
+          filters:
+            branches:
+              only:
+                - staging
+          requires:
+            - assets
+  auto-build:
+    triggers:
+      - schedule:
+          cron: "0 17 * * 5"
+          filters:
+            branches:
+              only:
+                - staging
+    jobs:
+      - build
