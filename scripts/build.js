@@ -168,8 +168,7 @@ glob([ 'assets/**/*.scss' ])
     let postCssPromises = compiledFiles.map(({ css, file }) => new Promise(resolve => {
       postcss([ autoprfxr, extrStyles ])
         .process(css)
-        .then(({ css, extracted }) => { resolve({ css, extracted, file }) })
-        .catch(err => console.log(css.split('\n').slice(300, 310)));
+        .then(({ css, extracted }) => { resolve({ css, extracted, file }) });
     }));
 
     return await Promise.all(postCssPromises);
