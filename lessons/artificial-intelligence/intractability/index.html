@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/intractability/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-04-13T17:00:30+00:00" />
+<meta property="article:published_time" content="2018-04-20T17:00:28+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Intractability","datePublished":"2018-04-13T17:00:30+00:00","dateModified":"2018-04-13T17:00:30+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/intractability/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/intractability/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Intractability","datePublished":"2018-04-20T17:00:28+00:00","dateModified":"2018-04-20T17:00:28+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/intractability/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/intractability/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -219,7 +219,7 @@
         <h5 class="lesson-state">Previous<span class="hide-tablet"> lesson</span></h5>
         <p class="lesson-name lesson-prev">
           
-          <a class="lesson-link" href="/lessons/artificial-intelligence/k-nearest-neighbours/" data-balloon="March 01, 2018" data-balloon-pos="up-left">k-Nearest Neighbours</a>
+          <a class="lesson-link" href="/lessons/artificial-intelligence/k-nearest-neighbours/" data-balloon="April 18, 2018" data-balloon-pos="up-left">k-Nearest Neighbours</a>
         </p>
         
         
@@ -231,19 +231,222 @@
         
       </div>
 
-      <p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/introduction-to-artificial-intelligence/" data-id="introduction-to-artificial-intelligence" title="March 21, 2018">Introduction to Artificial Intelligence</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/the-expert-system/" data-id="the-expert-system" title="April 04, 2018">The Expert System</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/the-ai-winter/" data-id="the-ai-winter" title="April 11, 2018">The AI Winter</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/k-nearest-neighbours/" data-id="k-nearest-neighbours" title="March 01, 2018">k-Nearest Neighbours</a></p><p class="lesson-name lesson-cur"><a class="lesson-link" href="/lessons/artificial-intelligence/intractability/" data-id="intractability" title="April 25, 2018">Intractability</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/decision-trees/" data-id="decision-trees" title="May 02, 2018">Decision Trees</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/neural-networks/" data-id="neural-networks" title="May 09, 2018">Neural Networks</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/bayesian-networks/" data-id="bayesian-networks" title="May 30, 2018">Bayesian Networks</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/competence/" data-id="competence" title="June 06, 2018">Competence</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/prospects/" data-id="prospects" title="June 13, 2018">Prospects</a></p>
+      <p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/introduction-to-artificial-intelligence/" data-id="introduction-to-artificial-intelligence" title="March 21, 2018">Introduction to Artificial Intelligence</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/the-expert-system/" data-id="the-expert-system" title="April 04, 2018">The Expert System</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/the-ai-winter/" data-id="the-ai-winter" title="April 11, 2018">The AI Winter</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/k-nearest-neighbours/" data-id="k-nearest-neighbours" title="April 18, 2018">k-Nearest Neighbours</a></p><p class="lesson-name lesson-cur"><a class="lesson-link" href="/lessons/artificial-intelligence/intractability/" data-id="intractability" title="April 25, 2018">Intractability</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/decision-trees/" data-id="decision-trees" title="May 02, 2018">Decision Trees</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/neural-networks/" data-id="neural-networks" title="May 09, 2018">Neural Networks</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/bayesian-networks/" data-id="bayesian-networks" title="May 30, 2018">Bayesian Networks</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/competence/" data-id="competence" title="June 06, 2018">Competence</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/artificial-intelligence/prospects/" data-id="prospects" title="June 13, 2018">Prospects</a></p>
     </div>
 
     <div class="columns" id="main-content">
       
-      <article></article>
+      <article><div id="toc" class="toc">
+<div id="toctitle">Sections</div>
+<ul class="sectlevel1">
+<li><a href="#rules-from-data">Rules from Data</a></li>
+<li><a href="#bias-and-variance">Bias and Variance</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>So k-NNs tend to work well until we start adding more and more variables, where the input space becomes more and more sparsely populated.
+And once we begin to suspect that certain variables are less or more relevant or lie on a different scale from others, we have another problem on our hands: defining distance.</p>
+</div>
+<div class="paragraph">
+<p>Now&#8217;s a good time to step back and think about what exactly the k-NN algorithm does.
+The k-NN algorithm merely compares new data to the old data; but is that what <em>we</em> do to learn?</p>
+</div>
+<div class="paragraph">
+<p>Probably not.
+Recall from lesson one when we were trying to figure out how to define artificial intelligence: we were picking out a common trait to every AI problem that would distinguish it from a simple computational problem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rules-from-data">Rules from Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When we learn with intent, we look for patterns.
+We take provided data and igure out what information is relevant and what to throw out.
+You can recognize a digit by its shape, but not so much from its typeface or medium.</p>
+</div>
+<div class="paragraph">
+<p>So that&#8217;s exactly what we should do: finding rules from data is simply about picking out the relevant information to use given the data.</p>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="toy_data.png" alt="toy data"></span></p>
+</div>
+<div class="paragraph">
+<p>To see how we&#8217;d approach this, let&#8217;s play with some toy data.
+Should the unclassified (black) data point be classified red or green?</p>
+</div>
+<div class="paragraph">
+<p>Take a moment to think about it.
+What rule does the sample data seem to fall into, and what would that imply for the new data point?</p>
+</div>
+<div class="paragraph">
+<p>If you said green, you&#8217;re right!
+All the green-classified bocks have the top-left square filled in.</p>
+</div>
+<div class="paragraph">
+<p>If you said red, you&#8217;re&#8230;&#8203; also right!
+All the red-classified blocks have only one square filled in.</p>
+</div>
+<div class="paragraph">
+<p>Wait a second.</p>
+</div>
+<div class="paragraph">
+<p>Okay, there seems to be multiple rules that might work; so how about we try to enumerate all distict rules that might work for this set of sample data?
+To be precise, we can label each square of a block with a boolean variable and then we&#8217;re just tring to find an \(f:\mathbb{B}^4\mapsto\{\text{red},\text{green}\}\)<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> that works with the sample data.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="rules.png" alt="rules" width="97%"></span><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Alright; well, let&#8217;s first try to break this approach.
+Is there a way to tailor our rule so that every input is classified red except for the three green-classified sample blocks?</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="broken.png" alt="borken" width="97%"></span><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Oh.</p>
+</div>
+<div class="paragraph">
+<p>There are \(2^4=16\) possible, distinct blocks.
+If our function can be tailored for <em>individiual</em> blocks, then all eleven blocks that we <em>haven&#8217;t</em> yet classified could go either way for <strong>any given rule</strong>.
+Then, we&#8217;d have \(2^{11}=2048\) distinct rules that fit the sample toy data.</p>
+</div>
+<div class="paragraph">
+<p>We can&#8217;t resolve this easily, either; if we tried something like democracy, where every rule gets a vote for each new data point, we still wouldn&#8217;t get anywhere, since half the rules would classify red and the other half green.</p>
+</div>
+<div class="paragraph">
+<p>We can&#8217;t <em>just</em> learn rules from data.
+There&#8217;s no real rational basis to choose one rule over another.</p>
+</div>
+<div class="paragraph">
+<p>And this brings us to our second pillar of machine learning:</p>
+</div>
+<div class="paragraph">
+<p><span class="big"><code>Machine Learning is fundamentally ill-posed.</code></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bias-and-variance">Bias and Variance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve just found that learning rules from data seems to be meaningless.
+What now?</p>
+</div>
+<div class="paragraph">
+<p>Recall from our development of the k-NN algorithm one of the pillars of machine learning we stumbled upon: <em>to learn is to generalize</em>. Here,wWe&#8217;re going to do something that makes most good mathematicians uncomfortable: we&#8217;re going to make an assumption.</p>
+</div>
+<div class="paragraph">
+<p>The key assumption to make here is that the <strong>simple rules are better</strong>; after all, the more general a rule, the more simple its formulation must be.</p>
+</div>
+<div class="paragraph">
+<p>Is this assumption problematic?
+It could be; after all, the point of an assumption is to throw away possibiliites that seem like they won&#8217;t work out.</p>
+</div>
+<div class="paragraph">
+<p>But there&#8217;s a good argument for this assumption.
+Sample data is pulled from the perhaps-infinite pool of real, possible data to use.
+While overly-simple rules might not be expressive enough to truly classify our data, that can be detected from tests against our sample data.
+However, the more expressive we let our rules  be, the more and more likely any rule we test will match the sample data by luck alone.
+At a certain point of complexity, we&#8217;re practically guaranteeing that we&#8217;ll find many rules that perfectly match our sample data, finding patterns in the sample data that doesn&#8217;t exit in general.
+And once that&#8217;s occurred, we&#8217;ve overfit our data&#8201;&#8212;&#8201;we&#8217;ve given up on looking for a meaningful, general pattern and are merely trying to find a perfect function for our noisy data.
+The better we do on our training data, the more likely we&#8217;re overfitting.</p>
+</div>
+<div class="paragraph">
+<p>The opposite, of course, is underfitting with rules that are too general.
+The closer the performance between the training and real data, the more likely we&#8217;re underfitting.</p>
+</div>
+<div class="paragraph">
+<p><span class="red">add image of hilariously underfitting/overfitting data</span></p>
+</div>
+<div class="paragraph">
+<p>Here we reach our third pillar of machine learning:</p>
+</div>
+<div class="paragraph">
+<p><span class="big"><code>Machine learning algorithms must both perform well on training data and generalize, two goals which are fundamentally opposed.</code></span></p>
+</div>
+<div class="paragraph">
+<p>Use rules that are too simple, that have too much <strong>bias</strong>, and we risk underfitting.
+Use rules that are too expressive, that have too much <strong>variance</strong>, and we risk overfitting.
+How do we deal with this?</p>
+</div>
+<div class="paragraph">
+<p>Underfitting can be detected when we try to run through the AI the data we trained it with: if it does poorly on the data it had been trained with, then our rules are obviously not expressive enough to describe the data.
+And simiarly, overfitting can be detected when we run new data through the AI: if there&#8217;s a large drop in performance from the training data, then our AI has found patterns in the training data that exist only by coincidence.</p>
+</div>
+<div class="paragraph">
+<p>What we can do then is split the provided data into a set of training data and a set of testing data; we&#8217;ll use the training data to learn rules and test those rules against the testing data to prevent overfitting.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s do a thought experiment with the MNIST data.
+For the sake of simplicity, for now we&#8217;ll just work with classifying images as images of a zero or not of a zero.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll begin with the most simple, more general, most biased type of rule: the zero-pixel rule.
+We&#8217;ll take the best zero-pixel rule to decide whether or not the picture is a zero.</p>
+</div>
+<div class="paragraph">
+<p>As you can expect, this would perform exceptionally poorly.
+All pictures would be blanket-designated "not a zero."
+But it&#8217;s a very general rule, and its performance is the same across both training and testing data.</p>
+</div>
+<div class="paragraph">
+<p>But it&#8217;s too biased, so we should crank up the variance.
+There are \(28^2\cdot2=1568\) one-pixel rules to choose form the check fro zero-ness.
+Now, a one-pixel rule is probably a bit too biased, which we&#8217;d be able to see from its performance on the training data, so we&#8217;ll slowly increase the variance until the losses on the testing data begin to take over.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve searched through the two zero-pixel rules and fifteen-hundred one-pixel rules, and we&#8217;ll search through the \(\binom{28^2}{2}\cdot2^2=1\,227\,744\) two-pixel rules, \(\binom{28^2}{3}\cdot2^3=640\,063\,872\) three-pixel rules, \(\binom{28^2}{4}\cdot2^4=249\,944\,942\,016\) four-pixel rules until we get to the one that&#8217;ll work best.</p>
+</div>
+<div class="paragraph">
+<p>Wait a second.</p>
+</div>
+<div class="paragraph">
+<p>By the time we&#8217;re looking for the best four-pixel rule, we&#8217;re already dealing with two hundred <em>billion</em> rules.
+If we could evaluate one million rules every second, just looking for the best four-pixel rule would take two days and twenty-one and a half hours to compute.</p>
+</div>
+<div class="paragraph">
+<p>But this isn&#8217;t <em>really</em> a problem, right?
+We can be patient; we&#8217;ll have time to fix this after we&#8217;ve conquered the world with machine learning, after all.</p>
+</div>
+<div class="paragraph">
+<p>The search for the best five-pixel rule would take two and a half years.
+The best six will take over six centuries.
+Ten would take about fifty-four times the age of the universe.</p>
+</div>
+<div class="paragraph">
+<p>Obviously, this is kind of problematic.
+The number of rules we need to test rapidly increases, and the growth is quickly unsustainable.</p>
+</div>
+<div class="paragraph">
+<p>T whis problem of having unbelievably fast growth in computational complexity wiht just small increases in the input is called intractability.
+And despite years of research, problems of htis type still have no reasonably-growing solutions.
+Intractability is responsible for an AI winter of its own, and it wasn&#8217;t for a while until some developments allowed us to work around it.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. some function that takes in four boolean variables (one per square) and classifies it as red or green
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. \(\wedge\) is the <code>and</code> operator and \(\vee\) is the <code>or</code> operator
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. \(\overline{x}\) denotes <code>not x</code>
+</div>
+</div></article>
     </div>
   </div>
 </div>
 <div class="footnote-tip" tabindex="-1"></div>
 
 <script>SCRIPTS.add(function(){ APP.loadSubclubSchedule({ 
-"introduction-to-artificial-intelligence":{date:"2018-03-21T00:00:00+0000",lesson:"1",title:"Introduction to Artificial Intelligence",url:"/lessons/artificial-intelligence/introduction-to-artificial-intelligence/"},"the-expert-system":{date:"2018-04-04T00:00:00+0000",lesson:"2",title:"The Expert System",url:"/lessons/artificial-intelligence/the-expert-system/"},"the-ai-winter":{date:"2018-04-11T00:00:00+0000",lesson:"3",title:"The AI Winter",url:"/lessons/artificial-intelligence/the-ai-winter/"},"k-nearest-neighbours":{date:"2018-03-01T00:00:00+0000",lesson:"4",title:"k-Nearest Neighbours",url:"/lessons/artificial-intelligence/k-nearest-neighbours/"},"intractability":{date:"2018-04-25T00:00:00+0000",lesson:"5",title:"Intractability",url:"/lessons/artificial-intelligence/intractability/"},"decision-trees":{date:"2018-05-02T00:00:00+0000",lesson:"6",title:"Decision Trees",url:"/lessons/artificial-intelligence/decision-trees/"},"neural-networks":{date:"2018-05-09T00:00:00+0000",lesson:"7",title:"Neural Networks",url:"/lessons/artificial-intelligence/neural-networks/"},"bayesian-networks":{date:"2018-05-30T00:00:00+0000",lesson:"9",title:"Bayesian Networks",url:"/lessons/artificial-intelligence/bayesian-networks/"},"competence":{date:"2018-06-06T00:00:00+0000",lesson:"10",title:"Competence",url:"/lessons/artificial-intelligence/competence/"},"prospects":{date:"2018-06-13T00:00:00+0000",lesson:"11",title:"Prospects",url:"/lessons/artificial-intelligence/prospects/"},
+"introduction-to-artificial-intelligence":{date:"2018-03-21T00:00:00+0000",lesson:"1",title:"Introduction to Artificial Intelligence",url:"/lessons/artificial-intelligence/introduction-to-artificial-intelligence/"},"the-expert-system":{date:"2018-04-04T00:00:00+0000",lesson:"2",title:"The Expert System",url:"/lessons/artificial-intelligence/the-expert-system/"},"the-ai-winter":{date:"2018-04-11T00:00:00+0000",lesson:"3",title:"The AI Winter",url:"/lessons/artificial-intelligence/the-ai-winter/"},"k-nearest-neighbours":{date:"2018-04-18T00:00:00+0000",lesson:"4",title:"k-Nearest Neighbours",url:"/lessons/artificial-intelligence/k-nearest-neighbours/"},"intractability":{date:"2018-04-25T00:00:00+0000",lesson:"5",title:"Intractability",url:"/lessons/artificial-intelligence/intractability/"},"decision-trees":{date:"2018-05-02T00:00:00+0000",lesson:"6",title:"Decision Trees",url:"/lessons/artificial-intelligence/decision-trees/"},"neural-networks":{date:"2018-05-09T00:00:00+0000",lesson:"7",title:"Neural Networks",url:"/lessons/artificial-intelligence/neural-networks/"},"bayesian-networks":{date:"2018-05-30T00:00:00+0000",lesson:"9",title:"Bayesian Networks",url:"/lessons/artificial-intelligence/bayesian-networks/"},"competence":{date:"2018-06-06T00:00:00+0000",lesson:"10",title:"Competence",url:"/lessons/artificial-intelligence/competence/"},"prospects":{date:"2018-06-13T00:00:00+0000",lesson:"11",title:"Prospects",url:"/lessons/artificial-intelligence/prospects/"},
 });APP.renderSubclubSchedule($('[id="schedule-artificial-intelligence"]'));});</script>
 
 

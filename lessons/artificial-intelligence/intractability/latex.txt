@@ -1,0 +1,19 @@
+f(\mathbf{x})=
+\begin{cases} 
+  \text{red} &[x_1\wedge(x_2\vee x_3\vee x_4)] \vee [x_2\wedge(x_3\vee x_4)]\vee[x_3\wedge x_4]\\
+  \text{green} &\text{otherwise}
+\end{cases}
+
+f(\mathbf{x})=
+\begin{cases} 
+      \text{green} & x_1 \\
+      \text{red} & \text{otherwise}
+\end{cases}
+
+f(\mathbf{x})=
+\begin{cases} 
+  \text{green} &({x_1}\wedge\overline{x_2}\wedge{x_3}\wedge\overline{x_4})\vee\\
+  &({x_1}\wedge\overline{x_2}\wedge\overline{x_3}\wedge{x_4})\vee\\
+  &({x_1}\wedge{x_2}\wedge\overline{x_3}\wedge{x_4})\\
+  \text{red} &\text{otherwise}
+\end{cases}
