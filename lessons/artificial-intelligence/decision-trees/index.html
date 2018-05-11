@@ -26,9 +26,9 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/decision-trees/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-05-04T17:00:40+00:00" />
+<meta property="article:published_time" content="2018-05-11T17:00:28+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Decision Trees","datePublished":"2018-05-04T17:00:40+00:00","dateModified":"2018-05-04T17:00:40+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/decision-trees/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/decision-trees/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Decision Trees","datePublished":"2018-05-11T17:00:28+00:00","dateModified":"2018-05-11T17:00:28+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/decision-trees/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/decision-trees/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -254,8 +254,8 @@ Our computers simply aren&#8217;t powerful enough to find us the perfect rule.</
 Do we really need the perfect rule?</p>
 </div>
 <div class="paragraph">
-<p>Recall from last elsson that machine learning is funamentally ill-posed.
-Recall from the very first lesson our workable definitio nof artificial intelligence: a field of study of the techniques used for solving problem wit hambiguous features.</p>
+<p>Recall from last lesson that machine learning is fundamentally ill-posed.
+Recall from the very first lesson our workable definition of artificial intelligence: a field of study of the techniques used for solving problem with ambiguous features.</p>
 </div>
 <div class="paragraph">
 <p>Recall from the very first lesson an idea that has become a theme of this series: that of asking the right questions.</p>
@@ -271,37 +271,37 @@ The perfect rule both nonexistent and unnecessary.</p>
 <h2 id="greed">Greed</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We can reasonably expect that if one variable&#8201;&#8212;&#8201;in our case, pixel&#8201;&#8212;&#8201;of the data tends to afford us he most information i n hte case of one-pixel rules, it hsould also be a significant factor the case of two-pixel rules.
-And while this may not hold to bexactly true as we gofurther down the line and incrrase the numbre of pixels to consider, it sould hold to be approximately true.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+<p>We can reasonably expect that if one variable&#8201;&#8212;&#8201;in our case, pixel&#8201;&#8212;&#8201;of the data tends to afford us the most information in the case of one-pixel rules, it should also be a significant factor for the case of two-pixel rules.
+And while this may not hold to be exactly true as we go further down the line and increase the number of pixels to consider, it should hold to be approximately true.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p><span class="red">insert image of clustering pixels and the above effect</span></p>
 </div>
 <div class="paragraph">
 <p>So what we could do very simply now is to choose the best pixel at each level that we add a pixel.
-doing this in the fasion of a decisio ntree then makes the computation complexity linear across the depth of the tree (or number of pixels) rather than combinatoric.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
+Doing this in the fashion of a decision tree then makes the computation complexity linear across the depth of the tree (or number of pixels) rather than combinatoric.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p>So now we just need to tdetermine how to choose the best pixel.
+<p>So now we just need to determine how to choose the best pixel.
 We&#8217;ll still work with our simplified model of only classifiying as zero and not-zero.</p>
 </div>
 <div class="paragraph">
-<p>One very simple wayt o do this is to label each split iwth whatever class of the classification takes up its majority, and then count up the number of "misclassifications" after each split.
+<p>One very simple way to do this is to label each split with whatever class of the classification takes up its majority, and then count up the number of "misclassifications" after each split.
 The lowest-misclassification split wins.
 Simple and logical.</p>
 </div>
 <div class="paragraph">
 <p>You may have already seen a problem with this approach.
-If we actually run it, we&#8217;ll find that every single pixel achieves exactly the same number of misclassificaitons, and that&#8217;s becasue they&#8217;ll all be calssified not-zero due to the sheer imbalance in the data.</p>
+If we actually run it, we&#8217;ll find that every single pixel achieves exactly the same number of misclassificaitons, and that&#8217;s because they&#8217;ll all be classified not-zero due to the sheer imbalance in the data.</p>
 </div>
 <div class="paragraph">
 <p>Artificially balancing the data isn&#8217;t desirable, because in that way we&#8217;ll lose information from whatever we cut and place undue emphasis on whatever we repeat.
-In the real world, data i s lopsided; it would be bad to train a terrorist detector with data tha timplies that half of all pepole are terrorists.</p>
+In the real world, data is lopsided; it would be bad to train a terrorist detector with data that implies that half of all pepole are terrorists.</p>
 </div>
 <div class="paragraph">
-<p>We could, alternatively, use and ipurti ymeasure.
+<p>We could, alternatively, use an impurity measure.
 We split as before and label the impurity after each split: a split of 60=40 will be labeled 40% impure.
-From there, we&#8217;ll take their weighted average given the actual amounts in each <em>side</em> of the split to prevent the domination of single-data-point splits, and take the split with the lowest new meaure of impuirty.</p>
+From there, we&#8217;ll take their weighted average given the actual amounts in each <em>side</em> of the split to prevent the domination of single-data-point splits, and take the split with the lowest new meaure of impurity.</p>
 </div>
 <div class="paragraph">
 <p>Take a look at this equation here:</p>
@@ -312,7 +312,7 @@ From there, we&#8217;ll take their weighted average given the actual amounts in 
 </div>
 </div>
 <div class="paragraph">
-<p>Sof or all that trouble, we&#8217;ve just come up with a normalized version of misclassification.</p>
+<p>So for all that trouble, we&#8217;ve just come up with a normalized version of misclassification.</p>
 </div>
 </div>
 </div>
@@ -320,7 +320,7 @@ From there, we&#8217;ll take their weighted average given the actual amounts in 
 <h2 id="information">Information</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While many developments have been made in getting useful metric, not one objective, mathematically rigourous method has been found for it.</p>
+<p>While many developments have been made in getting useful metric, not one objective, mathematically rigorous method has been found for it.</p>
 </div>
 <div class="paragraph">
 <p>And so, instead of approaching this with rigorous logic, we&#8217;re gonna have to <span class="line-through">make shit up</span> use heuristics.</p>
@@ -354,7 +354,7 @@ We should somehow favour splits that result in lower impurities.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Wikipedia tells ust htat what we want, then, is a concave function \(i\); the simplist concave function is an upside-down parabola, so we can just use \(i(p)=p(1-p)\).</p>
+<p>Wikipedia tells use that what we want, then, is a concave function \(i\); the simplist concave function is an upside-down parabola, so we can just use \(i(p)=p(1-p)\).</p>
 </div>
 <div class="paragraph">
 <p>This heuristic is known as GINI impurity and was first developed by UCB statisiticians Leo Breiman and Jerome H. Friedman.
@@ -362,11 +362,11 @@ And it turns out that it works pretty well.
 GINI Impurity is the most common impurity heruistic used in decision tree learning today.</p>
 </div>
 <div class="paragraph">
-<p>Around the same time, Ross Quinlan, ocmputer science researcher in data science and decision theory, came upwith his own heuristic with some actual theoretical backing.</p>
+<p>Around the same time, Ross Quinlan, computer science researcher in data science and decision theory, came up with his own heuristic with some actual theoretical backing.</p>
 </div>
 <div class="paragraph">
-<p>Quinlan ook inspiration from information theory, orignially formulated by Claude E Shannon, American mathematician, fo the purpose of signal processing for his then-employer Bell Labs in 1948.
-Despite Shannon&#8217;s reservations in thoughtlessly applying the ides of information theory to othe fields, even warning ina 1956 editorial that infomration theory is "a technical tool for the communications engineer," reminding us that "[seldom] do more than a few of nature&#8217;s secrets give way at one time,"<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> informaiton thoery is now at the intersection of mathematics, statistics, omputer science, pysics, neurology, and electrical engineering ,and finds itself with applicaitons in numberous other areas, such as in patter recognition&#8201;&#8212;&#8201;AI.</p>
+<p>Quinlan took inspiration from information theory, originally formulated by Claude E Shannon, American mathematician, for the purpose of signal processing for his then-employer Bell Labs in 1948.
+Despite Shannon&#8217;s reservations in thoughtlessly applying the ideas of information theory to othe fields, even warning in a 1956 editorial that infomration theory is "a technical tool for the communications engineer," reminding us that "[seldom] do more than a few of nature&#8217;s secrets give way at one time,"<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> informaiton thoery is now at the intersection of mathematics, statistics, computer science, physics, neurology, electrical engineering, and finds itself with applications in numberous other areas, such as in pattern recognition&#8201;&#8212;&#8201;AI.</p>
 </div>
 <div class="paragraph">
 <p>One of the postulates of inormation theory is that the information received from an event is equal to the negative logarithm of its probability:</p>
@@ -377,7 +377,7 @@ Despite Shannon&#8217;s reservations in thoughtlessly applying the ides of infor
 </div>
 </div>
 <div class="paragraph">
-<p>This is also called the <em>surprisal</em> of the event, and makes sense in many ways; finding that yo ugot a question right on a test when you were sure that iwas right doesn&#8217;t tell you much, but finding that you gotit wrong tells you many things: what is right, what is wrong, and that you&#8217;re not as well-tuned to your abilities as you thought you were.</p>
+<p>This is also called the <em>surprisal</em> of the event, and makes sense in many ways; finding that you got a question right on a test when you were sure that "I was right" doesn&#8217;t tell you much, but finding that you got it wrong tells you many things: what is right, what is wrong, and that you&#8217;re not as well-tuned to your abilities as you thought you were.</p>
 </div>
 <div class="paragraph">
 <p>But before any event occurs, there is <em>uncertainty</em> about what will occur, which is measured by <strong>entropy</strong>.
@@ -390,7 +390,7 @@ Entropy is measured by the average information received after an event takes pla
 </div>
 <div class="paragraph">
 <p>Quinlan took this idea and ran with it.
-Hel et each event be each possible classificatoin of the data and the "probabiliity" that the event is selected the proportion of data preclassified as the classification in question, so that the "entropy" at every node can be calculated:</p>
+He let each event be each possible classification of the data and the "probability" that the event is selected the proportion of data preclassified as the classification in question, so that the "entropy" at every node can be calculated:</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -398,7 +398,7 @@ Hel et each event be each possible classificatoin of the data and the "probabili
 </div>
 </div>
 <div class="paragraph">
-<p>Since entropy is uncertainty and information clears it up, the <strong>information gain</strong> is simply the entory of the arent node less the wighted sum of each of its children nodes.</p>
+<p>Since entropy is uncertainty and information clears it up, the <strong>information gain</strong> is simply the entropy of the arent node less the weighted sum of each of it&#8217;s children nodes.</p>
 </div>
 <div class="paragraph">
 <p>Information gain and GINI impurity look pretty similar:</p>
@@ -410,14 +410,14 @@ Hel et each event be each possible classificatoin of the data and the "probabili
 <p>It turns out that information gain actually performs better for certain applications; but whatever the case, it&#8217;s another heuristic that works.</p>
 </div>
 <div class="paragraph">
-<p>Decision tree learning is the first schema that we can sya, without reservation, learns.
+<p>Decision tree learning is the first schema that we can say, without reservation, learns.
 And they&#8217;re pretty great!
-They&#8217;re a hwite box, are rather sipmle and understandable, and actually demonstrates feature selection.
-The baseline decision tree leanring algorithm can achieve a 7.7% error rate on MNIST; simple refinements can bring it down to 1.5% and through some more to 0.9%.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
+They&#8217;re a white box, are rather simple and understandable, and actually demonstrates feature selection.
+The baseline decision tree learning algorithm can achieve a 7.7% error rate on MNIST; simple refinements can bring it down to 1.5% and through some more to 0.9%.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>Decision trees have one fault, however: they can only effectively express simple, logical ideas.
-It&#8217;s difficult or them to express things lik exclusive-or gates and while they&#8217;re great at saying "this is a lemon," they easily have problems with "there exist lemons here," as this would require trees that check every position, which cause many troubles with over- and under-fitting.</p>
+It&#8217;s difficult for them to express things like exclusive-or gates and while they&#8217;re great at saying "this is a lemon," they easily have problems with "there exist lemons here," as this would require trees that check every position, which cause many troubles with over- and under-fitting.</p>
 </div>
 </div>
 </div>
