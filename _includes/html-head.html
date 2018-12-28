@@ -20,7 +20,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="theme-color" content="#f52f2f">
 
-  <link rel="dns-prefetch" href="https://cdn.rawgit.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://googletagmanager.com">
 
@@ -48,8 +47,8 @@
   {% if layout == 'home' or layout == 'subclub-landing' %}<link href="{{ cdn_url }}/assets/css/home.css" rel="stylesheet">{% endif %}
   {% if layout == 'lesson' or layout == 'landing' or layout == 'post' or layout == 'resource' %}<link href="{{ cdn_url }}/assets/css/subclubs.css" rel="stylesheet">{% endif %}
 
-  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
-  <link rel="preload" href="https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="{{ cdn_url }}/assets/lib/lato/dist/400.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="{{ cdn_url }}/assets/lib/lato/dist/700.woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="{{ cdn_url }}/assets/lib/balloon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   <noscript>
@@ -106,34 +105,34 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),
-         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff');
+    src: url({{ cdn_url }}/assets/lib/lato/dist/300.woff2) format('woff2'),
+         url({{ cdn_url }}/assets/lib/lato/dist/300.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),
-         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff');
+    src: url({{ cdn_url }}/assets/lib/lato/dist/400.woff2) format('woff2'),
+         url({{ cdn_url }}/assets/lib/lato/dist/400.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),
-         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff');
+    src: url({{ cdn_url }}/assets/lib/lato/dist/700.woff2) format('woff2'),
+         url({{ cdn_url }}/assets/lib/lato/dist/700.woff) format('woff');
   }
   @font-face {
     font-family: 'Lato';
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),
-         url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff');
+    src: url({{ cdn_url }}/assets/lib/lato/dist/400i.woff2) format('woff2'),
+         url({{ cdn_url }}/assets/lib/lato/dist/400i.woff) format('woff');
   }</style>
-  {% endraw %}{% endcomment %}<style>@font-face{font-family:'Lato';font-style:normal;font-weight:300;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/300.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/700.woff) format('woff')}@font-face{font-family:'Lato';font-style:italic;font-weight:400;font-display:swap;src:url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff2) format('woff2'),url(https://cdn.rawgit.com/mss-csec/mss-csec.github.io/1d97420c18d8c61991843a6279375ac7ccf9e8d3/assets/lib/lato/dist/400i.woff) format('woff')}</style>
+  {% endraw %}{% endcomment %}<style>@font-face{font-family:'Lato';font-style:normal;font-weight:300;font-display:swap;src:url({{ cdn_url }}/assets/lib/lato/dist/300.woff2) format('woff2'),url({{ cdn_url }}/assets/lib/lato/dist/300.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;font-display:swap;src:url({{ cdn_url }}/assets/lib/lato/dist/400.woff2) format('woff2'),url({{ cdn_url }}/assets/lib/lato/dist/400.woff) format('woff')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;font-display:swap;src:url({{ cdn_url }}/assets/lib/lato/dist/700.woff2) format('woff2'),url({{ cdn_url }}/assets/lib/lato/dist/700.woff) format('woff')}@font-face{font-family:'Lato';font-style:italic;font-weight:400;font-display:swap;src:url({{ cdn_url }}/assets/lib/lato/dist/400i.woff2) format('woff2'),url({{ cdn_url }}/assets/lib/lato/dist/400i.woff) format('woff')}</style>
   <!-- END CSS -->
 
   <!-- BEGIN JS -->
