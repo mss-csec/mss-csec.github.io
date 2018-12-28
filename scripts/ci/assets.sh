@@ -43,6 +43,9 @@ find . -maxdepth 1 \
     -exec rm -rf {} \;
 find assets/ -type f ! -name '*.css' ! -name '*.js' -exec rm -f {} \;
 
+# Tell GitHub Pages to not process assets with Jekyll
+touch .nojekyll
+
 # Add assets
 git add -A .
 git add -f assets/
