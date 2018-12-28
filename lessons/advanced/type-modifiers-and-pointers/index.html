@@ -26,15 +26,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-12-28T17:00:28+00:00" />
+<meta property="article:published_time" content="2018-12-28T21:02:27+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Type Modifiers and Pointers","datePublished":"2018-12-28T17:00:28+00:00","dateModified":"2018-12-28T17:00:28+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Type Modifiers and Pointers","datePublished":"2018-12-28T21:02:27+00:00","dateModified":"2018-12-28T21:02:27+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=686c0d0" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=686c0d0" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=791ebc1" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=791ebc1" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -113,653 +113,146 @@
 
 </head>
 
-<body class="no-js theme-light lesson ">
-  <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" style="position:absolute;z-index:-1000" aria-hidden><defs><mask id="m"><path d="M12.82 36q-3.06 0-4.96-.6-1.89-.61-2.82-2.14-.89-1.52-.77-4.29l.16-4.02q0-2.54-.89-3.5-.88-1.01-2.73-1.01H0v-2.25h.77q1.9 0 2.82-1.01.93-1.04.93-3.29l-.08-2.9Q4.44 4 11.78 4h2.54v2.29h-3.3q-3.75 0-3.75 4.26l.08 2.82q0 4.42-3.51 5.95 3.43 1.13 3.43 6.23l-.12 3.38q0 2.7 1.17 3.74 1.17 1.09 3.91 1.09h2.06V36zm16.7-5.95q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zm18.8-.04q-4.68 0-7.82-2.9l1.62-2.74.24-.36.24.16q0 .08.04.36.08.28.24.56.16.28.44.56.93.93 2.1 1.45 1.21.48 2.98.48 2.18 0 3.43-.76 1.25-.81 1.25-2.17 0-1.17-1.01-1.93t-3.63-1.61q-6.94-1.97-6.94-5.71 0-2.13 1.74-3.38 1.78-1.25 5.04-1.25 2.5 0 4.19.72 1.74.68 3.14 2.17l-1.66 2.01-.28.32-.2-.2q-.04-.44-.2-.72-.12-.28-.57-.64-.93-.72-2.1-1.09-1.13-.4-2.26-.4-1.74 0-2.86.6-1.09.6-1.09 1.69 0 1.01 1.13 1.85 1.13.85 4.07 1.69 3.47 1.05 4.88 2.29 1.46 1.21 1.46 3.18 0 2.5-1.98 4.14-1.94 1.61-5.65 1.61zm21.02 0q-4.11 0-6.58-2.5-2.42-2.5-2.42-7.03 0-3.02 1.13-5.18 1.13-2.21 3.02-3.34 1.94-1.17 4.31-1.17 3.34 0 5.41 2.21 2.1 2.21 2.1 6.51 0 .44-.08 1.33h-13.1q.16 3.38 1.9 5.1 1.74 1.73 4.4 1.73 2.9 0 4.76-2.05l1.62 1.57q-2.34 2.82-6.46 2.82zm4.03-11.42q0-2.58-1.33-4.06Q70.75 13 68.61 13q-2.02 0-3.51 1.41-1.5 1.41-1.86 4.18zm16.66 11.46q-2.66 0-4.76-1.25-2.1-1.25-3.3-3.42-1.17-2.21-1.17-4.94 0-2.74 1.17-4.9 1.21-2.17 3.3-3.42 2.1-1.25 4.72-1.25 2.22 0 4.03.93 1.82.89 2.94 2.5l-1.82 1.77-.28.28-.2-.2q0-.36-.16-.64-.12-.32-.61-.72-.85-.76-1.86-1.09-1.01-.36-2.38-.36-1.58 0-2.94.89-1.33.85-2.14 2.42-.81 1.57-.81 3.62t.81 3.7q.85 1.65 2.3 2.58 1.5.93 3.3.93 2.78 0 4.8-2.25l1.7 1.97q-2.7 2.9-6.66 2.9zM100.92 36v-2.25h2.06q2.74 0 3.91-1.09 1.17-1.05 1.17-3.74l-.12-3.38q0-5.1 3.43-6.23-3.51-1.53-3.51-5.95l.08-2.82q0-4.26-3.75-4.26h-3.31V4h2.54q7.34 0 7.34 6.99l-.08 2.9q0 2.25.93 3.3.93 1.01 2.82 1.01h.76v2.25h-.81q-1.86 0-2.74 1.01-.89.97-.89 3.5l.16 4.02q.12 2.78-.81 4.3-.89 1.53-2.78 2.13-1.9.6-4.96.6z" fill="#fff" /></mask>
-    
-  </defs></svg>
-
-  <!-- header -->
-  
-
-
-
-
-
-
-<header class="site-header">
-  <div class="container">
-    <a class="logo main-logo" aria-label="{csec}" href="/" title="Happy Holidays from CSEC!">
-      <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
-        <rect class="main-logo-background" width="116" height="40" mask="url(#m)" fill="#f52f2f"></rect>
-      </svg>
-    </a>
-
-
-    <a class="responsive-menu-toggler" href="#" ontouchstart=""><span class="responsive-menu-label">menu</span></a>
-    <div class="responsive-menu-items">
-      <div class="menu">
-        <a class="menu-header" href="/subclubs/">Subclubs</a>
-
-        <dl class="menu-items">
-          
-          
-            
-            
-          <dt><a href="/subclubs/artificial-intelligence/">Artificial Intelligence</a></dt>
-          
-            
-            
-          <dt><a href="/subclubs/beginners/">Beginners'</a></dt>
-          
-          
-          <dt class="menu-items-more"><a href="/subclubs/">All subclubs</a></dt>
-          
-        </dl>
-      </div>
-
-      <div class="menu">
-        <a class="menu-header" href="/resources/">Resources</a>
-
-        <dl class="menu-items">
-          <dt class="menu-items-more"><a href="/resources/">All resources</a></dt>
-        </dl>
-      </div>
-
-      <div class="search-box">
-        <form action="/search" class="search-form" method="get">
-          <input type="search" class="search" name="q" placeholder="Search...">
-        </form>
-      </div>
-
-      <div class="menu toggles">
-        <span class="menu-header show-tablet">Options</span>
-
-        <a href="#" class="toggle toggle-theme" tabindex="0" title="Use dark theme"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-moon"><path d="M279.135 512c78.756 0 150.982-35.804 198.844-94.775 28.27-34.831-2.558-85.722-46.249-77.401-82.348 15.683-158.272-47.268-158.272-130.792 0-48.424 26.06-92.292 67.434-115.836 38.745-22.05 28.999-80.788-15.022-88.919A257.936 257.936 0 0 0 279.135 0c-141.36 0-256 114.575-256 256 0 141.36 114.576 256 256 256zm0-464c12.985 0 25.689 1.201 38.016 3.478-54.76 31.163-91.693 90.042-91.693 157.554 0 113.848 103.641 199.2 215.252 177.944C402.574 433.964 344.366 464 279.135 464c-114.875 0-208-93.125-208-208s93.125-208 208-208z"/></svg>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-solid-sun"><path d="M274.835 12.646l25.516 62.393c4.213 10.301 16.671 14.349 26.134 8.492l57.316-35.479c15.49-9.588 34.808 4.447 30.475 22.142l-16.03 65.475c-2.647 10.81 5.053 21.408 16.152 22.231l67.224 4.987c18.167 1.348 25.546 24.057 11.641 35.826L441.81 242.26c-8.495 7.19-8.495 20.289 0 27.479l51.454 43.548c13.906 11.769 6.527 34.478-11.641 35.826l-67.224 4.987c-11.099.823-18.799 11.421-16.152 22.231l16.03 65.475c4.332 17.695-14.986 31.73-30.475 22.142l-57.316-35.479c-9.463-5.858-21.922-1.81-26.134 8.492l-25.516 62.393c-6.896 16.862-30.774 16.862-37.67 0l-25.516-62.393c-4.213-10.301-16.671-14.349-26.134-8.492l-57.317 35.479c-15.49 9.588-34.808-4.447-30.475-22.142l16.03-65.475c2.647-10.81-5.053-21.408-16.152-22.231l-67.224-4.987c-18.167-1.348-25.546-24.057-11.641-35.826L70.19 269.74c8.495-7.19 8.495-20.289 0-27.479l-51.454-43.548c-13.906-11.769-6.527-34.478 11.641-35.826l67.224-4.987c11.099-.823 18.799-11.421 16.152-22.231l-16.03-65.475c-4.332-17.695 14.986-31.73 30.475-22.142l57.317 35.479c9.463 5.858 21.921 1.81 26.134-8.492l25.516-62.393c6.896-16.861 30.774-16.861 37.67 0zM392 256c0-74.991-61.01-136-136-136-74.991 0-136 61.009-136 136s61.009 136 136 136c74.99 0 136-61.009 136-136zm-32 0c0 57.346-46.654 104-104 104s-104-46.654-104-104 46.654-104 104-104 104 46.654 104 104z"/></svg>
-</a>
-
-        
-        <a href="#" class="toggle make-distraction-free" tabindex="0" title="Enter distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-expand"><path d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"/></svg>
-</a>
-        
-      </div>
-    </div>
+<body class="no-js">
+  <div>
+    <h1>
+    We're <span>under maintenance.</span>
+    </h1>
+    <h6>We'll be back <time>at 5pm</time>.</h6>
   </div>
-</header>
+  <style>html,body {background:#fff;color:#222;
+  font: 20px/1 sans-serif;
+  margin: 0;
+}
+div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  text-align: center;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+span::after {
+  content: "|";
+  vertical-align: 4px;
+  color: #f52f2f !important;
+  text-shadow: none !important;
+  -webkit-animation: blink 1.5s infinite;
+  animation: blink 1.5s infinite;
+}
+#open-feedback-modal { display: none; }
+@-webkit-keyframes blink {
+  from { opacity: 1 }
+  25% { opacity: 1 }
+  50% { opacity: 0 }
+  75% { opacity: 0 }
+  to { opacity: 1 }
+}
+@keyframes blink {
+  from { opacity: 1 }
+  25% { opacity: 1 }
+  50% { opacity: 0 }
+  75% { opacity: 0 }
+  to { opacity: 1 }
+}</style>
+<script>var lines = [
+  "changing engines.",
+  "bringing you gifts.",
+  "wrangling pythons.",
+  "fighting fires.",
+  "hacking hackers.",
+  "chasing bugs.",
+  "searching for rubies.",
+  "testing top-secret stuff.",
+  "under maintenance."
+];
 
-  <main>
-    
+var span = document.querySelector('span'),
+    heading = document.querySelector('h1'),
+    countdown = document.querySelector('time');
 
+function typeout(el, news, cb) {
+  var si1, si2,
+      p1 = function() { return new Promise(function (resolve) {
+        si1 = setInterval(function() {
+          el.textContent = el.textContent.slice(0, -1);
+          if (!el.textContent) resolve();
+        }, 100);
+      }) },
+      p2 = function() { return new Promise(function (resolve) {
+        var i = 0;
+        si2 = setInterval(function() {
+          el.textContent += news[i++];
+          if (i == news.length) resolve();
+        }, 100);
+      }) };
 
+      p1().then(function() {
+        clearInterval(si1);
 
-<a href="#" class="toggle make-distraction-free" title="Exit distraction-free mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" class="icon icon-compress"><path d="M436 192H312c-13.3 0-24-10.7-24-24V44c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-276-24V44c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 300V344c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H312c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"/></svg>
-</a>
+        setTimeout(function() {
+          p2().then(function() {
+            clearInterval(si2);
+            cb();
+          });
+        }, Math.random() * 200 + 300);
+      });
+}
 
-<header class="page-header">
-  <div class="container">
-    <h1 class="page-title">Type Modifiers and Pointers<span class="invisible">&nbsp;#3</span><span class="lesson-num">#3</span></h1>
-    <div class="breadcrumbs">
-      <a href="/">~</a> / <a href="/subclubs/">Subclubs</a> / <a href="/subclubs/advanced/">Advanced</a> / <span class="breadcrumbs-current">Type Modifiers and Pointers</span>
-      <time class="lesson-date" datetime="2017-10-13T00:00:00+0000">October 13, 2017</time>
-    </div>
-    <div class="bar bg-gradient hide-tablet"></div>
-  </div>
-</header>
+function flicker() {
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(255, 0, 0, .7)';
+  }, 1000)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 1100)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(255, 0, 0, .7)';
+  }, 1200)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 1275)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '.05em .05em #222, .15em .15em rgba(255, 0, 255, .7), -.1em -.1em rgba(0, 255, 255, .7)';
+  }, 3400)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .1em .1em rgba(242, 242, 0, .7), -.1em -.1em rgba(0, 255, 255, .7)';
+  }, 3500)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 3600)
+  setTimeout(function() {
+    heading.style.color = 'transparent';
+    heading.style.textShadow = '-.05em -.05em #222, .05em .05em rgba(0, 255, 0, .7)';
+  }, 6000)
+  setTimeout(function() {
+    heading.style.color = 'inherit';
+    heading.style.textShadow = 'none';
+  }, 6200)
+}
 
-<div class="content container">
-  <div class="row">
-    <div class="columns sidebar-collapsible lesson-listing">
-      <a class="collapse-el" href="#" onclick="APP.toggleSidebar(event)" title="Collapse sidebar"></a>
-      <h2 class="show-tablet">Lessons</h2>
+flicker();
+setInterval(flicker, 7000);
 
-      <div class="lesson-callout lesson-pagination">
-        
-        
-        
-        <h5 class="lesson-state">Previous<span class="hide-tablet"> lesson</span></h5>
-        <p class="lesson-name lesson-prev">
-          
-          <a class="lesson-link" href="/lessons/advanced/introduction-to-cpp/" data-balloon="October 06, 2017" data-balloon-pos="up-left">Introduction to C++</a>
-        </p>
-        
-        
-        <h5 class="lesson-state">Next<span class="hide-tablet"> lesson</span></h5>
-        <p class="lesson-name lesson-next">
-          
-          <a class="lesson-link" href="/lessons/advanced/standard-io/" data-balloon="January 12, 2018" data-balloon-pos="up-left">Standard I/O</a>
-        </p>
-        
-      </div>
-
-      <p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/setting-things-up/" data-id="setting-things-up" title="October 06, 2017">Setting Things Up</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/introduction-to-cpp/" data-id="introduction-to-cpp" title="October 06, 2017">Introduction to C++</a></p><p class="lesson-name lesson-cur"><a class="lesson-link" href="/lessons/advanced/type-modifiers-and-pointers/" data-id="type-modifiers-and-pointers" title="October 13, 2017">Type Modifiers and Pointers</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/standard-io/" data-id="standard-io" title="October 13, 2017">Standard I/O</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/introduction-to-algorithms/" data-id="introduction-to-algorithms" title="October 27, 2017">Introduction to Algorithms</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/recursion-and-dynamic-programming/" data-id="recursion-and-dynamic-programming" title="November 17, 2017">Recursion and Dynamic Programming&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/data-structures/" data-id="data-structures" title="December 01, 2017">Data Structures&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/introduction-to-graph-theory/" data-id="introduction-to-graph-theory" title="December 08, 2017">Introduction to Graph Theory&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/implementations-of-graph-theory/" data-id="implementations-of-graph-theory" title="December 08, 2017">Implementations of Graph Theory&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/applications-of-graph-theory/" data-id="applications-of-graph-theory" title="December 08, 2017">Applications of Graph Theory&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/minimum-spanning-tree/" data-id="minimum-spanning-tree" title="December 15, 2017">Minimum Spanning Tree&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/shortest-path/" data-id="shortest-path" title="December 15, 2017">Shortest Path&nbsp;<span class="label warning">Draft</span></a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/travelling-salesman/" data-id="travelling-salesman" title="January 12, 2018">Travelling Salesman</a></p><p class="lesson-name"><a class="lesson-link" href="/lessons/advanced/other-algorithms/" data-id="other-algorithms" title="January 12, 2018">Other Algorithms&nbsp;<span class="label warning">Draft</span></a></p>
-    </div>
-
-    <div class="columns" id="main-content">
-      
-      <article><div id="toc" class="toc">
-<div id="toctitle">Sections</div>
-<ul class="sectlevel1">
-<li><a href="#what-is-a-variable">What is a variable?</a>
-<ul class="sectlevel2">
-<li><a href="#variables-in-memory">Variables in Memory</a></li>
-<li><a href="#type-modifiers">Type Modifiers</a></li>
-<li><a href="#pointers">Pointers</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>You were probably taught that "variables hold a value," and that "different types hold different types of values."</p>
-</div>
-<div class="paragraph">
-<p>The first statement is correct, but doesn&#8217;t show the full picture of what a variable is.
-The second statement is wrong.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="what-is-a-variable">What is a variable?</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In programming, a <strong>variable</strong> refers to a segment of memory which is to be read from or written to during calculations.</p>
-</div>
-<div class="paragraph">
-<p>This segment of memory has a specific <strong>length</strong>. Standard <code>int</code>s today are four bytes long. Since a bit can only store a certain amount of information, and bytes are collections of eight bits, there is only so much information that a four-byte <code>int</code> can hold.</p>
-</div>
-<div class="paragraph">
-<p>Specifically, one of the thirty-two bits must be used to hold the sign of the number.
-The rest thirty-one are used to indicate the magnitude of the number.
-As such, a thirty-two bit <code>int</code> (or <code>int32</code>) can store integers between, inclusive, \(-2,147,483,648\) and \(2,147,483,647\).</p>
-</div>
-<div class="paragraph">
-<p>A <strong>type</strong> does not refer to the type of value that is <em>stored</em>, but rather the type of value that should be <em>interpreted</em> from the stored data.
-A <code>float</code>, for example, which stores the value of \(\sqrt{2}\) to its highest precision, will be interpreted as something like \(1.414214\). However, if you interpret its data as an <code>int</code>, then you&#8217;ll get \(1,068,827,891\).</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s kind of like words across different languages.
-In English, "die" means <em>to cease living</em>.
-In Dutch, "die" means <em>this one</em>.
-They&#8217;re denoted&#8201;&#8212;&#8201;stored&#8201;&#8212;&#8201;the same way, but the <em>interpretation</em> is different, which leads to unfortunate misunderstandings like this:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="http://68.media.tumblr.com/tumblr_lq48s3ZUz81r1vpugo1_500.png" alt="Mama, die, die, die&#8230;&#8203;; source: tumblr"></span></p>
-</div>
-<div class="sect2">
-<h3 id="variables-in-memory">Variables in Memory</h3>
-<div class="quoteblock">
-<blockquote>
-In programming, a <strong>variable</strong> refers to a segment of memory which is to be read from or written to during calculations.
-</blockquote>
-<div class="attribution">
-&#8212; Me, in like the first paragraph
-</div>
-</div>
-<div class="paragraph">
-<p>Variables are put into segments of memory.
-So what&#8217;s memory?</p>
-</div>
-<div class="paragraph">
-<p>I&#8217;m sure you&#8217;re familiar with what RAM sticks are: they&#8217;re your "working memory" while your computer runs.
-Each stick of RAM is delimited into little chunks of eight bits called <em>bytes</em>.
-So that we can find these bytes, each and every one of them has an <strong>address</strong>.</p>
-</div>
-<div class="paragraph">
-<p>You can think of working memory as a giant warehouse.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="https://www.thesun.co.uk/wp-content/uploads/2016/03/1625857.main_image.jpg?strip=all" alt="Amazon warehouse; source: The Sun"></span></p>
-</div>
-<div class="paragraph">
-<p>In each little shelf is a small sheet of paper, holding an eight-bit binary number (or, if you wish, a number between 0 and 255).</p>
-</div>
-<div class="paragraph">
-<p>The CPU is like a little office in the next building over.
-It doesn&#8217;t understand what&#8217;s going on; all it does is take instructions and carry them out.</p>
-</div>
-<div class="paragraph">
-<p>One instruction says to assign byte \(\text{2300003A}_{16}\)<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> the value at byte \(\text{23000038}_{16}\).
-The CPU (office) requests for byte \(\text{23000038}_{16}\) from the RAM (warehouse), and so the workers at the warehouse retrieve this data for the CPU.
-The CPU then reads that the data is \(\text{00}_{16}\), and so tells the warehouse to assign byte \(\text{23000038}_{16}\) the value \(\text{00}_{16}\).</p>
-</div>
-<div class="paragraph">
-<p>This is what an assignment between variables actually is<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>: the CPU requests from RAM, then tells RAM to change a value.</p>
-</div>
-<div class="paragraph">
-<p>Now, most types take <em>more</em> than one byte, but the same process still works.
-If you&#8217;re using <code>int</code>s (four bytes), then the CPU will request four bytes and tell memory to assign four bytes.
-If you&#8217;re working with <code>float</code>s (four bytes), then the CPU will request and ask to write four bytes, but will use floating-point operations instead.</p>
-</div>
-<div class="paragraph">
-<p>Consider what the following code does:</p>
-</div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="code"><pre>    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p>The CPU, reading these instructions, will assign memory values to each <code>int</code>.
-If we say that <code>i</code> is address <code>100</code>, <code>j</code> is at <code>104</code>, and <code>k</code> is at <code>108</code>, then the process will be something like this:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>CPU tells RAM to assign <code>100</code> (four bytes) to <code>00000007</code></p>
-</li>
-<li>
-<p>CPU tells RAM to assign <code>104</code> (four bytes) to <code>00000005</code></p>
-</li>
-<li>
-<p>CPU requests the values of addresses <code>100</code> (four bytes) and <code>104</code> (four bytes), obtaining <code>000000007</code> and <code>00000005</code></p>
-</li>
-<li>
-<p>CPU adds these values together , obtaining <code>0000000C</code></p>
-</li>
-<li>
-<p>CPU tells RAM to assign <code>108</code> (four bytes) to <code>0000000C</code></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="type-modifiers">Type Modifiers</h3>
-<div class="paragraph">
-<p>Notice that we are specifying how many bytes to to assign and request.
-What if we only needed to use two bytes for our variable?
-What if we needed more than four bytes, because we expect to use numbers larger than \(2,147,483,647\)?
-What if we don&#8217;t need to store negatives in our variable?</p>
-</div>
-<div class="paragraph">
-<p>This is where <strong>type modifiers</strong> come in.
-They modify the lengths and behaviours of variables.</p>
-</div>
-<div class="paragraph">
-<p>There&#8217;s a few you should know about:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>short</code>: halves the length of a variable.
-Applicable to <code>int</code> only.</p>
-</li>
-<li>
-<p><code>long</code>: doubles the length of a variable.
-Applicable to <code>int</code>, <code>long</code><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>, <code>char</code>, and <code>double</code><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
-</li>
-<li>
-<p><code>unsigned</code>: the first bit of the variable will now be used as another digit rather than a sign indicator.
-Applicable to <code>int</code>, <code>long</code>, and <code>char</code>.</p>
-</li>
-<li>
-<p><code>signed</code>: opposite of above. Not really too useful, since it isn&#8217;t really necessary much of the time.</p>
-</li>
-<li>
-<p><code>const</code>: prevents this variable from being altered.
-This is actually a compile-time behaviour, and doesn&#8217;t affect how the hardware handles things.</p>
-</li>
-<li>
-<p><code>static</code>: declares this variable with a global lifetime, despite that it may be in a non-global scope.
-Not particularly useful for your purposes.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>There are many questions where you may be asked to compute something very large; these are where <code>long long</code>s become vital.</p>
-</div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="code"><pre>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">si</span><span class="p">;</span>       <span class="c1">//declare a short int (2-byte int) called si</span>
-    <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>       <span class="c1">//declare a long long (8-byte int) called ll</span>
-    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ui</span><span class="p">;</span>    <span class="c1">//declare an unsigned int (4-byte u-int) called ui</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p>Oftentimes the standard library will use types like <code>uint32_t</code>, or <code>size_t</code>.
-The <a href="http://www.cplusplus.com/reference/cstdint/">&lt;stdint.h&gt;</a> and <a href="http://www.cplusplus.com/reference/cstddef/">&lt;stddef.h&gt;</a> libraries contains these types.
-If you get compiler errors that mention these, now you might know what the heck they are!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="pointers">Pointers</h3>
-<div class="paragraph">
-<p>Recall our little exercise at the end of the <em>Variables in Memory</em> section.</p>
-</div>
-<div class="paragraph">
-<p>Addresses are just numbers&#8201;&#8212;&#8201;four-byte numbers, at that, if you&#8217;re running 32-bit programs<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>.
-What if you wanted to say "hey, get me the value stored at the address indicated by that variable"?</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pointers.svg/220px-Pointers.svg.png" alt="a pointer; source: wikipedia"></span></p>
-</div>
-<div class="paragraph">
-<p>Essentially, you&#8217;re setting a variable to <strong>reference</strong> some address in memory.</p>
-</div>
-<div class="paragraph">
-<p>Now, they&#8217;re not actually references.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pointers are not actually references.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pointers are <strong>not</strong> actually references.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Pointers merely store a number.
-When <em>interpreted</em> as a pointer, it <em>refers</em> to an address.
-But this is <em>only</em> when interpreted with the right instructions.</p>
-</div>
-<div class="paragraph">
-<p>Changing the value of the pointer <em>itself</em> will only move the "arrow of reference."
-It doesn&#8217;t change what the pointer is pointing to.</p>
-</div>
-<div class="paragraph">
-<p>To use it, you must <strong>dereference</strong> it first by telling the CPU, "hey, instead of just changing this address (the pointer), change the address (the address "referenced" by the pointer) that this address (the pointer) stores."</p>
-</div>
-<div class="paragraph">
-<p>Take a second to digest that sentence; the distinctions are important.</p>
-</div>
-<div class="paragraph">
-<p>There&#8217;s a few new operations you now need to know:</p>
-</div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre>    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-    <span class="o">*</span><span class="n">p</span> <span class="o">+=</span> <span class="mi">50</span><span class="p">;</span>
-    <span class="k">new</span> <span class="n">p</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
-    <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">delete</span><span class="p">[]</span> <span class="n">p</span><span class="p">;</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="ulist">
-<ul>
-<li>
-<p>Line 2: when declaring a pointer, an asterick must be placed <strong>before</strong> the variable name, which denotes it as a pointer.
-This is a <strong>type modifier</strong>, applicable to <em>all</em> types<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.
-Whitespace does not matter: <code>int * p</code>, <code>int* p</code>, <code>int *p</code>, <code>int*p</code> all do the same thing<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>.</p>
-</li>
-<li>
-<p>Line 3: to set a pointer point to another variable, use the <strong>addressof</strong> operator. In C++, that&#8217;s <code>&amp;</code>.</p>
-</li>
-<li>
-<p>Line 4: to actually use the memory you&#8217;re referring to, you have to <strong>dereference</strong> a pointer with the dereference operator <code>*</code><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup></p>
-</li>
-<li>
-<p>Line 5: you can dynamically allocate memory using the <code>new</code> and <code>new[]</code> operator. In this case, <code>p</code> became a pointer "pointing to an array"<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup> of length 55 (that was the value of <code>a</code>).</p>
-</li>
-<li>
-<p>Line 6: dereferencing <code>p</code> now refers to the "first element" of "the array".</p>
-</li>
-<li>
-<p>Line 7: to access the next element, go 1 block after the location specified by <code>p</code>. This is why arrays are zero-indexed.</p>
-</li>
-<li>
-<p>Line 8: as a shorthand to the previous notation, you can use the <strong>index</strong> operator for quick pointer arithmetic.</p>
-</li>
-<li>
-<p>Line 9: when you&#8217;re done with memory, <code>delete</code> it.
-If you keep asking for more memory, then you&#8217;ll run out sometime and you&#8217;ll get a segfault.
-No one likes a segfault.</p>
-</li>
-<li>
-<p>Line 10: if a pointer isn&#8217;t in use&#8201;&#8212;&#8201;that is, it&#8217;s not referring to anything useful&#8201;&#8212;&#8201;then it should be assigned to <code>NULL</code>.
-Attempting to dereference a null pointer will immediately crash your program, which will immediately tell you whether or not you&#8217;ve made an incorrect reference.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Why use null pointers if they&#8217;ll crash your program?
-The alternatives are likely worse.</p>
-</div>
-<div class="paragraph">
-<p>If you delete memory, but leave your pointer pointing to that deleted (no longer yours) memory, you&#8217;ll have a <strong>dangling pointer</strong>.
-Some other process might then grab that memory.
-What if that other process is your operating system?</p>
-</div>
-<div class="paragraph">
-<p>What if you then write over that memory <em>that your operating system is using</em>?</p>
-</div>
-<div class="paragraph">
-<p>At least you can check if a pointer is null by checking equality: <code>p == NULL</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Notice that with pointer arithmetic we can pretty much add or subtract anything we want.
-If you really wanted, you can try accessing <code>p[55]</code>, despite it being past the length of the array.</p>
-</div>
-<div class="paragraph">
-<p>Or <code>p[-1]</code>.</p>
-</div>
-<div class="paragraph">
-<p>Be careful when using pointers and indicies in C++; you&#8217;ll need to keep track of everything yourself.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Because of how pointers can be used to dynamically refer to memory, they are extremely helpful.</p>
-</div>
-<div class="sect3">
-<h4 id="memory-and-string-manipulation-with-a-href-http-www-cplusplus-com-reference-cstring-code-string-h-code-a">Memory and String Manipulation with <a href="http://www.cplusplus.com/reference/cstring/"><code>&lt;string.h&gt;</code></a></h4>
-<div class="paragraph">
-<p>Recall that in the <a href="https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/#strings">last lesson</a> that I mentioned that you can use <code>char[]</code> for strings.
-Since <code>char*</code><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> can <em>also</em> be an array of <code>char</code>, they can also be strings.
-In C, this is exactly what strings are: <code>char*</code>.</p>
-</div>
-<div class="paragraph">
-<p>Memory and string manipulation in the <code>&lt;string.h&gt;</code> library work exclusively with pointers.
-The most important function you need to know is <code>memset()</code>.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;d like to really practice working with pointers, try writing your own versions of some of the functions in <code>&lt;string.h&gt;</code>, starting with <code>memset()</code> and <code>memcpy()</code>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="pointers-in-stl-functions">Pointers in STL Functions</h4>
-<div class="paragraph">
-<p>Many functions in the standard library use pointers to denote the beginning and end of ranges<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup>:</p>
-</div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="code"><pre>    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span> <span class="c1">//size 10</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">varr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">min_element</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="ulist">
-<ul>
-<li>
-<p>Line 2: you can construct an <code>std::vector</code> from an array with its <a href="http://www.cplusplus.com/reference/vector/vector/vector/">range constructor</a>.</p>
-</li>
-<li>
-<p>Line 3: you can sort a range with <a href="http://www.cplusplus.com/reference/algorithm/sort/"><code>std::sort</code></a>.</p>
-</li>
-<li>
-<p>Line 4: you can find a minimum element with <a href="http://www.cplusplus.com/reference/algorithm/min_element/"><code>std::min_element</code></a>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="multidimensional-arrays">Multidimensional Arrays</h4>
-<div class="paragraph">
-<p>In many languages, you can have multidimensional arrays.
-In C++, we don&#8217;t worry about classifying what arrays are single-dimensional and what are multidimensional, because a two-dimensional array is just an array of arrays<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>.
-A three-dimensional array is just an array of arrays of arrays.</p>
-</div>
-<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre>	<span class="c1">//make a 10x10 multiplication table</span>
-    <span class="kt">int</span> <span class="o">**</span><span class="n">two_d_arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">*</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">two_d_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">two_d_arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">;</span>
-    <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
-<div class="paragraph">
-<p>Line 7 is equivalent to <code>*(*(two_d_arr+i)+j) = i * j;</code></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. this is hexadecimal, a 16-digit base (or radix) for numbers. It&#8217;s a common way to represent binary numbers, since it&#8217;s much more compact than writing every bit out. This way, each digit represents one <strong>nibble</strong>, or half-byte.
-</div>
-<div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. actually there&#8217;s also the <strong>cache</strong> between the RAM and CPU, which speeds up this retrieval process. But that&#8217;s not so important to know right now.
-</div>
-<div class="footnote" id="_footnote_3">
-<a href="#_footnoteref_3">3</a>. due to legacy issues, the <code>long</code> is a 4-byte <code>int</code>. <code>long int</code> <em>may</em> actually refer to a 4-byte int depending on your operating system, and so if you want an 8-byte int you&#8217;ll need a <code>long long</code>.
-</div>
-<div class="footnote" id="_footnote_4">
-<a href="#_footnoteref_4">4</a>. actually, it makes <code>double</code>s 12 bytes long up from 8 bytes; doubles are already  "long floats."
-</div>
-<div class="footnote" id="_footnote_5">
-<a href="#_footnoteref_5">5</a>. if you&#8217;re running 64-bit programs, they&#8217;re eight bytes.
-</div>
-<div class="footnote" id="_footnote_6">
-<a href="#_footnoteref_6">6</a>. a pointer is a type, and so you can have a pointer to a pointer. Or a pointer to a pointer to a pointer. Or a pointer to a pointer to a pointer to a pointer to a pointer&#8230;&#8203; you get the point. You&#8217;d declare it as <code>int ***** fifth_dimentional_pointer</code>.
-</div>
-<div class="footnote" id="_footnote_7">
-<a href="#_footnoteref_7">7</a>. you can declare different levels of pointers on the same line: <code>int a, *b, **c</code> gives you an int a, a pointer to int b, and a pointer to a pointer to int c.
-</div>
-<div class="footnote" id="_footnote_8">
-<a href="#_footnoteref_8">8</a>. the dereference operator has <strong>a lower</strong> precedence than the access operator <code>.</code>; if you&#8217;re using a pointer to a <code>struct</code> or <code>class</code>, then you need specify that you&#8217;re dereferencing <em>first</em>: <code>(*obj).member</code>. There is a shorthand for this: <code>obj->member</code> does the same thing.
-</div>
-<div class="footnote" id="_footnote_9">
-<a href="#_footnoteref_9">9</a>. it isn&#8217;t, it&#8217;s pointing a memory location which the <em>operating system</em> treats as a <em>contiguous block of memory</em>. It can act like an array, but it needn&#8217;t.
-</div>
-<div class="footnote" id="_footnote_10">
-<a href="#_footnoteref_10">10</a>. pointer to <code>char</code>
-</div>
-<div class="footnote" id="_footnote_11">
-<a href="#_footnoteref_11">11</a>. if you have two pointers, <code>l</code>, the "beginning" of the range, and <code>r</code>, the end, then the range will <em>include</em> <code>l</code> and <em>exclude</em> <code>r</code>. In interval notation, that&#8217;s <code>[l,r).</code>
-</div>
-<div class="footnote" id="_footnote_12">
-<a href="#_footnoteref_12">12</a>. actually, "multidimensional arrays" as a specific type <em>do</em> have some optimizations over "arrays of arrays", but they aren&#8217;t particularly important here.
-</div>
-</div></article>
-    </div>
-  </div>
-</div>
-<div class="footnote-tip" tabindex="-1"></div>
-
-<script>SCRIPTS.add(function(){ APP.loadSubclubSchedule({ 
-"setting-things-up":{date:"2017-10-06T00:00:00+0000",lesson:"1",title:"Setting Things Up",url:"/lessons/advanced/setting-things-up/"},"introduction-to-cpp":{date:"2017-10-06T00:00:00+0000",lesson:"2",title:"Introduction to C++",url:"/lessons/advanced/introduction-to-cpp/"},"type-modifiers-and-pointers":{date:"2017-10-13T00:00:00+0000",lesson:"3",title:"Type Modifiers and Pointers",url:"/lessons/advanced/type-modifiers-and-pointers/"},"standard-io":{date:"2017-10-13T00:00:00+0000",lesson:"4",title:"Standard I/O",url:"/lessons/advanced/standard-io/"},"introduction-to-algorithms":{date:"2017-10-27T00:00:00+0000",lesson:"5",title:"Introduction to Algorithms",url:"/lessons/advanced/introduction-to-algorithms/"},"0@Review and Practice":{date:"2017-11-03T00:00:00+0000",lesson:"-1",title:"0@Review and Practice",url:"/subclubs/advanced/"},"recursion-and-dynamic-programming":{date:"2017-11-17T00:00:00+0000",lesson:"6",title:"Recursion and Dynamic Programming",url:"/lessons/advanced/recursion-and-dynamic-programming/"},"data-structures":{date:"2017-12-01T00:00:00+0000",lesson:"7",title:"Data Structures",url:"/lessons/advanced/data-structures/"},"introduction-to-graph-theory":{date:"2017-12-08T00:00:00+0000",lesson:"8",title:"Introduction to Graph Theory",url:"/lessons/advanced/introduction-to-graph-theory/"},"implementations-of-graph-theory":{date:"2017-12-08T00:00:00+0000",lesson:"9",title:"Implementations of Graph Theory",url:"/lessons/advanced/implementations-of-graph-theory/"},"applications-of-graph-theory":{date:"2017-12-08T00:00:00+0000",lesson:"10",title:"Applications of Graph Theory",url:"/lessons/advanced/applications-of-graph-theory/"},"minimum-spanning-tree":{date:"2017-12-15T00:00:00+0000",lesson:"11",title:"Minimum Spanning Tree",url:"/lessons/advanced/minimum-spanning-tree/"},"shortest-path":{date:"2017-12-15T00:00:00+0000",lesson:"12",title:"Shortest Path",url:"/lessons/advanced/shortest-path/"},"1@Holiday Party":{date:"2017-12-22T00:00:00+0000",lesson:"-1",title:"1@Holiday Party",url:"/subclubs/advanced/"},"travelling-salesman":{date:"2018-01-12T00:00:00+0000",lesson:"13",title:"Travelling Salesman",url:"/lessons/advanced/travelling-salesman/"},"other-algorithms":{date:"2018-01-12T00:00:00+0000",lesson:"14",title:"Other Algorithms",url:"/lessons/advanced/other-algorithms/"},"2@Review?":{date:"2018-01-19T00:00:00+0000",lesson:"-1",title:"2@Review?",url:"/subclubs/advanced/"},"3@Review, How to CCC":{date:"2018-02-09T00:00:00+0000",lesson:"-1",title:"3@Review, How to CCC",url:"/subclubs/advanced/"},"4@Canadian Computing Competition":{date:"2018-02-14T00:00:00+0000",lesson:"-1",title:"4@Canadian Computing Competition",url:"/subclubs/advanced/"},"5@Discussion of CCC":{date:"2018-02-23T00:00:00+0000",lesson:"-1",title:"5@Discussion of CCC",url:"/subclubs/advanced/"},
-});APP.renderSubclubSchedule($('[id="schedule-advanced"]'));});</script>
-
-
-  </main>
-  <!-- footer -->
-  <footer class="site-footer">
-  <div class="container">
-    <div class="row">
-      <div class="two columns">
-        <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40">
-          <rect width="116" height="40" mask="url(#m)" fill="currentColor"></rect>
-        </svg>
-        <p class="yo">
-          <a href="https://github.com/mss-csec/mss-csec.github.io" title="Our GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" height="16" class="icon icon-github"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-</a>
-          <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
-</a>
-        </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/686c0d00a827c826a91e5f328d6b419e499ab43c" target="_blank">686c0d0</a></p>
-      </div>
-      <div class="two columns">
-        <h5>This is CSEC</h5>
-        <p><a href="/about">About us</a></p>
-        <p><a href="/privacy">Privacy notice</a></p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform" onclick="event.preventDefault();FEEDBACKDisplayModal()">Give feedback</a></p>
-      </div>
-      <div class="two columns">
-        <h5>Announcements</h5>
-        
-        <p><a href="/announcements/2018/01/scheduled-testing/">January 7: Scheduled testing</a></p>
-        
-        <p><a href="/announcements/2017/11/november-24-pa-day/">November 24: PA Day</a></p>
-        
-        <p><a href="/review/2017/11/november-3-combined-review/">November 3: Combined Review</a></p>
-        
-        <p><a href="/posts">All posts&hellip;</a></p>
-      </div>
-      <!--
-      <div class="two columns">
-        <h5>Markville SS</h5>
-        <p><a href="http://markville.ss.yrdsb.ca/" target="_blank" class="link-extern">School website</a></p>
-        <p><a href="http://schools.yrdsb.ca/markville.ss/teacher/computers/computers.htm" target="_blank" class="link-extern">MSS Comp Sci</a></p>
-        <p><a href="https://en.wikipedia.org/wiki/Markville_Secondary_School" target="_blank" class="link-extern">Wikipedia</a></p>
-      </div>
-    -->
-      <div class="three offset-by-three columns">
-        <h5>Disclaimer</h5>
-        <p>The Computer Science and Education Club is a student-run organization in Markville Secondary School. All views and opinions presented here are CSEC's own, and do not represent those of the York Region District School Board or Markville Secondary School in any way.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-  <script>SCRIPTS.add(function(){FEEDBACK("https://docs.google.com/forms/d/e/1FAIpQLSc4Jd-UXs7ZK6XK7SF48zwxlyF84g1a3ER4w_WhONGqxkaeSQ/viewform")})</script>
+var li = 0;
+setTimeout(function tt() {
+  typeout(span, lines[li++], function() {
+    if (li == lines.length) li = 0;
+    setTimeout(tt, 3000);
+  });
+}, 4000);</script>
 </body>
 </html>
+
