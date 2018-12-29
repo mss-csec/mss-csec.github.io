@@ -8,7 +8,8 @@ jobs:
       NPM_INSTALL_DIR: ./node_modules
       NODE_ENV: production
       SOURCE_BRANCH: staging
-      DEPLOY_BRANCH: assets
+      DEPLOY_REPO_URL: git@github.com:mss-csec/cdn-assets.git
+      DEPLOY_BRANCH: gh-pages 
       USER_EMAIL: markville.compsci@gmail.com
       USER_NAME: MSS CSEC
 
@@ -16,6 +17,10 @@ jobs:
 
     steps:
       - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "be:c3:f0:ab:00:24:f3:35:67:87:f4:8d:96:1b:48:ea"
 
       - run:
           name: Chmod setup scripts
@@ -69,6 +74,10 @@ jobs:
     steps:
       # Checkout repository
       - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "21:e8:de:c3:92:4c:d2:c4:19:12:55:05:03:c2:e5:b5"
 
       # Chmod CI scripts
       - run:
