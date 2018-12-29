@@ -60,3 +60,14 @@ GitHub handles organization pages, which necessiates three main branches:
 
 Not really much of a way to do so at the moment. File an issue and we'll try
 to get back to you ASAP though.
+
+## Maintainers
+
+### 2017-2018
+
+- Terry Chen (@tyxchen)
+
+### 2018-2019
+
+- &lt;vacant&gt;
+
