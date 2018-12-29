@@ -41,7 +41,7 @@ find . -maxdepth 1 \
     ! -name 'scripts' ! -name '.circleci' ! -name '.vagrant' \
     ! -name '.' \
     -exec rm -rf {} \;
-find assets/ -type f ! -name '*.css' ! -name '*.js' -exec rm -f {} \;
+find assets/ -type f ! -name '*.css' ! -name '*.js' ! -name '*.woff' ! -name '*.woff2' -exec rm -f {} \;
 
 # Tell GitHub Pages to not process assets with Jekyll
 touch .nojekyll
