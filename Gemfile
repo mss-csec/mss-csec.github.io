@@ -8,12 +8,12 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.6.0" # Keep with GitHub Pages
+gem "jekyll", "3.9.0" # Keep with GitHub Pages
                       # EDIT 2017-09-24: Update to 3.6.0 ahead of GH (which uses 3.5.2) due to
                       # asciidoctor-rouge requiring Rouge 2
 
-# 2017-10-14: Apply expedited fix for rouge/#796
-gem "rouge", :git => "https://github.com/tyxchen/rouge.git", :ref => "locked-at-v2.2.1"
+gem "rouge", "~> 3.1.0"
+gem "kramdown-parser-gfm", "~> 1.0"
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
@@ -23,7 +23,7 @@ gem "rouge", :git => "https://github.com/tyxchen/rouge.git", :ref => "locked-at-
 group :jekyll_plugins do
   # Add AsciiDoc as a compatible syntax
   # 2017-10-14: Apply expedited patch for jekyll-asciidoc/#160
-  gem "jekyll-asciidoc", :git => "https://github.com/asciidoctor/jekyll-asciidoc.git", :ref => "92b8691"
+  gem "jekyll-asciidoc", "~> 3.0.0"
 
   # Use Rouge for Asciidoctor highlighting
   gem "asciidoctor-rouge"

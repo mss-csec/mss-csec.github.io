@@ -71,6 +71,7 @@ exclude:
   - scripts/
   - Vagrantfile
   - vagrant-ssh.config
+  - vendor/bundle/
   - 404.html # Excluded as Github pages won't build it anyways
 
 # Custom collections
