@@ -15,7 +15,7 @@ git config core.fileMode false
 git submodule update --init
 
 # Set up Ruby dependencies
-gem install bundler:1.15.3 --conservative
+gem install bundler:2.1.4 --conservative
 bundle check --path $BUNDLE_INSTALL_DIR || \
   bundle install --path $BUNDLE_INSTALL_DIR
 
