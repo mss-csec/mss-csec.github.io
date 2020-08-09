@@ -16,7 +16,8 @@
   <title>Shortest Path | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Shortest Path" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Markville’s Computer Science Education Club" />
@@ -25,15 +26,15 @@
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/shortest-path/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:04+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:18+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Shortest Path","datePublished":"2020-08-07T17:01:04+00:00","dateModified":"2020-08-07T17:01:04+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"},"url":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"}</script>
+{"description":"Markville’s Computer Science Education Club","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/advanced/shortest-path/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"Shortest Path","dateModified":"2020-08-09T17:45:18+00:00","datePublished":"2020-08-09T17:45:18+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/shortest-path/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -245,7 +246,7 @@
 <ul class="sectlevel1">
 <li><a href="#who-cares">Who cares?</a></li>
 <li><a href="#relaxing-an-edge">Relaxing an Edge</a></li>
-<li><a href="#dijkstra-s-algorithm">Dijkstra&#8217;s Algorithm</a>
+<li><a href="#dijkstras-algorithm">Dijkstra&#8217;s Algorithm</a>
 <ul class="sectlevel2">
 <li><a href="#basic-algorithm">Basic Algorithm</a></li>
 <li><a href="#intuition-of-correctness">Intuition of Correctness</a></li>
@@ -283,7 +284,7 @@
 <h2 id="who-cares">Who cares?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The answer is trivial and is left as an exercise to the reader<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+<p>The answer is trivial and is left as an exercise to the reader<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
 </div>
 </div>
 </div>
@@ -327,7 +328,7 @@ Similarly, the true distance to node <strong>B</strong> is \(4\), to node <stron
 </div>
 </div>
 <div class="sect1">
-<h2 id="dijkstra-s-algorithm">Dijkstra&#8217;s Algorithm</h2>
+<h2 id="dijkstras-algorithm">Dijkstra&#8217;s Algorithm</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><span class="image right"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/DijkstraDemo.gif/220px-DijkstraDemo.gif" alt="dijkstra&#8217;s algorithm on euclidean distance"></span></p>
@@ -375,41 +376,41 @@ As such, every node closed must be the next-closest open node to the source.</p>
 <h3 id="implementation">Implementation</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">struct</span> <span class="n">less_true_dist</span> <b class="conum">(1)</b></span>
-<span id="L2" class="line"><span class="p">{</span></span>
-<span id="L3" class="line">    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="n">edge_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">edge_t</span> <span class="n">b</span><span class="p">)</span></span>
-<span id="L4" class="line">    <span class="p">{</span></span>
-<span id="L5" class="line">        <span class="c1">//priority_queues are max-heaps, but we want min</span></span>
-<span id="L6" class="line">        <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">true_dist</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">true_dist</span><span class="p">;</span></span>
-<span id="L7" class="line">    <span class="p">}</span></span>
-<span id="L8" class="line"><span class="p">};</span></span>
-<span id="L9" class="line"></span>
-<span id="L10" class="line"><span class="kt">int</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph_t</span> <span class="n">g</span><span class="p">,</span> <span class="n">node_t</span> <span class="n">source</span><span class="p">,</span> <span class="n">node_t</span> <span class="n">dest</span><span class="p">)</span></span>
-<span id="L11" class="line"><span class="p">{</span></span>
-<span id="L12" class="line">    <span class="n">g</span><span class="p">.</span><span class="n">set_all_true_dist</span><span class="p">(</span><span class="n">MAXINT</span><span class="p">);</span> <b class="conum">(2)</b></span>
-<span id="L13" class="line"></span>
-<span id="L14" class="line">    <span class="n">std</span><span class="o">::</span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">edge_t</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">edge_t</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">less_true_dist</span><span class="o">&gt;</span> <span class="n">open_list</span><span class="p">;</span></span>
-<span id="L15" class="line">    <span class="n">open_list</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_edge</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <b class="conum">(3)</b></span>
-<span id="L16" class="line"></span>
-<span id="L17" class="line">    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dest</span><span class="p">.</span><span class="n">closed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">open_list</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span></span>
-<span id="L18" class="line">    <span class="p">{</span></span>
-<span id="L19" class="line">    	<span class="n">edge_t</span> <span class="n">next</span> <span class="o">=</span> <span class="n">open_list</span><span class="p">.</span><span class="n">top</span><span class="p">();</span></span>
-<span id="L20" class="line">        <span class="n">open_list</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span></span>
-<span id="L21" class="line">        <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">closed</span><span class="p">())</span></span>
-<span id="L22" class="line">            <span class="k">continue</span><span class="p">;</span></span>
-<span id="L23" class="line"></span>
-<span id="L24" class="line">        <span class="n">next</span><span class="p">.</span><span class="n">close</span><span class="p">();</span> <b class="conum">(4)</b></span>
-<span id="L25" class="line">        <span class="k">for</span> <span class="p">(</span><span class="n">each</span> <span class="n">edge_t</span> <span class="n">e</span> <span class="n">in</span> <span class="n">next</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">edges</span><span class="p">)</span></span>
-<span id="L26" class="line">        <span class="p">{</span></span>
-<span id="L27" class="line">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">.</span><span class="n">closed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">relax</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <b class="conum">(5)</b></span>
-<span id="L28" class="line">            <span class="p">{</span></span>
-<span id="L29" class="line">            	<span class="n">open_list</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">e</span><span class="p">);</span></span>
-<span id="L30" class="line">            <span class="p">}</span></span>
-<span id="L31" class="line">        <span class="p">}</span></span>
-<span id="L32" class="line">    <span class="p">}</span></span>
-<span id="L33" class="line"></span>
-<span id="L34" class="line">    <span class="k">return</span> <span class="n">dest</span><span class="p">.</span><span class="n">true_dist</span><span class="p">;</span></span>
-<span id="L35" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;struct&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;less_true_dist&lt;/span&gt; &lt;b class="</span><span class="n">conum</span><span class="s">"&gt;(1)&lt;/b&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">kt</span><span class="s">"&gt;bool&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;operator&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;a&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;b&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;//priority_queues are max-heaps, but we want min&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;a&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;to&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;true_dist&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;b&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;to&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;true_dist&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;};&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;dijkstra&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;graph_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;g&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;node_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;source&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;node_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;dest&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L12</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;g&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;set_all_true_dist&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;MAXINT&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;);&lt;/span&gt; &lt;b class="</span><span class="n">conum</span><span class="s">"&gt;(2)&lt;/b&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L13</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L14</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;::&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;priority_queue&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;::&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;vector&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;less_true_dist&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L15</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;push&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;make_edge&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">nb</span><span class="s">"&gt;NULL&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;source&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;,&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;));&lt;/span&gt; &lt;b class="</span><span class="n">conum</span><span class="s">"&gt;(3)&lt;/b&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L16</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L17</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;while&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;dest&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;closed&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;empty&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;())&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L18</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L19</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    	&lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;next&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;=&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;top&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;();&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L20</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;pop&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;();&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L21</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;next&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;to&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;closed&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;())&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L22</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;            &lt;span class="</span><span class="n">k</span><span class="s">"&gt;continue&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L23</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L24</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;next&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;close&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;();&lt;/span&gt; &lt;b class="</span><span class="n">conum</span><span class="s">"&gt;(4)&lt;/b&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L25</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;for&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;each&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;edge_t&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;e&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;in&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;next&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;to&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;edges&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L26</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L27</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;            &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;e&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;to&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;closed&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;relax&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;e&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;))&lt;/span&gt; &lt;b class="</span><span class="n">conum</span><span class="s">"&gt;(5)&lt;/b&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L28</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;            &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L29</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;            	&lt;span class="</span><span class="n">n</span><span class="s">"&gt;open_list&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;push&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;e&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;);&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L30</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;            &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L31</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L32</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L33</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L34</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;dest&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;true_dist&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L35</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -472,28 +473,28 @@ Assume that <code>make_edge</code> has signature <code>edge_t make_edge(node_t f
 <h3 id="implementation-2">Implementation</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-plaintext" data-lang="plaintext"><span id="L1" class="line">int bellman_ford(graph_t g, node_t source, node_t dest)</span>
-<span id="L2" class="line">{</span>
-<span id="L3" class="line">    g.set_all_true_dist(MAX_INT); <b class="conum">(1)</b></span>
-<span id="L4" class="line">    source.set_true_dist(0);</span>
-<span id="L5" class="line"></span>
-<span id="L6" class="line">    bool successful_relax = false;</span>
-<span id="L7" class="line">    for (int n = 0; n &lt; g.num_nodes; ++n)</span>
-<span id="L8" class="line">    {</span>
-<span id="L9" class="line">        successful_relax = false; <b class="conum">(2)</b></span>
-<span id="L10" class="line">        for (each edge_t e in g.edges)</span>
-<span id="L11" class="line">        {</span>
-<span id="L12" class="line">            successful_relax = successful_relax | relax(e); <b class="conum">(3)</b></span>
-<span id="L13" class="line">        }</span>
-<span id="L14" class="line">        if (!successful_relax)</span>
-<span id="L15" class="line">            break;</span>
-<span id="L16" class="line">    }</span>
-<span id="L17" class="line"></span>
-<span id="L18" class="line">    if (successful_relax) <b class="conum">(4)</b></span>
-<span id="L19" class="line">        return -1;</span>
-<span id="L20" class="line"></span>
-<span id="L21" class="line">    return dest.true_dist;</span>
-<span id="L22" class="line">}</span></code></pre>
+<pre class="rouge highlight"><code data-lang="plaintext">&lt;span id="L1" class="line"&gt;int bellman_ford(graph_t g, node_t source, node_t dest)&lt;/span&gt;
+&lt;span id="L2" class="line"&gt;{&lt;/span&gt;
+&lt;span id="L3" class="line"&gt;    g.set_all_true_dist(MAX_INT); &lt;b class="conum"&gt;(1)&lt;/b&gt;&lt;/span&gt;
+&lt;span id="L4" class="line"&gt;    source.set_true_dist(0);&lt;/span&gt;
+&lt;span id="L5" class="line"&gt;&lt;/span&gt;
+&lt;span id="L6" class="line"&gt;    bool successful_relax = false;&lt;/span&gt;
+&lt;span id="L7" class="line"&gt;    for (int n = 0; n &amp;lt; g.num_nodes; ++n)&lt;/span&gt;
+&lt;span id="L8" class="line"&gt;    {&lt;/span&gt;
+&lt;span id="L9" class="line"&gt;        successful_relax = false; &lt;b class="conum"&gt;(2)&lt;/b&gt;&lt;/span&gt;
+&lt;span id="L10" class="line"&gt;        for (each edge_t e in g.edges)&lt;/span&gt;
+&lt;span id="L11" class="line"&gt;        {&lt;/span&gt;
+&lt;span id="L12" class="line"&gt;            successful_relax = successful_relax | relax(e); &lt;b class="conum"&gt;(3)&lt;/b&gt;&lt;/span&gt;
+&lt;span id="L13" class="line"&gt;        }&lt;/span&gt;
+&lt;span id="L14" class="line"&gt;        if (!successful_relax)&lt;/span&gt;
+&lt;span id="L15" class="line"&gt;            break;&lt;/span&gt;
+&lt;span id="L16" class="line"&gt;    }&lt;/span&gt;
+&lt;span id="L17" class="line"&gt;&lt;/span&gt;
+&lt;span id="L18" class="line"&gt;    if (successful_relax) &lt;b class="conum"&gt;(4)&lt;/b&gt;&lt;/span&gt;
+&lt;span id="L19" class="line"&gt;        return -1;&lt;/span&gt;
+&lt;span id="L20" class="line"&gt;&lt;/span&gt;
+&lt;span id="L21" class="line"&gt;    return dest.true_dist;&lt;/span&gt;
+&lt;span id="L22" class="line"&gt;}&lt;/span&gt;</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -520,7 +521,7 @@ In this case, it&#8217;s <code>-1</code>.</p>
 <div class="sect1">
 <h2 id="comparison">Comparison</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -584,7 +585,7 @@ The choice of algorithm and modifications are for you to figure out.</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnote_1">
+<div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. pathfinding, duh
 </div>
 </div></article>
@@ -613,7 +614,7 @@ The choice of algorithm and modifications are for you to figure out.</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

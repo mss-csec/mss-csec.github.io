@@ -16,24 +16,25 @@
   <title>Data Structures | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Data Structures" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="Data structures are methods of storing data in a way that optimizes certain important operations." />
+<meta property="og:description" content="Data structures are methods of storing data in a way that optimizes certain important operations." />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/advanced/data-structures/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/data-structures/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:04+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:18+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Data Structures","datePublished":"2020-08-07T17:01:04+00:00","dateModified":"2020-08-07T17:01:04+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/data-structures/index"},"url":"https://mss-csec.github.io/lessons/advanced/data-structures/index"}</script>
+{"description":"Data structures are methods of storing data in a way that optimizes certain important operations.","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/advanced/data-structures/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"Data Structures","dateModified":"2020-08-09T17:45:18+00:00","datePublished":"2020-08-09T17:45:18+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/data-structures/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -306,7 +307,7 @@
 <div class="paragraph">
 <p>Sequence containers are used to store groups of similar objects in some undefined sequence, usually chronological.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -369,7 +370,7 @@
 </table>
 <div class="sect2">
 <h3 id="vector">Vector</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -385,7 +386,7 @@
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -420,11 +421,11 @@ This ability is called <strong>random access</strong>.</p>
 As this is also a simple step, this takes \(\text{O}(1)\) time.</p>
 </div>
 <div class="paragraph">
-<p>To <strong>push</strong><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> or <strong>pop</strong><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>, we need only to resize if necessary before assigning to the last element.
+<p>To <strong>push</strong><sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> or <strong>pop</strong><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>, we need only to resize if necessary before assigning to the last element.
 This, again, takes \(\text{O}(1)\) time.</p>
 </div>
 <div class="paragraph">
-<p>To <strong>insert</strong> or <strong>erase</strong> at any position, however, requires that <em>every element after</em> is shifted<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup> so that there is space or the gap is filled.
+<p>To <strong>insert</strong> or <strong>erase</strong> at any position, however, requires that <em>every element after</em> is shifted<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> so that there is space or the gap is filled.
 Since up to all the elements might need to be shifted, and each shift must be made with a swap, this takes \(\text{O}(n)\) time.</p>
 </div>
 <div class="paragraph">
@@ -438,7 +439,7 @@ Most applications for storing data will use these.</p>
 </div>
 <div class="sect2">
 <h3 id="linked-list">Linked List</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -446,12 +447,12 @@ Most applications for storing data will use these.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">STL analogue</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/list/list/"><code>std::list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>
-<a href="http://www.cplusplus.com/reference/forward_list/forward_list/"><code>std::forward_list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup> <sup>C++11</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.cplusplus.com/reference/list/list/"><code>std::list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>
+<a href="http://www.cplusplus.com/reference/forward_list/forward_list/"><code>std::forward_list&lt;T&gt;</code></a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> <sup>C++11</sup></p></td>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -488,10 +489,10 @@ Instead of storing every element contiguously in memory, the  location of the fi
 <strong>Access</strong>, then, is \(\text{O}(n)\).</p>
 </div>
 <div class="paragraph">
-<p>To <strong>insert</strong> or <strong>erase</strong> at any point<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>, we only need to manipulate a few pointers; as such, we can achieve \(\text{O}(1)\) time.</p>
+<p>To <strong>insert</strong> or <strong>erase</strong> at any point<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>, we only need to manipulate a few pointers; as such, we can achieve \(\text{O}(1)\) time.</p>
 </div>
 <div class="paragraph">
-<p>To <strong>push</strong> or <strong>pop</strong> from the front or back<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>, we do exactly what we did with insertion and erasure, and once again achieve \(\text{O}(1)\) time.</p>
+<p>To <strong>push</strong> or <strong>pop</strong> from the front or back<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>, we do exactly what we did with insertion and erasure, and once again achieve \(\text{O}(1)\) time.</p>
 </div>
 <div class="paragraph">
 <p>And to <strong>merge</strong>, all we need to do is link the last element of one linked list to the first element of the other linked list&#8201;&#8212;&#8201;then traversal will go through both lists.
@@ -509,7 +510,7 @@ As such, we can achieve \(\text{O}(1)\) merging.</p>
 </div>
 <div class="sect2">
 <h3 id="double-ended-queue-deque">Double-Ended Queue (Deque)</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -521,7 +522,7 @@ As such, we can achieve \(\text{O}(1)\) merging.</p>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -563,7 +564,7 @@ When the end or begin vector runs out of space, a new one is declared and instan
 <p><strong>Insertion</strong> and <strong>Erasure</strong>, like the vector, requires the shifting of all elements, and as expected takes \(\text{O}(n)\) time.</p>
 </div>
 <div class="paragraph">
-<p><strong>Merging</strong> is, too, just like the vector<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup>: it takes \(\text{O}(n)\) time to push every element.</p>
+<p><strong>Merging</strong> is, too, just like the vector<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup>: it takes \(\text{O}(n)\) time to push every element.</p>
 </div>
 <div class="paragraph">
 <p>Deques have operations which run exactly at the same time complexity as vectors, but they have more functionality.
@@ -585,7 +586,7 @@ These are the most simple of what are considered proper <em>data structures</em>
 </div>
 <div class="sect2">
 <h3 id="stack">Stack</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -597,7 +598,7 @@ These are the most simple of what are considered proper <em>data structures</em>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -635,7 +636,7 @@ These are typically implemented with vectors.</p>
 </div>
 <div class="sect2">
 <h3 id="queue">Queue</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -647,7 +648,7 @@ These are typically implemented with vectors.</p>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -685,7 +686,7 @@ They&#8217;re also useful when dealing with multithreading (which is kind of lik
 </div>
 <div class="sect2">
 <h3 id="heap">Heap</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -697,7 +698,7 @@ They&#8217;re also useful when dealing with multithreading (which is kind of lik
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -738,7 +739,7 @@ While their mechanisms are somewhat out of the scope of this article since you c
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="binary-search-tree">Binary Search Tree</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -750,7 +751,7 @@ While their mechanisms are somewhat out of the scope of this article since you c
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -759,7 +760,7 @@ While their mechanisms are somewhat out of the scope of this article since you c
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Find<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Insert</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Erase</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
@@ -783,7 +784,7 @@ Unfortunately, because of its structure, the minimum/maximum element is almost n
 </div>
 <div class="sect2">
 <h3 id="prefix-tree-trie">Prefix Tree (Trie)</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -798,7 +799,7 @@ Unfortunately, because of its structure, the minimum/maximum element is almost n
 <td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(m)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\Theta(m\log{n})\)</p></td>
@@ -823,7 +824,7 @@ Perhaps it&#8217;ll inspire a solution to some other problem.</p>
 </div>
 <div class="sect2">
 <h3 id="disjoint-set">Disjoint-Set</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -836,15 +837,15 @@ Perhaps it&#8217;ll inspire a solution to some other problem.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Memory Usage</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\alpha(n))\)<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\alpha(n))\)<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(\alpha(n))\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\Theta(n)\)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Say you have some large number of things<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>.
-Each thing constitutes their own group<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup>.</p>
+<p>Say you have some large number of things<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup>.
+Each thing constitutes their own group<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>You will be asked to check if two things are in the same group.
@@ -874,8 +875,8 @@ You will be told to merge groups, given two individual things: one from each gro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>ind. 0 1 2 3 4 5 6 7 8 9
-val. 0 1 2 2 4 5 2 3 8 9</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;ind&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;val&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;.&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -889,11 +890,11 @@ We can also represent this in a forest of trees (hence why this is under the tre
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>0 1 2 4 5 8 9
-    |\
-    3 6
-    |
-    7</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;\&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -903,9 +904,9 @@ For example, if we passed a find operation through element \(7\) in our previous
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>0 1 2 4 5 8 9
-   /|\
-  3 6 7</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;   &lt;span class="</span><span class="n">o</span><span class="s">"&gt;/|&lt;/span&gt;\&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -914,11 +915,11 @@ For example, if we merged the sets of elements \(1\) and \(2\), we would set the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>0 1 4 5 8 9
-  |
-  2
- /|\
-3 6 7</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;/|&lt;/span&gt;\&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -926,11 +927,11 @@ For example, if we merged the sets of elements \(1\) and \(2\), we would set the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>0 1 4 5 8 9     0 1 4 8 9
-  |\             /|\
-  2 7     --&gt;   2 5 7
-  |\            |\
-  3 6           3 6</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;     &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;1&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;8&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;9&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;&lt;span class="</span><span class="n">err</span><span class="s">"&gt;\&lt;/span&gt;             &lt;span class="</span><span class="n">o</span><span class="s">"&gt;/|&lt;/span&gt;\&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;     &lt;span class="</span><span class="n">o</span><span class="s">"&gt;--&amp;gt;&lt;/span&gt;   &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;2&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;&lt;span class="</span><span class="n">err</span><span class="s">"&gt;\&lt;/span&gt;            &lt;span class="</span><span class="n">o</span><span class="s">"&gt;|&lt;/span&gt;\&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;  &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt;           &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -944,7 +945,7 @@ For example, if we merged the sets of elements \(1\) and \(2\), we would set the
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="hash-table">Hash Table</h3>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -960,7 +961,7 @@ For example, if we merged the sets of elements \(1\) and \(2\), we would set the
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -978,7 +979,7 @@ For example, if we merged the sets of elements \(1\) and \(2\), we would set the
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text{O}(1)\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega(n)\)<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega(n)\)<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup></p></td>
 </tr>
 </tbody>
 </table>
@@ -992,7 +993,7 @@ For example, if there&#8217;s fifty elements in a hash table, the table&#8217;s 
 </div>
 <div class="paragraph">
 <p>Doing this allows you to use large, negative, and non-integral keys.
-For example, it&#8217;s very useful to use these to convert from <code>std::string</code><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup> to <code>int</code>.</p>
+For example, it&#8217;s very useful to use these to convert from <code>std::string</code><sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup> to <code>int</code>.</p>
 </div>
 </div>
 </div>
@@ -1000,7 +1001,7 @@ For example, it&#8217;s very useful to use these to convert from <code>std::stri
 <div class="sect1">
 <h2 id="practice">Practice</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1043,7 +1044,7 @@ For example, it&#8217;s very useful to use these to convert from <code>std::stri
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Disjoint-Set</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc15s3">CCC15S3: Gates</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://wcipeg.com/problem/ccc15s3">CCC15S3: Gates</a><sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hash Table</p></td>
@@ -1056,52 +1057,52 @@ For example, it&#8217;s very useful to use these to convert from <code>std::stri
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnote_1">
+<div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. insert to back
 </div>
-<div class="footnote" id="_footnote_2">
+<div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. erase at back
 </div>
-<div class="footnote" id="_footnote_3">
+<div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. to the right for insertions, to the left for deletions
 </div>
-<div class="footnote" id="_footnote_4">
+<div class="footnote" id="_footnotedef_4">
 <a href="#_footnoteref_4">4</a>. doubly-linked list
 </div>
-<div class="footnote" id="_footnote_5">
+<div class="footnote" id="_footnotedef_5">
 <a href="#_footnoteref_5">5</a>. singly-linked list
 </div>
-<div class="footnote" id="_footnote_6">
+<div class="footnote" id="_footnotedef_6">
 <a href="#_footnoteref_6">6</a>. at where the current iterator is
 </div>
-<div class="footnote" id="_footnote_7">
+<div class="footnote" id="_footnotedef_7">
 <a href="#_footnoteref_7">7</a>. only front in a singly-linked list
 </div>
-<div class="footnote" id="_footnote_8">
+<div class="footnote" id="_footnotedef_8">
 <a href="#_footnoteref_8">8</a>. it can be argued that with the correct conditions, we can append a deque as with a linked list, but the master vector still needs to be updated in \(\text{O}(n)\) time
 </div>
-<div class="footnote" id="_footnote_9">
+<div class="footnote" id="_footnotedef_9">
 <a href="#_footnoteref_9">9</a>. find and insert are <em>best</em> and <em>average case</em>; the worse case is \(\text{O}(n)\), but that doesn&#8217;t occur as often.
 </div>
-<div class="footnote" id="_footnote_10">
+<div class="footnote" id="_footnotedef_10">
 <a href="#_footnoteref_10">10</a>. for \(m\), the length of the data
 </div>
-<div class="footnote" id="_footnote_11">
+<div class="footnote" id="_footnotedef_11">
 <a href="#_footnoteref_11">11</a>. \(\alpha(n)\) is the inverse <a href="https://en.wikipedia.org/wiki/Ackermann_function">ackermann function</a>, which for all practical inputs is less than five.
 </div>
-<div class="footnote" id="_footnote_12">
+<div class="footnote" id="_footnotedef_12">
 <a href="#_footnoteref_12">12</a>. elements
 </div>
-<div class="footnote" id="_footnote_13">
+<div class="footnote" id="_footnotedef_13">
 <a href="#_footnoteref_13">13</a>. set
 </div>
-<div class="footnote" id="_footnote_14">
+<div class="footnote" id="_footnotedef_14">
 <a href="#_footnoteref_14">14</a>. the Big Omega (\(\Omega\)) denotes the <em>lower bound</em>: it&#8217;ll use more memory than \(n\) times some constant multiple.
 </div>
-<div class="footnote" id="_footnote_15">
+<div class="footnote" id="_footnotedef_15">
 <a href="#_footnoteref_15">15</a>. only use <code>std::string</code> with <code>std::map&lt;const T, T&gt;</code>; you&#8217;ll run into lots of problems with <code>char*</code>
 </div>
-<div class="footnote" id="_footnote_16">
+<div class="footnote" id="_footnotedef_16">
 <a href="#_footnoteref_16">16</a>. this problem&#8217;s problem statement starts out with the best sentence ever
 </div>
 </div></article>
@@ -1130,7 +1131,7 @@ For example, it&#8217;s very useful to use these to convert from <code>std::stri
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

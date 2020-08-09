@@ -16,24 +16,25 @@
   <title>Introduction to Algorithms | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Introduction to Algorithms" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="algorithm n. a process or set of rules to be followed in calculations or other problem-solving operations" />
+<meta property="og:description" content="algorithm n. a process or set of rules to be followed in calculations or other problem-solving operations" />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to Algorithms","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index"}</script>
+{"description":"algorithm n. a process or set of rules to be followed in calculations or other problem-solving operations","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"Introduction to Algorithms","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-algorithms/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -263,7 +264,7 @@ These instructions, of course, must be perfect&#8201;&#8212;&#8201;they have to 
 </div>
 <div class="paragraph">
 <p>With the introduction of modular programming, many oft-repeated calculations could be encapsulated into a function, and later these functions into libraries.
-Standard yet complicated procedures&#8201;&#8212;&#8201;like getting an integral input<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>&#8201;&#8212;&#8201;could be implemented with a simple function call.</p>
+Standard yet complicated procedures&#8201;&#8212;&#8201;like getting an integral input<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>&#8201;&#8212;&#8201;could be implemented with a simple function call.</p>
 </div>
 <div class="paragraph">
 <p>A simple program which takes two integral values and spits out its sum could be simplified to two variable decalarations, and two lines of code.
@@ -311,7 +312,7 @@ But you can also make the observation that the binary search is <em>better</em>.
 It&#8217;s not because it&#8217;s more sophisticated, but rather that it&#8217;s faster.
 If you had a 1024-element array, you can expect the following number of iterations for each algorithm:</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 40%;">
@@ -347,7 +348,7 @@ If you had a 1024-element array, you can expect the following number of iteratio
 Well, not exactly.</p>
 </div>
 <div class="paragraph">
-<p>First of all, binary search requires more time per iteration, as it does at least one addition comparison. Secondly, binary search is less efficient over the cache<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>.</p>
+<p>First of all, binary search requires more time per iteration, as it does at least one addition comparison. Secondly, binary search is less efficient over the cache<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>But most importantly, binary search uses an entirely different approach from linear search, and it grows differently.
@@ -439,7 +440,7 @@ In the next section, while we discuss how we can develop algorithms, we&#8217;ll
 <h2 id="developing-algorithms">Developing Algorithms</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you&#8217;re acquainted with terms and with notation, let&#8217;s discuss solving a common algorithm<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>.</p>
+<p>Now that you&#8217;re acquainted with terms and with notation, let&#8217;s discuss solving a common algorithm<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>.</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -453,7 +454,7 @@ In the next section, while we discuss how we can develop algorithms, we&#8217;ll
 </div>
 <div class="paragraph">
 <p><span class="image right"><img src="selection.gif" alt="Selection Sort" width="200" height="200"></span> The brute-force approach is rather obvious: take the minimum element from the unsorted array, and push that onto the end of the sorted array you&#8217;re constructing.
-This is easily achieved in-place<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup> by searching one-by-one through the unsorted array, and then swapping that minimum element with the <em>first</em> element of the unsorted array to construct the sorted array.</p>
+This is easily achieved in-place<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> by searching one-by-one through the unsorted array, and then swapping that minimum element with the <em>first</em> element of the unsorted array to construct the sorted array.</p>
 </div>
 <div class="paragraph">
 <p>Our first sort is based on <em>selecting</em> elements, so we&#8217;ll call it <a href="https://en.wikipedia.org/wiki/Selection_sort"><strong>selection sort</strong></a>.</p>
@@ -478,11 +479,11 @@ You&#8217;ll notice that it&#8217;s much faster than selection sort when the arr
 </div>
 <div class="paragraph">
 <p>This sort is based on <em>bubbling</em> elements up, one at a time, so we&#8217;ll call it <a href="https://en.wikipedia.org/wiki/Bubble_sort"><strong>bubble sort</strong></a>.
-It turns out, though, that it&#8217;s usually <em>worse</em> than selection sort<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>.</p>
+It turns out, though, that it&#8217;s usually <em>worse</em> than selection sort<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>For every <em>pass</em> through the array, one more element is guaranteed to be sorted, so we need to make \(n\) passes through the array.
-And in every pass, we make \(n\) comparisons and \(O(n)\) swaps<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>. That makes for an overall time complexity of&#8230;&#8203; \(O(n^2)\)<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>.</p>
+And in every pass, we make \(n\) comparisons and \(O(n)\) swaps<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>. That makes for an overall time complexity of&#8230;&#8203; \(O(n^2)\)<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s take a look at selection sort again.
@@ -526,9 +527,9 @@ And if \(n\) is <em>still</em> too large, we can just keep adding more passes wi
 </div>
 <div class="paragraph">
 <p>This method of sorting was first published by Donald Shell in 1959, and so it is aptly named <a href="https://en.wikipedia.org/wiki/Shellsort"><strong>Shell sort</strong></a>.
-Its time complexity is a bit complicated<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup> to calculate, and depends specifically on the gap sequences (the "let&#8217;s only do every \(g\) elements" thing).
-The best gap sequence runs in \(O(n\log^2n)\)<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup> but is impractical.
-In practice, it runs in \(O(n^{\frac{4}{3}})\)<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> or \(\Theta(n^{\frac{3}{2}})\)<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup></p>
+Its time complexity is a bit complicated<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> to calculate, and depends specifically on the gap sequences (the "let&#8217;s only do every \(g\) elements" thing).
+The best gap sequence runs in \(O(n\log^2n)\)<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> but is impractical.
+In practice, it runs in \(O(n^{\frac{4}{3}})\)<sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup> or \(\Theta(n^{\frac{3}{2}})\)<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup><sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>By analyzing insertion sort, we were able to come up with Shell sort&#8201;&#8212;&#8201;which has finally managed to improve our time complexity.</p>
@@ -538,7 +539,7 @@ In practice, it runs in \(O(n^{\frac{4}{3}})\)<sup class="footnote">[<a id="_foo
 </div>
 <div class="paragraph">
 <p><span class="image right"><img src="merge.gif" alt="Merge Sort" width="200"></span>There&#8217;s another problem dealing with sorted arrays: <strong>merging</strong> two sorted arrays together.
-It&#8217;s not a difficult problem, and the solution is quite trivial&#8201;&#8212;&#8201;try to figure it out yourself; footnote 13 has the answer<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnote_13" title="View footnote.">13</a>]</sup>.</p>
+It&#8217;s not a difficult problem, and the solution is quite trivial&#8201;&#8212;&#8201;try to figure it out yourself; footnote 13 has the answer<sup class="footnote">[<a id="_footnoteref_13" class="footnote" href="#_footnotedef_13" title="View footnote.">13</a>]</sup>.</p>
 </div>
 <div class="paragraph">
 <p>So if we get two sorted arrays, we can merge them into a larger sorted array; then that means that if we get one <em>unsorted</em> array, we could split it in two, sort both sides, and then merge it back.
@@ -558,12 +559,12 @@ Well, not really: a single-element array <em>is</em> sorted.</p>
 </div>
 <div class="paragraph">
 <p>A simple idea can come a long way.
-Merge sort has a time complexity of \(\Theta(n\log{n})\): at every level of recursion<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnote_14" title="View footnote.">14</a>]</sup>, an entire pass is done with \(\Theta(n)\) comparisons, and recursive depth is \(\Theta(\log{n})\).</p>
+Merge sort has a time complexity of \(\Theta(n\log{n})\): at every level of recursion<sup class="footnote">[<a id="_footnoteref_14" class="footnote" href="#_footnotedef_14" title="View footnote.">14</a>]</sup>, an entire pass is done with \(\Theta(n)\) comparisons, and recursive depth is \(\Theta(\log{n})\).</p>
 </div>
 <div class="paragraph">
-<p>It turns out that according to classical mechanics<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnote_15" title="View footnote.">15</a>]</sup>, \(\Theta(n\log{n})\) is the absolute fastest we can ever sort things<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnote_16" title="View footnote.">16</a>]</sup>.
+<p>It turns out that according to classical mechanics<sup class="footnote">[<a id="_footnoteref_15" class="footnote" href="#_footnotedef_15" title="View footnote.">15</a>]</sup>, \(\Theta(n\log{n})\) is the absolute fastest we can ever sort things<sup class="footnote">[<a id="_footnoteref_16" class="footnote" href="#_footnotedef_16" title="View footnote.">16</a>]</sup>.
 But that doesn&#8217;t mean that we&#8217;re done with merge sort.
-You may have noticed, for example, that it isn&#8217;t adaptive<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnote_17" title="View footnote.">17</a>]</sup>.
+You may have noticed, for example, that it isn&#8217;t adaptive<sup class="footnote">[<a id="_footnoteref_17" class="footnote" href="#_footnotedef_17" title="View footnote.">17</a>]</sup>.
 You may also have noticed that it&#8217;s the first sort that uses extra memory: specifically, it uses \(O(n)\) extra memory.
 Can we write an adaptive, in-place sort that runs in \(O(n\log{n})\) time?</p>
 </div>
@@ -575,7 +576,7 @@ If we can somehow divide the array in half, and then move everything on the lowe
 <p>To do this, we can choose a <strong>pivot</strong> from the array; then, going from both ends, find anything out-of-place to swap.</p>
 </div>
 <div class="paragraph">
-<p>Like with merge sort, for every recursive level there will be \(O(n)\) comparisons and swaps, and&#8201;&#8212;&#8201;if you choose the pivots well<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnote_18" title="View footnote.">18</a>]</sup>&#8201;&#8212;&#8201;there&#8217;ll be \(\Theta(\log{n})\) recursive depth.
+<p>Like with merge sort, for every recursive level there will be \(O(n)\) comparisons and swaps, and&#8201;&#8212;&#8201;if you choose the pivots well<sup class="footnote">[<a id="_footnoteref_18" class="footnote" href="#_footnotedef_18" title="View footnote.">18</a>]</sup>&#8201;&#8212;&#8201;there&#8217;ll be \(\Theta(\log{n})\) recursive depth.
 It&#8217;s in-place, adaptive, easy on the cache, and uses little overhead.
 It&#8217;s quick.</p>
 </div>
@@ -597,58 +598,58 @@ It&#8217;s quick.</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnote_1">
+<div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. <code>scanf()</code> or <code>std::cin</code>
 </div>
-<div class="footnote" id="_footnote_2">
+<div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. linear search only requires switching out the cache every few (eight or so) iterations; binary search needs to switch it out almost every iteration
 </div>
-<div class="footnote" id="_footnote_3">
+<div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. this section explains many common sorting algorithms; to see detailed visualizations and analysis, go <a href="https://www.toptal.com/developers/sorting-algorithms">here</a>.
 </div>
-<div class="footnote" id="_footnote_4">
+<div class="footnote" id="_footnotedef_4">
 <a href="#_footnoteref_4">4</a>. this means that you&#8217;re not using any extra memory, and all the sorting occurs in the array itself; your memory usage is \(O(1)\).
 </div>
-<div class="footnote" id="_footnote_5">
+<div class="footnote" id="_footnotedef_5">
 <a href="#_footnoteref_5">5</a>. 70% as fast in Java
 </div>
-<div class="footnote" id="_footnote_6">
+<div class="footnote" id="_footnotedef_6">
 <a href="#_footnoteref_6">6</a>. that simply means <em>up to</em> \(n\); it&#8217;s just big-O notation
 </div>
-<div class="footnote" id="_footnote_7">
+<div class="footnote" id="_footnotedef_7">
 <a href="#_footnoteref_7">7</a>. it&#8217;s still slower than selection sort because time complexity <em>ignores</em> the "hidden constant multiple": it grows in the same manner, but bubble sort still takes more overhead
 </div>
-<div class="footnote" id="_footnote_8">
+<div class="footnote" id="_footnotedef_8">
 <a href="#_footnoteref_8">8</a>. that&#8217;s an understatement
 </div>
-<div class="footnote" id="_footnote_9">
+<div class="footnote" id="_footnotedef_9">
 <a href="#_footnoteref_9">9</a>. three-smooth numbers: \(1,2,3,4,6,8,9,12...\)
 </div>
-<div class="footnote" id="_footnote_10">
+<div class="footnote" id="_footnotedef_10">
 <a href="#_footnoteref_10">10</a>. Sedgewick&#8217;s sequences: \(1,8,23,77,281...\) or \(1,5,19,41,109\)
 </div>
-<div class="footnote" id="_footnote_11">
+<div class="footnote" id="_footnotedef_11">
 <a href="#_footnoteref_11">11</a>. the \(\Theta\) is for big-Theta notation, which denotes <em>average</em> time complexity
 </div>
-<div class="footnote" id="_footnote_12">
+<div class="footnote" id="_footnotedef_12">
 <a href="#_footnoteref_12">12</a>. Knuth&#8217;s Sequence: \(1,4,13,40,121,364,...\)
 </div>
-<div class="footnote" id="_footnote_13">
+<div class="footnote" id="_footnotedef_13">
 <a href="#_footnoteref_13">13</a>. first, construct a new list; since both are sorted, the least element, which is the one we wish to push onto the new list, is either the first element of the first array or the first element of the second array; by choosing the minimum of two elements each time, we obtain a trivial \(O(n)\) algorithm
 </div>
-<div class="footnote" id="_footnote_14">
+<div class="footnote" id="_footnotedef_14">
 <a href="#_footnoteref_14">14</a>. the process described above was recursive, and each <strong>level of recursion</strong> is just how many splits had been performed
 </div>
-<div class="footnote" id="_footnote_15">
+<div class="footnote" id="_footnotedef_15">
 <a href="#_footnoteref_15">15</a>. it <em>may</em> be possible to achieve faster sorts with quantum computers
 </div>
-<div class="footnote" id="_footnote_16">
+<div class="footnote" id="_footnotedef_16">
 <a href="#_footnoteref_16">16</a>. <a href="https://www.quora.com/Why-is-the-%CE%A9-n-log-n-lower-bound-on-comparison-sorting-algorithms-called-the-information-theoretic-limit/answer/Neal-Wu">a short, intuitive proof</a>
 </div>
-<div class="footnote" id="_footnote_17">
+<div class="footnote" id="_footnotedef_17">
 <a href="#_footnoteref_17">17</a>. <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a> is a variation on merge sort, where natural runs in the input are exploited so the recursion is shallower
 </div>
-<div class="footnote" id="_footnote_18">
+<div class="footnote" id="_footnotedef_18">
 <a href="#_footnoteref_18">18</a>. if you don&#8217;t, it&#8217;s \(O(n)\) and you get \(O(n^2)\)
 </div>
 </div></article>
@@ -677,7 +678,7 @@ It&#8217;s quick.</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

@@ -16,24 +16,25 @@
   <title>The Structure of a C++ File | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="The Structure of a C++ File" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="A computer is designed to follow instructions and commands. Typically, these instructions are organized into a file that the computer follows and executes. These formatted instructions are known as code. Essentially, code is a set of commands given to a computer to execute." />
+<meta property="og:description" content="A computer is designed to follow instructions and commands. Typically, these instructions are organized into a file that the computer follows and executes. These formatted instructions are known as code. Essentially, code is a set of commands given to a computer to execute." />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"The Structure of a C++ File","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index"},"url":"https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index"}</script>
+{"description":"A computer is designed to follow instructions and commands. Typically, these instructions are organized into a file that the computer follows and executes. These formatted instructions are known as code. Essentially, code is a set of commands given to a computer to execute.","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"The Structure of a C++ File","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/the-structure-of-a-c-file/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -262,11 +263,11 @@ executes every command <strong>one at a time</strong> in order.</p>
 </div>
 <div class="listingblock linenos">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L2" class="line"></span>
-<span id="L3" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L4" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L5" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -323,9 +324,9 @@ commands that are in the file must be placed within the main function</strong>.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L2" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L3" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -349,20 +350,20 @@ the code. So both of the following examples are identical:</p>
 <div class="listingblock">
 <div class="title">Example 1:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L2" class="line"></span>
-<span id="L3" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L4" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L5" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example 2:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">using</span> <span class="k">namespace</span></span>
-<span id="L2" class="line"><span class="n">std</span><span class="p">;</span></span>
-<span id="L3" class="line"><span class="kt">int</span></span>
-<span id="L4" class="line"><span class="n">main</span><span class="p">(){</span><span class="k">return</span> <span class="mi">0</span><span class="p">;}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(){&lt;/span&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -385,15 +386,15 @@ comments. Overall, <strong>comments makes code more readable for humans.</strong
 <div class="listingblock linenos">
 <div class="title">Example:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L2" class="line"><span class="kt">int</span> <span class="n">main</span><span class="p">(){</span></span>
-<span id="L3" class="line">    <span class="c1">// This is a comment.</span></span>
-<span id="L4" class="line">    <span class="cm">/*</span></span>
-<span id="L5" class="line"><span class="cm">        Everything between the</span></span>
-<span id="L6" class="line"><span class="cm">        2 symbols are comments.</span></span>
-<span id="L7" class="line"><span class="cm">    */</span></span>
-<span id="L8" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L9" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(){&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// This is a comment.&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">cm</span><span class="s">"&gt;/*&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cm</span><span class="s">"&gt;        Everything between the&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cm</span><span class="s">"&gt;        2 symbols are comments.&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cm</span><span class="s">"&gt;    */&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -462,7 +463,7 @@ do</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

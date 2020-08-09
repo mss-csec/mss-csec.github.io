@@ -16,24 +16,25 @@
   <title>k-Nearest Neighbours | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="k-Nearest Neighbours" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="So having people come up with rules is too expensive. Instead, we should consider making machines themselves come up with rules." />
+<meta property="og:description" content="So having people come up with rules is too expensive. Instead, we should consider making machines themselves come up with rules." />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"k-Nearest Neighbours","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"},"url":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"}</script>
+{"description":"So having people come up with rules is too expensive. Instead, we should consider making machines themselves come up with rules.","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"k-Nearest Neighbours","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/artificial-intelligence/k-nearest-neighbours/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -349,7 +350,7 @@ By Pythagoras,</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Of course, if your two variables have very different scales&#8201;&#8212;&#8201;like a country&#8217;s GDP per capita<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> compared to its rating on the Democracy Index<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>&#8201;&#8212;&#8201;the distance formula would have to be adjusted or the variable with larger range would be too highly-favoured.</p>
+<p>Of course, if your two variables have very different scales&#8201;&#8212;&#8201;like a country&#8217;s GDP per capita<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> compared to its rating on the Democracy Index<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>&#8201;&#8212;&#8201;the distance formula would have to be adjusted or the variable with larger range would be too highly-favoured.</p>
 </div>
 <div class="paragraph">
 <p>From there, every new input just needs their distance against every training data point computed, and the resulting classification is the same as that of the closest training data point.</p>
@@ -366,7 +367,7 @@ By Pythagoras,</p>
 <p>... and the resulting classification is still the same as that of the least-distant training data point.</p>
 </div>
 <div class="paragraph">
-<p>If we just use Euclidean distance<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>, then what we get is a nice <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi</a> output space:</p>
+<p>If we just use Euclidean distance<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, then what we get is a nice <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi</a> output space:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Data3classes.png" alt="Plotted Test Data" width="49%"></span>
@@ -382,7 +383,7 @@ By Pythagoras,</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can see one the left-hand-side image that there&#8217;s three large clusters of red, green, and blue.
-There <em>are</em> some elements of another colour sort of "infiltrating" these clusters, but this can simply be due to mislabeled sample data or ambiguous cases&#8201;&#8212;&#8201;training data is pre-labeled, usually by humans, after all.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
+There <em>are</em> some elements of another colour sort of "infiltrating" these clusters, but this can simply be due to mislabeled sample data or ambiguous cases&#8201;&#8212;&#8201;training data is pre-labeled, usually by humans, after all.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>Every data point is not equal.
@@ -426,7 +427,7 @@ And after doing so, it can achieve a 3-4% error rate.</p>
 <p>There are still many problems with the k-Nearest Neighbours approach.
 You can already see in the 5-NN output space above that in areas with sparse data, there will still be many glitches.
 You can also see that although the algorithm generalizes well for large, clear clusters, it doesn&#8217;t for small, local clusters&#8201;&#8212;&#8201;and in the areas without much data, it still gives biazarre boundaries.
-The k-NN approach both overfits and underfits at the same time.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup></p>
+The k-NN approach both overfits and underfits at the same time.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>And finally, when we try to apply it to the MNIST database, we can see another problem.
@@ -444,19 +445,19 @@ What will happen when we try to do it with 256x256 pictures?</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnote_1">
+<div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. varies between pennies and tens of thousands
 </div>
-<div class="footnote" id="_footnote_2">
+<div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. between 0.0 and 10.0
 </div>
-<div class="footnote" id="_footnote_3">
+<div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. that&#8217;s Pythagoras; this is opposed to, say, Manhattan distance
 </div>
-<div class="footnote" id="_footnote_4">
+<div class="footnote" id="_footnotedef_4">
 <a href="#_footnoteref_4">4</a>. if a survey was sent out to label data points, it could be even worse, as many survey-takers may troll the responses.
 </div>
-<div class="footnote" id="_footnote_5">
+<div class="footnote" id="_footnotedef_5">
 <a href="#_footnoteref_5">5</a>. we&#8217;ll get to that next lesson
 </div>
 </div></article>
@@ -485,7 +486,7 @@ What will happen when we try to do it with 256x256 pictures?</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

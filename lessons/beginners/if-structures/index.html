@@ -16,24 +16,25 @@
   <title>If Statements | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="If Statements" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="Goal: To be able to implement if statements into code." />
+<meta property="og:description" content="Goal: To be able to implement if statements into code." />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/beginners/if-structures/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/beginners/if-structures/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"If Statements","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/if-structures/index"},"url":"https://mss-csec.github.io/lessons/beginners/if-structures/index"}</script>
+{"description":"Goal: To be able to implement if statements into code.","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/beginners/if-structures/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"If Statements","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/beginners/if-structures/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -280,16 +281,16 @@ mix up the two operators.</p>
 <div class="listingblock linenos">
 <div class="title">Example Code:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
-<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L3" class="line"></span>
-<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>        <span class="c1">// compares ints</span></span>
-<span id="L6" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mf">2.6</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>      <span class="c1">// compares double and ints</span></span>
-<span id="L7" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="sc">'A'</span> <span class="o">==</span> <span class="sc">'A'</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>    <span class="c1">// compares characters</span></span>
-<span id="L8" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">true</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// compares boolean values</span></span>
-<span id="L9" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L10" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cp</span><span class="s">"&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;==&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;        &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// compares ints&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">mf</span><span class="s">"&gt;2.6&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;==&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;      &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// compares double and ints&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'A'&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;==&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'A'&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// compares characters&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">nb</span><span class="s">"&gt;true&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;==&lt;/span&gt; &lt;span class="</span><span class="n">nb</span><span class="s">"&gt;false&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt; &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// compares boolean values&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -324,7 +325,7 @@ compare variable types such as characters.</p>
 <div class="paragraph">
 <p>The following are more examples of relational operators.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -344,75 +345,75 @@ compare variable types such as characters.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Not equal to</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>!=</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks if two values are different</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>3 != 4</code><br>
 <code>5 != 5</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Greater than</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&gt;</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks if the first value is greater than the second</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>5 &gt; 0</code><br>
 <code>6 &gt; 6</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Less than</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&lt;</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks if the first value is less than the second</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>3 &lt; 4</code><br>
 <code>5 &lt; 3</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Greater than or equal to</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&gt;=</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks if the first value is greater than or equal to the second value</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>5 &gt;= 4</code><br>
 <code>4 &gt;= 4</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>true</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Less than or equal to</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&lt;=</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Checks it the first value is less than or equal to the second value</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>3 &lt;= 3</code><br>
 <code>4 &lt;= 3</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code>
 <code>false</code></p>
 </div></div></td>
@@ -433,7 +434,7 @@ value and greater than a certain value. Relational operators are
 performed <strong>before</strong> logical operators. The following are examples of
 common logical operators.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -453,45 +454,45 @@ common logical operators.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AND</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>&amp;&amp;</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns true only if <strong>both</strong> sides are true</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true &amp;&amp; true</code><br>
 <code>false &amp;&amp; true</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OR</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>||</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns true when either side is true</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true || false</code><br>
 <code>false || false</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>true</code><br>
 <code>false</code></p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NOT</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>!</code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns true if value is false and returns false if value is true</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>!(true)</code><br>
 <code>!(false)</code></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><code>false</code><br>
 <code>true</code></p>
 </div></div></td>
@@ -501,14 +502,14 @@ common logical operators.</p>
 <div class="listingblock linenos">
 <div class="title">Example Code:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
-<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L3" class="line"></span>
-<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">6</span> <span class="o">==</span> <span class="mi">7</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
-<span id="L6" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="mi">4</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)))</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
-<span id="L7" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L8" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cp</span><span class="s">"&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;((&lt;/span&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;3&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;==&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;7&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;))&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;5&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;!=&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;6&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;||&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;!&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;4&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)))&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -538,10 +539,10 @@ specific set of commands if a certain condition is met.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span></span>
-<span id="L2" class="line">    <span class="c1">//code to be run if the condition results to true</span></span>
-<span id="L3" class="line"><span class="p">}</span></span>
-<span id="L4" class="line"><span class="c1">// rest of the code</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;condition&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;//code to be run if the condition results to true&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// rest of the code&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -572,20 +573,20 @@ more detail in the next chapter.
 <div class="listingblock">
 <div class="title">Example Code:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="c1">// this code will check if a number is positive</span></span>
-<span id="L2" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
-<span id="L3" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L4" class="line"></span>
-<span id="L5" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L6" class="line">    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>            <span class="c1">// initializes an integer variable</span></span>
-<span id="L7" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Type in any number."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span></span>
-<span id="L8" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span>         <span class="c1">// gets user input</span></span>
-<span id="L9" class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>      <span class="c1">// all positive numbers are greater than 0</span></span>
-<span id="L10" class="line">        <span class="c1">// if num is positive, this message will be displayed</span></span>
-<span id="L11" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a positive number."</span><span class="p">;</span></span>
-<span id="L12" class="line">    <span class="p">}</span>                   <span class="c1">// if num is negative or zero, output is skipped</span></span>
-<span id="L13" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L14" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// this code will check if a number is positive&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cp</span><span class="s">"&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;            &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// initializes an integer variable&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">Type</span> <span class="n">in</span> <span class="n">any</span> <span class="n">number</span><span class="p">.</span><span class="s">"&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cin&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;         &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// gets user input&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;      &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// all positive numbers are greater than 0&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// if num is positive, this message will be displayed&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span> <span class="n">is</span> <span class="n">a</span> <span class="n">positive</span> <span class="n">number</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L12</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;                   &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// if num is negative or zero, output is skipped&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L13</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L14</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -615,19 +616,19 @@ else statement will resemble the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">if</span> <span class="p">(</span><span class="n">condition1</span><span class="p">)</span> <span class="p">{</span></span>
-<span id="L2" class="line">    <span class="c1">// code to be run if condition 1 results true</span></span>
-<span id="L3" class="line"><span class="p">}</span></span>
-<span id="L4" class="line"><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition2</span><span class="p">)</span> <span class="p">{</span></span>
-<span id="L5" class="line">    <span class="c1">// code if condition 1 results false but condition 2 results true</span></span>
-<span id="L6" class="line"><span class="p">}</span></span>
-<span id="L7" class="line"><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">condition3</span><span class="p">)</span> <span class="p">{</span></span>
-<span id="L8" class="line">    <span class="c1">// more code</span></span>
-<span id="L9" class="line"><span class="p">}</span></span>
-<span id="L10" class="line"><span class="c1">// the number of else if statements could continue...</span></span>
-<span id="L11" class="line"><span class="k">else</span> <span class="p">{</span></span>
-<span id="L12" class="line">    <span class="c1">// code to be run if all previous conditions result false</span></span>
-<span id="L13" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;condition1&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// code to be run if condition 1 results true&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;else&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;condition2&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// code if condition 1 results false but condition 2 results true&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;else&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;condition3&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// more code&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// the number of else if statements could continue...&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;else&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L12</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// code to be run if all previous conditions result false&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L13</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="imageblock right text-center">
@@ -655,22 +656,22 @@ negative numbers and zero.</p>
 </div>
 <div class="listingblock linenos">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
-<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L3" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L4" class="line">    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span></span>
-<span id="L5" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">num</span><span class="p">;</span></span>
-<span id="L6" class="line">    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">// all positive numbers are greater than 0</span></span>
-<span id="L7" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is an even number."</span><span class="p">;</span> <span class="c1">// skips to line 16</span></span>
-<span id="L8" class="line">    <span class="p">}</span></span>
-<span id="L9" class="line">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// all negative numbers are less than 0</span></span>
-<span id="L10" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is a negative number."</span><span class="p">;</span> <span class="c1">// skips to line 16</span></span>
-<span id="L11" class="line">    <span class="p">}</span></span>
-<span id="L12" class="line">    <span class="k">else</span> <span class="p">{</span>               <span class="c1">// 0 is neither greater or less than 0</span></span>
-<span id="L13" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">" is not positive nor negative."</span><span class="p">;</span></span>
-<span id="L14" class="line">    <span class="p">}</span></span>
-<span id="L15" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L16" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cp</span><span class="s">"&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cin&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;        &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// all positive numbers are greater than 0&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span> <span class="n">is</span> <span class="n">an</span> <span class="n">even</span> <span class="n">number</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt; &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// skips to line 16&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;else&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;if&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;   &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// all negative numbers are less than 0&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span> <span class="n">is</span> <span class="n">a</span> <span class="n">negative</span> <span class="n">number</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt; &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// skips to line 16&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L12</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;else&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;               &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// 0 is neither greater or less than 0&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L13</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;num&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span> <span class="n">is</span> <span class="n">not</span> <span class="n">positive</span> <span class="n">nor</span> <span class="n">negative</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L14</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L15</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L16</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -761,7 +762,7 @@ are true, it will return false. The reason why this operator is not a
 logical operator is because it is a <strong>bitwise operator</strong> and could be used
 in scenarios beyond the scope of this chapter.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -812,7 +813,7 @@ representation (<code>65</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;char&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;var&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;=&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;65&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -823,17 +824,17 @@ the character itself. So the following two excerpts of code perform the same tas
 <div class="listingblock">
 <div class="title">Example 1</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">111</span><span class="p">;</span></span>
-<span id="L2" class="line"></span>
-<span id="L3" class="line"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="sc">'a'</span><span class="p">);</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;char&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;c&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;=&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;111&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;c&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'a'&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;);&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Example 2</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'o'</span><span class="p">;</span></span>
-<span id="L2" class="line"></span>
-<span id="L3" class="line"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="mi">97</span><span class="p">);</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;char&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;c&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;=&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'o'&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;c&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;97&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;);&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -855,17 +856,17 @@ value.</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="k">switch</span> <span class="p">(</span><span class="n">variable</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span></span>
-<span id="L2" class="line"><span class="k">case</span> <span class="n">possibleValue</span><span class="p">:</span></span>
-<span id="L3" class="line">    <span class="c1">// your code</span></span>
-<span id="L4" class="line">    <span class="k">break</span><span class="p">;</span></span>
-<span id="L5" class="line"><span class="k">case</span> <span class="n">possibleValue2</span><span class="p">:</span></span>
-<span id="L6" class="line">    <span class="c1">// your code</span></span>
-<span id="L7" class="line">    <span class="k">break</span><span class="p">;</span></span>
-<span id="L8" class="line"><span class="c1">// the number of cases may continue</span></span>
-<span id="L9" class="line"><span class="k">default</span><span class="o">:</span></span>
-<span id="L10" class="line">    <span class="c1">// your code</span></span>
-<span id="L11" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;switch&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;variable&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;name&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;)&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;possibleValue&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// your code&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;possibleValue2&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// your code&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// the number of cases may continue&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;default&lt;/span&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;:&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// your code&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -877,32 +878,32 @@ the same task as if structures.</p>
 <div class="listingblock linenos">
 <div class="title">Example Code:</div>
 <div class="content">
-<pre class="highlight"><code class="language-cpp" data-lang="cpp"><span id="L1" class="line"><span class="cp">#include &lt;iostream&gt;</span></span>
-<span id="L2" class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span></span>
-<span id="L3" class="line"></span>
-<span id="L4" class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
-<span id="L5" class="line">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"What's your mark?"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">// asks for a mark</span></span>
-<span id="L6" class="line">    <span class="kt">char</span> <span class="n">mark</span><span class="p">;</span>              <span class="c1">// char variable to store mark</span></span>
-<span id="L7" class="line">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">mark</span><span class="p">;</span></span>
-<span id="L8" class="line">    <span class="k">switch</span><span class="p">(</span><span class="n">mark</span><span class="p">){</span>           <span class="c1">// checks value of mark</span></span>
-<span id="L9" class="line">    <span class="k">case</span> <span class="sc">'A'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'A'</span></span>
-<span id="L10" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Amazing!"</span><span class="p">;</span> <span class="c1">// output if mark == 'A'</span></span>
-<span id="L11" class="line">        <span class="k">break</span><span class="p">;</span></span>
-<span id="L12" class="line">    <span class="k">case</span> <span class="sc">'B'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'B'</span></span>
-<span id="L13" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Nice nice."</span><span class="p">;</span></span>
-<span id="L14" class="line">        <span class="k">break</span><span class="p">;</span></span>
-<span id="L15" class="line">    <span class="k">case</span> <span class="sc">'C'</span> <span class="p">:</span>              <span class="c1">// checks if mark == 'C'</span></span>
-<span id="L16" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"You're getting there."</span><span class="p">;</span></span>
-<span id="L17" class="line">        <span class="k">break</span><span class="p">;</span></span>
-<span id="L18" class="line">    <span class="k">case</span> <span class="sc">'D'</span> <span class="p">:</span></span>
-<span id="L19" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Try Harder."</span><span class="p">;</span></span>
-<span id="L20" class="line">        <span class="k">break</span><span class="p">;</span></span>
-<span id="L21" class="line">    <span class="k">default</span> <span class="o">:</span></span>
-<span id="L22" class="line">        <span class="c1">// default statement if all previous return false</span></span>
-<span id="L23" class="line">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"That's not a rank!"</span><span class="p">;</span></span>
-<span id="L24" class="line">    <span class="p">}</span></span>
-<span id="L25" class="line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
-<span id="L26" class="line"><span class="p">}</span></span></code></pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">cp</span><span class="s">"&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">k</span><span class="s">"&gt;using&lt;/span&gt; &lt;span class="</span><span class="n">k</span><span class="s">"&gt;namespace&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;std&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">kt</span><span class="s">"&gt;int&lt;/span&gt; &lt;span class="</span><span class="n">nf</span><span class="s">"&gt;main&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;()&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;{&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L5</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">What</span><span class="err">'</span><span class="n">s</span> <span class="n">your</span> <span class="n">mark</span><span class="o">?</span><span class="s">"&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;endl&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt; &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// asks for a mark&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L6</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">kt</span><span class="s">"&gt;char&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;mark&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;              &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// char variable to store mark&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L7</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cin&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="</span><span class="n">n</span><span class="s">"&gt;mark&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L8</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;switch&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;(&lt;/span&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;mark&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;){&lt;/span&gt;           &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// checks value of mark&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L9</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'A'&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;              &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// checks if mark == 'A'&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L10</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">Amazing</span><span class="o">!</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt; &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// output if mark == 'A'&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L11</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L12</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'B'&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;              &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// checks if mark == 'B'&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L13</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">Nice</span> <span class="n">nice</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L14</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L15</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'C'&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;              &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// checks if mark == 'C'&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L16</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">You</span><span class="err">'</span><span class="n">re</span> <span class="n">getting</span> <span class="n">there</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L17</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L18</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;case&lt;/span&gt; &lt;span class="</span><span class="n">sc</span><span class="s">"&gt;'D'&lt;/span&gt; &lt;span class="</span><span class="n">p</span><span class="s">"&gt;:&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L19</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">Try</span> <span class="n">Harder</span><span class="p">.</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L20</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">k</span><span class="s">"&gt;break&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L21</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;default&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;:&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L22</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">c1</span><span class="s">"&gt;// default statement if all previous return false&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L23</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;        &lt;span class="</span><span class="n">n</span><span class="s">"&gt;cout&lt;/span&gt; &lt;span class="</span><span class="n">o</span><span class="s">"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="</span><span class="n">s</span><span class="s">"&gt;"</span><span class="n">That</span><span class="err">'</span><span class="n">s</span> <span class="n">not</span> <span class="n">a</span> <span class="n">rank</span><span class="o">!</span><span class="s">"&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L24</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L25</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;    &lt;span class="</span><span class="n">k</span><span class="s">"&gt;return&lt;/span&gt; &lt;span class="</span><span class="n">mi</span><span class="s">"&gt;0&lt;/span&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;;&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L26</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">p</span><span class="s">"&gt;}&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -957,7 +958,7 @@ That's not a rank!</pre>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

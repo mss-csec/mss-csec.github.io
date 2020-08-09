@@ -16,24 +16,25 @@
   <title>Introduction to C++ | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Introduction to C++" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="The Advanced Course begins with the assumption that you are familiar and comfortable with programming so that we can advance to more complex, more difficult, more interesting topics." />
+<meta property="og:description" content="The Advanced Course begins with the assumption that you are familiar and comfortable with programming so that we can advance to more complex, more difficult, more interesting topics." />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Introduction to C++","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"},"url":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"}</script>
+{"description":"The Advanced Course begins with the assumption that you are familiar and comfortable with programming so that we can advance to more complex, more difficult, more interesting topics.","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"Introduction to C++","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -241,8 +242,8 @@
 <li><a href="#comments">Comments</a></li>
 <li><a href="#input-and-output">Input and Output</a>
 <ul class="sectlevel2">
-<li><a href="#output-using-code-std-cout-code">Output Using <code>std::cout</code></a></li>
-<li><a href="#input-using-code-std-cin-code">Input Using <code>std::cin</code></a></li>
+<li><a href="#output-using-stdcout">Output Using <code>std::cout</code></a></li>
+<li><a href="#input-using-stdcin">Input Using <code>std::cin</code></a></li>
 </ul>
 </li>
 <li><a href="#variables-and-types">Variables and Types</a>
@@ -256,7 +257,7 @@
 <li><a href="#modularity">Modularity</a>
 <ul class="sectlevel2">
 <li><a href="#functions">Functions</a></li>
-<li><a href="#code-struct-code-s"><code>struct</code>s</a></li>
+<li><a href="#structs"><code>struct</code>s</a></li>
 <li><a href="#prototype-declarations">Prototype declarations</a></li>
 </ul>
 </li>
@@ -355,7 +356,7 @@ Both methods work; the C++ version is simpler (for now), but we&#8217;ll introdu
 <p>The C++ I/O library is in the <code>&lt;iostream&gt;</code> header and resides in the <code>std</code> (<strong>St</strong>andar<strong>d</strong> Library) namespace.</p>
 </div>
 <div class="sect2">
-<h3 id="output-using-code-std-cout-code">Output Using <code>std::cout</code></h3>
+<h3 id="output-using-stdcout">Output Using <code>std::cout</code></h3>
 <div class="paragraph">
 <p>To write (or print), we use the <code>std::cout</code> "function"with the <code>&lt;&lt;</code> operator:</p>
 </div>
@@ -444,7 +445,7 @@ We&#8217;ll just stop here.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="input-using-code-std-cin-code">Input Using <code>std::cin</code></h3>
+<h3 id="input-using-stdcin">Input Using <code>std::cin</code></h3>
 <div class="paragraph">
 <p>To read (or scan), we use the <code>std::cin</code> "function" and the operator <code>&gt;&gt;</code>.</p>
 </div>
@@ -533,10 +534,10 @@ For your purposes, it&#8217;s nothing but garbage.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>50786312
-A
-0.00000
--2.46962e-185</pre>
+<pre class="rouge highlight"><code data-lang="cpp"><span class="o">&lt;</span><span class="n">span</span> <span class="n">id</span><span class="o">=</span><span class="s">"L1"</span> <span class="k">class</span><span class="err">="</span><span class="nc">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mi</span><span class="s">"&gt;50786312&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L2</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">n</span><span class="s">"&gt;A&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L3</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">mf</span><span class="s">"&gt;0.00000&lt;/span&gt;&lt;/span&gt;</span><span class="err">
+</span><span class="s">&lt;span id="</span><span class="n">L4</span><span class="s">" class="</span><span class="n">line</span><span class="s">"&gt;&lt;span class="</span><span class="n">o</span><span class="s">"&gt;-&lt;/span&gt;&lt;span class="</span><span class="n">mf</span><span class="s">"&gt;2.46962e-185&lt;/span&gt;&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -846,7 +847,7 @@ Line 3 declares an array of a hundred <code>int</code>s, all initizalized to zer
 <p>This snippet of code will output <code>09</code> and then some garbage (there are no spaces as we didn&#8217;t specify any), since the 10th index is after the end of the array.</p>
 </div>
 <div class="sect3">
-<h4 id="variable-size-arrays-code-std-vector-code">Variable-size Arrays: <code>std::vector</code></h4>
+<h4 id="variable-size-arrays-stdvector">Variable-size Arrays: <code>std::vector</code></h4>
 <div class="paragraph">
 <p>If you need an array type but don&#8217;t know how many elements you need, you can use an <code>std::vector</code> from <code>&lt;vector&gt;</code>.
 <code>std::vector</code>s begin with zero size and zero capacity, but increase as you add more elements with <code>std::vector&lt;T&gt;::push_back(T)</code>, create more elements with <code>std::vector&lt;T&gt;::emplace_back(T())</code>, or reserve space for elements with <code>std::vector&lt;T&gt;::reserve(int)</code>.
@@ -1165,7 +1166,7 @@ Methods/procedures just have return type <code>void</code>; that is to say, it d
 <span class="p">}</span></pre></td></tr></tbody></table></code></pre></figure>
 </div>
 <div class="sect2">
-<h3 id="code-struct-code-s"><code>struct</code>s</h3>
+<h3 id="structs"><code>struct</code>s</h3>
 <div class="paragraph">
 <p>In C++ there are <code>class</code>es you can use, but they&#8217;re designed specifically for OOP and are sometimes rather finicky to work with.
 <code>struct</code>s were made for C, and so they&#8217;re somewhat easier to work with, since they&#8217;re just wrappers for groups of data.</p>
@@ -1276,7 +1277,7 @@ What you can do is make a prototype declaration to tell the compiler, "Hey, here
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>

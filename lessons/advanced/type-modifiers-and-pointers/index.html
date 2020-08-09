@@ -16,24 +16,25 @@
   <title>Type Modifiers and Pointers | MSS CSEC • Markville's Computer Science Education Club
 </title>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Type Modifiers and Pointers" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Markville’s Computer Science Education Club" />
-<meta property="og:description" content="Markville’s Computer Science Education Club" />
+<meta name="description" content="You were probably taught that &quot;variables hold a value,&quot; and that &quot;different types hold different types of values.&quot;" />
+<meta property="og:description" content="You were probably taught that &quot;variables hold a value,&quot; and that &quot;different types hold different types of values.&quot;" />
 <link rel="canonical" href="https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index" />
 <meta property="og:url" content="https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index" />
 <meta property="og:site_name" content="MSS CSEC" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-08-07T17:01:06+00:00" />
+<meta property="article:published_time" content="2020-08-09T17:45:20+00:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Type Modifiers and Pointers","datePublished":"2020-08-07T17:01:06+00:00","dateModified":"2020-08-07T17:01:06+00:00","description":"Markville’s Computer Science Education Club","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"}</script>
+{"description":"You were probably taught that &quot;variables hold a value,&quot; and that &quot;different types hold different types of values.&quot;","@type":"BlogPosting","url":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://mss-csec.github.io/assets/images/favicons/icon-128.png"}},"headline":"Type Modifiers and Pointers","dateModified":"2020-08-09T17:45:20+00:00","datePublished":"2020-08-09T17:45:20+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mss-csec.github.io/lessons/advanced/type-modifiers-and-pointers/index"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
   
-  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=022a307" color="#f52f2f">
-  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=022a307" type="image/x-icon">
+  <link rel="mask-icon" href="/assets/images/favicons/icon-pinned.svg?v=f1603f0" color="#f52f2f">
+  <link id="favicon" rel="shortcut icon" href="/assets/images/favicons/icon.ico?v=f1603f0" type="image/x-icon">
 
   <!-- BEGIN GA -->
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-107141139-1','auto');ga('send','pageview')</script>
@@ -318,12 +319,12 @@ So that we can find these bytes, each and every one of them has an <strong>addre
 It doesn&#8217;t understand what&#8217;s going on; all it does is take instructions and carry them out.</p>
 </div>
 <div class="paragraph">
-<p>One instruction says to assign byte \(\text{2300003A}_{16}\)<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> the value at byte \(\text{23000038}_{16}\).
+<p>One instruction says to assign byte \(\text{2300003A}_{16}\)<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> the value at byte \(\text{23000038}_{16}\).
 The CPU (office) requests for byte \(\text{23000038}_{16}\) from the RAM (warehouse), and so the workers at the warehouse retrieve this data for the CPU.
 The CPU then reads that the data is \(\text{00}_{16}\), and so tells the warehouse to assign byte \(\text{23000038}_{16}\) the value \(\text{00}_{16}\).</p>
 </div>
 <div class="paragraph">
-<p>This is what an assignment between variables actually is<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>: the CPU requests from RAM, then tells RAM to change a value.</p>
+<p>This is what an assignment between variables actually is<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>: the CPU requests from RAM, then tells RAM to change a value.</p>
 </div>
 <div class="paragraph">
 <p>Now, most types take <em>more</em> than one byte, but the same process still works.
@@ -384,7 +385,7 @@ Applicable to <code>int</code> only.</p>
 </li>
 <li>
 <p><code>long</code>: doubles the length of a variable.
-Applicable to <code>int</code>, <code>long</code><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>, <code>char</code>, and <code>double</code><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup></p>
+Applicable to <code>int</code>, <code>long</code><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, <code>char</code>, and <code>double</code><sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
 </li>
 <li>
 <p><code>unsigned</code>: the first bit of the variable will now be used as another digit rather than a sign indicator.
@@ -424,7 +425,7 @@ If you get compiler errors that mention these, now you might know what the heck 
 <p>Recall our little exercise at the end of the <em>Variables in Memory</em> section.</p>
 </div>
 <div class="paragraph">
-<p>Addresses are just numbers&#8201;&#8212;&#8201;four-byte numbers, at that, if you&#8217;re running 32-bit programs<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>.
+<p>Addresses are just numbers&#8201;&#8212;&#8201;four-byte numbers, at that, if you&#8217;re running 32-bit programs<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>.
 What if you wanted to say "hey, get me the value stored at the address indicated by that variable"?</p>
 </div>
 <div class="paragraph">
@@ -506,17 +507,17 @@ It doesn&#8217;t change what the pointer is pointing to.</p>
 <ul>
 <li>
 <p>Line 2: when declaring a pointer, an asterick must be placed <strong>before</strong> the variable name, which denotes it as a pointer.
-This is a <strong>type modifier</strong>, applicable to <em>all</em> types<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>.
-Whitespace does not matter: <code>int * p</code>, <code>int* p</code>, <code>int *p</code>, <code>int*p</code> all do the same thing<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>.</p>
+This is a <strong>type modifier</strong>, applicable to <em>all</em> types<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup>.
+Whitespace does not matter: <code>int * p</code>, <code>int* p</code>, <code>int *p</code>, <code>int*p</code> all do the same thing<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>.</p>
 </li>
 <li>
 <p>Line 3: to set a pointer point to another variable, use the <strong>addressof</strong> operator. In C++, that&#8217;s <code>&amp;</code>.</p>
 </li>
 <li>
-<p>Line 4: to actually use the memory you&#8217;re referring to, you have to <strong>dereference</strong> a pointer with the dereference operator <code>*</code><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnote_8" title="View footnote.">8</a>]</sup></p>
+<p>Line 4: to actually use the memory you&#8217;re referring to, you have to <strong>dereference</strong> a pointer with the dereference operator <code>*</code><sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
 </li>
 <li>
-<p>Line 5: you can dynamically allocate memory using the <code>new</code> and <code>new[]</code> operator. In this case, <code>p</code> became a pointer "pointing to an array"<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnote_9" title="View footnote.">9</a>]</sup> of length 55 (that was the value of <code>a</code>).</p>
+<p>Line 5: you can dynamically allocate memory using the <code>new</code> and <code>new[]</code> operator. In this case, <code>p</code> became a pointer "pointing to an array"<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> of length 55 (that was the value of <code>a</code>).</p>
 </li>
 <li>
 <p>Line 6: dereferencing <code>p</code> now refers to the "first element" of "the array".</p>
@@ -589,10 +590,10 @@ If you really wanted, you can try accessing <code>p[55]</code>, despite it being
 <p>Because of how pointers can be used to dynamically refer to memory, they are extremely helpful.</p>
 </div>
 <div class="sect3">
-<h4 id="memory-and-string-manipulation-with-a-href-http-www-cplusplus-com-reference-cstring-code-string-h-code-a">Memory and String Manipulation with <a href="http://www.cplusplus.com/reference/cstring/"><code>&lt;string.h&gt;</code></a></h4>
+<h4 id="memory-and-string-manipulation-with-string-h">Memory and String Manipulation with <a href="http://www.cplusplus.com/reference/cstring/"><code>&lt;string.h&gt;</code></a></h4>
 <div class="paragraph">
 <p>Recall that in the <a href="https://mss-csec.github.io/lessons/advanced/introduction-to-cpp/#strings">last lesson</a> that I mentioned that you can use <code>char[]</code> for strings.
-Since <code>char*</code><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnote_10" title="View footnote.">10</a>]</sup> can <em>also</em> be an array of <code>char</code>, they can also be strings.
+Since <code>char*</code><sup class="footnote">[<a id="_footnoteref_10" class="footnote" href="#_footnotedef_10" title="View footnote.">10</a>]</sup> can <em>also</em> be an array of <code>char</code>, they can also be strings.
 In C, this is exactly what strings are: <code>char*</code>.</p>
 </div>
 <div class="paragraph">
@@ -606,7 +607,7 @@ The most important function you need to know is <code>memset()</code>.</p>
 <div class="sect3">
 <h4 id="pointers-in-stl-functions">Pointers in STL Functions</h4>
 <div class="paragraph">
-<p>Many functions in the standard library use pointers to denote the beginning and end of ranges<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnote_11" title="View footnote.">11</a>]</sup>:</p>
+<p>Many functions in the standard library use pointers to denote the beginning and end of ranges<sup class="footnote">[<a id="_footnoteref_11" class="footnote" href="#_footnotedef_11" title="View footnote.">11</a>]</sup>:</p>
 </div>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -634,7 +635,7 @@ The most important function you need to know is <code>memset()</code>.</p>
 <h4 id="multidimensional-arrays">Multidimensional Arrays</h4>
 <div class="paragraph">
 <p>In many languages, you can have multidimensional arrays.
-In C++, we don&#8217;t worry about classifying what arrays are single-dimensional and what are multidimensional, because a two-dimensional array is just an array of arrays<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnote_12" title="View footnote.">12</a>]</sup>.
+In C++, we don&#8217;t worry about classifying what arrays are single-dimensional and what are multidimensional, because a two-dimensional array is just an array of arrays<sup class="footnote">[<a id="_footnoteref_12" class="footnote" href="#_footnotedef_12" title="View footnote.">12</a>]</sup>.
 A three-dimensional array is just an array of arrays of arrays.</p>
 </div>
 <figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
@@ -662,40 +663,40 @@ A three-dimensional array is just an array of arrays of arrays.</p>
 </div>
 <div id="footnotes">
 <hr>
-<div class="footnote" id="_footnote_1">
+<div class="footnote" id="_footnotedef_1">
 <a href="#_footnoteref_1">1</a>. this is hexadecimal, a 16-digit base (or radix) for numbers. It&#8217;s a common way to represent binary numbers, since it&#8217;s much more compact than writing every bit out. This way, each digit represents one <strong>nibble</strong>, or half-byte.
 </div>
-<div class="footnote" id="_footnote_2">
+<div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. actually there&#8217;s also the <strong>cache</strong> between the RAM and CPU, which speeds up this retrieval process. But that&#8217;s not so important to know right now.
 </div>
-<div class="footnote" id="_footnote_3">
+<div class="footnote" id="_footnotedef_3">
 <a href="#_footnoteref_3">3</a>. due to legacy issues, the <code>long</code> is a 4-byte <code>int</code>. <code>long int</code> <em>may</em> actually refer to a 4-byte int depending on your operating system, and so if you want an 8-byte int you&#8217;ll need a <code>long long</code>.
 </div>
-<div class="footnote" id="_footnote_4">
+<div class="footnote" id="_footnotedef_4">
 <a href="#_footnoteref_4">4</a>. actually, it makes <code>double</code>s 12 bytes long up from 8 bytes; doubles are already  "long floats."
 </div>
-<div class="footnote" id="_footnote_5">
+<div class="footnote" id="_footnotedef_5">
 <a href="#_footnoteref_5">5</a>. if you&#8217;re running 64-bit programs, they&#8217;re eight bytes.
 </div>
-<div class="footnote" id="_footnote_6">
+<div class="footnote" id="_footnotedef_6">
 <a href="#_footnoteref_6">6</a>. a pointer is a type, and so you can have a pointer to a pointer. Or a pointer to a pointer to a pointer. Or a pointer to a pointer to a pointer to a pointer to a pointer&#8230;&#8203; you get the point. You&#8217;d declare it as <code>int ***** fifth_dimentional_pointer</code>.
 </div>
-<div class="footnote" id="_footnote_7">
+<div class="footnote" id="_footnotedef_7">
 <a href="#_footnoteref_7">7</a>. you can declare different levels of pointers on the same line: <code>int a, *b, **c</code> gives you an int a, a pointer to int b, and a pointer to a pointer to int c.
 </div>
-<div class="footnote" id="_footnote_8">
+<div class="footnote" id="_footnotedef_8">
 <a href="#_footnoteref_8">8</a>. the dereference operator has <strong>a lower</strong> precedence than the access operator <code>.</code>; if you&#8217;re using a pointer to a <code>struct</code> or <code>class</code>, then you need specify that you&#8217;re dereferencing <em>first</em>: <code>(*obj).member</code>. There is a shorthand for this: <code>obj->member</code> does the same thing.
 </div>
-<div class="footnote" id="_footnote_9">
+<div class="footnote" id="_footnotedef_9">
 <a href="#_footnoteref_9">9</a>. it isn&#8217;t, it&#8217;s pointing a memory location which the <em>operating system</em> treats as a <em>contiguous block of memory</em>. It can act like an array, but it needn&#8217;t.
 </div>
-<div class="footnote" id="_footnote_10">
+<div class="footnote" id="_footnotedef_10">
 <a href="#_footnoteref_10">10</a>. pointer to <code>char</code>
 </div>
-<div class="footnote" id="_footnote_11">
+<div class="footnote" id="_footnotedef_11">
 <a href="#_footnoteref_11">11</a>. if you have two pointers, <code>l</code>, the "beginning" of the range, and <code>r</code>, the end, then the range will <em>include</em> <code>l</code> and <em>exclude</em> <code>r</code>. In interval notation, that&#8217;s <code>[l,r).</code>
 </div>
-<div class="footnote" id="_footnote_12">
+<div class="footnote" id="_footnotedef_12">
 <a href="#_footnoteref_12">12</a>. actually, "multidimensional arrays" as a specific type <em>do</em> have some optimizations over "arrays of arrays", but they aren&#8217;t particularly important here.
 </div>
 </div></article>
@@ -724,7 +725,7 @@ A three-dimensional array is just an array of arrays of arrays.</p>
           <a href="#" title="Our email" onclick="event.preventDefault();APP.revealEmail()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" class="icon icon-envelope"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
 </a>
         </p>
-        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/022a30775ff824ab2ca53e1e62ebf052006a14cb" target="_blank">022a307</a></p>
+        <p class="version">Build <a href="https://github.com/mss-csec/mss-csec.github.io/commit/f1603f06e1480441ca805d5924855269da209940" target="_blank">f1603f0</a></p>
       </div>
       <div class="two columns">
         <h5>This is CSEC</h5>
