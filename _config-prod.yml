@@ -16,6 +16,7 @@ exclude:
   - _subclubs/web-development/
   - Vagrantfile
   - vagrant-ssh.config
+  - vendor/bundle/
   - 404.html # Excluded as Github pages won't build it anyways
 
 production: true
