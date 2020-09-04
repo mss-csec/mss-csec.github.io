@@ -22,7 +22,7 @@
     "coffee-script": "^1.12.7",
     "csso": "^3.4.0",
     "globby": "^7.1.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
     "postcss": "^6.0.14",
     "postcss-extract-styles": "^1.1.1",
     "postcss-sass-color-functions": "^1.1.0",
